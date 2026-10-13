@@ -1,7 +1,7 @@
 """HACK-003: teams from lineups, home park, pitcher teams, franchise links (synthetic league of 6 teams)."""
 import pandas as pd
 
-from stuffplus.physics.parks import game_teams, infer_teams, link_franchises, park_table, pitcher_teams
+from stuffplus.physics.parks import game_teams, infer_teams, link_franchises, park_table, pitcher_teams, tune_resolution
 
 # The fixture has ~3 shared lineups per season between teammates (min 1) and none across teams, so the
 # spec default of 3 would split teams; the test relaxes it. Real data keeps min_weight=3.
@@ -57,3 +57,14 @@ def test_park_table_accepts_optional_rho(synthetic_pitches):
     games = game_teams(df, infer_teams(df, **KW))
     rho = pd.Series(1.0, index=games.index)
     assert {"rho_median", "rho_iqr"} <= set(park_table(df, games, rho).columns)
+
+
+def test_missing_batter_ids_are_ignored(synthetic_pitches):
+    df = synthetic_pitches.copy()
+    df.loc[df.index[::50], "batter_anon_id"] = None
+    assert infer_teams(df, 2024, **KW).dropna().nunique() == 6
+
+
+def test_tune_resolution_keeps_a_clean_split(synthetic_pitches):
+    res, teams = tune_resolution(synthetic_pitches, 2024, min_weight=1, min_batters=5)
+    assert res == 1.0 and teams.dropna().nunique() == 6

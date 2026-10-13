@@ -31,7 +31,7 @@ def lineup_graph(df: pd.DataFrame, min_weight: int = 3):
     """Batter graph; edge weight = number of (game, half) lineups the two batters share (kept if >= min_weight)."""
     import networkx as nx
 
-    lineups = df.groupby([GAME, HALF], observed=True)[BATTER].agg(lambda s: sorted(set(s)))
+    lineups = df.groupby([GAME, HALF], observed=True)[BATTER].agg(lambda s: sorted(set(s.dropna())))
     weights: Counter = Counter()
     for batters in lineups:
         weights.update(itertools.combinations(batters, 2))
@@ -131,3 +131,23 @@ def park_table(df: pd.DataFrame, games: pd.DataFrame, rho: pd.Series | None = No
             row.update(rho_median=med, rho_iqr=q3 - q1)
         out.append(row)
     return pd.DataFrame(out)
+
+
+def tune_resolution(df: pd.DataFrame, season: int | None = None, grid=(1.0, 1.25, 1.5, 1.75, 2.0, 2.5, 3.0, 4.0, 6.0),
+                    min_purity: float = 0.9, max_games_ratio: float = 1.5, max_teams: int = 21,
+                    **kwargs) -> tuple[float, pd.Series]:
+    """Smallest Louvain resolution whose split is consistent; returns (resolution, batter -> team).
+
+    Consistent = every team has altitude purity >= ``min_purity``, no team has more than ``max_games_ratio``
+    times the median home games (two same-altitude teams merged are 'pure' but have ~2x games), and at most
+    ``max_teams`` teams (LMB has 20). If no resolution qualifies the last one on the grid is returned.
+    """
+    sub = _season(df, season)
+    for res in grid:
+        teams = infer_teams(sub, None, resolution=res, **kwargs)
+        table = park_table(sub, game_teams(sub, teams))
+        games = table["home_games"]
+        if (table["purity"].min() >= min_purity and games.max() <= max_games_ratio * games.median()
+                and len(table) <= max_teams):
+            return res, teams
+    return res, teams

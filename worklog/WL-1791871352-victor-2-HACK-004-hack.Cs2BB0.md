@@ -6,7 +6,7 @@
 - Why: joahan-1 reject 16abfbb
 - Failing: none
 - Commands: pytest -q tests/test_physics.py (7 passed)
-- Next: Humano: Diff outside Paths: reports/shapes/label_shift.csv (new test files: add the dir to Additive-Paths in PROJECT.md)
+- Next: Integrated in main: 61e41c45007614652c527ad4ebe76a3d3462a306 (recorded by victor-2)
 
 ## History
 - 1791871352 | CLAIMED | victor-2 | claim; next: implement `aero.decompose` with numpy; test with a trajectory built from known Cd/Cl.
@@ -22,3 +22,4 @@
 - 1791903737 | REVIEW | joahan-1 | review; approve; SHA c8ed9e251e8e2f0c734927cfb0faed49d0c50c72; reviewer joahan-1
 - 1791903905 | REVIEW | victor-2 | heartbeat; lease until 1791918305
 - 1791903922 | REVIEW | victor-2 | merge rechazado; Diff outside Paths: reports/shapes/label_shift.csv (new test files: add the dir to Additive-Paths in PROJECT.md)
+- 1791903959 | INTEGRATED | victor-2 | integrate; recorded by victor-2; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3; merged 61e41c45007614652c527ad4ebe76a3d3462a306; proof ancestry

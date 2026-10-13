@@ -9,14 +9,14 @@ Priority: P0
 Paths: stuffplus/physics/parks.py, analysis/park_id/, reports/park_id/, tests/test_parks.py
 Depends: None
 Verify: `python -m pytest -q tests/test_parks.py`
-Lease-Until: 1791914740
-Updated: 1791900340
+Lease-Until: 1791914767
+Updated: 1791900367
 Task-Base: 08e6a655642cd7a11385d0e17e814fea34cc111f
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/5; run .uak/bin/smoke
+Next: Wait for review of SHA 6410c22
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/5
 Evidence: pytest tests/test_parks.py exit 0 (11); smoke PRODUCT_PASS; real data: 20 teams/season purity 1.0; Harp Helu not decisive P=0.83 pooled rho 0.819; parks.csv runs/game + HR/FB
-Events: 6
-Checkpoints: 1
+Events: 7
+Checkpoints: 2
 Sessions: 2
-Last-Checkpoint: 1791873839
+Last-Checkpoint: 1791900367
 Task-Tip: 6410c2269a879182d4a6c3bb0e09048102d64ebc

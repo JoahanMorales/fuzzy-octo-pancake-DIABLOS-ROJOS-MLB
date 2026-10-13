@@ -22,3 +22,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791898637 | deadline lease/HACK-030/1791887764 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791898637 | deadline lease/HACK-031/1791887455 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791899057 | HACK-007 | implement brief direction only; lock left to human | Why: needs luis pick
+- 1791900367 | HACK-003 | ship via uak done after HACK-030 landed on main | Why: last pending criterion was unblocked

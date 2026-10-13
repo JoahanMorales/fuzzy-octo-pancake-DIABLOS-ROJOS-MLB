@@ -15,7 +15,7 @@ Task-Base: d3c88b00ebb306065689b723ab37348ea7b7ac8c
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1
 Evidence: reject fixed (docs vs CSV, fallback documented, caveat, error tests); tests/test_model_location.py 10 passed; full suite passed; smoke exit 0
-Events: 7
+Events: 8
 Checkpoints: 0
 Sessions: 3
 Last-Checkpoint: 0

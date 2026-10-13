@@ -97,6 +97,11 @@ class LocationModel(StuffModel):
 
     def location_value(self, df: pd.DataFrame, xrv: np.ndarray | None = None) -> np.ndarray:
         """xRV_loc minus the league mean for the same count and pitch type (negative = good location)."""
+        if self.reference is None or self.classifier is None:
+            raise RuntimeError("LocationModel is not fitted: call fit() first")
+        missing = [c for c in self.features + ["count"] if c not in df]
+        if missing:
+            raise KeyError(f"missing columns for Location+: {missing}")
         xrv = self.predict_xrv(df) if xrv is None else xrv
         ref = self._key(df).map(self.reference).fillna(float(np.mean(self.reference))).to_numpy()
         return np.asarray(xrv, float) - ref

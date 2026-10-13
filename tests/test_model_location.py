@@ -88,3 +88,20 @@ def test_bundle_location_model_replaced_and_served(setup, monkeypatch):
     r = api.predict_pitch(p)
     assert r["location_plus"] is not None and np.isfinite(r["location_plus"])
     serving.reset_cache()
+
+
+def test_unfitted_model_and_missing_columns_raise(setup):
+    frame, res, _ = setup
+    with pytest.raises(RuntimeError):
+        location.LocationModel().location_value(frame.head(5))
+    with pytest.raises(KeyError):
+        res["model"].location_value(frame.head(5).drop(columns=["plate_x_arm"]))
+
+
+def test_unassigned_family_falls_back_to_trackman_label(setup):
+    frame, _, _ = setup
+    probe = frame.head(2).copy()
+    probe["pitch_family"] = [None, "Slider"]
+    out = location.add_pitch_family(probe)
+    assert out["pitch_family"].iloc[0] == str(probe["AutoPitchType"].iloc[0])
+    assert out["pitch_family_assigned"].tolist() == [False, True]

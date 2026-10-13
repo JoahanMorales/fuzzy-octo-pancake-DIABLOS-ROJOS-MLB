@@ -1,0 +1,61 @@
+import numpy as np
+import pandas as pd
+import pytest
+
+from stuffplus.physics import aero, constants as C
+
+
+def _traj(speed_mph, cd, cl, rho_si=C.RHO_SI_SEA_LEVEL, spin_rpm=2300.0):
+    """Trayectoria con Cd/Cl conocidos: v hacia −y, Magnus hacia +z (backspin)."""
+    v = speed_mph * C.MPH_TO_FPS
+    k = 0.5 * rho_si * C.BALL_AREA_M2 / C.BALL_MASS_KG * C.FT_TO_M
+    return dict(vx0=0.0, vy0=-v, vz0=0.0, ax0=0.0, ay0=cd * k * v**2, az0=-C.G_FT_S2 + cl * k * v**2, SpinRate=spin_rpm)
+
+
+def test_decompose_recovers_known_cd_cl():
+    df = pd.DataFrame([_traj(95, 0.35, 0.20), _traj(85, 0.30, 0.10)])
+    out = aero.decompose(df)
+    assert out["cd"].to_numpy() == pytest.approx([0.35, 0.30], rel=1e-9)
+    assert out["cl"].to_numpy() == pytest.approx([0.20, 0.10], rel=1e-9)
+    assert (out["drag_acc"] > 0).all()
+
+
+def test_spin_efficiency_nathan_roundtrip():
+    s = 0.17
+    cl = 1 / (2.32 + 0.4 / s)
+    row = _traj(95, 0.35, cl)
+    v = 95 * C.MPH_TO_FPS * C.FT_TO_M
+    w_t = s * v / C.BALL_RADIUS_M / C.RPM_TO_RADS
+    row["SpinRate"] = w_t / 0.9
+    out = aero.decompose(pd.DataFrame([row]))
+    assert out["spin_eff"].iloc[0] == pytest.approx(0.9, rel=1e-6)
+    assert out["active_spin_rpm"].iloc[0] == pytest.approx(w_t, rel=1e-6)
+
+
+def test_cd_proxy_scales_with_density_and_cl_over_cd_does_not():
+    lo, hi = 0.8, 1.0
+    rows = [_traj(93, 0.35, 0.2, rho_si=C.RHO_SI_SEA_LEVEL * r) for r in (lo, hi)]
+    out = aero.decompose(pd.DataFrame(rows))
+    assert out["cd_proxy"].iloc[0] / out["cd_proxy"].iloc[1] == pytest.approx(lo)
+    ratio = out["cl_proxy"] / out["cd_proxy"]
+    assert ratio.iloc[0] == pytest.approx(ratio.iloc[1])
+
+
+def test_game_density_index_and_shrinkage():
+    rng = np.random.default_rng(0)
+    rows, games = [], []
+    for g, r, n in [("sea", 1.0, 60), ("alt", 0.84, 60), ("tiny", 0.5, 3)]:
+        for _ in range(n):
+            rows.append(_traj(94, 0.35 * r * (1 + rng.normal(0, 0.01)), 0.2 * r))
+            games.append(g)
+    df = pd.DataFrame(rows)
+    df["GameID"], df["is_fastball"] = games, True
+    idx = aero.game_density_index(df)
+    assert idx["alt"] == pytest.approx(0.84, abs=0.01)
+    assert idx["tiny"] > 0.6  # encogido hacia la media global, no 0.5
+
+
+def test_constants():
+    assert C.RHO_SEA_LEVEL == 1.0
+    assert 0.70 < C.RHO_HARP_HELU < 0.85
+    assert C.RHO_HARP_HELU < C.RHO_COORS < 1.0

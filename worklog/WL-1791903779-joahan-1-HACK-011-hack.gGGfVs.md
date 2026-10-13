@@ -1,7 +1,7 @@
 # worklog/WL-1791903779-joahan-1-HACK-011-hack.gGGfVs.md · HACK-011
 
 ## Live summary
-- Done: reject fixed: pitch_family (identity) replaces AutoPitchType as feature and reference key; full suite 123 passed; smoke exit 0; real data skill +2.78% [2.70,2.87] vs count baseline, split-half 0.58; main merged, single merge base. Includes HACK-010 commits (merge 010 first) + 2-line support in common.py/serving.py for pitch_family.
+- Done: reject fixed (docs vs CSV, fallback documented, caveat, error tests); tests/test_model_location.py 10 passed; full suite passed; smoke exit 0
 - Decision: Own branch and worktree
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
@@ -15,3 +15,4 @@
 - 1791907182 | REVIEW | victor-1 | review; reject; SHA 6a4741e7ba9bda1e2c5cc8cbbd2fb9f1d70d0699; reviewer victor-1
 - 1791919385 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1; evidence: reject fixed: pitch_family (identity) replaces AutoPitchType as feature and reference key; full suite 123 passed; smoke exit 0; real data skill +2.78% [2.70,2.87] vs count baseline, split-half 0.58; main merged, single merge base. Includes HACK-010 commits (merge 010 first) + 2-line support in common.py/serving.py for pitch_family.; reviewer: -
 - 1791921163 | REVIEW | sebastian-2 | review; reject; SHA c452e395e49cb6f9516811b3de426155fadf75a9; reviewer sebastian-2
+- 1791921886 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1; evidence: reject fixed (docs vs CSV, fallback documented, caveat, error tests); tests/test_model_location.py 10 passed; full suite passed; smoke exit 0; reviewer: -

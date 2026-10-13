@@ -119,7 +119,7 @@ def park_table(df: pd.DataFrame, games: pd.DataFrame, rho: pd.Series | None = No
     ``rho`` is an optional per-game air-density Series indexed by game id (HACK-004); adds median / IQR.
     """
     bucket = df.groupby(GAME, observed=True)["altitude_category"].agg(_majority)
-    g = games[["home_team"]].join(bucket.rename("bucket"))
+    g = games[["home_team"]].join(bucket.rename("bucket")).dropna(subset=["bucket"])  # unknown altitude: skipped
     if rho is not None:
         g = g.join(rho.rename("rho"))
     out = []
@@ -151,3 +151,47 @@ def tune_resolution(df: pd.DataFrame, season: int | None = None, grid=(1.0, 1.25
                 and len(table) <= max_teams):
             return res, teams
     return res, teams
+
+
+def build_maps(df: pd.DataFrame, **kwargs) -> dict[str, pd.DataFrame]:
+    """Row-level maps rebuilt deterministically from the raw data (never committed; see ``load_maps``).
+
+    ``park_map``: game -> season, home/away team, purity, franchise, is_home_bucket.
+    ``team_map``: batter/pitcher -> season, team_id, franchise, role.
+    ``kwargs`` go to ``tune_resolution`` (e.g. ``min_weight`` for tiny synthetic data).
+    """
+    seasons = sorted(df["year"].dropna().unique())
+    bmaps, games, teams = {}, [], []
+    for yr in seasons:
+        sub = df[df["year"] == yr]
+        _, bt = tune_resolution(sub, **kwargs)
+        bmaps[yr] = bt
+        games.append(game_teams(sub, bt).reset_index().assign(season=yr))
+        teams.append(pd.concat([bt.dropna().rename("team_id").reset_index().assign(role="batter"),
+                                pitcher_teams(sub, bt).reset_index().assign(role="pitcher")]).assign(season=yr))
+    links = link_franchises(bmaps)
+    park_map = pd.concat(games, ignore_index=True).merge(
+        links.rename(columns={"team_id": "home_team"}), on=["season", "home_team"])
+    team_map = pd.concat(teams, ignore_index=True).merge(links, on=["season", "team_id"])
+    bucket = df.groupby(GAME, observed=True)["altitude_category"].agg(_majority)
+    park_map["bucket"] = park_map[GAME].map(bucket)
+    return {"park_map": park_map, "team_map": team_map}
+
+
+def load_maps(df: pd.DataFrame | None = None, cache_dir=None, **kwargs) -> dict[str, pd.DataFrame]:
+    """Maps for downstream tasks: read the local cache in ``artifacts/`` if present, else rebuild from raw data."""
+    from stuffplus.config import ARTIFACTS_DIR
+
+    cache = (cache_dir or ARTIFACTS_DIR)
+    paths = {k: cache / f"{k}.parquet" for k in ("park_map", "team_map")}
+    if all(p.exists() for p in paths.values()):
+        return {k: pd.read_parquet(p) for k, p in paths.items()}
+    if df is None:
+        from stuffplus.io import load_raw
+        from stuffplus.schema import clean
+        df = clean(load_raw())
+    maps = build_maps(df, **kwargs)
+    cache.mkdir(parents=True, exist_ok=True)
+    for k, p in paths.items():
+        maps[k].to_parquet(p, index=False)
+    return maps

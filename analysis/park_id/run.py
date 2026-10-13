@@ -2,8 +2,9 @@
 
     python -m analysis.park_id.run
 
-Writes aggregates only to reports/park_id/ (parks.csv, franchise_rho.csv, summary.txt) and ID mappings to
-artifacts/ (park_map.parquet, team_map.parquet; git-ignored). No pitch-level rows leave this script.
+Writes aggregates only to reports/park_id/ (parks.csv, franchise_rho.csv, summary.txt). Row-level maps are
+never committed: other tasks call ``stuffplus.physics.parks.load_maps()``, which rebuilds them from the raw
+data (cached under git-ignored artifacts/). This script refreshes that cache.
 
 rho_hat here is PROVISIONAL (local Cd-proxy of fastballs, relative to the No-altitude median). HACK-004's
 ``aero.game_density_index`` replaces it; park identification itself never uses it.
@@ -15,7 +16,7 @@ import pandas as pd
 
 from stuffplus.config import ARTIFACTS_DIR, REPORTS_DIR
 from stuffplus.io import load_raw
-from stuffplus.physics.parks import (GAME, game_teams, link_franchises, park_table,
+from stuffplus.physics.parks import (GAME, build_maps, game_teams, link_franchises, park_table,
                                      pitcher_teams, tune_resolution)
 from stuffplus.schema import clean
 
@@ -90,9 +91,9 @@ def main() -> None:
     (OUT / "summary.txt").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 
-    pd.concat(gmaps, ignore_index=True).to_parquet(ARTIFACTS_DIR / "park_map.parquet", index=False)
-    pd.concat(tmaps, ignore_index=True).to_parquet(ARTIFACTS_DIR / "team_map.parquet", index=False)
-
+    maps = build_maps(df)
+    for name, frame in maps.items():
+        frame.to_parquet(ARTIFACTS_DIR / f"{name}.parquet", index=False)
 
 if __name__ == "__main__":
     main()

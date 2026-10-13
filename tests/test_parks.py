@@ -68,3 +68,13 @@ def test_missing_batter_ids_are_ignored(synthetic_pitches):
 def test_tune_resolution_keeps_a_clean_split(synthetic_pitches):
     res, teams = tune_resolution(synthetic_pitches, 2024, min_weight=1, min_batters=5)
     assert res == 1.0 and teams.dropna().nunique() == 6
+
+
+def test_maps_are_rebuilt_deterministically_and_cached(synthetic_pitches, tmp_path):
+    from stuffplus.physics.parks import load_maps
+    a = load_maps(synthetic_pitches, cache_dir=tmp_path, min_weight=1, min_batters=5)
+    assert (tmp_path / "park_map.parquet").exists() and a["park_map"]["franchise"].nunique() == 6
+    b = load_maps(None, cache_dir=tmp_path)  # second call reads the cache, no raw data needed
+    pd.testing.assert_frame_equal(a["park_map"], b["park_map"])
+    c = load_maps(synthetic_pitches, cache_dir=tmp_path / "x", min_weight=1, min_batters=5)
+    pd.testing.assert_frame_equal(a["park_map"], c["park_map"])

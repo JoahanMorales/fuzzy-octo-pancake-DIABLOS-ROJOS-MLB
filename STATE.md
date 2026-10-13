@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1791903057
+Updated: 1791903064
 AVAILABLE: (24; last 12) ... HACK-032 HACK-033 HACK-034 HACK-035 HACK-022 HACK-023 HACK-036 HACK-024 HACK-025 HACK-026 HACK-027 HACK-028 
 CLAIMED: -
 BLOCKED: -
@@ -14,7 +14,7 @@ HACK-004 | REVIEW | victor-2 | until 1791917391
 HACK-006 | REVIEW | victor-4 | until 1791888455
 HACK-007 | REVIEW | victor-5 | until 1791913457
 HACK-010 | REVIEW | joahan-1 | until 1791917398
-HACK-029 | REVIEW | victor-3 | until 1791917457
+HACK-029 | REVIEW | victor-3 | until 1791917464
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):

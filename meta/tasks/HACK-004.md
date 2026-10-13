@@ -1,5 +1,5 @@
 Task: HACK-004
-Events: 7
-Checkpoints: 1
+Events: 8
+Checkpoints: 2
 Sessions: 4
-Last-Checkpoint: 1791873324
+Last-Checkpoint: 1791902448

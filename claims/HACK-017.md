@@ -9,8 +9,8 @@ Priority: P0
 Paths: stuffplus/profile.py, analysis/ideal_profile/, reports/ideal_profile/, tests/test_profile.py
 Depends: HACK-004, HACK-010
 Verify: `python -m pytest -q tests/test_profile.py`
-Lease-Until: 1791932494
-Updated: 1791929794
+Lease-Until: 1791933046
+Updated: 1791930346
 Task-Base: b4d24886d03beb9197bb2c818b06a61eb04d755e
 Next: 2-D PDP (feature × ρ̂) for velo, IVB, HB, spin efficiency, extension.
 PR: -

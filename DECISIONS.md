@@ -13,3 +13,11 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791873630 | deadline lease/HACK-003/1791873191 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791873839 | HACK-003 | Draft PR, no uak done: task incomplete. Row-level maps never committed, rebuilt by load_maps() | Why: Avoid review/merge of a partial task and the raw-data rule
 - 1791874055 | HACK-006 | trajectory axes X=toward plate; tunnel_ratio=plate_sep/decision_sep | Why: verified vs y0/PlateLoc
+- 1791898637 | deadline lease/HACK-003/1791877608 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-004/1791887724 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-005/1791885806 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-006/1791888455 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-013/1791884853 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-029/1791887759 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-030/1791887764 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-031/1791887455 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.

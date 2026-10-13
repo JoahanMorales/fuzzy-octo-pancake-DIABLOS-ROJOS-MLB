@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1791874908
+Updated: 1791898637
 AVAILABLE: (26; last 12) ... HACK-032 HACK-033 HACK-034 HACK-035 HACK-022 HACK-023 HACK-036 HACK-024 HACK-025 HACK-026 HACK-027 HACK-028 
 CLAIMED: HACK-003 
 BLOCKED: -
@@ -21,11 +21,11 @@ HACK-031 | REVIEW | joahan-1 | until 1791887455
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):
-- 1791873324 | HACK-004 | empirical rho relative to No-Altitude games; RHO_HARP_HELU barometric until HACK-003 | Why: no HACK-003 yet
-- 1791873359 | HACK-029 | rule-based shapes on sea-level-translated movement | Why: interpretable thresholds from real quantiles
-- 1791873630 | deadline lease/HACK-003/1791873191 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
-- 1791873839 | HACK-003 | Draft PR, no uak done: task incomplete. Row-level maps never committed, rebuilt by load_maps() | Why: Avoid review/merge of a partial task and the raw-dat
-- 1791874055 | HACK-006 | trajectory axes X=toward plate; tunnel_ratio=plate_sep/decision_sep | Why: verified vs y0/PlateLoc
+- 1791898637 | deadline lease/HACK-006/1791888455 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-013/1791884853 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-029/1791887759 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-030/1791887764 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791898637 | deadline lease/HACK-031/1791887455 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 
 Global next step: available P0; else review PRs, tests, demo, rehearsal.
 Why: bounded snapshot to resume without rereading history.

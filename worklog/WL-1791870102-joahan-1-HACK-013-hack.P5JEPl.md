@@ -6,7 +6,7 @@
 - Why: small samples (relievers) must not look elite
 - Failing: row-wise key join took 26s: vectorized
 - Commands: pytest tests/test_scale.py
-- Next: Wait for review of SHA 4673974
+- Next: Integrated in main: 7ff3ac75ca902f52f5b658ec81d499179341397b
 
 ## History
 - 1791870102 | CLAIMED | joahan-1 | claim; next: `PlusScaler.fit` storing per-group mean/sd.
@@ -14,3 +14,4 @@
 - 1791870453 | REVIEW | joahan-1 | checkpoint; next: Wait for review of SHA 4673974
 - 1791870909 | REVIEW | victor-2 | review; approve; SHA 4673974f87b6434bdfc24c4f16a12862d9fe63e7; reviewer victor-2
 - 1791899321 | REVIEW | joahan-1 | heartbeat; lease until 1791913721
+- 1791899607 | INTEGRATED | joahan-1 | merge; smoke and Verify PASS; commit 7ff3ac75ca902f52f5b658ec81d499179341397b; reviewer victor-2

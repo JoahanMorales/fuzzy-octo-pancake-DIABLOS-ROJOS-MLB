@@ -1,6 +1,6 @@
 # HACK-013
 ID: HACK-013
-State: REVIEW
+State: INTEGRATED
 Owner: joahan-1
 Branch: feat/hack-013
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-013
@@ -9,14 +9,17 @@ Priority: P0
 Paths: stuffplus/scale.py, tests/test_scale.py
 Depends: None
 Verify: `python -m pytest -q tests/test_scale.py`
-Lease-Until: 1791913721
-Updated: 1791899321
+Lease-Until: 0
+Updated: 1791899607
 Task-Base: 08e6a655642cd7a11385d0e17e814fea34cc111f
-Next: Wait for review of SHA 4673974
+Next: Integrated in main: 7ff3ac75ca902f52f5b658ec81d499179341397b
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-013?expand=1
 Evidence: pytest tests/test_scale.py exit 0 (8 passed: mean100/sd10 per season, 120=p97.7, env flavour on neutral ruler, JSON round trip, EB shrinkage); smoke PRODUCT_PASS; 630k rows fit+transform 0.26s; stacked on hack-030
-Events: 5
+Events: 6
 Checkpoints: 1
 Sessions: 2
 Last-Checkpoint: 1791870453
 Task-Tip: 4673974f87b6434bdfc24c4f16a12862d9fe63e7
+Merge-Commit: 7ff3ac75ca902f52f5b658ec81d499179341397b
+Reviewer: victor-2
+Integration-Proof: ancestry

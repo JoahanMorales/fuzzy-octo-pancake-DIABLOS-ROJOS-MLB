@@ -1,5 +1,5 @@
 ID: HACK-008
-State: MERGING
+State: HUMAN
 Owner: victor-1
-Queued: 1791908501
-Reason: Waiting for queue
+Updated: 1791908519
+Reason: Smoke red or product unverified

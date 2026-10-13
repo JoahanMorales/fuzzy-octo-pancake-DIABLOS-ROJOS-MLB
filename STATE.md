@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1791873352
+Updated: 1791873359
 AVAILABLE: (27; last 12) ... HACK-032 HACK-033 HACK-034 HACK-035 HACK-022 HACK-023 HACK-036 HACK-024 HACK-025 HACK-026 HACK-027 HACK-028 
 CLAIMED: HACK-003 
 BLOCKED: -
@@ -14,17 +14,17 @@ HACK-003 | CLAIMED | victor-1 | until 1791873191
 HACK-004 | REVIEW | victor-2 | until 1791887724
 HACK-005 | REVIEW | joahan-1 | until 1791885806
 HACK-013 | REVIEW | joahan-1 | until 1791884853
-HACK-029 | REVIEW | victor-3 | until 1791887752
+HACK-029 | REVIEW | victor-3 | until 1791887759
 HACK-030 | REVIEW | joahan-1 | until 1791886097
 HACK-031 | REVIEW | joahan-1 | until 1791887455
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):
-- 1791870012 | HACK-030 | RE by outs x count with observed future runs (no base state in data) | Why: RE24 impossible without runners
 - 1791870453 | HACK-013 | EB k from within/between variance | Why: small samples (relievers) must not look elite
 - 1791871406 | HACK-005 | skill = % RMSE/logloss reduction, pitcher-cluster bootstrap | Why: pitches of one pitcher are not independent
 - 1791873055 | HACK-031 | ship as plumbing; move Stuff+ target to rv_x | Why: rv noise: best iters 25-66, skill +0.02%
 - 1791873324 | HACK-004 | empirical rho relative to No-Altitude games; RHO_HARP_HELU barometric until HACK-003 | Why: no HACK-003 yet
+- 1791873359 | HACK-029 | rule-based shapes on sea-level-translated movement | Why: interpretable thresholds from real quantiles
 
 Global next step: available P0; else review PRs, tests, demo, rehearsal.
 Why: bounded snapshot to resume without rereading history.

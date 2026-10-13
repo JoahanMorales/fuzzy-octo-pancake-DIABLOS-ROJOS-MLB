@@ -9,3 +9,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791871406 | HACK-005 | skill = % RMSE/logloss reduction, pitcher-cluster bootstrap | Why: pitches of one pitcher are not independent
 - 1791873055 | HACK-031 | ship as plumbing; move Stuff+ target to rv_x | Why: rv noise: best iters 25-66, skill +0.02%
 - 1791873324 | HACK-004 | empirical rho relative to No-Altitude games; RHO_HARP_HELU barometric until HACK-003 | Why: no HACK-003 yet
+- 1791873359 | HACK-029 | rule-based shapes on sea-level-translated movement | Why: interpretable thresholds from real quantiles

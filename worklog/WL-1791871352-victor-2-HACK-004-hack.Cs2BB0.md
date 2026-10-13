@@ -1,7 +1,7 @@
 # worklog/WL-1791871352-victor-2-HACK-004-hack.Cs2BB0.md · HACK-004
 
 ## Live summary
-- Done: 45a5f7e: (1) aero.decompose(rho=ρ̂ por juego) spin_eff Extreme 0.40->0.52 vs No 0.61; (2) translate proporcional y*(1+k*Δρ), curva y recta signo opuesto; test_physics 7 passed; reports/physics regenerados (FF ΔIVB -3.94)
+- Done: c8ed9e2: proportional_shift (translate), spin_eff con rho por pitch; test_physics 8 passed; FF dIVB -3.54 (ref -3.7), speed_drop -1.30
 - Decision: k proportional for ivb/hb/speed_drop, additive plate_velo
 - Why: joahan-1 reject 16abfbb
 - Failing: none
@@ -18,3 +18,4 @@
 - 1791902440 | REVIEW | victor-2 | heartbeat; lease until 1791916840
 - 1791902448 | REVIEW | victor-2 | checkpoint; next: uak done for re-review of 45a5f7e
 - 1791902455 | REVIEW | victor-2 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3; evidence: 45a5f7e: (1) aero.decompose(rho=ρ̂ por juego) spin_eff Extreme 0.40->0.52 vs No 0.61; (2) translate proporcional y*(1+k*Δρ), curva y recta signo opuesto; test_physics 7 passed; reports/physics regenerados (FF ΔIVB -3.94); reviewer: -
+- 1791902991 | REVIEW | victor-2 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3; evidence: c8ed9e2: proportional_shift (translate), spin_eff con rho por pitch; test_physics 8 passed; FF dIVB -3.54 (ref -3.7), speed_drop -1.30; reviewer: -

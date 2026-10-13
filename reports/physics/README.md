@@ -16,7 +16,7 @@
 | Medium | 0.892 | 0.042 |
 | Extreme | 0.841 | 0.033 |
 
-Δ Extreme − No (modelo de efectos fijos por pitcher×temporada×pitch_id; el efecto de ρ es **proporcional al movimiento propio** del lanzamiento, Magnus y arrastre ∝ ρ; IC bootstrap 95 % por pitcher-temporada): recta **ΔIVB −3.94" [−4.00, −3.84]**, ΔHB −1.28", **llega +1.30 mph más rápida** (referencia exploratoria −3.7" y −1.36 mph). La curva *pierde caída* (ΔIVB +1.75" [+1.57, +1.93], signo contrario a la recta) y un ride mayor cambia más que uno menor. Otras familias en `delta_extreme_vs_no.csv`.
+Δ Extreme − No (modelo de efectos fijos por pitcher×temporada×pitch_id; el efecto de ρ es **proporcional al movimiento propio** del lanzamiento, Magnus y arrastre ∝ ρ; IC bootstrap 95 % por pitcher-temporada): recta **ΔIVB −3.54" [−3.60, −3.46]**, ΔHB −1.15", **llega +1.30 mph más rápida** (referencia exploratoria −3.7" y −1.36 mph). La curva *pierde caída* (ΔIVB +1.58" [+1.43, +1.74], signo contrario a la recta) y un ride mayor cambia más que uno menor. Otras familias en `delta_extreme_vs_no.csv`.
 
 **Advertencias honestas.**
 - La eficiencia de giro usa ρ̂ de cada juego (antes se usaba nivel del mar para todos: 0.62 en No Altitude vs 0.40 en Extreme, artefacto del aire). Ahora 0.61 vs 0.52; el residuo (~15 %) viene del punto de abajo.

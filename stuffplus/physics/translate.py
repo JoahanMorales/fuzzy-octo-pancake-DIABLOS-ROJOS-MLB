@@ -2,7 +2,7 @@
 
 El efecto de ρ es **proporcional al movimiento propio del lanzamiento** (Magnus y arrastre ∝ ρ): una recta con
 19" de ride cambia más que una de 13", y una curva (IVB negativo) se mueve en sentido contrario a una recta. Por
-eso `PROPORTIONAL` outcomes se modelan como y = Xβ + k·ρ·ȳ_lanzamiento y se trasladan como y·(1 + k·Δρ); solo
+eso `PROPORTIONAL` outcomes se modelan como y = Xβ + k·ρ·ȳ_lanzamiento y se trasladan con `proportional_shift` (Δ = k·ȳ·Δρ); solo
 `plate_velo` (nivel de velocidad, no movimiento) usa un γ aditivo.
 
 Modelo con efectos fijos por `pitch_key` (pitcher × temporada × pitch_id, HACK-029): la
@@ -19,6 +19,16 @@ import pandas as pd
 OUTCOMES = {"ivb": "InducedVertBreak", "hb": "HorzBreak", "speed_drop": "SpeedDrop", "plate_velo": "ZoneSpeed"}
 PROPORTIONAL = {"ivb", "hb", "speed_drop"}  # efecto ∝ valor propio del lanzamiento; el resto, aditivo
 BASE_FEATURES = ["RelSpeed", "SpinRate", "RelHeight", "RelSide", "Extension"]
+
+
+def proportional_shift(y, k, rho_from, rho_to, rho_ref=1.0):
+    """Traslada y de ρ_from a ρ_to: Δ = k·ȳ·Δρ con ȳ (movimiento propio a la ρ media de ajuste) = y/(1 + k·(ρ_from − ρ_ref)).
+
+    Usar y observado directamente subcorregiría en altura (y ya está reducido por la baja densidad).
+    """
+    y, k = np.asarray(y, float), np.asarray(k, float)
+    rf, rt = np.asarray(rho_from, float), np.asarray(rho_to, float)
+    return y * (1.0 + k * (rt - rf) / (1.0 + k * (rf - rho_ref)))
 
 
 def design(df: pd.DataFrame) -> pd.DataFrame:
@@ -38,13 +48,16 @@ class MovementModel:
     cols: list = field(default_factory=list)
     rho_ref: float = 1.0  # ρ media del ajuste: nivel de `intercept`
 
-    def fit(self, df: pd.DataFrame, rho: pd.Series, key_col: str = "pitch_key") -> "MovementModel":
+    def fit(self, df: pd.DataFrame, rho: pd.Series, key_col: str = "pitch_key", equal_key_weight: bool = False) -> "MovementModel":
+        """`equal_key_weight`: cada lanzamiento (pitch_key) pesa lo mismo, como en `usage_shift` (por defecto pesa por n)."""
         x = design(df)
         self.cols = list(x.columns)
         rho_a = np.asarray(rho, float)
         ok = x.notna().all(axis=1).to_numpy() & df[list(OUTCOMES.values())].notna().all(axis=1).to_numpy() & np.isfinite(rho_a)
         x, d, r = x[ok], df[ok], rho_a[ok]
         key = d[key_col].to_numpy()
+        w = 1.0 / pd.Series(key).map(pd.Series(key).value_counts()).to_numpy() if equal_key_weight else np.ones(len(key))
+        sw = np.sqrt(w / w.mean())
         for name, col in OUTCOMES.items():
             y = d[col].astype(float)
             ybar = y.groupby(key).transform("mean").to_numpy()
@@ -52,7 +65,7 @@ class MovementModel:
             xz = x.assign(rho_term=z)
             xd = xz - xz.groupby(key).transform("mean")
             yd = y - y.groupby(key).transform("mean")
-            beta, *_ = np.linalg.lstsq(xd.to_numpy(), yd.to_numpy(), rcond=None)
+            beta, *_ = np.linalg.lstsq(xd.to_numpy() * sw[:, None], yd.to_numpy() * sw, rcond=None)
             self.coef[name] = beta
             self.intercept[name] = float((y - x.to_numpy() @ beta[:-1]).mean())  # nivel a la ρ media de ajuste
         self.rho_ref = float(r.mean())
@@ -76,14 +89,15 @@ class MovementModel:
     def translate_pitch(self, pitch: pd.DataFrame | pd.Series, rho_from, rho_to) -> pd.DataFrame:
         """Mueve lanzamientos observados de ρ_from a ρ_to conservando su idiosincrasia.
 
-        Outcomes proporcionales: y·(1 + k·Δρ); `plate_velo`: y + γ·Δρ.
+        Outcomes proporcionales: `proportional_shift`; `plate_velo`: y + γ·Δρ.
         """
         p = pitch.to_frame().T if isinstance(pitch, pd.Series) else pitch
         delta = np.asarray(rho_to, float) - np.asarray(rho_from, float)
         out = {}
         for k, col in OUTCOMES.items():
             y = p[col].astype(float).to_numpy()
-            out[k] = y * (1.0 + self.rho_effect[k] * delta) if k in PROPORTIONAL else y + self.rho_effect[k] * delta
+            out[k] = (proportional_shift(y, self.rho_effect[k], rho_from, rho_to, self.rho_ref) if k in PROPORTIONAL
+                      else y + self.rho_effect[k] * delta)
         return pd.DataFrame(out, index=p.index)
 
     def delta_mean(self, pitches: pd.DataFrame, rho_from, rho_to) -> dict:

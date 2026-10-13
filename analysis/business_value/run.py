@@ -14,8 +14,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from stuffplus import targets
+from analysis.stuff_model import run as stuff_run
+from stuffplus import splits
 from stuffplus import value as V
+from stuffplus.bundle import load_bundle
 from stuffplus.io import load_raw
 from stuffplus.physics import parks
 from stuffplus.schema import clean
@@ -24,15 +26,14 @@ warnings.filterwarnings("ignore")
 OUT = Path("reports/business_value")
 OUT.mkdir(parents=True, exist_ok=True)
 NO, MED, EXT = "No Altitude", "Medium Altitude", "Extreme Altitude"
-R2_SCENARIOS = {"modelo débil (R²=0.25 % del xRV)": 0.0025, "modelo moderado (R²=1 %)": 0.01, "modelo fuerte (R²=3 %)": 0.03}
 PITCH_GRID = (100, 500, 1000, 2500)
 RED, BLACK = "#B71C1C", "#111111"
 
 raw = clean(load_raw())
-df, _, _ = targets.build(raw)
+df = stuff_run.prepare(raw)  # targets (rv_x) + rasgos; mismo marco con el que se entrena Stuff+
 
 # --- 1. marcadores, equipo-temporadas y exponente pitagórico
-scores = V.game_scores(df)
+scores = V.game_scores(raw)
 maps = parks.load_maps(raw)
 pm = maps["park_map"].drop_duplicates("game_anon_id").set_index("game_anon_id")
 ts = V.team_seasons(scores, pm)
@@ -68,9 +69,20 @@ pitches_per_start = float(per_start.median())
 games_per_team_season = float(ts["games"].median())
 home_starts = max(int(round(games_per_team_season / 2 / 5)), 1)  # juegos de local por temporada en los datos / rotación de 5
 
-# --- 4. escenarios de σ(xRV predicho) y tabla de conversión
+# --- 4. σ real del Stuff+ (bundle v1) y calibración fuera de muestra → carreras por punto
+bundle = load_bundle()
+st = bundle.manifest["scalers"]["stuff"]["stats"]
+sigma = float(st["__all__"]["sd"])
+sigma_years = {k: float(v["sd"]) for k, v in st.items() if k != "__all__"}
+folds = list(splits.pitcher_group_kfold(df))
+oof = stuff_run.StuffModel().oof(df, folds)  # xRV predicho fuera de muestra, por pitcher
+cal = V.calibration_slope(oof["xrv"].to_numpy(float), df["rv_x"].to_numpy(float), df["pitcher_anon_id"].to_numpy())
+pd.DataFrame([dict(sigma_scaler_all=sigma, **{f"sigma_{k}": v for k, v in sigma_years.items()}, **cal,
+                   bundle_version=bundle.manifest["version"], bundle_created=bundle.manifest["created_at"])]).round(6).to_csv(
+    OUT / "stuff_scale_calibration.csv", index=False)
 sd_rv = float(df["rv_x"].std())
-sigmas = {k: V.sigma_from_variance_explained(sd_rv, r2) for k, r2 in R2_SCENARIOS.items()}
+sigmas = {"calibración central": sigma * cal["slope"], "calibración baja (IC 2.5 %)": sigma * cal["lo"],
+          "calibración alta (IC 97.5 %)": sigma * cal["hi"]}  # σ efectiva: realizado = pendiente × predicho
 conv = V.conversion_table(sigmas, PITCH_GRID, {"liga": rpw["liga"], "Harp Helú (bucket Extreme)": rpw[EXT]})
 conv.round(5).to_csv(OUT / "conversion_table.csv", index=False)
 
@@ -111,9 +123,11 @@ lines = [
     f"**Lectura:** en el Harp Helú (bucket Extreme) se anota más, así que cada carrera ahorrada vale **menos** victorias que en la liga "
     f"({rpw[EXT]:.1f} vs {rpw['liga']:.1f} carreras por victoria).", "",
     "## Tabla de conversión: +1 punto de Stuff+ → carreras → victorias", "",
-    "Por definición de la escala (HACK-013), 1 punto = 0.1 σ del xRV *predicho* por lanzamiento. Esa σ depende del modelo final (HACK-010/012), "
-    "que todavía no está integrado, así que se muestran **escenarios de calidad del modelo** (fracción de la varianza del `rv_x` por lanzamiento que explica; "
-    f"σ(rv_x) = {sd_rv:.3f}). **No son resultados del modelo**: cuando exista el bundle final se sustituye la σ real en `analysis/business_value/run.py`.", "",
+    f"Por definición de la escala (HACK-013), 1 punto = 0.1 σ del xRV predicho por lanzamiento, y σ sale del **bundle {bundle.manifest['version']}** "
+    f"(`scalers.stuff.stats`, creado {bundle.manifest['created_at']}): σ = {sigma:.5f} carreras por lanzamiento (por temporada {', '.join(f'{k}: {v:.5f}' for k, v in sigma_years.items())}). "
+    f"Las carreras *realizadas* por carrera predicha se miden fuera de muestra (validación cruzada por pitcher): pendiente de calibración **{cal['slope']:.2f}** "
+    f"[IC 95 % por pitcher {cal['lo']:.2f}, {cal['hi']:.2f}] sobre {cal['n']:,} lanzamientos. Entonces +1 punto ≈ {sigma * cal['slope'] * 0.1:.2e} carreras por lanzamiento "
+    "(filas «calibración baja/alta» = extremos del IC). Sin escenarios supuestos: la σ y la calibración son del modelo real.", "",
     tbl(conv, ["escenario", "lanzamientos", "entorno", "carreras", "victorias"], "{:.4g}"), "",
     f"Referencia: un abridor lanza ~{pitches_per_start:.0f} lanzamientos por apertura (mediana de los datos).", "",
     "## Ejemplo: valor de un brazo a prueba de altura", "",
@@ -128,7 +142,9 @@ lines = [
     f"Brecha entre el brazo de alta pérdida y el de a prueba de altura: **{ex.attrs['gap_runs']:.1f} carreras ≈ {ex.attrs['gap_wins']:.2f} victorias** en esa temporada de aperturas en casa.", "",
     "## Advertencias", "",
     "- `rv_x` valora las bolas en juego con la altitud como rasgo (HACK-030): el costo de la altura incluye parte del modelo de contacto, no solo los lanzamientos.",
-    "- La tabla Stuff+ → carreras usa escenarios, no el modelo final (aún no integrado). Las cifras absolutas cambiarán; la fórmula y el cociente entre entornos no.",
+    "- La σ es la del bundle v1 reconstruido localmente con `analysis/stuff_model/run.py` (los bundles no se comparten por git); si el modelo se reentrena, hay que volver a correr este análisis.",
+    "- La calibración se mide sobre el xRV predicho fuera de muestra (modelo de cinco resultados), mientras la escala del bundle usa el modelo destilado (R² 0.92 con él): son aproximaciones del mismo modelo.",
+    "- A este nivel de calibración el valor de un punto por lanzamiento es pequeño: el efecto aparece en sumas grandes (mil lanzamientos o más) y en grupos de lanzamientos, no en un lanzamiento suelto.",
     "- Marcadores reconstruidos: partidos incompletos en los datos o carreras fuera de los lanzamientos pueden sesgar; los datos solo cubren una muestra de la temporada por equipo.",
     "- Linealización pitagórica válida cerca de un equipo promedio; ±1σ en sensibilidad supone dispersión aproximadamente normal.",
     "- La identidad CDMX vs Puebla sigue sin verificar (HACK-003): «entorno Extreme» agrupa los parques de altura.",

@@ -72,6 +72,16 @@ def test_altitude_sensitivity_no_heterogeneity_gives_tau_zero_but_positive_bound
     assert s["tau"] < 0.012 and s["tau_hi"] > s["tau"] and s["mean_delta"] == pytest.approx(0.01, abs=0.004)
 
 
+def test_calibration_slope_recovers_planted_slope():
+    rng = np.random.default_rng(5)
+    n, g = 20000, 200
+    groups = rng.integers(0, g, n)
+    x = rng.normal(0, 0.01, n)
+    y = 0.6 * x + rng.normal(0, 0.2, n)  # modelo sobreestima: solo 0.6 de lo predicho se realiza
+    c = V.calibration_slope(x, y, groups, n_boot=300)
+    assert c["lo"] < 0.6 < c["hi"] and c["hi"] < 3.0 and c["n_groups"] == g
+
+
 def test_altitude_proof_example_orders_arms():
     ex = V.altitude_proof_example(0.010, 0.006, 90, 15, 15.0)
     assert ex.iloc[0].carreras_extra > ex.iloc[1].carreras_extra > ex.iloc[2].carreras_extra

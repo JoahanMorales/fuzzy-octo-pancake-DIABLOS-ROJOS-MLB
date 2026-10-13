@@ -86,3 +86,12 @@ def test_candidate_staff_lists_pitchers_of_the_franchise(synthetic_pitches, tmp_
     f = int(maps["team_map"]["franchise"].iloc[0])
     staff = candidate_staff(maps, [f])
     assert set(staff["franchise"]) == {f} and staff["season"].nunique() == 3 and staff.groupby('season').size().ge(1).all()
+
+
+def test_park_outcomes_are_per_home_team_season(synthetic_pitches):
+    from analysis.park_id.run import park_outcomes
+    df = synthetic_pitches[synthetic_pitches["year"] == 2024]
+    games = game_teams(df, infer_teams(df, **KW)).reset_index().assign(season=2024)
+    out = park_outcomes(df, games)
+    assert len(out) == 6 and {"runs_per_game", "runs_per_pa", "hr_per_fb", "fly_balls"} <= set(out.columns)
+    assert (out["runs_per_game"] >= 0).all() and out["hr_per_fb"].dropna().between(0, 1).all()

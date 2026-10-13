@@ -19,6 +19,7 @@ from stuffplus.io import load_raw
 from stuffplus.physics.parks import (GAME, build_maps, candidate_staff, game_teams, link_franchises, park_table,
                                      pitcher_teams, tune_resolution)
 from stuffplus.schema import clean
+from stuffplus.targets import pa_event
 
 OUT = REPORTS_DIR / "park_id"
 N_BOOT = 2000
@@ -36,6 +37,27 @@ def provisional_rho(df: pd.DataFrame) -> pd.Series:
     per_game = cd.groupby(fb[GAME]).median()
     sea = fb.groupby(GAME, observed=True)["altitude_category"].first().astype(str).str.startswith("No")
     return per_game / per_game[sea.reindex(per_game.index).fillna(False)].median()
+
+
+def park_outcomes(df: pd.DataFrame, games: pd.DataFrame) -> pd.DataFrame:
+    """Run environment per home team-season, from the games the dataset actually contains.
+
+    runs_per_game: mean of total ``RunsScored`` (both halves) over its home games. Games with Trackman gaps
+    undercount, so compare parks with each other, not with official league scoring.
+    hr_per_fb: home runs hit with ``hit_type == FlyBall`` over all tracked fly balls (pooled, not a mean of games).
+    """
+    ev = pa_event(df)
+    fly = df["hit_type"].astype(str).eq("FlyBall")
+    g = pd.DataFrame({
+        GAME: df[GAME], "runs": df["RunsScored"].astype(float), "pa": ev.notna().astype(int),
+        "hr": (ev.eq("HomeRun") & fly).astype(int), "fb": fly.astype(int),
+    }).groupby(GAME, observed=True).sum()
+    j = games[[GAME, "season", "home_team"]].join(g, on=GAME)
+    out = j.groupby(["season", "home_team"]).agg(runs_per_game=("runs", "mean"), runs=("runs", "sum"),
+                                                 pa=("pa", "sum"), hr=("hr", "sum"), fly_balls=("fb", "sum"))
+    out["runs_per_pa"] = out["runs"] / out["pa"]
+    out["hr_per_fb"] = out["hr"] / out["fly_balls"]
+    return out.drop(columns=["runs", "pa", "hr"]).reset_index().rename(columns={"home_team": "team_id"})
 
 
 def main() -> None:
@@ -61,7 +83,7 @@ def main() -> None:
     links = link_franchises(bmaps)
     parks = parks.merge(links, on=["season", "team_id"])
 
-    # runs per game by home park would need targets (HACK-030); left out of this table on purpose.
+    parks = parks.merge(park_outcomes(df, pd.concat(gmaps, ignore_index=True)), on=["season", "team_id"], how="left")
     parks.to_csv(OUT / "parks.csv", index=False)
 
     # Harp Helú candidate: pooled bootstrap of game-level rho_hat per Extreme franchise.

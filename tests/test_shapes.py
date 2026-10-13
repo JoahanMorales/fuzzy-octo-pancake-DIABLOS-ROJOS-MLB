@@ -37,3 +37,19 @@ def test_synthetic_fixture_runs(synthetic_pitches):
     assert {"pitch_id", "pitch_family", "pitch_key"} <= set(out.columns)
     assert len(out) == len(synthetic_pitches)
     assert (out["pitch_id"] >= 0).mean() > 0.5
+
+
+def test_shape_rules_and_single_pitch():
+    import numpy as np
+    from stuffplus.features.shapes import ShapeModel, assign_shape, shape_rule
+
+    out = shape_rule(["Four-Seam", "Four-Seam", "Slider", "Slider", "Curveball", "Changeup", "Sinker"],
+                     [19, 14, 2, 3, -10, 6, 8], [8, 8, -11, -2, 1, 12, 15], [95, 92, 84, 85, 78, 88, 93])
+    assert list(out) == ["riding 4S", "4S", "sweeper", "gyro slider", "12-6 CB", "power CH", "sinking 2S"]
+    cen = pd.DataFrame({"RelSpeed": [92.0, 84.0], "ivb": [16.0, 3.0], "hb": [9.0, -4.0]}, index=["Four-Seam", "Slider"])
+    m = ShapeModel(rho_effect={"Four-Seam": {"ivb": 22.0, "hb": 8.0}, "Slider": {"ivb": 5.0, "hb": 4.0}},
+                   centroids=cen, scale=pd.Series({"RelSpeed": 5.0, "ivb": 6.0, "hb": 8.0}))
+    # misma recta: en CDMX (ρ=0.84) mide 12.5" de IVB; a nivel del mar son 16" → "4S", no "riding"
+    assert assign_shape(m, 93, 12.5, 9.0, "Right", rho=0.84) == "4S"
+    assert assign_shape(m, 96, 18.5, 9.0, "Right", rho=1.0) == "riding 4S"
+    assert assign_shape(m, 84, 3.0, 4.0, "Left", rho=1.0) in {"slider", "gyro slider", "sweeper"}

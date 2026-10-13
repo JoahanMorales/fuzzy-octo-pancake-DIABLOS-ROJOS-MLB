@@ -6,7 +6,7 @@
 - Why: verified vs y0/PlateLoc
 - Failing: none
 - Commands: python -m pytest -q tests/test_features.py
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/6; run .uak/bin/smoke
+- Next: Integrated in main: 6d326fbb5bee50414a240a60235c4a1c90e6875e (recorded by victor-4)
 
 ## History
 - 1791873831 | CLAIMED | victor-4 | claim; next: `arsenal.primary_fastball(df)` grouped by (pitcher_anon_id, year).
@@ -16,3 +16,4 @@
 - 1791906100 | REVIEW | victor-4 | heartbeat; lease until 1791920500
 - 1791906108 | REVIEW | victor-4 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/6; evidence: 265d003: main (004, 029 integradas) mergeado; diff solo archivos de HACK-006; test_features 5 passed; arsenal_by_family.csv regenerado con la nueva identidad (cambios <1 en medianas); reviewer: -
 - 1791906282 | REVIEW | victor-1 | review; approve; SHA 265d0033f93b400c0f4e558e77e9cf28f26004b4; reviewer victor-1
+- 1791906353 | INTEGRATED | victor-4 | integrate; recorded by victor-4; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/6; merged 6d326fbb5bee50414a240a60235c4a1c90e6875e; proof ancestry

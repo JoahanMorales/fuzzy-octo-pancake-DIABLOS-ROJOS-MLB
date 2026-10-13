@@ -64,7 +64,7 @@ def _forest(table: pd.DataFrame, league: float, path: Path) -> None:
     ax.errorbar(t.delta_stuff, y, xerr=[t.delta_stuff - t.delta_lo, t.delta_hi - t.delta_stuff], fmt="none", ecolor="#555", capsize=3)
     ax.scatter(t.delta_stuff, y, c=colors, s=60, zorder=3)
     ax.axvline(league, color="#555", ls="--", lw=1)
-    ax.text(league, len(t) - 0.4, f" promedio liga {league:+.1f}", fontsize=8, color="#555")
+    ax.text(league, -0.9, f" promedio liga {league:+.1f}", fontsize=8, color="#555")
     ax.axvline(0, color="black", lw=0.8)
     ax.set_yticks(y, [f"{s} (n={n:,})" for s, n in zip(t.iloc[:, 0], t.pitches)])
     ax.set_xlabel("ΔStuff+ en aire del Harp Helú vs nivel del mar (IC 95 % por pitcher)")

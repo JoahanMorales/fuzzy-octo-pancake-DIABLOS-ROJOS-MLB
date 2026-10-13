@@ -1,0 +1,8 @@
+pitch_family,counterfactual_delta,observed_whiff_delta,observed_results_delta_plus,observed_model_delta,rho_extreme,same_sign_as_model
+Changeup,-9.3278,-0.015,-12.2662,-8.8234,0.8381,True
+Curveball,-7.8339,-0.0038,-14.6958,-8.1833,0.8381,True
+Cutter,-7.9074,0.0121,-12.1689,-5.0414,0.8381,True
+Four-Seam,-10.0327,-0.0081,-10.4066,-11.9556,0.8381,True
+Sinker,-8.9847,-0.0015,-7.23,-10.8261,0.8381,True
+Slider,-5.9045,-0.0065,-7.2314,-6.3427,0.8381,True
+Splitter,-5.817,0.03,-7.6039,-6.5086,0.8381,True

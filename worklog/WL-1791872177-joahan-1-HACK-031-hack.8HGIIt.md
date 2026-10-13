@@ -6,7 +6,7 @@
 - Why: rv noise: best iters 25-66, skill +0.02%
 - Failing: smoke failed once: api switched to real bundle; fixed with conftest isolation
 - Commands: pytest tests/test_serving.py; python analysis/v0/run.py
-- Next: Wait for review of SHA badd9b5; then HACK-030 rv_x
+- Next: Humano: Diff outside Paths: tests/conftest.py (new test files: add the dir to Additive-Paths in PROJECT.md)
 
 ## History
 - 1791872177 | CLAIMED | joahan-1 | claim; next: `analysis/v0/run.py` → `bundle.save(...)` → `serving.load_bundle()`.
@@ -14,3 +14,4 @@
 - 1791873055 | REVIEW | joahan-1 | checkpoint; next: Wait for review of SHA badd9b5; then HACK-030 rv_x
 - 1791873986 | REVIEW | victor-1 | review; approve; SHA badd9b5daac63897a3d36a3cbb3e4ddef1f870a6; reviewer victor-1
 - 1791899959 | REVIEW | joahan-1 | heartbeat; lease until 1791914359
+- 1791899986 | REVIEW | joahan-1 | merge rechazado; Diff outside Paths: tests/conftest.py (new test files: add the dir to Additive-Paths in PROJECT.md)

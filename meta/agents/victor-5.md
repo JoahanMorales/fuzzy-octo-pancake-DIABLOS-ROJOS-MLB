@@ -1,10 +1,10 @@
 # victor-5
 Agent: victor-5
 Started: 1791898686
-Events: 2
-Events-Since-Checkpoint: 2
-Checkpoints: 0
+Events: 3
+Events-Since-Checkpoint: 0
+Checkpoints: 1
 Sessions: 1
-Last-Checkpoint: 0
+Last-Checkpoint: 1791899057
 Last-Session: victor-5-1791898686
-Updated: 1791899049
+Updated: 1791899057

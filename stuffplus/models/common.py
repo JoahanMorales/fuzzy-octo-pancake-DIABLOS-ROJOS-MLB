@@ -45,8 +45,9 @@ def add_arm_side_features(df: pd.DataFrame) -> pd.DataFrame:
 def as_model_frame(df: pd.DataFrame, features: Sequence[str]) -> pd.DataFrame:
     """Feature matrix with fixed categorical levels (so saved models and single-row inputs agree)."""
     X = df[list(features)].copy()
-    if "AutoPitchType" in X:
-        X["AutoPitchType"] = pd.Categorical(X["AutoPitchType"].astype(str), categories=PITCH_TYPES)
+    for c in ("AutoPitchType", "pitch_family"):  # pitch_family = altitude-invariant label (features.identity)
+        if c in X:
+            X[c] = pd.Categorical(X[c].astype(str), categories=PITCH_TYPES)
     for c in X.columns:
         if X[c].dtype == bool:
             X[c] = X[c].astype(int)

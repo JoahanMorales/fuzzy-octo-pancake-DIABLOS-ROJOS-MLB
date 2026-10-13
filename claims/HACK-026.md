@@ -9,9 +9,9 @@ Priority: P2
 Paths: stuffplus/models/bench/, analysis/benchmark/, reports/benchmark/, tests/test_benchmark.py
 Depends: HACK-002, HACK-005
 Verify: `python -m pytest -q tests/test_benchmark.py`
-Lease-Until: 1791934731
-Updated: 1791920331
+Lease-Until: 1791934738
+Updated: 1791920338
 Task-Base: f0de095681b4c572ce62e45430de89a9f89dce77
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/16; run .uak/bin/smoke
+Next: Independent registered reviewer evaluates PR 16 SHA c3c62ed; official-data comparison still needed
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/16
 Evidence: -

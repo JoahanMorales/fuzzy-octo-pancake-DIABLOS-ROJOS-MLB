@@ -1,5 +1,5 @@
 Task: HACK-026
-Events: 4
-Checkpoints: 1
+Events: 5
+Checkpoints: 2
 Sessions: 1
-Last-Checkpoint: 1791920233
+Last-Checkpoint: 1791920338

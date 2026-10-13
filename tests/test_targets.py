@@ -56,6 +56,24 @@ def test_rv_is_finite_and_centered(built):
     assert df.rv.corr(df.rv_delta) > 0.4
 
 
+def test_rv_x_replaces_only_balls_in_play_and_is_less_noisy(built):
+    df, _, lw = built
+    in_play = df.PitchCall.astype(str) == "InPlay"
+    assert np.allclose(df.rv_x[~in_play], df.rv[~in_play])
+    assert df.rv_x.notna().all() and df.xlw[in_play].notna().all() and df.xlw[~in_play].isna().all()
+    assert df.rv_x[in_play].std() < df.rv[in_play].std()
+    observed = df.event[in_play].map(lw["lw"]).astype(float)
+    assert observed.corr(df.xlw[in_play]) > 0.3
+
+
+def test_hard_hit_balls_are_worth_more(built):
+    df, _, _ = built
+    ip = df[df.xlw.notna() & df.ExitSpeed.notna()]
+    hard = ip[ip.ExitSpeed >= 100].xlw.mean()
+    soft = ip[ip.ExitSpeed < 80].xlw.mean()
+    assert hard > soft
+
+
 def test_targets_respect_their_denominators(built):
     df, _, _ = built
     assert df.t_whiff[df.is_swing == 0].isna().all()
@@ -90,7 +108,7 @@ def test_reports_are_aggregates_only(built, tmp_path):
     df, re, lw = built
     targets.write_reports(df, re, lw, out_dir=tmp_path)
     files = sorted(p.name for p in tmp_path.glob("*.csv"))
-    assert files == ["linear_weights.csv", "lmb_vs_mlb.csv", "re_matrix.csv", "run_environment_by_altitude.csv",
+    assert files == ["batted_ball_value_by_altitude.csv", "linear_weights.csv", "lmb_vs_mlb.csv", "re_matrix.csv", "run_environment_by_altitude.csv",
                      "rv_summary.csv", "target_rates.csv"]
     for p in tmp_path.glob("*.csv"):
         t = pd.read_csv(p)

@@ -12,6 +12,11 @@ The data has no base-runner state, so classic RE24 is impossible. Instead:
   Summed over a PA this telescopes to ``LW[event]``. Using expected values per state and event (not the
   observed runs of each pitch) is what makes it a stable "xRunValue".
 * ``rv_delta``: the noisy observed version (runs on the pitch + RE of the next observed state - RE now).
+* ``rv_x`` (**the Stuff+ training target**): like ``rv`` but a ball in play is valued by its EXPECTED linear
+  weight given exit velocity, launch angle, spray direction and altitude (out-of-fold by pitcher), not by
+  whether it found a hole. This removes BABIP luck, the largest noise in ``rv``, and keeps the extra cost of
+  contact in thin air (the same fly ball is worth more in CDMX). Untracked balls in play use the mean by
+  batted-ball type.
 
 Targets are named ``t_*`` and defined on their natural denominator (NaN elsewhere): e.g. ``t_whiff`` only on
 swings. Unconditional rates follow by multiplication, e.g. P(whiff) = P(swing) · P(whiff | swing).
@@ -146,6 +151,7 @@ def add_run_value(df: pd.DataFrame, re: pd.DataFrame | None = None, lw: pd.DataF
     rv = np.where(terminal, lw_val - (re_now - re_start), re_next - re_now)
     out["event"] = ev
     out["re_before"] = re_now
+    out["re_pa_start"] = re_start
     out["rv"] = rv
 
     # observed version: runs on the pitch + RE of the next row's state (same half) - RE now
@@ -153,6 +159,57 @@ def add_run_value(df: pd.DataFrame, re: pd.DataFrame | None = None, lw: pd.DataF
     same_half_next = half.eq(half.shift(-1)).to_numpy()
     re_next_obs = np.where(same_half_next, np.roll(re_now, -1), 0.0)
     out["rv_delta"] = out["RunsScored"].fillna(0.0).to_numpy() + re_next_obs - re_now
+    return out
+
+
+XLW_FEATURES = ["ExitSpeed", "Angle", "Direction", "batter_is_right", "alt_code"]
+
+
+def add_expected_run_value(df: pd.DataFrame, lw: pd.DataFrame, n_folds: int = 5, rounds: int = 300) -> pd.DataFrame:
+    """Return a copy with ``xlw`` (expected linear weight of a ball in play) and ``rv_x``.
+
+    Needs the output of ``add_run_value``. ``alt_code`` = air density ``rho`` when the column exists, else the
+    altitude bucket coded 1.0 / 0.89 / 0.84 (bucket medians of the drag-based density).
+    """
+    import lightgbm as lgb
+
+    from stuffplus.splits import pitcher_folds
+
+    out = df.copy()
+    lw_map = lw["lw"].to_dict()
+    ev = out["event"]
+    in_play = out["PitchCall"].astype(str).eq("InPlay") & ev.notna()
+    if "rho" in out:
+        out["alt_code"] = out["rho"].astype(float)
+    else:
+        out["alt_code"] = out["altitude_category"].astype(str).map(
+            {"No Altitude": 1.0, "Medium Altitude": 0.89, "Extreme Altitude": 0.84}).astype(float)
+    if "batter_is_right" not in out:
+        out["batter_is_right"] = out["BatterSide"].astype(str).eq("Right").astype(int)
+    value = ev.map(lw_map).astype(float)
+    tracked = in_play & out["ExitSpeed"].notna() & out["Angle"].notna()
+
+    xlw = pd.Series(np.nan, index=out.index)
+    idx = np.flatnonzero(tracked.to_numpy())
+    if len(idx) >= 50:
+        X = out.iloc[idx][XLW_FEATURES].astype(float)
+        y = value.iloc[idx].to_numpy()
+        folds = pitcher_folds(out.iloc[idx], k=n_folds).to_numpy()
+        params = {"objective": "regression", "learning_rate": 0.05, "num_leaves": 31,
+                  "min_data_in_leaf": max(20, min(200, len(idx) // 50)), "verbose": -1, "seed": 2240}
+        pred = np.full(len(idx), np.nan)
+        for f in range(n_folds):
+            tr, te = folds != f, folds == f
+            if te.any() and tr.sum() > 20:
+                model = lgb.train(params, lgb.Dataset(X[tr], y[tr]), num_boost_round=rounds)
+                pred[te] = model.predict(X[te])
+        xlw.iloc[idx] = pred
+    # untracked (or unpredicted) balls in play: mean value by batted-ball type, then overall
+    by_type = value[in_play].groupby(out["hit_type"][in_play]).mean()
+    fallback = out["hit_type"].map(by_type).fillna(value[in_play].mean())
+    xlw = xlw.where(xlw.notna() | ~in_play, fallback)
+    out["xlw"] = xlw.where(in_play)
+    out["rv_x"] = np.where(in_play, out["xlw"] - (out["re_before"] - out["re_pa_start"]), out["rv"])
     return out
 
 
@@ -208,7 +265,7 @@ def build(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Targets + run value on a cleaned frame. Returns (frame, RE table, linear weights)."""
     re = fit_run_expectancy(df)
     lw = fit_linear_weights(df, re)
-    return add_targets(add_run_value(df, re, lw)), re, lw
+    return add_targets(add_expected_run_value(add_run_value(df, re, lw), lw)), re, lw
 
 
 def write_reports(df: pd.DataFrame, re: pd.DataFrame, lw: pd.DataFrame, out_dir=None) -> None:
@@ -231,9 +288,17 @@ def write_reports(df: pd.DataFrame, re: pd.DataFrame, lw: pd.DataFrame, out_dir=
                   "denominator_n": [int(df[n].notna().sum()) for n in rates],
                   "definition": [TARGETS[n][0] for n in rates], "denominator": [TARGETS[n][1] for n in rates]}
                  ).round(4).to_csv(out_dir / "target_rates.csv", index=False)
-    pd.DataFrame({"stat": ["rv_mean", "rv_sd", "rv_delta_mean", "rv_delta_sd", "corr_rv_rv_delta"],
-                  "value": [df.rv.mean(), df.rv.std(), df.rv_delta.mean(), df.rv_delta.std(), df.rv.corr(df.rv_delta)]}
+    ip = df["xlw"].notna()
+    pd.DataFrame({"stat": ["rv_mean", "rv_sd", "rv_delta_mean", "rv_delta_sd", "corr_rv_rv_delta",
+                           "rv_x_mean", "rv_x_sd", "corr_rv_rv_x", "in_play_corr_lw_xlw"],
+                  "value": [df.rv.mean(), df.rv.std(), df.rv_delta.mean(), df.rv_delta.std(), df.rv.corr(df.rv_delta),
+                            df.rv_x.mean(), df.rv_x.std(), df.rv.corr(df.rv_x),
+                            df.loc[ip, "event"].map(lw["lw"]).astype(float).corr(df.loc[ip, "xlw"])]}
                  ).round(5).to_csv(out_dir / "rv_summary.csv", index=False)
+    ip_alt = df[ip].groupby(df.loc[ip, "altitude_category"].astype(str))
+    pd.DataFrame({"balls_in_play": ip_alt.size(), "mean_lw_observed": ip_alt.apply(
+        lambda d: d["event"].map(lw["lw"]).astype(float).mean()), "mean_xlw": ip_alt["xlw"].mean()}
+                 ).round(4).reset_index().to_csv(out_dir / "batted_ball_value_by_altitude.csv", index=False)
 
 
 if __name__ == "__main__":

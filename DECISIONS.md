@@ -32,3 +32,5 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791920338 | HACK-026 | Demo evidence only; no ensemble promotion or production changes | Why: Official dataset absent and shared preparation is transductive
 - 1791920738 | HACK-015 | retrain Stuff+ with pitch_family; physics translation from ShapeModel | Why: AutoPitchType relabels with altitude
 - 1791921039 | HACK-014 | Ship partial diagnostic runner only; task acceptance stays incomplete | Why: Pitching+ absent, shared preparation transductive, official parquet absent
+- 1791925103 | deadline lease/HACK-014/1791923739 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791925103 | deadline queue-lock/hack.O87yH8-sebastian-1-HACK-026/1791922783 | HUMAN | Lock lease expired; revalidate before merging

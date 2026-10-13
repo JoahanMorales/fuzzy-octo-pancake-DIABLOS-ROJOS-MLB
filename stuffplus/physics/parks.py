@@ -195,3 +195,10 @@ def load_maps(df: pd.DataFrame | None = None, cache_dir=None, **kwargs) -> dict[
     for k, p in paths.items():
         maps[k].to_parquet(p, index=False)
     return maps
+
+
+def candidate_staff(maps: dict[str, pd.DataFrame], franchises) -> pd.DataFrame:
+    """Pitchers (anonymised ids) who pitched for the given franchise(s), per season. Not committed: row-level."""
+    tm = maps["team_map"]
+    out = tm[(tm["role"] == "pitcher") & tm["franchise"].isin(list(franchises))]
+    return out[["season", "franchise", "pitcher_anon_id"]].sort_values(["season", "franchise", "pitcher_anon_id"])

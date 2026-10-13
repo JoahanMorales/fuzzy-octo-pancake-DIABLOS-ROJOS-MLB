@@ -78,3 +78,11 @@ def test_maps_are_rebuilt_deterministically_and_cached(synthetic_pitches, tmp_pa
     pd.testing.assert_frame_equal(a["park_map"], b["park_map"])
     c = load_maps(synthetic_pitches, cache_dir=tmp_path / "x", min_weight=1, min_batters=5)
     pd.testing.assert_frame_equal(a["park_map"], c["park_map"])
+
+
+def test_candidate_staff_lists_pitchers_of_the_franchise(synthetic_pitches, tmp_path):
+    from stuffplus.physics.parks import candidate_staff, load_maps
+    maps = load_maps(synthetic_pitches, cache_dir=tmp_path, min_weight=1, min_batters=5)
+    f = int(maps["team_map"]["franchise"].iloc[0])
+    staff = candidate_staff(maps, [f])
+    assert set(staff["franchise"]) == {f} and staff["season"].nunique() == 3 and len(staff) >= 3 * 5

@@ -16,7 +16,7 @@ import pandas as pd
 
 from stuffplus.config import ARTIFACTS_DIR, REPORTS_DIR
 from stuffplus.io import load_raw
-from stuffplus.physics.parks import (GAME, build_maps, game_teams, link_franchises, park_table,
+from stuffplus.physics.parks import (GAME, build_maps, candidate_staff, game_teams, link_franchises, park_table,
                                      pitcher_teams, tune_resolution)
 from stuffplus.schema import clean
 
@@ -88,12 +88,44 @@ def main() -> None:
         order = sorted(samples, key=lambda f: samples[f].mean())
         a, b = order[0], order[1]
         lines.append(f"P(franchise {a} lower rho than {b}) = {(samples[a] < samples[b]).mean():.3f}")
+    # Decision rule (TASKS.md): if P(lowest < second) < 0.95 the candidate is NOT decisive, so report the two
+    # lowest-rho franchises and pool them as the CDMX environment. Franchise identities are unverified.
+    order = [int(f) for f in sorted(samples, key=lambda f: samples[f].mean())]
+    top2 = order[:2]
+    p_low = float((samples[order[0]] < samples[order[1]]).mean()) if len(order) >= 2 else float("nan")
+    decisive = p_low >= 0.95
+    chosen = order[:1] if decisive else top2
+    pooled = games_all[games_all["franchise"].isin(chosen)]["rho"].dropna().to_numpy()
+    boot = np.array([rng.choice(pooled, len(pooled)).mean() for _ in range(N_BOOT)])
+    maps = build_maps(df)
+    staff = candidate_staff(maps, chosen)
+    staff_counts = staff.groupby(["season", "franchise"]).size().unstack(fill_value=0)
+    gaps = pd.DataFrame(rows).set_index("franchise")["rho_mean"]
+    md = [
+        "# Harp Helú candidate (HACK-003)", "",
+        f"- Extreme franchises (6): lowest rho_hat = {order[0]} ({gaps[order[0]]:.3f}) and {order[1]} ({gaps[order[1]]:.3f}).",
+        f"- P(franchise {order[0]} lower than {order[1]}) = {p_low:.3f} (pooled game-level bootstrap, {N_BOOT} draws).",
+        f"- Decisive (P >= 0.95): {'yes' if decisive else 'NO'}. "
+        + ("Candidate: franchise " + str(order[0]) if decisive else
+           f"Reporting the two lowest-density parks and pooling them: franchises {top2}."),
+        f"- Pooled rho_hat of {chosen}: {boot.mean():.3f} (95% CI {np.quantile(boot, .025):.3f}-{np.quantile(boot, .975):.3f}, "
+        f"{len(pooled)} games). Provisional proxy; HACK-004 replaces it.",
+        f"- Theoretical gap Harp Helú (2,240 m) vs Puebla (2,135 m): ~1.2 % pressure; observed gap "
+        f"{abs(gaps[order[0]] - gaps[order[1]]) * 100:.1f} % of rho.",
+        "- Franchise identity (CDMX vs Puebla) is NOT verified from the data: ids are anonymous. Confirm with Diablos staff.",
+        "- Coverage caveat: the lowest-rho franchise has few home games in the dataset "
+        + str(games_all[games_all["franchise"] == order[0]].groupby("season").size().to_dict()) + " (home games per season).",
+        "", "## Candidate staff (pitchers per season; ids via `candidate_staff(load_maps(), franchises)`)", "",
+        "```", staff_counts.to_string(), "```",
+    ]
+    (OUT / "harp_helu.md").write_text("\n".join(md) + "\n")
+    print("\n".join(md))
     (OUT / "summary.txt").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 
-    maps = build_maps(df)
     for name, frame in maps.items():
         frame.to_parquet(ARTIFACTS_DIR / f"{name}.parquet", index=False)
+
 
 if __name__ == "__main__":
     main()

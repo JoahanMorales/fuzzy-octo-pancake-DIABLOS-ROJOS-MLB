@@ -15,8 +15,8 @@ Task-Base: 0e16deb8f07b4012d2ca009393a2f3f62c0d68f0
 Next: Wait for review of SHA 298c823
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-001?expand=1
 Evidence: python -m pytest -q tests/test_io.py exit 0 (11 passed, incl. real-file schema check); bash .uak/bin/smoke exit 0 PRODUCT_PASS; fixture call mix matches LMB (Ball 36%/InPlay 20%/Foul 17%), Extreme/No drag 0.78-0.88; scope note: added .uak/bin/smoke-project via uak init-smoke (product smoke = setup)
-Events: 3
+Events: 4
 Checkpoints: 1
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 1791869129
 Task-Tip: 298c823fa004c19e318da26f73b3c016e9e029e0

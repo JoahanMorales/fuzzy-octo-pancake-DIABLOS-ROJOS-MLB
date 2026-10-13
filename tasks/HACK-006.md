@@ -9,14 +9,14 @@ Priority: P0
 Paths: stuffplus/features/__init__.py, stuffplus/features/arsenal.py, stuffplus/features/sequence.py, tests/test_features.py, reports/features/
 Depends: None
 Verify: `python -m pytest -q tests/test_features.py`
-Lease-Until: 1791920500
-Updated: 1791906100
+Lease-Until: 1791920508
+Updated: 1791906108
 Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
-Next: Wait for review of SHA 744d962
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/6; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/6
-Evidence: pytest tests/test_features.py exit 0 (5 passed); smoke PASS; trajectory-derived plate pos corr 0.999 with PlateLoc; carries HACK-029/HACK-004 branches
-Events: 5
+Evidence: 265d003: main (004, 029 integradas) mergeado; diff solo archivos de HACK-006; test_features 5 passed; arsenal_by_family.csv regenerado con la nueva identidad (cambios <1 en medianas)
+Events: 6
 Checkpoints: 1
 Sessions: 2
 Last-Checkpoint: 1791874055
-Task-Tip: 744d96220433b85e685a60274c264c1892cba9ae
+Task-Tip: 265d0033f93b400c0f4e558e77e9cf28f26004b4

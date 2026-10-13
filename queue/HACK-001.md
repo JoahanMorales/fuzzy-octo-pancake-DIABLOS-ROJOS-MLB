@@ -1,5 +1,5 @@
 ID: HACK-001
-State: MERGING
+State: HUMAN
 Owner: joahan-1
-Queued: 1791871488
-Reason: Waiting for queue
+Updated: 1791871519
+Reason: Diff outside Paths: .uak/bin/.smoke-project.provenance (new test files: add the dir to Additive-Paths in PROJECT.md)

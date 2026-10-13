@@ -12,10 +12,10 @@ Verify: `python -m pytest -q tests/test_io.py`
 Lease-Until: 1791885870
 Updated: 1791871470
 Task-Base: 0e16deb8f07b4012d2ca009393a2f3f62c0d68f0
-Next: Wait for review of SHA 298c823
+Next: Humano: Diff outside Paths: .uak/bin/.smoke-project.provenance (new test files: add the dir to Additive-Paths in PROJECT.md)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-001?expand=1
 Evidence: python -m pytest -q tests/test_io.py exit 0 (11 passed, incl. real-file schema check); bash .uak/bin/smoke exit 0 PRODUCT_PASS; fixture call mix matches LMB (Ball 36%/InPlay 20%/Foul 17%), Extreme/No drag 0.78-0.88; scope note: added .uak/bin/smoke-project via uak init-smoke (product smoke = setup)
-Events: 5
+Events: 6
 Checkpoints: 1
 Sessions: 2
 Last-Checkpoint: 1791869129

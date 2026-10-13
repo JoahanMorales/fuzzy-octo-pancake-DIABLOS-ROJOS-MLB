@@ -9,8 +9,8 @@ Priority: P0
 Paths: stuffplus/models/location.py, analysis/location_model/, reports/location_model/, tests/test_model_location.py
 Depends: HACK-031
 Verify: `python -m pytest -q tests/test_model_location.py`
-Lease-Until: 1791936286
-Updated: 1791921886
+Lease-Until: 1791939775
+Updated: 1791925375
 Task-Base: d3c88b00ebb306065689b723ab37348ea7b7ac8c
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1

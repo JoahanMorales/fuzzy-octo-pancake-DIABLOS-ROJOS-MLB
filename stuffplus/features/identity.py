@@ -2,7 +2,7 @@
 
 `AutoPitchType` de Trackman cambia con la densidad del aire, así que los lanzamientos se
 comparan por `pitch_id`: mezcla gaussiana por pitcher-temporada sobre rasgos que la
-altitud no toca (velocidad de salida, giro, punto de liberación, extensión).
+altitud no toca (velocidad de salida, punto de liberación, extensión; sin giro, que sí se mueve con la altitud).
 """
 from __future__ import annotations
 
@@ -10,7 +10,10 @@ import numpy as np
 import pandas as pd
 from sklearn.mixture import GaussianMixture
 
-IDENTITY_FEATURES = ["RelSpeed", "SpinRate", "RelHeight", "RelSide", "Extension"]
+# SpinRate queda fuera: sube ~+17 rpm en Extreme dentro del mismo lanzamiento (medición/efecto de la altitud) y con él
+# el uso por pitch_family se desplazaba hasta 0.70 pp (Changeup/Slider); sin él, 0.49 pp (pureza vs AutoPitchType
+# en nivel del mar baja de 0.77 a 0.73). Ajustar SpinRate por bucket no ayudó (reports/shapes/README.md).
+IDENTITY_FEATURES = ["RelSpeed", "RelHeight", "RelSide", "Extension"]
 NO_ALTITUDE = "No Altitude"
 MIN_FIT = 40  # lanzamientos mínimos para ajustar la mezcla
 MAX_K = 5

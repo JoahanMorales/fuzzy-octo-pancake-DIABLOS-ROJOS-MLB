@@ -9,13 +9,13 @@ Priority: P0
 Paths: stuffplus/features/__init__.py, stuffplus/features/arsenal.py, stuffplus/features/sequence.py, tests/test_features.py, reports/features/
 Depends: None
 Verify: `python -m pytest -q tests/test_features.py`
-Lease-Until: 1791888455
-Updated: 1791874055
+Lease-Until: 1791920500
+Updated: 1791906100
 Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
 Next: Wait for review of SHA 744d962
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/6
 Evidence: pytest tests/test_features.py exit 0 (5 passed); smoke PASS; trajectory-derived plate pos corr 0.999 with PlateLoc; carries HACK-029/HACK-004 branches
-Events: 4
+Events: 5
 Checkpoints: 1
 Sessions: 2
 Last-Checkpoint: 1791874055

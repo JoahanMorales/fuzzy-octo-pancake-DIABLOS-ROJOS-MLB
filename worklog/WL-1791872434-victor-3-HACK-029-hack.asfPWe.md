@@ -6,7 +6,7 @@
 - Why: interpretable thresholds from real quantiles
 - Failing: usage shift 0.70pp > 0.5pp target
 - Commands: python -m pytest -q tests/test_shapes.py
-- Next: Humano: Smoke red or product unverified
+- Next: Integrated in main: 6cf05c3cce8b10287490fc97642f7cd1f9f60468 (recorded by victor-3)
 
 ## History
 - 1791872434 | CLAIMED | victor-3 | claim; next: reproduce the label shift table, then fit the per pitcher-season mixture.
@@ -24,3 +24,4 @@
 - 1791905791 | REVIEW | victor-1 | review; approve; SHA 95a9d95e0a4031f314b7c413c2317f15ca2987ad; reviewer victor-1
 - 1791905839 | REVIEW | victor-3 | heartbeat; lease until 1791920239
 - 1791905857 | REVIEW | victor-3 | merge rechazado; Smoke red or product unverified
+- 1791905979 | INTEGRATED | victor-3 | integrate; recorded by victor-3; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4; merged 6cf05c3cce8b10287490fc97642f7cd1f9f60468; proof ancestry

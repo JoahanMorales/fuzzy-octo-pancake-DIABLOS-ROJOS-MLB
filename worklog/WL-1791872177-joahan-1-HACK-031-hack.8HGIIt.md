@@ -6,7 +6,7 @@
 - Why: rv noise: best iters 25-66, skill +0.02%
 - Failing: smoke failed once: api switched to real bundle; fixed with conftest isolation
 - Commands: pytest tests/test_serving.py; python analysis/v0/run.py
-- Next: Humano: Diff outside Paths: tests/conftest.py (new test files: add the dir to Additive-Paths in PROJECT.md)
+- Next: Integrated in main: d3c88b00ebb306065689b723ab37348ea7b7ac8c (recorded by victor-1)
 
 ## History
 - 1791872177 | CLAIMED | joahan-1 | claim; next: `analysis/v0/run.py` → `bundle.save(...)` → `serving.load_bundle()`.
@@ -16,3 +16,4 @@
 - 1791899959 | REVIEW | joahan-1 | heartbeat; lease until 1791914359
 - 1791899986 | REVIEW | joahan-1 | merge rechazado; Diff outside Paths: tests/conftest.py (new test files: add the dir to Additive-Paths in PROJECT.md)
 - 1791901698 | REVIEW | victor-1 | review; approve; SHA 8dbc14d87cb11ca8d6fba3ba23b89ab618bbed7a; reviewer victor-1
+- 1791901706 | INTEGRATED | victor-1 | integrate; recorded by victor-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-031?expand=1; merged d3c88b00ebb306065689b723ab37348ea7b7ac8c; proof ancestry

@@ -6,7 +6,7 @@
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
 - Commands: `python -m pytest -q tests/test_model_location.py`
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1; run .uak/bin/smoke
+- Next: Integrated in main: 84ff7c8654c5f568f6ad861fc2e39345ed5a1188
 
 ## History
 - 1791903779 | CLAIMED | joahan-1 | claim; next: 2-D smoothed target encoding vs LightGBM on (x, z, count); pick by OOF RMSE.
@@ -18,3 +18,4 @@
 - 1791921886 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1; evidence: reject fixed (docs vs CSV, fallback documented, caveat, error tests); tests/test_model_location.py 10 passed; full suite passed; smoke exit 0; reviewer: -
 - 1791925208 | REVIEW | victor-1 | review; approve; SHA 639e4b0bad4c539e4d360ac995021ff9a4bbc02e; reviewer victor-1
 - 1791925375 | REVIEW | joahan-1 | heartbeat; lease until 1791939775
+- 1791925844 | INTEGRATED | joahan-1 | merge; smoke and Verify PASS; commit 84ff7c8654c5f568f6ad861fc2e39345ed5a1188; reviewer victor-1

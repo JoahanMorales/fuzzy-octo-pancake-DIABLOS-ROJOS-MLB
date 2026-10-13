@@ -12,8 +12,8 @@
 | Freeze | Thu 2026-10-22 17:59 (`Freeze-Epoch` below) |
 | Clean rehearsal / plan B | 2026-10-22 21:59 |
 | Internal submission | 2026-10-22 22:59 (target: send on 2026-10-22 morning) |
-| Humans | `joahan` (lead, submission owner) · `h2` · `h3` · `h4` (**names TO FILL**) |
-| Agents | 2 per human: `joahan-1, joahan-2, h2-1, h2-2, h3-1, h3-2, h4-1, h4-2` |
+| Humans | `joahan` (Joahan Samuel Morales Piña · Claude Code · lead ML, **submission owner**) · `victor` (Victor Manuel Ruiz Lopez · Claude Code · physics & altitude) · `sebastian` (Carlos Sebastian Jara Hernandez · Codex · features & validation) · `luis` (Luis Fernando Vargas Maldonado · Cursor · dashboard & product) · emails in git-ignored `submission/EQUIPO.local.md` |
+| Agents | `joahan-1, joahan-2, victor-1, victor-2, sebastian-1, sebastian-2, luis-1, luis-2` |
 | Machines | 4 laptops (Windows + Git Bash) · Streamlit port 8501 + `$UAK_PORT` |
 | Finalists / final | finalists announced 2026-11-02 · final (10-min jury interview) 2026-11-11 |
 

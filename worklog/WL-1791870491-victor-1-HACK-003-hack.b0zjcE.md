@@ -6,7 +6,7 @@
 - Why: last pending criterion was unblocked
 - Failing: none
 - Commands: q python -m pytest -q tests/test_parks.py; python -m analysis.park_id.run
-- Next: Wait for review of SHA 6410c22
+- Next: Humano: Diff outside Paths: analysis/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)
 
 ## History
 - 1791870491 | CLAIMED | victor-1 | claim; next: port the prototype (Louvain on batter co-lineups) into stuffplus/physics/parks.py::infer_teams(df, season)
@@ -17,3 +17,4 @@
 - 1791900340 | REVIEW | victor-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/5; evidence: pytest tests/test_parks.py exit 0 (11); smoke PRODUCT_PASS; real data: 20 teams/season purity 1.0; Harp Helu not decisive P=0.83 pooled rho 0.819; parks.csv runs/game + HR/FB; reviewer: -
 - 1791900367 | REVIEW | victor-1 | checkpoint; next: Wait for review of SHA 6410c22
 - 1791900753 | REVIEW | victor-5 | review; approve; SHA 6410c2269a879182d4a6c3bb0e09048102d64ebc; reviewer victor-5
+- 1791901304 | REVIEW | victor-1 | merge rechazado; Diff outside Paths: analysis/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)

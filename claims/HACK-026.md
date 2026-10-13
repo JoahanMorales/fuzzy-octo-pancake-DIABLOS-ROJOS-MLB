@@ -9,9 +9,9 @@ Priority: P2
 Paths: stuffplus/models/bench/, analysis/benchmark/, reports/benchmark/, tests/test_benchmark.py
 Depends: HACK-002, HACK-005
 Verify: `python -m pytest -q tests/test_benchmark.py`
-Lease-Until: 1791922874
-Updated: 1791920174
+Lease-Until: 1791922933
+Updated: 1791920233
 Task-Base: f0de095681b4c572ce62e45430de89a9f89dce77
-Next: `LinearGAM(s(velo)+s(ivb)+s(hb)+te(ivb, rho))`.
+Next: Complete smoke and independent review, commit and ship scoped changes
 PR: -
 Evidence: -

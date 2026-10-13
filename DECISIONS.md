@@ -28,3 +28,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791907732 | HACK-009 | bootstrap por pitcher sobre tabla agregada; verdict fijado antes de datos | Why: advisor plan lock
 - 1791919410 | deadline lease/HACK-007/1791913457 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791919410 | deadline lease/HACK-010/1791918944 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791920233 | HACK-026 | Keep reports exploratory/transductive; fixed diagnostic blend only | Why: Shared preparation uses global target and feature statistics; official parquet absent

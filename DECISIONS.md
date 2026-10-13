@@ -11,3 +11,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791873324 | HACK-004 | empirical rho relative to No-Altitude games; RHO_HARP_HELU barometric until HACK-003 | Why: no HACK-003 yet
 - 1791873359 | HACK-029 | rule-based shapes on sea-level-translated movement | Why: interpretable thresholds from real quantiles
 - 1791873630 | deadline lease/HACK-003/1791873191 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791873839 | HACK-003 | Draft PR, no uak done: task incomplete. Row-level maps never committed, rebuilt by load_maps() | Why: Avoid review/merge of a partial task and the raw-data rule

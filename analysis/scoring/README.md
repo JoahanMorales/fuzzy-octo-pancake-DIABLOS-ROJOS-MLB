@@ -33,7 +33,7 @@ comparable; what changes is the air. Stuff+ in each park's own air falls with it
 (ΔCDMX −2.6) with *four-seam 43 % · sweeper 24 % · slider 16 %*; arsenals built on sweepers and sinkers keep the most
 value, ride-heavy ones lose the most (consistent with HACK-015).
 
-**Archetypes (`arsenal_archetypes.csv`, small samples: 5–44 pitcher-seasons each).** Among archetypes with ≥ 15
+**Archetypes (`arsenal_archetypes.csv`, 5 to 128 pitcher-seasons each; small ones are noisy).** Among archetypes with ≥ 15
 pitcher-seasons, *sinking two-seam + sweeper* (n = 20) has the highest Stuff+ in Harp Helú air (93.5, Δ −7.6) and
 *four-seam + sweeper* (n = 19) loses the least (Δ −6.7). Ride-heavy archetypes lose the most: *11-5 curve + riding
 four-seam* −12.6 (n = 15), *gyro slider + riding four-seam* −12.0 (n = 62), *changeup + riding four-seam* −11.9

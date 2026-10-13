@@ -9,8 +9,8 @@ Priority: P0
 Paths: stuffplus/models/pitching.py, stuffplus/models/multitarget.py, analysis/pitching_model/, reports/pitching_model/, tests/test_model_pitching.py
 Depends: HACK-010, HACK-011
 Verify: `python -m pytest -q tests/test_model_pitching.py`
-Lease-Until: 1791942685
-Updated: 1791928285
+Lease-Until: 1791946636
+Updated: 1791932236
 Task-Base: b4d24886d03beb9197bb2c818b06a61eb04d755e
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-012?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-012?expand=1

@@ -1,5 +1,5 @@
 Task: HACK-029
-Events: 1
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

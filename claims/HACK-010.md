@@ -1,6 +1,6 @@
 # HACK-010
 ID: HACK-010
-State: CLAIMED
+State: REVIEW
 Owner: joahan-1
 Branch: feat/hack-010
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-010
@@ -9,9 +9,9 @@ Priority: P0
 Paths: stuffplus/models/stuff.py, analysis/stuff_model/, reports/stuff_model/, tests/test_model_stuff.py
 Depends: HACK-031
 Verify: `python -m pytest -q tests/test_model_stuff.py`
-Lease-Until: 1791904833
-Updated: 1791902133
+Lease-Until: 1791917376
+Updated: 1791902976
 Task-Base: d3c88b00ebb306065689b723ab37348ea7b7ac8c
-Next: feature matrix builder using `train_lgbm_oof` from `models/common.py`.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-010?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-010?expand=1
 Evidence: -

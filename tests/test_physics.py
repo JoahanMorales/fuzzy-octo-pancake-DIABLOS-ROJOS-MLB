@@ -59,3 +59,26 @@ def test_constants():
     assert C.RHO_SEA_LEVEL == 1.0
     assert 0.70 < C.RHO_HARP_HELU < 0.85
     assert C.RHO_HARP_HELU < C.RHO_COORS < 1.0
+
+
+def test_movement_model_recovers_rho_effect():
+    from stuffplus.physics.translate import MovementModel
+
+    rng = np.random.default_rng(1)
+    n = 3000
+    key = rng.integers(0, 60, n)
+    rho = rng.choice([0.84, 1.0], n)
+    base = rng.normal(0, 3, 60)[key]
+    df = pd.DataFrame(dict(
+        pitch_key=key, RelSpeed=rng.normal(93, 2, n), SpinRate=rng.normal(2300, 100, n), SpinAxis=rng.normal(200, 10, n),
+        RelHeight=5.8 + rng.normal(0, .05, n), RelSide=-1.5 + rng.normal(0, .05, n), Extension=6.2 + rng.normal(0, .05, n)))
+    df["InducedVertBreak"] = 15 + base + 0.01 * (df.SpinRate - 2300) + 23.0 * (rho - 1) + rng.normal(0, 1, n)
+    df["HorzBreak"] = 9 + base + 10.0 * (rho - 1) + rng.normal(0, 1, n)
+    df["SpeedDrop"] = 7.5 + 8.0 * (rho - 1) + rng.normal(0, .3, n)
+    df["ZoneSpeed"] = 84 - 8.0 * (rho - 1) + rng.normal(0, .3, n)
+    m = MovementModel().fit(df, pd.Series(rho))
+    assert m.rho_effect["ivb"] == pytest.approx(23.0, abs=1.5)
+    assert m.rho_effect["speed_drop"] == pytest.approx(8.0, abs=0.3)
+    t = m.translate_pitch(df.head(5), 1.0, 0.84)
+    assert (t["ivb"] < df["InducedVertBreak"].head(5)).all()
+    assert m.expected_movement(df.head(5), 0.9).shape == (5, 4)

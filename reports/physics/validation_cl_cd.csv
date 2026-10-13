@@ -1,0 +1,4 @@
+altitude_category,cd_proxy,cl_proxy,clcd_within,spin_eff,cd_ratio_vs_no,cl_ratio_vs_no
+No Altitude,0.0016,0.00104,0.01999,0.61691,1.0,1.0
+Medium Altitude,0.00143,0.00085,-0.01323,0.4421,0.89005,0.82051
+Extreme Altitude,0.00135,0.00079,-0.02045,0.39838,0.84054,0.76311

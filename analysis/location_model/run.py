@@ -30,7 +30,8 @@ from stuffplus import api, config, evaluate, schema, splits  # noqa: E402
 from stuffplus.baseline import FAMILY, CountBaseline  # noqa: E402
 from stuffplus.bundle import MANIFEST, bundle_dir  # noqa: E402
 from stuffplus.models.common import BASE_PARAMS, as_model_frame  # noqa: E402
-from stuffplus.models.location import LOCATION_FEATURES, LocationModel, count_bucket, heatmap_grid, zone_label  # noqa: E402
+from stuffplus.models.location import (LOCATION_FEATURES, LocationModel, add_pitch_family, count_bucket, heatmap_grid,
+                                       zone_label)  # noqa: E402
 from stuffplus.models.stuff import split_half_reliability  # noqa: E402
 from stuffplus.scale import PlusScaler  # noqa: E402
 
@@ -50,12 +51,12 @@ def _plot_heatmaps(grid: pd.DataFrame, path: Path, title: str) -> None:
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    types, counts = list(dict.fromkeys(grid.AutoPitchType)), list(dict.fromkeys(grid["count"]))
+    types, counts = list(dict.fromkeys(grid.pitch_family)), list(dict.fromkeys(grid["count"]))
     vmax = float(np.nanquantile(np.abs(grid.loc_value), 0.98)) or 0.01
     fig, axes = plt.subplots(len(types), len(counts), figsize=(3.2 * len(counts), 3.6 * len(types)), squeeze=False)
     for i, pt in enumerate(types):
         for j, cnt in enumerate(counts):
-            g = grid[(grid.AutoPitchType == pt) & (grid["count"] == cnt)]
+            g = grid[(grid.pitch_family == pt) & (grid["count"] == cnt)]
             piv = g.pivot_table(index="PlateLocHeight", columns="plate_x_arm", values="loc_value")
             ax = axes[i][j]
             im = ax.imshow(piv.to_numpy(), origin="lower", cmap="RdBu_r", vmin=-vmax, vmax=vmax,
@@ -94,6 +95,7 @@ def _update_bundle(model: LocationModel, frame: pd.DataFrame, loc_value: np.ndar
 
 def train(frame: pd.DataFrame, fast: bool = False, out_dir: Path | None = None, write_reports: bool = True) -> dict:
     rounds = dict(class_rounds=60, contact_rounds=40) if fast else {}
+    frame = add_pitch_family(frame)
     folds = list(splits.pitcher_group_kfold(frame))
     oof = LocationModel(**rounds).oof(frame, folds)
     frame = frame.assign(xrv_loc_oof=oof["xrv"].to_numpy(float), loc_value_oof=oof["loc_value"].to_numpy(float))
@@ -101,11 +103,13 @@ def train(frame: pd.DataFrame, fast: bool = False, out_dir: Path | None = None, 
     metrics = evaluate.compare({"baseline": base, "location_v1": frame.xrv_loc_oof}, frame.rv_x,
                                groups=frame.pitcher_anon_id, n_boot=100 if fast else 300).assign(baseline_name="mean xRV by count")
     comp = _stuff_run()._component_metrics(frame, oof, folds)
-    rel = pd.DataFrame([split_half_reliability(frame, "loc_value_oof", obs_col="rv_x", min_n=30 if fast else 150)])
+    rel = pd.DataFrame([split_half_reliability(frame, "loc_value_oof", obs_col="rv_x", min_n=30 if fast else 150)]
+                       ).rename(columns={"stuff_model": "location_model"})
+    rel["pitch_family_assigned_share"] = float(frame["pitch_family_assigned"].mean())
 
     frame = frame.assign(zone=zone_label(frame), count_bucket=count_bucket(frame),
-                         pitch_family=frame.AutoPitchType.astype(str).map(FAMILY))
-    zones = (frame.groupby(["pitch_family", "count_bucket", "zone"], observed=True)
+                         family_group=frame.pitch_family.astype(str).map(FAMILY))
+    zones = (frame.groupby(["family_group", "count_bucket", "zone"], observed=True)
              .agg(pitches=("rv_x", "size"), location_value=("loc_value_oof", "mean"), observed_rv_x=("rv_x", "mean"))
              .reset_index())
     zones = zones[zones.pitches >= (5 if fast else 200)]
@@ -117,8 +121,8 @@ def train(frame: pd.DataFrame, fast: bool = False, out_dir: Path | None = None, 
                         zs=np.round(np.arange(0.5, 4.51, step), 3))
     g = grid.assign(zone=zone_label(grid))
     alt = (g.assign(air=np.where(g.rho == 1.0, "sea_level", "harp_helu"))
-           .pivot_table(index=["AutoPitchType", "zone"], columns="air", values="loc_value", aggfunc="mean")
-           .reset_index().rename(columns={"AutoPitchType": "pitch_type"}))
+           .pivot_table(index=["pitch_family", "zone"], columns="air", values="loc_value", aggfunc="mean")
+           .reset_index())
     alt["delta_cdmx"] = alt["harp_helu"] - alt["sea_level"]
 
     r2 = float("nan")

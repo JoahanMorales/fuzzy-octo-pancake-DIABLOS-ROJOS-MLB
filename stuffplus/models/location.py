@@ -1,7 +1,8 @@
 """Location+ model: the marginal value of where a pitch was thrown (HACK-011).
 
-Inputs are ONLY location and situation: plate location (arm-side mirrored), count, batter side, pitch type and
-air density; no pitch physics. Same component design as Stuff+ (``models.stuff``):
+Inputs are ONLY location and situation: plate location (arm-side mirrored), count, batter side, the
+altitude-invariant pitch family (``features.identity``; Trackman's AutoPitchType relabels pitches with air
+density, so it is never used here) and air density; no pitch physics. Same component design as Stuff+ (``models.stuff``):
 ``xRV_loc = Σ P(outcome | location, count, …) · V(outcome)`` with contact value from a regression on balls in play.
 
 Location value = ``xRV_loc − mean xRV_loc for that count and pitch type``, so a 3-0 count is not blamed on the
@@ -20,11 +21,26 @@ from stuffplus.models.common import BASE_PARAMS, as_model_frame
 from stuffplus.models.stuff import OUTCOMES, StuffModel, outcome_class
 from stuffplus.schema import assert_no_target_leak
 
-LOCATION_FEATURES = ["plate_x_arm", "PlateLocHeight", "Balls", "Strikes", "same_side", "is_rhp", "AutoPitchType", "rho"]
+LOCATION_FEATURES = ["plate_x_arm", "PlateLocHeight", "Balls", "Strikes", "same_side", "is_rhp", "pitch_family", "rho"]
 ZONE_X = 0.83  # half plate (8.5 in) + ball radius, ft
 ZONE_Z = (1.5, 3.5)  # league-average vertical zone, ft
 CLASS_PARAMS = {"learning_rate": 0.08, "num_leaves": 127, "min_data_in_leaf": 300}
 COUNT_BUCKETS = {"ahead": ("0-1", "0-2", "1-2"), "even": ("0-0", "1-1", "2-2"), "behind": ("1-0", "2-0", "2-1", "3-0", "3-1", "3-2")}
+
+
+def add_pitch_family(df: pd.DataFrame) -> pd.DataFrame:
+    """Add the altitude-invariant ``pitch_family`` (per pitcher-season mixture fitted on sea-level games).
+
+    Pitches the mixture leaves unassigned keep their AutoPitchType (a small share; reported by the caller).
+    """
+    from stuffplus.features.identity import assign_pitch_id
+
+    out = df if "pitch_family" in df and "pitch_id" in df else assign_pitch_id(df)
+    fam = out["pitch_family"].astype(object)
+    out = out.copy()
+    out["pitch_family_assigned"] = fam.notna()
+    out["pitch_family"] = fam.where(fam.notna(), out["AutoPitchType"].astype(str)).astype(str)
+    return out
 
 
 def zone_label(df: pd.DataFrame) -> pd.Series:
@@ -74,7 +90,7 @@ class LocationModel(StuffModel):
 
     @staticmethod
     def _key(df: pd.DataFrame) -> pd.Series:
-        return df["count"].astype(str) + "|" + df["AutoPitchType"].astype(str)
+        return df["count"].astype(str) + "|" + df["pitch_family"].astype(str)
 
     def _reference(self, df: pd.DataFrame, xrv: np.ndarray) -> pd.Series:
         return pd.Series(xrv, index=df.index).groupby(self._key(df)).mean()
@@ -101,7 +117,7 @@ def heatmap_grid(
     counts: Sequence[str] = ("1-2", "1-1", "2-1"), rhos: Sequence[float] = (1.0,),
     xs: np.ndarray | None = None, zs: np.ndarray | None = None,
 ) -> pd.DataFrame:
-    """Location value on a plate grid (RHP vs RHB, arm-side x) for each pitch type × count × air density."""
+    """Location value on a plate grid (RHP vs RHB, arm-side x) for each pitch family × count × air density."""
     xs = np.round(np.arange(-1.5, 1.51, 0.125), 3) if xs is None else xs
     zs = np.round(np.arange(0.5, 4.51, 0.125), 3) if zs is None else zs
     gx, gz = np.meshgrid(xs, zs)
@@ -112,7 +128,7 @@ def heatmap_grid(
             for rho in rhos:
                 frames.append(pd.DataFrame({
                     "plate_x_arm": gx.ravel(), "PlateLocHeight": gz.ravel(), "Balls": b, "Strikes": s, "count": cnt,
-                    "same_side": 1, "is_rhp": 1, "AutoPitchType": pt, "rho": rho}))
+                    "same_side": 1, "is_rhp": 1, "pitch_family": pt, "rho": rho}))
     grid = pd.concat(frames, ignore_index=True)
     grid["loc_value"] = model.location_value(grid)
-    return grid[["AutoPitchType", "count", "rho", "plate_x_arm", "PlateLocHeight", "loc_value"]]
+    return grid[["pitch_family", "count", "rho", "plate_x_arm", "PlateLocHeight", "loc_value"]]

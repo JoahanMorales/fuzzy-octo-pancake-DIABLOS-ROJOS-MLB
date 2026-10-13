@@ -27,7 +27,7 @@ def _load(rel):
 def setup(tmp_path_factory, _synthetic_cache):
     stuff_run = _load("analysis/stuff_model/run.py")
     loc_run = _load("analysis/location_model/run.py")
-    frame = stuff_run.prepare(schema.clean(_synthetic_cache.copy()))
+    frame = location.add_pitch_family(stuff_run.prepare(schema.clean(_synthetic_cache.copy())))
     bundle = tmp_path_factory.mktemp("bundle_loc")
     stuff_run.train(frame, bundle, fast=True, write_reports=False)
     res = loc_run.train(frame, fast=True, out_dir=bundle, write_reports=False)
@@ -48,7 +48,7 @@ def test_location_value_is_centered_by_count_and_type(setup):
     frame, res, _ = setup
     m = res["model"]
     lv = pd.Series(m.location_value(frame), index=frame.index)
-    by_cell = lv.groupby([frame["count"].astype(str), frame.AutoPitchType.astype(str)]).mean()
+    by_cell = lv.groupby([frame["count"].astype(str), frame.pitch_family.astype(str)]).mean()
     assert by_cell.abs().max() < 1e-9
 
 
@@ -59,16 +59,21 @@ def test_location_features_exclude_physics():
 def test_heatmap_grid_and_middle_vs_edge(setup):
     _, res, _ = setup
     grid = res["grid"]
-    assert {"AutoPitchType", "count", "rho", "plate_x_arm", "PlateLocHeight", "loc_value"} <= set(grid.columns)
+    assert {"pitch_family", "count", "rho", "plate_x_arm", "PlateLocHeight", "loc_value"} <= set(grid.columns)
     assert grid.loc_value.notna().all() and set(grid.rho.round(3)) == {1.0, round(api.resolve_rho("harp_helu"), 3)}
 
 
 def test_reports_tables(setup):
     _, res, _ = setup
     assert set(res["metrics"].model) == {"baseline", "location_v1"}
-    assert {"pitch_family", "count_bucket", "zone", "location_value", "observed_rv_x"} <= set(res["zones"].columns)
-    assert {"pitch_type", "zone", "sea_level", "harp_helu", "delta_cdmx"} <= set(res["altitude"].columns)
+    assert {"family_group", "count_bucket", "zone", "location_value", "observed_rv_x"} <= set(res["zones"].columns)
+    assert {"pitch_family", "zone", "sea_level", "harp_helu", "delta_cdmx"} <= set(res["altitude"].columns)
+    assert "location_model" in res["reliability"].columns
     assert "PitchUID" not in res["zones"].columns
+
+
+def test_location_never_uses_trackman_labels():
+    assert "AutoPitchType" not in location.LOCATION_FEATURES
 
 
 def test_bundle_location_model_replaced_and_served(setup, monkeypatch):

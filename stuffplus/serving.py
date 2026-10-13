@@ -111,7 +111,7 @@ def predict_frame(
 def _row_from_input(p) -> pd.DataFrame:
     sign = 1.0 if p.throws == "Right" else -1.0
     row = {
-        "AutoPitchType": p.pitch_type, "PitcherThrows": p.throws, "is_rhp": int(p.throws == "Right"),
+        "AutoPitchType": p.pitch_type, "pitch_family": p.pitch_type, "PitcherThrows": p.throws, "is_rhp": int(p.throws == "Right"),
         "RelSpeed": p.velo, "SpinRate": p.spin_rate, "SpinAxis": p.spin_axis,
         "spin_axis_arm": p.spin_axis % 360 if sign > 0 else (360 - p.spin_axis) % 360,
         "InducedVertBreak": p.ivb, "HorzBreak": p.hb, "hb_arm": p.hb * sign,

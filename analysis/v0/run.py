@@ -133,7 +133,7 @@ def main() -> None:
     res["by_type"].round(3).to_csv(out / "stuff_by_pitch_type.csv", index=False)
     print(res["compare"][["model", "rmse", "skill_vs_baseline", "skill_lo", "skill_hi"]].round(5).to_string(index=False))
     print(res["predictiveness"].round(3).to_string(index=False))
-    print(f"bundle → {args.out} ({res['metrics']['seconds']} s)")
+    print(f"bundle -> {args.out} ({res['metrics']['seconds']} s)")
 
 
 if __name__ == "__main__":

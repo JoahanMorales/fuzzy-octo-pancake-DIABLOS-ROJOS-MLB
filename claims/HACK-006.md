@@ -1,6 +1,6 @@
 # HACK-006
 ID: HACK-006
-State: CLAIMED
+State: REVIEW
 Owner: victor-4
 Branch: feat/hack-006
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-006
@@ -9,9 +9,9 @@ Priority: P0
 Paths: stuffplus/features/__init__.py, stuffplus/features/arsenal.py, stuffplus/features/sequence.py, tests/test_features.py, reports/features/
 Depends: None
 Verify: `python -m pytest -q tests/test_features.py`
-Lease-Until: 1791876531
-Updated: 1791873831
+Lease-Until: 1791888439
+Updated: 1791874039
 Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
-Next: `arsenal.primary_fastball(df)` grouped by (pitcher_anon_id, year).
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/6; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/6
 Evidence: -

@@ -38,8 +38,9 @@ def barometric_density_ratio(altitude_m: float, temp_c: float = 15.0) -> float:
 
 # Barométrico: CDMX 2,240 m con ~20 °C típicos de tarde/noche de partido (≈0.79).
 RHO_HARP_HELU_BAROMETRIC = barometric_density_ratio(HARP_HELU_ALTITUDE_M, temp_c=20.0)
-# Empírico PROVISIONAL (prototipo HACK-003: parques Extreme de menor ρ̂ = 0.808–0.832). Reemplazar por el
-# estimador agrupado de HACK-003 cuando integre.
-RHO_HARP_HELU_EMPIRICAL: float | None = 0.81
+# Empírico (HACK-003, reports/park_id/harp_helu.md): ρ̂ agrupado de los dos parques Extreme de menor densidad
+# (franquicias 11 y 5; no se pudo decidir cuál es CDMX, P=0.83), IC95 % 0.814–0.824, 148 juegos. Misma escala
+# (Cd-proxy de rectas relativo a juegos sin altitud). Recalcular con la ρ̂ de `aero` si HACK-003 la adopta.
+RHO_HARP_HELU_EMPIRICAL: float | None = 0.819
 RHO_HARP_HELU = RHO_HARP_HELU_EMPIRICAL if RHO_HARP_HELU_EMPIRICAL is not None else RHO_HARP_HELU_BAROMETRIC
 RHO_COORS = barometric_density_ratio(COORS_ALTITUDE_M, temp_c=20.0)  # ≈0.86

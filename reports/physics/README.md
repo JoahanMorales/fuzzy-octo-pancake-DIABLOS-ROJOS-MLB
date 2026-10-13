@@ -21,4 +21,4 @@
 **Advertencias honestas.**
 - Validación Cl/Cd **parcial**: Cd-proxy cae 16 % en Extreme pero Cl-proxy cae 24 % (`validation_cl_cd.csv`). Si ambos fueran ∝ ρ la razón sería constante; baja ~9 %. No descarta un artefacto de calibración de Trackman por parque, ni un efecto real de Reynolds/giro. Los Δ de movimiento se estiman empíricamente, no del modelo Cl teórico.
 - Los IC solo propagan incertidumbre del coeficiente de ρ, no la de Δρ ni de la identidad de lanzamiento.
-- `RHO_HARP_HELU` = 0.81 provisional (prototipo, escala ρ̂ relativa a tierras bajas); el barométrico en la misma escala da ≈0.79. HACK-003 debe sustituirlo por el estimador agrupado.
+- `RHO_HARP_HELU` = 0.819 (ρ̂ agrupado de HACK-003, IC95 % 0.814–0.824; identidad CDMX vs Puebla sin verificar); el barométrico en la misma escala da ≈0.79. HACK-003 debe sustituirlo por el estimador agrupado.

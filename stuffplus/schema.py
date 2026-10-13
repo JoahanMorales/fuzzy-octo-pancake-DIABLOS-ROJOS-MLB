@@ -48,6 +48,8 @@ TARGET_COLUMNS = [
     # added by stuffplus.targets (HACK-030)
     "rv", "pa_ends", "out_in_pa",
 ]
+# Any column with these prefixes is an outcome too (stuffplus.targets names its targets t_*, rv_*).
+TARGET_PREFIXES = ("t_", "rv_")
 
 
 class LeakError(ValueError):
@@ -61,6 +63,7 @@ def assert_no_target_leak(features: Iterable[str], allow_location: bool = True) 
     """
     feats = set(features)
     bad = feats & (set(TARGET_COLUMNS) | set(ID_COLUMNS))
+    bad |= {f for f in feats if f.startswith(TARGET_PREFIXES)}
     if not allow_location:
         bad |= feats & (set(LOCATION_FEATURES) | {"Balls", "Strikes", "Outs", "count"})
     if bad:

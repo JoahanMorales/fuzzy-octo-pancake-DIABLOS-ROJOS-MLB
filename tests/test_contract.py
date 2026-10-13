@@ -68,6 +68,10 @@ def test_leak_guard(clean_df):
         schema.assert_no_target_leak(["RelSpeed", "is_whiff"])
     with pytest.raises(schema.LeakError):
         schema.assert_no_target_leak(["RelSpeed", "PlateLocSide"], allow_location=False)
+    with pytest.raises(schema.LeakError):
+        schema.assert_no_target_leak(["RelSpeed", "t_whiff"])
+    with pytest.raises(schema.LeakError):
+        schema.assert_no_target_leak(["RelSpeed", "rv_delta"])
     X = schema.feature_frame(clean_df, schema.PHYSICAL_FEATURES, allow_location=False)
     assert list(X.columns) == schema.PHYSICAL_FEATURES
 

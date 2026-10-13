@@ -44,7 +44,7 @@ schema.assert_no_target_leak(features, allow_location=False)   # pure Stuff+
 X = schema.feature_frame(df, features, allow_location=True)      # Location+ / Pitching+
 ```
 
-Targets and the LMB run value (`rv`, `out_in_pa`) come from `stuffplus.targets` (HACK-030).
+Targets and the LMB run value come from `stuffplus.targets` (HACK-030). Target columns are named `t_*` and run values `rv` / `rv_*`; the leak guard rejects those prefixes automatically.
 
 ## 3. Validation splits (`stuffplus.splits`)
 

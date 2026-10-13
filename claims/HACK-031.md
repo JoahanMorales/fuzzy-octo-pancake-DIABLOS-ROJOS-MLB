@@ -9,9 +9,9 @@ Priority: P0
 Paths: stuffplus/models/__init__.py, stuffplus/models/common.py, stuffplus/bundle.py, stuffplus/serving.py, analysis/v0/, tests/test_serving.py
 Depends: HACK-001, HACK-002
 Verify: `python -m pytest -q tests/test_serving.py`
-Lease-Until: 1791887418
-Updated: 1791873018
+Lease-Until: 1791887455
+Updated: 1791873055
 Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-031?expand=1; run .uak/bin/smoke
+Next: Wait for review of SHA badd9b5; then HACK-030 rv_x
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-031?expand=1
 Evidence: -

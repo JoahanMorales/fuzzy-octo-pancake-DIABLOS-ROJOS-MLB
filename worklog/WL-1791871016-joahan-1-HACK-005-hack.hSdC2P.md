@@ -6,7 +6,7 @@
 - Why: pitches of one pitcher are not independent
 - Failing: none
 - Commands: pytest tests/test_evaluate.py; python -m stuffplus.baseline
-- Next: Wait for review of SHA ba49eba
+- Next: Integrated in main: 77871a23aa519934193a902846098c5fb581a4d9
 
 ## History
 - 1791871016 | CLAIMED | joahan-1 | claim; next: `CountBaseline.fit/predict` with groupby on `count`.
@@ -14,3 +14,4 @@
 - 1791871406 | REVIEW | joahan-1 | checkpoint; next: Wait for review of SHA ba49eba
 - 1791873978 | REVIEW | victor-1 | review; approve; SHA ba49eba9dfc939cbf57d334b4f6e0e668944d968; reviewer victor-1
 - 1791899632 | REVIEW | joahan-1 | heartbeat; lease until 1791914032
+- 1791899933 | INTEGRATED | joahan-1 | merge; smoke and Verify PASS; commit 77871a23aa519934193a902846098c5fb581a4d9; reviewer victor-1

@@ -12,6 +12,6 @@ Verify: `python -m pytest -q tests/test_model_stuff.py`
 Lease-Until: 1791918944
 Updated: 1791904544
 Task-Base: d3c88b00ebb306065689b723ab37348ea7b7ac8c
-Next: Wait for review of SHA 58d27aa
+Next: Humano: Diff outside Paths: stuffplus/serving.py (new test files: add the dir to Additive-Paths in PROJECT.md)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-010?expand=1
 Evidence: -

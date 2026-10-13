@@ -1,5 +1,5 @@
 ID: HACK-010
-State: MERGING
+State: HUMAN
 Owner: joahan-1
-Queued: 1791904556
-Reason: Waiting for queue
+Updated: 1791904572
+Reason: Diff outside Paths: stuffplus/serving.py (new test files: add the dir to Additive-Paths in PROJECT.md)

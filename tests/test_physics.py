@@ -111,3 +111,14 @@ def test_movement_model_is_proportional_to_own_movement():
     assert d_ivb[big & (kind == 0)].mean() < d_ivb[small & (kind == 0)].mean()
     assert m.expected_movement(df.head(5), 0.9).shape == (5, 4)
     assert m.delta_mean(df[kind == 0], 1.0, 0.84)["ivb"] < 0
+
+
+def test_proportional_shift_inverts_and_scales_with_level():
+    from stuffplus.physics.translate import proportional_shift
+
+    k, ref = 1.5, 0.96
+    y_sl = np.array([10.0, 20.0])
+    y_alt = proportional_shift(y_sl, k, 1.0, 0.84, ref)
+    assert (y_alt < y_sl).all() and (y_sl - y_alt)[1] > (y_sl - y_alt)[0]  # más ride, mayor corrección
+    assert proportional_shift(y_alt, k, 0.84, 1.0, ref) == pytest.approx(y_sl)  # ida y vuelta
+    assert proportional_shift(-y_sl, k, 1.0, 0.84, ref) == pytest.approx(-y_alt)  # curva: signo opuesto

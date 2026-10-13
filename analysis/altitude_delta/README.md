@@ -3,7 +3,8 @@
 `python analysis/altitude_delta/run.py` (~10 min). Every LMB pitch is moved from the air it was thrown in to
 sea-level air (ρ = 1) and to Harp Helú air (ρ = 0.819, `physics.constants.RHO_HARP_HELU`) with the fitted
 per-family proportional physics (`features.shapes`), then scored by the component Stuff+ model retrained with the
-altitude-invariant `pitch_family` (Trackman's AutoPitchType is never used). Both scores use the same park-neutral
+altitude-invariant `pitch_family`; the 0.7 % of pitches the identity leaves unassigned are excluded, so Trackman's
+AutoPitchType never enters (it relabels pitches with air density). Both scores use the same park-neutral
 ruler, so ΔStuff+ = Stuff+(Harp Helú air) − Stuff+(sea level). CIs resample whole pitchers.
 
 ## Results (real data, 2026-10-13) · `delta_by_shape.csv`, `forest_by_shape.png`

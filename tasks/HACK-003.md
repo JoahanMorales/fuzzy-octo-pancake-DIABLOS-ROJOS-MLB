@@ -9,13 +9,13 @@ Priority: P0
 Paths: stuffplus/physics/parks.py, analysis/park_id/, reports/park_id/, tests/test_parks.py
 Depends: None
 Verify: `python -m pytest -q tests/test_parks.py`
-Lease-Until: 1791876539
-Updated: 1791873839
+Lease-Until: 1791876546
+Updated: 1791873846
 Task-Base: 08e6a655642cd7a11385d0e17e814fea34cc111f
 Next: When HACK-030 is on main: merge main, add runs/game + HR per fly ball to parks.csv via stuffplus.targets in analysis/park_id/run.py, rerun, then mark PR ready and /uak-ship (uak done). If not mine anymore: uak release HACK-003 hands it over
 PR: -
 Evidence: -
-Events: 3
+Events: 4
 Checkpoints: 1
 Sessions: 1
 Last-Checkpoint: 1791873839

@@ -12,3 +12,4 @@
 - 1791870491 | CLAIMED | victor-1 | claim; next: port the prototype (Louvain on batter co-lineups) into stuffplus/physics/parks.py::infer_teams(df, season)
 - 1791873691 | CLAIMED | victor-1 | heartbeat; lease until 1791876391
 - 1791873839 | CLAIMED | victor-1 | checkpoint; next: When HACK-030 is on main: merge main, add runs/game + HR per fly ball to parks.csv via stuffplus.targets in analysis/park_id/run.py, rerun, then mark PR ready and /uak-ship (uak done). If not mine anymore: uak release HACK-003 hands it over
+- 1791873846 | CLAIMED | victor-1 | heartbeat; lease until 1791876546

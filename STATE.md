@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1791921003
+Updated: 1791921039
 AVAILABLE: (16; last 12) ... HACK-020 HACK-021 HACK-032 HACK-033 HACK-034 HACK-022 HACK-023 HACK-036 HACK-024 HACK-025 HACK-027 HACK-028 
 CLAIMED: HACK-014 HACK-019 
 BLOCKED: -
@@ -12,18 +12,18 @@ CANCELLED: -
 Claims (first 24; status --task ID shows detail):
 HACK-007 | REVIEW | victor-5 | until 1791913457
 HACK-011 | REVIEW | joahan-1 | until 1791933785
-HACK-014 | CLAIMED | sebastian-1 | until 1791923299
+HACK-014 | CLAIMED | sebastian-1 | until 1791923739
 HACK-015 | REVIEW | joahan-1 | until 1791935138
 HACK-019 | CLAIMED | joahan-1 | until 1791923505
 HACK-026 | REVIEW | sebastian-1 | until 1791934738
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):
-- 1791919410 | deadline lease/HACK-007/1791913457 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791919410 | deadline lease/HACK-010/1791918944 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791920233 | HACK-026 | Keep reports exploratory/transductive; fixed diagnostic blend only | Why: Shared preparation uses global target and feature statistics; official parquet a
 - 1791920338 | HACK-026 | Demo evidence only; no ensemble promotion or production changes | Why: Official dataset absent and shared preparation is transductive
 - 1791920738 | HACK-015 | retrain Stuff+ with pitch_family; physics translation from ShapeModel | Why: AutoPitchType relabels with altitude
+- 1791921039 | HACK-014 | Ship partial diagnostic runner only; task acceptance stays incomplete | Why: Pitching+ absent, shared preparation transductive, official parquet absent
 
 Global next step: available P0; else review PRs, tests, demo, rehearsal.
 Why: bounded snapshot to resume without rereading history.

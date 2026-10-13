@@ -31,3 +31,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791920233 | HACK-026 | Keep reports exploratory/transductive; fixed diagnostic blend only | Why: Shared preparation uses global target and feature statistics; official parquet absent
 - 1791920338 | HACK-026 | Demo evidence only; no ensemble promotion or production changes | Why: Official dataset absent and shared preparation is transductive
 - 1791920738 | HACK-015 | retrain Stuff+ with pitch_family; physics translation from ShapeModel | Why: AutoPitchType relabels with altitude
+- 1791921039 | HACK-014 | Ship partial diagnostic runner only; task acceptance stays incomplete | Why: Pitching+ absent, shared preparation transductive, official parquet absent

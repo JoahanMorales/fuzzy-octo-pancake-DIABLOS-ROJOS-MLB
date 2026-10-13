@@ -9,13 +9,13 @@ Priority: P0
 Paths: stuffplus/validation/, analysis/validation/, reports/validation/, tests/test_validation.py
 Depends: HACK-005, HACK-010
 Verify: `python -m pytest -q tests/test_validation.py`
-Lease-Until: 1791923299
-Updated: 1791920599
+Lease-Until: 1791923739
+Updated: 1791921039
 Task-Base: f0de095681b4c572ce62e45430de89a9f89dce77
-Next: `stuffplus/validation/run_all.py` iterating `splits.*` × models.
+Next: Finish smoke, commit/push, open draft partial PR; independently review before merge; fold preparation and official-data follow-up pending
 PR: -
 Evidence: -
-Events: 1
-Checkpoints: 0
+Events: 2
+Checkpoints: 1
 Sessions: 1
-Last-Checkpoint: 0
+Last-Checkpoint: 1791921039

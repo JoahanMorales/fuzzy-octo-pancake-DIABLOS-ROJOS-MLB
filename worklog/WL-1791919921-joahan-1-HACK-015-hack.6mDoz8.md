@@ -1,7 +1,7 @@
 # worklog/WL-1791919921-joahan-1-HACK-015-hack.6mDoz8.md · HACK-015
 
 ## Live summary
-- Done: pytest tests/test_altitude.py 6 passed; smoke exit 0; README claims checked against CSVs (contact +0.032..+0.065, triangulation ranges, transductive caveat, unassigned excluded). Real data: league -10.3, sweeper -4.6 best, riding 4S -16.0 worst, 7/7 same-sign triangulation.
+- Done: reject fixed; tests/test_altitude.py 6 passed; full suite passed; smoke exit 0; regenerated real-data reports; README numbers copied from CSVs
 - Decision: retrain Stuff+ with pitch_family; physics translation from ShapeModel
 - Why: AutoPitchType relabels with altitude
 - Failing: none
@@ -16,3 +16,4 @@
 - 1791925209 | REVIEW | victor-1 | review; approve; SHA a6c09e1f0ebbb4bfca10a7fad50cc0098f8a80eb; reviewer victor-1
 - 1791925375 | REVIEW | victor-1 | review; reject; SHA a6c09e1f0ebbb4bfca10a7fad50cc0098f8a80eb; reviewer victor-1
 - 1791925863 | REVIEW | joahan-1 | heartbeat; lease until 1791940263
+- 1791927348 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-015?expand=1; evidence: reject fixed; tests/test_altitude.py 6 passed; full suite passed; smoke exit 0; regenerated real-data reports; README numbers copied from CSVs; reviewer: -

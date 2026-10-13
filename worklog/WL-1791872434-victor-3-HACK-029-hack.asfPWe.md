@@ -6,7 +6,7 @@
 - Why: interpretable thresholds from real quantiles
 - Failing: usage shift 0.70pp > 0.5pp target
 - Commands: python -m pytest -q tests/test_shapes.py
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4; run .uak/bin/smoke
+- Next: Humano: Smoke red or product unverified
 
 ## History
 - 1791872434 | CLAIMED | victor-3 | claim; next: reproduce the label shift table, then fit the per pitcher-season mixture.
@@ -23,3 +23,4 @@
 - 1791905681 | REVIEW | victor-3 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4; evidence: 95a9d95: SpinRate fuera de identidad; label shift pitch_family max 0.49pp (null 0.40), APT 3.33; riding4S -0.15; tests 12 passed; reviewer: -
 - 1791905791 | REVIEW | victor-1 | review; approve; SHA 95a9d95e0a4031f314b7c413c2317f15ca2987ad; reviewer victor-1
 - 1791905839 | REVIEW | victor-3 | heartbeat; lease until 1791920239
+- 1791905857 | REVIEW | victor-3 | merge rechazado; Smoke red or product unverified

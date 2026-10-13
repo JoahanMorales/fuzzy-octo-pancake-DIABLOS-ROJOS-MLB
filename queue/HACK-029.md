@@ -1,5 +1,5 @@
 ID: HACK-029
-State: MERGING
+State: HUMAN
 Owner: victor-3
-Queued: 1791905846
-Reason: Waiting for queue
+Updated: 1791905857
+Reason: Smoke red or product unverified

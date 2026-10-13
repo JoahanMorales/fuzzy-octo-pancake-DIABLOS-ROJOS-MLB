@@ -1,0 +1,8 @@
+split,fold,n_train,n_test,train_pitchers,test_pitchers,demo_data
+pitcher_kfold,0,1701,432,27,7,True
+pitcher_kfold,1,1702,431,27,7,True
+pitcher_kfold,2,1701,432,27,7,True
+pitcher_kfold,3,1725,408,28,6,True
+pitcher_kfold,4,1703,430,27,7,True
+season_holdout,0,1408,725,28,18,True
+park_holdout,0,1430,703,28,19,True

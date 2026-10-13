@@ -59,8 +59,28 @@ def physics_translator(shape_model) -> Callable:
     return translate
 
 
+def fit_contact_models(df: pd.DataFrame, features: Sequence[str], rounds: int = 200) -> dict:
+    """Two physics + air classifiers for the C3 damage columns: P(hard contact | in play), P(HR | fly ball)."""
+    import lightgbm as lgb
+
+    from stuffplus.models.common import BASE_PARAMS, as_model_frame
+
+    in_play = df["PitchCall"].astype(str).eq("InPlay")
+    fly = in_play & df["hit_type"].astype(str).eq("FlyBall")
+    targets = {"hard_contact": (df["t_hard_contact"], df["t_hard_contact"].notna()),
+               "hr_per_fb": (df["home_run"].astype(float), fly)}
+    out = {}
+    for name, (y, mask) in targets.items():
+        m = mask.to_numpy() & y.notna().to_numpy()
+        out[name] = lgb.train({**BASE_PARAMS, "objective": "binary", "learning_rate": 0.05, "num_leaves": 31,
+                               "min_data_in_leaf": 500}, lgb.Dataset(as_model_frame(df[m], features), y[m].to_numpy()),
+                              num_boost_round=rounds)
+    out["features"] = list(features)
+    return out
+
+
 def counterfactual_scores(df: pd.DataFrame, model, scaler, rho_a: float, rho_b: float = 1.0,
-                          rho_from: str = "rho") -> pd.DataFrame:
+                          rho_from: str = "rho", contact_models: dict | None = None) -> pd.DataFrame:
     """Per pitch: Stuff+ and components in air ``rho_a`` (e.g. Harp Helú) and ``rho_b`` (sea level), and deltas."""
     src = df[rho_from].to_numpy(float)
     ta, tb = model.translate(df, rho_a, src), model.translate(df, rho_b, src)
@@ -79,6 +99,14 @@ def counterfactual_scores(df: pd.DataFrame, model, scaler, rho_a: float, rho_b: 
     for o in OUTCOMES:
         out[f"delta_p_{o}"] = a[f"p_{o}"].to_numpy() - b[f"p_{o}"].to_numpy()
     out["delta_contact_rv"] = a["contact_rv"].to_numpy() - b["contact_rv"].to_numpy()
+    if contact_models is not None:
+        from stuffplus.models.common import as_model_frame
+
+        fx = contact_models["features"]
+        for name in ("hard_contact", "hr_per_fb"):
+            pa = contact_models[name].predict(as_model_frame(ta, fx))
+            pb = contact_models[name].predict(as_model_frame(tb, fx))
+            out[f"delta_{name}"] = pa - pb
     out["ivb_a"], out["ivb_b"] = ta["InducedVertBreak"].to_numpy(), tb["InducedVertBreak"].to_numpy()
     out["hb_a"], out["hb_b"] = ta["hb_arm"].to_numpy(), tb["hb_arm"].to_numpy()
     return out
@@ -113,10 +141,13 @@ def delta_table(scores: pd.DataFrame, df: pd.DataFrame, by: str, n_boot: int = 5
             "delta_ivb_in": (s["ivb_a"] - s["ivb_b"]).mean(), "delta_hb_arm_in": (s["hb_a"] - s["hb_b"]).mean(),
             "delta_whiff_pct": 100 * s["delta_p_whiff"].mean(), "delta_called_strike_pct": 100 * s["delta_p_called_strike"].mean(),
             "delta_in_play_pct": 100 * s["delta_p_in_play"].mean(), "delta_contact_runs": s["delta_contact_rv"].mean(),
+            "delta_hard_contact_pct": 100 * s["delta_hard_contact"].mean() if "delta_hard_contact" in s else np.nan,
+            "delta_hr_per_fb_pct": 100 * s["delta_hr_per_fb"].mean() if "delta_hr_per_fb" in s else np.nan,
         })
     out = pd.DataFrame(rows).sort_values("delta_stuff", ascending=False).reset_index(drop=True)
     avg = float(scores["delta_stuff"].mean())
     out["relative_to_league"] = out["delta_stuff"] - avg
+    # relative to the league average: in absolute terms every shape loses Stuff+ in thin air
     out["verdict"] = np.where(out["delta_lo"] - avg > 0, "gana relativo", np.where(out["delta_hi"] - avg < 0, "pierde relativo", "neutral"))
     out["physics"] = out.apply(explain, axis=1)
     return out

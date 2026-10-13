@@ -26,8 +26,8 @@ if str(ROOT) not in sys.path:
 
 from stuffplus import config, schema  # noqa: E402
 from stuffplus.altitude import (  # noqa: E402
-    STUFF_FEATURES_INVARIANT, altitude_curve, counterfactual_scores, delta_table, physics_translator,
-    within_pitcher_observed,
+    STUFF_FEATURES_INVARIANT, altitude_curve, cluster_bootstrap_mean, counterfactual_scores, delta_table,
+    fit_contact_models, physics_translator, within_pitcher_observed,
 )
 from stuffplus.features.shapes import fit_shapes  # noqa: E402
 from stuffplus.models.location import add_pitch_family  # noqa: E402
@@ -99,7 +99,8 @@ def run(shape_model, d: pd.DataFrame, fast: bool = False, write_reports: bool = 
     model = StuffModel(features=list(STUFF_FEATURES_INVARIANT), translate=physics_translator(shape_model), **rounds).fit(d)
     neutral = model.predict_at_rho(d, 1.0)
     scaler = PlusScaler().fit(d.assign(x=neutral["xrv"].to_numpy()), "x")
-    scores = counterfactual_scores(d, model, scaler, rho_a=RHO_HARP_HELU, rho_b=1.0)
+    contact = fit_contact_models(d, STUFF_FEATURES_INVARIANT, rounds=40 if fast else 200)
+    scores = counterfactual_scores(d, model, scaler, rho_a=RHO_HARP_HELU, rho_b=1.0, contact_models=contact)
     n_boot = 100 if fast else 500
     min_n = 20 if fast else 500
     by_shape = delta_table(scores, d, "shape", n_boot=n_boot, min_n=min_n)
@@ -115,12 +116,18 @@ def run(shape_model, d: pd.DataFrame, fast: bool = False, write_reports: bool = 
                    rv_x_as_plus=-10 * d["rv_x"] / sd)
     w = within_pitcher_observed(obs, ["stuff_env", "rv_x_as_plus", "is_whiff"], by="pitch_family",
                                 min_n=10 if fast else 30, n_boot=n_boot)
-    w = w.pivot_table(index="pitch_family", columns="metric", values="extreme_minus_no").reset_index()
-    cf = cf_ext.groupby(d["pitch_family"].astype(str))["delta_stuff"].mean().rename("counterfactual_delta").reset_index()
-    tri = cf.merge(w, on="pitch_family", how="left").rename(columns={
-        "stuff_env": "observed_model_delta", "rv_x_as_plus": "observed_results_delta_plus", "is_whiff": "observed_whiff_delta"})
+    names = {"stuff_env": "observed_model_delta", "rv_x_as_plus": "observed_results_delta_plus", "is_whiff": "observed_whiff_delta"}
+    w = w.assign(metric=w["metric"].map(names))
+    wide = w.pivot_table(index="pitch_family", columns="metric", values=["extreme_minus_no", "lo", "hi"])
+    wide.columns = [m if s == "extreme_minus_no" else f"{m}_{s}" for s, m in wide.columns]
+    cf_rows = []
+    for fam, idx in d.groupby(d["pitch_family"].astype(str)).groups.items():
+        m, lo, hi = cluster_bootstrap_mean(cf_ext.loc[idx, "delta_stuff"], d.loc[idx, "pitcher_anon_id"], n_boot)
+        cf_rows.append({"pitch_family": fam, "counterfactual_delta": m, "counterfactual_delta_lo": lo, "counterfactual_delta_hi": hi})
+    tri = pd.DataFrame(cf_rows).merge(wide.reset_index(), on="pitch_family", how="left")
     tri["rho_extreme"] = rho_ext
     tri["same_sign_as_model"] = np.sign(tri["counterfactual_delta"]) == np.sign(tri["observed_model_delta"])
+    tri["observed_minus_counterfactual"] = tri["observed_results_delta_plus"] - tri["counterfactual_delta"]
 
     curves = altitude_curve(d, model, scaler, "shape", sample=5_000 if fast else 60_000)
     if write_reports:
@@ -144,7 +151,7 @@ def main() -> None:
     shape_model, d = prepare(schema.clean(load_raw()))
     res = run(shape_model, d, fast=args.fast)
     cols = ["shape", "pitches", "delta_stuff", "delta_lo", "delta_hi", "delta_ivb_in", "delta_hb_arm_in",
-            "delta_whiff_pct", "delta_contact_runs", "verdict"]
+            "delta_whiff_pct", "delta_hard_contact_pct", "delta_hr_per_fb_pct", "verdict"]
     print(f"league mean delta {res['league']:+.2f} at rho {RHO_HARP_HELU}")
     print(res["by_shape"][cols].round(3).to_string(index=False))
     print(res["triangulation"].round(3).to_string(index=False))

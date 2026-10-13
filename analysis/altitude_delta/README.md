@@ -9,8 +9,8 @@ ruler, so ΔStuff+ = Stuff+(Harp Helú air) − Stuff+(sea level). CIs resample 
 
 ## Results (real data, 2026-10-13) · `delta_by_shape.csv`, `forest_by_shape.png`
 
-League average: **−10.3 Stuff+** in Harp Helú air (less break, and a ball in play is worth +0.032 to +0.065 more
-runs to the hitter depending on the shape: `delta_contact_runs`).
+League average: **−10.3 Stuff+** in Harp Helú air. **In absolute terms every shape loses**; "gana relativo" /
+"pierde relativo" in the `verdict` column means its CI sits above / below the league average.
 
 | Holds up best (relative to league) | ΔStuff+ [95 % CI] | Loses most | ΔStuff+ [95 % CI] |
 |---|---|---|---|
@@ -19,14 +19,26 @@ runs to the hitter depending on the shape: `delta_contact_runs`).
 | Slider | −7.2 [−7.7, −6.8] | Changeup | −11.4 [−12.1, −10.7] |
 | Splitter | −7.6 [−9.8, −5.9] | | |
 
-Physics (`physics` column): the riding four-seam loses 5.3" of ride and 3.1 pp of whiffs, the most of any shape;
-its value IS spin-driven ride. Changeups lose 4–6" of fade (H2 rejected: they do not gain in altitude). Sweepers
-and 12-6 curves lose the least relative value.
+Damage on contact (model-based, physics + air, `delta_hard_contact_pct`, `delta_hr_per_fb_pct`): HR per fly ball
+rises in Harp Helú air for every shape, from **+1.0 pp (sweeper)** and +1.8 pp (power changeup) to +5.1 pp (sinkers,
+cutters) and **+6.2 pp (splitter)**; hard contact on balls in play moves −0.2 to +1.9 pp. A ball in play is worth
++0.032 to +0.065 more runs to the hitter (`delta_contact_runs`).
 
-## Triangulation · `triangulation.csv`
-For the same pitch (pitcher × season × pitch_id) thrown in Extreme-altitude games vs sea-level games, the model's
-Stuff+ and the pitcher's actual results (rv_x, in Stuff+ points) both drop, with the **same sign as the counterfactual
-for all 7 families** (counterfactual −5.8 to −10.0 at the Extreme bucket's ρ = 0.838; observed results −7.2 to −14.7).
+Physics (`physics` column): the riding four-seam loses 5.3" of ride and 3.1 pp of whiffs, the largest whiff loss of
+any shape; its value is spin-driven ride. Changeups lose 4.3–6.0" of fade (H2 is not supported: they do not hold up
+better than breaking balls).
+
+## Triangulation · `triangulation.csv` (all with pitcher-cluster 95 % CIs)
+Same pitch (pitcher × season × pitch_id) in Extreme-altitude games vs sea-level games, compared with the
+counterfactual at the Extreme bucket's air (ρ = 0.838):
+- Counterfactual ΔStuff+ −5.8 to −10.0 by family; the model's Stuff+ measured on the pitches actually thrown in
+  Extreme games moves the same way in 7/7 families (−5.0 to −12.0).
+- The pitchers' **actual results** (rv_x in Stuff+ points) drop more on average: −7.2 to −14.7. The observed CI
+  contains the counterfactual in 6/7 families; curveballs are the exception (observed −14.7 [−21.5, −8.1] vs
+  counterfactual −7.8 [−8.4, −7.2]), so the model is, if anything, conservative about the altitude penalty.
+- Observed whiff change within pitcher is negative and significant for changeups (−1.5 pp [−2.7, −0.35]) and
+  four-seamers (−0.8 pp [−1.3, −0.3]); for cutters (+1.2 pp) and splitters (+3.0 pp) the point estimates are
+  positive but the CIs include 0 (small samples).
 
 ## Altitude curves · `altitude_curves.csv`, `altitude_curves.png`
 Mean ΔStuff+ by shape for ρ = 1.0 → 0.80, which covers every LMB park (Medium ≈ 0.89, Extreme ≈ 0.84, Harp Helú 0.819).

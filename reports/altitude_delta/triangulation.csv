@@ -1,8 +1,8 @@
-pitch_family,counterfactual_delta,observed_whiff_delta,observed_results_delta_plus,observed_model_delta,rho_extreme,same_sign_as_model
-Changeup,-9.3278,-0.015,-12.2662,-8.8234,0.8381,True
-Curveball,-7.8339,-0.0038,-14.6958,-8.1833,0.8381,True
-Cutter,-7.9074,0.0121,-12.1689,-5.0414,0.8381,True
-Four-Seam,-10.0327,-0.0081,-10.4066,-11.9556,0.8381,True
-Sinker,-8.9847,-0.0015,-7.23,-10.8261,0.8381,True
-Slider,-5.9045,-0.0065,-7.2314,-6.3427,0.8381,True
-Splitter,-5.817,0.03,-7.6039,-6.5086,0.8381,True
+pitch_family,counterfactual_delta,counterfactual_delta_lo,counterfactual_delta_hi,observed_model_delta,observed_results_delta_plus,observed_whiff_delta,observed_model_delta_hi,observed_results_delta_plus_hi,observed_whiff_delta_hi,observed_model_delta_lo,observed_results_delta_plus_lo,observed_whiff_delta_lo,rho_extreme,same_sign_as_model,observed_minus_counterfactual
+Changeup,-9.3278,-9.8826,-8.7795,-8.8234,-12.2662,-0.015,-7.9363,-7.7791,-0.0035,-9.7759,-16.6752,-0.0267,0.8381,True,-2.9384
+Curveball,-7.8339,-8.4425,-7.2272,-8.1833,-14.6958,-0.0038,-6.5761,-8.1009,0.014,-9.6615,-21.5394,-0.0214,0.8381,True,-6.862
+Cutter,-7.9074,-8.731,-7.2268,-5.0414,-12.1689,0.0121,-3.4173,-3.1472,0.0299,-6.7607,-19.6082,-0.0074,0.8381,True,-4.2615
+Four-Seam,-10.0327,-10.364,-9.6916,-11.9556,-10.4066,-0.0081,-11.4218,-7.7958,-0.0029,-12.5748,-12.9818,-0.0132,0.8381,True,-0.3739
+Sinker,-8.9847,-9.5837,-8.4854,-10.8261,-7.23,-0.0015,-10.1413,-3.4595,0.0051,-11.5195,-10.6405,-0.0079,0.8381,True,1.7548
+Slider,-5.9045,-6.1897,-5.5859,-6.3427,-7.2314,-0.0065,-5.8896,-4.1506,0.0015,-6.7891,-10.6343,-0.0146,0.8381,True,-1.3269
+Splitter,-5.817,-7.556,-4.4825,-6.5086,-7.6039,0.03,-4.1012,10.8499,0.0889,-7.8568,-33.1678,-0.0116,0.8381,True,-1.7869

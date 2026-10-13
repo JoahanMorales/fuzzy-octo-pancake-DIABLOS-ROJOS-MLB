@@ -78,6 +78,9 @@ def test_delta_tables_and_triangulation(result):
     assert set(t.verdict) <= {"gana relativo", "pierde relativo", "neutral"}
     assert t.physics.str.startswith("En aire de CDMX").all()
     assert {"pitch_family", "counterfactual_delta", "observed_model_delta"} <= set(res["triangulation"].columns)
+    tri = res["triangulation"]
+    assert {"counterfactual_delta_lo", "counterfactual_delta_hi", "observed_minus_counterfactual"} <= set(tri.columns)
+    assert {"delta_hard_contact_pct", "delta_hr_per_fb_pct"} <= set(t.columns) and t.delta_hr_per_fb_pct.notna().all()
     assert set(res["curves"].rho.round(3)) >= {1.0, 0.819}
 
 

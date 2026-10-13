@@ -1,0 +1,15 @@
+{
+  "demo_data": true,
+  "fast": true,
+  "target": "rv_x",
+  "shape_col": "AutoPitchType",
+  "limitation": "Exploratory/transductive: shared preparation estimates target tables, arsenal means and density normalization before splitting. These results do not certify fully nested out-of-sample robustness or causal altitude effects.",
+  "excluded_nonfinite_targets": 0,
+  "ensemble": "Fixed 50/50 diagnostic only; not selected or deployed",
+  "gam": {
+    "n_splines": 6,
+    "lam": 10.0,
+    "pool_lam": 20.0
+  },
+  "park_holdout": "Altitude bucket holdout, not a named-stadium holdout"
+}

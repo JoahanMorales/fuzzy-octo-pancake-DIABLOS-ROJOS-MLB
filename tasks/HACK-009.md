@@ -9,13 +9,13 @@ Priority: P0
 Paths: analysis/hypotheses/, reports/hypotheses/, stuffplus/hypotheses.py, tests/test_hypotheses.py
 Depends: None
 Verify: `python -m pytest -q tests/test_hypotheses.py`
-Lease-Until: 1791910432
-Updated: 1791907732
+Lease-Until: 1791910839
+Updated: 1791908139
 Task-Base: 6d326fbb5bee50414a240a60235c4a1c90e6875e
 Next: analysis/hypotheses/run.py H1 first
 PR: -
 Evidence: -
-Events: 2
+Events: 3
 Checkpoints: 1
 Sessions: 1
 Last-Checkpoint: 1791907732

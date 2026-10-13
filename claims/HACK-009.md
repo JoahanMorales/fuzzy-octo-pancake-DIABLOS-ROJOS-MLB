@@ -9,9 +9,9 @@ Priority: P0
 Paths: analysis/hypotheses/, reports/hypotheses/, stuffplus/hypotheses.py, tests/test_hypotheses.py
 Depends: None
 Verify: `python -m pytest -q tests/test_hypotheses.py`
-Lease-Until: 1791910057
-Updated: 1791907357
+Lease-Until: 1791910432
+Updated: 1791907732
 Task-Base: 6d326fbb5bee50414a240a60235c4a1c90e6875e
-Next: `hypotheses.within_pitcher_delta(df, metric, pitch_id_family, a, b, min_n=20, n_boot=2000)`.
+Next: analysis/hypotheses/run.py H1 first
 PR: -
 Evidence: -

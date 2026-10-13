@@ -233,12 +233,19 @@ def _excludes_zero(lo: float, hi: float, direction: int) -> bool:
 def verdict(delta: Estimate, direction: int, slope: Estimate | None = None) -> str:
     """``direction``: signo predicho de Δ (Extreme−No). La pendiente contra ρ̂ debe tener el signo opuesto.
 
-    Supported = Δ y pendiente concuerdan (solo Δ si no hay pendiente); Partially = solo una; Rejected = ninguna."""
+    Supported = Δ y pendiente concuerdan (solo Δ si no hay pendiente); Partially = solo una; Rejected = ninguna;
+    «Rejected (opposite)» = Δ significativo pero en la dirección contraria a la predicha."""
     d_ok = _excludes_zero(delta.lo, delta.hi, direction)
     if slope is None:
-        return "Supported" if d_ok else "Rejected"
-    s_ok = _excludes_zero(slope.lo, slope.hi, -direction)
-    return "Supported" if d_ok and s_ok else ("Partially" if d_ok or s_ok else "Rejected")
+        ok, s_ok = d_ok, False
+    else:
+        s_ok = _excludes_zero(slope.lo, slope.hi, -direction)
+        ok = d_ok and s_ok
+    if ok:
+        return "Supported"
+    if d_ok or s_ok:
+        return "Partially"
+    return "Rejected (opposite)" if _excludes_zero(delta.lo, delta.hi, -direction) else "Rejected"
 
 
 def overall_verdict(verdicts: Iterable[str]) -> str:
@@ -247,7 +254,7 @@ def overall_verdict(verdicts: Iterable[str]) -> str:
         return "Supported"
     if any(x in ("Supported", "Partially") for x in v):
         return "Partially"
-    return "Rejected"
+    return "Rejected"  # incluye «Rejected (opposite)»
 
 
 # ---------------------------------------------------------------- ρ̂ por juego y por parque

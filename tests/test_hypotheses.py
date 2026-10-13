@@ -47,7 +47,8 @@ def test_verdict_rules():
     assert H.verdict(e(-2, -1), -1, e(1, 2)) == "Supported"
     assert H.verdict(e(-2, -1), -1, e(-1, 1)) == "Partially"
     assert H.verdict(e(-1, 1), -1, e(-1, 1)) == "Rejected"
-    assert H.verdict(e(-2, -1), +1) == "Rejected"  # efecto significativo pero en dirección contraria
+    assert H.verdict(e(-2, -1), +1) == "Rejected (opposite)"  # significativo pero en dirección contraria
+    assert H.verdict(e(-1, 1), +1, e(-1, 1)) == "Rejected"
     assert H.overall_verdict(["Supported", "Rejected"]) == "Partially"
     assert H.overall_verdict(["Rejected"]) == "Rejected"
 

@@ -18,3 +18,4 @@
 - 1791903064 | REVIEW | victor-3 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4; evidence: c418ed9: shapes sobre translate proporcional de HACK-004; shape_shift riding 4S -0.22 / 4S +0.05 (antes -2.16/+1.99); label shift max 0.70 pp (criterio 0.5 NO cumplido, reportado); test_shapes 4 passed; reviewer: -
 - 1791903995 | REVIEW | victor-3 | heartbeat; lease until 1791918395
 - 1791904002 | REVIEW | victor-3 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4; evidence: 8a85416: merge de main (HACK-004 ya integrada); test_shapes+test_physics 12 passed; label shift 0.70pp documentado; reviewer: -
+- 1791905140 | REVIEW | victor-1 | review; reject; SHA 8a85416b72448ad465620eb2a95e432039134c94; reviewer victor-1

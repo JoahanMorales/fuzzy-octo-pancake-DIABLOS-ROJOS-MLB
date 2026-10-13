@@ -15,7 +15,7 @@ Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4
 Evidence: 8a85416: merge de main (HACK-004 ya integrada); test_shapes+test_physics 12 passed; label shift 0.70pp documentado
-Events: 9
+Events: 10
 Checkpoints: 1
 Sessions: 3
 Last-Checkpoint: 1791873359

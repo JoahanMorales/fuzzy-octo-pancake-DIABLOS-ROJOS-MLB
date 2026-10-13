@@ -1,0 +1,22 @@
+[project]
+name = "stuffplus"
+version = "0.1.0"
+description = "Stuff+ 2240: pitch quality adjusted for the air of Mexico City (ISAC Hackathon 2026, Diablos Rojos)"
+requires-python = ">=3.11"
+dependencies = []  # see requirements.txt
+
+[project.optional-dependencies]
+causal = ["econml>=0.15"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["stuffplus*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]

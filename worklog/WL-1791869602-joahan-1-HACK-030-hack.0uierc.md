@@ -15,3 +15,4 @@
 - 1791870982 | REVIEW | victor-2 | review; reject; SHA ae42b37227e4b4e0d77306c298321fc29ccdc49b; reviewer victor-2
 - 1791871697 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-030?expand=1; evidence: pytest tests/test_targets.py exit 0 (9 passed); reject fixed: lmb_vs_mlb.csv (MLB flagged unverified); smoke unchanged; reviewer: -
 - 1791873364 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-030?expand=1; evidence: pytest tests/test_targets.py exit 0 (11 passed); smoke exit 0; real data: rv_x sd 0.198 vs rv 0.267 (-26% noise), in-play corr(LW, xLW)=0.67; batted-ball value Extreme +0.087 vs sea +0.034 runs/BIP; LMB vs MLB table (MLB unverified) from previous reject fix; reviewer: -
+- 1791874035 | REVIEW | victor-1 | review; approve; SHA 210cd02b08804ad8bdc5572b76b5b5ef1c05ea72; reviewer victor-1

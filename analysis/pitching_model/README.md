@@ -33,8 +33,8 @@ probabilities turned into per-pitch rates and combined with a sign-constrained r
 ## Combination weights (`weights.csv`, runs per 1 sd of each rate)
 The sign-constrained fit keeps the component composite (+0.047) and P(out within PA) (−0.020), gives small weights
 to called strikes (−0.00045) and chases (−0.0007), and sets whiff, weak contact, groundball and hard-contact rates to
-0: their information is already inside the composite, and their unconstrained coefficients would take the "wrong"
-sign. Weights are stable across folds (fold sd ≤ 0.0004).
+0 (the sign-constrained optimum puts them on the bound; their information overlaps the composite). Weights are
+stable across folds (fold sd ≤ 0.0004).
 
 ## Limits
 - Exploratory/transductive parts: pitch identity, arsenal references, per-game air density and the LMB run values

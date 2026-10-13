@@ -1,6 +1,6 @@
 # HACK-030
 ID: HACK-030
-State: CLAIMED
+State: REVIEW
 Owner: joahan-1
 Branch: feat/hack-030
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-030
@@ -9,9 +9,9 @@ Priority: P0
 Paths: stuffplus/targets.py, reports/targets/, tests/test_targets.py
 Depends: None
 Verify: `python -m pytest -q tests/test_targets.py`
-Lease-Until: 1791872302
-Updated: 1791869602
+Lease-Until: 1791884391
+Updated: 1791869991
 Task-Base: 0e16deb8f07b4012d2ca009393a2f3f62c0d68f0
-Next: compute runs-to-end-of-half-inning with a reverse cumulative sum of `RunsScored` per (game, inning, half).
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-030?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-030?expand=1
 Evidence: -

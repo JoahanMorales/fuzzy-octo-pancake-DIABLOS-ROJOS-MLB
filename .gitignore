@@ -16,3 +16,5 @@ data/interim/
 *.rds
 !data/sample/*.parquet
 artifacts/models/
+bash.exe.stackdump
+*.stackdump

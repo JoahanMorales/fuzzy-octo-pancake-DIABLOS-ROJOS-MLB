@@ -1,0 +1,10 @@
+# Force LF everywhere: the kit scripts (.uak/bin, .githooks) break in bash with CRLF on Windows clones
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
+*.mp4 binary
+*.parquet binary
+*.pkl binary
+*.rds binary
+*.ps1 text eol=crlf

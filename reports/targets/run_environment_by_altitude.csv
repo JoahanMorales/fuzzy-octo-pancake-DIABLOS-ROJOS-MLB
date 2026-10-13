@@ -1,0 +1,4 @@
+altitude_category,pitches,re_inning_start,lw_HomeRun,lw_Single,lw_Walk,lw_Strikeout,lw_Out
+No Altitude,292377,0.739,1.4215,0.5053,0.3546,-0.3234,-0.3035
+Medium Altitude,154193,1.0035,1.5111,0.5533,0.4562,-0.4318,-0.4275
+Extreme Altitude,181032,1.1128,1.4402,0.5781,0.472,-0.4632,-0.4693

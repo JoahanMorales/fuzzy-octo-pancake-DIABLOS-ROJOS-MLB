@@ -1,7 +1,7 @@
 # worklog/WL-1791872434-victor-3-HACK-029-hack.asfPWe.md · HACK-029
 
 ## Live summary
-- Done: 8a85416: merge de main (HACK-004 ya integrada); test_shapes+test_physics 12 passed; label shift 0.70pp documentado
+- Done: 95a9d95: SpinRate fuera de identidad; label shift pitch_family max 0.49pp (null 0.40), APT 3.33; riding4S -0.15; tests 12 passed
 - Decision: rule-based shapes on sea-level-translated movement
 - Why: interpretable thresholds from real quantiles
 - Failing: usage shift 0.70pp > 0.5pp target
@@ -20,3 +20,4 @@
 - 1791904002 | REVIEW | victor-3 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4; evidence: 8a85416: merge de main (HACK-004 ya integrada); test_shapes+test_physics 12 passed; label shift 0.70pp documentado; reviewer: -
 - 1791905140 | REVIEW | victor-1 | review; reject; SHA 8a85416b72448ad465620eb2a95e432039134c94; reviewer victor-1
 - 1791905674 | REVIEW | victor-3 | heartbeat; lease until 1791920074
+- 1791905681 | REVIEW | victor-3 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/4; evidence: 95a9d95: SpinRate fuera de identidad; label shift pitch_family max 0.49pp (null 0.40), APT 3.33; riding4S -0.15; tests 12 passed; reviewer: -

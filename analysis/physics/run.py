@@ -19,7 +19,7 @@ FB = ["Four-Seam", "Sinker", "Cutter"]
 
 d = assign_pitch_id(clean(load_raw()))
 d = d[d.pitch_id >= 0].copy()
-d = d.join(aero.decompose(d)[["cd_proxy", "cl_proxy", "spin_eff"]])
+d = d.join(aero.decompose(d)[["cd_proxy", "cl_proxy"]])  # proxies ∝ ρ, no dependen de la densidad asumida
 d["is_fastball"] = d.pitch_family.isin(FB)
 
 # --- ρ̂ por juego (referencia: mediana de Cd-proxy de rectas en juegos sin altitud = 1.0)
@@ -32,6 +32,9 @@ games = pd.DataFrame({"rho_hat": rho_game, "bucket": bucket, "n_fb": d[d.is_fast
 games.groupby("bucket", observed=True).rho_hat.describe().round(4).to_csv(OUT / "rho_by_bucket.csv")
 games.round(4).to_csv(OUT / "rho_by_game.csv")  # agregado por juego, sin lanzamientos
 rho_b = d.groupby("altitude_category", observed=True).rho_hat.mean()
+
+# spin_eff con la densidad de cada juego (no la de nivel del mar para todos)
+d["spin_eff"] = aero.decompose(d, rho=d.rho_hat)["spin_eff"]
 
 # --- validación: Cl/Cd no debe depender de ρ (ambos ∝ ρ); dentro de cada lanzamiento (pitch_key)
 fb = d[d.is_fastball].copy()
@@ -50,7 +53,7 @@ rows = []
 for fam, g in d.groupby("pitch_family"):
     if len(g) < 3000:
         continue
-    est = MovementModel().fit(g, g.rho_hat).rho_effect
+    est = MovementModel().fit(g, g.rho_hat).delta_mean(g[g.altitude_category == "No Altitude"], rho_b["No Altitude"], rho_b["Extreme Altitude"])
     cl = g.groupby(["pitcher_anon_id", "year"]).ngroup().to_numpy()
     groups = {c: np.flatnonzero(cl == c) for c in np.unique(cl)}
     keys = np.array(list(groups))
@@ -60,10 +63,10 @@ for fam, g in d.groupby("pitch_family"):
         idx = np.concatenate([groups[c] for c in pick])
         gb = g.iloc[idx].copy()
         gb["pitch_key"] = gb["pitch_key"] + "_" + pd.Series(np.repeat(np.arange(len(pick)), [len(groups[c]) for c in pick]), index=gb.index).astype(str)
-        boots.append(MovementModel().fit(gb, gb.rho_hat).rho_effect)
+        boots.append(MovementModel().fit(gb, gb.rho_hat).delta_mean(gb[gb.altitude_category == "No Altitude"], rho_b["No Altitude"], rho_b["Extreme Altitude"]))
     for k in OUTCOMES:
-        b = np.array([x[k] for x in boots]) * dr
-        rows.append(dict(pitch_family=fam, outcome=k, delta=est[k] * dr, lo95=np.percentile(b, 2.5), hi95=np.percentile(b, 97.5), n=len(g)))
+        b = np.array([x[k] for x in boots])
+        rows.append(dict(pitch_family=fam, outcome=k, delta=est[k], lo95=np.percentile(b, 2.5), hi95=np.percentile(b, 97.5), n=len(g)))
 res = pd.DataFrame(rows).round(3)
 res.to_csv(OUT / "delta_extreme_vs_no.csv", index=False)
 print("Δρ Extreme−No =", round(dr, 4))

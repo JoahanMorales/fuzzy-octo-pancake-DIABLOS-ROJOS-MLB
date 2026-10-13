@@ -26,3 +26,5 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791902448 | HACK-004 | k proportional for ivb/hb/speed_drop, additive plate_velo | Why: joahan-1 reject 16abfbb
 - 1791902998 | HACK-010 | component xRV (5 outcomes x LMB values + contact) instead of direct rv regression | Why: direct regression on rv ~ noise; components stabilize 0.80
 - 1791907732 | HACK-009 | bootstrap por pitcher sobre tabla agregada; verdict fijado antes de datos | Why: advisor plan lock
+- 1791919410 | deadline lease/HACK-007/1791913457 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791919410 | deadline lease/HACK-010/1791918944 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.

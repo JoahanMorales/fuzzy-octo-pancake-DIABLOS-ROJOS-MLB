@@ -58,11 +58,11 @@ def _plot_heatmaps(grid: pd.DataFrame, path: Path, title: str) -> None:
             g = grid[(grid.AutoPitchType == pt) & (grid["count"] == cnt)]
             piv = g.pivot_table(index="PlateLocHeight", columns="plate_x_arm", values="loc_value")
             ax = axes[i][j]
-            im = ax.imshow(piv.to_numpy(), origin="lower", cmap="RdBu", vmin=-vmax, vmax=vmax,
+            im = ax.imshow(piv.to_numpy(), origin="lower", cmap="RdBu_r", vmin=-vmax, vmax=vmax,
                            extent=[piv.columns.min(), piv.columns.max(), piv.index.min(), piv.index.max()], aspect="auto")
             ax.add_patch(plt.Rectangle((-0.83, 1.5), 1.66, 2.0, fill=False, lw=1.5, color="black"))
             ax.set_title(f"{pt} · {cnt}", fontsize=10)
-            ax.set_xlabel("lado del brazo ← x (ft) → lado del guante" if i == len(types) - 1 else "")
+            ax.set_xlabel("x (ft): brazo ← → guante" if i == len(types) - 1 and j == len(counts) // 2 else "")
             ax.set_ylabel("altura (ft)" if j == 0 else "")
     fig.suptitle(title + "\n(azul = mejor para el pitcher; valor en carreras vs promedio del conteo)", fontsize=11)
     fig.colorbar(im, ax=axes, shrink=0.6, label="valor de ubicación (carreras, vista del bateador)")

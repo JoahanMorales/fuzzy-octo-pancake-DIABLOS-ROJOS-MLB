@@ -1,0 +1,3 @@
+component,metric,model,prior,count_baseline
+outcome (5 classes),logloss,1.02787,1.51624,1.45045
+contact value | in play,rmse,0.36021,0.36936,

@@ -47,8 +47,8 @@ def translate_movement(df: pd.DataFrame, rho_to, rho_from) -> pd.DataFrame:
     """Copy of ``df`` with IVB / HB / hb_arm scaled from ``rho_from`` air to ``rho_to`` air (Magnus ∝ ρ)."""
     out = df.copy()
     scale = np.asarray(rho_to, float) / np.asarray(rho_from, float)
-    for c in ("InducedVertBreak", "HorzBreak", "hb_arm"):
-        if c in out:
+    for c in ("InducedVertBreak", "HorzBreak", "hb_arm", "ivb_diff_fb", "hb_diff_fb"):
+        if c in out:  # the primary fastball's movement is in the same air, so the diffs scale too
             out[c] = out[c].astype(float) * scale
     out["rho"] = np.broadcast_to(np.asarray(rho_to, float), len(out)) if np.ndim(rho_to) == 0 else np.asarray(rho_to, float)
     return out
@@ -117,7 +117,17 @@ def _row_from_input(p) -> pd.DataFrame:
         "InducedVertBreak": p.ivb, "HorzBreak": p.hb, "hb_arm": p.hb * sign,
         "RelHeight": p.rel_height, "RelSide": p.rel_side, "rel_side_arm": p.rel_side * sign,
         "Extension": p.extension,
+        "arm_angle": float(np.degrees(np.arctan2(p.rel_height - 5.0, abs(p.rel_side)))),
     }
+    # arsenal context (HACK-010 features): differences vs the pitcher's primary fastball, if known
+    ars = p.arsenal or {}
+    if {"fb_velo", "fb_ivb", "fb_hb"} <= set(ars):
+        row.update(velo_diff_fb=p.velo - ars["fb_velo"], ivb_diff_fb=p.ivb - ars["fb_ivb"],
+                   hb_diff_fb=(p.hb - ars["fb_hb"]) * sign)
+    elif p.pitch_type in ("Four-Seam", "Sinker"):
+        row.update(velo_diff_fb=0.0, ivb_diff_fb=0.0, hb_diff_fb=0.0)  # the pitch is its own primary fastball
+    else:
+        row.update(velo_diff_fb=np.nan, ivb_diff_fb=np.nan, hb_diff_fb=np.nan)
     if p.plate_x is not None and p.plate_z is not None:
         same = None if p.batter_side is None else int(p.batter_side == p.throws)
         row.update(plate_x_arm=p.plate_x * sign, PlateLocHeight=p.plate_z, PlateLocSide=p.plate_x,

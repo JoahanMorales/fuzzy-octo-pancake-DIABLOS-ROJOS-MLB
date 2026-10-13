@@ -1,0 +1,5 @@
+model,n,rmse,mae,r2,bias,skill_vs_baseline,skill_lo,skill_hi,baseline_name
+baseline,627602.0,0.19776,0.12787,0.00223,0.0,0.0,0.0,0.0,mean xRV by count
+stuff_v1,627602.0,0.19782,0.12823,0.00163,-0.00086,-0.0003,-0.00056,-6e-05,mean xRV by count
+baseline,627602.0,0.19796,0.12822,0.00023,-0.0,0.0,0.0,0.0,mean xRV by pitch type
+stuff_v1,627602.0,0.19782,0.12823,0.00163,-0.00086,0.0007,0.0005,0.00088,mean xRV by pitch type

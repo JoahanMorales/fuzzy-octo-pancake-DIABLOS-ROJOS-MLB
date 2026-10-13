@@ -1,0 +1,25 @@
+escenario,sigma_xrv,lanzamientos,carreras,entorno,carreras_por_victoria,victorias
+modelo débil (R²=0.25 % del xRV),0.0099,100,0.09899,liga,11.78496,0.0084
+modelo débil (R²=0.25 % del xRV),0.0099,100,0.09899,Harp Helú (bucket Extreme),14.32902,0.00691
+modelo débil (R²=0.25 % del xRV),0.0099,500,0.49495,liga,11.78496,0.042
+modelo débil (R²=0.25 % del xRV),0.0099,500,0.49495,Harp Helú (bucket Extreme),14.32902,0.03454
+modelo débil (R²=0.25 % del xRV),0.0099,1000,0.98991,liga,11.78496,0.084
+modelo débil (R²=0.25 % del xRV),0.0099,1000,0.98991,Harp Helú (bucket Extreme),14.32902,0.06908
+modelo débil (R²=0.25 % del xRV),0.0099,2500,2.47477,liga,11.78496,0.20999
+modelo débil (R²=0.25 % del xRV),0.0099,2500,2.47477,Harp Helú (bucket Extreme),14.32902,0.17271
+modelo moderado (R²=1 %),0.0198,100,0.19798,liga,11.78496,0.0168
+modelo moderado (R²=1 %),0.0198,100,0.19798,Harp Helú (bucket Extreme),14.32902,0.01382
+modelo moderado (R²=1 %),0.0198,500,0.98991,liga,11.78496,0.084
+modelo moderado (R²=1 %),0.0198,500,0.98991,Harp Helú (bucket Extreme),14.32902,0.06908
+modelo moderado (R²=1 %),0.0198,1000,1.97982,liga,11.78496,0.168
+modelo moderado (R²=1 %),0.0198,1000,1.97982,Harp Helú (bucket Extreme),14.32902,0.13817
+modelo moderado (R²=1 %),0.0198,2500,4.94954,liga,11.78496,0.41999
+modelo moderado (R²=1 %),0.0198,2500,4.94954,Harp Helú (bucket Extreme),14.32902,0.34542
+modelo fuerte (R²=3 %),0.03429,100,0.34291,liga,11.78496,0.0291
+modelo fuerte (R²=3 %),0.03429,100,0.34291,Harp Helú (bucket Extreme),14.32902,0.02393
+modelo fuerte (R²=3 %),0.03429,500,1.71457,liga,11.78496,0.14549
+modelo fuerte (R²=3 %),0.03429,500,1.71457,Harp Helú (bucket Extreme),14.32902,0.11966
+modelo fuerte (R²=3 %),0.03429,1000,3.42914,liga,11.78496,0.29098
+modelo fuerte (R²=3 %),0.03429,1000,3.42914,Harp Helú (bucket Extreme),14.32902,0.23931
+modelo fuerte (R²=3 %),0.03429,2500,8.57285,liga,11.78496,0.72744
+modelo fuerte (R²=3 %),0.03429,2500,8.57285,Harp Helú (bucket Extreme),14.32902,0.59829

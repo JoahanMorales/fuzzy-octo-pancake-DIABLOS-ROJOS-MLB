@@ -8,7 +8,8 @@ ruler, so ΔStuff+ = Stuff+(Harp Helú air) − Stuff+(sea level). CIs resample 
 
 ## Results (real data, 2026-10-13) · `delta_by_shape.csv`, `forest_by_shape.png`
 
-League average: **−10.3 Stuff+** in Harp Helú air (less break and every batted ball worth ≈ +0.04 runs more).
+League average: **−10.3 Stuff+** in Harp Helú air (less break, and a ball in play is worth +0.032 to +0.065 more
+runs to the hitter depending on the shape: `delta_contact_runs`).
 
 | Holds up best (relative to league) | ΔStuff+ [95 % CI] | Loses most | ΔStuff+ [95 % CI] |
 |---|---|---|---|
@@ -36,3 +37,6 @@ Mean ΔStuff+ by shape for ρ = 1.0 → 0.80, which covers every LMB park (Mediu
   `reports/stuff_model/` (pitcher-grouped OOF) and HACK-014.
 - ρ is game-level, so the model's ρ effect can absorb park traits that travel with altitude; the within-pitcher
   observed check bounds that.
+- Exploratory/transductive parts: the pitch identity, the per-family physics (`fit_shapes`), the per-game air density
+  and the LMB run values behind `rv_x` are estimated once on all the data; no step uses a pitch's own outcome as a
+  feature, but treat CIs as conditional on those fitted inputs.

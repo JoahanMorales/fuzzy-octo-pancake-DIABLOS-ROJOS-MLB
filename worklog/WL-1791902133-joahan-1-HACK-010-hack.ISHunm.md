@@ -6,7 +6,7 @@
 - Why: direct regression on rv ~ noise; components stabilize 0.80
 - Failing: none
 - Commands: pytest tests/test_model_stuff.py; python analysis/stuff_model/run.py
-- Next: Humano: Diff outside Paths: stuffplus/serving.py (new test files: add the dir to Additive-Paths in PROJECT.md)
+- Next: Integrated in main: f0de095681b4c572ce62e45430de89a9f89dce77 (recorded by joahan-1)
 
 ## History
 - 1791902133 | CLAIMED | joahan-1 | claim; next: feature matrix builder using `train_lgbm_oof` from `models/common.py`.
@@ -15,3 +15,4 @@
 - 1791903698 | REVIEW | victor-1 | review; approve; SHA 58d27aa89b96f608ff2a5bda9141af9ce70faec0; reviewer victor-1
 - 1791904544 | REVIEW | joahan-1 | heartbeat; lease until 1791918944
 - 1791904572 | REVIEW | joahan-1 | merge rechazado; Diff outside Paths: stuffplus/serving.py (new test files: add the dir to Additive-Paths in PROJECT.md)
+- 1791919828 | INTEGRATED | joahan-1 | integrate; recorded by joahan-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-010?expand=1; merged f0de095681b4c572ce62e45430de89a9f89dce77; proof ancestry

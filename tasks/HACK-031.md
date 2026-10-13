@@ -15,8 +15,8 @@ Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
 Next: Humano: Diff outside Paths: tests/conftest.py (new test files: add the dir to Additive-Paths in PROJECT.md)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-031?expand=1
 Evidence: pytest tests/test_serving.py exit 0 (8 passed); full suite 60 passed; smoke exit 0 PRODUCT_PASS; real run analysis/v0/run.py -> artifacts/bundle (api.predict_pitch now real, demo_data False). v0 = plumbing only: rv skill +0.02% (CI .003-.031%), best iters 25-66 => rv too noisy; physics signal confirmed (OOF AUC whiff .634 vs .605, GB .615 vs .527); see analysis/v0/README.md. Scope notes: tests/conftest.py autouse isolation (HACK-001 owner = me); dashboard acceptance waits on HACK-007 (app/ not created here). Stacked on 030/013/005.
-Events: 6
+Events: 7
 Checkpoints: 1
 Sessions: 2
 Last-Checkpoint: 1791873055
-Task-Tip: badd9b5daac63897a3d36a3cbb3e4ddef1f870a6
+Task-Tip: 8dbc14d87cb11ca8d6fba3ba23b89ab618bbed7a

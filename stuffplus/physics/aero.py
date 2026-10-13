@@ -17,12 +17,14 @@ from .constants import (
 _NEEDED = ["vx0", "vy0", "vz0", "ax0", "ay0", "az0"]
 
 
-def decompose(df: pd.DataFrame, rho_si: float = RHO_SI_SEA_LEVEL) -> pd.DataFrame:
+def decompose(df: pd.DataFrame, rho=1.0, rho_si: float = RHO_SI_SEA_LEVEL) -> pd.DataFrame:
     """Devuelve drag/Magnus/Cd/Cl-proxy, eficiencia de giro y giro activo por lanzamiento.
 
     drag: aceleración a lo largo de −v (ft/s², >0 frena). magnus: aceleración ⊥ v con gravedad
-    retirada. cd_proxy = drag/v², cl_proxy = magnus/v² (1/ft; escalan ∝ ρ). cl/spin_eff usan
-    `rho_si` (kg/m³) solo para pasar a coeficientes adimensionales (Nathan: Cl = 1/(2.32+0.4/S)).
+    retirada. cd_proxy = drag/v², cl_proxy = magnus/v² (1/ft; escalan ∝ ρ). cd/cl/spin_eff pasan a
+    coeficientes adimensionales con la densidad *de cada lanzamiento*: `rho` (relativa a nivel del mar, escalar o
+    serie alineada con `df`, p.ej. ρ̂ del juego) × `rho_si` (kg/m³ a nivel del mar). Con `rho=1.0` se asume nivel
+    del mar para todos: en altura eso sesga Cl y la eficiencia de giro a la baja (Nathan: Cl = 1/(2.32+0.4/S)).
     """
     v = df[["vx0", "vy0", "vz0"]].to_numpy(float)
     a = df[["ax0", "ay0", "az0"]].to_numpy(float).copy()
@@ -42,7 +44,8 @@ def decompose(df: pd.DataFrame, rho_si: float = RHO_SI_SEA_LEVEL) -> pd.DataFram
     out["cl_proxy"] = magnus / speed**2
 
     # coeficientes adimensionales: a = 0.5 ρ A C v² / m  (SI)
-    k = 0.5 * rho_si * BALL_AREA_M2 / BALL_MASS_KG * FT_TO_M  # a[ft/s²]/v²[ft/s]² -> C
+    rho_pitch = rho_si * np.broadcast_to(np.asarray(rho, float), len(df))  # kg/m³ por lanzamiento
+    k = 0.5 * rho_pitch * BALL_AREA_M2 / BALL_MASS_KG * FT_TO_M  # a[ft/s²]/v²[ft/s]² -> C
     cd = out["cd_proxy"] / k
     cl = out["cl_proxy"] / k
     out["cd"], out["cl"] = cd, cl

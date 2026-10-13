@@ -1,0 +1,5 @@
+seasons: [2024, 2025, 2026] louvain resolution: {2024: 4.0, 2025: 2.5, 2026: 1.25}
+2024: teams=20 median_home_games=44 min_purity=1.00 buckets={'No Altitude': 9, 'Extreme Altitude': 6, 'Medium Altitude': 5}
+2025: teams=20 median_home_games=43 min_purity=1.00 buckets={'No Altitude': 9, 'Extreme Altitude': 6, 'Medium Altitude': 5}
+2026: teams=20 median_home_games=22 min_purity=1.00 buckets={'No Altitude': 9, 'Extreme Altitude': 6, 'Medium Altitude': 5}
+P(franchise 11 lower rho than 5) = 0.832

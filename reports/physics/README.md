@@ -16,9 +16,15 @@
 | Medium | 0.892 | 0.042 |
 | Extreme | 0.841 | 0.033 |
 
-Δ Extreme − No para la recta (efectos fijos por pitcher×temporada×pitch_id, IC bootstrap 95 % por pitcher-temporada): **ΔIVB −3.51" [−3.57, −3.43]**, ΔHB −1.23", **la recta llega +1.30 mph más rápida** (speed drop −1.30; referencia exploratoria −3.7" y −1.36 mph). Otras familias en `delta_extreme_vs_no.csv`.
+Δ Extreme − No (modelo de efectos fijos por pitcher×temporada×pitch_id; el efecto de ρ es **proporcional al movimiento propio** del lanzamiento, Magnus y arrastre ∝ ρ; IC bootstrap 95 % por pitcher-temporada): recta **ΔIVB −3.54" [−3.60, −3.46]**, ΔHB −1.15", **llega +1.30 mph más rápida** (referencia exploratoria −3.7" y −1.36 mph). La curva *pierde caída* (ΔIVB +1.58" [+1.43, +1.74], signo contrario a la recta) y un ride mayor cambia más que uno menor. Otras familias en `delta_extreme_vs_no.csv`.
 
 **Advertencias honestas.**
+- La eficiencia de giro usa ρ̂ de cada juego (antes se usaba nivel del mar para todos: 0.62 en No Altitude vs 0.40 en Extreme, artefacto del aire). Ahora 0.61 vs 0.52; el residuo (~15 %) viene del punto de abajo.
 - Validación Cl/Cd **parcial**: Cd-proxy cae 16 % en Extreme pero Cl-proxy cae 24 % (`validation_cl_cd.csv`). Si ambos fueran ∝ ρ la razón sería constante; baja ~9 %. No descarta un artefacto de calibración de Trackman por parque, ni un efecto real de Reynolds/giro. Los Δ de movimiento se estiman empíricamente, no del modelo Cl teórico.
 - Los IC solo propagan incertidumbre del coeficiente de ρ, no la de Δρ ni de la identidad de lanzamiento.
-- `RHO_HARP_HELU` sigue en el valor barométrico (≈0.75, ISA 2,240 m, 20 °C) hasta que HACK-003 entregue el empírico; el ρ̂ de arriba es relativo a juegos de tierras bajas, no a ISA.
+- `RHO_HARP_HELU` = 0.819 (ρ̂ agrupado de HACK-003, IC95 % 0.814–0.824; identidad CDMX vs Puebla sin verificar); el barométrico en la misma escala da ≈0.79. HACK-003 debe sustituirlo por el estimador agrupado.
+
+## Pendiente / no resuelto
+
+- **Brecha de ~15 % en la eficiencia de giro entre No Altitude (0.61) y Extreme (0.52) sigue sin explicarse.** Cl-proxy cae 24 % contra 16 % de Cd-proxy y ρ̂: Cl/Cd no es constante. Puede ser un efecto real (Reynolds / régimen de giro a menor densidad) o un artefacto de calibración de Trackman por parque; los datos no lo distinguen.
+- Por eso **no se presentan deltas de `spin_eff` entre altitudes como un hecho**; solo se usa para el Δ de movimiento, que se estima empíricamente (efectos fijos por pitch_key), no del modelo Cl teórico.

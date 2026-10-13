@@ -168,7 +168,7 @@ def centroids(frame: pd.DataFrame, keys: Sequence[str] = ("pitcher_anon_id", "ye
     g = frame.groupby(list(keys), observed=True)
     out = g[num].mean()
     out["n"] = g.size()
-    out = out[out["n"] >= min_n].reset_index()
+    out = out[out["n"] >= min_n].reset_index().dropna(subset=[c for c in PROFILE_FEATURES if c in out])
     out["usage"] = out["n"] / out.groupby(["pitcher_anon_id", "year"])["n"].transform("sum")
     out["is_rhp"] = out["is_rhp"].round().astype(int)
     out["rho"] = 1.0
@@ -216,7 +216,7 @@ def best_fastballs(model, scaler, cents: pd.DataFrame, rho_alt: float, top: int 
 def secondaries_given_fastball(model, scaler, cents: pd.DataFrame, fastball: pd.Series, rho_alt: float) -> pd.DataFrame:
     """Each observed secondary profile re-anchored on ``fastball``; kept only if (traits + diffs) stay in the hull."""
     sec = cents[~cents["pitch_family"].astype(str).isin(FASTBALL_FAMILIES)].copy()
-    ref = sec[PROFILE_FEATURES + DIFF_FEATURES].to_numpy(float)
+    ref = sec[PROFILE_FEATURES + DIFF_FEATURES].dropna().to_numpy(float)  # pitchers without a primary fastball have no diffs
     sec["velo_diff_fb"] = sec["RelSpeed"] - fastball["RelSpeed"]
     sec["ivb_diff_fb"] = sec["InducedVertBreak"] - fastball["InducedVertBreak"]
     sec["hb_diff_fb"] = sec["hb_arm"] - fastball["hb_arm"]

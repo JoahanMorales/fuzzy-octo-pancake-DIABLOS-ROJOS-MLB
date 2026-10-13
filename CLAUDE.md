@@ -1,6 +1,26 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
 # Shared instructions
 
 @AGENTS.md
+
+## Project: Stuff+ 2240 (ISAC Hackathon 2026 · Diablos Rojos, sprint mode)
+Stuff+ model for LMB pitching adjusted for air density (Harp Helú, CDMX, 2240 m). Deadline 2026-10-22 23:59 CDMX. Read `IDEA.md` for the thesis, `.uak/PROJECT.md` for the rubric (C1–C4, 25 % each) and event rules, `.uak/TASKS.md` for the HACK-NNN backlog (each task has `Paths`, `Acceptance`, `Verify`). The repo is at the planning stage: the `stuffplus/` package, `tests/` and `requirements.txt` come from HACK-001 and may not exist yet.
+
+Planned layout (from TASKS.md): `stuffplus/` (library: `io`, `schema`, `splits`, `baseline`, `features/identity`, `physics/constants`), `analysis/<task>/run.py` (heavy runs, write to `reports/<task>/`), `artifacts/` (models + aggregates the dashboard ships), Streamlit dashboard on port 8501.
+
+Commands (Python ≥ 3.11; use `python`, not `python3`, on Windows):
+- `pip install -r requirements.txt` (`pyarrow>=20` required for the parquet)
+- Tests: `bash .uak/bin/q python -m pytest -q --tb=short -x tests/test_x.py::test_name`; always use the task's own `Verify` line.
+
+Domain rules that span many tasks:
+- Raw data lives only in git-ignored `data/raw/stuff_model_df.parquet`. Never commit raw data or pitch-level outputs; commit code, aggregates (CSV ≤ 2 MB) and figures. Deployed views show aggregates only, never per-pitch scatters. Load data only via `stuffplus.io.load_raw()` / `stuffplus.schema.clean()`; tests use the synthetic fixture in `tests/conftest.py`.
+- Pitch identity must not depend on altitude: Trackman's `AutoPitchType` shifts with air density. Compare by `pitch_id` from `stuffplus.features.identity` (HACK-029), never by `AutoPitchType`.
+- Two Stuff+ flavours, always labelled: park-neutral (sea-level ρ, 100 = LMB average) and environment (scored at a given ρ). ΔStuff+ CDMX = environment(ρ_HH) − neutral.
+- Use the shared splits (`stuffplus/splits.py`) and the null baseline (`stuffplus/baseline.py`); every model reports against the baseline. Physics constants (incl. the Harp Helú density) live in `stuffplus/physics/constants.py`; never hardcode 2240.
+- UI text is in Spanish; visual identity is Diablos red + black.
 
 Load `.uak/docs/` only when `AGENTS.md` §7 or your mode says so. Minimal context leaves tokens for the task.
 

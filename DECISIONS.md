@@ -24,3 +24,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791899057 | HACK-007 | implement brief direction only; lock left to human | Why: needs luis pick
 - 1791900367 | HACK-003 | ship via uak done after HACK-030 landed on main | Why: last pending criterion was unblocked
 - 1791902448 | HACK-004 | k proportional for ivb/hb/speed_drop, additive plate_velo | Why: joahan-1 reject 16abfbb
+- 1791902998 | HACK-010 | component xRV (5 outcomes x LMB values + contact) instead of direct rv regression | Why: direct regression on rv ~ noise; components stabilize 0.80

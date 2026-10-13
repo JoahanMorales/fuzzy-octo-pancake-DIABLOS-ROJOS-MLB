@@ -78,7 +78,12 @@ def run(d: pd.DataFrame, model, scaler, fast: bool = False) -> dict:
         base = sea[mask].sample(min(int(mask.sum()), n_base), random_state=SEED)
         p = profile.pdp_2d(model, scaler, base, profile.PROFILE_FEATURES, rhos, n_grid=5 if fast else 9).assign(group=group)
         pdps.append(p)
-        sens.append(profile.rho_sensitivity(p, RHO_HARP_HELU).assign(group=group))
+        phys = profile.pdp_2d(model, scaler, base, profile.PROFILE_FEATURES, [1.0, RHO_HARP_HELU],
+                              n_grid=5 if fast else 9, direct=False)
+        p_s = profile.rho_sensitivity(p, RHO_HARP_HELU)
+        f_s = profile.rho_sensitivity(phys, RHO_HARP_HELU)[["feature", "swing_alt", "verdict"]]
+        sens.append(p_s.merge(f_s.rename(columns={"swing_alt": "swing_alt_physics_only", "verdict": "verdict_physics_only"}),
+                              on="feature").assign(group=group))
         hs.append(profile.h_statistic(p).assign(group=group))
     pdp, sens, hstat = pd.concat(pdps), pd.concat(sens), pd.concat(hs)
     shap_tab = _shap(model, scaler, d, fast)
@@ -105,6 +110,7 @@ def run(d: pd.DataFrame, model, scaler, fast: bool = False) -> dict:
         {"item": "perfiles_recta_en_casco", "value": fb_stats["candidates"]},
         {"item": "spearman_recta_altitud_vs_mar", "value": fb_stats["spearman_alt_vs_sea"]},
         {"item": "top10_recta_coinciden", "value": fb_stats["top_overlap"]},
+        {"item": "spearman_recta_solo_fisica_vs_mar", "value": fb_stats["spearman_physics_only_vs_sea"]},
         {"item": "secundarios_en_casco_con_mejor_recta", "value": len(sec)},
         {"item": "arsenales_3", "value": len(ars)},
         {"item": "spearman_arsenal_altitud_vs_mar", "value": float(ars["stuff_alt"].corr(ars["stuff_sea"], method="spearman")) if len(ars) else np.nan},
@@ -170,10 +176,22 @@ def _md(res: dict) -> str:
         "## Qué rasgos importan más en altitud (`rho_sensitivity.csv`, rectas)", "",
         "Dependencia parcial: el rasgo se fija en una rejilla (cuantiles 5–95 %) con el movimiento definido a nivel del mar, "
         "se traslada al aire de cada ρ con la física de HACK-015 y se puntúa. *Swing* = cambio de Stuff+ entre p5 y p95.", "",
-        "| rasgo | swing mar | swing Harp Helú | veredicto |", "|---|---:|---:|---|",
+        "Dos vías del aire: **total** (física + rasgo `rho` del modelo) y **solo física** (movimiento trasladado, `rho` del modelo "
+        "fijo a nivel del mar). Si el veredicto cambia entre ambas, el efecto viene de lo que el modelo aprendió de los juegos "
+        "en altura y no solo de Magnus ∝ ρ.", "",
+        "| rasgo | swing mar | swing Harp Helú (total) | veredicto total | swing Harp Helú (solo física) | veredicto solo física |",
+        "|---|---:|---:|---|---:|---|",
     ]
     for f, r in fbs.iterrows():
-        lines.append(f"| {r.label} | {r.swing_sea:+.2f} | {r.swing_alt:+.2f} | {r.verdict} |")
+        lines.append(f"| {r.label} | {r.swing_sea:+.2f} | {r.swing_alt:+.2f} | {r.verdict} | "
+                     f"{r.swing_alt_physics_only:+.2f} | {r.verdict_physics_only} |")
+    ivb = res["pdp"][(res["pdp"].group == "rectas") & (res["pdp"].feature == "InducedVertBreak")]
+    ivb = ivb.pivot_table(index="value", columns="rho", values="stuff_plus")
+    lines += ["", "IVB de la recta (`pdp_2d.csv`): Stuff+ medio al fijar el IVB a nivel del mar, lanzado en cada aire.", "",
+              "| IVB a nivel del mar (in) | " + " | ".join(f"ρ = {r:.3f}" for r in ivb.columns) + " |",
+              "|---:|" + "---:|" * len(ivb.columns)]
+    for v, r in ivb.iterrows():
+        lines.append(f"| {v:.1f} | " + " | ".join(f"{x:.1f}" for x in r) + " |")
     lines += ["", f"- Importan **más** en altitud: {', '.join(more.label) or 'ninguno'}.",
               f"- Importan **menos** en altitud: {', '.join(less.label) or 'ninguno'}.",
               f"- Interacción rasgo × ρ más fuerte (H², `h_statistic.csv`): {h.iloc[0].feature} ({h.iloc[0].h2_rho:.3f}).", "",
@@ -186,7 +204,8 @@ def _md(res: dict) -> str:
               "## Mejor recta observada en el aire del Harp Helú (`best_fastballs.csv`)", "",
               f"Perfiles de recta dentro del casco de datos (kNN): {int(summ['perfiles_recta_en_casco'])}. "
               f"Correlación de rangos altitud vs mar: {summ['spearman_recta_altitud_vs_mar']:.3f}; "
-              f"coinciden {int(summ['top10_recta_coinciden'])} de las 10 mejores.", "",
+              f"coinciden {int(summ['top10_recta_coinciden'])} de las 10 mejores. Solo con la vía física, la correlación es "
+              f"{summ['spearman_recta_solo_fisica_vs_mar']:.3f}.", "",
               f"La mejor: {top.pitch_family}, {top.RelSpeed:.1f} mph, IVB {top.InducedVertBreak:.1f}\" y HB {top.hb_arm:.1f}\" a nivel del mar, "
               f"extensión {top.Extension:.2f} ft, salida {top.RelHeight:.2f} ft → Stuff+ {top.stuff_alt:.1f} en el Harp Helú "
               f"({top.stuff_sea:.1f} a nivel del mar, Δ {top.delta:+.1f}).", "",
@@ -201,7 +220,9 @@ def _md(res: dict) -> str:
               "- `add_stuff_features` (HACK-010) elige la recta principal por `AutoPitchType`, no por `pitch_family`.",
               "- La interacción SHAP con ρ (`shap_rho_interaction.csv`) mide solo la vía directa del rasgo `rho`; la vía física "
               "(menos Magnus) está en la dependencia parcial.",
-              "- Escalas transductivas: identidad, densidad y valores de carrera se ajustan con todos los datos antes de puntuar."]
+              "- Escalas transductivas: identidad, densidad y valores de carrera se ajustan con todos los datos antes de puntuar.",
+              "- Los quintiles extremos de velocidad y extensión incluyen lecturas atípicas de Trackman (ver límites en `delta_by_trait.csv`).",
+              "- Requiere HACK-015 en `main` (`stuffplus.altitude`, `analysis/altitude_delta`)."]
     return "\n".join(lines) + "\n"
 
 

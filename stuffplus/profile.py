@@ -38,9 +38,14 @@ def to_sea_level(model, df: pd.DataFrame) -> pd.DataFrame:
     return model.translate(df, 1.0, df["rho"].to_numpy(float))
 
 
-def stuff_plus_at(model, scaler, frame: pd.DataFrame, rho: float) -> np.ndarray:
-    """Stuff+ of ``frame`` (movement at sea level) thrown in air ``rho``, on the park-neutral reference scale."""
+def stuff_plus_at(model, scaler, frame: pd.DataFrame, rho: float, direct: bool = True) -> np.ndarray:
+    """Stuff+ of ``frame`` (movement at sea level) thrown in air ``rho``, on the park-neutral reference scale.
+
+    ``direct=False`` keeps the model's ``rho`` feature at sea level: only the physics path (less Magnus) acts.
+    """
     t = model.translate(frame, rho, frame["rho"].to_numpy(float))
+    if not direct:
+        t["rho"] = 1.0
     x = model.predict_components(t)["xrv"].to_numpy(float)
     if scaler.by and all(c in frame for c in scaler.by):
         return scaler.transform(frame[list(scaler.by)].assign(x=x), "x").to_numpy(float)
@@ -65,7 +70,7 @@ def set_feature(frame: pd.DataFrame, feature: str, value: float) -> pd.DataFrame
 
 
 def pdp_2d(model, scaler, base: pd.DataFrame, features: Sequence[str], rhos: Sequence[float],
-           n_grid: int = 9, q: tuple[float, float] = (0.05, 0.95)) -> pd.DataFrame:
+           n_grid: int = 9, q: tuple[float, float] = (0.05, 0.95), direct: bool = True) -> pd.DataFrame:
     """Mean Stuff+ over ``base`` (sea-level movement) with one feature fixed on a grid, thrown at each ρ."""
     rows = []
     for f in features:
@@ -74,7 +79,7 @@ def pdp_2d(model, scaler, base: pd.DataFrame, features: Sequence[str], rhos: Seq
             framed = set_feature(base, f, float(v))
             for rho in rhos:
                 rows.append({"feature": f, "value": float(v), "rho": float(rho),
-                             "stuff_plus": float(np.mean(stuff_plus_at(model, scaler, framed, rho)))})
+                             "stuff_plus": float(np.mean(stuff_plus_at(model, scaler, framed, rho, direct)))})
     return pd.DataFrame(rows)
 
 
@@ -194,6 +199,7 @@ def score_profiles(model, scaler, profiles: pd.DataFrame, rho_alt: float) -> pd.
     out = profiles.copy()
     out["stuff_sea"] = stuff_plus_at(model, scaler, out, 1.0)
     out["stuff_alt"] = stuff_plus_at(model, scaler, out, rho_alt)
+    out["stuff_alt_physics"] = stuff_plus_at(model, scaler, out, rho_alt, direct=False)
     out["delta"] = out["stuff_alt"] - out["stuff_sea"]
     return out
 
@@ -209,7 +215,8 @@ def best_fastballs(model, scaler, cents: pd.DataFrame, rho_alt: float, top: int 
     top_alt = set(fb.nsmallest(top, "rank_alt").index)
     top_sea = set(fb.nsmallest(top, "rank_sea").index)
     stats = {"candidates": int(len(fb)), "spearman_alt_vs_sea": float(fb["stuff_alt"].corr(fb["stuff_sea"], method="spearman")),
-             "top_overlap": len(top_alt & top_sea), "top": top}
+             "top_overlap": len(top_alt & top_sea), "top": top,
+             "spearman_physics_only_vs_sea": float(fb["stuff_alt_physics"].corr(fb["stuff_sea"], method="spearman"))}
     return fb.sort_values("stuff_alt", ascending=False), stats
 
 

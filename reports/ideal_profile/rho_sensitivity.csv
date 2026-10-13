@@ -1,0 +1,19 @@
+feature,label,slope_sea,swing_sea,slope_alt,swing_alt,swing_change,swing_change_rel,verdict,swing_alt_physics_only,verdict_physics_only,group
+InducedVertBreak,IVB (in),1.1969,20.8628,0.3642,7.6192,-13.2436,-0.6348,importa menos en altitud,3.1411,importa menos en altitud,rectas
+hb_arm,HB lado del brazo (in),0.3903,10.0365,-0.1979,-3.4951,-6.5414,-0.6518,importa menos en altitud,-2.7411,importa menos en altitud,rectas
+Extension,extensión (ft),1.504,2.2235,2.5809,4.9191,2.6957,1.2124,importa más en altitud,3.3886,importa más en altitud,rectas
+arm_angle,ángulo de brazo (°),-0.1045,-6.5128,-0.0707,-4.8533,-1.6596,-0.2548,importa menos en altitud,-6.6066,igual,rectas
+RelHeight,altura de salida (ft),-1.3325,-1.3267,-2.1311,-2.92,1.5933,1.2009,importa más en altitud,-1.9207,importa más en altitud,rectas
+RelSpeed,velocidad (mph),1.0227,8.3691,0.9969,9.4236,1.0544,0.126,importa más en altitud,6.8461,importa menos en altitud,rectas
+rel_side_arm,salida lateral (ft),2.4221,7.1971,2.8048,6.1582,-1.0389,-0.1443,importa menos en altitud,5.6185,importa menos en altitud,rectas
+spin_axis_arm,eje de giro (°),-0.0882,-7.0466,-0.1106,-7.7022,0.6556,0.093,igual,-7.9014,importa más en altitud,rectas
+SpinRate,giro (rpm),-0.0022,-1.7263,0.0018,2.0714,0.3452,0.1999,importa más en altitud,-2.2151,importa más en altitud,rectas
+InducedVertBreak,IVB (in),0.4929,11.2674,-0.0003,-1.3021,-9.9653,-0.8844,importa menos en altitud,4.6085,importa menos en altitud,secundarios
+RelSpeed,velocidad (mph),0.2391,3.5297,0.7119,10.3211,6.7915,1.9241,importa más en altitud,4.3347,importa más en altitud,secundarios
+hb_arm,HB lado del brazo (in),-0.2155,-5.8749,-0.3579,-10.9575,5.0826,0.8652,importa más en altitud,-7.2916,importa más en altitud,secundarios
+SpinRate,giro (rpm),0.0021,3.1243,0.0052,7.9292,4.8049,1.5379,importa más en altitud,3.1404,igual,secundarios
+rel_side_arm,salida lateral (ft),1.1031,3.6744,0.342,-0.0667,-3.6077,-0.9818,importa menos en altitud,3.5085,igual,secundarios
+spin_axis_arm,eje de giro (°),-0.0155,-4.1179,-0.005,-1.1254,-2.9925,-0.7267,importa menos en altitud,-3.2422,importa menos en altitud,secundarios
+Extension,extensión (ft),-2.1692,-4.5303,-1.3504,-2.2365,-2.2938,-0.5063,importa menos en altitud,-4.288,igual,secundarios
+RelHeight,altura de salida (ft),0.4183,1.2761,0.3796,2.3661,1.09,0.8542,importa más en altitud,1.1743,igual,secundarios
+arm_angle,ángulo de brazo (°),0.0023,-0.6437,0.0082,0.2362,-0.4075,-0.6331,importa menos en altitud,-1.9049,importa más en altitud,secundarios

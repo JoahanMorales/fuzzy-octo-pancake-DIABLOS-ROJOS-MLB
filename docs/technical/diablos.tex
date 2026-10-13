@@ -1,0 +1,17 @@
+% Estilo Diablos Rojos: rojo + negro. Se incluye con pandoc -H docs/technical/diablos.tex
+\usepackage{xcolor}
+\definecolor{diablos}{HTML}{C8102E}
+\definecolor{tinta}{HTML}{111111}
+\usepackage{sectsty}
+\sectionfont{\color{diablos}\bfseries}
+\subsectionfont{\color{tinta}\bfseries}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=diablos, urlcolor=diablos, citecolor=tinta}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{diablos}{\textbf{Stuff+ 2240}}}
+\fancyhead[R]{\textcolor{tinta}{ISAC Hackathon 2026 · Diablos Rojos}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{1.2pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{diablos}\leaders\hrule height \headrulewidth\hfill}}

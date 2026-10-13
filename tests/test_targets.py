@@ -77,11 +77,20 @@ def test_targets_are_rejected_as_features():
         schema.assert_no_target_leak(["RelSpeed", "rv", "rv_delta"])
 
 
+def test_lmb_vs_mlb_is_labelled_unverified(built):
+    df, _, lw = built
+    t = targets.lmb_vs_mlb(df, lw)
+    assert (~t.mlb_verified).all() and t.mlb_source.str.contains("FanGraphs").all()
+    assert t.mlb.notna().all() and len(t) == len(targets.MLB_REFERENCE["weights"]) + 1
+    hr = t.set_index("stat").loc["HomeRun runs vs out"]
+    assert hr.mlb == pytest.approx(2.050 / 1.242)
+
+
 def test_reports_are_aggregates_only(built, tmp_path):
     df, re, lw = built
     targets.write_reports(df, re, lw, out_dir=tmp_path)
     files = sorted(p.name for p in tmp_path.glob("*.csv"))
-    assert files == ["linear_weights.csv", "re_matrix.csv", "run_environment_by_altitude.csv",
+    assert files == ["linear_weights.csv", "lmb_vs_mlb.csv", "re_matrix.csv", "run_environment_by_altitude.csv",
                      "rv_summary.csv", "target_rates.csv"]
     for p in tmp_path.glob("*.csv"):
         t = pd.read_csv(p)

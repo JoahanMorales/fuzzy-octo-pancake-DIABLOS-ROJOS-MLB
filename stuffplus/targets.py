@@ -30,6 +30,16 @@ HIT_EVENTS = ("Single", "Double", "Triple", "HomeRun")
 EVENTS = HIT_EVENTS + ("Walk", "HitByPitch", "Error") + OUT_EVENTS
 WEAK_EV, HARD_EV, HARD_LA = 88.0, 95.0, (8.0, 32.0)
 
+# MLB 2024 wOBA linear weights (runs relative to an out, times wOBAScale). UNVERIFIED: taken from a web-search
+# snapshot of the FanGraphs Guts! table on 2026-10-13; fangraphs.com blocked direct access. Re-check before
+# quoting: https://www.fangraphs.com/tools/guts?type=cn
+MLB_REFERENCE = {
+    "season": 2024, "wOBAScale": 1.242, "R/PA": 0.117,
+    "weights": {"Walk": 0.689, "HitByPitch": 0.720, "Single": 0.882, "Double": 1.254, "Triple": 1.590, "HomeRun": 2.050},
+    "source": "FanGraphs Guts! wOBA and FIP constants, 2024 (web-search snapshot)",
+    "verified": False,
+}
+
 TARGETS = {  # name: (description, denominator)
     "t_swing": ("batter swings", "all pitches"),
     "t_whiff": ("swing and miss", "swings"),
@@ -173,6 +183,27 @@ def add_targets(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def lmb_vs_mlb(df: pd.DataFrame, lw: pd.DataFrame) -> pd.DataFrame:
+    """Event values relative to an out: LMB (this data) vs MLB 2024 (``MLB_REFERENCE``, flagged unverified).
+
+    FanGraphs wOBA weights are linear weights relative to an out, scaled by wOBAScale, so
+    ``w / wOBAScale`` is comparable with ``LW[event] - LW[Out]`` from the LMB data.
+    """
+    ref = MLB_REFERENCE
+    rows = []
+    for event, w in ref["weights"].items():
+        lmb = float(lw.loc[event, "lw"] - lw.loc["Out", "lw"]) if event in lw.index and "Out" in lw.index else np.nan
+        mlb = w / ref["wOBAScale"]
+        rows.append({"stat": f"{event} runs vs out", "lmb": lmb, "mlb": mlb, "lmb_over_mlb": lmb / mlb})
+    n_pa = int(df["pa_ends"].sum()) if "pa_ends" in df else int(pa_event(df).notna().sum())
+    rpa = float(df["RunsScored"].sum()) / max(n_pa, 1)
+    rows.append({"stat": "runs per PA", "lmb": rpa, "mlb": ref["R/PA"], "lmb_over_mlb": rpa / ref["R/PA"]})
+    out = pd.DataFrame(rows)
+    out["mlb_source"] = ref["source"]
+    out["mlb_verified"] = ref["verified"]
+    return out
+
+
 def build(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Targets + run value on a cleaned frame. Returns (frame, RE table, linear weights)."""
     re = fit_run_expectancy(df)
@@ -185,6 +216,7 @@ def write_reports(df: pd.DataFrame, re: pd.DataFrame, lw: pd.DataFrame, out_dir=
     out_dir = (REPORTS_DIR / "targets") if out_dir is None else out_dir
     out_dir.mkdir(parents=True, exist_ok=True)
     re.round(4).to_csv(out_dir / "re_matrix.csv")
+    lmb_vs_mlb(df, lw).round(4).to_csv(out_dir / "lmb_vs_mlb.csv", index=False)
     lw.round(4).to_csv(out_dir / "linear_weights.csv")
     by_alt = []
     for alt, d in df.groupby("altitude_category", observed=True):

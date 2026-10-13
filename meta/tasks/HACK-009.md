@@ -1,5 +1,5 @@
 Task: HACK-009
-Events: 4
+Events: 5
 Checkpoints: 1
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 1791907732

@@ -9,14 +9,14 @@ Priority: P0
 Paths: stuffplus/physics/__init__.py, stuffplus/physics/constants.py, stuffplus/physics/aero.py, stuffplus/physics/translate.py, analysis/physics/, reports/physics/, tests/test_physics.py
 Depends: None
 Verify: `python -m pytest -q tests/test_physics.py`
-Lease-Until: 1791916848
-Updated: 1791902448
+Lease-Until: 1791916855
+Updated: 1791902455
 Task-Base: 08e6a655642cd7a11385d0e17e814fea34cc111f
-Next: uak done for re-review of 45a5f7e
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3
-Evidence: pytest tests/test_physics.py exit 0 (6 passed); smoke PASS; four-seam dIVB -3.51in, +1.30mph; Cl/Cd validation partial (reports/physics/README.md); branch also carries HACK-029 identity (PR #4)
-Events: 8
+Evidence: 45a5f7e: (1) aero.decompose(rho=ρ̂ por juego) spin_eff Extreme 0.40->0.52 vs No 0.61; (2) translate proporcional y*(1+k*Δρ), curva y recta signo opuesto; test_physics 7 passed; reports/physics regenerados (FF ΔIVB -3.94)
+Events: 9
 Checkpoints: 2
 Sessions: 4
 Last-Checkpoint: 1791902448
-Task-Tip: 16abfbb52e8066bba0e2cb24f7a52a20ce244c06
+Task-Tip: 45a5f7e1da984db24457f5fb38c19c6246d3e4d3

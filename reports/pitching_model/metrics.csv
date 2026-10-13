@@ -1,0 +1,7 @@
+model,n,rmse,mae,r2,bias,skill_vs_baseline,skill_lo,skill_hi,target,baseline_name
+baseline,627602.0,0.19776,0.12787,0.00223,0.0,0.0,0.0,0.0,rv_x,mean xRV by count
+pitching_components,627602.0,0.19114,0.11172,0.06789,-0.00066,0.03347,0.03258,0.03444,rv_x,mean xRV by count
+pitching_combined,627602.0,0.19009,0.11005,0.07814,0.0,0.0388,0.03777,0.03995,rv_x,mean xRV by count
+baseline,627602.0,0.26731,0.16714,0.00093,-0.0,0.0,0.0,0.0,rv,mean xRV by count
+pitching_components,627602.0,0.26235,0.15082,0.03766,-0.00276,0.01856,0.018,0.01917,rv,mean xRV by count
+pitching_combined,627602.0,0.2615,0.14859,0.04388,-0.0021,0.02173,0.02107,0.02243,rv,mean xRV by count

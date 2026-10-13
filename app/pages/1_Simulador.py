@@ -23,9 +23,9 @@ with form:
         ptype = c1.selectbox("Tipo", PITCH_TYPES, help="Etiqueta Trackman; la identidad real se calcula por forma.")
         throws = c2.radio("Mano", ["Right", "Left"], horizontal=True, format_func=lambda x: "Der." if x == "Right" else "Zur.")
         c1, c2, c3 = st.columns(3)
-        velo = c1.number_input("Velo (mph)", 55.0, 106.0, 95.0, 0.5)
-        spin = c2.number_input("Giro (rpm)", 300.0, 3800.0, 2350.0, 25.0)
-        axis = c3.number_input("Eje (°)", 0.0, 360.0, 205.0, 5.0)
+        velo = c1.number_input("Velo (mph)", 55.0, 106.0, 95.0, 0.5, help="Velocidad de salida.")
+        spin = c2.number_input("Giro (rpm)", 300.0, 3800.0, 2350.0, 25.0, help="Revoluciones por minuto.")
+        axis = c3.number_input("Eje (°)", 0.0, 360.0, 205.0, 5.0, help="Eje de giro, 180° = backspin puro.")
         c1, c2, c3 = st.columns(3)
         ivb = c1.number_input("IVB (in)", -35.0, 35.0, 17.0, 0.5, help="Quiebre vertical inducido.")
         hb = c2.number_input("HB (in)", -35.0, 35.0, 8.0, 0.5, help="Vista del catcher, + hacia primera.")
@@ -57,19 +57,20 @@ with out:
 
     def gauge(title: str, value: float, color: str):
         fig = go.Figure(go.Indicator(
-            mode="gauge+number", value=value, title={"text": title, "font": {"size": 16, "color": T["muted"]}},
-            number={"font": {"size": 44, "color": T["white"]}},
+            mode="gauge+number", value=value, title={"text": title, "font": {"size": 16, "color": T["text"]}},
+            number={"font": {"size": 56, "color": T["white"], "family": theme.FONT}},
             gauge={"axis": {"range": [60, 140], "nticks": 5, "tickcolor": T["muted"]}, "bar": {"color": color},
                    "bgcolor": T["panel"], "bordercolor": T["line"],
                    "threshold": {"line": {"color": T["white"], "width": 3}, "value": 100}}))
-        fig.update_layout(height=170, margin=dict(l=25, r=25, t=40, b=5), paper_bgcolor="rgba(0,0,0,0)", font_color=T["text"])
+        fig.update_layout(height=185, margin=dict(l=25, r=25, t=45, b=5), paper_bgcolor="rgba(0,0,0,0)", font_color=T["text"])
         return fig
 
     g1, g2 = st.columns(2)
-    g1.plotly_chart(gauge("Stuff+ en Harp Helú", a["stuff_plus"], T["red"]), use_container_width=True)
-    g2.plotly_chart(gauge("Stuff+ a nivel del mar", b["stuff_plus"], T["muted"]), use_container_width=True)
+    g1.plotly_chart(gauge("Stuff+ en Harp Helú", a["stuff_plus"], T["red_soft"]), use_container_width=True)
+    g2.plotly_chart(gauge("Stuff+ a nivel del mar", b["stuff_plus"], T["white"]), use_container_width=True)
     d = r["delta_stuff_plus"]
-    hdr2.markdown(f"**ΔStuff+ CDMX = {d:+.1f}** · ΔIVB {r['delta_ivb']:+.1f}\" · ΔHB {r['delta_hb']:+.1f}\"")
+    hdr2.markdown(f'<div class="big-number" title="Fuente: {SOURCE}" style="color:{T["red_soft"]}; font-size:2.6rem; white-space:nowrap">ΔStuff+ CDMX {d:+.1f}'
+                  f'<small>ΔIVB {r["delta_ivb"]:+.1f}" · ΔHB {r["delta_hb"]:+.1f}" frente a nivel del mar</small></div><div style="height:1.2rem"></div>', unsafe_allow_html=True)
 
     s, c = b["movement_expected"], a["movement_expected"]
     fig = go.Figure()
@@ -79,9 +80,9 @@ with out:
                              marker=dict(size=16, color=T["red"]), name="Harp Helú"))
     fig.add_annotation(x=c["hb"], y=c["ivb"], ax=s["hb"], ay=s["ivb"], xref="x", yref="y", axref="x", ayref="y",
                        showarrow=True, arrowhead=3, arrowwidth=3, arrowcolor=T["red_soft"])
-    fig.update_layout(height=215, margin=dict(l=40, r=20, t=5, b=35), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor=T["panel"],
+    fig.update_layout(height=185, margin=dict(l=40, r=20, t=5, b=35), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor=T["panel"],
                       font_color=T["text"], showlegend=False, xaxis_title="HB (in)", yaxis_title="IVB (in)")
     fig.update_xaxes(zeroline=True, zerolinecolor=T["line"], gridcolor=T["line"])
     fig.update_yaxes(zeroline=True, zerolinecolor=T["line"], gridcolor=T["line"])
     st.plotly_chart(fig, use_container_width=True)
-    st.caption(f"Fuente: {SOURCE}. Modelo: {a['model_version']}.")
+    st.caption("Fuente: simulador físico de Stuff+ (reports/physics). " + ("Modelo de demostración." if r["demo_data"] else "Modelo entrenado."))

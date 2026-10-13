@@ -22,7 +22,9 @@ h1,h2,h3,.big-number,.badge {{font-family:{FONT}; letter-spacing:.02em; text-tra
 h1 {{font-size:2rem!important; padding:0!important; margin-bottom:.2rem;}}
 h1 {{border-left:6px solid {TOKENS['red']}; padding-left:.6rem;}}
 .big-number {{font-size:4rem; font-weight:700; line-height:1; color:{TOKENS['white']};}}
-.big-number small {{font-size:1rem; color:{TOKENS['muted']}; display:block; text-transform:none;}}
+.big-number small {{font-family:'Source Sans Pro',sans-serif; font-size:.95rem; font-weight:400; letter-spacing:0; color:{TOKENS['muted']}; display:block; text-transform:none; margin-top:.3rem;}}
+[data-testid=stHorizontalBlock] .card {{height:100%; min-height:9rem;}}
+button[kind=primaryFormSubmit], button[kind=primary] {{background:{TOKENS['red']}!important; border-color:{TOKENS['red']}!important; font-weight:700;}}
 .card {{background:{TOKENS['panel']}; border:1px solid {TOKENS['line']}; border-radius:8px; padding:1rem 1.2rem;}}
 .card.hot {{border-top:4px solid {TOKENS['red']};}}
 .badge {{background:{TOKENS['red']}; color:#fff; padding:.1rem .5rem; border-radius:4px; font-size:.8rem;}}
@@ -33,7 +35,7 @@ h1 {{border-left:6px solid {TOKENS['red']}; padding-left:.6rem;}}
 """
 
 
-def setup(title: str, icon: str = "🔥", sidebar: str = "collapsed") -> None:
+def setup(title: str, icon: str = "⚾", sidebar: str = "collapsed") -> None:
     st.set_page_config(page_title=f"{title} · Stuff+ 2240", page_icon=icon, layout="wide", initial_sidebar_state=sidebar)
     st.markdown(_CSS, unsafe_allow_html=True)
 
@@ -44,9 +46,10 @@ def demo_badge(demo: bool) -> None:
                 unsafe_allow_html=True)
 
 
-def big_number(label: str, value: str, source: str, hot: bool = False) -> None:
+def big_number(label: str, value: str, source: str, hot: bool = False, short_source: str = "física LMB") -> None:
+    """Número grande; la ruta técnica de la fuente va solo en el tooltip."""
     st.markdown(f'<div class="card{" hot" if hot else ""}" title="Fuente: {source}"><div class="big-number">{value}'
-                f'<small>{label} · fuente: {source}</small></div></div>', unsafe_allow_html=True)
+                f'<small>{label} · fuente: {short_source}</small></div></div>', unsafe_allow_html=True)
 
 
 def coming_soon(title: str, owner_task: str, blurb: str) -> None:

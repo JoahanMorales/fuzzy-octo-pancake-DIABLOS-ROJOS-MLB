@@ -18,3 +18,5 @@ data/interim/
 artifacts/models/
 bash.exe.stackdump
 *.stackdump
+# Model bundles and scores are rebuilt locally; never commit them
+artifacts/

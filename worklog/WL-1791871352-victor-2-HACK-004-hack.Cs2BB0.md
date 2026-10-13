@@ -6,7 +6,7 @@
 - Why: joahan-1 reject 16abfbb
 - Failing: none
 - Commands: pytest -q tests/test_physics.py (7 passed)
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3; run .uak/bin/smoke
+- Next: Humano: Diff outside Paths: reports/shapes/label_shift.csv (new test files: add the dir to Additive-Paths in PROJECT.md)
 
 ## History
 - 1791871352 | CLAIMED | victor-2 | claim; next: implement `aero.decompose` with numpy; test with a trajectory built from known Cd/Cl.
@@ -21,3 +21,4 @@
 - 1791902991 | REVIEW | victor-2 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3; evidence: c8ed9e2: proportional_shift (translate), spin_eff con rho por pitch; test_physics 8 passed; FF dIVB -3.54 (ref -3.7), speed_drop -1.30; reviewer: -
 - 1791903737 | REVIEW | joahan-1 | review; approve; SHA c8ed9e251e8e2f0c734927cfb0faed49d0c50c72; reviewer joahan-1
 - 1791903905 | REVIEW | victor-2 | heartbeat; lease until 1791918305
+- 1791903922 | REVIEW | victor-2 | merge rechazado; Diff outside Paths: reports/shapes/label_shift.csv (new test files: add the dir to Additive-Paths in PROJECT.md)

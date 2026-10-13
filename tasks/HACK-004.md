@@ -12,10 +12,10 @@ Verify: `python -m pytest -q tests/test_physics.py`
 Lease-Until: 1791918305
 Updated: 1791903905
 Task-Base: 08e6a655642cd7a11385d0e17e814fea34cc111f
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3; run .uak/bin/smoke
+Next: Humano: Diff outside Paths: reports/shapes/label_shift.csv (new test files: add the dir to Additive-Paths in PROJECT.md)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/3
 Evidence: c8ed9e2: proportional_shift (translate), spin_eff con rho por pitch; test_physics 8 passed; FF dIVB -3.54 (ref -3.7), speed_drop -1.30
-Events: 12
+Events: 13
 Checkpoints: 2
 Sessions: 4
 Last-Checkpoint: 1791902448

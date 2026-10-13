@@ -1,0 +1,3 @@
+pairs,pitching_model,observed_rv,source,pairs,corr_next_season_rv,test
+633.0,0.7421,0.1775,predicted,245,0.2831,next season
+,,,observed,245,0.2022,next season

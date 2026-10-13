@@ -1,5 +1,5 @@
 ID: HACK-026
-State: MERGING
+State: HUMAN
 Owner: sebastian-1
-Queued: 1791920853
-Reason: Waiting for queue
+Updated: 1791920864
+Reason: Smoke red or product unverified

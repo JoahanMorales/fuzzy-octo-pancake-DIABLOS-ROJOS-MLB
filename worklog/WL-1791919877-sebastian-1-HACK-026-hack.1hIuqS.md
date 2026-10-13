@@ -6,7 +6,7 @@
 - Why: Official dataset absent and shared preparation is transductive
 - Failing: No benchmark failures; real-data acceptance remains pending
 - Commands: python -m pytest -q tests/test_benchmark.py; python -m analysis.benchmark.run --demo --fast; bash .uak/bin/smoke; bash .uak/bin/secret-scan --tracked
-- Next: Independent registered reviewer evaluates PR 16 SHA c3c62ed; official-data comparison still needed
+- Next: Humano: Smoke red or product unverified
 
 ## History
 - 1791919877 | CLAIMED | sebastian-1 | claim; next: `LinearGAM(s(velo)+s(ivb)+s(hb)+te(ivb, rho))`.
@@ -15,3 +15,4 @@
 - 1791920331 | REVIEW | sebastian-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/16; evidence: c3c62ed: 6 benchmark tests exit 0; demo CLI all 3 shared splits exit 0; product smoke exit 0; tracked secret scan 417 files PASS. Real-data validation pending; reports explicitly exploratory/transductive.; reviewer: -
 - 1791920338 | REVIEW | sebastian-1 | checkpoint; next: Independent registered reviewer evaluates PR 16 SHA c3c62ed; official-data comparison still needed
 - 1791920787 | REVIEW | sebastian-2 | review; approve; SHA c3c62edf3471897e98ba0809a507ab12acb7db46; reviewer sebastian-2
+- 1791920864 | REVIEW | sebastian-1 | merge rechazado; Smoke red or product unverified

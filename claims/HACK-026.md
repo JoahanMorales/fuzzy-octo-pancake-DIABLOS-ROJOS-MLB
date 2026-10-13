@@ -12,6 +12,6 @@ Verify: `python -m pytest -q tests/test_benchmark.py`
 Lease-Until: 1791934738
 Updated: 1791920338
 Task-Base: f0de095681b4c572ce62e45430de89a9f89dce77
-Next: Independent registered reviewer evaluates PR 16 SHA c3c62ed; official-data comparison still needed
+Next: Humano: Smoke red or product unverified
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/16
 Evidence: -

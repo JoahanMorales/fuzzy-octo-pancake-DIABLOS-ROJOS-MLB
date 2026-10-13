@@ -23,3 +23,8 @@
 - Validación Cl/Cd **parcial**: Cd-proxy cae 16 % en Extreme pero Cl-proxy cae 24 % (`validation_cl_cd.csv`). Si ambos fueran ∝ ρ la razón sería constante; baja ~9 %. No descarta un artefacto de calibración de Trackman por parque, ni un efecto real de Reynolds/giro. Los Δ de movimiento se estiman empíricamente, no del modelo Cl teórico.
 - Los IC solo propagan incertidumbre del coeficiente de ρ, no la de Δρ ni de la identidad de lanzamiento.
 - `RHO_HARP_HELU` = 0.819 (ρ̂ agrupado de HACK-003, IC95 % 0.814–0.824; identidad CDMX vs Puebla sin verificar); el barométrico en la misma escala da ≈0.79. HACK-003 debe sustituirlo por el estimador agrupado.
+
+## Pendiente / no resuelto
+
+- **Brecha de ~15 % en la eficiencia de giro entre No Altitude (0.61) y Extreme (0.52) sigue sin explicarse.** Cl-proxy cae 24 % contra 16 % de Cd-proxy y ρ̂: Cl/Cd no es constante. Puede ser un efecto real (Reynolds / régimen de giro a menor densidad) o un artefacto de calibración de Trackman por parque; los datos no lo distinguen.
+- Por eso **no se presentan deltas de `spin_eff` entre altitudes como un hecho**; solo se usa para el Δ de movimiento, que se estima empíricamente (efectos fijos por pitch_key), no del modelo Cl teórico.

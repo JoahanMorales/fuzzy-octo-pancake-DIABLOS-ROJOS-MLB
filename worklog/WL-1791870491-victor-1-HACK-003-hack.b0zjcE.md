@@ -6,7 +6,7 @@
 - Why: last pending criterion was unblocked
 - Failing: none
 - Commands: q python -m pytest -q tests/test_parks.py; python -m analysis.park_id.run
-- Next: Humano: Diff outside Paths: analysis/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)
+- Next: Integrated in main: d3c88b00ebb306065689b723ab37348ea7b7ac8c (recorded by victor-1)
 
 ## History
 - 1791870491 | CLAIMED | victor-1 | claim; next: port the prototype (Louvain on batter co-lineups) into stuffplus/physics/parks.py::infer_teams(df, season)
@@ -18,3 +18,4 @@
 - 1791900367 | REVIEW | victor-1 | checkpoint; next: Wait for review of SHA 6410c22
 - 1791900753 | REVIEW | victor-5 | review; approve; SHA 6410c2269a879182d4a6c3bb0e09048102d64ebc; reviewer victor-5
 - 1791901304 | REVIEW | victor-1 | merge rechazado; Diff outside Paths: analysis/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)
+- 1791901388 | INTEGRATED | victor-1 | integrate; recorded by victor-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/5; merged d3c88b00ebb306065689b723ab37348ea7b7ac8c; proof ancestry

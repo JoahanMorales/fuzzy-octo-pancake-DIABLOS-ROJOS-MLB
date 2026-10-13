@@ -8,7 +8,7 @@
 |---|---|
 | Event / challenge | ISAC Sports Analytics Hackathon 2026 · Diablos Rojos: *Stuff Plus Model, calidad de pitcheo ajustada por entorno* |
 | Start | 2026-10-12 23:00 America/Mexico_City (our kickoff; official event window 2026-07-11 → 2026-11-12) |
-| Official deadline | 2026-10-22 23:59 America/Mexico_City (**hour TO CONFIRM**) · platform: email to itamsportsanalytics@gmail.com with ALL member emails |
+| Official deadline | 2026-10-22 23:59 America/Mexico_City (confirmed) · platform: email to itamsportsanalytics@gmail.com with ALL member emails |
 | Freeze | Thu 2026-10-22 17:59 (`Freeze-Epoch` below) |
 | Clean rehearsal / plan B | 2026-10-22 21:59 |
 | Internal submission | 2026-10-22 22:59 (target: send on 2026-10-22 morning) |
@@ -41,8 +41,8 @@ A human sets `yes`. A missing field means `no`.
 
 ```text
 Mode: sprint
-Backlog-Proposed-Epoch: 0
-Backlog-Approved: no
+Backlog-Proposed-Epoch: 1791867797
+Backlog-Approved: yes
 Autonomy: yes
 Auto-Merge: yes
 Review-Mode: claims

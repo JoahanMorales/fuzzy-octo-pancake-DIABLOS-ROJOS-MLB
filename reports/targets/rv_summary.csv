@@ -4,3 +4,7 @@ rv_sd,0.26743
 rv_delta_mean,-0.01578
 rv_delta_sd,0.28042
 corr_rv_rv_delta,0.70101
+rv_x_mean,0.00397
+rv_x_sd,0.19798
+corr_rv_rv_x,0.75203
+in_play_corr_lw_xlw,0.67407

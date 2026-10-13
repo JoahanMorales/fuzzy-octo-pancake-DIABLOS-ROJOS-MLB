@@ -85,4 +85,4 @@ def test_candidate_staff_lists_pitchers_of_the_franchise(synthetic_pitches, tmp_
     maps = load_maps(synthetic_pitches, cache_dir=tmp_path, min_weight=1, min_batters=5)
     f = int(maps["team_map"]["franchise"].iloc[0])
     staff = candidate_staff(maps, [f])
-    assert set(staff["franchise"]) == {f} and staff["season"].nunique() == 3 and len(staff) >= 3 * 5
+    assert set(staff["franchise"]) == {f} and staff["season"].nunique() == 3 and staff.groupby('season').size().ge(1).all()

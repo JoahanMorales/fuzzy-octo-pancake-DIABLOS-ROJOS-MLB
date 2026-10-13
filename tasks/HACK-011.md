@@ -15,8 +15,8 @@ Task-Base: d3c88b00ebb306065689b723ab37348ea7b7ac8c
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1
 Evidence: reject fixed: pitch_family (identity) replaces AutoPitchType as feature and reference key; full suite 123 passed; smoke exit 0; real data skill +2.78% [2.70,2.87] vs count baseline, split-half 0.58; main merged, single merge base. Includes HACK-010 commits (merge 010 first) + 2-line support in common.py/serving.py for pitch_family.
-Events: 5
+Events: 6
 Checkpoints: 0
-Sessions: 2
+Sessions: 3
 Last-Checkpoint: 0
 Task-Tip: c452e395e49cb6f9516811b3de426155fadf75a9

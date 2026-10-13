@@ -14,3 +14,4 @@
 - 1791907000 | REVIEW | victor-1 | review; approve; SHA 6a4741e7ba9bda1e2c5cc8cbbd2fb9f1d70d0699; reviewer victor-1
 - 1791907182 | REVIEW | victor-1 | review; reject; SHA 6a4741e7ba9bda1e2c5cc8cbbd2fb9f1d70d0699; reviewer victor-1
 - 1791919385 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-011?expand=1; evidence: reject fixed: pitch_family (identity) replaces AutoPitchType as feature and reference key; full suite 123 passed; smoke exit 0; real data skill +2.78% [2.70,2.87] vs count baseline, split-half 0.58; main merged, single merge base. Includes HACK-010 commits (merge 010 first) + 2-line support in common.py/serving.py for pitch_family.; reviewer: -
+- 1791921163 | REVIEW | sebastian-2 | review; reject; SHA c452e395e49cb6f9516811b3de426155fadf75a9; reviewer sebastian-2

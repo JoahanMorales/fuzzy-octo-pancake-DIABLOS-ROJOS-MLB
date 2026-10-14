@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1791942485
+Updated: 1791942780
 AVAILABLE: HACK-020 HACK-021 HACK-032 HACK-033 HACK-034 HACK-022 HACK-023 HACK-024 HACK-025 HACK-028 HACK-014 
 CLAIMED: HACK-027 HACK-036 
 BLOCKED: -
@@ -14,15 +14,15 @@ HACK-007 | REVIEW | victor-5 | until 1791913457
 HACK-016 | REVIEW | joahan-1 | until 1791948464
 HACK-017 | REVIEW | victor-1 | until 1791945455
 HACK-027 | CLAIMED | sebastian-1 | until 1791945037
-HACK-036 | CLAIMED | sebastian-2 | until 1791944895
+HACK-036 | CLAIMED | sebastian-2 | until 1791945480
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):
-- 1791941516 | HACK-014 | Leave acceptance incomplete; retain explicit fast/transductive source flags and honest near-baseline Stuff+ result | Why: Global target/feature preparatio
 - 1791941551 | HACK-018 | Publicar rankings exploratorios con baseline/uso/fits fijos en CI; no certeza de rango | Why: Limitación estadística explícita del advisor
 - 1791941609 | HACK-018 | Exploratory rankings with conditional EB CIs; no causal or holdout claim | Why: Models globally prepared; baseline and usage fixed
 - 1791941671 | HACK-018 | Task stays REVIEW until eligible independent agent records approval; no author approval or human impersonation | Why: UAK rejects owner and unregistered r
 - 1791941947 | HACK-018 | Explicit user merge authorization fulfilled via GitHub; preserve actual UAK REVIEW until independently approved | Why: User explicitly said Haz merge; tec
+- 1791942780 | HACK-036 | Exploratory draft; preserve visible pending staff/prospect/live demo/inductive validation instead of fabricated outputs | Why: Actual source Stuff+ at bas
 
 Global next step: available P0; else review PRs, tests, demo, rehearsal.
 Why: bounded snapshot to resume without rereading history.

@@ -9,13 +9,13 @@ Priority: P0
 Paths: stuffplus/cards.py, app/pages/7_Tarjeta.py, reports/cards/, tests/test_cards.py
 Depends: HACK-016
 Verify: `python -m pytest -q tests/test_cards.py`
-Lease-Until: 1792005220
-Updated: 1792002520
+Lease-Until: 1792005971
+Updated: 1792003271
 Task-Base: 7dc8f4dc72b7e862e24f9bcf668095595c735345
 Next: layout with matplotlib gridspec at 1600×900
 PR: -
 Evidence: -
-Events: 2
+Events: 3
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

@@ -13,6 +13,7 @@ MEMO = REPORTS / "recommendations" / "memo.md"
 
 theme.setup("Recomendaciones")
 st.title("Recomendaciones para el Harp Helú")
+theme.demo_badge(False)  # cifras del modelo real y de reports/ (app/DESIGN.md: MODELO REAL)
 st.caption("Memo operativo: perfiles que ganan y pierden, lista para perfilar prospectos, tácticas y valor en victorias.")
 
 if not MEMO.exists():

@@ -12,10 +12,10 @@ Verify: `python -m pytest -q tests/test_app_smoke.py`
 Lease-Until: 1791962908
 Updated: 1791948508
 Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/7; run .uak/bin/smoke
+Next: Humano: Diff outside Paths: app/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/7
 Evidence: SHA 8f4cf1c approved by joahan-1; gates SUCCESS; pytest tests/test_app_smoke.py 10 passed; Direction A locked
-Events: 14
+Events: 15
 Checkpoints: 2
 Sessions: 4
 Last-Checkpoint: 1791947590

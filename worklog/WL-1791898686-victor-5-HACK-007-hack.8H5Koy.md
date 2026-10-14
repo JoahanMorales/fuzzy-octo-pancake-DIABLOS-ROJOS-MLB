@@ -6,7 +6,7 @@
 - Why: human choice; tokens already lived in app/theme.py
 - Failing: none
 - Commands: uv run pytest tests/test_app_smoke.py: 10 passed
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/7; run .uak/bin/smoke
+- Next: Humano: Diff outside Paths: app/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)
 
 ## History
 - 1791898686 | CLAIMED | victor-5 | claim; next: `tests/test_app_smoke.py` with `streamlit.testing.v1.AppTest.from_file("app/Home.py").run()`.
@@ -23,3 +23,4 @@
 - 1791948462 | CLAIMED | luis-1 | heartbeat; lease until 1791951162
 - 1791948486 | CLAIMED | luis-1 | heartbeat; lease until 1791951186
 - 1791948508 | REVIEW | luis-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/7; evidence: SHA 8f4cf1c approved by joahan-1; gates SUCCESS; pytest tests/test_app_smoke.py 10 passed; Direction A locked; reviewer: -
+- 1791948524 | REVIEW | luis-1 | merge rechazado; Diff outside Paths: app/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)

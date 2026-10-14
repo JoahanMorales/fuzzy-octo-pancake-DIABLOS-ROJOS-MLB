@@ -9,9 +9,9 @@ Priority: P2
 Paths: analysis/causal/, reports/causal/, tests/test_causal.py
 Depends: HACK-012
 Verify: `python -m pytest -q tests/test_causal.py`
-Lease-Until: 1791958279
-Updated: 1791943879
+Lease-Until: 1791958320
+Updated: 1791943920
 Task-Base: 8347f3dbbe549eff74f400d16ebe44ce12751ddd
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/23; run .uak/bin/smoke
+Next: Registered independent reviewer evaluates PR23 SHA916d445 with isolated optional EconML extra;merge only after current approval and green gates
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/23
 Evidence: -

@@ -12,6 +12,6 @@ Verify: `python -m pytest -q tests/test_score.py`
 Lease-Until: 1791999130
 Updated: 1791984730
 Task-Base: dcb3f2809a47993e919f4c7e426890a561f21376
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-016?expand=1; run .uak/bin/smoke
+Next: Humano: Smoke red or product unverified
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-016?expand=1
 Evidence: -

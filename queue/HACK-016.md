@@ -1,5 +1,5 @@
 ID: HACK-016
-State: MERGING
+State: HUMAN
 Owner: joahan-1
-Queued: 1791984747
-Reason: Waiting for queue
+Updated: 1791984768
+Reason: Smoke red or product unverified

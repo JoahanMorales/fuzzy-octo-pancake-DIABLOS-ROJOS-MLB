@@ -16,3 +16,4 @@
 - 1791947228 | AVAILABLE | luis-1 | release; claim released by luis-1; reason: -; summary kept
 - 1791947242 | CLAIMED | luis-1 | claim; next: Lock app/DESIGN.md to Direction A; human luis picked Transmision Diablos
 - 1791947394 | CLAIMED | luis-1 | heartbeat; lease until 1791950094
+- 1791947555 | CLAIMED | luis-1 | pending decision HACK-007-1791947555; option: Direction A; Why: luis eligió Transmisión Diablos el 2026-10-13; la dirección ya está construida en app/theme.py

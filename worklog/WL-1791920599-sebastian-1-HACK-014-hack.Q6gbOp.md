@@ -21,3 +21,4 @@
 - 1791941516 | CLAIMED | sebastian-1 | checkpoint; next: Implement documented fold-preparation contract in stuffplus/validation; verify held-out perturbation invariance and final official run; PR20 remains draft until acceptance complete
 - 1791942187 | CLAIMED | sebastian-1 | handoff; next: Implement documented fold-preparation contract in stuffplus/validation; verify held-out perturbation invariance and final official run; PR20 remains draft until acceptance complete
 - 1791942192 | AVAILABLE | sebastian-1 | release; claim released by sebastian-1; reason: -; summary kept
+- 1791947931 | CLAIMED | joahan-1 | claim; next: Implement documented fold-preparation contract in stuffplus/validation; verify held-out perturbation invariance and final official run; PR20 remains draft until acceptance complete

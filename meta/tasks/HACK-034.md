@@ -1,5 +1,5 @@
 Task: HACK-034
-Events: 4
+Events: 5
 Checkpoints: 0
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 0

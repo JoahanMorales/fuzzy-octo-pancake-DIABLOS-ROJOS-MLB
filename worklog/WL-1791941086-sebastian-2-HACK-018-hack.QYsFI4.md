@@ -11,3 +11,4 @@
 ## History
 - 1791941086 | CLAIMED | sebastian-2 | claim; next: usage-weighted aggregation of per-pitch ΔStuff+ by pitcher-season.
 - 1791941339 | CLAIMED | sebastian-2 | checkpoint; next: Terminar corrida oficial --fast, revisar agregados, smoke, commit y PR
+- 1791941512 | CLAIMED | sebastian-2 | heartbeat; lease until 1791944212

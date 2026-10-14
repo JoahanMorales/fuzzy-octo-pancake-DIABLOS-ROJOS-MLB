@@ -1,7 +1,5 @@
-# Integration queue
-Task: HACK-027
-State: PENDING
+ID: HACK-027
+State: WAITING
 Owner: sebastian-1
-Task-Tip: 916d44574ca80155c470ca427b27adbe6e9e1336
-PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/23
-Updated: 1791944204
+Queued: 1791944527
+Reason: Waiting for queue

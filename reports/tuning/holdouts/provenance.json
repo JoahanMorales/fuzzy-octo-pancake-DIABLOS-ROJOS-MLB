@@ -1,0 +1,22 @@
+{
+  "demo_data": false,
+  "evidence": "exploratory_transductive",
+  "limitation": "Exploratory/transductive: shared preparation fits target values, density reference, pitch identity and arsenal statistics globally. Model fits are train-only but these reports do not establish inductive out-of-sample performance. Physics ablations are predictive diagnostics, not causal effects or production promotion evidence.",
+  "acceptance_complete": true,
+  "reason": "official data, production settings; the transductive preparation is a disclosed limitation",
+  "splits_run": [
+    "leave_one_park_out",
+    "park_holdout",
+    "season_holdout"
+  ],
+  "pitching_inner_k": null,
+  "pitching_combination": "weights fitted on inner pitcher folds of outer training data; neutral batters",
+  "pitch_family_fallback_fraction": 0.0,
+  "target": "rv_x",
+  "baseline": "train-only mean rv_x by count",
+  "ci": "95% pitcher-cluster bootstrap; conditional on globally prepared targets/features",
+  "n_boot": 300,
+  "fast": false,
+  "pitcher_folds": 5,
+  "row_count": 623231
+}

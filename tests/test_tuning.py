@@ -95,3 +95,19 @@ def test_tuned_location_model_keeps_location_value(frame):
     m = tuning.TunedLocationModel(settings=FAST).fit(d)
     v = m.location_value(d)
     assert np.isfinite(v).all() and abs(float(np.mean(v))) < 0.05
+
+
+def test_adoption_rule_needs_loss_gain_and_no_pitcher_level_drop():
+    from analysis.tuning.summary import decide
+
+    kf = pd.DataFrame({"model": ["Stuff+", "Stuff+ ajustado", "Location+", "Location+ ajustado"],
+                       "outcome_logloss": [1.50, 1.49, 1.04, 1.03], "first50_r": [0.26, 0.23, 0.12, 0.13],
+                       "first200_r": [0.30, 0.29, 0.18, 0.19], "split_half_r": [0.80, 0.75, 0.56, 0.58],
+                       "skill_vs_baseline": [0.0, 0.0, 0.027, 0.028]})
+    pk = pd.DataFrame({"model": ["Pitching+", "Pitching+ ajustado"], "skill_vs_baseline": [0.039, 0.0394],
+                       "first50_r": [0.25, 0.254], "first200_r": [0.36, 0.358], "split_half_r": [0.66, 0.663]})
+    alt = pd.DataFrame({"model": ["Stuff+", "Stuff+ ajustado"], "league_delta": [-10.3, -10.0],
+                        "best_shape": ["sweeper", "sweeper"], "worst_shape": ["riding 4S", "riding 4S"]})
+    dec = decide(kf, pk, alt).set_index("model")
+    assert not dec.loc["Stuff+", "adopt"] and "split-half" in dec.loc["Stuff+", "failed"]
+    assert dec.loc["Location+", "adopt"] and dec.loc["Pitching+", "adopt"]  # −0.002 is within the tolerance

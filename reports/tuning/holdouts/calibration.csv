@@ -1,0 +1,137 @@
+bin,p_mean,y_mean,n,split,model,demo_data,evidence
+0,-0.017982183292933836,-0.028434237745182025,4467,season_holdout,baseline,False,exploratory_transductive
+1,-0.0038779835104618796,-0.00718295923347241,33236,season_holdout,baseline,False,exploratory_transductive
+2,-0.003529339576680167,0.001186413470067937,4381,season_holdout,baseline,False,exploratory_transductive
+3,0.0001268425964998554,-0.0039223678738074955,19905,season_holdout,baseline,False,exploratory_transductive
+4,0.006653471571012686,0.006902730869386885,8201,season_holdout,baseline,False,exploratory_transductive
+5,0.009429638618418707,0.006232000472943603,19281,season_holdout,baseline,False,exploratory_transductive
+6,0.0111281275789157,0.011456038093596832,16498,season_holdout,baseline,False,exploratory_transductive
+7,0.017725303251655163,0.013588590189431857,21884,season_holdout,baseline,False,exploratory_transductive
+0,-0.020673787226080376,-0.018491924507831204,12786,season_holdout,Stuff+,False,exploratory_transductive
+1,-0.009656491255777723,-0.008022886983496486,12785,season_holdout,Stuff+,False,exploratory_transductive
+2,-0.004508602447765259,-0.0035467901226970844,12785,season_holdout,Stuff+,False,exploratory_transductive
+3,-0.0006256537377865594,-0.002223320026670908,12785,season_holdout,Stuff+,False,exploratory_transductive
+4,0.002748688806396539,0.0037469052823531205,12785,season_holdout,Stuff+,False,exploratory_transductive
+5,0.005978868956350735,0.0027378372648677925,12786,season_holdout,Stuff+,False,exploratory_transductive
+6,0.009280179809666472,0.0064691619502579645,12785,season_holdout,Stuff+,False,exploratory_transductive
+7,0.012902892275589408,0.008634247540944086,12785,season_holdout,Stuff+,False,exploratory_transductive
+8,0.017420261425243014,0.010464030525474814,12785,season_holdout,Stuff+,False,exploratory_transductive
+9,0.026131687084723926,0.017793572354862442,12786,season_holdout,Stuff+,False,exploratory_transductive
+0,-0.013898457210702079,-0.019196689003649847,12786,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+1,-0.0057338578477374915,-0.007824111768584113,12785,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+2,-0.0023551478035066103,-0.004037712002065528,12785,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+3,0.00018465779935392687,-0.0017512993970204664,12785,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+4,0.0025028835282175613,-1.6177575622896097e-05,12785,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+5,0.004816166641694317,0.0038399132877481694,12786,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+6,0.0072532873035136185,0.007734628380740255,12785,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+7,0.009969584661724764,0.0076351457549296165,12785,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+8,0.013230318622443808,0.012297950806620024,12785,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+9,0.018739355007543115,0.01887906881468095,12786,season_holdout,Stuff+ ajustado,False,exploratory_transductive
+0,-0.07706099440908717,-0.07434515481896421,12786,season_holdout,Location+,False,exploratory_transductive
+1,-0.05557215701872703,-0.04898685460285941,12785,season_holdout,Location+,False,exploratory_transductive
+2,-0.03930184144602309,-0.03830307312903838,12785,season_holdout,Location+,False,exploratory_transductive
+3,-0.022833709800965794,-0.02472407932211037,12785,season_holdout,Location+,False,exploratory_transductive
+4,-0.0061125171145109064,-0.012422408100587904,12785,season_holdout,Location+,False,exploratory_transductive
+5,0.011877526847295488,0.006638151173706818,12786,season_holdout,Location+,False,exploratory_transductive
+6,0.03127416595173692,0.02308921821926901,12785,season_holdout,Location+,False,exploratory_transductive
+7,0.05127393637492644,0.04205398561059248,12785,season_holdout,Location+,False,exploratory_transductive
+8,0.0700185511105779,0.06421660744548684,12785,season_holdout,Location+,False,exploratory_transductive
+9,0.08328607640835191,0.08034361193098784,12786,season_holdout,Location+,False,exploratory_transductive
+0,-0.07497511603121054,-0.0738547732681082,12786,season_holdout,Location+ ajustado,False,exploratory_transductive
+1,-0.0545415995792388,-0.050251920736202306,12785,season_holdout,Location+ ajustado,False,exploratory_transductive
+2,-0.03841671472892465,-0.03939224944188286,12785,season_holdout,Location+ ajustado,False,exploratory_transductive
+3,-0.022339664042376847,-0.02654618178797817,12785,season_holdout,Location+ ajustado,False,exploratory_transductive
+4,-0.006102906850914296,-0.011399681570789952,12785,season_holdout,Location+ ajustado,False,exploratory_transductive
+5,0.011388259631736808,0.006354776508081262,12786,season_holdout,Location+ ajustado,False,exploratory_transductive
+6,0.030298653451456537,0.023875168352171194,12785,season_holdout,Location+ ajustado,False,exploratory_transductive
+7,0.050211094233001165,0.042553054946645325,12785,season_holdout,Location+ ajustado,False,exploratory_transductive
+8,0.0688851161375148,0.06416878117698095,12785,season_holdout,Location+ ajustado,False,exploratory_transductive
+9,0.08176664120316593,0.08205288034291178,12786,season_holdout,Location+ ajustado,False,exploratory_transductive
+0,-0.07221037401591456,-0.06912607639891202,12786,season_holdout,Pitching+,False,exploratory_transductive
+1,-0.05391507620063526,-0.05211822881409036,12785,season_holdout,Pitching+,False,exploratory_transductive
+2,-0.04017444514456517,-0.047547717373861396,12785,season_holdout,Pitching+,False,exploratory_transductive
+3,-0.0257585662784248,-0.02774697036700616,12785,season_holdout,Pitching+,False,exploratory_transductive
+4,-0.00981999453109921,-0.013299970599631018,12785,season_holdout,Pitching+,False,exploratory_transductive
+5,0.00830604203418165,0.0003480047027831336,12786,season_holdout,Pitching+,False,exploratory_transductive
+6,0.02890235189378908,0.017533293077834775,12785,season_holdout,Pitching+,False,exploratory_transductive
+7,0.04973824184702821,0.03541064012048315,12785,season_holdout,Pitching+,False,exploratory_transductive
+8,0.06805525807023186,0.05542189371315218,12785,season_holdout,Pitching+,False,exploratory_transductive
+9,0.09753226094306856,0.1186822214031085,12786,season_holdout,Pitching+,False,exploratory_transductive
+0,-0.07225240131259553,-0.06844634163547893,12786,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+1,-0.05473053613330183,-0.05641781820907179,12785,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+2,-0.04155744621256734,-0.04377553314711905,12785,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+3,-0.027958274819017363,-0.031149675179652156,12785,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+4,-0.012540634961926964,-0.010844168417313869,12785,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+5,0.005480037585394067,0.0012401890283835414,12786,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+6,0.02639532736951387,0.018173918935447092,12785,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+7,0.04871019432180685,0.035955358918105355,12785,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+8,0.06894028349388831,0.05621615560484997,12785,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+9,0.09969093963451235,0.11660504308539998,12786,season_holdout,Pitching+ ajustado,False,exploratory_transductive
+0,-0.022438741737910294,-0.01468529518000532,7100,park_holdout,baseline,False,exploratory_transductive
+1,-0.006507984098458422,0.0009877851266552708,54290,park_holdout,baseline,False,exploratory_transductive
+2,-0.0042840616142074675,0.003881539960944113,19927,park_holdout,baseline,False,exploratory_transductive
+3,-0.00022036731471334668,0.018480806257040874,18911,park_holdout,baseline,False,exploratory_transductive
+4,0.002905892979062807,0.017108202884320595,10042,park_holdout,baseline,False,exploratory_transductive
+5,0.006133822891127797,0.014826653828311201,18142,park_holdout,baseline,False,exploratory_transductive
+6,0.007984519598754033,0.019324753597381613,21788,park_holdout,baseline,False,exploratory_transductive
+7,0.012996645791590494,0.027023339519026905,28966,park_holdout,baseline,False,exploratory_transductive
+0,-0.013085187096347732,-0.002684147872943691,17917,park_holdout,Stuff+,False,exploratory_transductive
+1,-0.003944428873545854,0.004528615312808579,17916,park_holdout,Stuff+,False,exploratory_transductive
+2,0.0007007387244001632,0.007327196182799106,17917,park_holdout,Stuff+,False,exploratory_transductive
+3,0.004366005932396921,0.010030851853578285,17916,park_holdout,Stuff+,False,exploratory_transductive
+4,0.007595878170034223,0.013475034564459261,17917,park_holdout,Stuff+,False,exploratory_transductive
+5,0.01065442568337416,0.01199243997484996,17917,park_holdout,Stuff+,False,exploratory_transductive
+6,0.01373137818485139,0.014248063521142518,17916,park_holdout,Stuff+,False,exploratory_transductive
+7,0.017110685151292115,0.017208653375233775,17916,park_holdout,Stuff+,False,exploratory_transductive
+8,0.021244291576753453,0.015157845623528884,17917,park_holdout,Stuff+,False,exploratory_transductive
+9,0.02919631681756029,0.021504237991206612,17917,park_holdout,Stuff+,False,exploratory_transductive
+0,-0.004575183421744552,-0.005108147621367828,17917,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+1,-4.904987059305902e-05,0.005740287868384113,17916,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+2,0.0024922815997491894,0.006178569313859783,17917,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+3,0.004684620085564204,0.00784857643846318,17916,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+4,0.00677717606643677,0.011629915744295963,17917,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+5,0.008809601419926283,0.012377305044403427,17916,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+6,0.01085003428350502,0.017509525631691624,17917,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+7,0.012962526075152093,0.016280487990028056,17916,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+8,0.015429687177706142,0.017841926412604625,17917,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+9,0.01970817796098724,0.02249013331602544,17917,park_holdout,Stuff+ ajustado,False,exploratory_transductive
+0,-0.07468848948511211,-0.062304527144446335,17917,park_holdout,Location+,False,exploratory_transductive
+1,-0.051622140121019254,-0.03804088167225635,17916,park_holdout,Location+,False,exploratory_transductive
+2,-0.034541955006771076,-0.023378916098916732,17917,park_holdout,Location+,False,exploratory_transductive
+3,-0.018784069349861453,-0.012841174099529548,17916,park_holdout,Location+,False,exploratory_transductive
+4,-0.0015551091877449423,0.0029024068153958435,17917,park_holdout,Location+,False,exploratory_transductive
+5,0.0170200545720451,0.016368570653095316,17917,park_holdout,Location+,False,exploratory_transductive
+6,0.03509407537004789,0.03600824230178199,17916,park_holdout,Location+,False,exploratory_transductive
+7,0.052899841799855324,0.04591461682347444,17916,park_holdout,Location+,False,exploratory_transductive
+8,0.07023765849208778,0.06644782617684912,17917,park_holdout,Location+,False,exploratory_transductive
+9,0.08322300261172184,0.08171179095156329,17917,park_holdout,Location+,False,exploratory_transductive
+0,-0.07200455993884915,-0.06312500610196285,17917,park_holdout,Location+ ajustado,False,exploratory_transductive
+1,-0.04945825965220093,-0.03996165544487144,17916,park_holdout,Location+ ajustado,False,exploratory_transductive
+2,-0.033581627363106784,-0.02377469276930203,17917,park_holdout,Location+ ajustado,False,exploratory_transductive
+3,-0.019019409669999363,-0.01463199842186127,17916,park_holdout,Location+ ajustado,False,exploratory_transductive
+4,-0.001828650223026376,0.002088545903632087,17917,park_holdout,Location+ ajustado,False,exploratory_transductive
+5,0.016951625252902718,0.017666935654708643,17917,park_holdout,Location+ ajustado,False,exploratory_transductive
+6,0.034355327772620084,0.035405125579680036,17916,park_holdout,Location+ ajustado,False,exploratory_transductive
+7,0.05150782635717671,0.049023940190763116,17916,park_holdout,Location+ ajustado,False,exploratory_transductive
+8,0.06879187415781565,0.06678410583011181,17917,park_holdout,Location+ ajustado,False,exploratory_transductive
+9,0.08157501769262937,0.08331258700970226,17917,park_holdout,Location+ ajustado,False,exploratory_transductive
+0,-0.06071589890744055,-0.05722362007989467,17917,park_holdout,Pitching+,False,exploratory_transductive
+1,-0.043227399873862524,-0.04496185026373315,17916,park_holdout,Pitching+,False,exploratory_transductive
+2,-0.030934993899166475,-0.032217184310463436,17917,park_holdout,Pitching+,False,exploratory_transductive
+3,-0.01874762409934386,-0.015703372866208848,17916,park_holdout,Pitching+,False,exploratory_transductive
+4,-0.005301517932101399,-0.0014415147479565648,17917,park_holdout,Pitching+,False,exploratory_transductive
+5,0.010380433607706699,0.013558202320069858,17917,park_holdout,Pitching+,False,exploratory_transductive
+6,0.02926018865287481,0.0292407585490966,17916,park_holdout,Pitching+,False,exploratory_transductive
+7,0.04972039467940986,0.04306135135268461,17916,park_holdout,Pitching+,False,exploratory_transductive
+8,0.06846169780165685,0.059987298320275065,17917,park_holdout,Pitching+,False,exploratory_transductive
+9,0.0987521070667034,0.11848680344399265,17917,park_holdout,Pitching+,False,exploratory_transductive
+0,-0.0593667906386888,-0.05761634926171285,17917,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+1,-0.04324550573421902,-0.04643715559698682,17916,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+2,-0.0314409786602967,-0.0355420284091757,17917,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+3,-0.019435566835180756,-0.016091388219657377,17916,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+4,-0.00580007612577275,-0.0007921034053434774,17917,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+5,0.010522522683002748,0.015474189446727408,17917,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+6,0.029616273296797616,0.030653111476565707,17916,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+7,0.05109893151569933,0.04484598607562532,17916,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+8,0.07108276165200492,0.060751989007884206,17917,park_holdout,Pitching+ ajustado,False,exploratory_transductive
+9,0.10157956182900667,0.11754069503977668,17917,park_holdout,Pitching+ ajustado,False,exploratory_transductive

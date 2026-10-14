@@ -1,6 +1,6 @@
 # HACK-007
 ID: HACK-007
-State: REVIEW
+State: INTEGRATED
 Owner: luis-1
 Branch: feat/hack-007
 Worktree: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-007
@@ -9,14 +9,17 @@ Priority: P0
 Paths: app/Home.py, app/theme.py, app/DESIGN.md, app/pages/, app/assets/, .streamlit/, tests/test_app_smoke.py
 Depends: None
 Verify: `python -m pytest -q tests/test_app_smoke.py`
-Lease-Until: 1791962908
-Updated: 1791948508
+Lease-Until: 0
+Updated: 1791949109
 Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
-Next: Humano: Diff outside Paths: app/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)
+Next: Integrated in main: 55b5591d2a2c2f63d0600fd9435f98f88f0350bb; claim next P0
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/7
 Evidence: SHA 8f4cf1c approved by joahan-1; gates SUCCESS; pytest tests/test_app_smoke.py 10 passed; Direction A locked
-Events: 15
+Events: 16
 Checkpoints: 2
-Sessions: 4
+Sessions: 5
 Last-Checkpoint: 1791947590
 Task-Tip: 8f4cf1cbc454ca301d927e595c51971deae28b5c
+Integration-Proof: ancestry
+Merge-Commit: 55b5591d2a2c2f63d0600fd9435f98f88f0350bb
+Reviewer: joahan-1

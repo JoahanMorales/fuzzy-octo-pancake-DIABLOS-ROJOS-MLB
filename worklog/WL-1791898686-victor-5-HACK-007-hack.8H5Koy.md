@@ -6,7 +6,7 @@
 - Why: human choice; tokens already lived in app/theme.py
 - Failing: none
 - Commands: uv run pytest tests/test_app_smoke.py: 10 passed
-- Next: Humano: Diff outside Paths: app/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)
+- Next: Integrated in main: 55b5591d2a2c2f63d0600fd9435f98f88f0350bb (recorded by victor-1)
 
 ## History
 - 1791898686 | CLAIMED | victor-5 | claim; next: `tests/test_app_smoke.py` with `streamlit.testing.v1.AppTest.from_file("app/Home.py").run()`.
@@ -24,3 +24,4 @@
 - 1791948486 | CLAIMED | luis-1 | heartbeat; lease until 1791951186
 - 1791948508 | REVIEW | luis-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/7; evidence: SHA 8f4cf1c approved by joahan-1; gates SUCCESS; pytest tests/test_app_smoke.py 10 passed; Direction A locked; reviewer: -
 - 1791948524 | REVIEW | luis-1 | merge rechazado; Diff outside Paths: app/__init__.py (new test files: add the dir to Additive-Paths in PROJECT.md)
+- 1791949109 | INTEGRATED | victor-1 | integrate; recorded by victor-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/7; merged 55b5591d2a2c2f63d0600fd9435f98f88f0350bb; proof ancestry

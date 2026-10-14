@@ -192,46 +192,71 @@ def rotation(d: pd.DataFrame, pitchers: pd.DataFrame, rates: dict, min_starts: i
 
 
 def rotation_runs(rot: pd.DataFrame, d: pd.DataFrame, rates: dict, games_per_series: int = 3) -> pd.DataFrame:
-    """Runs per season from giving one home start per home series to the most altitude-resilient starter
-    instead of the least resilient one (an explicit, simple scenario; series length is an assumption)."""
+    """Runs per season from moving home starts from the least to the most altitude-resilient starter.
+
+    Scenario: at most one start per home series, capped by what the season allows (the least resilient starter's
+    home starts and the most resilient one's road starts). Neutral quality is the same in any park, so only the
+    resilience gap counts. ``orders_spearman`` says whether the home and road orders differ at all.
+    """
     out = []
     for f, r in rot.groupby("franchise"):
         if len(r) < 2:
             continue
         season = int(r.season.iloc[0])
         home_games = d[(d.franchise == f) & (d.year == season) & d.is_home].game_anon_id.nunique()
-        best, worst = r.altitude_resilience.max(), r.altitude_resilience.min()
-        pps = float(r.season_pitches_per_start.mean())
+        best = r.loc[r.altitude_resilience.idxmax()]
+        worst = r.loc[r.altitude_resilience.idxmin()]
         series = home_games / games_per_series
-        out.append(dict(franchise=f, season=season, starters=len(r), home_games=home_games,
-                        home_series=series, resilience_gap_points=best - worst, pitches_per_start=pps,
-                        runs_per_swapped_start=(best - worst) * pps * rates["stuff"],
-                        runs_saved_per_season=(best - worst) * pps * rates["stuff"] * series,
+        swaps = min(series, float(worst.season_home_starts), float(best.season_starts - best.season_home_starts))
+        gap = float(best.altitude_resilience - worst.altitude_resilience)
+        pps = float(r.season_pitches_per_start.mean())
+        out.append(dict(franchise=f, season=season, starters=len(r), home_games=home_games, home_series=series,
+                        best_resilience=best.pitcher_anon_id, worst_resilience=worst.pitcher_anon_id,
+                        swaps=swaps, resilience_gap_points=gap, pitches_per_start=pps,
+                        runs_per_swapped_start=gap * pps * rates["stuff"],
+                        runs_saved_per_season=gap * pps * rates["stuff"] * swaps,
                         orders_spearman=float(r.home_order.corr(r.road_order, method="spearman"))))
     return pd.DataFrame(out)
 
 
 def bullpen(d: pd.DataFrame, pitchers: pd.DataFrame, rates: dict, min_side: int = 100,
             platoon_points: float = 1.5) -> pd.DataFrame:
-    """Relievers: Pitching+ vs left/right-handed batters (shrunk), home value, and the matchup to use them in."""
+    """Relievers: Pitching+ vs left/right-handed batters (shrunk), home value, and the matchup to use them in.
+
+    The matchup uses the platoon split ABOVE the league's for the same throwing hand (every right-hander is better
+    against right-handed batters; that alone is not a recommendation).
+    """
     key = KEY + ["BatterSide"]
     side = _shrunk(d, "pitching_plus", key).unstack("BatterSide")
     n = d.groupby(key, observed=True).size().unstack("BatterSide")
+    league = d.groupby(["PitcherThrows", "BatterSide"], observed=True).pitching_plus.mean().unstack("BatterSide")
+    league_gap = (league.get("Left") - league.get("Right")).rename("league_platoon_gap")
     r = pitchers[pitchers.role == "relevista"].set_index(KEY)
     r = r.join(side.rename(columns=lambda c: f"pitching_plus_vs_{c}"))
     r = r.join(n.rename(columns=lambda c: f"pitches_vs_{c}"))
     home, _ = _value_runs(r, rates)
     r["home_value_runs_100"] = home
-    gap = r.get("pitching_plus_vs_Left") - r.get("pitching_plus_vs_Right")
+    r["league_platoon_gap"] = r.throws.map(league_gap)
+    r["platoon_vs_league"] = r.get("pitching_plus_vs_Left") - r.get("pitching_plus_vs_Right") - r.league_platoon_gap
     enough = (r.get("pitches_vs_Left", 0) >= min_side) & (r.get("pitches_vs_Right", 0) >= min_side)
-    r["matchup"] = np.select([enough & (gap >= platoon_points), enough & (gap <= -platoon_points)],
+    r["matchup"] = np.select([enough & (r.platoon_vs_league >= platoon_points),
+                              enough & (r.platoon_vs_league <= -platoon_points)],
                              ["vs zurdos", "vs derechos"], "ambos lados")
     r["home_leverage_rank"] = r.groupby(level="franchise").home_value_runs_100.rank(ascending=False,
                                                                                     method="first").astype(int)
     keep = ["throws", "pitches", "pitching_plus", "pitching_plus_vs_Left", "pitching_plus_vs_Right",
-            "pitches_vs_Left", "pitches_vs_Right", "stuff_plus_harp_helu", "delta_cdmx", "home_value_runs_100",
-            "home_leverage_rank", "matchup"]
+            "pitches_vs_Left", "pitches_vs_Right", "league_platoon_gap", "platoon_vs_league", "stuff_plus_harp_helu",
+            "delta_cdmx", "home_value_runs_100", "home_leverage_rank", "matchup"]
     return r[[c for c in keep if c in r]].reset_index().sort_values(["franchise", "home_leverage_rank"])
+
+
+def with_sensitivity(pitchers: pd.DataFrame, sens: pd.DataFrame, d: pd.DataFrame) -> pd.DataFrame:
+    """Join HACK-018's per pitcher-season altitude sensitivity (``reports/pitcher_sensitivity/pitchers.csv``):
+    model delta (``delta_eb``) and observed delta (``observed_eb``), averaged over the seasons on the franchise."""
+    seasons = d[KEY + ["year"]].drop_duplicates()
+    s = seasons.merge(sens[["pitcher_anon_id", "year", "delta_eb", "observed_eb"]], on=["pitcher_anon_id", "year"])
+    s = s.groupby(KEY)[["delta_eb", "observed_eb"]].mean().add_prefix("hack018_")
+    return pitchers.join(s, on=KEY)
 
 
 def runs_summary(mix: pd.DataFrame, rot_runs: pd.DataFrame, rates: dict) -> pd.DataFrame:
@@ -240,24 +265,32 @@ def runs_summary(mix: pd.DataFrame, rot_runs: pd.DataFrame, rates: dict) -> pd.D
     for f in sorted(set(mix.franchise) | set(rot_runs.franchise)):
         m = float(mix.loc[mix.franchise == f, "runs_saved_per_season"].sum())
         r = float(rot_runs.loc[rot_runs.franchise == f, "runs_saved_per_season"].sum())
-        for comp, runs in (("mezcla de lanzamientos en casa", m), ("orden de rotación casa/visita", r),
+        for comp, runs in (("mezcla de lanzamientos en casa", m), ("asignación de aperturas en casa", r),
                            ("total", m + r)):
             rows.append(dict(franchise=f, component=comp, runs_per_season=runs,
                              wins_per_season=runs / rates["rpw_extreme"]))
     return pd.DataFrame(rows)
 
 
-def audit(d: pd.DataFrame, franchises, rates: dict, shift: float = 0.10, min_pitches: int = 200,
-          min_starts: int = 5, min_pitch_type: int = 50) -> dict[str, pd.DataFrame]:
-    """Every table of the audit (aggregates only)."""
-    pitchers = pitcher_table(d, franchises, min_pitches=min_pitches, min_starts=min_starts)
-    plan = pitch_plan(d, franchises, min_pitches=min_pitch_type)
+PARAMS = dict(shift=0.10, min_pitches=200, min_starts=5, min_pitch_type=50, min_usage=0.05, min_gap=5.0,
+              min_side=100, platoon_points=1.5, games_per_series=3)
+
+
+def audit(d: pd.DataFrame, franchises, rates: dict, sens: pd.DataFrame | None = None,
+          **overrides) -> dict[str, pd.DataFrame]:
+    """Every table of the audit (aggregates only). Thresholds: ``PARAMS``, overridable; echoed in ``params``."""
+    p = {**PARAMS, **overrides}
+    pitchers = pitcher_table(d, franchises, min_pitches=p["min_pitches"], min_starts=p["min_starts"])
+    if sens is not None:
+        pitchers = with_sensitivity(pitchers, sens, d)
+    plan = pitch_plan(d, franchises, min_pitches=p["min_pitch_type"], min_usage=p["min_usage"], min_gap=p["min_gap"])
     plan = plan.merge(pitchers[KEY], on=KEY)  # only pitchers with enough pitches
-    mix = mix_runs(plan, pitchers, rates, shift=shift)
-    rot = rotation(d, pitchers, rates, min_starts=min_starts)
-    rot_runs = rotation_runs(rot, d, rates)
+    mix = mix_runs(plan, pitchers, rates, shift=p["shift"])
+    rot = rotation(d, pitchers, rates, min_starts=p["min_starts"])
+    rot_runs = rotation_runs(rot, d, rates, games_per_series=p["games_per_series"])
     home_games = (d[d.franchise.isin(list(franchises)) & d.is_home].groupby(["franchise", "year"])
                   .game_anon_id.nunique().rename("home_games").reset_index())
     return {"pitchers": pitchers, "pitch_plan": plan, "home_games": home_games, "mix_runs": mix, "rotation": rot,
-            "rotation_runs": rot_runs, "bullpen": bullpen(d, pitchers, rates),
-            "runs_saved": runs_summary(mix, rot_runs, rates)}
+            "rotation_runs": rot_runs,
+            "bullpen": bullpen(d, pitchers, rates, min_side=p["min_side"], platoon_points=p["platoon_points"]),
+            "runs_saved": runs_summary(mix, rot_runs, rates), "params": pd.DataFrame([p])}

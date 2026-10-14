@@ -81,13 +81,22 @@ with tab3:
                                        "home_value_runs_100": "valor en casa", "road_value_runs_100": "valor de visita"})
                      [["orden en casa", "orden de visita", "pitcher", "ΔCDMX", "valor en casa", "valor de visita"]]
                      .sort_values("orden en casa").round(2), hide_index=True, width="stretch")
+        rr = _read("rotation_runs")
+        if rr is not None and (rr.franchise == f).any():
+            x = rr[rr.franchise == f].iloc[0]
+            st.markdown(f"Más que el orden, importa **a quién le tocan las aperturas en casa**: cada apertura en casa que "
+                        f"pasa de {x.worst_resilience} a {x.best_resilience} vale {x.runs_per_swapped_start:.2f} carreras "
+                        f"({x.swaps:.0f} cambios posibles en la temporada).")
 with tab4:
     b = sel["bullpen"].rename(columns={"pitcher_anon_id": "pitcher", "home_leverage_rank": "prioridad en casa",
                                         "pitching_plus_vs_Left": "Pitching+ vs zurdos",
                                         "pitching_plus_vs_Right": "Pitching+ vs derechos", "matchup": "usar",
-                                        "delta_cdmx": "ΔCDMX"})
+                                        "platoon_vs_league": "ventaja vs zurdos sobre la liga", "delta_cdmx": "ΔCDMX"})
     st.dataframe(b[[c for c in ("prioridad en casa", "pitcher", "usar", "Pitching+ vs zurdos", "Pitching+ vs derechos",
-                                "ΔCDMX") if c in b]].round(1), hide_index=True, width="stretch")
+                                "ventaja vs zurdos sobre la liga", "ΔCDMX") if c in b]].round(1),
+                 hide_index=True, width="stretch")
+    st.caption("\"Usar\" compara su diferencia zurdos − derechos con la normal de la liga para su mano: todo derecho "
+               "rinde mejor contra derechos, eso solo no es una recomendación.")
 
 readme = AUDIT / "README.md"
 if readme.exists():

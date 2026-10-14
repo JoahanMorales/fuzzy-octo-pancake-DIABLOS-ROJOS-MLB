@@ -98,16 +98,36 @@ def test_rotation_orders_by_altitude_resilience_at_home(tables):
     assert rot.loc["s1", "altitude_resilience"] > rot.loc["s2", "altitude_resilience"]  # Δ −10 vs −11
     rr = tables["rotation_runs"].iloc[0]
     gap = rot.altitude_resilience.max() - rot.altitude_resilience.min()
-    assert rr.runs_saved_per_season == pytest.approx(gap * rr.pitches_per_start * RATES["stuff"] * rr.home_series)
+    assert rr.runs_saved_per_season == pytest.approx(gap * rr.pitches_per_start * RATES["stuff"] * rr.swaps)
+    # never more swaps than home series, the worst starter's home starts or the best starter's road starts
+    best, worst = rot.loc[rr.best_resilience], rot.loc[rr.worst_resilience]
+    assert rr.swaps <= min(rr.home_series, worst.season_home_starts, best.season_starts - best.season_home_starts)
+
+
+def test_rotation_swaps_are_capped_by_the_schedule(ctx):
+    pitchers = staff.pitcher_table(ctx, [5], min_pitches=50, min_starts=2)
+    rot = staff.rotation(ctx, pitchers, RATES, min_starts=2)
+    rot.loc[rot.pitcher_anon_id == "s2", "season_home_starts"] = 1  # the least resilient starter had 1 home start
+    assert staff.rotation_runs(rot, ctx, RATES).iloc[0].swaps == 1
 
 
 def test_bullpen_and_runs_summary(tables):
     bp = tables["bullpen"]
     assert list(bp.pitcher_anon_id) == ["r1"] and bp.matchup.isin(["vs zurdos", "vs derechos", "ambos lados"]).all()
+    r = bp.iloc[0]  # the matchup is the platoon split above the league's for the same throwing hand
+    assert r.platoon_vs_league == pytest.approx(r.pitching_plus_vs_Left - r.pitching_plus_vs_Right - r.league_platoon_gap)
     rs = tables["runs_saved"].set_index("component")
     assert rs.loc["total", "runs_per_season"] == pytest.approx(
         rs.drop("total").runs_per_season.sum())
     assert rs.loc["total", "wins_per_season"] == pytest.approx(rs.loc["total", "runs_per_season"] / RATES["rpw_extreme"])
+
+
+def test_hack018_sensitivity_is_joined_by_franchise_seasons(ctx):
+    sens = pd.DataFrame({"pitcher_anon_id": ["s1", "s1", "r1"], "year": [2026, 2025, 2026],
+                         "delta_eb": [-9.0, -50.0, -11.0], "observed_eb": [-8.0, -50.0, np.nan]})
+    t = staff.audit(ctx, [5], RATES, sens=sens, min_pitches=50, min_starts=2, min_pitch_type=20)["pitchers"]
+    s1 = t.set_index("pitcher_anon_id").loc["s1"]
+    assert s1.hack018_delta_eb == -9.0 and s1.hack018_observed_eb == -8.0  # 2025 is not a season on franchise 5
 
 
 def test_outputs_are_aggregates_only(tables):

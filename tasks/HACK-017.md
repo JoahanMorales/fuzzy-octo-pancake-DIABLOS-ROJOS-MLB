@@ -9,13 +9,13 @@ Priority: P0
 Paths: stuffplus/profile.py, analysis/ideal_profile/, reports/ideal_profile/, tests/test_profile.py
 Depends: HACK-004, HACK-010
 Verify: `python -m pytest -q tests/test_profile.py`
-Lease-Until: 1791945455
-Updated: 1791931055
+Lease-Until: 1791962386
+Updated: 1791947986
 Task-Base: b4d24886d03beb9197bb2c818b06a61eb04d755e
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/19; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/19
 Evidence: pytest tests/test_profile.py 7 passed; real-data run (rama + feat/hack-015 5780f53) -> reports/ideal_profile (12 archivos, agregados, sin IDs). Depende de merge de HACK-015.
-Events: 4
+Events: 5
 Checkpoints: 0
 Sessions: 2
 Last-Checkpoint: 0

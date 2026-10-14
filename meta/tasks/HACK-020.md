@@ -1,5 +1,5 @@
 Task: HACK-020
-Events: 2
+Events: 3
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

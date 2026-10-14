@@ -1,6 +1,6 @@
 # HACK-020
 ID: HACK-020
-State: CLAIMED
+State: REVIEW
 Owner: luis-1
 Branch: feat/hack-020
 Worktree: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-020
@@ -9,13 +9,14 @@ Priority: P0
 Paths: app/pages/1_Simulador.py, app/pages/2_Leaderboard.py, app/pages/4_Altitud.py, app/components/, stuffplus/serving.py, tests/test_app_pages.py
 Depends: HACK-007, HACK-015, HACK-016
 Verify: `python -m pytest -q tests/test_serving.py tests/test_app_smoke.py tests/test_app_pages.py`
-Lease-Until: 1791994008
-Updated: 1791991308
+Lease-Until: 1792006146
+Updated: 1791991746
 Task-Base: 7dc8f4dc72b7e862e24f9bcf668095595c735345
-Next: cache serving.load_bundle() with st.cache_resource
-PR: -
-Evidence: -
-Events: 2
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/29; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/29
+Evidence: SHA a72d440; pytest tests/test_serving.py tests/test_app_smoke.py tests/test_app_pages.py exit 0; smoke PRODUCT_PASS
+Events: 3
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0
+Task-Tip: a72d4402d01882dbe0c437b2f22491e68f29f45d

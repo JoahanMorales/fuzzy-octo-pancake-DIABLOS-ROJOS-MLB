@@ -1,0 +1,97 @@
+split,model,metric,value,demo_data,evidence
+season_holdout,baseline,n,129570.0,False,exploratory_transductive
+season_holdout,baseline,rmse,0.200712237176574,False,exploratory_transductive
+season_holdout,baseline,mae,0.12888795585784169,False,exploratory_transductive
+season_holdout,baseline,r2,0.0022530406368193034,False,exploratory_transductive
+season_holdout,baseline,bias,-0.002721797860056081,False,exploratory_transductive
+season_holdout,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+season_holdout,baseline,skill_lo,0.0,False,exploratory_transductive
+season_holdout,baseline,skill_hi,0.0,False,exploratory_transductive
+season_holdout,Stuff+,n,129570.0,False,exploratory_transductive
+season_holdout,Stuff+,rmse,0.2006990338670085,False,exploratory_transductive
+season_holdout,Stuff+,mae,0.12913097324161213,False,exploratory_transductive
+season_holdout,Stuff+,r2,0.0023843044687046344,False,exploratory_transductive
+season_holdout,Stuff+,bias,-0.002043424799730357,False,exploratory_transductive
+season_holdout,Stuff+,skill_vs_baseline,6.578228488318683e-05,False,exploratory_transductive
+season_holdout,Stuff+,skill_lo,-0.00039105390693296995,False,exploratory_transductive
+season_holdout,Stuff+,skill_hi,0.0005530536612036503,False,exploratory_transductive
+season_holdout,Location+,n,129570.0,False,exploratory_transductive
+season_holdout,Location+,rmse,0.19505771465001456,False,exploratory_transductive
+season_holdout,Location+,mae,0.11261421231681472,False,exploratory_transductive
+season_holdout,Location+,r2,0.057678776295025824,False,exploratory_transductive
+season_holdout,Location+,bias,-0.0028271720036014093,False,exploratory_transductive
+season_holdout,Location+,skill_vs_baseline,0.028172285886011728,False,exploratory_transductive
+season_holdout,Location+,skill_lo,0.02655026959563496,False,exploratory_transductive
+season_holdout,Location+,skill_hi,0.02988891707247159,False,exploratory_transductive
+season_holdout,Pitching+,n,129570.0,False,exploratory_transductive
+season_holdout,Pitching+,rmse,0.19321057154156984,False,exploratory_transductive
+season_holdout,Pitching+,mae,0.10962257853573716,False,exploratory_transductive
+season_holdout,Pitching+,r2,0.07544132052142072,False,exploratory_transductive
+season_holdout,Pitching+,bias,-0.0031898539863129977,False,exploratory_transductive
+season_holdout,Pitching+,skill_vs_baseline,0.03737522804055371,False,exploratory_transductive
+season_holdout,Pitching+,skill_lo,0.035391018009845315,False,exploratory_transductive
+season_holdout,Pitching+,skill_hi,0.03934921334929502,False,exploratory_transductive
+season_holdout,Stuff+ no density,n,129570.0,False,exploratory_transductive
+season_holdout,Stuff+ no density,rmse,0.2007339163258369,False,exploratory_transductive
+season_holdout,Stuff+ no density,mae,0.12919623787284584,False,exploratory_transductive
+season_holdout,Stuff+ no density,r2,0.0020374935060667454,False,exploratory_transductive
+season_holdout,Stuff+ no density,bias,-0.0025074588794084638,False,exploratory_transductive
+season_holdout,Stuff+ no density,skill_vs_baseline,-0.00010801109871461101,False,exploratory_transductive
+season_holdout,Stuff+ no density,skill_lo,-0.0005540842765320464,False,exploratory_transductive
+season_holdout,Stuff+ no density,skill_hi,0.00037351995491721155,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,n,129570.0,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,rmse,0.2007901573987198,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,mae,0.12921154677250987,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,r2,0.0014782024229178514,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,bias,-0.0025114755951490095,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,skill_vs_baseline,-0.00038821859215909527,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,skill_lo,-0.000842091954338281,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,skill_hi,5.544910941459576e-05,False,exploratory_transductive
+park_holdout,baseline,n,181032.0,False,exploratory_transductive
+park_holdout,baseline,rmse,0.20516399845417893,False,exploratory_transductive
+park_holdout,baseline,mae,0.13003894032230096,False,exploratory_transductive
+park_holdout,baseline,r2,1.2314080440667396e-05,False,exploratory_transductive
+park_holdout,baseline,bias,0.010884622931473385,False,exploratory_transductive
+park_holdout,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+park_holdout,baseline,skill_lo,0.0,False,exploratory_transductive
+park_holdout,baseline,skill_hi,0.0,False,exploratory_transductive
+park_holdout,Stuff+,n,181032.0,False,exploratory_transductive
+park_holdout,Stuff+,rmse,0.20512988633636967,False,exploratory_transductive
+park_holdout,Stuff+,mae,0.1306630574657279,False,exploratory_transductive
+park_holdout,Stuff+,r2,0.00034481746478209896,False,exploratory_transductive
+park_holdout,Stuff+,bias,0.0025311742956656705,False,exploratory_transductive
+park_holdout,Stuff+,skill_vs_baseline,0.00016626756188353742,False,exploratory_transductive
+park_holdout,Stuff+,skill_lo,-0.00022215818823121956,False,exploratory_transductive
+park_holdout,Stuff+,skill_hi,0.000534386837889025,False,exploratory_transductive
+park_holdout,Location+,n,181032.0,False,exploratory_transductive
+park_holdout,Location+,rmse,0.20033246605680757,False,exploratory_transductive
+park_holdout,Location+,mae,0.1157646836338791,False,exploratory_transductive
+park_holdout,Location+,r2,0.0465563791529906,False,exploratory_transductive
+park_holdout,Location+,bias,0.0035088206640223785,False,exploratory_transductive
+park_holdout,Location+,skill_vs_baseline,0.023549611207496657,False,exploratory_transductive
+park_holdout,Location+,skill_lo,0.022363744953847096,False,exploratory_transductive
+park_holdout,Location+,skill_hi,0.024521761256507745,False,exploratory_transductive
+park_holdout,Pitching+,n,181032.0,False,exploratory_transductive
+park_holdout,Pitching+,rmse,0.19844161095888205,False,exploratory_transductive
+park_holdout,Pitching+,mae,0.11377094802408352,False,exploratory_transductive
+park_holdout,Pitching+,r2,0.06446975798238108,False,exploratory_transductive
+park_holdout,Pitching+,bias,0.0020075680447937724,False,exploratory_transductive
+park_holdout,Pitching+,skill_vs_baseline,0.03276592163316727,False,exploratory_transductive
+park_holdout,Pitching+,skill_lo,0.03147884356418214,False,exploratory_transductive
+park_holdout,Pitching+,skill_hi,0.03393840330330858,False,exploratory_transductive
+park_holdout,Stuff+ no density,n,181032.0,False,exploratory_transductive
+park_holdout,Stuff+ no density,rmse,0.20514284489411516,False,exploratory_transductive
+park_holdout,Stuff+ no density,mae,0.13057839076256306,False,exploratory_transductive
+park_holdout,Stuff+ no density,r2,0.00021851213881873832,False,exploratory_transductive
+park_holdout,Stuff+ no density,bias,0.004556969260802416,False,exploratory_transductive
+park_holdout,Stuff+ no density,skill_vs_baseline,0.000103105614158161,False,exploratory_transductive
+park_holdout,Stuff+ no density,skill_lo,-0.0002352561309995671,False,exploratory_transductive
+park_holdout,Stuff+ no density,skill_hi,0.0004243494142787766,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,n,181032.0,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,rmse,0.2052240982315274,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,mae,0.13057516638731687,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,r2,-0.0005736351142777707,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,bias,0.005865919011968472,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,skill_vs_baseline,-0.0002929352995715284,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,skill_lo,-0.0006573399669725255,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,skill_hi,6.990051613150175e-05,False,exploratory_transductive

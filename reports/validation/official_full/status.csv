@@ -1,0 +1,13 @@
+split,model,status,reason,demo_data,evidence
+season_holdout,baseline,evaluated,,False,exploratory_transductive
+season_holdout,Stuff+,evaluated,,False,exploratory_transductive
+season_holdout,Location+,evaluated,,False,exploratory_transductive
+season_holdout,Pitching+,evaluated,,False,exploratory_transductive
+season_holdout,Stuff+ no density,evaluated,,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,evaluated,,False,exploratory_transductive
+park_holdout,baseline,evaluated,,False,exploratory_transductive
+park_holdout,Stuff+,evaluated,,False,exploratory_transductive
+park_holdout,Location+,evaluated,,False,exploratory_transductive
+park_holdout,Pitching+,evaluated,,False,exploratory_transductive
+park_holdout,Stuff+ no density,evaluated,,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,evaluated,,False,exploratory_transductive

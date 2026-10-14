@@ -1,0 +1,13 @@
+split,settings,model,skill,lo,hi,source,parks,parks_positive
+pitcher_kfold,production,Stuff+,-0.0003,-0.00056,-6e-05,reports/stuff_model/metrics.csv,,
+pitcher_kfold,production,Location+,0.02783,0.02704,0.02866,reports/location_model/metrics.csv,,
+pitcher_kfold,production,Pitching+,0.0388,0.03777,0.03995,reports/pitching_model/metrics.csv,,
+park_holdout,production,Location+,0.02355,0.02236,0.02452,reports/validation/official_full/validation_table.csv,,
+park_holdout,production,Pitching+,0.03277,0.03148,0.03394,reports/validation/official_full/validation_table.csv,,
+park_holdout,production,Stuff+,0.00017,-0.00022,0.00053,reports/validation/official_full/validation_table.csv,,
+season_holdout,production,Location+,0.02817,0.02655,0.02989,reports/validation/official_full/validation_table.csv,,
+season_holdout,production,Pitching+,0.03738,0.03539,0.03935,reports/validation/official_full/validation_table.csv,,
+season_holdout,production,Stuff+,7e-05,-0.00039,0.00055,reports/validation/official_full/validation_table.csv,,
+leave_one_park_out (20 parks),fast,Location+,0.02277,0.01674,0.02946,reports/validation/official_fast/validation_table.csv (lo/hi = min/max over parks),20.0,20.0
+leave_one_park_out (20 parks),fast,Pitching+,0.03096,0.02119,0.04212,reports/validation/official_fast/validation_table.csv (lo/hi = min/max over parks),20.0,20.0
+leave_one_park_out (20 parks),fast,Stuff+,1e-05,-0.00127,0.00241,reports/validation/official_fast/validation_table.csv (lo/hi = min/max over parks),20.0,8.0

@@ -247,3 +247,18 @@ def test_altitude_bias_table_reports_every_bucket_and_model(frame, tmp_path):
     assert (tmp_path / "altitude_bias.csv").exists()
     meta = json.loads((tmp_path / "provenance.json").read_text())
     assert meta["acceptance_complete"] is False  # demo data never closes acceptance
+
+
+def test_summary_is_built_only_from_the_cited_csvs():
+    from stuffplus import config
+    from stuffplus.validation import summary
+
+    needed = [config.REPORTS_DIR / "validation" / "official_full" / "validation_table.csv",
+              config.REPORTS_DIR / "pitching_model" / "metrics.csv"]
+    if not all(p.exists() for p in needed):
+        pytest.skip("real-data reports not present")
+    text, h = summary.build()
+    assert {"pitcher_kfold", "season_holdout", "park_holdout"} <= set(h.split)
+    assert h.skill.notna().all() and "nan" not in text.lower()
+    pit = h[(h.model == "Pitching+") & (h.split != "leave_one_park_out (20 parks)")]
+    assert (pit.lo > 0).all()  # Pitching+ beats the rubric's null model in every production split

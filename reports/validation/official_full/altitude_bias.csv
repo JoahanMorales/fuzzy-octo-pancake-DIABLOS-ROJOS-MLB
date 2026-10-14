@@ -1,0 +1,25 @@
+split,model,altitude_category,n,bias_obs_minus_pred,se,demo_data,evidence
+season_holdout,baseline,Extreme Altitude,41815,0.006827446392511762,0.0010221700037596779,False,exploratory_transductive
+season_holdout,baseline,Medium Altitude,27385,0.0023559346149240362,0.0012416668242600608,False,exploratory_transductive
+season_holdout,baseline,No Altitude,60370,-0.011639395213848608,0.0007816160033630464,False,exploratory_transductive
+season_holdout,Stuff+,Extreme Altitude,41815,0.0010577384230405315,0.0010233125261858457,False,exploratory_transductive
+season_holdout,Stuff+,Medium Altitude,27385,0.00025127303762617094,0.0012440245272046537,False,exploratory_transductive
+season_holdout,Stuff+,No Altitude,60370,-0.005232350432265941,0.0007815125758012428,False,exploratory_transductive
+season_holdout,Location+,Extreme Altitude,41815,0.00021678250705652464,0.0009992016692279752,False,exploratory_transductive
+season_holdout,Location+,Medium Altitude,27385,-0.00010911470807983675,0.0012096559517014677,False,exploratory_transductive
+season_holdout,Location+,No Altitude,60370,-0.00616851632861416,0.0007562876130322738,False,exploratory_transductive
+season_holdout,Pitching+,Extreme Altitude,41815,-0.0014935238766961851,0.0009898874570552216,False,exploratory_transductive
+season_holdout,Pitching+,Medium Altitude,27385,-0.0004160076530251707,0.0011994415321135185,False,exploratory_transductive
+season_holdout,Pitching+,No Altitude,60370,-0.005623079518377171,0.0007486689470295196,False,exploratory_transductive
+season_holdout,Stuff+ no density,Extreme Altitude,41815,0.0023577000420361184,0.0010233008926028087,False,exploratory_transductive
+season_holdout,Stuff+ no density,Medium Altitude,27385,-4.13301753600592e-05,0.0012435093024449726,False,exploratory_transductive
+season_holdout,Stuff+ no density,No Altitude,60370,-0.006995972294359116,0.0007817462298362647,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,Extreme Altitude,41815,0.003627420069643023,0.00102349270637556,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,Medium Altitude,27385,0.0010020453632276335,0.0012441431816945158,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,No Altitude,60370,-0.008357354237991865,0.0007816496917307821,False,exploratory_transductive
+park_holdout,baseline,Extreme Altitude,181032,0.010884622931473385,0.0004815181080397722,False,exploratory_transductive
+park_holdout,Stuff+,Extreme Altitude,181032,0.0025311742956656705,0.0004820803157489452,False,exploratory_transductive
+park_holdout,Location+,Extreme Altitude,181032,0.0035088206640223785,0.00047076941133228036,False,exploratory_transductive
+park_holdout,Pitching+,Extreme Altitude,181032,0.0020075680447937724,0.0004663736912107241,False,exploratory_transductive
+park_holdout,Stuff+ no density,Extreme Altitude,181032,0.004556969260802416,0.0004820285057623564,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,Extreme Altitude,181032,0.005865919011968472,0.0004821413745789039,False,exploratory_transductive

@@ -9,13 +9,13 @@ Priority: P0
 Paths: stuffplus/validation/, analysis/validation/, reports/validation/, tests/test_validation.py
 Depends: HACK-005, HACK-010
 Verify: `python -m pytest -q tests/test_validation.py`
-Lease-Until: 1791943806
-Updated: 1791941106
+Lease-Until: 1791944100
+Updated: 1791941400
 Task-Base: f0de095681b4c572ce62e45430de89a9f89dce77
-Next: Wait official fast run, inspect aggregate metrics/provenance, update PR20 and reports; independent draft review pending
+Next: Independent review of23120e5 official aggregates; implement fold-preparation contract and final run before task completion
 PR: -
 Evidence: -
-Events: 8
-Checkpoints: 3
+Events: 9
+Checkpoints: 4
 Sessions: 2
-Last-Checkpoint: 1791939998
+Last-Checkpoint: 1791941400

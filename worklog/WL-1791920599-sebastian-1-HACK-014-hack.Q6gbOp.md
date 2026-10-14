@@ -1,12 +1,12 @@
 # worklog/WL-1791920599-sebastian-1-HACK-014-hack.Q6gbOp.md · HACK-014
 
 ## Live summary
-- Done: PR20 draft at9ee6af7; 16 tests/fullsmoke/secret-scan pass; CIgreen; PR16 merged4c1be56 and UAKINTEGRATED
-- Decision: Use newly supplied official parquet for a fast exploratory diagnostic run before updating draft evidence
-- Why: User confirmed main data/raw; parquet635002rows84columns; global preparation still transductive
-- Failing: No failing tests; official run in progress; inductive fold preparation still pending
-- Commands: python -m analysis.validation.run --fast --out reports/validation/official_fast; gh pr view20; python -m pytest -q tests/test_validation.py
-- Next: Wait official fast run, inspect aggregate metrics/provenance, update PR20 and reports; independent draft review pending
+- Done: PR20 head23120e5 pushed; official fast run exit0 in1325s;627602cleaned rows23splits20parks; equal model denominators and aggregate privacy verified; prior16tests/productsmoke/CIgreen
+- Decision: Keep draft exploratory; report Stuff+ at baseline and negative neutral-physics skill without promotion
+- Why: Global preparation transductive; fast settings/30bootstrap draws; final inductive evidence pending
+- Failing: No execution failures;153rows missing inferred parks excluded only fromLOPO; task acceptance incomplete
+- Commands: OMP_NUM_THREADS=2 python -m analysis.validation.run --fast --out reports/validation/official_fast; REAL_REPORT_QA_PASS; bash .uak/bin/secret-scan --tracked
+- Next: Independent review of23120e5 official aggregates; implement fold-preparation contract and final run before task completion
 
 ## History
 - 1791920599 | CLAIMED | sebastian-1 | claim; next: `stuffplus/validation/run_all.py` iterating `splits.*` × models.
@@ -17,3 +17,4 @@
 - 1791939998 | CLAIMED | sebastian-1 | checkpoint; next: Wait official fast run, inspect aggregate metrics/provenance, update PR20 and reports; independent draft review pending
 - 1791940381 | CLAIMED | sebastian-1 | heartbeat; lease until 1791943081
 - 1791941106 | CLAIMED | sebastian-1 | heartbeat; lease until 1791943806
+- 1791941400 | CLAIMED | sebastian-1 | checkpoint; next: Independent review of23120e5 official aggregates; implement fold-preparation contract and final run before task completion

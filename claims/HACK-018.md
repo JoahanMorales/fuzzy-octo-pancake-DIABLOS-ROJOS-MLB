@@ -9,9 +9,9 @@ Priority: P0
 Paths: analysis/pitcher_sensitivity/, reports/pitcher_sensitivity/, stuffplus/sensitivity.py, tests/test_sensitivity.py
 Depends: HACK-015
 Verify: `python -m pytest -q tests/test_sensitivity.py`
-Lease-Until: 1791944212
-Updated: 1791941512
+Lease-Until: 1791944251
+Updated: 1791941551
 Task-Base: dcb3f2809a47993e919f4c7e426890a561f21376
-Next: Terminar corrida oficial --fast, revisar agregados, smoke, commit y PR
+Next: Completar smoke, commit/push y PR; solicitar revisión del SHA
 PR: -
 Evidence: -

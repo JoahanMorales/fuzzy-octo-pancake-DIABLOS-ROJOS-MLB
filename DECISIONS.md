@@ -55,3 +55,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791948462 | deadline decision/HACK-007-1791947555/1791948455 | BLOCKED_OTHER_TASK | Option: Direction A; Why: luis eligió Transmisión Diablos el 2026-10-13; la dirección ya está construida en app/theme.py; no money, accounts, publishing or scope expansion.
 - 1791948465 | deadline lease/HACK-016/1791948464 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791984614 | deadline lease/HACK-014/1791964430 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791990122 | HACK-021 | Indice = 100 + delta del modelo - media liga; no EB | Why: Un prospecto no tiene splits observados

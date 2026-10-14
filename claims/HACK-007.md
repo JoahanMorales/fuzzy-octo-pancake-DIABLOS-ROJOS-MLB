@@ -9,8 +9,8 @@ Priority: P0
 Paths: app/Home.py, app/theme.py, app/DESIGN.md, app/pages/, app/assets/, .streamlit/, tests/test_app_smoke.py
 Depends: None
 Verify: `python -m pytest -q tests/test_app_smoke.py`
-Lease-Until: 1791951162
-Updated: 1791948462
+Lease-Until: 1791951186
+Updated: 1791948486
 Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
 Next: Await review of 8f4cf1c before merge; 785b2bf approval does not cover it
 PR: -

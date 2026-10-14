@@ -42,7 +42,7 @@ def setup(title: str, icon: str = "⚾", sidebar: str = "collapsed") -> None:
 
 def demo_badge(demo: bool) -> None:
     st.markdown('<span class="badge" title="Valores simulados; el modelo real aún no está conectado">DATOS DE DEMOSTRACIÓN</span>'
-                if demo else '<span class="badge ok" title="Modelo entrenado con datos LMB 2023–2026">MODELO REAL</span>',
+                if demo else '<span class="badge ok" title="Modelo entrenado con datos LMB 2024–2026">MODELO REAL</span>',
                 unsafe_allow_html=True)
 
 

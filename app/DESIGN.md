@@ -1,9 +1,9 @@
 # Diseño del dashboard · Stuff+ 2240
 
-**Estado: PROVISIONAL — pendiente del bloqueo de diseño (`/uak-design-lock`, decide luis).** Solo se implementó la dirección del brief; las otras dos están descritas, no construidas.
+**Estado: BLOQUEADO — Dirección A · Transmisión Diablos.** Luis la eligió el 2026-10-13. Tema, paleta y tipografía no cambian sin una decisión humana nueva.
 
-## Dirección implementada (A · "Transmisión Diablos")
-Fondo negro, paneles grafito, rojo Diablos como único acento, números enormes en condensada (Barlow Condensed), títulos en mayúsculas con filete rojo. Estilo broadcast tipo Statcast.
+## Dirección A · Transmisión Diablos
+Fondo negro, paneles grafito, rojo Diablos como único acento, números enormes en condensada (Barlow Condensed), títulos en mayúsculas con filete rojo. Estilo broadcast tipo Statcast. Es la dirección del brief y la que está construida.
 
 | Token | Valor | Uso |
 |---|---|---|
@@ -21,6 +21,11 @@ Todos viven en `app/theme.py` (`TOKENS`) y `.streamlit/config.toml`; ningún col
 - `prefers-reduced-motion` desactiva animaciones; foco visible con contorno rojo claro.
 - Dos sabores siempre rotulados: *Stuff+ en Harp Helú* (ambiente) y *a nivel del mar* (neutral).
 
-## Alternativas para el bloqueo (sin construir)
-- **B · Laboratorio claro:** fondo hueso, rojo y negro como tinta, tipografía de reporte técnico; mejor para imprimir y para jurado académico.
-- **C · Tablero de cabina:** negro profundo con medidores grandes y acento ámbar sobre rojo; máxima legibilidad a distancia.
+## Nunca
+- Un color, radio o sombra fuera de `TOKENS` en `app/theme.py`.
+- Un número en pantalla sin fuente (tooltip `title` o pie de gráfica).
+- Un rediseño global (tema, paleta o tipografía) sin decisión humana.
+
+## Direcciones no elegidas
+- **B · Laboratorio claro:** fondo hueso, rojo y negro como tinta, tipografía de reporte técnico.
+- **C · Tablero de cabina:** negro profundo, medidores grandes, acento ámbar sobre rojo.

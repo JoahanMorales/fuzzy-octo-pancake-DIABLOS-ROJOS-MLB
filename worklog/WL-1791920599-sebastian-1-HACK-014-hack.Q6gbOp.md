@@ -6,7 +6,7 @@
 - Why: Global target/feature preparation prevents inductive claims; final settings pending
 - Failing: No current test/runtime failures;153unmapped park rows documented outsideLOPO only; final C1/C2 acceptance pending
 - Commands: python -m pytest -q tests/test_validation.py; OMP_NUM_THREADS=2 python -m analysis.validation.run --fast --out reports/validation/official_fast; REAL_REPORT_QA_PASS; secret-scan --tracked
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-014?expand=1; run .uak/bin/smoke
+- Next: Integrated in main: 7dc8f4dc72b7e862e24f9bcf668095595c735345
 
 ## History
 - 1791920599 | CLAIMED | sebastian-1 | claim; next: `stuffplus/validation/run_all.py` iterating `splits.*` × models.
@@ -25,3 +25,4 @@
 - 1791950030 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-014?expand=1; evidence: pytest tests/test_validation.py exit 0 (19 passed); full suite passed; smoke exit 0. Production real-data holdouts (official_full, acceptance_complete true): Pitching+ season +3.74% [3.54,3.94], park +3.28% [3.15,3.39]; pitcher kfold +3.88% (HACK-012); LOPO 20/20 parks >0 (fast). Altitude bias in Extreme with model never trained there: baseline +0.0109, Stuff+ no density +0.0046, Stuff+ +0.0025, Pitching+ +0.0020 runs/pitch. summary.md generated from CSVs. Continues sebastian-1's runner.; reviewer: -
 - 1791950505 | REVIEW | victor-1 | review; approve; SHA 5c3e8ecf943d0183238fdce93d519f38871b8416; reviewer victor-1
 - 1791986268 | REVIEW | joahan-1 | heartbeat; lease until 1792000668
+- 1791986882 | INTEGRATED | joahan-1 | merge; smoke and Verify PASS; commit 7dc8f4dc72b7e862e24f9bcf668095595c735345; reviewer victor-1

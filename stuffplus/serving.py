@@ -43,6 +43,40 @@ def reset_cache() -> None:
     _cached.cache_clear()
 
 
+# Aggregates the dashboard may show. Reports are the committed copies; the running app reads the bundle.
+DASHBOARD_TABLES = {
+    "pitcher_season": "reports/leaderboards/pitcher_season.csv",
+    "by_park": "reports/leaderboards/by_park.csv",
+    "by_altitude": "reports/leaderboards/by_altitude.csv",
+    "delta_by_shape": "reports/altitude_delta/delta_by_shape.csv",
+    "shapes": "reports/shapes/shapes.csv",
+    "altitude_curves": "reports/altitude_delta/altitude_curves.csv",
+}
+
+
+def ensure_dashboard_tables() -> Path:
+    """Copy missing aggregate CSVs into ``artifacts/bundle/tables``. Never reads the raw parquet."""
+    from stuffplus import config
+
+    dest = bundle_dir() / "tables"
+    dest.mkdir(parents=True, exist_ok=True)
+    root = config.repo_root()
+    for name, rel in DASHBOARD_TABLES.items():
+        target = dest / f"{name}.csv"
+        src = root / rel
+        if not target.exists() and src.is_file():
+            target.write_bytes(src.read_bytes())
+    return dest
+
+
+def read_table(name: str) -> pd.DataFrame | None:
+    """One aggregate from ``artifacts/bundle/tables``. None when that file is not in the bundle."""
+    path = bundle_dir() / "tables" / f"{name}.csv"
+    if not path.is_file():
+        return None
+    return pd.read_csv(path)
+
+
 def translate_movement(df: pd.DataFrame, rho_to, rho_from) -> pd.DataFrame:
     """Copy of ``df`` with IVB / HB / hb_arm scaled from ``rho_from`` air to ``rho_to`` air (Magnus ∝ ρ)."""
     out = df.copy()

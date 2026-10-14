@@ -9,9 +9,9 @@ Priority: P0
 Paths: analysis/pitcher_sensitivity/, reports/pitcher_sensitivity/, stuffplus/sensitivity.py, tests/test_sensitivity.py
 Depends: HACK-015
 Verify: `python -m pytest -q tests/test_sensitivity.py`
-Lease-Until: 1791956003
-Updated: 1791941603
+Lease-Until: 1791956009
+Updated: 1791941609
 Task-Base: dcb3f2809a47993e919f4c7e426890a561f21376
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/21; run .uak/bin/smoke
+Next: Independent review SHA 322aa9f, then merge gates
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/21
 Evidence: -

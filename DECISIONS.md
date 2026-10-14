@@ -41,3 +41,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791941400 | HACK-014 | Keep draft exploratory; report Stuff+ at baseline and negative neutral-physics skill without promotion | Why: Global preparation transductive; fast settings/30bootstrap draws; final inductive evidence pending
 - 1791941516 | HACK-014 | Leave acceptance incomplete; retain explicit fast/transductive source flags and honest near-baseline Stuff+ result | Why: Global target/feature preparation prevents inductive claims; final settings pending
 - 1791941551 | HACK-018 | Publicar rankings exploratorios con baseline/uso/fits fijos en CI; no certeza de rango | Why: Limitación estadística explícita del advisor
+- 1791941609 | HACK-018 | Exploratory rankings with conditional EB CIs; no causal or holdout claim | Why: Models globally prepared; baseline and usage fixed

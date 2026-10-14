@@ -17,3 +17,4 @@
 - 1791944029 | REVIEW | sebastian-1 | checkpoint; next: Registered independent reviewer runs Verify with optionalextra and records verdict for916d445; owner can uak merge only after approval
 - 1791944034 | REVIEW | sebastian-1 | handoff; next: Registered independent reviewer runs Verify with optionalextra and records verdict for916d445; owner can uak merge only after approval
 - 1791944204 | REVIEW | scheduler | deadline decision HACK-027-1791942485; option: Use isolated optional EconML extra; grouped nuisance CV; pre-pitch covariates; report only exploratory aggregate contrasts with overlap gates; Why: HACK-033 conflicts with UI owner; EconML incompatible with shared sklearn1.9; causal ignorability is not established; strong checkpoint unavailable at pace critical cap0
+- 1791944419 | REVIEW | sebastian-2 | review; approve; SHA 916d44574ca80155c470ca427b27adbe6e9e1336; reviewer sebastian-2

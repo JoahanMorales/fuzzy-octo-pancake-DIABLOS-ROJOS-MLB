@@ -15,8 +15,8 @@ Task-Base: 8347f3dbbe549eff74f400d16ebe44ce12751ddd
 Next: Apply option: Use isolated optional EconML extra; grouped nuisance CV; pre-pitch covariates; report only exploratory aggregate contrasts with overlap gates
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/23
 Evidence: 916d445:11tests pass with EconML extra;actual forest recovery;demo+official sampled-game CLI exit0;CAUSAL_AGGREGATE_QA_PASS;PRODUCT_PASS;SECRET_SCAN_PASS465files;independent code audit approved exploratory scope
-Events: 8
+Events: 9
 Checkpoints: 3
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 1791944029
 Task-Tip: 916d44574ca80155c470ca427b27adbe6e9e1336

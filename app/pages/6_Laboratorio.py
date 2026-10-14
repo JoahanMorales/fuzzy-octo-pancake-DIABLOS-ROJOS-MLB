@@ -12,6 +12,7 @@ LAB = Path(__file__).resolve().parents[2] / "reports" / "design_lab"
 
 theme.setup("Laboratorio")
 st.title("Laboratorio de diseño")
+theme.demo_badge(False)  # resultados del modelo real (reports/design_lab/), no valores simulados
 st.caption("¿Qué ajuste a un lanzamiento gana más Stuff+ en el aire del Harp Helú (2,240 m)? Cada ajuste se acota a lo observado en pitchers comparables.")
 
 

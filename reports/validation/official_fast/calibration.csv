@@ -1,0 +1,1352 @@
+bin,p_mean,y_mean,n,split,model,demo_data,evidence
+0,-0.011226706322358825,-0.010161277472448448,56418,pitcher_kfold,baseline,False,exploratory_transductive
+1,-0.004457145456614754,-0.004351279939727826,64878,pitcher_kfold,baseline,False,exploratory_transductive
+2,-0.004229245712891131,-0.005259667050657746,65215,pitcher_kfold,baseline,False,exploratory_transductive
+3,-0.00213516249090808,-0.0007312161651066102,59976,pitcher_kfold,baseline,False,exploratory_transductive
+4,0.00036507496870805887,-0.0008927092686505668,66124,pitcher_kfold,baseline,False,exploratory_transductive
+5,0.007435425485216877,0.00821616152457247,63161,pitcher_kfold,baseline,False,exploratory_transductive
+6,0.009248518158462992,0.008790370673381821,63300,pitcher_kfold,baseline,False,exploratory_transductive
+7,0.011030742660875654,0.011973164521006838,52604,pitcher_kfold,baseline,False,exploratory_transductive
+8,0.012194398850314363,0.011920337315841698,64536,pitcher_kfold,baseline,False,exploratory_transductive
+9,0.019204289829676726,0.018471202022423847,71390,pitcher_kfold,baseline,False,exploratory_transductive
+0,-0.006750282209634663,-0.014866649481617934,62761,pitcher_kfold,Stuff+,False,exploratory_transductive
+1,-0.0017404163355130675,-0.004632538741777592,62760,pitcher_kfold,Stuff+,False,exploratory_transductive
+2,0.0004070311578180173,-0.0035792454760923955,62760,pitcher_kfold,Stuff+,False,exploratory_transductive
+3,0.002052676068735231,0.0011121679447905868,62760,pitcher_kfold,Stuff+,False,exploratory_transductive
+4,0.0035298914787672293,0.0024856624905720565,62760,pitcher_kfold,Stuff+,False,exploratory_transductive
+5,0.004982222908761106,0.006406980817716839,62760,pitcher_kfold,Stuff+,False,exploratory_transductive
+6,0.006475239712008955,0.005355218039023536,62760,pitcher_kfold,Stuff+,False,exploratory_transductive
+7,0.00806462852010922,0.012180800067244936,62760,pitcher_kfold,Stuff+,False,exploratory_transductive
+8,0.009911321819927193,0.016195951336202885,62760,pitcher_kfold,Stuff+,False,exploratory_transductive
+9,0.013060233707371674,0.0190433452500218,62761,pitcher_kfold,Stuff+,False,exploratory_transductive
+0,-0.0414935621913064,-0.05641423476837104,62761,pitcher_kfold,Location+,False,exploratory_transductive
+1,-0.03029042450160573,-0.04646718263484024,62760,pitcher_kfold,Location+,False,exploratory_transductive
+2,-0.020571301967313032,-0.04046684513972539,62760,pitcher_kfold,Location+,False,exploratory_transductive
+3,-0.011662711014021741,-0.026211935321230295,62760,pitcher_kfold,Location+,False,exploratory_transductive
+4,-0.004196349331210069,-0.009073083221880527,62760,pitcher_kfold,Location+,False,exploratory_transductive
+5,0.00377481607154593,0.009566733907265859,62760,pitcher_kfold,Location+,False,exploratory_transductive
+6,0.015714242948862592,0.02906265783964981,62760,pitcher_kfold,Location+,False,exploratory_transductive
+7,0.03173837352818266,0.04111938557740057,62760,pitcher_kfold,Location+,False,exploratory_transductive
+8,0.046722960740645914,0.05986708425147003,62760,pitcher_kfold,Location+,False,exploratory_transductive
+9,0.059168140639560794,0.07871882291166182,62761,pitcher_kfold,Location+,False,exploratory_transductive
+0,-0.06326533999538056,-0.05115361202302647,62761,pitcher_kfold,Pitching+,False,exploratory_transductive
+1,-0.04650982994692361,-0.041790151257579664,62760,pitcher_kfold,Pitching+,False,exploratory_transductive
+2,-0.03376448196751029,-0.03886461897516186,62760,pitcher_kfold,Pitching+,False,exploratory_transductive
+3,-0.02231422110684887,-0.03164704151942225,62760,pitcher_kfold,Pitching+,False,exploratory_transductive
+4,-0.011640016213640091,-0.01608404154487412,62760,pitcher_kfold,Pitching+,False,exploratory_transductive
+5,-0.0006295111710737167,0.001569222978670388,62760,pitcher_kfold,Pitching+,False,exploratory_transductive
+6,0.014129952801870618,0.021537298332836335,62760,pitcher_kfold,Pitching+,False,exploratory_transductive
+7,0.03890157498862559,0.03289056643904601,62760,pitcher_kfold,Pitching+,False,exploratory_transductive
+8,0.06336492778140075,0.053819817081404125,62760,pitcher_kfold,Pitching+,False,exploratory_transductive
+9,0.09211044596476246,0.10942339083038344,62761,pitcher_kfold,Pitching+,False,exploratory_transductive
+0,-0.006514459960722871,-0.01454173810679089,62761,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+1,-0.0016130589053354376,-0.005156250019759933,62760,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+2,0.0004980676301724167,-0.0010477078747907127,62760,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+3,0.002111510558331821,0.0001379977678422081,62760,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+4,0.0035612769963215113,0.0033333670560613845,62760,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+5,0.004970944959479138,0.004782127090914409,62760,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+6,0.006407741707254192,0.008820182330073234,62760,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+7,0.007933961813243032,0.010575107223843309,62760,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+8,0.0097098398549611,0.014069332941509895,62760,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+9,0.012814001112534215,0.018729273664463697,62761,pitcher_kfold,Stuff+ no density,False,exploratory_transductive
+0,-0.005438572004775522,-0.012020992951213278,62761,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0012982001013284003,-0.005240102014812094,62760,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0006434215842054945,-0.001381910053886117,62760,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0021610859311806093,0.002389765066516623,62760,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0035245713698827765,0.0017806785576128686,62760,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+5,0.004840131278793374,0.005549895459447344,62760,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+6,0.006165232351610004,0.005386372606770284,62760,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+7,0.007592038421212348,0.010796119946433548,62760,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+8,0.00930298466138409,0.01429718093761119,62760,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+9,0.01242174536540768,0.018144653669218285,62761,pitcher_kfold,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.018004545331677897,-0.028464283078110292,4543,season_holdout,baseline,False,exploratory_transductive
+1,-0.0037368237729476666,-0.00711567426998837,33683,season_holdout,baseline,False,exploratory_transductive
+2,-0.00309310089245452,0.0018500490162239903,4449,season_holdout,baseline,False,exploratory_transductive
+3,0.000358038182272605,-0.003951436905183552,20203,season_holdout,baseline,False,exploratory_transductive
+4,0.006716065320906129,0.00694887913846787,8268,season_holdout,baseline,False,exploratory_transductive
+5,0.009080780091169449,0.00783613348109779,13217,season_holdout,baseline,False,exploratory_transductive
+6,0.010906529413622404,0.004751469848729229,6341,season_holdout,baseline,False,exploratory_transductive
+7,0.01123861481287368,0.012124420569527209,16707,season_holdout,baseline,False,exploratory_transductive
+8,0.017851115987985992,0.01390206494420504,22159,season_holdout,baseline,False,exploratory_transductive
+0,-0.0066750076450302525,-0.018476056594855,12957,season_holdout,Stuff+,False,exploratory_transductive
+1,-0.0016740817963749803,-0.004905031345054417,12957,season_holdout,Stuff+,False,exploratory_transductive
+2,0.0004182307515746022,-0.004996631403693047,12957,season_holdout,Stuff+,False,exploratory_transductive
+3,0.002024284593245306,1.390250816551785e-05,12957,season_holdout,Stuff+,False,exploratory_transductive
+4,0.0034774138848803426,0.0010840677835858821,12957,season_holdout,Stuff+,False,exploratory_transductive
+5,0.004904872457570597,0.0017950991350683934,12957,season_holdout,Stuff+,False,exploratory_transductive
+6,0.0064005374795699345,0.006801401373877665,12957,season_holdout,Stuff+,False,exploratory_transductive
+7,0.008029003347828863,0.009542248460903425,12957,season_holdout,Stuff+,False,exploratory_transductive
+8,0.009964353567629319,0.011635535014918263,12957,season_holdout,Stuff+,False,exploratory_transductive
+9,0.013214299621426676,0.017662957126891022,12957,season_holdout,Stuff+,False,exploratory_transductive
+0,-0.04088092293506215,-0.0586576973020696,12957,season_holdout,Location+,False,exploratory_transductive
+1,-0.02934169927255254,-0.051309759776332474,12957,season_holdout,Location+,False,exploratory_transductive
+2,-0.0192670952703828,-0.04104092366376059,12957,season_holdout,Location+,False,exploratory_transductive
+3,-0.01060758975418977,-0.029116050172809833,12957,season_holdout,Location+,False,exploratory_transductive
+4,-0.0032947269531118325,-0.007883048572936166,12957,season_holdout,Location+,False,exploratory_transductive
+5,0.005073837288809388,0.004940176826279956,12957,season_holdout,Location+,False,exploratory_transductive
+6,0.017706353401490838,0.023766204201932154,12957,season_holdout,Location+,False,exploratory_transductive
+7,0.03339518380240569,0.039730149383246614,12957,season_holdout,Location+,False,exploratory_transductive
+8,0.04781594039818178,0.06048491142197001,12957,season_holdout,Location+,False,exploratory_transductive
+9,0.059675727275389966,0.07924352971428762,12957,season_holdout,Location+,False,exploratory_transductive
+0,-0.06289270959179236,-0.053044568012733884,12957,season_holdout,Pitching+,False,exploratory_transductive
+1,-0.04583953264083533,-0.042779953095096704,12957,season_holdout,Pitching+,False,exploratory_transductive
+2,-0.03275235739980686,-0.04221801746172401,12957,season_holdout,Pitching+,False,exploratory_transductive
+3,-0.020878005330451643,-0.029398074619281334,12957,season_holdout,Pitching+,False,exploratory_transductive
+4,-0.009814904764993537,-0.0203907335668796,12957,season_holdout,Pitching+,False,exploratory_transductive
+5,0.001402280289425481,0.0020241913032116644,12957,season_holdout,Pitching+,False,exploratory_transductive
+6,0.016741570344851558,0.014407884002810898,12957,season_holdout,Pitching+,False,exploratory_transductive
+7,0.04101683266732863,0.029377332921970235,12957,season_holdout,Pitching+,False,exploratory_transductive
+8,0.06467734497129057,0.05176455240867232,12957,season_holdout,Pitching+,False,exploratory_transductive
+9,0.09373244676913516,0.1104148781788581,12957,season_holdout,Pitching+,False,exploratory_transductive
+0,-0.006411295098749187,-0.016778125592185698,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+1,-0.0014750164927146044,-0.008010625460288662,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+2,0.0006246451242818516,-0.003109689404512311,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+3,0.0022115042364002357,-0.0005915504970436158,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+4,0.0036877130970676656,-0.0010702534318657155,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+5,0.005137964112859388,0.004668588043107402,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+6,0.006668671703560509,0.007059721950792378,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+7,0.008328245353848828,0.01033599678247541,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+8,0.01019062539569572,0.011947273082053829,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+9,0.013339498936179308,0.015706156587274686,12957,season_holdout,Stuff+ no density,False,exploratory_transductive
+0,-0.00471802312602072,-0.015254542441383856,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0008518447584364533,-0.006673698424700341,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0009941729736165081,-0.0012130639462197134,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0024799297547806413,-0.0017256171153259055,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0038738167526718367,-0.0005516495504417825,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+5,0.005221816111078588,0.005768682724105968,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+6,0.006588859162853145,0.005431100201808852,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+7,0.00804235793037936,0.007421097505266623,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+8,0.00980817441610784,0.012445154911944012,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+9,0.01297438024369103,0.014510028194753843,12957,season_holdout,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.02245663522317883,-0.014787094920919631,7202,park_holdout,baseline,False,exploratory_transductive
+1,-0.006411543152900423,0.0013105038224275225,54871,park_holdout,baseline,False,exploratory_transductive
+2,-0.004077295323672552,0.003894636727147452,20161,park_holdout,baseline,False,exploratory_transductive
+3,8.448239000875234e-05,0.01897304198064705,19108,park_holdout,baseline,False,exploratory_transductive
+4,0.0029902503078842457,0.01706316899905318,10120,park_holdout,baseline,False,exploratory_transductive
+5,0.006289954498200262,0.015069352057825697,18336,park_holdout,baseline,False,exploratory_transductive
+6,0.00818779359296369,0.019595442227887328,21991,park_holdout,baseline,False,exploratory_transductive
+7,0.013088010684459413,0.02730014004934581,29243,park_holdout,baseline,False,exploratory_transductive
+0,-0.0039017944691821936,-0.002344024697488518,18104,park_holdout,Stuff+,False,exploratory_transductive
+1,-0.0008097533162068425,0.0034164292838775516,18103,park_holdout,Stuff+,False,exploratory_transductive
+2,0.0010202165927111185,0.005668379199957289,18103,park_holdout,Stuff+,False,exploratory_transductive
+3,0.0026221028635684675,0.008352497209196195,18103,park_holdout,Stuff+,False,exploratory_transductive
+4,0.004129486441172741,0.01098216926454019,18103,park_holdout,Stuff+,False,exploratory_transductive
+5,0.0055150954100298515,0.011864706474428431,18103,park_holdout,Stuff+,False,exploratory_transductive
+6,0.0068082883409438,0.01809879478300617,18103,park_holdout,Stuff+,False,exploratory_transductive
+7,0.008082774039106216,0.017551262152492978,18103,park_holdout,Stuff+,False,exploratory_transductive
+8,0.009531773052961342,0.01881067068419776,18103,park_holdout,Stuff+,False,exploratory_transductive
+9,0.012045289192911401,0.02275685287791925,18104,park_holdout,Stuff+,False,exploratory_transductive
+0,-0.04167650653763816,-0.049107329442572595,18104,park_holdout,Location+,False,exploratory_transductive
+1,-0.030691697914578767,-0.03879192334620721,18103,park_holdout,Location+,False,exploratory_transductive
+2,-0.02138723118960274,-0.033632924653089334,18103,park_holdout,Location+,False,exploratory_transductive
+3,-0.012579198926684961,-0.011415431346918943,18103,park_holdout,Location+,False,exploratory_transductive
+4,-0.005243668555610731,0.00512781646633805,18103,park_holdout,Location+,False,exploratory_transductive
+5,0.0029248797600343115,0.02354209644369632,18103,park_holdout,Location+,False,exploratory_transductive
+6,0.015028836297051157,0.03283433651646263,18103,park_holdout,Location+,False,exploratory_transductive
+7,0.0315376488690785,0.045093175760045866,18103,park_holdout,Location+,False,exploratory_transductive
+8,0.04640440728376399,0.06257401669541164,18103,park_holdout,Location+,False,exploratory_transductive
+9,0.05848964742539528,0.07893338415738133,18104,park_holdout,Location+,False,exploratory_transductive
+0,-0.059788297038173795,-0.0431806887175394,18104,park_holdout,Pitching+,False,exploratory_transductive
+1,-0.04351191062546431,-0.036750288526385025,18103,park_holdout,Pitching+,False,exploratory_transductive
+2,-0.031214734369665494,-0.032084937868075335,18103,park_holdout,Pitching+,False,exploratory_transductive
+3,-0.020502783806469804,-0.020107096748676348,18103,park_holdout,Pitching+,False,exploratory_transductive
+4,-0.010542916360137303,-0.0002571550912753672,18103,park_holdout,Pitching+,False,exploratory_transductive
+5,-0.0002905160473495551,0.021509200558076015,18103,park_holdout,Pitching+,False,exploratory_transductive
+6,0.016186130768897425,0.02351395876907766,18103,park_holdout,Pitching+,False,exploratory_transductive
+7,0.04363007105185872,0.036546142107167036,18103,park_holdout,Pitching+,False,exploratory_transductive
+8,0.0684126867608966,0.05501050313251972,18103,park_holdout,Pitching+,False,exploratory_transductive
+9,0.09583258661082159,0.11095548336764051,18104,park_holdout,Pitching+,False,exploratory_transductive
+0,-0.004784852146369821,-0.003129978753358103,18104,park_holdout,Stuff+ no density,False,exploratory_transductive
+1,-0.0017331849316914794,0.003301574426145323,18103,park_holdout,Stuff+ no density,False,exploratory_transductive
+2,9.616298292137551e-05,0.007077652409685763,18103,park_holdout,Stuff+ no density,False,exploratory_transductive
+3,0.0016490542788171402,0.006860834091575085,18103,park_holdout,Stuff+ no density,False,exploratory_transductive
+4,0.00307881004965359,0.010878378088610273,18103,park_holdout,Stuff+ no density,False,exploratory_transductive
+5,0.004423723880778564,0.015626320015866585,18103,park_holdout,Stuff+ no density,False,exploratory_transductive
+6,0.0057112371310174695,0.014150380443816914,18103,park_holdout,Stuff+ no density,False,exploratory_transductive
+7,0.007033163718073486,0.0183278408040077,18103,park_holdout,Stuff+ no density,False,exploratory_transductive
+8,0.008573630118782458,0.019841777000629217,18103,park_holdout,Stuff+ no density,False,exploratory_transductive
+9,0.011273741961953309,0.022223031608828873,18104,park_holdout,Stuff+ no density,False,exploratory_transductive
+0,-0.006377856624067535,-0.004042252072344384,18104,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.002777740261809806,0.004701753388657634,18103,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+2,-0.0010537080771189312,0.008760096369338354,18103,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0003747410006670736,0.008516257343398484,18103,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+4,0.001720261608054774,0.008828886639678186,18103,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+5,0.003081694066648055,0.01195190140402385,18103,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+6,0.004490382042928992,0.015672327832844397,18103,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+7,0.00602314892711752,0.01812110632717452,18103,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+8,0.007823002796703067,0.020407591598255243,18103,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+9,0.010854900969416768,0.02224019075040789,18104,park_holdout,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.019365879296373727,-0.032274648510065625,1194,leave_one_park_out_1,baseline,False,exploratory_transductive
+1,-0.004062153242899073,-0.011043821123638456,8652,leave_one_park_out_1,baseline,False,exploratory_transductive
+2,-0.0016887767138234829,-0.011092146210844641,1207,leave_one_park_out_1,baseline,False,exploratory_transductive
+3,0.000312305445831951,-0.015283579412954107,5305,leave_one_park_out_1,baseline,False,exploratory_transductive
+4,0.008361223577744421,-0.018098465244404022,2264,leave_one_park_out_1,baseline,False,exploratory_transductive
+5,0.00944258023986207,-0.00223681366014391,3398,leave_one_park_out_1,baseline,False,exploratory_transductive
+6,0.01091465182315471,-0.012413547710438195,1742,leave_one_park_out_1,baseline,False,exploratory_transductive
+7,0.012053879272537659,0.00034447562605953474,4269,leave_one_park_out_1,baseline,False,exploratory_transductive
+8,0.018282349472403505,-0.005116517171700795,5841,leave_one_park_out_1,baseline,False,exploratory_transductive
+0,-0.009388267728337106,-0.02872408492575196,3388,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+1,-0.0050262092484128626,-0.0207778525102954,3387,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+2,-0.0027462306840913774,-0.015270080042988517,3387,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+3,-0.0011243700723085972,-0.010701830943386104,3387,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+4,0.00024678018931089145,-0.008141458716512806,3387,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+5,0.0015859173361387259,-0.006702790590339415,3387,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+6,0.003017877050624364,-0.006224736907214168,3387,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+7,0.00454822569534357,-0.003698325711107846,3387,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+8,0.006361245933278954,0.0038125956755271305,3387,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+9,0.009595660730984166,-0.00015862925326586583,3388,leave_one_park_out_1,Stuff+,False,exploratory_transductive
+0,-0.04285592956002739,-0.06486392920805359,3388,leave_one_park_out_1,Location+,False,exploratory_transductive
+1,-0.03262564689425302,-0.06071310703705065,3387,leave_one_park_out_1,Location+,False,exploratory_transductive
+2,-0.022397498162715204,-0.05801473608875154,3387,leave_one_park_out_1,Location+,False,exploratory_transductive
+3,-0.013545876702308743,-0.03799093209832337,3387,leave_one_park_out_1,Location+,False,exploratory_transductive
+4,-0.006598181909582218,-0.029609648072835046,3387,leave_one_park_out_1,Location+,False,exploratory_transductive
+5,0.0010356026117469192,-0.014980450529066963,3387,leave_one_park_out_1,Location+,False,exploratory_transductive
+6,0.01219290077324066,0.008993043539159886,3387,leave_one_park_out_1,Location+,False,exploratory_transductive
+7,0.028564110284625625,0.03208929884259343,3387,leave_one_park_out_1,Location+,False,exploratory_transductive
+8,0.04441150768355671,0.053268310148605676,3387,leave_one_park_out_1,Location+,False,exploratory_transductive
+9,0.05820207650951085,0.07522337046813063,3388,leave_one_park_out_1,Location+,False,exploratory_transductive
+0,-0.06697120859893883,-0.06043784787987498,3388,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+1,-0.05123331878292652,-0.059178643182286515,3387,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+2,-0.0389835943249473,-0.05503631573206246,3387,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+3,-0.027738414920919816,-0.04671981490781084,3387,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+4,-0.01676482534429384,-0.029124065460424665,3387,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+5,-0.0054599301101298904,-0.021239967647984526,3387,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+6,0.008381653320176777,-0.004188079025539932,3387,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+7,0.03127071327607538,0.023968887266694355,3387,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+8,0.05788501093070458,0.04981752123063546,3387,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+9,0.08967627163481012,0.10552929080006282,3388,leave_one_park_out_1,Pitching+,False,exploratory_transductive
+0,-0.009011798441556761,-0.028954267165945322,3388,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+1,-0.004576172229486835,-0.02056295324322165,3387,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+2,-0.0022163684513211743,-0.017899870232337804,3387,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+3,-0.00047278967880740703,-0.011997215348492619,3387,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+4,0.0010321791106048612,-0.0034379550547481283,3387,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+5,0.002463390321162177,-0.009171049695531482,3387,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+6,0.00392074054162451,-0.006279628533359311,3387,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+7,0.005492369851178869,8.4939047428934e-05,3387,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+8,0.007538845711366496,0.0005022248018522408,3387,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+9,0.011049906347603384,0.0011282695071335002,3388,leave_one_park_out_1,Stuff+ no density,False,exploratory_transductive
+0,-0.005426108826138068,-0.027743318425435225,3388,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0017607100917038973,-0.017885247393973003,3387,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+2,-4.567511864215587e-05,-0.016813587840453358,3387,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0012934563473790087,-0.010590203048416808,3387,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0025370663887499686,-0.010476209779799921,3387,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+5,0.0038116443080436985,-0.009512889276339887,3387,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+6,0.0051608537694714796,-0.00613791089666649,3387,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+7,0.006598087338554284,0.0008635019706694675,3387,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+8,0.008256869122112837,-0.0005027869850639695,3387,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+9,0.01144667996951495,0.0022104687142812727,3388,leave_one_park_out_1,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.020065467812639463,-0.020645086149115588,1199,leave_one_park_out_2,baseline,False,exploratory_transductive
+1,-0.004578729209984439,-0.0017052008335678565,8234,leave_one_park_out_2,baseline,False,exploratory_transductive
+2,-0.0017505549780408856,-0.0031136663090889087,4735,leave_one_park_out_2,baseline,False,exploratory_transductive
+3,0.004336029179160164,0.005986334022794786,3659,leave_one_park_out_2,baseline,False,exploratory_transductive
+4,0.008307382291847003,0.01858741101500129,3158,leave_one_park_out_2,baseline,False,exploratory_transductive
+5,0.009253213216975831,0.016651196998245316,1574,leave_one_park_out_2,baseline,False,exploratory_transductive
+6,0.01137279411337007,0.012082393882069086,3802,leave_one_park_out_2,baseline,False,exploratory_transductive
+7,0.016772099075673338,0.02328263021691795,5323,leave_one_park_out_2,baseline,False,exploratory_transductive
+0,-0.001926978679692066,-0.0003268285193213354,3169,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+1,0.0012091333195936214,-0.0010587692387978688,3168,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+2,0.0029192476907439055,-0.002163095261042181,3168,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+3,0.004414825513900618,-0.002523576450988241,3169,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+4,0.005786077721605999,0.012108168384228093,3168,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+5,0.0070754980842007275,0.01180965380182199,3168,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+6,0.008324843622472256,0.0021648801133458606,3169,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+7,0.009610769103307557,0.018481161485767995,3168,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+8,0.011032691858690455,0.01224858698992502,3168,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+9,0.013898252651154875,0.019691140945151498,3169,leave_one_park_out_2,Stuff+,False,exploratory_transductive
+0,-0.03968303818549348,-0.05560861643424613,3169,leave_one_park_out_2,Location+,False,exploratory_transductive
+1,-0.02831675049632719,-0.045053846046215144,3168,leave_one_park_out_2,Location+,False,exploratory_transductive
+2,-0.018342262463424228,-0.0359596305366034,3168,leave_one_park_out_2,Location+,False,exploratory_transductive
+3,-0.008743361245519431,-0.028574830427543784,3169,leave_one_park_out_2,Location+,False,exploratory_transductive
+4,-0.0014359433122887043,-0.0004731158306032687,3168,leave_one_park_out_2,Location+,False,exploratory_transductive
+5,0.00624096379405647,0.016754757443655975,3168,leave_one_park_out_2,Location+,False,exploratory_transductive
+6,0.01775858287872937,0.03512612319119073,3169,leave_one_park_out_2,Location+,False,exploratory_transductive
+7,0.03297260623529766,0.043113852642428556,3168,leave_one_park_out_2,Location+,False,exploratory_transductive
+8,0.04735104394362107,0.06273836957949266,3168,leave_one_park_out_2,Location+,False,exploratory_transductive
+9,0.059523410990287434,0.07836500675344793,3169,leave_one_park_out_2,Location+,False,exploratory_transductive
+0,-0.05885770009435281,-0.045636948789126254,3169,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+1,-0.042134061929138954,-0.03697578665777068,3168,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+2,-0.029029226896527406,-0.04193157029121214,3168,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+3,-0.01804346593858825,-0.033570824158746466,3169,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+4,-0.007859351115790425,-0.006095697111844538,3168,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+5,0.002825262034841914,0.0055851018786796,3168,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+6,0.01725385280718591,0.02556738540364787,3169,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+7,0.04250051490552658,0.035034041371808725,3168,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+8,0.06673277967440518,0.054509389964182385,3168,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+9,0.09609794522673813,0.11393319806647167,3169,leave_one_park_out_2,Pitching+,False,exploratory_transductive
+0,-0.0030551441351611415,-8.869321800294187e-05,3169,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+1,0.0002539945801731751,-0.0014963466565331585,3168,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+2,0.001968442855622773,-0.0023078559387735742,3168,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+3,0.003414840239090554,0.0014345544545745254,3169,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+4,0.004729329159543773,0.010453436248780913,3168,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+5,0.006008804589365644,0.010434587290836362,3168,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+6,0.007304498909327431,0.008839411621494627,3169,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+7,0.008641563872280924,0.01161441790280555,3168,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+8,0.01013070639269141,0.01106087883592355,3168,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+9,0.012982225674273708,0.020483250235813988,3169,leave_one_park_out_2,Stuff+ no density,False,exploratory_transductive
+0,-0.004225089061263632,0.001437885628223371,3169,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.00044331306450159116,-0.002344497387057001,3168,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+2,0.001260906719733191,0.0021351345381987194,3168,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0026409297822853777,0.003232930831583614,3169,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0039864112786593,0.004502517932210989,3168,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+5,0.005333654131199581,0.007922825256063247,3168,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+6,0.006698869800693233,0.005370328751725052,3169,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+7,0.008086865194301757,0.009401298153110006,3168,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+8,0.009705008928230301,0.020434639053598935,3168,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+9,0.012700669689964961,0.018335301528213083,3169,leave_one_park_out_2,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.020503660276935873,-0.011503490342891096,1283,leave_one_park_out_3,baseline,False,exploratory_transductive
+1,-0.004599602199162322,-0.0014005669318112569,8458,leave_one_park_out_3,baseline,False,exploratory_transductive
+2,-0.002347967739548768,0.0011451366320430621,1271,leave_one_park_out_3,baseline,False,exploratory_transductive
+3,-0.001999036078026879,0.003723033989338322,3523,leave_one_park_out_3,baseline,False,exploratory_transductive
+4,0.004072564182653466,0.009626681835765639,3825,leave_one_park_out_3,baseline,False,exploratory_transductive
+5,0.008748530526100869,0.010076014399830349,3334,leave_one_park_out_3,baseline,False,exploratory_transductive
+6,0.009681141260555052,0.008598136977776928,1682,leave_one_park_out_3,baseline,False,exploratory_transductive
+7,0.011234834387979334,0.014583137137339235,3993,leave_one_park_out_3,baseline,False,exploratory_transductive
+8,0.01693805963596829,0.01973333532792913,5441,leave_one_park_out_3,baseline,False,exploratory_transductive
+0,-0.002286485648750218,-0.009161318803761536,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+1,0.0010256010060971466,-0.006742160235643404,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+2,0.0028609620035798806,-0.0017293602496752363,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+3,0.0043886126060063155,0.002325567056647124,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+4,0.005780095215594109,0.010606475809642768,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+5,0.007052315482692927,0.006530564293954723,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+6,0.008288351542008836,0.01145003457122402,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+7,0.009561577001235465,0.018755434843980658,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+8,0.01105346243271055,0.022357047883654602,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+9,0.013857682208198349,0.01828185220293985,3281,leave_one_park_out_3,Stuff+,False,exploratory_transductive
+0,-0.039153280455412366,-0.049640826666970166,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+1,-0.02810335914877805,-0.038747230274498536,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+2,-0.01843213990444209,-0.03820068059911642,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+3,-0.008963484509440647,-0.020760867581106204,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+4,-0.0013793362940914518,-0.00789138772877868,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+5,0.006456917362215046,0.013572829337432622,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+6,0.017818645295636145,0.031115385855866325,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+7,0.03312392675465797,0.04363714936565331,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+8,0.04774290906196528,0.059116216979272676,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+9,0.05951326688116645,0.08047354868520865,3281,leave_one_park_out_3,Location+,False,exploratory_transductive
+0,-0.05932848726304777,-0.043984061055496945,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+1,-0.04291540002756969,-0.03677225944273909,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+2,-0.031114054994503183,-0.03898689910565407,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+3,-0.02030124036900291,-0.022099041083160492,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+4,-0.009849985627382693,-0.011455294726038488,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+5,0.0009892198545371174,0.0024376029563752087,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+6,0.015578732209380839,0.028977760674506352,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+7,0.04109369240169131,0.030455822790349984,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+8,0.06542750881725334,0.053486514830252796,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+9,0.09448613546906581,0.1106139915345683,3281,leave_one_park_out_3,Pitching+,False,exploratory_transductive
+0,-0.0035277773770970664,-0.00863732851897951,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+1,-1.3390700794062606e-05,-0.0055822797867028,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+2,0.001778855666171858,-0.0030202070249799604,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+3,0.003292161526516493,0.0038067974801628455,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+4,0.004673323398001583,0.003697036459755035,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+5,0.006006654481462457,0.010697044513037197,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+6,0.007291695238221342,0.009560625190651652,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+7,0.008595923592190984,0.019082693092924177,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+8,0.010095927391847984,0.027015304227244557,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+9,0.012897108669603372,0.016054451739850376,3281,leave_one_park_out_3,Stuff+ no density,False,exploratory_transductive
+0,-0.00498883247315511,-0.011031725106932115,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.000789776693564849,5.6025177123330413e-05,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0010455463857673066,0.000900960438608229,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0025043267229538503,-0.0016603234230281544,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+4,0.003858420129965568,0.005557825632792607,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+5,0.005195743028188893,0.008352249520107952,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+6,0.006586419824268646,0.013413896761397197,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+7,0.008040157113902028,0.019297736458523205,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+8,0.009667020419696696,0.01580208021236832,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+9,0.01273374849530599,0.021985411702003,3281,leave_one_park_out_3,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.02047224497395235,-0.004945525921725158,431,leave_one_park_out_4,baseline,False,exploratory_transductive
+1,-0.004211401555813782,0.0013868737311548461,3112,leave_one_park_out_4,baseline,False,exploratory_transductive
+2,-0.0018015291615024569,0.004066132886786129,1165,leave_one_park_out_4,baseline,False,exploratory_transductive
+3,0.0038605463779192942,0.024677288794179443,1099,leave_one_park_out_4,baseline,False,exploratory_transductive
+4,0.008698374771400568,0.016266596135471864,1006,leave_one_park_out_4,baseline,False,exploratory_transductive
+5,0.009461601956244561,0.01933897986771974,515,leave_one_park_out_4,baseline,False,exploratory_transductive
+6,0.01115789805376191,0.02732625203835004,1195,leave_one_park_out_4,baseline,False,exploratory_transductive
+7,0.01686731569085974,0.02884996536427573,1633,leave_one_park_out_4,baseline,False,exploratory_transductive
+0,-0.0009043316796469374,0.001090581880242597,1016,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+1,0.0022026035443,-0.00023670045930033895,1015,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+2,0.004162554496368105,0.010412258594117091,1016,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+3,0.005784507628002517,0.013004798237905613,1015,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+4,0.007159376975626991,0.016251649918719427,1016,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+5,0.008475150044845019,0.003120757996029682,1015,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+6,0.00963737114438136,0.021115261255587384,1016,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+7,0.010749176809840888,0.009824299851321744,1015,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+8,0.011992374371317475,0.03550159534007263,1016,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+9,0.01436012144347458,0.02786644492711152,1016,leave_one_park_out_4,Stuff+,False,exploratory_transductive
+0,-0.03936036872809203,-0.04255891669237021,1016,leave_one_park_out_4,Location+,False,exploratory_transductive
+1,-0.027426751953421508,-0.049124721728745324,1015,leave_one_park_out_4,Location+,False,exploratory_transductive
+2,-0.017636346437240186,-0.029276500599543946,1016,leave_one_park_out_4,Location+,False,exploratory_transductive
+3,-0.008438083682753379,-0.016442553787220815,1015,leave_one_park_out_4,Location+,False,exploratory_transductive
+4,-0.0010477032929443767,0.012216380560599488,1016,leave_one_park_out_4,Location+,False,exploratory_transductive
+5,0.007105525718261806,0.031180503274524447,1016,leave_one_park_out_4,Location+,False,exploratory_transductive
+6,0.019185456389885454,0.032119184167617804,1015,leave_one_park_out_4,Location+,False,exploratory_transductive
+7,0.03521231350906356,0.05608826477645856,1015,leave_one_park_out_4,Location+,False,exploratory_transductive
+8,0.04841213902463054,0.06800126943869766,1016,leave_one_park_out_4,Location+,False,exploratory_transductive
+9,0.05962578703022156,0.07574501354301227,1016,leave_one_park_out_4,Location+,False,exploratory_transductive
+0,-0.058288523123366506,-0.04140166933946919,1016,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+1,-0.041617842933385024,-0.03357879508552139,1015,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+2,-0.028370479253917075,-0.028172225478111566,1016,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+3,-0.017205723403411075,-0.02361494059630027,1015,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+4,-0.00703954215059883,0.0018462058526138064,1016,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+5,0.0037282754001949168,0.02808275045819869,1016,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+6,0.020553910640479265,0.023588825587874073,1015,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+7,0.04727410011801725,0.039037812117106135,1015,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+8,0.06972324142374955,0.05725876682938438,1016,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+9,0.09868644435005118,0.11488425631650237,1016,leave_one_park_out_4,Pitching+,False,exploratory_transductive
+0,-0.0019696000401451565,-0.005088960006205933,1016,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+1,0.0010516399183765947,0.00014179939628074651,1015,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+2,0.0029390333722163586,0.014290671080931754,1016,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+3,0.004562415488814471,0.018697125477113916,1015,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+4,0.006047746668080825,0.009121513198646437,1016,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+5,0.007507940777434406,0.015006725227938559,1015,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+6,0.008765944558730749,0.008009176175355508,1016,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+7,0.009987974935112949,0.02715431766739693,1015,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+8,0.011225499624899767,0.01730686019112368,1016,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+9,0.013647015768055376,0.03334645024753951,1016,leave_one_park_out_4,Stuff+ no density,False,exploratory_transductive
+0,-0.002931601944962208,0.0056441769803239296,1016,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+1,0.0004799573299276766,-0.009481179068322323,1015,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0022214309301905994,0.007962758262895425,1016,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0036520281225852266,0.010134259689241337,1015,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+4,0.005065604739934765,0.015520341814559555,1016,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+5,0.006490204719915024,0.018500866836005585,1016,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+6,0.007888114491698364,0.01933141962632994,1015,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+7,0.009228975808317458,0.01534394201179257,1015,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+8,0.01072001892883408,0.03170545214452181,1016,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+9,0.013392857802520995,0.02329837310925586,1016,leave_one_park_out_4,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.0194714531217744,-0.030699527199834802,1344,leave_one_park_out_5,baseline,False,exploratory_transductive
+1,-0.0040580530593220705,-0.010852962057867652,8988,leave_one_park_out_5,baseline,False,exploratory_transductive
+2,-0.0018710904142339784,-0.00721378889699751,1307,leave_one_park_out_5,baseline,False,exploratory_transductive
+3,-0.00010806250362729054,-0.0067878881508605755,5599,leave_one_park_out_5,baseline,False,exploratory_transductive
+4,0.007244585534366573,-0.0008130982927823842,2210,leave_one_park_out_5,baseline,False,exploratory_transductive
+5,0.010048961662664162,-0.006671980506868669,5441,leave_one_park_out_5,baseline,False,exploratory_transductive
+6,0.01201150761475614,0.0014603929594307046,4427,leave_one_park_out_5,baseline,False,exploratory_transductive
+7,0.01783535334277468,0.0033208443135327053,6247,leave_one_park_out_5,baseline,False,exploratory_transductive
+0,-0.009822920209650565,-0.01368314292041845,3557,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+1,-0.004160447588271333,-0.01354907384138173,3556,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+2,-0.001800648524179605,-0.008093413557090201,3556,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+3,-9.815724186497235e-05,-0.011432598907808842,3556,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+4,0.001370566694764879,-0.006274413577579005,3556,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+5,0.0027370132377248914,-0.0023137185907775625,3557,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+6,0.00411036393624533,7.78291924116635e-05,3556,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+7,0.0055500540582050055,-0.0046366774068277,3556,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+8,0.007189581781103245,0.0002912612644147814,3556,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+9,0.010336319729186048,0.004181636967083091,3557,leave_one_park_out_5,Stuff+,False,exploratory_transductive
+0,-0.04223651689099751,-0.0613321048334954,3557,leave_one_park_out_5,Location+,False,exploratory_transductive
+1,-0.031286291172934085,-0.05402358083501135,3556,leave_one_park_out_5,Location+,False,exploratory_transductive
+2,-0.02191880949312389,-0.058905143987888174,3556,leave_one_park_out_5,Location+,False,exploratory_transductive
+3,-0.01311157829262242,-0.034978893905923,3556,leave_one_park_out_5,Location+,False,exploratory_transductive
+4,-0.006036801966468804,-0.023720726248581694,3556,leave_one_park_out_5,Location+,False,exploratory_transductive
+5,0.0014756828894165706,-0.00924161816354477,3557,leave_one_park_out_5,Location+,False,exploratory_transductive
+6,0.013117100436866673,0.013518655551986038,3556,leave_one_park_out_5,Location+,False,exploratory_transductive
+7,0.02992532404302827,0.04123252201386233,3556,leave_one_park_out_5,Location+,False,exploratory_transductive
+8,0.04529317851872065,0.05739812823017602,3556,leave_one_park_out_5,Location+,False,exploratory_transductive
+9,0.05837930528923253,0.07461599143796432,3557,leave_one_park_out_5,Location+,False,exploratory_transductive
+0,-0.06506322468385108,-0.054358000872836786,3557,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+1,-0.04975287813512419,-0.05095446738817242,3556,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+2,-0.03796438868171696,-0.05152049157169984,3556,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+3,-0.02705489476794458,-0.042209779398478316,3556,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+4,-0.016389862379984806,-0.028947881867471062,3556,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+5,-0.005179050176903891,-0.02054705423304802,3557,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+6,0.009276138548723284,0.004289756445335091,3556,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+7,0.03474937141192604,0.024664590349252995,3556,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+8,0.06100118157487154,0.05334521557937315,3556,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+9,0.09209336143192018,0.11079238691263096,3557,leave_one_park_out_5,Pitching+,False,exploratory_transductive
+0,-0.009631145726967136,-0.01402100567038944,3557,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+1,-0.0036862239538736534,-0.017182874451076916,3556,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+2,-0.0012740565396819543,-0.005393497276796598,3556,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+3,0.00044924911841103367,-0.010663970845358068,3556,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+4,0.0019611525855739217,-0.0021242414314064434,3556,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+5,0.0033452981516206848,-0.008557205465315151,3557,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+6,0.0047505654537511625,-0.0046615397056380395,3556,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+7,0.0062551325680300605,-0.0006089250265897159,3556,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+8,0.00803732961489041,0.003433797980812103,3556,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+9,0.011142470867719152,0.004348954234919489,3557,leave_one_park_out_5,Stuff+ no density,False,exploratory_transductive
+0,-0.007129857252988543,-0.018323492965978096,3557,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.002607196734202843,-0.008019842046248804,3556,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+2,-0.00044791292976582587,-0.012016832361427978,3556,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0010983173871389016,-0.00983619563270633,3556,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0024418429749256806,-0.005188919170002378,3556,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+5,0.0037888250674626093,-0.007767359619212606,3557,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+6,0.005160546188207249,0.0013982233103040746,3556,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+7,0.006610764410231763,-8.216994420714962e-05,3556,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+8,0.008286879966711569,-0.00031961491286952695,3556,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+9,0.011228955844248798,0.004726577299229127,3557,leave_one_park_out_5,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.019400104486545187,-0.030818449549183894,1249,leave_one_park_out_6,baseline,False,exploratory_transductive
+1,-0.00419669075330232,-0.008678380462794217,8593,leave_one_park_out_6,baseline,False,exploratory_transductive
+2,-0.0015472302932116216,-0.013377349390980838,1246,leave_one_park_out_6,baseline,False,exploratory_transductive
+3,-4.2002939512933944e-05,-0.007750489432860863,5385,leave_one_park_out_6,baseline,False,exploratory_transductive
+4,0.0070971748787550725,0.0011127588839111007,2047,leave_one_park_out_6,baseline,False,exploratory_transductive
+5,0.009151806764942177,0.002881670764569074,3382,leave_one_park_out_6,baseline,False,exploratory_transductive
+6,0.0100900431502799,0.0016771348630552404,1746,leave_one_park_out_6,baseline,False,exploratory_transductive
+7,0.011640873289684134,0.007306570943893469,4162,leave_one_park_out_6,baseline,False,exploratory_transductive
+8,0.017415925771041896,0.011352604499454749,5647,leave_one_park_out_6,baseline,False,exploratory_transductive
+0,-0.009239314369715422,-0.019090918345423362,3346,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+1,-0.004537611125272139,-0.00978078143916415,3346,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+2,-0.0024859922470497633,-0.004327714756145651,3345,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+3,-0.0009496058367086715,0.003790663079145335,3346,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+4,0.00044680482212628814,-0.010817866878715604,3345,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+5,0.0018009553344939138,-0.0038364792229689947,3346,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+6,0.0031744370920867735,0.0003350957345830574,3346,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+7,0.00470086700143218,0.005682084174625583,3345,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+8,0.0064781547438363275,0.008129846358812086,3346,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+9,0.009945057134136204,0.011383620031246676,3346,leave_one_park_out_6,Stuff+,False,exploratory_transductive
+0,-0.04268775821246584,-0.05738147444893937,3346,leave_one_park_out_6,Location+,False,exploratory_transductive
+1,-0.03231614993582598,-0.05935015161883535,3346,leave_one_park_out_6,Location+,False,exploratory_transductive
+2,-0.022239133737874884,-0.05261569342550981,3345,leave_one_park_out_6,Location+,False,exploratory_transductive
+3,-0.013552867366971715,-0.03154466440463702,3346,leave_one_park_out_6,Location+,False,exploratory_transductive
+4,-0.006825691309061231,-0.019932224930735203,3345,leave_one_park_out_6,Location+,False,exploratory_transductive
+5,0.0007337326630285238,0.004049558177366261,3346,leave_one_park_out_6,Location+,False,exploratory_transductive
+6,0.013175508214159689,0.018552169647783206,3346,leave_one_park_out_6,Location+,False,exploratory_transductive
+7,0.030425052465500695,0.038237668943786926,3345,leave_one_park_out_6,Location+,False,exploratory_transductive
+8,0.04598910529453001,0.06076637262044733,3346,leave_one_park_out_6,Location+,False,exploratory_transductive
+9,0.05901243936227361,0.0806785623677509,3346,leave_one_park_out_6,Location+,False,exploratory_transductive
+0,-0.06758521145065814,-0.05397847176725448,3346,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+1,-0.05153950151915665,-0.047094671150011126,3346,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+2,-0.038989677933728685,-0.04714882904231102,3345,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+3,-0.027965848751285407,-0.039508665202582664,3346,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+4,-0.0174013186333395,-0.028987482110064945,3345,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+5,-0.006171183721069356,-0.008280372833051643,3346,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+6,0.00901251834274744,0.009859271000691163,3346,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+7,0.03479890664179517,0.03156309402693241,3345,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+8,0.061707056520485526,0.05395591757245009,3346,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+9,0.0934493266440161,0.11107726519885851,3346,leave_one_park_out_6,Pitching+,False,exploratory_transductive
+0,-0.00914194664945304,-0.020905316519477957,3346,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+1,-0.00417459946329704,-0.005135103151591176,3346,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+2,-0.0019310685880947391,-0.0038824046430192063,3345,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+3,-0.0002092683480771994,-0.003622210426876201,3346,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+4,0.0013563948774117074,-0.006040948431985838,3345,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+5,0.0028144251813596232,-0.004862628422641908,3346,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+6,0.004345764396621761,0.002267501499822717,3346,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+7,0.006007532041798676,0.0012682495114367288,3345,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+8,0.007958927696412346,0.009504497302415905,3346,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+9,0.011736846094844577,0.012876153618000574,3346,leave_one_park_out_6,Stuff+ no density,False,exploratory_transductive
+0,-0.007084210728562766,-0.019103159741598513,3346,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0027774385587128977,-0.004206816940374247,3346,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+2,-0.0007899674931693869,-0.004617255957911427,3345,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0008241680927796647,-0.006898122074662736,3346,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+4,0.002225464872092156,-0.008400684085614262,3345,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+5,0.0035504043476622562,-0.0009579925436154238,3346,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+6,0.004935107635287826,0.004546189422350023,3346,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+7,0.006424919793026597,0.0023320673781231263,3345,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+8,0.008157856771783873,0.006554968589187093,3346,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+9,0.011625324286073576,0.012217989365782243,3346,leave_one_park_out_6,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.01989162326757843,-0.023024764900559377,1191,leave_one_park_out_7,baseline,False,exploratory_transductive
+1,-0.004300213231112012,-0.006914455080074012,8287,leave_one_park_out_7,baseline,False,exploratory_transductive
+2,-0.0020485938000674867,-0.004313244145093947,1206,leave_one_park_out_7,baseline,False,exploratory_transductive
+3,-0.00038000652637290637,-0.003053952123840541,5120,leave_one_park_out_7,baseline,False,exploratory_transductive
+4,0.006664514924220558,0.008743972550695513,1953,leave_one_park_out_7,baseline,False,exploratory_transductive
+5,0.008906973263196689,0.007117917082745952,3155,leave_one_park_out_7,baseline,False,exploratory_transductive
+6,0.010977509844918283,-0.01641049774915297,1556,leave_one_park_out_7,baseline,False,exploratory_transductive
+7,0.011608589258218513,0.0075643438486016484,3843,leave_one_park_out_7,baseline,False,exploratory_transductive
+8,0.01720231501033537,0.013793701820587919,5361,leave_one_park_out_7,baseline,False,exploratory_transductive
+0,-0.0052548721037783555,-0.01688072528417149,3168,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+1,-0.0005340771109600348,0.00670193754767723,3167,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+2,0.0014042386751841676,-0.001307926784851479,3167,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+3,0.0028850776636503077,-0.00861166172688729,3167,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+4,0.004172898178776115,-0.005839621042264645,3167,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+5,0.005340353949576028,0.0021120445236240985,3167,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+6,0.006569714758382059,0.006218849910896807,3167,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+7,0.007925518950484971,0.006134586512492411,3167,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+8,0.009613575375044677,0.005554170868779789,3167,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+9,0.013020668589274373,0.009538121984130328,3168,leave_one_park_out_7,Stuff+,False,exploratory_transductive
+0,-0.041722511523412,-0.06297540693017245,3168,leave_one_park_out_7,Location+,False,exploratory_transductive
+1,-0.031021737742510137,-0.05197487470777462,3167,leave_one_park_out_7,Location+,False,exploratory_transductive
+2,-0.021085110806965943,-0.03533949416965553,3167,leave_one_park_out_7,Location+,False,exploratory_transductive
+3,-0.012089996374746054,-0.03225302897547615,3167,leave_one_park_out_7,Location+,False,exploratory_transductive
+4,-0.004890648043576171,-0.01873676333444454,3167,leave_one_park_out_7,Location+,False,exploratory_transductive
+5,0.002884256475065328,0.008962929841155024,3167,leave_one_park_out_7,Location+,False,exploratory_transductive
+6,0.01473840766133543,0.025411212218130412,3167,leave_one_park_out_7,Location+,False,exploratory_transductive
+7,0.030685031399234924,0.034675345053709325,3167,leave_one_park_out_7,Location+,False,exploratory_transductive
+8,0.045745633055945055,0.06076213888212269,3167,leave_one_park_out_7,Location+,False,exploratory_transductive
+9,0.058809840317616636,0.07508157756017701,3168,leave_one_park_out_7,Location+,False,exploratory_transductive
+0,-0.06443398770044698,-0.052525753290462045,3168,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+1,-0.04770771627120488,-0.04648405940514941,3167,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+2,-0.03476512671844468,-0.03507148031940518,3167,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+3,-0.02291914239127359,-0.035133438164782704,3167,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+4,-0.012147419000841085,-0.022588287549732234,3167,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+5,-0.0008081802696002365,-0.014082074370074018,3167,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+6,0.013375442720059041,0.022611600380944535,3167,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+7,0.038088876724152926,0.03136437374444848,3167,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+8,0.0639067651985881,0.051867411377332355,3167,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+9,0.09445446223997536,0.10364302503619363,3168,leave_one_park_out_7,Pitching+,False,exploratory_transductive
+0,-0.0053481287342861976,-0.0143323412731775,3168,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+1,-0.00041985225178524507,-0.0044894876489998846,3167,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+2,0.0016169251604732436,0.003421160305979513,3167,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+3,0.003148686452850782,-0.004820221615784632,3167,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+4,0.004488150488628042,-0.004868110523008671,3167,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+5,0.005710672413719782,0.005915795837065184,3167,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+6,0.006934627974155791,0.008100444589419454,3167,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+7,0.008251444382546422,0.002552116277410437,3167,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+8,0.009847184048760317,0.004769475062436643,3167,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+9,0.01297561845392519,0.007370825167427089,3168,leave_one_park_out_7,Stuff+ no density,False,exploratory_transductive
+0,-0.004596227347489911,-0.012655322001785282,3168,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0002631073015870044,-0.008845760054996881,3167,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+2,0.001741635335601322,0.0013612385826590485,3167,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+3,0.003242600434554829,-0.0017877865807090338,3167,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+4,0.00454410077413617,-3.850307855664686e-06,3167,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+5,0.005704973834892616,0.00589424679903754,3167,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+6,0.006813486237227297,0.00044683117671815944,3167,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+7,0.00802384057137697,0.006111583459606114,3167,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+8,0.009482838564886617,0.0019742038298497335,3167,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+9,0.012574029339212641,0.011122557114192067,3168,leave_one_park_out_7,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.02040542753178325,-0.013156207371337924,866,leave_one_park_out_8,baseline,False,exploratory_transductive
+1,-0.004226479735570416,-0.0016485820345821711,6600,leave_one_park_out_8,baseline,False,exploratory_transductive
+2,-0.0019401312185810967,0.0046986573985447885,2438,leave_one_park_out_8,baseline,False,exploratory_transductive
+3,0.004084284459338517,0.009880128903060352,2393,leave_one_park_out_8,baseline,False,exploratory_transductive
+4,0.008807333476234708,0.009113576060935545,2248,leave_one_park_out_8,baseline,False,exploratory_transductive
+5,0.00968277270903382,0.007946950999707932,1079,leave_one_park_out_8,baseline,False,exploratory_transductive
+6,0.011166880072293793,0.01805788228022904,2703,leave_one_park_out_8,baseline,False,exploratory_transductive
+7,0.016713498002221334,0.026087235876709594,3657,leave_one_park_out_8,baseline,False,exploratory_transductive
+0,-0.002067307699517205,-0.007369775815872586,2199,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+1,0.00114214305296612,-0.0028724354286986165,2198,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+2,0.0027462380837018747,0.0030344355494444186,2198,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+3,0.004032883723444956,0.003529780260415462,2199,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+4,0.005238663806507277,0.011677522827424906,2198,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+5,0.006404382995325349,0.009194798009371681,2198,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+6,0.007577450083922977,0.01292913607075657,2199,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+7,0.008789789720733182,0.01404957577717642,2198,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+8,0.01022271304198872,0.020165706398862514,2198,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+9,0.013160962383199937,0.020314900876922903,2199,leave_one_park_out_8,Stuff+,False,exploratory_transductive
+0,-0.040501443207551106,-0.05445204069576245,2199,leave_one_park_out_8,Location+,False,exploratory_transductive
+1,-0.02904673727810885,-0.035187706228577545,2198,leave_one_park_out_8,Location+,False,exploratory_transductive
+2,-0.01911359159565902,-0.030775334834850957,2198,leave_one_park_out_8,Location+,False,exploratory_transductive
+3,-0.009663753416107495,-0.017722932850491493,2199,leave_one_park_out_8,Location+,False,exploratory_transductive
+4,-0.002352683149077537,-0.0018712492542418931,2198,leave_one_park_out_8,Location+,False,exploratory_transductive
+5,0.005325707731729808,0.013534095483701972,2198,leave_one_park_out_8,Location+,False,exploratory_transductive
+6,0.016849700058537566,0.02811436153728897,2199,leave_one_park_out_8,Location+,False,exploratory_transductive
+7,0.0322701230182401,0.046060042665951796,2198,leave_one_park_out_8,Location+,False,exploratory_transductive
+8,0.04717378916176113,0.057509963184719286,2198,leave_one_park_out_8,Location+,False,exploratory_transductive
+9,0.05932695619874262,0.07944172619468404,2199,leave_one_park_out_8,Location+,False,exploratory_transductive
+0,-0.06242434965851343,-0.04930861492195608,2199,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+1,-0.045909234357705594,-0.03213210288884153,2198,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+2,-0.03323775542765819,-0.03302149285360486,2198,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+3,-0.021874727346824517,-0.012960205122491865,2199,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+4,-0.01086956163560367,-0.01642180527241089,2198,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+5,-0.00037561262731272135,0.005334153680651857,2198,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+6,0.014561151855238114,0.02513433099292897,2199,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+7,0.03957738933665027,0.03371054365502585,2198,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+8,0.0647389632348265,0.05586613833594712,2198,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+9,0.09370040895175458,0.10843363836190262,2199,leave_one_park_out_8,Pitching+,False,exploratory_transductive
+0,-0.002893282068142313,-0.007024440752996443,2199,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+1,0.00043800312730741175,0.0035843792331854626,2198,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+2,0.0020535463886761757,-0.0018944240681973824,2198,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+3,0.0033522207418503133,0.006171095072178975,2199,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+4,0.004511601715710913,0.00012832665222900882,2198,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+5,0.005647701023397686,0.01372712463958769,2198,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+6,0.006811399242033737,0.014193967429481733,2199,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+7,0.008124630094148945,0.014222153880360591,2198,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+8,0.009695816562573652,0.0196376251501342,2198,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+9,0.012635630378124693,0.021905179528290825,2199,leave_one_park_out_8,Stuff+ no density,False,exploratory_transductive
+0,-0.0038607039110889344,-0.003913056548394853,2199,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+1,-1.8200128459570728e-05,-0.0027575253015362754,2198,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+2,0.001677366604596551,0.010637818945969355,2198,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0029651410652289474,0.004472414291323073,2199,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+4,0.004115258099981116,0.0024523503834801034,2198,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+5,0.005264450753565756,-0.0006795006657882558,2198,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+6,0.006459711875544742,0.014633589591515063,2199,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+7,0.0077417332860962775,0.01769344939520528,2198,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+8,0.009307444452491933,0.01884598529102019,2198,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+9,0.012233654068096893,0.023264000441288648,2199,leave_one_park_out_8,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.019549687266091513,-0.028291298621236326,1173,leave_one_park_out_9,baseline,False,exploratory_transductive
+1,-0.00424818854660786,-0.007905698049460527,8238,leave_one_park_out_9,baseline,False,exploratory_transductive
+2,-0.0016007664318685058,-0.013252694801195,1155,leave_one_park_out_9,baseline,False,exploratory_transductive
+3,-8.565079564223884e-05,-0.007770752934042247,5090,leave_one_park_out_9,baseline,False,exploratory_transductive
+4,0.007764599315240774,-0.010059126648054398,2099,leave_one_park_out_9,baseline,False,exploratory_transductive
+5,0.009255723473802234,0.0005020759651496212,3177,leave_one_park_out_9,baseline,False,exploratory_transductive
+6,0.009908863925476172,0.004162322989817226,1564,leave_one_park_out_9,baseline,False,exploratory_transductive
+7,0.01182927219775669,0.003718612188521841,4021,leave_one_park_out_9,baseline,False,exploratory_transductive
+8,0.01769946462849842,0.0033781390147770503,5269,leave_one_park_out_9,baseline,False,exploratory_transductive
+0,-0.009026617601560604,-0.018819635869096553,3179,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+1,-0.0045024395554258976,-0.014786553771130135,3178,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+2,-0.0024278536413900424,-0.009178801745769027,3179,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+3,-0.0009130953653910942,-0.010052740910282775,3178,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+4,0.0003986515773077983,-0.005319760880435781,3179,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+5,0.0016950385067202034,-0.0017914442364134315,3179,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+6,0.0029841842225451828,-0.0036400112176013188,3178,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+7,0.004418533181451764,0.000823257803466156,3178,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+8,0.0061106444804024515,0.012602028454802378,3179,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+9,0.009355620992582024,0.008182640337253844,3179,leave_one_park_out_9,Stuff+,False,exploratory_transductive
+0,-0.043089027481852206,-0.0647838633994342,3179,leave_one_park_out_9,Location+,False,exploratory_transductive
+1,-0.03292385563508042,-0.05444358628405227,3178,leave_one_park_out_9,Location+,False,exploratory_transductive
+2,-0.02276023939102768,-0.05293658988427064,3179,leave_one_park_out_9,Location+,False,exploratory_transductive
+3,-0.013941246381450592,-0.03746597857455421,3178,leave_one_park_out_9,Location+,False,exploratory_transductive
+4,-0.007077138796301275,-0.02332378488363945,3179,leave_one_park_out_9,Location+,False,exploratory_transductive
+5,0.00037451773259722945,-0.0004225352333353316,3179,leave_one_park_out_9,Location+,False,exploratory_transductive
+6,0.012906628844288703,0.017294168918544364,3178,leave_one_park_out_9,Location+,False,exploratory_transductive
+7,0.02995613832405807,0.03534776600495829,3178,leave_one_park_out_9,Location+,False,exploratory_transductive
+8,0.04543322526254861,0.06100329146269663,3179,leave_one_park_out_9,Location+,False,exploratory_transductive
+9,0.05863689634950842,0.07774643724843709,3179,leave_one_park_out_9,Location+,False,exploratory_transductive
+0,-0.06684024783583505,-0.0549971874900227,3179,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+1,-0.050485591624316435,-0.04990783151855169,3178,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+2,-0.03800916823827791,-0.057473781563180046,3179,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+3,-0.027174950814764537,-0.04616637659720714,3178,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+4,-0.016688280976155233,-0.030373366756870135,3179,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+5,-0.005496127484267681,-0.005731038492929493,3179,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+6,0.010353496722425064,0.009150199559406595,3178,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+7,0.0370187277251547,0.02973647978232612,3178,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+8,0.062268364693379055,0.05309247692923847,3179,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+9,0.09402969277453477,0.11068011456219694,3179,leave_one_park_out_9,Pitching+,False,exploratory_transductive
+0,-0.008964144784896834,-0.02016547844872651,3179,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+1,-0.004001644661620837,-0.010791128237275299,3178,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+2,-0.0016764183069984616,-0.00823456978366203,3179,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+3,-3.329174094076184e-05,-0.007110637004871983,3178,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+4,0.001459223616011737,-0.006430541249848925,3179,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+5,0.0028919251605893587,-0.0006141318225435354,3179,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+6,0.004374802370366694,-0.0036101751944021157,3178,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+7,0.005965283686006343,0.0027066138351855324,3178,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+8,0.007815762025386336,0.000919966003356523,3179,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+9,0.011324061979635702,0.01135184398884442,3179,leave_one_park_out_9,Stuff+ no density,False,exploratory_transductive
+0,-0.0061959933798437705,-0.016173349056185844,3179,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0020268434693894513,-0.01088506376647718,3178,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+2,-0.00014105158201640542,-0.010744132776197714,3179,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0012927472932688455,-0.009606169792671152,3178,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0025908179566560786,-0.0068825675561078195,3179,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+5,0.003884132277702799,-0.00458789052167641,3179,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+6,0.005210079316582601,0.0005534884833470288,3178,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+7,0.006663437866662143,-0.002692105517480236,3177,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+8,0.008470537136580483,0.011688014168274275,3180,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+9,0.011654327201056993,0.007345811889718804,3179,leave_one_park_out_9,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.020561578273793152,-0.01450482838312483,1327,leave_one_park_out_10,baseline,False,exploratory_transductive
+1,-0.0046272962366852985,-0.0011632614610452869,9112,leave_one_park_out_10,baseline,False,exploratory_transductive
+2,-0.002714512423796484,0.006510596074513893,1433,leave_one_park_out_10,baseline,False,exploratory_transductive
+3,-0.002006728383643232,0.0033724976868521653,3844,leave_one_park_out_10,baseline,False,exploratory_transductive
+4,0.004225493383471877,0.0075231411107180325,4019,leave_one_park_out_10,baseline,False,exploratory_transductive
+5,0.009016931735368074,0.005401244035427888,3494,leave_one_park_out_10,baseline,False,exploratory_transductive
+6,0.009165620944446014,0.017188339665162703,1795,leave_one_park_out_10,baseline,False,exploratory_transductive
+7,0.011404036726029491,0.011469582545177116,4289,leave_one_park_out_10,baseline,False,exploratory_transductive
+8,0.016672229119579628,0.023352231191255672,5868,leave_one_park_out_10,baseline,False,exploratory_transductive
+0,-0.0007272601813997977,-0.014163017113432807,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+1,0.0021648271609372273,-0.0043223814636929765,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+2,0.003919707035329854,0.0047087124518168915,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+3,0.005460105050977252,0.0034064762122331524,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+4,0.006812286112134163,0.013530988201454505,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+5,0.007996401785435548,0.006823585872536475,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+6,0.00911590112997643,0.018682313963433127,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+7,0.010261265932278848,0.0122508190591176,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+8,0.011613202066612677,0.013214986105344627,3518,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+9,0.014291598917757466,0.0193783449914271,3519,leave_one_park_out_10,Stuff+,False,exploratory_transductive
+0,-0.03898937868334503,-0.05568647467221738,3518,leave_one_park_out_10,Location+,False,exploratory_transductive
+1,-0.027941261118452944,-0.0379642718647938,3518,leave_one_park_out_10,Location+,False,exploratory_transductive
+2,-0.017801973190546258,-0.03628764490678955,3519,leave_one_park_out_10,Location+,False,exploratory_transductive
+3,-0.008399567482976232,-0.022790527433038832,3517,leave_one_park_out_10,Location+,False,exploratory_transductive
+4,-0.001082889168732804,-0.0050188527978137784,3518,leave_one_park_out_10,Location+,False,exploratory_transductive
+5,0.00660485659337177,0.013493322084866902,3518,leave_one_park_out_10,Location+,False,exploratory_transductive
+6,0.017452764933523355,0.03225053802122566,3518,leave_one_park_out_10,Location+,False,exploratory_transductive
+7,0.03315874726748031,0.04614349912081442,3518,leave_one_park_out_10,Location+,False,exploratory_transductive
+8,0.04753792162418604,0.06011642645920438,3518,leave_one_park_out_10,Location+,False,exploratory_transductive
+9,0.059460338901396514,0.07924163457233077,3519,leave_one_park_out_10,Location+,False,exploratory_transductive
+0,-0.05959403521592021,-0.04726707125998131,3518,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+1,-0.042636013178504614,-0.03773113322258525,3518,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+2,-0.029134588106800773,-0.03420726779162035,3518,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+3,-0.017340949134496235,-0.03002888065186382,3518,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+4,-0.006396516818975653,-0.008498758831149015,3518,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+5,0.004646502725794013,0.008878396950135054,3519,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+6,0.018716466663733933,0.02266547140671955,3518,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+7,0.04311537224969342,0.03490119889332398,3517,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+8,0.06775674232573946,0.05163024272820739,3518,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+9,0.09779918616918895,0.11314937246225565,3519,leave_one_park_out_10,Pitching+,False,exploratory_transductive
+0,-0.002171493449034867,-0.010109940644673649,3518,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+1,0.0008849806066184797,-0.004670580864975001,3518,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+2,0.00263175268130822,0.00018928250961486632,3519,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+3,0.004171383280182502,0.004257188072263285,3517,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+4,0.005580435713078797,0.014725393570063718,3518,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+5,0.0068925605746944655,0.015581865927563986,3518,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+6,0.008129545861975344,0.010042136961391173,3518,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+7,0.009428827333936308,0.013253355626264387,3518,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+8,0.010916729465741822,0.011714585388341052,3518,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+9,0.013594430525481238,0.018528939491934224,3519,leave_one_park_out_10,Stuff+ no density,False,exploratory_transductive
+0,-0.0031823225334031025,-0.0110477825249917,3518,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+1,0.00012684492241630055,-0.0026754305124077737,3518,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0018324442429236136,-0.0011855603459801766,3519,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0032849013096253057,0.0070321282596690834,3517,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+4,0.004641105958814562,0.009586348432845553,3518,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+5,0.005976913340863989,0.009907342412000588,3519,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+6,0.007319562559144555,0.012497128245585668,3518,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+7,0.008703701043168503,0.01623171195505834,3517,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+8,0.010327847098682624,0.01411951999862641,3518,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+9,0.013184482913560704,0.019049649407510104,3519,leave_one_park_out_10,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.020853281419088602,-0.010231782740642811,1475,leave_one_park_out_11,baseline,False,exploratory_transductive
+1,-0.004671599910420615,-0.0007918588829745377,9994,leave_one_park_out_11,baseline,False,exploratory_transductive
+2,-0.002909352361392222,0.008912578572718472,1513,leave_one_park_out_11,baseline,False,exploratory_transductive
+3,-0.0020731185645599887,0.003876777617773278,4228,leave_one_park_out_11,baseline,False,exploratory_transductive
+4,0.0039897391798929425,0.010538446222940633,4378,leave_one_park_out_11,baseline,False,exploratory_transductive
+5,0.008448965172402408,0.014462703251690178,3902,leave_one_park_out_11,baseline,False,exploratory_transductive
+6,0.008602611604646586,0.02553332220480201,1897,leave_one_park_out_11,baseline,False,exploratory_transductive
+7,0.011094271232764153,0.016216400062230536,4733,leave_one_park_out_11,baseline,False,exploratory_transductive
+8,0.016217359752629713,0.029167153148373676,6486,leave_one_park_out_11,baseline,False,exploratory_transductive
+0,-0.0015193350143997597,-0.0029304395597374664,3861,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+1,0.0017383977216036677,0.0007665511597031492,3860,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+2,0.003688352728381835,0.003649750532788119,3861,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+3,0.0053016642752631545,0.009872920581524919,3860,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+4,0.006723724378579304,0.009938224408921238,3861,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+5,0.008023493738865628,0.011515865237884084,3861,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+6,0.009221165638235895,0.013527652138841422,3860,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+7,0.010369361766161399,0.019401848021797754,3860,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+8,0.011599392888313553,0.015405744878659446,3861,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+9,0.01379732659101254,0.0286295240373283,3861,leave_one_park_out_11,Stuff+,False,exploratory_transductive
+0,-0.03934389042713972,-0.04509492858225523,3861,leave_one_park_out_11,Location+,False,exploratory_transductive
+1,-0.027870140005270976,-0.0406622971397154,3860,leave_one_park_out_11,Location+,False,exploratory_transductive
+2,-0.018306100166990174,-0.038300978556515146,3861,leave_one_park_out_11,Location+,False,exploratory_transductive
+3,-0.00909068872757811,-0.010030642607540828,3860,leave_one_park_out_11,Location+,False,exploratory_transductive
+4,-0.0016279686754985627,-0.0006704181591108785,3861,leave_one_park_out_11,Location+,False,exploratory_transductive
+5,0.0061911313495424634,0.01880194206479847,3861,leave_one_park_out_11,Location+,False,exploratory_transductive
+6,0.01695337355885382,0.039318975475752055,3860,leave_one_park_out_11,Location+,False,exploratory_transductive
+7,0.03236193933264188,0.04529986935203974,3860,leave_one_park_out_11,Location+,False,exploratory_transductive
+8,0.04709173153837254,0.06240466078889612,3861,leave_one_park_out_11,Location+,False,exploratory_transductive
+9,0.059504270190602435,0.07870896124455777,3861,leave_one_park_out_11,Location+,False,exploratory_transductive
+0,-0.0606325016079676,-0.04625873748313516,3861,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+1,-0.04339037378441798,-0.031303835020584966,3860,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+2,-0.029036361117728896,-0.037603950482189036,3861,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+3,-0.01702370240491752,-0.01975445795704774,3860,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+4,-0.006092021045692378,-0.004624519716647044,3861,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+5,0.004700895670473122,0.016235682305489482,3861,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+6,0.018138454470270213,0.031575435983432994,3860,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+7,0.0419959339305935,0.0345925861318182,3860,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+8,0.0667619648949864,0.05284922950219497,3861,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+9,0.0962603840792529,0.11406283722313239,3861,leave_one_park_out_11,Pitching+,False,exploratory_transductive
+0,-0.0024827550865614972,-0.004447231340407421,3861,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+1,0.0008095577011972632,0.004750294794446575,3860,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+2,0.0027309641405829327,0.002680546614983374,3861,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+3,0.0043298681208008465,0.007842768638363369,3860,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+4,0.005742695728124896,0.012511571909538867,3861,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+5,0.007089231853489729,0.013117729886966236,3861,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+6,0.008392552069870227,0.01151159175882178,3860,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+7,0.009660338089241662,0.018659573093410892,3860,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+8,0.011046113342170838,0.019213680021228686,3861,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+9,0.013500357526314647,0.023936907631553418,3861,leave_one_park_out_11,Stuff+ no density,False,exploratory_transductive
+0,-0.0034953537512822565,-0.00756846334935608,3861,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+1,-5.3279437450981966e-06,0.004719779376742384,3860,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0018095328117315572,0.005210828315982342,3861,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0033640967297806513,0.009899830044855307,3860,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+4,0.004806366780274295,0.007611244754068847,3861,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+5,0.006176436451567502,0.013203406852300169,3861,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+6,0.007523186295263545,0.012374763433916492,3860,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+7,0.008880851311132058,0.017794196433465165,3860,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+8,0.010494415137020513,0.019012559380392445,3861,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+9,0.013171065776544987,0.027519812071383022,3861,leave_one_park_out_11,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.019423620800204076,-0.03094186118368114,1022,leave_one_park_out_12,baseline,False,exploratory_transductive
+1,-0.004523403223258101,-0.0025846403198811208,7560,leave_one_park_out_12,baseline,False,exploratory_transductive
+2,-0.0018497083784906256,-0.008675820235624012,1098,leave_one_park_out_12,baseline,False,exploratory_transductive
+3,-0.0017640051788160597,-0.00039311074882797555,3140,leave_one_park_out_12,baseline,False,exploratory_transductive
+4,0.004028084747720685,0.010523935423628382,3336,leave_one_park_out_12,baseline,False,exploratory_transductive
+5,0.008470396035336628,0.01582841973673731,3004,leave_one_park_out_12,baseline,False,exploratory_transductive
+6,0.009240305868334612,0.017860187784471987,1398,leave_one_park_out_12,baseline,False,exploratory_transductive
+7,0.011351797908917091,0.012575484125240389,3532,leave_one_park_out_12,baseline,False,exploratory_transductive
+8,0.016663328727374426,0.027246174131838406,4866,leave_one_park_out_12,baseline,False,exploratory_transductive
+0,-0.0020160401566140912,-0.00846342442953914,2896,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+1,0.0008656584601973301,0.0033497130653223407,2895,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+2,0.002454881299523386,-0.0010164855426360718,2896,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+3,0.003912777687369508,0.0017404730275617567,2895,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+4,0.005317432801050447,0.00586451264626254,2896,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+5,0.006737097446774173,0.011212698736151896,2895,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+6,0.008047265887864646,0.013730056696287433,2896,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+7,0.00935993418446084,0.014023640803253088,2895,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+8,0.010880025979818641,0.014834873796823201,2896,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+9,0.013851182608974144,0.021633092598483814,2896,leave_one_park_out_12,Stuff+,False,exploratory_transductive
+0,-0.040005222031954196,-0.0499455849788049,2896,leave_one_park_out_12,Location+,False,exploratory_transductive
+1,-0.028851328628400754,-0.04687261397931622,2895,leave_one_park_out_12,Location+,False,exploratory_transductive
+2,-0.01910154140346194,-0.03982973726312143,2896,leave_one_park_out_12,Location+,False,exploratory_transductive
+3,-0.009851694159410061,-0.023893074959382015,2895,leave_one_park_out_12,Location+,False,exploratory_transductive
+4,-0.0025372936060526785,0.00036851447208309664,2896,leave_one_park_out_12,Location+,False,exploratory_transductive
+5,0.004971564851342714,0.022507722517892577,2896,leave_one_park_out_12,Location+,False,exploratory_transductive
+6,0.016471260237254794,0.0366879696879944,2895,leave_one_park_out_12,Location+,False,exploratory_transductive
+7,0.031761689339143036,0.03972748395859988,2895,leave_one_park_out_12,Location+,False,exploratory_transductive
+8,0.04680925122882482,0.05678924975093646,2896,leave_one_park_out_12,Location+,False,exploratory_transductive
+9,0.05936247624709002,0.08136070121010683,2896,leave_one_park_out_12,Location+,False,exploratory_transductive
+0,-0.06042965401684387,-0.047013139209576615,2896,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+1,-0.04462256509209916,-0.035399334914587265,2895,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+2,-0.03236491873091795,-0.03595713485212492,2896,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+3,-0.021066639853464086,-0.0237765088193369,2895,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+4,-0.010734859536809976,-0.010545266774800187,2896,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+5,-2.715989600153105e-05,0.00801929464156286,2896,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+6,0.014399373726623454,0.0310954699049453,2895,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+7,0.03935753659784044,0.029237301427543185,2895,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+8,0.06430665154562368,0.050924735629643364,2896,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+9,0.09395540208178942,0.11031366198969038,2896,leave_one_park_out_12,Pitching+,False,exploratory_transductive
+0,-0.0030605389997135856,-0.002206061413716494,2896,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+1,-0.00011972005259325671,-0.004012962343035896,2895,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+2,0.0015111258151846484,0.00019090801078740588,2896,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+3,0.002964057629904597,-0.0005469022413121629,2895,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+4,0.004430586147062738,0.010920644522084489,2896,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+5,0.0058904236403925295,0.005623026947508139,2895,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+6,0.0072983146130890676,0.011001754160289437,2896,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+7,0.008707144134109116,0.012797700263008461,2895,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+8,0.010278246834442811,0.020100963787640938,2896,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+9,0.013154789288524255,0.023034394047601173,2896,leave_one_park_out_12,Stuff+ no density,False,exploratory_transductive
+0,-0.003975126502242388,0.0004413718592580423,2896,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0006057460222312222,-0.001822584857259112,2895,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+2,0.000984005535797607,-0.001984760410882367,2896,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0022937700294609546,0.0058077052505798804,2895,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0036054983950593467,0.0017282592290164918,2896,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+5,0.004996893832766345,0.008832783019607986,2896,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+6,0.0064066191493813325,0.011171462114145698,2895,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+7,0.007875989580778368,0.013913258772562428,2895,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+8,0.009549246238661002,0.017942302087557132,2896,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+9,0.012574421685273408,0.020878920395417735,2896,leave_one_park_out_12,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.020447204776140634,-0.015501156325388711,1024,leave_one_park_out_13,baseline,False,exploratory_transductive
+1,-0.004166191151039952,-0.010170966489028196,7240,leave_one_park_out_13,baseline,False,exploratory_transductive
+2,-0.002059311319042161,-0.004380560459850354,1066,leave_one_park_out_13,baseline,False,exploratory_transductive
+3,-0.0004305865045719808,-0.002025574924697662,4489,leave_one_park_out_13,baseline,False,exploratory_transductive
+4,0.007163163971490653,-0.0013264030432426314,1736,leave_one_park_out_13,baseline,False,exploratory_transductive
+5,0.009474438782148107,-0.005254179050774305,2832,leave_one_park_out_13,baseline,False,exploratory_transductive
+6,0.009854318613776085,0.004870659837359222,1459,leave_one_park_out_13,baseline,False,exploratory_transductive
+7,0.011346240455159202,0.012687464432437024,3543,leave_one_park_out_13,baseline,False,exploratory_transductive
+8,0.017367151456462445,0.00980536308290548,4838,leave_one_park_out_13,baseline,False,exploratory_transductive
+0,-0.010636977338269819,-0.021495082577342915,2823,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+1,-0.005452352809078076,-0.007816908382429814,2823,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+2,-0.0031411696295624994,-0.0036035481749450786,2822,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+3,-0.0014832503995606933,-0.0026867358972627715,2823,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+4,-9.686533806871702e-05,0.0016323142603721533,2822,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+5,0.0012214283636423032,0.00406933568034589,2823,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+6,0.002529446029920918,-0.002958266155378016,2823,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+7,0.0038927272106120936,0.006246798494781462,2822,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+8,0.0055676162905319735,0.006078142352693304,2823,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+9,0.008970016755026348,0.013110877727084988,2823,leave_one_park_out_13,Stuff+,False,exploratory_transductive
+0,-0.04248321145819143,-0.061480357015546924,2823,leave_one_park_out_13,Location+,False,exploratory_transductive
+1,-0.03237425450693312,-0.04845329682948147,2823,leave_one_park_out_13,Location+,False,exploratory_transductive
+2,-0.02243471640535169,-0.0422301145975224,2822,leave_one_park_out_13,Location+,False,exploratory_transductive
+3,-0.013683929436807789,-0.029057061504535322,2823,leave_one_park_out_13,Location+,False,exploratory_transductive
+4,-0.006624034994439644,-0.02444790060430863,2822,leave_one_park_out_13,Location+,False,exploratory_transductive
+5,0.001430836421414476,0.0027089969247370118,2823,leave_one_park_out_13,Location+,False,exploratory_transductive
+6,0.014091139932468322,0.015742100139275093,2823,leave_one_park_out_13,Location+,False,exploratory_transductive
+7,0.031172884486438714,0.04433639538602833,2822,leave_one_park_out_13,Location+,False,exploratory_transductive
+8,0.04646368265145896,0.06036142830658055,2823,leave_one_park_out_13,Location+,False,exploratory_transductive
+9,0.05892513559975687,0.0750873084353405,2823,leave_one_park_out_13,Location+,False,exploratory_transductive
+0,-0.06765425627449842,-0.05603853952581182,2823,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+1,-0.05123460336397116,-0.04062898233368035,2823,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+2,-0.037833565655290495,-0.03610474158346056,2822,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+3,-0.026403258593240546,-0.03755750733652445,2823,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+4,-0.015592009672327272,-0.03137083649826414,2822,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+5,-0.00395993951548563,-0.014228816178918269,2823,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+6,0.011831929446180162,0.0177499338036234,2823,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+7,0.03798890482756495,0.030637412352678084,2822,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+8,0.06254058531636295,0.0511169484215092,2823,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+9,0.09437554271600909,0.1089874923632296,2823,leave_one_park_out_13,Pitching+,False,exploratory_transductive
+0,-0.010186161504527468,-0.020829113027820038,2823,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+1,-0.004850099867787493,-0.007902988498399089,2823,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+2,-0.0022855512464889254,-0.006516636978296873,2822,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+3,-0.0005342884542419053,0.0014470510915208204,2823,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+4,0.0009512982567112706,0.004278894745906434,2822,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+5,0.002363143937921304,-0.00037539205030217903,2823,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+6,0.0038087147235687396,0.0001416771224202204,2823,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+7,0.0052778361948323535,0.004354580333332852,2822,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+8,0.0071239752409661145,0.0066684760492684535,2823,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+9,0.010843837629271871,0.01130961384794738,2823,leave_one_park_out_13,Stuff+ no density,False,exploratory_transductive
+0,-0.007278848872190428,-0.017603934888296802,2823,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0028802426637614636,-0.007215669379138162,2823,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+2,-0.0007977254918586967,-0.007725297760452099,2822,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0008049422687775028,-7.19928716868938e-05,2823,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0021441110628840497,-0.0016167946200422601,2822,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+5,0.0033599388306082803,0.0018076678615266933,2823,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+6,0.004575830704379229,-0.00115265193474601,2823,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+7,0.005809275262687573,0.002649491842332228,2822,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+8,0.0074016749475078365,0.008299825219640079,2823,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+9,0.01084135608562882,0.015202398571811698,2823,leave_one_park_out_13,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.019684592848523787,-0.026920006942241666,1378,leave_one_park_out_14,baseline,False,exploratory_transductive
+1,-0.0043642873494036515,-0.005535783639428839,9592,leave_one_park_out_14,baseline,False,exploratory_transductive
+2,-0.002145395692055959,-0.0024462509781989425,1371,leave_one_park_out_14,baseline,False,exploratory_transductive
+3,-0.00046678476221510444,-0.0011554775374601751,5999,leave_one_park_out_14,baseline,False,exploratory_transductive
+4,0.007143208661702791,0.0012045364075309738,2355,leave_one_park_out_14,baseline,False,exploratory_transductive
+5,0.009276556098153182,0.0016176659631671503,3804,leave_one_park_out_14,baseline,False,exploratory_transductive
+6,0.009537445076389938,0.011000185227893196,1846,leave_one_park_out_14,baseline,False,exploratory_transductive
+7,0.011499046941460768,0.009965108313777992,4608,leave_one_park_out_14,baseline,False,exploratory_transductive
+8,0.017245939769278244,0.015136759847990738,6416,leave_one_park_out_14,baseline,False,exploratory_transductive
+0,-0.007616178910062823,-0.013934912493649964,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+1,-0.0031771252554724004,-0.011212407850363126,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+2,-0.0014066886187549888,-0.005490027280004112,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+3,2.1472946749095567e-05,0.0003608368490590606,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+4,0.0013562068757216725,0.003504381920191227,3736,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+5,0.0026350396250320084,0.00561681152187417,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+6,0.0039091340289786605,0.007498667176957156,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+7,0.005257184673942984,0.0033757471793205815,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+8,0.006835014289739877,0.011750689341773729,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+9,0.009967841627603544,0.017758545210085346,3737,leave_one_park_out_14,Stuff+,False,exploratory_transductive
+0,-0.042843633474408,-0.057100705993614595,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+1,-0.03225650072984285,-0.044207385346279646,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+2,-0.02204049600956404,-0.040847691768501844,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+3,-0.01319266461858252,-0.030997081742320545,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+4,-0.006393715905538508,-0.01092558104706897,3736,leave_one_park_out_14,Location+,False,exploratory_transductive
+5,0.0011178746563320647,0.0101214989003434,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+6,0.013359163286135253,0.016813299375099414,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+7,0.03067679734909137,0.0382545362918786,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+8,0.04635555363499052,0.05950882135173434,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+9,0.05925343503059642,0.07860476017774505,3737,leave_one_park_out_14,Location+,False,exploratory_transductive
+0,-0.06541348484415219,-0.050235786579491286,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+1,-0.049407835797655605,-0.04408691822827207,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+2,-0.03705090513181611,-0.04055536839430852,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+3,-0.025880738206604373,-0.031964890813219134,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+4,-0.014944744636671444,-0.02288174179793998,3736,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+5,-0.0038588028376947106,-0.002405586697062259,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+6,0.010628466189763996,0.01620848102108358,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+7,0.03706023817586143,0.031956379505758,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+8,0.06300269817832996,0.05429301070801218,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+9,0.09487140184359145,0.10889369207366506,3737,leave_one_park_out_14,Pitching+,False,exploratory_transductive
+0,-0.007520921659931033,-0.017111614268589762,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+1,-0.002576608165148585,-0.0072851103132900545,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+2,-0.0005947867883145559,-0.0047981871778836616,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+3,0.0008929324834019225,-0.0020499266607767745,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+4,0.0022307616906918327,0.00023866877650200182,3736,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+5,0.003596873465781416,0.005756642148585619,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+6,0.005015127350990905,0.008209324448924225,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+7,0.006533969965785109,0.011791059111718068,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+8,0.008292337174032077,0.008608168925196136,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+9,0.011573258128695892,0.015868432698547413,3737,leave_one_park_out_14,Stuff+ no density,False,exploratory_transductive
+0,-0.006211928208577031,-0.01368467712213141,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.001980628409557888,-0.012288442571425263,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+2,-0.0001321378310106308,-0.0020680551137606563,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0012590480855888132,-0.0015499093051093184,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0025615483089790857,0.00205269156284537,3736,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+5,0.00388628295216763,0.005972626277063121,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+6,0.005203459980614686,0.00736914298447124,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+7,0.0065924127318041335,0.007216710297603066,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+8,0.008205812675087265,0.011189557602334024,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+9,0.011285085032779252,0.015018298499249712,3737,leave_one_park_out_14,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.020690328040736127,-0.010745011736649572,1451,leave_one_park_out_15,baseline,False,exploratory_transductive
+1,-0.004746837027501149,0.0010068558281017602,8867,leave_one_park_out_15,baseline,False,exploratory_transductive
+2,-0.002532359906005525,0.0038027482624007165,1398,leave_one_park_out_15,baseline,False,exploratory_transductive
+3,-0.0020238514386743613,0.003649952567345434,3848,leave_one_park_out_15,baseline,False,exploratory_transductive
+4,0.0033388034914022856,0.020271644676378712,3885,leave_one_park_out_15,baseline,False,exploratory_transductive
+5,0.008157944722720169,0.03297513280073704,1858,leave_one_park_out_15,baseline,False,exploratory_transductive
+6,0.008566292073207846,0.013185029183418129,3466,leave_one_park_out_15,baseline,False,exploratory_transductive
+7,0.011009810704084435,0.018614574713445416,4047,leave_one_park_out_15,baseline,False,exploratory_transductive
+8,0.0167541869563922,0.024007419273596182,5619,leave_one_park_out_15,baseline,False,exploratory_transductive
+0,-0.002366749774134867,-0.003499259806623819,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+1,0.0010520411486214338,0.0033927600292415947,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+2,0.002921049516314405,0.0065212581357580925,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+3,0.004429308237639079,0.011786607827992382,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+4,0.005739106725846253,0.008514739769183282,3443,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+5,0.006955477874936345,0.016150412305891582,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+6,0.008145136032462565,0.016230989621061623,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+7,0.00933846637483008,0.01884873848953047,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+8,0.010761259861546666,0.019926372519118624,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+9,0.013453959809878022,0.02078588085116003,3444,leave_one_park_out_15,Stuff+,False,exploratory_transductive
+0,-0.03939867853148327,-0.04999405959930826,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+1,-0.02815549684132742,-0.040227833537682126,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+2,-0.01798944598249071,-0.03557226398960345,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+3,-0.00901623236713486,-0.01494846493524108,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+4,-0.0016895509917531787,0.007927343975013542,3443,leave_one_park_out_15,Location+,False,exploratory_transductive
+5,0.006627374978030154,0.0203075370304993,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+6,0.018736653576541838,0.041484264338774404,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+7,0.03432374093428811,0.04354420126005951,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+8,0.048362554687915935,0.06603653816181496,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+9,0.05969130553211914,0.08010106648171697,3444,leave_one_park_out_15,Location+,False,exploratory_transductive
+0,-0.059355962198240214,-0.0428434153162699,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+1,-0.04253885117552188,-0.035713867258279054,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+2,-0.029990714747557563,-0.03905065726805638,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+3,-0.018960417780969623,-0.024189975751615068,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+4,-0.008379461398563099,-0.0008898537578977732,3443,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+5,0.0028514007845842713,0.024284182241495623,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+6,0.01946334156012228,0.025219911097657272,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+7,0.04595032803096275,0.04090939529373204,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+8,0.06982457032767865,0.05534260903146639,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+9,0.09888590113422589,0.11558744071186726,3444,leave_one_park_out_15,Pitching+,False,exploratory_transductive
+0,-0.0031074220869536048,5.6283778789737616e-06,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+1,5.396471168937804e-05,-0.0010090512968779848,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+2,0.0017822178846763441,0.012941890354176814,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+3,0.0033091669653739515,0.00651290540237089,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+4,0.004710860807556164,0.010276103878839695,3443,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+5,0.006047973147358155,0.015590083728877458,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+6,0.007370387905856797,0.018425222511341325,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+7,0.008749269479424216,0.017401387001875615,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+8,0.010306254029092419,0.019343489886736526,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+9,0.013043321985619291,0.01917135132685925,3444,leave_one_park_out_15,Stuff+ no density,False,exploratory_transductive
+0,-0.004651634713514239,3.4643320615153215e-05,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0007713180627089231,0.004541236776889426,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0010357599223017174,0.0036740057541960673,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0025044104650593074,0.014230158144285179,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+4,0.003854620981138838,0.009079146601302478,3443,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+5,0.005205140543652959,0.015228572518816728,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+6,0.006559231692372155,0.014384971596908023,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+7,0.007962316784994209,0.019749787883138095,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+8,0.009617488745278284,0.014732652693755982,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+9,0.012614282440130575,0.02300348833360072,3444,leave_one_park_out_15,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.020340341388025786,-0.01823175273093954,1335,leave_one_park_out_16,baseline,False,exploratory_transductive
+1,-0.004581925127929928,0.003551244187773219,10296,leave_one_park_out_16,baseline,False,exploratory_transductive
+2,-0.0021052885858381352,0.005123870677189302,3780,leave_one_park_out_16,baseline,False,exploratory_transductive
+3,0.003582281059414322,0.01645128156917439,3595,leave_one_park_out_16,baseline,False,exploratory_transductive
+4,0.008003043599636066,0.02292025906386411,3473,leave_one_park_out_16,baseline,False,exploratory_transductive
+5,0.008962636053002997,0.022895818806096344,1492,leave_one_park_out_16,baseline,False,exploratory_transductive
+6,0.010629078240967446,0.02559256634787395,4025,leave_one_park_out_16,baseline,False,exploratory_transductive
+7,0.01664448161248848,0.025879191499805516,5079,leave_one_park_out_16,baseline,False,exploratory_transductive
+0,-0.0014832107155012613,-0.005590357503628209,3308,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+1,0.0014488889274722806,0.007290658880419845,3307,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+2,0.003168303270920972,0.006933054297723488,3308,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+3,0.004706733368303652,0.008472859803327331,3307,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+4,0.0061649672088222906,0.014777104884282886,3307,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+5,0.007501716072403033,0.01231230666994539,3308,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+6,0.00872389069456939,0.0197811874610122,3307,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+7,0.009935594073814454,0.02593433353365544,3308,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+8,0.01127363412188775,0.016106158414195885,3307,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+9,0.01386847711944268,0.0266956171373941,3308,leave_one_park_out_16,Stuff+,False,exploratory_transductive
+0,-0.040347245594929484,-0.04844884913708243,3308,leave_one_park_out_16,Location+,False,exploratory_transductive
+1,-0.029138092909096195,-0.028993243163084638,3307,leave_one_park_out_16,Location+,False,exploratory_transductive
+2,-0.019548172627786405,-0.02498010936704041,3308,leave_one_park_out_16,Location+,False,exploratory_transductive
+3,-0.009770458544833851,-0.014182226072728713,3307,leave_one_park_out_16,Location+,False,exploratory_transductive
+4,-0.002275017699783987,0.005652297287973858,3307,leave_one_park_out_16,Location+,False,exploratory_transductive
+5,0.0055521308497343946,0.02403700227530491,3308,leave_one_park_out_16,Location+,False,exploratory_transductive
+6,0.017510437644164403,0.03746544672465087,3307,leave_one_park_out_16,Location+,False,exploratory_transductive
+7,0.03345993012783023,0.04283691042838985,3308,leave_one_park_out_16,Location+,False,exploratory_transductive
+8,0.0478343905934464,0.058832128843606626,3307,leave_one_park_out_16,Location+,False,exploratory_transductive
+9,0.05970993820807398,0.08049125210482487,3308,leave_one_park_out_16,Location+,False,exploratory_transductive
+0,-0.05916038473993651,-0.03605164106769872,3308,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+1,-0.043270218205712335,-0.028729066398650856,3307,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+2,-0.03060639891770338,-0.02818268836477062,3308,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+3,-0.01905243411894581,-0.01697113306382371,3307,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+4,-0.00837719361687286,-0.007068233519595242,3307,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+5,0.0026183782509343373,0.021991483428276566,3308,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+6,0.01766334802700942,0.03226978376519332,3307,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+7,0.04377188754993311,0.03384372267025013,3308,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+8,0.06833746326539916,0.05448104298946268,3307,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+9,0.0977927152293009,0.10711984492454857,3308,leave_one_park_out_16,Pitching+,False,exploratory_transductive
+0,-0.0025187982154613302,-0.0028423765709299745,3308,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+1,0.000511650420077693,0.005333511837538676,3307,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+2,0.0022517755373878804,0.006022884475206355,3308,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+3,0.003818084783800657,0.013868175272448501,3307,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+4,0.005303000291801921,0.0062065597342792845,3307,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+5,0.0065967712759152294,0.019930877281220387,3308,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+6,0.007834018704276807,0.018287888572095547,3307,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+7,0.009098747573014982,0.020285209653487814,3308,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+8,0.010516638622689962,0.021645565425673242,3307,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+9,0.013152008549601545,0.023974299521068727,3308,leave_one_park_out_16,Stuff+ no density,False,exploratory_transductive
+0,-0.0038965627528284976,-0.005170194526535402,3308,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0002670867345132402,0.006842126984924523,3307,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0015338736868546266,0.013199573381926018,3308,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0030396213106827904,0.010022241080322878,3307,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+4,0.004422631060402865,0.01133928766310555,3307,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+5,0.005773965735219044,0.013424324548040677,3308,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+6,0.007122000363362151,0.016637411952928827,3307,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+7,0.008499056502889407,0.02053399917798605,3308,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+8,0.010074552829671813,0.021266699515566437,3307,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+9,0.012866372029119442,0.0246173570037368,3308,leave_one_park_out_16,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.019823833789649338,-0.02554535436127769,1180,leave_one_park_out_17,baseline,False,exploratory_transductive
+1,-0.00442085500140375,0.001381369432129238,9115,leave_one_park_out_17,baseline,False,exploratory_transductive
+2,-0.001954236606626148,0.003265641463590082,3283,leave_one_park_out_17,baseline,False,exploratory_transductive
+3,0.0038099079578540447,0.01545583051596895,3221,leave_one_park_out_17,baseline,False,exploratory_transductive
+4,0.008133083062094358,0.040361730612285665,1455,leave_one_park_out_17,baseline,False,exploratory_transductive
+5,0.008286404346075048,0.019616490495956082,2983,leave_one_park_out_17,baseline,False,exploratory_transductive
+6,0.010705312824035784,0.02543712232974278,3688,leave_one_park_out_17,baseline,False,exploratory_transductive
+7,0.016135726020003318,0.03482120820051998,4539,leave_one_park_out_17,baseline,False,exploratory_transductive
+0,-0.002526414222107843,-0.0036274687000725555,2947,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+1,0.0004185412766201488,0.005244939255453405,2946,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+2,0.0020259347175808936,0.01180998375262859,2946,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+3,0.003384797102830041,0.0108872470703767,2947,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+4,0.0047110800170748765,0.014744916456343887,2946,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+5,0.006043609284143351,0.014479281071499376,2946,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+6,0.007337262067276392,0.013314807908966228,2947,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+7,0.00862026808315811,0.024866091873397313,2946,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+8,0.0101327939271323,0.020005906272253165,2946,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+9,0.012918062903453646,0.02812873234071424,2947,leave_one_park_out_17,Stuff+,False,exploratory_transductive
+0,-0.04022241207134681,-0.04610605972794004,2947,leave_one_park_out_17,Location+,False,exploratory_transductive
+1,-0.029301646561991666,-0.03680564769914724,2946,leave_one_park_out_17,Location+,False,exploratory_transductive
+2,-0.019990320068017445,-0.0295687760213497,2946,leave_one_park_out_17,Location+,False,exploratory_transductive
+3,-0.010722554117903836,-0.012417086695702526,2947,leave_one_park_out_17,Location+,False,exploratory_transductive
+4,-0.003319874987620081,0.005732362438781532,2946,leave_one_park_out_17,Location+,False,exploratory_transductive
+5,0.004650701406391579,0.027744781909478898,2946,leave_one_park_out_17,Location+,False,exploratory_transductive
+6,0.016350192703240788,0.041800622041776786,2947,leave_one_park_out_17,Location+,False,exploratory_transductive
+7,0.03158401533278214,0.04375091660212134,2946,leave_one_park_out_17,Location+,False,exploratory_transductive
+8,0.046288680009946404,0.06345782851274635,2946,leave_one_park_out_17,Location+,False,exploratory_transductive
+9,0.058929853128154464,0.08225978177284823,2947,leave_one_park_out_17,Location+,False,exploratory_transductive
+0,-0.06175706505834106,-0.042171754746674714,2947,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+1,-0.04580928388054882,-0.03227132313898715,2946,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+2,-0.03304703250429584,-0.03144691867063507,2946,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+3,-0.021870167612102986,-0.020067111119814515,2947,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+4,-0.011429644340877359,0.0028479009296010767,2946,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+5,-0.0003406146056750664,0.021188537655839643,2946,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+6,0.014810792300863275,0.03107385650108522,2947,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+7,0.040637202276537714,0.03925169887738295,2946,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+8,0.06656078516127722,0.059479981323916895,2946,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+9,0.09646654870668543,0.11195867683551806,2947,leave_one_park_out_17,Pitching+,False,exploratory_transductive
+0,-0.0036181131651859236,-0.0014755714535220246,2947,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+1,-0.0004932191824606038,0.010497773780130672,2946,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+2,0.0011818942321210712,0.0039983884589275005,2946,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+3,0.002568449663347951,0.01592699061091772,2947,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+4,0.0038834215823853016,0.011027354366205578,2946,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+5,0.0051870510532843325,0.012029388816722933,2946,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+6,0.006500983043705462,0.018755508982612724,2947,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+7,0.007923459612756634,0.023581717853348567,2946,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+8,0.0094943419774084,0.01961559673569725,2946,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+9,0.012407500998918712,0.025893759833020103,2947,leave_one_park_out_17,Stuff+ no density,False,exploratory_transductive
+0,-0.0046981291338942105,0.0027059640988463655,2947,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0012311982396107281,0.004846285483550428,2946,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0004884569097925451,0.012109469700426525,2946,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0018608080353388803,0.00855823127934159,2947,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+4,0.003158575860938913,0.020494421091298065,2946,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+5,0.004481994778271125,0.01096368571747348,2946,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+6,0.005859904843246871,0.013749663266386807,2947,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+7,0.007299870365119924,0.017745957568867245,2946,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+8,0.008962158963295492,0.018191379675454877,2946,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+9,0.011863067281502807,0.030487072015963658,2947,leave_one_park_out_17,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.019842763786023176,-0.02248500816578114,1119,leave_one_park_out_18,baseline,False,exploratory_transductive
+1,-0.004320377578618815,-0.0065007520042069285,8431,leave_one_park_out_18,baseline,False,exploratory_transductive
+2,-0.0014564253776515209,-0.016127178663194925,1153,leave_one_park_out_18,baseline,False,exploratory_transductive
+3,-0.00012696378977634888,-0.007661106513440945,5107,leave_one_park_out_18,baseline,False,exploratory_transductive
+4,0.0069463360693615556,0.0038208711039758115,2100,leave_one_park_out_18,baseline,False,exploratory_transductive
+5,0.00881764370026682,0.008827675826023541,3303,leave_one_park_out_18,baseline,False,exploratory_transductive
+6,0.010031573986106341,0.0023513407456515903,1673,leave_one_park_out_18,baseline,False,exploratory_transductive
+7,0.011924442491742746,0.0022218060867853205,4120,leave_one_park_out_18,baseline,False,exploratory_transductive
+8,0.017557315782864128,0.007311846582393515,5555,leave_one_park_out_18,baseline,False,exploratory_transductive
+0,-0.007667697608617168,-0.015781276090751778,3256,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+1,-0.003074536017204118,-0.009426568063852944,3256,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+2,-0.0010828693680341077,-0.006629190390054833,3257,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+3,0.00039466394622854844,-0.002881821293240708,3255,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+4,0.001697701927647426,0.002565295424531956,3256,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+5,0.0029789383784089895,-0.003184934815222168,3257,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+6,0.004243518741593124,0.0013890679238692078,3256,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+7,0.005568140454718058,0.001672978175919266,3255,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+8,0.007128998998732481,0.01071036536297019,3256,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+9,0.010077997914046304,0.007192473520965159,3257,leave_one_park_out_18,Stuff+,False,exploratory_transductive
+0,-0.04259777957179496,-0.056995686427613865,3256,leave_one_park_out_18,Location+,False,exploratory_transductive
+1,-0.03210193493445259,-0.054156526926719385,3256,leave_one_park_out_18,Location+,False,exploratory_transductive
+2,-0.022224194445033967,-0.053330611735638925,3257,leave_one_park_out_18,Location+,False,exploratory_transductive
+3,-0.013640232491606638,-0.023323638914172835,3255,leave_one_park_out_18,Location+,False,exploratory_transductive
+4,-0.006632647874442833,-0.015343041817419615,3256,leave_one_park_out_18,Location+,False,exploratory_transductive
+5,0.0010324290586550442,0.0003886600933005701,3257,leave_one_park_out_18,Location+,False,exploratory_transductive
+6,0.013105121239225453,0.017595434205768472,3256,leave_one_park_out_18,Location+,False,exploratory_transductive
+7,0.03022956734302794,0.038501940213609254,3255,leave_one_park_out_18,Location+,False,exploratory_transductive
+8,0.045980879385513936,0.055450078295518124,3256,leave_one_park_out_18,Location+,False,exploratory_transductive
+9,0.058939169915429725,0.07683667182640953,3257,leave_one_park_out_18,Location+,False,exploratory_transductive
+0,-0.06609503623905902,-0.050498147904692335,3256,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+1,-0.04895911096641761,-0.046042820464260656,3256,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+2,-0.0358088048479877,-0.043511242043853614,3256,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+3,-0.024168818082739154,-0.036797243651750904,3256,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+4,-0.013504254678344456,-0.0223118848519104,3256,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+5,-0.002210325586712254,-0.012898275889858991,3257,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+6,0.011701505525627098,0.010674307798430663,3256,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+7,0.036742905682952416,0.029912894095680473,3255,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+8,0.06271802441172816,0.050124254534593196,3256,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+9,0.09370498155418328,0.10695441420990845,3257,leave_one_park_out_18,Pitching+,False,exploratory_transductive
+0,-0.007247456883772181,-0.01689285530782382,3256,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+1,-0.0024286404064480733,-0.007299387056793871,3256,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+2,-0.0003522344371620319,-0.00804543733973709,3257,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+3,0.0011880093103464478,0.0008812874697934928,3255,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+4,0.00257244838893273,-0.004969297674558078,3256,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+5,0.003935778881704648,-0.0013805739983148535,3257,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+6,0.0053003153193936494,0.003343205847886545,3256,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+7,0.006756796320618939,0.0006507261357668706,3255,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+8,0.00850677371165751,0.012892253330117136,3256,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+9,0.011745704772838714,0.006447419760534148,3257,leave_one_park_out_18,Stuff+ no density,False,exploratory_transductive
+0,-0.005348460748221477,-0.01582266692080545,3256,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0012845799120480737,-0.004868720790244073,3256,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0006592891155734161,-0.005381700391645447,3257,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0021513079978689796,-0.0029075301164865567,3255,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0034521129795810953,-0.006566212247591007,3256,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+5,0.004647949630685859,-0.0014081928013304293,3257,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+6,0.005856870438833948,0.0001546579187281318,3255,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+7,0.007138823114225733,0.0018280059966984796,3256,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+8,0.00868773725474541,0.008711086111961846,3256,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+9,0.011529000790856985,0.011884818829262775,3257,leave_one_park_out_18,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.02125592526691892,-0.0011906074988369535,1482,leave_one_park_out_19,baseline,False,exploratory_transductive
+1,-0.004527428382719518,-0.0030128794287330916,10110,leave_one_park_out_19,baseline,False,exploratory_transductive
+2,-0.0031447050802753556,0.013214116323561348,1438,leave_one_park_out_19,baseline,False,exploratory_transductive
+3,-0.0010631166362209481,0.008554087621239546,6285,leave_one_park_out_19,baseline,False,exploratory_transductive
+4,0.006355201007635804,0.013196939649825013,2298,leave_one_park_out_19,baseline,False,exploratory_transductive
+5,0.008060473738132897,0.02009680079753865,4001,leave_one_park_out_19,baseline,False,exploratory_transductive
+6,0.009697692267642537,0.008473207011677166,1913,leave_one_park_out_19,baseline,False,exploratory_transductive
+7,0.011183931523932492,0.014776907219705267,4817,leave_one_park_out_19,baseline,False,exploratory_transductive
+8,0.016383630228399927,0.028506480677480187,6415,leave_one_park_out_19,baseline,False,exploratory_transductive
+0,-0.0044535398436543715,-0.0029271562791115067,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+1,-0.001285192196434966,0.0020665617573246984,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+2,0.0004484485035035123,0.007909436728242914,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+3,0.001921075968992305,0.009742318434145813,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+4,0.0032635045203855163,0.00772649984418469,3875,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+5,0.004544134970473792,0.006169429937776611,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+6,0.005781063727292175,0.01820857588324813,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+7,0.0070880218938594525,0.01770087304752711,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+8,0.008659195094639333,0.02193267895781243,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+9,0.011581606054394867,0.02022721179147866,3876,leave_one_park_out_19,Stuff+,False,exploratory_transductive
+0,-0.042498880093632105,-0.05064184554047685,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+1,-0.03149870083804327,-0.034734575884199786,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+2,-0.021364521588076252,-0.03319332870475822,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+3,-0.012291031859370503,-0.013739547482613199,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+4,-0.004976271900841432,0.0034513144975630303,3875,leave_one_park_out_19,Location+,False,exploratory_transductive
+5,0.0029744559601937947,0.014987255626526289,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+6,0.015592534279857326,0.03306729476062921,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+7,0.03208715349129332,0.043546563959855795,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+8,0.04695281128346959,0.06455410378341314,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+9,0.05908719294005231,0.08145809209769463,3876,leave_one_park_out_19,Location+,False,exploratory_transductive
+0,-0.06392395808692392,-0.045541427933662754,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+1,-0.04648191809211989,-0.03415608900347245,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+2,-0.033286645415426704,-0.0324849803412157,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+3,-0.021641682180766977,-0.021253505502191513,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+4,-0.010524035025484333,-0.002647836474505985,3875,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+5,0.0003268432642493134,0.0057531313113781,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+6,0.014406901093272535,0.03174021842714353,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+7,0.039941184028154865,0.03672269142141184,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+8,0.06495567872688182,0.056164665599641825,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+9,0.0956378806785993,0.1144568860407449,3876,leave_one_park_out_19,Pitching+,False,exploratory_transductive
+0,-0.004469526348131403,-0.003985568324561522,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+1,-0.0010554664975648035,0.0014773706762421478,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+2,0.000726216931495734,0.008578411227367392,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+3,0.0021924798071033566,0.009372946311868894,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+4,0.0036332611461551982,0.003348406834580171,3875,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+5,0.005051823580396346,0.010778197339742389,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+6,0.00644695422949862,0.018166147574218687,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+7,0.007835701857138095,0.021554119172428284,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+8,0.009397207418418594,0.01520216868037262,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+9,0.012243254513601557,0.024263101071410324,3876,leave_one_park_out_19,Stuff+ no density,False,exploratory_transductive
+0,-0.0047737055508499625,-0.0023326765340625625,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0012660782236387212,0.004584603074200485,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0004161631279191964,0.006776091292807505,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0018374269690307934,0.0024691330317851297,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+4,0.0032441395618343937,0.01174826752969951,3875,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+5,0.004578529969188948,0.015053778156239029,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+6,0.005853631078677871,0.013598595236801628,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+7,0.007185399323710181,0.014210078582770297,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+8,0.008718339143025573,0.018029921895392056,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+9,0.011523179152595245,0.024619675444758474,3876,leave_one_park_out_19,Stuff+ physics neutral,False,exploratory_transductive
+0,-0.01964169912283284,-0.02849287110181458,1007,leave_one_park_out_20,baseline,False,exploratory_transductive
+1,-0.004097936244616635,-0.011776913756384547,7108,leave_one_park_out_20,baseline,False,exploratory_transductive
+2,-0.001622240185935285,-0.014803112319754569,982,leave_one_park_out_20,baseline,False,exploratory_transductive
+3,0.0001310109614844158,-0.013413279091660332,4429,leave_one_park_out_20,baseline,False,exploratory_transductive
+4,0.007703006881576543,-0.011662316544369965,1812,leave_one_park_out_20,baseline,False,exploratory_transductive
+5,0.009127338308375836,0.0021615695062424307,2821,leave_one_park_out_20,baseline,False,exploratory_transductive
+6,0.009965250212091846,0.00227814043309717,1400,leave_one_park_out_20,baseline,False,exploratory_transductive
+7,0.011944719952906543,0.0002026552279912997,3538,leave_one_park_out_20,baseline,False,exploratory_transductive
+8,0.01774625337365042,0.003433575286525892,4731,leave_one_park_out_20,baseline,False,exploratory_transductive
+0,-0.009019021089206915,-0.022304667643708902,2783,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+1,-0.003828895025941865,-0.015207650061074586,2783,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+2,-0.0015886593467198758,-0.01699113771042287,2783,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+3,8.494859992647307e-05,-0.008258675358826002,2782,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+4,0.0014791255631304476,-0.0057953969071327886,2783,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+5,0.0027224799253694706,0.0012876250670975553,2783,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+6,0.0039233745694652765,-0.0018282954826061152,2782,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+7,0.005209359496118834,-0.0009850843086345186,2783,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+8,0.006816043461183105,0.003603951563714951,2783,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+9,0.009934899176463136,0.0013551931975121071,2783,leave_one_park_out_20,Stuff+,False,exploratory_transductive
+0,-0.04233885887040738,-0.06330780197736872,2783,leave_one_park_out_20,Location+,False,exploratory_transductive
+1,-0.0319750224891444,-0.0640503327851209,2783,leave_one_park_out_20,Location+,False,exploratory_transductive
+2,-0.021984248681881164,-0.048500666310812596,2783,leave_one_park_out_20,Location+,False,exploratory_transductive
+3,-0.013044153568209359,-0.029743107103623316,2782,leave_one_park_out_20,Location+,False,exploratory_transductive
+4,-0.006058678872616925,-0.027726305497240557,2783,leave_one_park_out_20,Location+,False,exploratory_transductive
+5,0.0015475836134825403,-0.01166206039568412,2783,leave_one_park_out_20,Location+,False,exploratory_transductive
+6,0.01367696430402648,0.01119432374969279,2782,leave_one_park_out_20,Location+,False,exploratory_transductive
+7,0.030984295338546484,0.03432061872170384,2783,leave_one_park_out_20,Location+,False,exploratory_transductive
+8,0.04673187688859566,0.05810324308351318,2783,leave_one_park_out_20,Location+,False,exploratory_transductive
+9,0.059144851080008484,0.07624491033456295,2783,leave_one_park_out_20,Location+,False,exploratory_transductive
+0,-0.06719322937294887,-0.059636311231370746,2783,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+1,-0.04997136247289195,-0.05444832234607924,2783,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+2,-0.03712017791561001,-0.048793917674066704,2783,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+3,-0.02561645581390265,-0.04055567625232386,2782,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+4,-0.015067793932869288,-0.033298831204128465,2783,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+5,-0.004371764855458636,-0.013744255987585073,2783,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+6,0.0109864881459175,0.00028868755707003353,2782,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+7,0.036766735642944234,0.026531517984294515,2783,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+8,0.06259402105631952,0.04718547598686851,2783,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+9,0.09426243077395338,0.11133665110432009,2783,leave_one_park_out_20,Pitching+,False,exploratory_transductive
+0,-0.008720610793051814,-0.02230178622709166,2783,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+1,-0.0034699387696036617,-0.01883703122595527,2783,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+2,-0.0010636420329876457,-0.013146374927839627,2783,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+3,0.000671707247175671,-0.0012969730809271388,2782,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+4,0.0021066921523180816,-0.009375756759622555,2783,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+5,0.0034307742404231308,-0.0037884924841322513,2783,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+6,0.004750122154681481,-0.002971221795608093,2782,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+7,0.006234146369312061,-0.002373886152058788,2783,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+8,0.008040551748292863,0.008571156556935664,2783,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+9,0.011464902667988294,0.00039831928080816053,2783,leave_one_park_out_20,Stuff+ no density,False,exploratory_transductive
+0,-0.00639479103763747,-0.02337922024692026,2783,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+1,-0.0019564175218554887,-0.015796191098014407,2783,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+2,0.0001568612954808098,-0.011978399621096352,2783,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+3,0.0017432911963031984,-0.008102947979273621,2782,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+4,0.003048308619322736,0.0006477842503341357,2783,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+5,0.004249788021893459,-0.006165183325487197,2783,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+6,0.005456602330724755,-0.00225899370883257,2782,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+7,0.006762291504655662,-0.001390798565092021,2783,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+8,0.008381534289255579,0.0020309103297253155,2783,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive
+9,0.011549695541836283,0.001268803516822064,2783,leave_one_park_out_20,Stuff+ physics neutral,False,exploratory_transductive

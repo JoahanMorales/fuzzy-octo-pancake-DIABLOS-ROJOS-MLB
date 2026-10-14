@@ -1,0 +1,97 @@
+model,check,source,pitches,pairs,correlation,status,demo_data,evidence
+baseline,split_half_games,pred,0,39,-0.04378374638316516,evaluated,True,exploratory_transductive
+baseline,split_half_games,obs,0,39,-0.1242068374120971,evaluated,True,exploratory_transductive
+baseline,year_stability_2024_2025,pred,0,20,0.1512011774308672,evaluated,True,exploratory_transductive
+baseline,next_season_rv_2024_2025,pred,0,20,-0.025003657795860897,evaluated,True,exploratory_transductive
+baseline,next_season_rv_2024_2025,obs,0,20,0.18542270881961054,evaluated,True,exploratory_transductive
+baseline,next_season_rv_2024_2025,raw_whiff,0,15,-0.07573040526918351,evaluated,True,exploratory_transductive
+baseline,year_stability_2025_2026,pred,0,21,0.32345710392388355,evaluated,True,exploratory_transductive
+baseline,next_season_rv_2025_2026,pred,0,21,-0.1895644558314753,evaluated,True,exploratory_transductive
+baseline,next_season_rv_2025_2026,obs,0,21,-0.15772600086680616,evaluated,True,exploratory_transductive
+baseline,next_season_rv_2025_2026,raw_whiff,0,12,0.02880763775151267,evaluated,True,exploratory_transductive
+baseline,sample_stability,pred,10,89,0.1370130925275247,evaluated,True,exploratory_transductive
+baseline,sample_stability,obs,10,89,0.014772626555817125,evaluated,True,exploratory_transductive
+baseline,sample_stability,pred,25,50,-0.006251974640766944,evaluated,True,exploratory_transductive
+baseline,sample_stability,obs,25,50,0.11478904894095777,evaluated,True,exploratory_transductive
+baseline,sample_stability,pred,50,8,-0.11058047049554329,evaluated,True,exploratory_transductive
+baseline,sample_stability,obs,50,8,-0.18394928719214262,evaluated,True,exploratory_transductive
+Stuff+,split_half_games,pred,0,39,0.9186163120690249,evaluated,True,exploratory_transductive
+Stuff+,split_half_games,obs,0,39,-0.1242068374120971,evaluated,True,exploratory_transductive
+Stuff+,year_stability_2024_2025,pred,0,20,0.9813984160565362,evaluated,True,exploratory_transductive
+Stuff+,next_season_rv_2024_2025,pred,0,20,0.0614956885225363,evaluated,True,exploratory_transductive
+Stuff+,next_season_rv_2024_2025,obs,0,20,0.18542270881961054,evaluated,True,exploratory_transductive
+Stuff+,next_season_rv_2024_2025,raw_whiff,0,15,-0.07573040526918351,evaluated,True,exploratory_transductive
+Stuff+,year_stability_2025_2026,pred,0,21,0.9780349538398851,evaluated,True,exploratory_transductive
+Stuff+,next_season_rv_2025_2026,pred,0,21,0.32231589464523314,evaluated,True,exploratory_transductive
+Stuff+,next_season_rv_2025_2026,obs,0,21,-0.15772600086680616,evaluated,True,exploratory_transductive
+Stuff+,next_season_rv_2025_2026,raw_whiff,0,12,0.02880763775151267,evaluated,True,exploratory_transductive
+Stuff+,sample_stability,pred,10,89,0.8896057039396509,evaluated,True,exploratory_transductive
+Stuff+,sample_stability,obs,10,89,0.014772626555817125,evaluated,True,exploratory_transductive
+Stuff+,sample_stability,pred,25,50,0.9537648299728537,evaluated,True,exploratory_transductive
+Stuff+,sample_stability,obs,25,50,0.11478904894095777,evaluated,True,exploratory_transductive
+Stuff+,sample_stability,pred,50,8,0.8914373824747943,evaluated,True,exploratory_transductive
+Stuff+,sample_stability,obs,50,8,-0.18394928719214262,evaluated,True,exploratory_transductive
+Location+,split_half_games,pred,0,39,0.23944385480315078,evaluated,True,exploratory_transductive
+Location+,split_half_games,obs,0,39,-0.1242068374120971,evaluated,True,exploratory_transductive
+Location+,year_stability_2024_2025,pred,0,20,-0.14661030847975517,evaluated,True,exploratory_transductive
+Location+,next_season_rv_2024_2025,pred,0,20,0.15722225583916755,evaluated,True,exploratory_transductive
+Location+,next_season_rv_2024_2025,obs,0,20,0.18542270881961054,evaluated,True,exploratory_transductive
+Location+,next_season_rv_2024_2025,raw_whiff,0,15,-0.07573040526918351,evaluated,True,exploratory_transductive
+Location+,year_stability_2025_2026,pred,0,21,0.19395186711060983,evaluated,True,exploratory_transductive
+Location+,next_season_rv_2025_2026,pred,0,21,0.018899106380482145,evaluated,True,exploratory_transductive
+Location+,next_season_rv_2025_2026,obs,0,21,-0.15772600086680616,evaluated,True,exploratory_transductive
+Location+,next_season_rv_2025_2026,raw_whiff,0,12,0.02880763775151267,evaluated,True,exploratory_transductive
+Location+,sample_stability,pred,10,89,0.03773436297002812,evaluated,True,exploratory_transductive
+Location+,sample_stability,obs,10,89,0.014772626555817125,evaluated,True,exploratory_transductive
+Location+,sample_stability,pred,25,50,0.30438926513677783,evaluated,True,exploratory_transductive
+Location+,sample_stability,obs,25,50,0.11478904894095777,evaluated,True,exploratory_transductive
+Location+,sample_stability,pred,50,8,-0.832740966381862,evaluated,True,exploratory_transductive
+Location+,sample_stability,obs,50,8,-0.18394928719214262,evaluated,True,exploratory_transductive
+Pitching+,split_half_games,pred,0,39,0.3801970099012175,evaluated,True,exploratory_transductive
+Pitching+,split_half_games,obs,0,39,-0.1242068374120971,evaluated,True,exploratory_transductive
+Pitching+,year_stability_2024_2025,pred,0,20,0.05096133758224228,evaluated,True,exploratory_transductive
+Pitching+,next_season_rv_2024_2025,pred,0,20,0.0846697649276196,evaluated,True,exploratory_transductive
+Pitching+,next_season_rv_2024_2025,obs,0,20,0.18542270881961054,evaluated,True,exploratory_transductive
+Pitching+,next_season_rv_2024_2025,raw_whiff,0,15,-0.07573040526918351,evaluated,True,exploratory_transductive
+Pitching+,year_stability_2025_2026,pred,0,21,0.16667855044356059,evaluated,True,exploratory_transductive
+Pitching+,next_season_rv_2025_2026,pred,0,21,-0.012840091434677943,evaluated,True,exploratory_transductive
+Pitching+,next_season_rv_2025_2026,obs,0,21,-0.15772600086680616,evaluated,True,exploratory_transductive
+Pitching+,next_season_rv_2025_2026,raw_whiff,0,12,0.02880763775151267,evaluated,True,exploratory_transductive
+Pitching+,sample_stability,pred,10,89,0.12407344990972569,evaluated,True,exploratory_transductive
+Pitching+,sample_stability,obs,10,89,0.014772626555817125,evaluated,True,exploratory_transductive
+Pitching+,sample_stability,pred,25,50,0.36267558994301025,evaluated,True,exploratory_transductive
+Pitching+,sample_stability,obs,25,50,0.11478904894095777,evaluated,True,exploratory_transductive
+Pitching+,sample_stability,pred,50,8,-0.42955912138181757,evaluated,True,exploratory_transductive
+Pitching+,sample_stability,obs,50,8,-0.18394928719214262,evaluated,True,exploratory_transductive
+Stuff+ no density,split_half_games,pred,0,39,0.9449594390861844,evaluated,True,exploratory_transductive
+Stuff+ no density,split_half_games,obs,0,39,-0.1242068374120971,evaluated,True,exploratory_transductive
+Stuff+ no density,year_stability_2024_2025,pred,0,20,0.9773728496942968,evaluated,True,exploratory_transductive
+Stuff+ no density,next_season_rv_2024_2025,pred,0,20,-0.0661879918374518,evaluated,True,exploratory_transductive
+Stuff+ no density,next_season_rv_2024_2025,obs,0,20,0.18542270881961054,evaluated,True,exploratory_transductive
+Stuff+ no density,next_season_rv_2024_2025,raw_whiff,0,15,-0.07573040526918351,evaluated,True,exploratory_transductive
+Stuff+ no density,year_stability_2025_2026,pred,0,21,0.9714671893172285,evaluated,True,exploratory_transductive
+Stuff+ no density,next_season_rv_2025_2026,pred,0,21,0.3134367803074001,evaluated,True,exploratory_transductive
+Stuff+ no density,next_season_rv_2025_2026,obs,0,21,-0.15772600086680616,evaluated,True,exploratory_transductive
+Stuff+ no density,next_season_rv_2025_2026,raw_whiff,0,12,0.02880763775151267,evaluated,True,exploratory_transductive
+Stuff+ no density,sample_stability,pred,10,89,0.9015763904153802,evaluated,True,exploratory_transductive
+Stuff+ no density,sample_stability,obs,10,89,0.014772626555817125,evaluated,True,exploratory_transductive
+Stuff+ no density,sample_stability,pred,25,50,0.9623534417653862,evaluated,True,exploratory_transductive
+Stuff+ no density,sample_stability,obs,25,50,0.11478904894095777,evaluated,True,exploratory_transductive
+Stuff+ no density,sample_stability,pred,50,8,0.8535020939926761,evaluated,True,exploratory_transductive
+Stuff+ no density,sample_stability,obs,50,8,-0.18394928719214262,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,split_half_games,pred,0,39,0.9413729995727458,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,split_half_games,obs,0,39,-0.1242068374120971,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,year_stability_2024_2025,pred,0,20,0.9782700187641233,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2024_2025,pred,0,20,-0.11113747261960764,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2024_2025,obs,0,20,0.18542270881961054,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2024_2025,raw_whiff,0,15,-0.07573040526918351,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,year_stability_2025_2026,pred,0,21,0.9605459155887669,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2025_2026,pred,0,21,0.3409864376070599,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2025_2026,obs,0,21,-0.15772600086680616,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2025_2026,raw_whiff,0,12,0.02880763775151267,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,sample_stability,pred,10,89,0.9033913680973662,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,sample_stability,obs,10,89,0.014772626555817125,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,sample_stability,pred,25,50,0.9627268552577021,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,sample_stability,obs,25,50,0.11478904894095777,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,sample_stability,pred,50,8,0.9263156448069133,evaluated,True,exploratory_transductive
+Stuff+ physics neutral,sample_stability,obs,50,8,-0.18394928719214262,evaluated,True,exploratory_transductive

@@ -1,0 +1,1105 @@
+split,model,metric,value,demo_data,evidence
+pitcher_kfold,baseline,n,627602.0,False,exploratory_transductive
+pitcher_kfold,baseline,rmse,0.1977608610603238,False,exploratory_transductive
+pitcher_kfold,baseline,mae,0.12786615899699758,False,exploratory_transductive
+pitcher_kfold,baseline,r2,0.0022264982668106503,False,exploratory_transductive
+pitcher_kfold,baseline,bias,1.0781660980708072e-06,False,exploratory_transductive
+pitcher_kfold,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+pitcher_kfold,baseline,skill_lo,0.0,False,exploratory_transductive
+pitcher_kfold,baseline,skill_hi,0.0,False,exploratory_transductive
+pitcher_kfold,Stuff+,n,627602.0,False,exploratory_transductive
+pitcher_kfold,Stuff+,rmse,0.19777875851442545,False,exploratory_transductive
+pitcher_kfold,Stuff+,mae,0.12809840973235462,False,exploratory_transductive
+pitcher_kfold,Stuff+,r2,0.0020458921204142833,False,exploratory_transductive
+pitcher_kfold,Stuff+,bias,-2.908876459723598e-05,False,exploratory_transductive
+pitcher_kfold,Stuff+,skill_vs_baseline,-9.05004863231973e-05,False,exploratory_transductive
+pitcher_kfold,Stuff+,skill_lo,-0.00024145899472267083,False,exploratory_transductive
+pitcher_kfold,Stuff+,skill_hi,0.00011803559316750638,False,exploratory_transductive
+pitcher_kfold,Location+,n,627602.0,False,exploratory_transductive
+pitcher_kfold,Location+,rmse,0.19329110227547336,False,exploratory_transductive
+pitcher_kfold,Location+,mae,0.11359608567599427,False,exploratory_transductive
+pitcher_kfold,Location+,r2,0.0468198210969637,False,exploratory_transductive
+pitcher_kfold,Location+,bias,-0.0009202678422109535,False,exploratory_transductive
+pitcher_kfold,Location+,skill_vs_baseline,0.022601837193088614,False,exploratory_transductive
+pitcher_kfold,Location+,skill_lo,0.02217183783141688,False,exploratory_transductive
+pitcher_kfold,Location+,skill_hi,0.023233233291853957,False,exploratory_transductive
+pitcher_kfold,Pitching+,n,627602.0,False,exploratory_transductive
+pitcher_kfold,Pitching+,rmse,0.1917638915334757,False,exploratory_transductive
+pitcher_kfold,Pitching+,mae,0.11083128721271962,False,exploratory_transductive
+pitcher_kfold,Pitching+,r2,0.06182264485721023,False,exploratory_transductive
+pitcher_kfold,Pitching+,bias,0.0009317768358031996,False,exploratory_transductive
+pitcher_kfold,Pitching+,skill_vs_baseline,0.030324349796488903,False,exploratory_transductive
+pitcher_kfold,Pitching+,skill_lo,0.02965443663540366,False,exploratory_transductive
+pitcher_kfold,Pitching+,skill_hi,0.031242439832500222,False,exploratory_transductive
+pitcher_kfold,Stuff+ no density,n,627602.0,False,exploratory_transductive
+pitcher_kfold,Stuff+ no density,rmse,0.19779229374740837,False,exploratory_transductive
+pitcher_kfold,Stuff+ no density,mae,0.12809752520402556,False,exploratory_transductive
+pitcher_kfold,Stuff+ no density,r2,0.001909295008970191,False,exploratory_transductive
+pitcher_kfold,Stuff+ no density,bias,-1.7816677719754262e-05,False,exploratory_transductive
+pitcher_kfold,Stuff+ no density,skill_vs_baseline,-0.00015894291173701447,False,exploratory_transductive
+pitcher_kfold,Stuff+ no density,skill_lo,-0.0003102514753202279,False,exploratory_transductive
+pitcher_kfold,Stuff+ no density,skill_hi,5.297891078878119e-05,False,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,n,627602.0,False,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,rmse,0.1978226743058959,False,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,mae,0.12810473150941634,False,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,r2,0.0016026614065127731,False,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,bias,-2.12790650994778e-05,False,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,skill_vs_baseline,-0.0003125656170825941,False,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,skill_lo,-0.0004541812597459727,False,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,skill_hi,-0.00010530101185888273,False,exploratory_transductive
+season_holdout,baseline,n,129570.0,False,exploratory_transductive
+season_holdout,baseline,rmse,0.200712237176574,False,exploratory_transductive
+season_holdout,baseline,mae,0.12888795585784169,False,exploratory_transductive
+season_holdout,baseline,r2,0.0022530406368193034,False,exploratory_transductive
+season_holdout,baseline,bias,-0.002721797860056081,False,exploratory_transductive
+season_holdout,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+season_holdout,baseline,skill_lo,0.0,False,exploratory_transductive
+season_holdout,baseline,skill_hi,0.0,False,exploratory_transductive
+season_holdout,Stuff+,n,129570.0,False,exploratory_transductive
+season_holdout,Stuff+,rmse,0.20074925695454843,False,exploratory_transductive
+season_holdout,Stuff+,mae,0.12910787840677312,False,exploratory_transductive
+season_holdout,Stuff+,r2,0.0018849536906514475,False,exploratory_transductive
+season_holdout,Stuff+,bias,-0.0019926414202512703,False,exploratory_transductive
+season_holdout,Stuff+,skill_vs_baseline,-0.00018444205742107478,False,exploratory_transductive
+season_holdout,Stuff+,skill_lo,-0.0005028808085921266,False,exploratory_transductive
+season_holdout,Stuff+,skill_hi,8.511437615962565e-05,False,exploratory_transductive
+season_holdout,Location+,n,129570.0,False,exploratory_transductive
+season_holdout,Location+,rmse,0.1962111208544533,False,exploratory_transductive
+season_holdout,Location+,mae,0.11416374641086532,False,exploratory_transductive
+season_holdout,Location+,r2,0.04650164762257636,False,exploratory_transductive
+season_holdout,Location+,bias,-0.004011751592117086,False,exploratory_transductive
+season_holdout,Location+,skill_vs_baseline,0.022425719455066884,False,exploratory_transductive
+season_holdout,Location+,skill_lo,0.021317145979776207,False,exploratory_transductive
+season_holdout,Location+,skill_hi,0.023524388441199504,False,exploratory_transductive
+season_holdout,Pitching+,n,129570.0,False,exploratory_transductive
+season_holdout,Pitching+,rmse,0.19477909759704148,False,exploratory_transductive
+season_holdout,Pitching+,mae,0.11139131733948641,False,exploratory_transductive
+season_holdout,Pitching+,r2,0.060368844249066744,False,exploratory_transductive
+season_holdout,Pitching+,bias,-0.0025235473254343966,False,exploratory_transductive
+season_holdout,Pitching+,skill_vs_baseline,0.029560427719775295,False,exploratory_transductive
+season_holdout,Pitching+,skill_lo,0.0279224278837509,False,exploratory_transductive
+season_holdout,Pitching+,skill_hi,0.031258131919076886,False,exploratory_transductive
+season_holdout,Stuff+ no density,n,129570.0,False,exploratory_transductive
+season_holdout,Stuff+ no density,rmse,0.2007579513508335,False,exploratory_transductive
+season_holdout,Stuff+ no density,mae,0.12912884425618282,False,exploratory_transductive
+season_holdout,Stuff+ no density,r2,0.0017984956304482047,False,exploratory_transductive
+season_holdout,Stuff+ no density,bias,-0.0022145064308622016,False,exploratory_transductive
+season_holdout,Stuff+ no density,skill_vs_baseline,-0.00022775977639710732,False,exploratory_transductive
+season_holdout,Stuff+ no density,skill_lo,-0.0005036567413942205,False,exploratory_transductive
+season_holdout,Stuff+ no density,skill_hi,5.8153153028647687e-05,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,n,129570.0,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,rmse,0.20079719168497284,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,mae,0.12915281457181255,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,r2,0.0014082387227138948,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,bias,-0.002425614740091408,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,skill_vs_baseline,-0.0004232652158826511,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,skill_lo,-0.000697776158824559,False,exploratory_transductive
+season_holdout,Stuff+ physics neutral,skill_hi,-0.00016442270400814367,False,exploratory_transductive
+park_holdout,baseline,n,181032.0,False,exploratory_transductive
+park_holdout,baseline,rmse,0.20516399845417893,False,exploratory_transductive
+park_holdout,baseline,mae,0.13003894032230096,False,exploratory_transductive
+park_holdout,baseline,r2,1.2314080440667396e-05,False,exploratory_transductive
+park_holdout,baseline,bias,0.010884622931473385,False,exploratory_transductive
+park_holdout,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+park_holdout,baseline,skill_lo,0.0,False,exploratory_transductive
+park_holdout,baseline,skill_hi,0.0,False,exploratory_transductive
+park_holdout,Stuff+,n,181032.0,False,exploratory_transductive
+park_holdout,Stuff+,rmse,0.20516299503637725,False,exploratory_transductive
+park_holdout,Stuff+,mae,0.13047740271735964,False,exploratory_transductive
+park_holdout,Stuff+,r2,2.2095552817624764e-05,False,exploratory_transductive
+park_holdout,Stuff+,bias,0.007011416222176881,False,exploratory_transductive
+park_holdout,Stuff+,skill_vs_baseline,4.8908083739584995e-06,False,exploratory_transductive
+park_holdout,Stuff+,skill_lo,-0.00017607333456567953,False,exploratory_transductive
+park_holdout,Stuff+,skill_hi,0.0002251188328955794,False,exploratory_transductive
+park_holdout,Location+,n,181032.0,False,exploratory_transductive
+park_holdout,Location+,rmse,0.2012246743806859,False,exploratory_transductive
+park_holdout,Location+,mae,0.11579724646914875,False,exploratory_transductive
+park_holdout,Location+,r2,0.03804488183455945,False,exploratory_transductive
+park_holdout,Location+,bias,0.007235002025045832,False,exploratory_transductive
+park_holdout,Location+,skill_vs_baseline,0.019200854453871652,False,exploratory_transductive
+park_holdout,Location+,skill_lo,0.018580862447128633,False,exploratory_transductive
+park_holdout,Location+,skill_hi,0.01983454524533196,False,exploratory_transductive
+park_holdout,Pitching+,n,181032.0,False,exploratory_transductive
+park_holdout,Pitching+,rmse,0.19993302982635247,False,exploratory_transductive
+park_holdout,Pitching+,mae,0.11346564406053287,False,exploratory_transductive
+park_holdout,Pitching+,r2,0.05035466768136143,False,exploratory_transductive
+park_holdout,Pitching+,bias,0.005694592768088502,False,exploratory_transductive
+park_holdout,Pitching+,skill_vs_baseline,0.025496523109510116,False,exploratory_transductive
+park_holdout,Pitching+,skill_lo,0.024639902753962988,False,exploratory_transductive
+park_holdout,Pitching+,skill_hi,0.026748574333655236,False,exploratory_transductive
+park_holdout,Stuff+ no density,n,181032.0,False,exploratory_transductive
+park_holdout,Stuff+ no density,rmse,0.2051984266932765,False,exploratory_transductive
+park_holdout,Stuff+ no density,mae,0.1304663215905009,False,exploratory_transductive
+park_holdout,Stuff+ no density,r2,-0.00032332671465873375,False,exploratory_transductive
+park_holdout,Stuff+ no density,bias,0.00798361373179985,False,exploratory_transductive
+park_holdout,Stuff+ no density,skill_vs_baseline,-0.0001678083843021927,False,exploratory_transductive
+park_holdout,Stuff+ no density,skill_lo,-0.0003311314071189453,False,exploratory_transductive
+park_holdout,Stuff+ no density,skill_hi,4.5872314610531593e-05,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,n,181032.0,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,rmse,0.20524420696415252,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,mae,0.1304469526999689,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,r2,-0.0007697256670777808,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,bias,0.00909987857229173,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,skill_vs_baseline,-0.00039094826859442655,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,skill_lo,-0.0005895380901846881,False,exploratory_transductive
+park_holdout,Stuff+ physics neutral,skill_hi,-0.00016249192936829696,False,exploratory_transductive
+leave_one_park_out_1,baseline,n,33872.0,False,exploratory_transductive
+leave_one_park_out_1,baseline,rmse,0.18841548464030722,False,exploratory_transductive
+leave_one_park_out_1,baseline,mae,0.12619091877006633,False,exploratory_transductive
+leave_one_park_out_1,baseline,r2,-0.005988688274212617,False,exploratory_transductive
+leave_one_park_out_1,baseline,bias,-0.014666797381087074,False,exploratory_transductive
+leave_one_park_out_1,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_1,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_1,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_1,Stuff+,n,33872.0,False,exploratory_transductive
+leave_one_park_out_1,Stuff+,rmse,0.1879609765301773,False,exploratory_transductive
+leave_one_park_out_1,Stuff+,mae,0.12601128661313213,False,exploratory_transductive
+leave_one_park_out_1,Stuff+,r2,-0.0011411192076935528,False,exploratory_transductive
+leave_one_park_out_1,Stuff+,bias,-0.010366029081284325,False,exploratory_transductive
+leave_one_park_out_1,Stuff+,skill_vs_baseline,0.0024122651649230997,False,exploratory_transductive
+leave_one_park_out_1,Stuff+,skill_lo,0.0013785383341329087,False,exploratory_transductive
+leave_one_park_out_1,Stuff+,skill_hi,0.003620450528910945,False,exploratory_transductive
+leave_one_park_out_1,Location+,n,33872.0,False,exploratory_transductive
+leave_one_park_out_1,Location+,rmse,0.18287302918786646,False,exploratory_transductive
+leave_one_park_out_1,Location+,mae,0.11139832209828492,False,exploratory_transductive
+leave_one_park_out_1,Location+,r2,0.05232542003257934,False,exploratory_transductive
+leave_one_park_out_1,Location+,bias,-0.01229760553261983,False,exploratory_transductive
+leave_one_park_out_1,Location+,skill_vs_baseline,0.029416135637798213,False,exploratory_transductive
+leave_one_park_out_1,Location+,skill_lo,0.02685038354349303,False,exploratory_transductive
+leave_one_park_out_1,Location+,skill_hi,0.031462986879294386,False,exploratory_transductive
+leave_one_park_out_1,Pitching+,n,33872.0,False,exploratory_transductive
+leave_one_park_out_1,Pitching+,rmse,0.1804795083630638,False,exploratory_transductive
+leave_one_park_out_1,Pitching+,mae,0.10780081593329044,False,exploratory_transductive
+leave_one_park_out_1,Pitching+,r2,0.07697022137889786,False,exploratory_transductive
+leave_one_park_out_1,Pitching+,bias,-0.007666025538231157,False,exploratory_transductive
+leave_one_park_out_1,Pitching+,skill_vs_baseline,0.0421195545174724,False,exploratory_transductive
+leave_one_park_out_1,Pitching+,skill_lo,0.038007278109968005,False,exploratory_transductive
+leave_one_park_out_1,Pitching+,skill_hi,0.04528468155916838,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,n,33872.0,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,rmse,0.18799213602899895,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,mae,0.1260551874936638,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,r2,-0.001473077913192622,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,bias,-0.011181002396881653,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,skill_vs_baseline,0.0022468886361248774,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,skill_lo,0.0011488966429582053,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,skill_hi,0.0034325497800170184,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,n,33872.0,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,rmse,0.18813964231991587,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,mae,0.12618477652575524,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,r2,-0.003045287658428153,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,bias,-0.012846207661009081,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,skill_vs_baseline,0.00146401088486936,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,skill_lo,0.0005026737965593941,False,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,skill_hi,0.0025376578944433397,False,exploratory_transductive
+leave_one_park_out_2,baseline,n,31684.0,False,exploratory_transductive
+leave_one_park_out_2,baseline,rmse,0.1993410629381506,False,exploratory_transductive
+leave_one_park_out_2,baseline,mae,0.12891219758735076,False,exploratory_transductive
+leave_one_park_out_2,baseline,r2,0.002931268615667615,False,exploratory_transductive
+leave_one_park_out_2,baseline,bias,0.003282793091188112,False,exploratory_transductive
+leave_one_park_out_2,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_2,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_2,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_2,Stuff+,n,31684.0,False,exploratory_transductive
+leave_one_park_out_2,Stuff+,rmse,0.1995309980232731,False,exploratory_transductive
+leave_one_park_out_2,Stuff+,mae,0.12928292437634434,False,exploratory_transductive
+leave_one_park_out_2,Stuff+,r2,0.0010303200323549255,False,exploratory_transductive
+leave_one_park_out_2,Stuff+,bias,0.0008084139715468367,False,exploratory_transductive
+leave_one_park_out_2,Stuff+,skill_vs_baseline,-0.0009528146500423773,False,exploratory_transductive
+leave_one_park_out_2,Stuff+,skill_lo,-0.0014887952205601962,False,exploratory_transductive
+leave_one_park_out_2,Stuff+,skill_hi,-0.000528091259539304,False,exploratory_transductive
+leave_one_park_out_2,Location+,n,31684.0,False,exploratory_transductive
+leave_one_park_out_2,Location+,rmse,0.19502686010538733,False,exploratory_transductive
+leave_one_park_out_2,Location+,mae,0.11503005000532117,False,exploratory_transductive
+leave_one_park_out_2,Location+,r2,0.045622010317208694,False,exploratory_transductive
+leave_one_park_out_2,Location+,bias,0.00031025691622835785,False,exploratory_transductive
+leave_one_park_out_2,Location+,skill_vs_baseline,0.021642318793603676,False,exploratory_transductive
+leave_one_park_out_2,Location+,skill_lo,0.019573868783451964,False,exploratory_transductive
+leave_one_park_out_2,Location+,skill_hi,0.023459753458217113,False,exploratory_transductive
+leave_one_park_out_2,Pitching+,n,31684.0,False,exploratory_transductive
+leave_one_park_out_2,Pitching+,rmse,0.19349668748557217,False,exploratory_transductive
+leave_one_park_out_2,Pitching+,mae,0.11260205246090578,False,exploratory_transductive
+leave_one_park_out_2,Pitching+,r2,0.06053927960083949,False,exploratory_transductive
+leave_one_park_out_2,Pitching+,bias,9.391483626413908e-05,False,exploratory_transductive
+leave_one_park_out_2,Pitching+,skill_vs_baseline,0.029318472403208617,False,exploratory_transductive
+leave_one_park_out_2,Pitching+,skill_lo,0.026557180916819967,False,exploratory_transductive
+leave_one_park_out_2,Pitching+,skill_hi,0.031798940080781206,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,n,31684.0,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,rmse,0.19954477280107902,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,mae,0.12927299430557915,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,r2,0.000892385971992371,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,bias,0.0018049263234759714,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,skill_vs_baseline,-0.0010219162069564636,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,skill_lo,-0.0015420403877208556,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,skill_hi,-0.0005984231278902631,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,n,31684.0,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,rmse,0.1995537835313763,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,mae,0.1292383267339686,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,r2,0.0008021516613034851,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,bias,0.0024683667931818584,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,skill_vs_baseline,-0.0010671187867181686,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,skill_lo,-0.0015794377822491046,False,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,skill_hi,-0.000568311593444798,False,exploratory_transductive
+leave_one_park_out_3,baseline,n,32810.0,False,exploratory_transductive
+leave_one_park_out_3,baseline,rmse,0.20020389357761467,False,exploratory_transductive
+leave_one_park_out_3,baseline,mae,0.12835825408647455,False,exploratory_transductive
+leave_one_park_out_3,baseline,r2,0.00123024265920757,False,exploratory_transductive
+leave_one_park_out_3,baseline,bias,0.0035242557998458983,False,exploratory_transductive
+leave_one_park_out_3,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_3,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_3,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_3,Stuff+,n,32810.0,False,exploratory_transductive
+leave_one_park_out_3,Stuff+,rmse,0.2001528720483597,False,exploratory_transductive
+leave_one_park_out_3,Stuff+,mae,0.1285789066721021,False,exploratory_transductive
+leave_one_park_out_3,Stuff+,r2,0.0017392464165043586,False,exploratory_transductive
+leave_one_park_out_3,Stuff+,bias,0.0011091963523590204,False,exploratory_transductive
+leave_one_park_out_3,Stuff+,skill_vs_baseline,0.00025484783708862313,False,exploratory_transductive
+leave_one_park_out_3,Stuff+,skill_lo,-0.0004636703185936786,False,exploratory_transductive
+leave_one_park_out_3,Stuff+,skill_hi,0.0008007429369208837,False,exploratory_transductive
+leave_one_park_out_3,Location+,n,32810.0,False,exploratory_transductive
+leave_one_park_out_3,Location+,rmse,0.19603034480623416,False,exploratory_transductive
+leave_one_park_out_3,Location+,mae,0.11472011503760188,False,exploratory_transductive
+leave_one_park_out_3,Location+,r2,0.04243789165443823,False,exploratory_transductive
+leave_one_park_out_3,Location+,bias,0.0004050072329487285,False,exploratory_transductive
+leave_one_park_out_3,Location+,skill_vs_baseline,0.02084649152821061,False,exploratory_transductive
+leave_one_park_out_3,Location+,skill_lo,0.01926493938007603,False,exploratory_transductive
+leave_one_park_out_3,Location+,skill_hi,0.022795164411783288,False,exploratory_transductive
+leave_one_park_out_3,Pitching+,n,32810.0,False,exploratory_transductive
+leave_one_park_out_3,Pitching+,rmse,0.19460985719764182,False,exploratory_transductive
+leave_one_park_out_3,Pitching+,mae,0.11206953687036077,False,exploratory_transductive
+leave_one_park_out_3,Pitching+,r2,0.05626510711049115,False,exploratory_transductive
+leave_one_park_out_3,Pitching+,bias,0.0018608016902541388,False,exploratory_transductive
+leave_one_park_out_3,Pitching+,skill_vs_baseline,0.02794169623781151,False,exploratory_transductive
+leave_one_park_out_3,Pitching+,skill_lo,0.025207332776345633,False,exploratory_transductive
+leave_one_park_out_3,Pitching+,skill_hi,0.03098966750380497,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,n,32810.0,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,rmse,0.2001568977360352,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,mae,0.1285471433307563,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,r2,0.0016990898463230542,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,bias,0.0021583655486838624,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,skill_vs_baseline,0.00023473989810918194,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,skill_lo,-0.0005362036865237896,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,skill_hi,0.0008016834417043065,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,n,32810.0,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,rmse,0.20016119322999845,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,mae,0.12852984822974628,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,r2,0.0016562410452547471,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,bias,0.0028821364419634545,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,skill_vs_baseline,0.0002132843015846264,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,skill_lo,-0.0005688120080809267,False,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,skill_hi,0.0008061072473376812,False,exploratory_transductive
+leave_one_park_out_4,baseline,n,10156.0,False,exploratory_transductive
+leave_one_park_out_4,baseline,rmse,0.20905229936430197,False,exploratory_transductive
+leave_one_park_out_4,baseline,mae,0.13174705050920216,False,exploratory_transductive
+leave_one_park_out_4,baseline,r2,0.000787258197354257,False,exploratory_transductive
+leave_one_park_out_4,baseline,bias,0.010379736613944363,False,exploratory_transductive
+leave_one_park_out_4,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_4,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_4,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_4,Stuff+,n,10156.0,False,exploratory_transductive
+leave_one_park_out_4,Stuff+,rmse,0.2091051848418369,False,exploratory_transductive
+leave_one_park_out_4,Stuff+,mae,0.13204620833618805,False,exploratory_transductive
+leave_one_park_out_4,Stuff+,r2,0.00028163805048009305,False,exploratory_transductive
+leave_one_park_out_4,Stuff+,bias,0.006435885558281916,False,exploratory_transductive
+leave_one_park_out_4,Stuff+,skill_vs_baseline,-0.0002529772583022005,False,exploratory_transductive
+leave_one_park_out_4,Stuff+,skill_lo,-0.000964204196588403,False,exploratory_transductive
+leave_one_park_out_4,Stuff+,skill_hi,0.0005226436059575841,False,exploratory_transductive
+leave_one_park_out_4,Location+,n,10156.0,False,exploratory_transductive
+leave_one_park_out_4,Location+,rmse,0.20504483338926036,False,exploratory_transductive
+leave_one_park_out_4,Location+,mae,0.11724752424275628,False,exploratory_transductive
+leave_one_park_out_4,Location+,r2,0.0387292506364878,False,exploratory_transductive
+leave_one_park_out_4,Location+,bias,0.006233645472849535,False,exploratory_transductive
+leave_one_park_out_4,Location+,skill_vs_baseline,0.01916968140138975,False,exploratory_transductive
+leave_one_park_out_4,Location+,skill_lo,0.016177775525727533,False,exploratory_transductive
+leave_one_park_out_4,Location+,skill_hi,0.022564331285147177,False,exploratory_transductive
+leave_one_park_out_4,Pitching+,n,10156.0,False,exploratory_transductive
+leave_one_park_out_4,Pitching+,rmse,0.20390135434319395,False,exploratory_transductive
+leave_one_park_out_4,Pitching+,mae,0.11468122889826865,False,exploratory_transductive
+leave_one_park_out_4,Pitching+,r2,0.049420844195625535,False,exploratory_transductive
+leave_one_park_out_4,Pitching+,bias,0.005051052692632272,False,exploratory_transductive
+leave_one_park_out_4,Pitching+,skill_vs_baseline,0.024639504261714906,False,exploratory_transductive
+leave_one_park_out_4,Pitching+,skill_lo,0.020323606527709048,False,exploratory_transductive
+leave_one_park_out_4,Pitching+,skill_hi,0.029576747298807292,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,n,10156.0,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,rmse,0.20912276240953223,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,mae,0.13202081432840948,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,r2,0.0001135565580806519,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,bias,0.0074211991600284044,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,skill_vs_baseline,-0.0003370594126184123,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,skill_lo,-0.0010489268658625205,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,skill_hi,0.0004314413748504325,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,n,10156.0,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,rmse,0.20915781574427694,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,mae,0.13200834736818004,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,r2,-0.00022167516233118079,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,bias,0.008177115620202586,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,skill_vs_baseline,-0.0005047367586763496,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,skill_lo,-0.0013614410580600866,False,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,skill_hi,0.00026174463170383546,False,exploratory_transductive
+leave_one_park_out_5,baseline,n,35563.0,False,exploratory_transductive
+leave_one_park_out_5,baseline,rmse,0.1846081048179875,False,exploratory_transductive
+leave_one_park_out_5,baseline,mae,0.12335474297610914,False,exploratory_transductive
+leave_one_park_out_5,baseline,r2,-0.0021983055560526044,False,exploratory_transductive
+leave_one_park_out_5,baseline,bias,-0.010311685584537291,False,exploratory_transductive
+leave_one_park_out_5,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_5,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_5,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_5,Stuff+,n,35563.0,False,exploratory_transductive
+leave_one_park_out_5,Stuff+,rmse,0.18445863751471014,False,exploratory_transductive
+leave_one_park_out_5,Stuff+,mae,0.12344685751689434,False,exploratory_transductive
+leave_one_park_out_5,Stuff+,r2,-0.000576109852617801,False,exploratory_transductive
+leave_one_park_out_5,Stuff+,bias,-0.007084229736037447,False,exploratory_transductive
+leave_one_park_out_5,Stuff+,skill_vs_baseline,0.0008096464855902319,False,exploratory_transductive
+leave_one_park_out_5,Stuff+,skill_lo,-0.00020487824126069198,False,exploratory_transductive
+leave_one_park_out_5,Stuff+,skill_hi,0.0014259319882215123,False,exploratory_transductive
+leave_one_park_out_5,Location+,n,35563.0,False,exploratory_transductive
+leave_one_park_out_5,Location+,rmse,0.1791699059118677,False,exploratory_transductive
+leave_one_park_out_5,Location+,mae,0.10883799009921458,False,exploratory_transductive
+leave_one_park_out_5,Location+,r2,0.05597766914322111,False,exploratory_transductive
+leave_one_park_out_5,Location+,bias,-0.008903367065434377,False,exploratory_transductive
+leave_one_park_out_5,Location+,skill_vs_baseline,0.029458072339139885,False,exploratory_transductive
+leave_one_park_out_5,Location+,skill_lo,0.02814688006732481,False,exploratory_transductive
+leave_one_park_out_5,Location+,skill_hi,0.03171425007898828,False,exploratory_transductive
+leave_one_park_out_5,Pitching+,n,35563.0,False,exploratory_transductive
+leave_one_park_out_5,Pitching+,rmse,0.1769222081702339,False,exploratory_transductive
+leave_one_park_out_5,Pitching+,mae,0.10536739879844599,False,exploratory_transductive
+leave_one_park_out_5,Pitching+,r2,0.07951473928934827,False,exploratory_transductive
+leave_one_park_out_5,Pitching+,bias,-0.005115321747317222,False,exploratory_transductive
+leave_one_park_out_5,Pitching+,skill_vs_baseline,0.041633581880554105,False,exploratory_transductive
+leave_one_park_out_5,Pitching+,skill_lo,0.039637047861585575,False,exploratory_transductive
+leave_one_park_out_5,Pitching+,skill_hi,0.04565410874055455,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,n,35563.0,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,rmse,0.18446340508788941,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,mae,0.12346791075682632,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,r2,-0.0006278329005269256,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,bias,-0.0076780294360959496,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,skill_vs_baseline,0.0007838211125169581,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,skill_lo,-0.00017273874646115962,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,skill_hi,0.0014663058030081747,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,n,35563.0,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,rmse,0.18449274732108517,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,mae,0.12348559600095864,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,r2,-0.000946194045081894,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,bias,-0.008386194215077502,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,skill_vs_baseline,0.000624877748547803,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,skill_lo,-0.00029368858658450624,False,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,skill_hi,0.0012192749843659531,False,exploratory_transductive
+leave_one_park_out_6,baseline,n,33457.0,False,exploratory_transductive
+leave_one_park_out_6,baseline,rmse,0.19014883326277274,False,exploratory_transductive
+leave_one_park_out_6,baseline,mae,0.1258431253862666,False,exploratory_transductive
+leave_one_park_out_6,baseline,r2,0.001494885346765784,False,exploratory_transductive
+leave_one_park_out_6,baseline,bias,-0.006260178132152725,False,exploratory_transductive
+leave_one_park_out_6,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_6,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_6,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_6,Stuff+,n,33457.0,False,exploratory_transductive
+leave_one_park_out_6,Stuff+,rmse,0.19014696752946147,False,exploratory_transductive
+leave_one_park_out_6,Stuff+,mae,0.12597359472225253,False,exploratory_transductive
+leave_one_park_out_6,Stuff+,r2,0.0015144798410613447,False,exploratory_transductive
+leave_one_park_out_6,Stuff+,bias,-0.0027865078393909098,False,exploratory_transductive
+leave_one_park_out_6,Stuff+,skill_vs_baseline,9.811962972672283e-06,False,exploratory_transductive
+leave_one_park_out_6,Stuff+,skill_lo,-0.0004606807921499312,False,exploratory_transductive
+leave_one_park_out_6,Stuff+,skill_hi,0.0004750749833068918,False,exploratory_transductive
+leave_one_park_out_6,Location+,n,33457.0,False,exploratory_transductive
+leave_one_park_out_6,Location+,rmse,0.18491799952789587,False,exploratory_transductive
+leave_one_park_out_6,Location+,mae,0.11110019196920422,False,exploratory_transductive
+leave_one_park_out_6,Location+,r2,0.05567532700984934,False,exploratory_transductive
+leave_one_park_out_6,Location+,bias,-0.005024795907273932,False,exploratory_transductive
+leave_one_park_out_6,Location+,skill_vs_baseline,0.02750915503987461,False,exploratory_transductive
+leave_one_park_out_6,Location+,skill_lo,0.025855687161225112,False,exploratory_transductive
+leave_one_park_out_6,Location+,skill_hi,0.02915757199245732,False,exploratory_transductive
+leave_one_park_out_6,Pitching+,n,33457.0,False,exploratory_transductive
+leave_one_park_out_6,Pitching+,rmse,0.18307605269893448,False,exploratory_transductive
+leave_one_park_out_6,Pitching+,mae,0.10770951538701362,False,exploratory_transductive
+leave_one_park_out_6,Pitching+,r2,0.07439424978488274,False,exploratory_transductive
+leave_one_park_out_6,Pitching+,bias,-0.0007851846198289855,False,exploratory_transductive
+leave_one_park_out_6,Pitching+,skill_vs_baseline,0.0371960239906608,False,exploratory_transductive
+leave_one_park_out_6,Pitching+,skill_lo,0.03455276848534042,False,exploratory_transductive
+leave_one_park_out_6,Pitching+,skill_hi,0.039853915528840066,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,n,33457.0,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,rmse,0.1901527282442984,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,mae,0.1259841340707025,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,r2,0.0014539784556679702,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,bias,-0.0037294350299496583,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,skill_vs_baseline,-2.04838570863064e-05,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,skill_lo,-0.0004752619352932863,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,skill_hi,0.00043710695806640495,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,n,33457.0,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,rmse,0.19018904255657007,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,mae,0.12599235630518724,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,r2,0.0010725484873478353,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,bias,-0.004562299330777703,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,skill_vs_baseline,-0.00021146221676660026,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,skill_lo,-0.0006570247934083839,False,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,skill_hi,0.00022386595902672277,False,exploratory_transductive
+leave_one_park_out_7,baseline,n,31672.0,False,exploratory_transductive
+leave_one_park_out_7,baseline,rmse,0.1944403798786596,False,exploratory_transductive
+leave_one_park_out_7,baseline,mae,0.12657381699997566,False,exploratory_transductive
+leave_one_park_out_7,baseline,r2,0.001558155501777625,False,exploratory_transductive
+leave_one_park_out_7,baseline,bias,-0.00378353768006282,False,exploratory_transductive
+leave_one_park_out_7,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_7,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_7,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_7,Stuff+,n,31672.0,False,exploratory_transductive
+leave_one_park_out_7,Stuff+,rmse,0.1945387442055384,False,exploratory_transductive
+leave_one_park_out_7,Stuff+,mae,0.12679295643957994,False,exploratory_transductive
+leave_one_park_out_7,Stuff+,r2,0.0005477079626660109,False,exploratory_transductive
+leave_one_park_out_7,Stuff+,bias,-0.004152546860252526,False,exploratory_transductive
+leave_one_park_out_7,Stuff+,skill_vs_baseline,-0.0005058842558329779,False,exploratory_transductive
+leave_one_park_out_7,Stuff+,skill_lo,-0.0009259716957327801,False,exploratory_transductive
+leave_one_park_out_7,Stuff+,skill_hi,0.00013332952197978582,False,exploratory_transductive
+leave_one_park_out_7,Location+,n,31672.0,False,exploratory_transductive
+leave_one_park_out_7,Location+,rmse,0.18978348050735022,False,exploratory_transductive
+leave_one_park_out_7,Location+,mae,0.11239122277573835,False,exploratory_transductive
+leave_one_park_out_7,Location+,r2,0.04881133509853586,False,exploratory_transductive
+leave_one_park_out_7,Location+,bias,-0.003843867436174156,False,exploratory_transductive
+leave_one_park_out_7,Location+,skill_vs_baseline,0.023950268839299405,False,exploratory_transductive
+leave_one_park_out_7,Location+,skill_lo,0.022492224748312938,False,exploratory_transductive
+leave_one_park_out_7,Location+,skill_hi,0.025429139286754155,False,exploratory_transductive
+leave_one_park_out_7,Pitching+,n,31672.0,False,exploratory_transductive
+leave_one_park_out_7,Pitching+,rmse,0.18843036307255728,False,exploratory_transductive
+leave_one_park_out_7,Pitching+,mae,0.11003260304143826,False,exploratory_transductive
+leave_one_park_out_7,Pitching+,r2,0.06232654400818738,False,exploratory_transductive
+leave_one_park_out_7,Pitching+,bias,-0.0023434515727472566,False,exploratory_transductive
+leave_one_park_out_7,Pitching+,skill_vs_baseline,0.03090930397200864,False,exploratory_transductive
+leave_one_park_out_7,Pitching+,skill_lo,0.02869919773532864,False,exploratory_transductive
+leave_one_park_out_7,Pitching+,skill_hi,0.0331161825497911,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,n,31672.0,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,rmse,0.194547475257999,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,mae,0.1267963428319923,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,r2,0.0004579935332833518,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,bias,-0.00435875261731478,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,skill_vs_baseline,-0.0005507877499839609,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,skill_lo,-0.0010370419234888128,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,skill_hi,0.00013704192068306193,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,n,31672.0,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,rmse,0.1945439162767827,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,mae,0.12677508797637296,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,r2,0.0004945637193809471,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,bias,-0.004365047486496734,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,skill_vs_baseline,-0.0005324840354030691,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,skill_lo,-0.0009378235390556211,False,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,skill_hi,8.329046860769675e-05,False,exploratory_transductive
+leave_one_park_out_8,baseline,n,21984.0,False,exploratory_transductive
+leave_one_park_out_8,baseline,rmse,0.2035279503528862,False,exploratory_transductive
+leave_one_park_out_8,baseline,mae,0.1300425255694158,False,exploratory_transductive
+leave_one_park_out_8,baseline,r2,0.0021652064556842987,False,exploratory_transductive
+leave_one_park_out_8,baseline,bias,0.004779311861760586,False,exploratory_transductive
+leave_one_park_out_8,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_8,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_8,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_8,Stuff+,n,21984.0,False,exploratory_transductive
+leave_one_park_out_8,Stuff+,rmse,0.20362494060377143,False,exploratory_transductive
+leave_one_park_out_8,Stuff+,mae,0.1303633745225976,False,exploratory_transductive
+leave_one_park_out_8,Stuff+,r2,0.001213953255550737,False,exploratory_transductive
+leave_one_park_out_8,Stuff+,bias,0.002740378654294085,False,exploratory_transductive
+leave_one_park_out_8,Stuff+,skill_vs_baseline,-0.0004765451168602386,False,exploratory_transductive
+leave_one_park_out_8,Stuff+,skill_lo,-0.0010179867649688368,False,exploratory_transductive
+leave_one_park_out_8,Stuff+,skill_hi,-7.82900816361898e-05,False,exploratory_transductive
+leave_one_park_out_8,Location+,n,21984.0,False,exploratory_transductive
+leave_one_park_out_8,Location+,rmse,0.19970375406722607,False,exploratory_transductive
+leave_one_park_out_8,Location+,mae,0.11629868688280297,False,exploratory_transductive
+leave_one_park_out_8,Location+,r2,0.03931063491431752,False,exploratory_transductive
+leave_one_park_out_8,Location+,bias,0.0024382683240085617,False,exploratory_transductive
+leave_one_park_out_8,Location+,skill_vs_baseline,0.018789538631080238,False,exploratory_transductive
+leave_one_park_out_8,Location+,skill_lo,0.017234796821517823,False,exploratory_transductive
+leave_one_park_out_8,Location+,skill_hi,0.020821751726225853,False,exploratory_transductive
+leave_one_park_out_8,Pitching+,n,21984.0,False,exploratory_transductive
+leave_one_park_out_8,Pitching+,rmse,0.19838197227372104,False,exploratory_transductive
+leave_one_park_out_8,Pitching+,mae,0.11316462169739057,False,exploratory_transductive
+leave_one_park_out_8,Pitching+,r2,0.051985603647733414,False,exploratory_transductive
+leave_one_park_out_8,Pitching+,bias,0.004676093816197404,False,exploratory_transductive
+leave_one_park_out_8,Pitching+,skill_vs_baseline,0.0252838888724759,False,exploratory_transductive
+leave_one_park_out_8,Pitching+,skill_lo,0.02261622607517022,False,exploratory_transductive
+leave_one_park_out_8,Pitching+,skill_hi,0.028080267655721074,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,n,21984.0,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,rmse,0.2036315811268748,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,mae,0.13033591117045254,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,r2,0.0011488082890600548,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,bias,0.0034274461163904435,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,skill_vs_baseline,-0.0005091721987515729,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,skill_lo,-0.0009704710098834668,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,skill_hi,-0.00011708811020094139,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,n,21984.0,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,rmse,0.20366042021990868,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,mae,0.13032813639503976,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,r2,0.0008658659076150599,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,bias,0.0038766013943333727,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,skill_vs_baseline,-0.0006508681819514806,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,skill_lo,-0.0012986570673056198,False,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,skill_hi,-0.00019113131706214882,False,exploratory_transductive
+leave_one_park_out_9,baseline,n,31786.0,False,exploratory_transductive
+leave_one_park_out_9,baseline,rmse,0.19180188333472628,False,exploratory_transductive
+leave_one_park_out_9,baseline,mae,0.1268452015059082,False,exploratory_transductive
+leave_one_park_out_9,baseline,r2,-0.001079801388366164,False,exploratory_transductive
+leave_one_park_out_9,baseline,bias,-0.008659207766509188,False,exploratory_transductive
+leave_one_park_out_9,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_9,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_9,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_9,Stuff+,n,31786.0,False,exploratory_transductive
+leave_one_park_out_9,Stuff+,rmse,0.19158276739770094,False,exploratory_transductive
+leave_one_park_out_9,Stuff+,mae,0.12686665776159672,False,exploratory_transductive
+leave_one_park_out_9,Stuff+,r2,0.0012061745353177944,False,exploratory_transductive
+leave_one_park_out_9,Stuff+,bias,-0.005007066430748595,False,exploratory_transductive
+leave_one_park_out_9,Stuff+,skill_vs_baseline,0.0011424076407161587,False,exploratory_transductive
+leave_one_park_out_9,Stuff+,skill_lo,3.6006562062465574e-05,False,exploratory_transductive
+leave_one_park_out_9,Stuff+,skill_hi,0.0016926502799887583,False,exploratory_transductive
+leave_one_park_out_9,Location+,n,31786.0,False,exploratory_transductive
+leave_one_park_out_9,Location+,rmse,0.18637820262021162,False,exploratory_transductive
+leave_one_park_out_9,Location+,mae,0.11177305638232642,False,exploratory_transductive
+leave_one_park_out_9,Location+,r2,0.054735816355082956,False,exploratory_transductive
+leave_one_park_out_9,Location+,bias,-0.00694982249130516,False,exploratory_transductive
+leave_one_park_out_9,Location+,skill_vs_baseline,0.028277515424858568,False,exploratory_transductive
+leave_one_park_out_9,Location+,skill_lo,0.02644062952072735,False,exploratory_transductive
+leave_one_park_out_9,Location+,skill_hi,0.030494244197485407,False,exploratory_transductive
+leave_one_park_out_9,Pitching+,n,31786.0,False,exploratory_transductive
+leave_one_park_out_9,Pitching+,rmse,0.18420774504647838,False,exploratory_transductive
+leave_one_park_out_9,Pitching+,mae,0.10817341274153536,False,exploratory_transductive
+leave_one_park_out_9,Pitching+,r2,0.07662367183285757,False,exploratory_transductive
+leave_one_park_out_9,Pitching+,bias,-0.004096291918456054,False,exploratory_transductive
+leave_one_park_out_9,Pitching+,skill_vs_baseline,0.03959365860341868,False,exploratory_transductive
+leave_one_park_out_9,Pitching+,skill_lo,0.03645225495189479,False,exploratory_transductive
+leave_one_park_out_9,Pitching+,skill_hi,0.04368328662448559,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ no density,n,31786.0,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ no density,rmse,0.19163338394000615,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ no density,mae,0.12692374076980945,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ no density,r2,0.000678338247771415,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ no density,bias,-0.00611335905761291,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ no density,skill_vs_baseline,0.0008785075088447725,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ no density,skill_lo,-0.00016058372163803013,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ no density,skill_hi,0.0014199294975373365,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ physics neutral,n,31786.0,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ physics neutral,rmse,0.19169233666504717,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ physics neutral,mae,0.12695312793754324,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ physics neutral,r2,6.339532198440523e-05,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ physics neutral,bias,-0.007338081062491653,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ physics neutral,skill_vs_baseline,0.0005711449114810252,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ physics neutral,skill_lo,-0.0004266366752988304,False,exploratory_transductive
+leave_one_park_out_9,Stuff+ physics neutral,skill_hi,0.0011303098028547843,False,exploratory_transductive
+leave_one_park_out_10,baseline,n,35181.0,False,exploratory_transductive
+leave_one_park_out_10,baseline,rmse,0.19855543049648317,False,exploratory_transductive
+leave_one_park_out_10,baseline,mae,0.12765537995979404,False,exploratory_transductive
+leave_one_park_out_10,baseline,r2,0.0019457908353871511,False,exploratory_transductive
+leave_one_park_out_10,baseline,bias,0.003638302184259363,False,exploratory_transductive
+leave_one_park_out_10,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_10,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_10,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_10,Stuff+,n,35181.0,False,exploratory_transductive
+leave_one_park_out_10,Stuff+,rmse,0.19859112440779358,False,exploratory_transductive
+leave_one_park_out_10,Stuff+,mae,0.1280083609083433,False,exploratory_transductive
+leave_one_park_out_10,Stuff+,r2,0.001586922176851413,False,exploratory_transductive
+leave_one_park_out_10,Stuff+,bias,0.00026041651660357347,False,exploratory_transductive
+leave_one_park_out_10,Stuff+,skill_vs_baseline,-0.00017976799335661653,False,exploratory_transductive
+leave_one_park_out_10,Stuff+,skill_lo,-0.0006514480603996564,False,exploratory_transductive
+leave_one_park_out_10,Stuff+,skill_hi,0.0005573137835068132,False,exploratory_transductive
+leave_one_park_out_10,Location+,n,35181.0,False,exploratory_transductive
+leave_one_park_out_10,Location+,rmse,0.19429040592442035,False,exploratory_transductive
+leave_one_park_out_10,Location+,mae,0.11388344449923793,False,exploratory_transductive
+leave_one_park_out_10,Location+,r2,0.0443622375019177,False,exploratory_transductive
+leave_one_park_out_10,Location+,bias,0.0003502448299320941,False,exploratory_transductive
+leave_one_park_out_10,Location+,skill_vs_baseline,0.02148027158662058,False,exploratory_transductive
+leave_one_park_out_10,Location+,skill_lo,0.019803350445321315,False,exploratory_transductive
+leave_one_park_out_10,Location+,skill_hi,0.02447452119531128,False,exploratory_transductive
+leave_one_park_out_10,Pitching+,n,35181.0,False,exploratory_transductive
+leave_one_park_out_10,Pitching+,rmse,0.19274501974428745,False,exploratory_transductive
+leave_one_park_out_10,Pitching+,mae,0.11138640060681226,False,exploratory_transductive
+leave_one_park_out_10,Pitching+,r2,0.059504066382061405,False,exploratory_transductive
+leave_one_park_out_10,Pitching+,bias,-0.0003432598271251772,False,exploratory_transductive
+leave_one_park_out_10,Pitching+,skill_vs_baseline,0.029263418974071476,False,exploratory_transductive
+leave_one_park_out_10,Pitching+,skill_lo,0.026280165571032917,False,exploratory_transductive
+leave_one_park_out_10,Pitching+,skill_hi,0.0340772985347773,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ no density,n,35181.0,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ no density,rmse,0.19861619914065104,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ no density,mae,0.1279873147716514,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ no density,r2,0.001334780780530509,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ no density,bias,0.0013453375006199726,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ no density,skill_vs_baseline,-0.0003060538007746416,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ no density,skill_lo,-0.0008079186285587014,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ no density,skill_hi,0.0004036707702801816,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ physics neutral,n,35181.0,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ physics neutral,rmse,0.19860743282094212,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ physics neutral,mae,0.12794268699947303,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ physics neutral,r2,0.0014229349736982755,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ physics neutral,bias,0.0021297690613123286,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ physics neutral,skill_vs_baseline,-0.0002619033099671153,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ physics neutral,skill_lo,-0.000740972701481668,False,exploratory_transductive
+leave_one_park_out_10,Stuff+ physics neutral,skill_hi,0.00045074259100650596,False,exploratory_transductive
+leave_one_park_out_11,baseline,n,38606.0,False,exploratory_transductive
+leave_one_park_out_11,baseline,rmse,0.20801222799677857,False,exploratory_transductive
+leave_one_park_out_11,baseline,mae,0.13093058506341398,False,exploratory_transductive
+leave_one_park_out_11,baseline,r2,0.0013512717741088753,False,exploratory_transductive
+leave_one_park_out_11,baseline,bias,0.007511070405745646,False,exploratory_transductive
+leave_one_park_out_11,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_11,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_11,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_11,Stuff+,n,38606.0,False,exploratory_transductive
+leave_one_park_out_11,Stuff+,rmse,0.20805127513589022,False,exploratory_transductive
+leave_one_park_out_11,Stuff+,mae,0.13129083977520978,False,exploratory_transductive
+leave_one_park_out_11,Stuff+,r2,0.0009763127044761788,False,exploratory_transductive
+leave_one_park_out_11,Stuff+,bias,0.00408339400806618,False,exploratory_transductive
+leave_one_park_out_11,Stuff+,skill_vs_baseline,-0.00018771559483643507,False,exploratory_transductive
+leave_one_park_out_11,Stuff+,skill_lo,-0.0006825347895511091,False,exploratory_transductive
+leave_one_park_out_11,Stuff+,skill_hi,0.0004008969263385508,False,exploratory_transductive
+leave_one_park_out_11,Location+,n,38606.0,False,exploratory_transductive
+leave_one_park_out_11,Location+,rmse,0.2041821362238076,False,exploratory_transductive
+leave_one_park_out_11,Location+,mae,0.11719988621734027,False,exploratory_transductive
+leave_one_park_out_11,Location+,r2,0.037788577085713815,False,exploratory_transductive
+leave_one_park_out_11,Location+,bias,0.004391044803673104,False,exploratory_transductive
+leave_one_park_out_11,Location+,skill_vs_baseline,0.018412820293575716,False,exploratory_transductive
+leave_one_park_out_11,Location+,skill_lo,0.017360319681185617,False,exploratory_transductive
+leave_one_park_out_11,Location+,skill_hi,0.019997587666280837,False,exploratory_transductive
+leave_one_park_out_11,Pitching+,n,38606.0,False,exploratory_transductive
+leave_one_park_out_11,Pitching+,rmse,0.20268502735833416,False,exploratory_transductive
+leave_one_park_out_11,Pitching+,mae,0.1145132294737454,False,exploratory_transductive
+leave_one_park_out_11,Pitching+,r2,0.05184714377243338,False,exploratory_transductive
+leave_one_park_out_11,Pitching+,bias,0.0038087557413536513,False,exploratory_transductive
+leave_one_park_out_11,Pitching+,skill_vs_baseline,0.025610035956765587,False,exploratory_transductive
+leave_one_park_out_11,Pitching+,skill_lo,0.023758089205102535,False,exploratory_transductive
+leave_one_park_out_11,Pitching+,skill_hi,0.028035089430377247,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ no density,n,38606.0,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ no density,rmse,0.2080754669530041,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ no density,mae,0.131253259352542,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ no density,r2,0.0007439699472747696,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ no density,bias,0.004895851250028552,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ no density,skill_vs_baseline,-0.00030401557078896246,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ no density,skill_lo,-0.0007617443536660883,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ no density,skill_hi,0.0002996574313665678,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ physics neutral,n,38606.0,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ physics neutral,rmse,0.20807316463729356,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ physics neutral,mae,0.13118515782662535,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ physics neutral,r2,0.0007660829831138694,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ physics neutral,bias,0.005705211664158514,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ physics neutral,skill_vs_baseline,-0.00029294739593832553,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ physics neutral,skill_lo,-0.0006874266183076516,False,exploratory_transductive
+leave_one_park_out_11,Stuff+ physics neutral,skill_hi,0.00028389673171069486,False,exploratory_transductive
+leave_one_park_out_12,baseline,n,28956.0,False,exploratory_transductive
+leave_one_park_out_12,baseline,rmse,0.20198773963409686,False,exploratory_transductive
+leave_one_park_out_12,baseline,mae,0.12882339328016498,False,exploratory_transductive
+leave_one_park_out_12,baseline,r2,0.0034489743817163188,False,exploratory_transductive
+leave_one_park_out_12,baseline,bias,0.0038450540473621325,False,exploratory_transductive
+leave_one_park_out_12,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_12,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_12,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_12,Stuff+,n,28956.0,False,exploratory_transductive
+leave_one_park_out_12,Stuff+,rmse,0.20220431194302807,False,exploratory_transductive
+leave_one_park_out_12,Stuff+,mae,0.12914517982209703,False,exploratory_transductive
+leave_one_park_out_12,Stuff+,r2,0.0013108142981971271,False,exploratory_transductive
+leave_one_park_out_12,Stuff+,bias,0.0017498088574786786,False,exploratory_transductive
+leave_one_park_out_12,Stuff+,skill_vs_baseline,-0.0010722052205918153,False,exploratory_transductive
+leave_one_park_out_12,Stuff+,skill_lo,-0.001675404499736066,False,exploratory_transductive
+leave_one_park_out_12,Stuff+,skill_hi,-0.0005112681452169256,False,exploratory_transductive
+leave_one_park_out_12,Location+,n,28956.0,False,exploratory_transductive
+leave_one_park_out_12,Location+,rmse,0.1979911124875235,False,exploratory_transductive
+leave_one_park_out_12,Location+,mae,0.11519542468859842,False,exploratory_transductive
+leave_one_park_out_12,Location+,r2,0.0424953012618593,False,exploratory_transductive
+leave_one_park_out_12,Location+,bias,0.001787527713851627,False,exploratory_transductive
+leave_one_park_out_12,Location+,skill_vs_baseline,0.019786483842105018,False,exploratory_transductive
+leave_one_park_out_12,Location+,skill_lo,0.018009586979096225,False,exploratory_transductive
+leave_one_park_out_12,Location+,skill_hi,0.022211318848648288,False,exploratory_transductive
+leave_one_park_out_12,Pitching+,n,28956.0,False,exploratory_transductive
+leave_one_park_out_12,Pitching+,rmse,0.1967805232855451,False,exploratory_transductive
+leave_one_park_out_12,Pitching+,mae,0.11261199198741247,False,exploratory_transductive
+leave_one_park_out_12,Pitching+,r2,0.05416856395932257,False,exploratory_transductive
+leave_one_park_out_12,Pitching+,bias,0.0034126105988715994,False,exploratory_transductive
+leave_one_park_out_12,Pitching+,skill_vs_baseline,0.025779863460944186,False,exploratory_transductive
+leave_one_park_out_12,Pitching+,skill_lo,0.023079822914975498,False,exploratory_transductive
+leave_one_park_out_12,Pitching+,skill_hi,0.029470521362803904,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ no density,n,28956.0,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ no density,rmse,0.20220296651726483,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ no density,mae,0.1291073914017471,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ no density,r2,0.0013241043974712152,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ no density,bias,0.0025853844211312436,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ no density,skill_vs_baseline,-0.0010655442927272052,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ no density,skill_lo,-0.0016782353375237923,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ no density,skill_hi,-0.0005341971801807901,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ physics neutral,n,28956.0,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ physics neutral,rmse,0.20225920739925438,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ physics neutral,mae,0.12914873738461988,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ physics neutral,r2,0.000768482239778101,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ physics neutral,bias,0.003320320840843892,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ physics neutral,skill_vs_baseline,-0.0013439814003033401,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ physics neutral,skill_lo,-0.0019928278894253025,False,exploratory_transductive
+leave_one_park_out_12,Stuff+ physics neutral,skill_hi,-0.0008072268742896906,False,exploratory_transductive
+leave_one_park_out_13,baseline,n,28227.0,False,exploratory_transductive
+leave_one_park_out_13,baseline,rmse,0.19233234549200476,False,exploratory_transductive
+leave_one_park_out_13,baseline,mae,0.1260289168983694,False,exploratory_transductive
+leave_one_park_out_13,baseline,r2,0.0005298604879481195,False,exploratory_transductive
+leave_one_park_out_13,baseline,bias,-0.0050872087799089276,False,exploratory_transductive
+leave_one_park_out_13,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_13,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_13,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_13,Stuff+,n,28227.0,False,exploratory_transductive
+leave_one_park_out_13,Stuff+,rmse,0.19221927957798254,False,exploratory_transductive
+leave_one_park_out_13,Stuff+,mae,0.12601762420322155,False,exploratory_transductive
+leave_one_park_out_13,Stuff+,r2,0.0017046268882670024,False,exploratory_transductive
+leave_one_park_out_13,Stuff+,bias,-0.000879590918066869,False,exploratory_transductive
+leave_one_park_out_13,Stuff+,skill_vs_baseline,0.0005878673903392251,False,exploratory_transductive
+leave_one_park_out_13,Stuff+,skill_lo,-6.130179802389389e-05,False,exploratory_transductive
+leave_one_park_out_13,Stuff+,skill_hi,0.001125487218267851,False,exploratory_transductive
+leave_one_park_out_13,Location+,n,28227.0,False,exploratory_transductive
+leave_one_park_out_13,Location+,rmse,0.187402598460569,False,exploratory_transductive
+leave_one_park_out_13,Location+,mae,0.11109015796356128,False,exploratory_transductive
+leave_one_park_out_13,Location+,r2,0.05110887527188368,False,exploratory_transductive
+leave_one_park_out_13,Location+,bias,-0.004191182457892149,False,exploratory_transductive
+leave_one_park_out_13,Location+,skill_vs_baseline,0.025631398706364106,False,exploratory_transductive
+leave_one_park_out_13,Location+,skill_lo,0.0237042026563516,False,exploratory_transductive
+leave_one_park_out_13,Location+,skill_hi,0.027445422324285797,False,exploratory_transductive
+leave_one_park_out_13,Pitching+,n,28227.0,False,exploratory_transductive
+leave_one_park_out_13,Pitching+,rmse,0.18573188404289936,False,exploratory_transductive
+leave_one_park_out_13,Pitching+,mae,0.10799973880894256,False,exploratory_transductive
+leave_one_park_out_13,Pitching+,r2,0.06795239205521608,False,exploratory_transductive
+leave_one_park_out_13,Pitching+,bias,-0.0011490605735053124,False,exploratory_transductive
+leave_one_park_out_13,Pitching+,skill_vs_baseline,0.03431800008584507,False,exploratory_transductive
+leave_one_park_out_13,Pitching+,skill_lo,0.03126284285780248,False,exploratory_transductive
+leave_one_park_out_13,Pitching+,skill_hi,0.036813889735659286,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ no density,n,28227.0,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ no density,rmse,0.19222564672173093,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ no density,mae,0.12604508966063424,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ no density,r2,0.0016384899697228228,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ no density,bias,-0.001993801399235727,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ no density,skill_vs_baseline,0.0005547624867824341,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ no density,skill_lo,-7.014225194246215e-05,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ no density,skill_hi,0.001062322918518596,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ physics neutral,n,28227.0,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ physics neutral,rmse,0.19226202309946894,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ physics neutral,mae,0.12606474011555258,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ physics neutral,r2,0.0012605985459452906,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ physics neutral,bias,-0.0031405702062983457,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ physics neutral,skill_vs_baseline,0.00036562956873387176,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ physics neutral,skill_lo,-0.00010479747954301732,False,exploratory_transductive
+leave_one_park_out_13,Stuff+ physics neutral,skill_hi,0.0009984665859238517,False,exploratory_transductive
+leave_one_park_out_14,baseline,n,37369.0,False,exploratory_transductive
+leave_one_park_out_14,baseline,rmse,0.19554950245066283,False,exploratory_transductive
+leave_one_park_out_14,baseline,mae,0.12724394431503824,False,exploratory_transductive
+leave_one_park_out_14,baseline,r2,0.002204904230203808,False,exploratory_transductive
+leave_one_park_out_14,baseline,bias,-0.002322031471936401,False,exploratory_transductive
+leave_one_park_out_14,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_14,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_14,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_14,Stuff+,n,37369.0,False,exploratory_transductive
+leave_one_park_out_14,Stuff+,rmse,0.19559533045279628,False,exploratory_transductive
+leave_one_park_out_14,Stuff+,mae,0.12740006349638977,False,exploratory_transductive
+leave_one_park_out_14,Stuff+,r2,0.001737172905145301,False,exploratory_transductive
+leave_one_park_out_14,Stuff+,bias,0.00014458941436181638,False,exploratory_transductive
+leave_one_park_out_14,Stuff+,skill_vs_baseline,-0.00023435499226098777,False,exploratory_transductive
+leave_one_park_out_14,Stuff+,skill_lo,-0.0008999515297440531,False,exploratory_transductive
+leave_one_park_out_14,Stuff+,skill_hi,0.00010232616254460792,False,exploratory_transductive
+leave_one_park_out_14,Location+,n,37369.0,False,exploratory_transductive
+leave_one_park_out_14,Location+,rmse,0.191093993787347,False,exploratory_transductive
+leave_one_park_out_14,Location+,mae,0.11270340945443222,False,exploratory_transductive
+leave_one_park_out_14,Location+,r2,0.04715555009294947,False,exploratory_transductive
+leave_one_park_out_14,Location+,bias,-0.0014810526640082781,False,exploratory_transductive
+leave_one_park_out_14,Location+,skill_vs_baseline,0.02278455637819865,False,exploratory_transductive
+leave_one_park_out_14,Location+,skill_lo,0.020641617213255192,False,exploratory_transductive
+leave_one_park_out_14,Location+,skill_hi,0.02482920895525554,False,exploratory_transductive
+leave_one_park_out_14,Pitching+,n,37369.0,False,exploratory_transductive
+leave_one_park_out_14,Pitching+,rmse,0.18937499437173191,False,exploratory_transductive
+leave_one_park_out_14,Pitching+,mae,0.10993988512660792,False,exploratory_transductive
+leave_one_park_out_14,Pitching+,r2,0.06422120372723883,False,exploratory_transductive
+leave_one_park_out_14,Pitching+,bias,0.0010217375171850218,False,exploratory_transductive
+leave_one_park_out_14,Pitching+,skill_vs_baseline,0.031575166398026155,False,exploratory_transductive
+leave_one_park_out_14,Pitching+,skill_lo,0.028507353073764216,False,exploratory_transductive
+leave_one_park_out_14,Pitching+,skill_hi,0.03455004276394086,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ no density,n,37369.0,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ no density,rmse,0.19557952960568661,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ no density,mae,0.12741441093185144,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ no density,r2,0.0018984524321734586,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ no density,bias,-0.0008215172717650535,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ no density,skill_vs_baseline,-0.00015355270480088556,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ no density,skill_lo,-0.0008630725005436879,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ no density,skill_hi,0.0002056430532348274,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ physics neutral,n,37369.0,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ physics neutral,rmse,0.19560709729960957,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ physics neutral,mae,0.12743436641986883,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ physics neutral,r2,0.0016170600265252855,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ physics neutral,bias,-0.0011441182199101974,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ physics neutral,skill_vs_baseline,-0.0002945282305757413,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ physics neutral,skill_lo,-0.0009568861233654913,False,exploratory_transductive
+leave_one_park_out_14,Stuff+ physics neutral,skill_hi,9.574658548559261e-05,False,exploratory_transductive
+leave_one_park_out_15,baseline,n,34439.0,False,exploratory_transductive
+leave_one_park_out_15,baseline,rmse,0.20285037708722925,False,exploratory_transductive
+leave_one_park_out_15,baseline,mae,0.1296307532648446,False,exploratory_transductive
+leave_one_park_out_15,baseline,r2,0.0005086115613398556,False,exploratory_transductive
+leave_one_park_out_15,baseline,bias,0.008582516511957008,False,exploratory_transductive
+leave_one_park_out_15,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_15,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_15,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_15,Stuff+,n,34439.0,False,exploratory_transductive
+leave_one_park_out_15,Stuff+,rmse,0.20286372985261236,False,exploratory_transductive
+leave_one_park_out_15,Stuff+,mae,0.12988770892862234,False,exploratory_transductive
+leave_one_park_out_15,Stuff+,r2,0.00037702281639540036,False,exploratory_transductive
+leave_one_park_out_15,Stuff+,bias,0.005823032877753136,False,exploratory_transductive
+leave_one_park_out_15,Stuff+,skill_vs_baseline,-6.582568676893885e-05,False,exploratory_transductive
+leave_one_park_out_15,Stuff+,skill_lo,-0.0005954031977678465,False,exploratory_transductive
+leave_one_park_out_15,Stuff+,skill_hi,0.00057837501139189,False,exploratory_transductive
+leave_one_park_out_15,Location+,n,34439.0,False,exploratory_transductive
+leave_one_park_out_15,Location+,rmse,0.1986640808886479,False,exploratory_transductive
+leave_one_park_out_15,Location+,mae,0.11560428388310515,False,exploratory_transductive
+leave_one_park_out_15,Location+,r2,0.04133665417749588,False,exploratory_transductive
+leave_one_park_out_15,Location+,bias,0.004716468130317413,False,exploratory_transductive
+leave_one_park_out_15,Location+,skill_vs_baseline,0.020637359706662806,False,exploratory_transductive
+leave_one_park_out_15,Location+,skill_lo,0.018818795070678237,False,exploratory_transductive
+leave_one_park_out_15,Location+,skill_hi,0.022063127566503058,False,exploratory_transductive
+leave_one_park_out_15,Pitching+,n,34439.0,False,exploratory_transductive
+leave_one_park_out_15,Pitching+,rmse,0.1971056620583444,False,exploratory_transductive
+leave_one_park_out_15,Pitching+,mae,0.11275967665067978,False,exploratory_transductive
+leave_one_park_out_15,Pitching+,r2,0.05631811606647241,False,exploratory_transductive
+leave_one_park_out_15,Pitching+,bias,0.004090464751209165,False,exploratory_transductive
+leave_one_park_out_15,Pitching+,skill_vs_baseline,0.02831996228636302,False,exploratory_transductive
+leave_one_park_out_15,Pitching+,skill_lo,0.025602941453139662,False,exploratory_transductive
+leave_one_park_out_15,Pitching+,skill_hi,0.030706887562814058,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ no density,n,34439.0,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ no density,rmse,0.20290334984575895,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ no density,mae,0.12989340168268385,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ no density,r2,-1.3475012236918715e-05,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ no density,bias,0.006639332821513523,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ no density,skill_vs_baseline,-0.0002611420264055919,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ no density,skill_lo,-0.000779475521794909,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ no density,skill_hi,0.0003331408873344538,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ physics neutral,n,34439.0,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ physics neutral,rmse,0.2029292611577009,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ physics neutral,mae,0.12988293117760438,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ physics neutral,r2,-0.0002689002244067318,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ physics neutral,bias,0.007472901766340522,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ physics neutral,skill_vs_baseline,-0.0003888781061409663,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ physics neutral,skill_lo,-0.0009745375163139613,False,exploratory_transductive
+leave_one_park_out_15,Stuff+ physics neutral,skill_hi,0.0001385600409589538,False,exploratory_transductive
+leave_one_park_out_16,baseline,n,33075.0,False,exploratory_transductive
+leave_one_park_out_16,baseline,rmse,0.2081914771797305,False,exploratory_transductive
+leave_one_park_out_16,baseline,mae,0.13122222282491533,False,exploratory_transductive
+leave_one_park_out_16,baseline,r2,0.0007057943746968665,False,exploratory_transductive
+leave_one_park_out_16,baseline,bias,0.010275775815612457,False,exploratory_transductive
+leave_one_park_out_16,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_16,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_16,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_16,Stuff+,n,33075.0,False,exploratory_transductive
+leave_one_park_out_16,Stuff+,rmse,0.20824072342459266,False,exploratory_transductive
+leave_one_park_out_16,Stuff+,mae,0.13158731598869436,False,exploratory_transductive
+leave_one_park_out_16,Stuff+,r2,0.00023298628357160123,False,exploratory_transductive
+leave_one_park_out_16,Stuff+,bias,0.006740380611331961,False,exploratory_transductive
+leave_one_park_out_16,Stuff+,skill_vs_baseline,-0.0002365430397501811,False,exploratory_transductive
+leave_one_park_out_16,Stuff+,skill_lo,-0.0007885771650681661,False,exploratory_transductive
+leave_one_park_out_16,Stuff+,skill_hi,0.00021163586508235187,False,exploratory_transductive
+leave_one_park_out_16,Location+,n,33075.0,False,exploratory_transductive
+leave_one_park_out_16,Location+,rmse,0.20470677443236657,False,exploratory_transductive
+leave_one_park_out_16,Location+,mae,0.11746339588246175,False,exploratory_transductive
+leave_one_park_out_16,Location+,r2,0.033878145793707515,False,exploratory_transductive
+leave_one_park_out_16,Location+,bias,0.006972284493178292,False,exploratory_transductive
+leave_one_park_out_16,Location+,skill_vs_baseline,0.016737970230912058,False,exploratory_transductive
+leave_one_park_out_16,Location+,skill_lo,0.015020064570626834,False,exploratory_transductive
+leave_one_park_out_16,Location+,skill_hi,0.018768023956576577,False,exploratory_transductive
+leave_one_park_out_16,Pitching+,n,33075.0,False,exploratory_transductive
+leave_one_park_out_16,Pitching+,rmse,0.2037807470614828,False,exploratory_transductive
+leave_one_park_out_16,Pitching+,mae,0.11526688884937011,False,exploratory_transductive
+leave_one_park_out_16,Pitching+,r2,0.04259922224294477,False,exploratory_transductive
+leave_one_park_out_16,Pitching+,bias,0.006298982612365554,False,exploratory_transductive
+leave_one_park_out_16,Pitching+,skill_vs_baseline,0.021185930269565945,False,exploratory_transductive
+leave_one_park_out_16,Pitching+,skill_lo,0.018907306968095988,False,exploratory_transductive
+leave_one_park_out_16,Pitching+,skill_hi,0.024568611834270095,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ no density,n,33075.0,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ no density,rmse,0.20827228113591437,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ no density,mae,0.1315951951863014,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ no density,r2,-7.005482124911033e-05,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ no density,bias,0.007614891414902407,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ no density,skill_vs_baseline,-0.0003881232665163825,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ no density,skill_lo,-0.0009672639217919333,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ no density,skill_hi,4.0774487823899636e-05,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ physics neutral,n,33075.0,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ physics neutral,rmse,0.2083034782887009,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ physics neutral,mae,0.13157520689050886,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ physics neutral,r2,-0.0003696787059577211,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ physics neutral,bias,0.008354441972861991,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ physics neutral,skill_vs_baseline,-0.000537971633073786,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ physics neutral,skill_lo,-0.0011399708500350436,False,exploratory_transductive
+leave_one_park_out_16,Stuff+ physics neutral,skill_hi,-9.058933961026425e-05,False,exploratory_transductive
+leave_one_park_out_17,baseline,n,29464.0,False,exploratory_transductive
+leave_one_park_out_17,baseline,rmse,0.2062303638302738,False,exploratory_transductive
+leave_one_park_out_17,baseline,mae,0.1309204406460032,False,exploratory_transductive
+leave_one_park_out_17,baseline,r2,0.0020169792972634104,False,exploratory_transductive
+leave_one_park_out_17,baseline,bias,0.010881716805130861,False,exploratory_transductive
+leave_one_park_out_17,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_17,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_17,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_17,Stuff+,n,29464.0,False,exploratory_transductive
+leave_one_park_out_17,Stuff+,rmse,0.2064920446191586,False,exploratory_transductive
+leave_one_park_out_17,Stuff+,mae,0.13135542589901344,False,exploratory_transductive
+leave_one_park_out_17,Stuff+,r2,-0.0005172611966535179,False,exploratory_transductive
+leave_one_park_out_17,Stuff+,bias,0.008678608367097688,False,exploratory_transductive
+leave_one_park_out_17,Stuff+,skill_vs_baseline,-0.0012688761442527507,False,exploratory_transductive
+leave_one_park_out_17,Stuff+,skill_lo,-0.0017694360833671208,False,exploratory_transductive
+leave_one_park_out_17,Stuff+,skill_hi,-0.0006882427913152356,False,exploratory_transductive
+leave_one_park_out_17,Location+,n,29464.0,False,exploratory_transductive
+leave_one_park_out_17,Location+,rmse,0.2025560688819764,False,exploratory_transductive
+leave_one_park_out_17,Location+,mae,0.11702522521781675,False,exploratory_transductive
+leave_one_park_out_17,Location+,r2,0.0372612416732232,False,exploratory_transductive
+leave_one_park_out_17,Location+,bias,0.008560445102031102,False,exploratory_transductive
+leave_one_park_out_17,Location+,skill_vs_baseline,0.017816459613683833,False,exploratory_transductive
+leave_one_park_out_17,Location+,skill_lo,0.016151651163066955,False,exploratory_transductive
+leave_one_park_out_17,Location+,skill_hi,0.018932480490549904,False,exploratory_transductive
+leave_one_park_out_17,Pitching+,n,29464.0,False,exploratory_transductive
+leave_one_park_out_17,Pitching+,rmse,0.2012152339585552,False,exploratory_transductive
+leave_one_park_out_17,Pitching+,mae,0.11393833755378431,False,exploratory_transductive
+leave_one_park_out_17,Pitching+,r2,0.04996489690436401,False,exploratory_transductive
+leave_one_park_out_17,Pitching+,bias,0.009562707924045016,False,exploratory_transductive
+leave_one_park_out_17,Pitching+,skill_vs_baseline,0.024318096416907853,False,exploratory_transductive
+leave_one_park_out_17,Pitching+,skill_lo,0.021536583977713512,False,exploratory_transductive
+leave_one_park_out_17,Pitching+,skill_hi,0.026516878411898676,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ no density,n,29464.0,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ no density,rmse,0.20653866440560062,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ no density,mae,0.13134848279029682,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ no density,r2,-0.0009690865106999347,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ no density,bias,0.009481626354524543,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ no density,skill_vs_baseline,-0.0014949329943507728,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ no density,skill_lo,-0.002045946998947329,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ no density,skill_hi,-0.0009150474066219161,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ physics neutral,n,29464.0,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ physics neutral,rmse,0.20659269800334898,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ physics neutral,mae,0.1313348871053918,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ physics neutral,r2,-0.0014928919297201304,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ physics neutral,bias,0.010180658379304977,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ physics neutral,skill_vs_baseline,-0.0017569390188021394,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ physics neutral,skill_lo,-0.002281977029909815,False,exploratory_transductive
+leave_one_park_out_17,Stuff+ physics neutral,skill_hi,-0.0011824685359662357,False,exploratory_transductive
+leave_one_park_out_18,baseline,n,32561.0,False,exploratory_transductive
+leave_one_park_out_18,baseline,rmse,0.19022861077423037,False,exploratory_transductive
+leave_one_park_out_18,baseline,mae,0.12494919954956638,False,exploratory_transductive
+leave_one_park_out_18,baseline,r2,0.00043446264363389275,False,exploratory_transductive
+leave_one_park_out_18,baseline,bias,-0.005927320033024921,False,exploratory_transductive
+leave_one_park_out_18,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_18,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_18,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_18,Stuff+,n,32561.0,False,exploratory_transductive
+leave_one_park_out_18,Stuff+,rmse,0.19017825958655007,False,exploratory_transductive
+leave_one_park_out_18,Stuff+,mae,0.12505693956523936,False,exploratory_transductive
+leave_one_park_out_18,Stuff+,r2,0.0009635381700605627,False,exploratory_transductive
+leave_one_park_out_18,Stuff+,bias,-0.003463968386014554,False,exploratory_transductive
+leave_one_park_out_18,Stuff+,skill_vs_baseline,0.0002646877747535248,False,exploratory_transductive
+leave_one_park_out_18,Stuff+,skill_lo,-0.00029977856126751077,False,exploratory_transductive
+leave_one_park_out_18,Stuff+,skill_hi,0.0010782623041199423,False,exploratory_transductive
+leave_one_park_out_18,Location+,n,32561.0,False,exploratory_transductive
+leave_one_park_out_18,Location+,rmse,0.18536913655605428,False,exploratory_transductive
+leave_one_park_out_18,Location+,mae,0.11026541142609142,False,exploratory_transductive
+leave_one_park_out_18,Location+,r2,0.05085086628842317,False,exploratory_transductive
+leave_one_park_out_18,Location+,bias,-0.00464694927615771,False,exploratory_transductive
+leave_one_park_out_18,Location+,skill_vs_baseline,0.025545443445116,False,exploratory_transductive
+leave_one_park_out_18,Location+,skill_lo,0.023463810354260158,False,exploratory_transductive
+leave_one_park_out_18,Location+,skill_hi,0.02701527440811509,False,exploratory_transductive
+leave_one_park_out_18,Pitching+,n,32561.0,False,exploratory_transductive
+leave_one_park_out_18,Pitching+,rmse,0.18380591994519332,False,exploratory_transductive
+leave_one_park_out_18,Pitching+,mae,0.10764577978396453,False,exploratory_transductive
+leave_one_park_out_18,Pitching+,r2,0.06679170299236625,False,exploratory_transductive
+leave_one_park_out_18,Pitching+,bias,-0.0028511050928956934,False,exploratory_transductive
+leave_one_park_out_18,Pitching+,skill_vs_baseline,0.03376301179352936,False,exploratory_transductive
+leave_one_park_out_18,Pitching+,skill_lo,0.030920286238306977,False,exploratory_transductive
+leave_one_park_out_18,Pitching+,skill_hi,0.03589176937121595,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ no density,n,32561.0,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ no density,rmse,0.19019627968723948,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ no density,mae,0.1251008649575967,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ no density,r2,0.0007742043252032538,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ no density,bias,-0.004435244490592013,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ no density,skill_vs_baseline,0.00016995911844852607,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ no density,skill_lo,-0.0004204144962725254,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ no density,skill_hi,0.0009862857938011309,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ physics neutral,n,32561.0,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ physics neutral,rmse,0.19021958487692486,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ physics neutral,mae,0.12512469650261027,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ physics neutral,r2,0.0005293144308377018,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ physics neutral,bias,-0.005186521322525626,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ physics neutral,skill_vs_baseline,4.7447632975705645e-05,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ physics neutral,skill_lo,-0.0005122671148311663,False,exploratory_transductive
+leave_one_park_out_18,Stuff+ physics neutral,skill_hi,0.0008059385269602676,False,exploratory_transductive
+leave_one_park_out_19,baseline,n,38759.0,False,exploratory_transductive
+leave_one_park_out_19,baseline,rmse,0.20641554439424986,False,exploratory_transductive
+leave_one_park_out_19,baseline,mae,0.13016454075365502,False,exploratory_transductive
+leave_one_park_out_19,baseline,r2,0.0011964747283826904,False,exploratory_transductive
+leave_one_park_out_19,baseline,bias,0.00736937676465119,False,exploratory_transductive
+leave_one_park_out_19,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_19,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_19,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_19,Stuff+,n,38759.0,False,exploratory_transductive
+leave_one_park_out_19,Stuff+,rmse,0.20654918279897366,False,exploratory_transductive
+leave_one_park_out_19,Stuff+,mae,0.1305666689799944,False,exploratory_transductive
+leave_one_park_out_19,Stuff+,r2,-9.724293949764373e-05,False,exploratory_transductive
+leave_one_park_out_19,Stuff+,bias,0.007120879713786473,False,exploratory_transductive
+leave_one_park_out_19,Stuff+,skill_vs_baseline,-0.0006474241323053409,False,exploratory_transductive
+leave_one_park_out_19,Stuff+,skill_lo,-0.0012122060524911993,False,exploratory_transductive
+leave_one_park_out_19,Stuff+,skill_hi,-0.00017038180385249867,False,exploratory_transductive
+leave_one_park_out_19,Location+,n,38759.0,False,exploratory_transductive
+leave_one_park_out_19,Location+,rmse,0.2025121945365911,False,exploratory_transductive
+leave_one_park_out_19,Location+,mae,0.1155354860117422,False,exploratory_transductive
+leave_one_park_out_19,Location+,r2,0.03861436680186592,False,exploratory_transductive
+leave_one_park_out_19,Location+,bias,0.006469008012955027,False,exploratory_transductive
+leave_one_park_out_19,Location+,skill_vs_baseline,0.018910154606396445,False,exploratory_transductive
+leave_one_park_out_19,Location+,skill_lo,0.01756182485157983,False,exploratory_transductive
+leave_one_park_out_19,Location+,skill_hi,0.02033857082317009,False,exploratory_transductive
+leave_one_park_out_19,Pitching+,n,38759.0,False,exploratory_transductive
+leave_one_park_out_19,Pitching+,rmse,0.20099533474790285,False,exploratory_transductive
+leave_one_park_out_19,Pitching+,mae,0.11270424538398786,False,exploratory_transductive
+leave_one_park_out_19,Pitching+,r2,0.052962399222359235,False,exploratory_transductive
+leave_one_park_out_19,Pitching+,bias,0.00693432615537017,False,exploratory_transductive
+leave_one_park_out_19,Pitching+,skill_vs_baseline,0.02625872805390328,False,exploratory_transductive
+leave_one_park_out_19,Pitching+,skill_lo,0.02367704894814557,False,exploratory_transductive
+leave_one_park_out_19,Pitching+,skill_hi,0.028322000087509354,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ no density,n,38759.0,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ no density,rmse,0.2065145805203596,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ no density,mae,0.1305608961130584,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ no density,r2,0.00023781280177059827,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ no density,bias,0.00667551896874983,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ no density,skill_vs_baseline,-0.0004797900584492254,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ no density,skill_lo,-0.0010211328579414647,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ no density,skill_hi,-5.903752099082357e-05,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ physics neutral,n,38759.0,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ physics neutral,rmse,0.20654684323018235,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ physics neutral,mae,0.1305444852023002,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ physics neutral,r2,-7.458699852702644e-05,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ physics neutral,bias,0.0071440092251069676,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ physics neutral,skill_vs_baseline,-0.0006360898657986613,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ physics neutral,skill_lo,-0.00112416199527145,False,exploratory_transductive
+leave_one_park_out_19,Stuff+ physics neutral,skill_hi,-0.0001570806821687757,False,exploratory_transductive
+leave_one_park_out_20,baseline,n,27828.0,False,exploratory_transductive
+leave_one_park_out_20,baseline,rmse,0.18738846983613164,False,exploratory_transductive
+leave_one_park_out_20,baseline,mae,0.12451272994478133,False,exploratory_transductive
+leave_one_park_out_20,baseline,r2,-0.0019963337420561,False,exploratory_transductive
+leave_one_park_out_20,baseline,bias,-0.01118246507019663,False,exploratory_transductive
+leave_one_park_out_20,baseline,skill_vs_baseline,0.0,False,exploratory_transductive
+leave_one_park_out_20,baseline,skill_lo,0.0,False,exploratory_transductive
+leave_one_park_out_20,baseline,skill_hi,0.0,False,exploratory_transductive
+leave_one_park_out_20,Stuff+,n,27828.0,False,exploratory_transductive
+leave_one_park_out_20,Stuff+,rmse,0.18723445514793186,False,exploratory_transductive
+leave_one_park_out_20,Stuff+,mae,0.12454972067676137,False,exploratory_transductive
+leave_one_park_out_20,Stuff+,r2,-0.000349927916536652,False,exploratory_transductive
+leave_one_park_out_20,Stuff+,bias,-0.00808585390801593,False,exploratory_transductive
+leave_one_park_out_20,Stuff+,skill_vs_baseline,0.0008219005594872764,False,exploratory_transductive
+leave_one_park_out_20,Stuff+,skill_lo,-2.1053993694344897e-05,False,exploratory_transductive
+leave_one_park_out_20,Stuff+,skill_hi,0.0015947886313176832,False,exploratory_transductive
+leave_one_park_out_20,Location+,n,27828.0,False,exploratory_transductive
+leave_one_park_out_20,Location+,rmse,0.182034015457862,False,exploratory_transductive
+leave_one_park_out_20,Location+,mae,0.10981696188060687,False,exploratory_transductive
+leave_one_park_out_20,Location+,r2,0.05444781803443366,False,exploratory_transductive
+leave_one_park_out_20,Location+,bias,-0.010181221123041578,False,exploratory_transductive
+leave_one_park_out_20,Location+,skill_vs_baseline,0.028574086671138477,False,exploratory_transductive
+leave_one_park_out_20,Location+,skill_lo,0.026274575759408027,False,exploratory_transductive
+leave_one_park_out_20,Location+,skill_hi,0.03150181869817593,False,exploratory_transductive
+leave_one_park_out_20,Pitching+,n,27828.0,False,exploratory_transductive
+leave_one_park_out_20,Pitching+,rmse,0.17986296880105734,False,exploratory_transductive
+leave_one_park_out_20,Pitching+,mae,0.10619854673843211,False,exploratory_transductive
+leave_one_park_out_20,Pitching+,r2,0.0768677620366145,False,exploratory_transductive
+leave_one_park_out_20,Pitching+,bias,-0.00703997205779182,False,exploratory_transductive
+leave_one_park_out_20,Pitching+,skill_vs_baseline,0.04015989373121642,False,exploratory_transductive
+leave_one_park_out_20,Pitching+,skill_lo,0.03682503097990402,False,exploratory_transductive
+leave_one_park_out_20,Pitching+,skill_hi,0.04353188523679024,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ no density,n,27828.0,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ no density,rmse,0.18725682696585347,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ no density,mae,0.12458757985295207,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ no density,r2,-0.000588996985849688,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ no density,bias,-0.008856963498463166,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ no density,skill_vs_baseline,0.0007025131823387154,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ no density,skill_lo,-0.00013119998473961058,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ no density,skill_hi,0.001463226808136813,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ physics neutral,n,27828.0,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ physics neutral,rmse,0.18733513539721502,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ physics neutral,mae,0.12465318483854,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ physics neutral,r2,-0.0014260392395528676,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ physics neutral,bias,-0.009812214182800505,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ physics neutral,skill_vs_baseline,0.00028461964048942523,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ physics neutral,skill_lo,-0.0006368859569477247,False,exploratory_transductive
+leave_one_park_out_20,Stuff+ physics neutral,skill_hi,0.0009232447688901683,False,exploratory_transductive

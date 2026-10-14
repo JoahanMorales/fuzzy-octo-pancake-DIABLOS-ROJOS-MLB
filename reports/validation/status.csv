@@ -1,0 +1,67 @@
+split,model,status,reason,demo_data,evidence
+pitcher_kfold,baseline,evaluated,,True,exploratory_transductive
+pitcher_kfold,Stuff+,evaluated,,True,exploratory_transductive
+pitcher_kfold,Location+,evaluated,,True,exploratory_transductive
+pitcher_kfold,Pitching+,evaluated,,True,exploratory_transductive
+pitcher_kfold,Stuff+ no density,evaluated,,True,exploratory_transductive
+pitcher_kfold,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+season_holdout,baseline,evaluated,,True,exploratory_transductive
+season_holdout,Stuff+,evaluated,,True,exploratory_transductive
+season_holdout,Location+,evaluated,,True,exploratory_transductive
+season_holdout,Pitching+,evaluated,,True,exploratory_transductive
+season_holdout,Stuff+ no density,evaluated,,True,exploratory_transductive
+season_holdout,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+park_holdout,baseline,evaluated,,True,exploratory_transductive
+park_holdout,Stuff+,evaluated,,True,exploratory_transductive
+park_holdout,Location+,evaluated,,True,exploratory_transductive
+park_holdout,Pitching+,evaluated,,True,exploratory_transductive
+park_holdout,Stuff+ no density,evaluated,,True,exploratory_transductive
+park_holdout,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+leave_one_park_out_1,baseline,evaluated,,True,exploratory_transductive
+leave_one_park_out_1,Stuff+,evaluated,,True,exploratory_transductive
+leave_one_park_out_1,Location+,evaluated,,True,exploratory_transductive
+leave_one_park_out_1,Pitching+,evaluated,,True,exploratory_transductive
+leave_one_park_out_1,Stuff+ no density,evaluated,,True,exploratory_transductive
+leave_one_park_out_1,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+leave_one_park_out_2,baseline,evaluated,,True,exploratory_transductive
+leave_one_park_out_2,Stuff+,evaluated,,True,exploratory_transductive
+leave_one_park_out_2,Location+,evaluated,,True,exploratory_transductive
+leave_one_park_out_2,Pitching+,evaluated,,True,exploratory_transductive
+leave_one_park_out_2,Stuff+ no density,evaluated,,True,exploratory_transductive
+leave_one_park_out_2,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+leave_one_park_out_3,baseline,evaluated,,True,exploratory_transductive
+leave_one_park_out_3,Stuff+,evaluated,,True,exploratory_transductive
+leave_one_park_out_3,Location+,evaluated,,True,exploratory_transductive
+leave_one_park_out_3,Pitching+,evaluated,,True,exploratory_transductive
+leave_one_park_out_3,Stuff+ no density,evaluated,,True,exploratory_transductive
+leave_one_park_out_3,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+leave_one_park_out_4,baseline,evaluated,,True,exploratory_transductive
+leave_one_park_out_4,Stuff+,evaluated,,True,exploratory_transductive
+leave_one_park_out_4,Location+,evaluated,,True,exploratory_transductive
+leave_one_park_out_4,Pitching+,evaluated,,True,exploratory_transductive
+leave_one_park_out_4,Stuff+ no density,evaluated,,True,exploratory_transductive
+leave_one_park_out_4,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+leave_one_park_out_5,baseline,evaluated,,True,exploratory_transductive
+leave_one_park_out_5,Stuff+,evaluated,,True,exploratory_transductive
+leave_one_park_out_5,Location+,evaluated,,True,exploratory_transductive
+leave_one_park_out_5,Pitching+,evaluated,,True,exploratory_transductive
+leave_one_park_out_5,Stuff+ no density,evaluated,,True,exploratory_transductive
+leave_one_park_out_5,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+leave_one_park_out_6,baseline,evaluated,,True,exploratory_transductive
+leave_one_park_out_6,Stuff+,evaluated,,True,exploratory_transductive
+leave_one_park_out_6,Location+,evaluated,,True,exploratory_transductive
+leave_one_park_out_6,Pitching+,evaluated,,True,exploratory_transductive
+leave_one_park_out_6,Stuff+ no density,evaluated,,True,exploratory_transductive
+leave_one_park_out_6,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+leave_one_park_out_7,baseline,evaluated,,True,exploratory_transductive
+leave_one_park_out_7,Stuff+,evaluated,,True,exploratory_transductive
+leave_one_park_out_7,Location+,evaluated,,True,exploratory_transductive
+leave_one_park_out_7,Pitching+,evaluated,,True,exploratory_transductive
+leave_one_park_out_7,Stuff+ no density,evaluated,,True,exploratory_transductive
+leave_one_park_out_7,Stuff+ physics neutral,evaluated,,True,exploratory_transductive
+leave_one_park_out_8,baseline,evaluated,,True,exploratory_transductive
+leave_one_park_out_8,Stuff+,evaluated,,True,exploratory_transductive
+leave_one_park_out_8,Location+,evaluated,,True,exploratory_transductive
+leave_one_park_out_8,Pitching+,evaluated,,True,exploratory_transductive
+leave_one_park_out_8,Stuff+ no density,evaluated,,True,exploratory_transductive
+leave_one_park_out_8,Stuff+ physics neutral,evaluated,,True,exploratory_transductive

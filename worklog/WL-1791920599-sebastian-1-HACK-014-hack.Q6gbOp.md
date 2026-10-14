@@ -1,12 +1,12 @@
 # worklog/WL-1791920599-sebastian-1-HACK-014-hack.Q6gbOp.md · HACK-014
 
 ## Live summary
-- Done: PR20 head23120e5 pushed; official fast run exit0 in1325s;627602cleaned rows23splits20parks; equal model denominators and aggregate privacy verified; prior16tests/productsmoke/CIgreen
-- Decision: Keep draft exploratory; report Stuff+ at baseline and negative neutral-physics skill without promotion
-- Why: Global preparation transductive; fast settings/30bootstrap draws; final inductive evidence pending
-- Failing: No execution failures;153rows missing inferred parks excluded only fromLOPO; task acceptance incomplete
-- Commands: OMP_NUM_THREADS=2 python -m analysis.validation.run --fast --out reports/validation/official_fast; REAL_REPORT_QA_PASS; bash .uak/bin/secret-scan --tracked
-- Next: Independent review of23120e5 official aggregates; implement fold-preparation contract and final run before task completion
+- Done: PR20 draft23120e5; independent draft approval;16fresh tests; fullsmoke; official1325s run and aggregate QA pass;627602rows23splits20LOPO; PR16 INTEGRATED4c1be56
+- Decision: Leave acceptance incomplete; retain explicit fast/transductive source flags and honest near-baseline Stuff+ result
+- Why: Global target/feature preparation prevents inductive claims; final settings pending
+- Failing: No current test/runtime failures;153unmapped park rows documented outsideLOPO only; final C1/C2 acceptance pending
+- Commands: python -m pytest -q tests/test_validation.py; OMP_NUM_THREADS=2 python -m analysis.validation.run --fast --out reports/validation/official_fast; REAL_REPORT_QA_PASS; secret-scan --tracked
+- Next: Implement documented fold-preparation contract in stuffplus/validation; verify held-out perturbation invariance and final official run; PR20 remains draft until acceptance complete
 
 ## History
 - 1791920599 | CLAIMED | sebastian-1 | claim; next: `stuffplus/validation/run_all.py` iterating `splits.*` × models.
@@ -18,3 +18,4 @@
 - 1791940381 | CLAIMED | sebastian-1 | heartbeat; lease until 1791943081
 - 1791941106 | CLAIMED | sebastian-1 | heartbeat; lease until 1791943806
 - 1791941400 | CLAIMED | sebastian-1 | checkpoint; next: Independent review of23120e5 official aggregates; implement fold-preparation contract and final run before task completion
+- 1791941516 | CLAIMED | sebastian-1 | checkpoint; next: Implement documented fold-preparation contract in stuffplus/validation; verify held-out perturbation invariance and final official run; PR20 remains draft until acceptance complete

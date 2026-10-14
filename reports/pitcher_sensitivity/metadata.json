@@ -1,0 +1,9 @@
+{
+  "demo_data": false,
+  "exploratory": true,
+  "fast": true,
+  "pitches": 623231,
+  "pitcher_seasons": 1455,
+  "ranked": 1277,
+  "method": "In-sample globally prepared HACK-015 model; conditional game-cluster EB intervals; not holdout validation"
+}

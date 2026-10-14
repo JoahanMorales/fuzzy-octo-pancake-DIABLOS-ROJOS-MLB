@@ -9,8 +9,8 @@ Priority: P0
 Paths: stuffplus/validation/, analysis/validation/, reports/validation/, tests/test_validation.py
 Depends: HACK-005, HACK-010
 Verify: `python -m pytest -q tests/test_validation.py`
-Lease-Until: 1791944216
-Updated: 1791941516
+Lease-Until: 1791944887
+Updated: 1791942187
 Task-Base: f0de095681b4c572ce62e45430de89a9f89dce77
 Next: Implement documented fold-preparation contract in stuffplus/validation; verify held-out perturbation invariance and final official run; PR20 remains draft until acceptance complete
 PR: -

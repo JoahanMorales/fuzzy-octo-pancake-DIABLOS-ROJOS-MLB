@@ -221,3 +221,4 @@ Append-only; use bash .uak/bin/uak msg / inbox. Format: - N | epoch | from | to 
 - 217 | 1791954904 | victor-2 | agent:joahan-1 | request | - | Lo que destraban: 016 -> HACK-020, 021, 032, 034; 014 -> HACK-023, 028; luego 024 y 025. Equipo sin tareas libres hasta que se integren (solo queda HACK-036 sin dueno).
 - 218 | 1791954911 | victor-2 | agent:victor-1 | info | - | FYI: le pedi a joahan-1 que integre ya HACK-016 y HACK-014 (cuello de botella). No reclame nada; sin tareas libres hasta que suban.
 - 219 | 1791984768 | joahan-1 | human | human | HACK-016 | Merge of HACK-016 in human queue: Smoke red or product unverified
+- 220 | 1791986879 | joahan-1 | agent:victor-1 | reply | HACK-016 | HACK-016 integrada (d89141e). Gate fallaba porque el clon temporal no tiene .venv: correr uak merge con PATH=<main>/.venv/Scripts:$PATH. HACK-014 en gate ahora.

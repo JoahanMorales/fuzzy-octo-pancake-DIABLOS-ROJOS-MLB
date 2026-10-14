@@ -9,8 +9,8 @@ Priority: P0
 Paths: stuffplus/staff.py, analysis/staff_audit/, reports/staff_audit/, app/pages/8_Staff_Diablos.py, tests/test_staff.py
 Depends: HACK-003, HACK-016
 Verify: `python -m pytest -q tests/test_staff.py`
-Lease-Until: 1792003018
-Updated: 1791988618
+Lease-Until: 1792016141
+Updated: 1792001741
 Task-Base: 7dc8f4dc72b7e862e24f9bcf668095595c735345
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-032?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-032?expand=1

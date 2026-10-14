@@ -15,8 +15,8 @@ Task-Base: 7dc8f4dc72b7e862e24f9bcf668095595c735345
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-032?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-032?expand=1
 Evidence: b2336a0: pytest tests/test_staff.py 11 passed; smoke PASS; real run reports/staff_audit (franq 5: 4.4 carreras/temp, franq 11: 3.2; neutral casa-visita +0.92/+0.22; corr modelo vs HACK-018 observado 0.65/0.52); page 8 renders both franchises
-Events: 2
+Events: 3
 Checkpoints: 0
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 0
 Task-Tip: b2336a087cb01cc6eb0fcbe959f6b8d0c0cbf5f1

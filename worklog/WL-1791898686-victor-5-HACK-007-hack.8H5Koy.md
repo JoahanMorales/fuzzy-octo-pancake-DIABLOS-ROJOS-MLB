@@ -6,7 +6,7 @@
 - Why: needs luis pick
 - Failing: none
 - Commands: python -m pytest -q tests/test_app_smoke.py
-- Next: Wait for review of SHA 785b2bf
+- Next: Lock app/DESIGN.md to Direction A; human luis picked Transmision Diablos
 
 ## History
 - 1791898686 | CLAIMED | victor-5 | claim; next: `tests/test_app_smoke.py` with `streamlit.testing.v1.AppTest.from_file("app/Home.py").run()`.
@@ -14,3 +14,4 @@
 - 1791899057 | REVIEW | victor-5 | checkpoint; next: Wait for review of SHA 785b2bf
 - 1791901127 | REVIEW | joahan-1 | review; approve; SHA 785b2bffdc9bce849356006a525d01443279e2ba; reviewer joahan-1
 - 1791947228 | AVAILABLE | luis-1 | release; claim released by luis-1; reason: -; summary kept
+- 1791947242 | CLAIMED | luis-1 | claim; next: Lock app/DESIGN.md to Direction A; human luis picked Transmision Diablos

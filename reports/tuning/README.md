@@ -47,6 +47,8 @@ Historia de altitud (`before_after_altitude.csv`): ΔStuff+ de la liga -10.3 (pr
 - **Location+: adoptar**.
 - **Pitching+: no adoptar** (no cumple: confiabilidad split-half no baja).
 
+**Decisión del responsable (joahan, 2026-10-14): no se adopta ningún ajuste.** Location+ pasa la regla pero gana poco (intervalos traslapados) y adoptarlo obliga a regenerar scores, leaderboards, validación y auditoría ya integrados. Los modelos y el bundle desplegado se quedan como están (no hace falta re-entrenamiento final); este estudio queda como evidencia de robustez de la configuración de producción.
+
 **Lectura.** El Stuff+ más regularizado predice mejor cada lanzamiento (log-loss, pendiente de calibración 0.69 → 1.09) pero distingue peor entre pitchers (split-half 0.81 → 0.75), que es para lo que sirve Stuff+. La varianza extra del modelo de producción no es solo ruido: lleva información estable de cada pitcher. Por eso Stuff+ se queda como está, y su sobre-dispersión por lanzamiento ya se corrige al convertir puntos a carreras (HACK-035 estima carreras por punto directamente, fuera de muestra).
 
 ## Límites

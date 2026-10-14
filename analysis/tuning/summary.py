@@ -12,6 +12,11 @@ import pandas as pd
 
 from analysis.tuning.run import OUT
 
+HUMAN_DECISION = (
+    "**Decisión del responsable (joahan, 2026-10-14): no se adopta ningún ajuste.** Location+ pasa la regla pero gana poco "
+    "(intervalos traslapados) y adoptarlo obliga a regenerar scores, leaderboards, validación y auditoría ya integrados. "
+    "Los modelos y el bundle desplegado se quedan como están (no hace falta re-entrenamiento final); este estudio queda "
+    "como evidencia de robustez de la configuración de producción.")
 TOL = 0.005  # a pitcher-level r may move by sampling noise of this size and still count as "did not drop"
 
 
@@ -90,6 +95,7 @@ def build() -> str:
           f"({a.loc['Stuff+ ajustado', 'worst_delta']:+.1f}).", "", "## Decisión", ""]
     for m, r in dec.iterrows():
         L.append(f"- **{m}: {'adoptar' if r.adopt else 'no adoptar'}**" + (f" (no cumple: {r.failed})." if r.failed else "."))
+    L += ["", HUMAN_DECISION]
     s, st = both.loc["Stuff+"], both.loc["Stuff+ ajustado"]
     L += ["", "**Lectura.** El Stuff+ más regularizado predice mejor cada lanzamiento (log-loss, pendiente de calibración "
           f"{_fmt(s.calibration_slope, 2)} → {_fmt(st.calibration_slope, 2)}) pero distingue peor entre pitchers "

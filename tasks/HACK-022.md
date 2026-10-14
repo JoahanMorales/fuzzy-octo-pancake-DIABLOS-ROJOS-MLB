@@ -1,6 +1,6 @@
 # HACK-022
 ID: HACK-022
-State: REVIEW
+State: INTEGRATED
 Owner: victor-2
 Branch: feat/hack-022
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-022
@@ -9,14 +9,17 @@ Priority: P0
 Paths: reports/recommendations/, app/pages/5_Recomendaciones.py
 Depends: HACK-015, HACK-017, HACK-018
 Verify: `test -s reports/recommendations/memo.md`
-Lease-Until: 1791964675
-Updated: 1791950275
+Lease-Until: 0
+Updated: 1791951972
 Task-Base: 55b5591d2a2c2f63d0600fd9435f98f88f0350bb
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/25; run .uak/bin/smoke
+Next: Integrated in main: edfbce9d2e31ed518d450fb99a619fe3ea8ab0ee; claim next P0
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/25
 Evidence: 03953ca: respuesta a reject 024dc7c: velocidad sin umbral (swing total +9.4 vs solo fisica +6.8, quintiles no monotonos); sec 4 marcada como hipotesis de modelo, 7-8 vs 1-3 solo recta, chase con valor absoluto +0.040, numeracion de zonas citada a location.py; sd observada con ruido; rama sin 97fd8b9 (#24 ya en main); test -s memo.md OK
-Events: 7
+Events: 8
 Checkpoints: 0
 Sessions: 2
 Last-Checkpoint: 0
 Task-Tip: 03953ca20431d72e76d0feab61bd5871b431e2d3
+Integration-Proof: ancestry
+Merge-Commit: edfbce9d2e31ed518d450fb99a619fe3ea8ab0ee
+Reviewer: victor-1

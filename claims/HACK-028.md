@@ -1,6 +1,6 @@
 # HACK-028
 ID: HACK-028
-State: CLAIMED
+State: REVIEW
 Owner: joahan-2
 Branch: feat/hack-028
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-028
@@ -9,9 +9,9 @@ Priority: P1
 Paths: stuffplus/models/tuning.py, analysis/tuning/, reports/tuning/, tests/test_tuning.py
 Depends: HACK-014
 Verify: `python -m pytest -q tests/test_tuning.py`
-Lease-Until: 1791993888
-Updated: 1791991188
+Lease-Until: 1792013290
+Updated: 1791998890
 Task-Base: 7dc8f4dc72b7e862e24f9bcf668095595c735345
-Next: search space and objective on `pitcher_group_kfold`.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-028?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-028?expand=1
 Evidence: -

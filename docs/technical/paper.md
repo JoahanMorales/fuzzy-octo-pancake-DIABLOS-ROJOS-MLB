@@ -101,7 +101,7 @@ De la trayectoria ajustada de 9 parámetros se obtiene la aceleración por arras
 ## Targets y valor de carreras en la LMB
 Multi-target: $P$(swing), $P$(whiff), $P$(chase), $P$(strike cantado), $P$(contacto débil), $P$(rola), $P$(contacto fuerte) y el valor de carreras $xRV$, con *linear weights* y matriz de expectativa de carreras recalculados con datos LMB (no MLB). Los pesos para combinarlos salen de regresar el RV observado, no se fijan a mano.
 
-**Por qué componentes y no una regresión directa.** El valor de carreras de un lanzamiento es casi todo ruido de bola o strike: la regresión directa del esqueleto v0 superaba al modelo por conteo en solo 0.02 %. Predecimos lo que la física sí controla y lo convertimos a carreras.
+**Por qué componentes y no una regresión directa.** El valor de carreras de un lanzamiento es casi todo ruido de bola o strike: la regresión directa del esqueleto v0 superaba al modelo por conteo en solo 0.02 % (`analysis/v0/README.md`). Predecimos lo que la física sí controla y lo convertimos a carreras.
 
 - **Stuff+ (HACK-010).** *Entradas:* velocidad, giro, eje de giro del lado del brazo, IVB y HB en el aire del lanzamiento, punto de salida, extensión, ángulo de brazo, tres diferencias contra la recta principal del lanzador, mano, familia invariante `pitch_family` y $\rho$. Sin conteo ni ubicación. *Salidas:* (1) $P$(bola, strike cantado, swing fallido, foul, en juego) con LightGBM multiclase (300 rondas, tasa 0.08, 63 hojas, ≥ 500 lanzamientos por hoja) y (2) el valor del contacto dado en juego (regresión, 200 rondas, tasa 0.05, 31 hojas). $\widehat{xRV}=\sum_k P_k V_k$, con $V_k$ el `rv_x` medio LMB de cada resultado y el modelo (2) para el contacto.
 - **Location+ (HACK-011).** *Entradas:* ubicación en el plato (espejada al lado del brazo), conteo, lado del bateador, `pitch_family` y $\rho$, sin física. El valor de ubicación es $\widehat{xRV}_{loc}$ menos la media de la liga para el mismo conteo y familia, para no premiar ni castigar el conteo.
@@ -200,7 +200,7 @@ Agregar $\rho$ como variable deja el 56 % del sesgo de la misma arquitectura sin
 
 # Recomendaciones y valor de negocio
 
-**De puntos a victorias (HACK-035).** Regresamos el valor de carreras realizado contra los puntos de Stuff+ predichos fuera de pliegue: **un punto vale $7.24\times10^{-4}$ carreras por lanzamiento** [$6.78$, $7.69$]$\times10^{-4}$. El exponente pitagórico de la LMB es 1.90 [1.62, 2.15], lo que da 11.8 carreras por victoria en la liga y 14.3 en altitud extrema, donde se anota más. Así, +10 puntos de Stuff+ en 2,500 lanzamientos son 18.1 carreras ≈ **1.26 victorias en el Harp Helú**. Una desviación estándar observada entre pitcher-temporadas (5.4 puntos) vale 0.69 victorias (`reports/business_value/`).
+**De puntos a victorias (HACK-035).** Regresamos el valor de carreras realizado contra los puntos de Stuff+ predichos fuera de pliegue: **un punto vale $7.24\times10^{-4}$ carreras por lanzamiento** [$6.78$, $7.69$]$\times10^{-4}$. El exponente pitagórico de la LMB es 1.90 [1.62, 2.15], lo que da 11.8 carreras por victoria en la liga y 14.3 en altitud extrema, donde se anota más. Así, +10 puntos de Stuff+ en 2,500 lanzamientos son 18.1 carreras ≈ **1.26 victorias en el Harp Helú**. Una desviación estándar observada entre pitcher-temporadas (5.45 puntos) vale 0.69 victorias (`reports/business_value/`).
 
 **Perfil a reclutar (HACK-017, HACK-022).**
 

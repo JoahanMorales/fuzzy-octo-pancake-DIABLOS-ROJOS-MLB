@@ -96,6 +96,22 @@ def build() -> str:
     for m, r in dec.iterrows():
         L.append(f"- **{m}: {'adoptar' if r.adopt else 'no adoptar'}**" + (f" (no cumple: {r.failed})." if r.failed else "."))
     L += ["", HUMAN_DECISION]
+    mono, mtest = OUT / "monotone_velocity.csv", OUT / "monotone_contact_test.csv"
+    if mono.exists() and mtest.exists():
+        pdp, mt_ = pd.read_csv(mono), pd.read_csv(mtest).set_index("config")
+        srch = pd.read_csv(OUT / "search_summary.csv")
+        same = srch[(srch.booster == "stuff_contact") & (srch.config != "production") & (srch.num_leaves == 31)
+                    & (srch.min_data_in_leaf == 1000)].test_loss.iloc[0]
+        L += ["", "## Restricciones monótonas (velocidad de la recta)", ""]
+        for fam, g in pdp.groupby("pitch_family"):
+            L.append(f"- {fam}: xRV medio {g.xrv.iloc[0]:+.4f} a {g.velo.iloc[0]:.0f} mph → {g.xrv.iloc[-1]:+.4f} a "
+                     f"{g.velo.iloc[-1]:.0f} mph (la física se cumple en la tendencia), pero baja solo en "
+                     f"{int((g.step < 0).sum())} de {int(g.step.notna().sum())} pasos de 1 mph: no es monótona.")
+        L += [f"- El modelo multiclase no admite una restricción de un solo signo (bolas y swings fallidos se mueven en "
+              f"sentidos opuestos). En el modelo de contacto, `RelSpeed` monótona decreciente da MSE "
+              f"{mt_.loc['RelSpeed monótona ↓', 'test_mse']:.6f} vs {same:.6f} sin restricción con los mismos parámetros "
+              "y early stopping: prácticamente gratis. Si se adopta un re-entrenamiento en el futuro, conviene incluirla "
+              "(fuentes: `monotone_velocity.csv`, `monotone_contact_test.csv`)."]
     s, st = both.loc["Stuff+"], both.loc["Stuff+ ajustado"]
     L += ["", "**Lectura.** El Stuff+ más regularizado predice mejor cada lanzamiento (log-loss, pendiente de calibración "
           f"{_fmt(s.calibration_slope, 2)} → {_fmt(st.calibration_slope, 2)}) pero distingue peor entre pitchers "

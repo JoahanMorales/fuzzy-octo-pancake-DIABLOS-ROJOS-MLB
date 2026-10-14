@@ -49,6 +49,12 @@ Historia de altitud (`before_after_altitude.csv`): ΔStuff+ de la liga -10.3 (pr
 
 **Decisión del responsable (joahan, 2026-10-14): no se adopta ningún ajuste.** Location+ pasa la regla pero gana poco (intervalos traslapados) y adoptarlo obliga a regenerar scores, leaderboards, validación y auditoría ya integrados. Los modelos y el bundle desplegado se quedan como están (no hace falta re-entrenamiento final); este estudio queda como evidencia de robustez de la configuración de producción.
 
+## Restricciones monótonas (velocidad de la recta)
+
+- Four-Seam: xRV medio +0.0124 a 86 mph → -0.0003 a 99 mph (la física se cumple en la tendencia), pero baja solo en 7 de 13 pasos de 1 mph: no es monótona.
+- Sinker: xRV medio +0.0127 a 86 mph → +0.0067 a 99 mph (la física se cumple en la tendencia), pero baja solo en 6 de 13 pasos de 1 mph: no es monótona.
+- El modelo multiclase no admite una restricción de un solo signo (bolas y swings fallidos se mueven en sentidos opuestos). En el modelo de contacto, `RelSpeed` monótona decreciente da MSE 0.134011 vs 0.133996 sin restricción con los mismos parámetros y early stopping: prácticamente gratis. Si se adopta un re-entrenamiento en el futuro, conviene incluirla (fuentes: `monotone_velocity.csv`, `monotone_contact_test.csv`).
+
 **Lectura.** El Stuff+ más regularizado predice mejor cada lanzamiento (log-loss, pendiente de calibración 0.69 → 1.09) pero distingue peor entre pitchers (split-half 0.81 → 0.75), que es para lo que sirve Stuff+. La varianza extra del modelo de producción no es solo ruido: lleva información estable de cada pitcher. Por eso Stuff+ se queda como está, y su sobre-dispersión por lanzamiento ya se corrige al convertir puntos a carreras (HACK-035 estima carreras por punto directamente, fuera de muestra).
 
 ## Límites

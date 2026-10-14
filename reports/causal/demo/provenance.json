@@ -1,0 +1,48 @@
+{
+  "demo_data": true,
+  "evidence": "observational_transductive",
+  "promotion_allowed": false,
+  "limitation": "Exploratory observational contrast, not an identified causal effect or pitch-selection policy. Coach intent, hitter quality, health and other unmeasured confounders remain. Global target, identity and density preparation is transductive. Density is reconstructed from whole-game observations and is not a verified prospectively available pre-pitch measurement. Bootstrap intervals describe held-out pitcher composition conditional on one fitted forest, not model/causal uncertainty. Current-pitch movement, location, outcome and derived scores are excluded from covariates.",
+  "outcome": "rv_x",
+  "fast": true,
+  "seed": 2240,
+  "treatment": "1=Slider/Curveball, 0=Changeup/Splitter (pitch_family)",
+  "effect_direction": "negative means lower modelled xRV for breaking balls",
+  "train_years": [
+    2024,
+    2025
+  ],
+  "test_year": 2026,
+  "nuisance_cv": "3-fold grouped by pitcher",
+  "eligible_rows": 1690,
+  "train_rows": 1023,
+  "train_supported_rows": 1011,
+  "test_rows": 667,
+  "test_supported_rows": 651,
+  "overlap_bounds": [
+    0.1,
+    0.9
+  ],
+  "min_cell_per_treatment": 30,
+  "min_pitchers": 5,
+  "x_columns": [
+    "Balls",
+    "Strikes",
+    "same_side",
+    "rho"
+  ],
+  "w_columns": [
+    "is_rhp",
+    "Outs",
+    "inning_capped",
+    "prior_fb_velo",
+    "prior_fb_missing",
+    "prev_velo",
+    "prev_missing",
+    "prev_breaking",
+    "prev_offspeed"
+  ],
+  "identity_fallback_fraction": 0.14464156408399712,
+  "preparation": "global target/identity/density on selected whole games",
+  "game_sample_limit": 12000
+}

@@ -1,0 +1,257 @@
+{
+  "demo_data": false,
+  "exploratory": true,
+  "source_sha256": {
+    "reports/physics/rho_by_bucket.csv": "89a8ae487040fe6a2e91ee4a4212bcf57110dcdfc4da13f1c682f9b6eaa9a951",
+    "reports/physics/delta_extreme_vs_no.csv": "94b066a7897fd55eefad50d7b1f4969b23bae4a5da64fe201520ba53dbd85901",
+    "reports/altitude_delta/delta_by_shape.csv": "d8fa928aad4956367c76a9e6c0493a553b2e09ba278b51e07d2c6eae08faa434",
+    "reports/stuff_model/metrics.csv": "0ee2cac66c78f22afb61a0356e70e14428d4aa0664e40f4822f5006a092b6337",
+    "reports/pitching_model/metrics.csv": "05726d1c92d5d243c88b8e18f6eda2614b3f79002b69d59e96ed91a2bb74e054",
+    "reports/pitcher_sensitivity/top15.csv": "a925ac9dd11034cda12ed799fafc563aae5a9dd88c4fc142ee6b143b4836b58e",
+    "reports/pitcher_sensitivity/bottom15.csv": "9f299aa26b5b252f8cb2dfcfc11a2786d0ec673e2f7616fbcbb1119487d7bf21",
+    "reports/park_id/franchise_rho.csv": "34b2cb6b59abcb6c356bc89dfba3a625b181bc433f4a877a86cf567c61c12619",
+    "reports/business_value/runs_per_win.csv": "5f7f52a5b250fd82df6af3bb91a711f2882655a0749625fbf2899369b04e1772"
+  },
+  "evidence": [
+    {
+      "slide": 2,
+      "source": "reports/physics/rho_by_bucket.csv",
+      "row": {
+        "bucket": "No Altitude"
+      },
+      "column": "mean",
+      "value": 1.0006,
+      "factor": 1,
+      "display": "1.001"
+    },
+    {
+      "slide": 2,
+      "source": "reports/physics/rho_by_bucket.csv",
+      "row": {
+        "bucket": "Medium Altitude"
+      },
+      "column": "mean",
+      "value": 0.8915,
+      "factor": 1,
+      "display": "0.892"
+    },
+    {
+      "slide": 2,
+      "source": "reports/physics/rho_by_bucket.csv",
+      "row": {
+        "bucket": "Extreme Altitude"
+      },
+      "column": "mean",
+      "value": 0.841,
+      "factor": 1,
+      "display": "0.841"
+    },
+    {
+      "slide": 3,
+      "source": "reports/physics/delta_extreme_vs_no.csv",
+      "row": {
+        "pitch_family": "Four-Seam",
+        "outcome": "ivb"
+      },
+      "column": "delta",
+      "value": -3.54,
+      "factor": 1,
+      "display": "-3.54"
+    },
+    {
+      "slide": 3,
+      "source": "reports/altitude_delta/delta_by_shape.csv",
+      "row": {
+        "shape": "4S"
+      },
+      "column": "delta_ivb_in",
+      "value": -3.5604,
+      "factor": 1,
+      "display": "-3.56"
+    },
+    {
+      "slide": 4,
+      "source": "reports/stuff_model/metrics.csv",
+      "row": {
+        "model": "baseline",
+        "baseline_name": "mean xRV by count"
+      },
+      "column": "rmse",
+      "value": 0.19776,
+      "factor": 1,
+      "display": "0.19776"
+    },
+    {
+      "slide": 4,
+      "source": "reports/stuff_model/metrics.csv",
+      "row": {
+        "model": "stuff_v1",
+        "baseline_name": "mean xRV by count"
+      },
+      "column": "rmse",
+      "value": 0.19782,
+      "factor": 1,
+      "display": "0.19782"
+    },
+    {
+      "slide": 4,
+      "source": "reports/pitching_model/metrics.csv",
+      "row": {
+        "model": "pitching_combined",
+        "target": "rv_x"
+      },
+      "column": "rmse",
+      "value": 0.19009,
+      "factor": 1,
+      "display": "0.19009"
+    },
+    {
+      "slide": 4,
+      "source": "reports/pitching_model/metrics.csv",
+      "row": {
+        "model": "pitching_combined",
+        "target": "rv_x"
+      },
+      "column": "skill_vs_baseline",
+      "value": 0.0388,
+      "factor": 100,
+      "display": "3.88"
+    },
+    {
+      "slide": 5,
+      "source": "reports/altitude_delta/delta_by_shape.csv",
+      "row": {
+        "shape": "sweeper"
+      },
+      "column": "delta_stuff",
+      "value": -4.6351,
+      "factor": 1,
+      "display": "-4.64"
+    },
+    {
+      "slide": 5,
+      "source": "reports/altitude_delta/delta_by_shape.csv",
+      "row": {
+        "shape": "slider"
+      },
+      "column": "delta_stuff",
+      "value": -7.2398,
+      "factor": 1,
+      "display": "-7.24"
+    },
+    {
+      "slide": 5,
+      "source": "reports/altitude_delta/delta_by_shape.csv",
+      "row": {
+        "shape": "4S"
+      },
+      "column": "delta_stuff",
+      "value": -8.7259,
+      "factor": 1,
+      "display": "-8.73"
+    },
+    {
+      "slide": 5,
+      "source": "reports/altitude_delta/delta_by_shape.csv",
+      "row": {
+        "shape": "riding 4S"
+      },
+      "column": "delta_stuff",
+      "value": -15.9916,
+      "factor": 1,
+      "display": "-15.99"
+    },
+    {
+      "slide": 6,
+      "source": "reports/pitcher_sensitivity/top15.csv",
+      "row": {
+        "pitcher_anon_id": "pitcher_01003",
+        "year": "2025"
+      },
+      "column": "altitude_proof_index",
+      "value": 107.99898052397262,
+      "factor": 1,
+      "display": "108.00"
+    },
+    {
+      "slide": 6,
+      "source": "reports/pitcher_sensitivity/bottom15.csv",
+      "row": {
+        "pitcher_anon_id": "pitcher_00529",
+        "year": "2025"
+      },
+      "column": "altitude_proof_index",
+      "value": 89.55571370140157,
+      "factor": 1,
+      "display": "89.56"
+    },
+    {
+      "slide": 6,
+      "source": "reports/pitcher_sensitivity/top15.csv",
+      "row": {
+        "pitcher_anon_id": "pitcher_01003",
+        "year": "2025"
+      },
+      "column": "delta_eb",
+      "value": -4.126371440496024,
+      "factor": 1,
+      "display": "-4.13"
+    },
+    {
+      "slide": 6,
+      "source": "reports/pitcher_sensitivity/bottom15.csv",
+      "row": {
+        "pitcher_anon_id": "pitcher_00529",
+        "year": "2025"
+      },
+      "column": "delta_eb",
+      "value": -22.569638263067084,
+      "factor": 1,
+      "display": "-22.57"
+    },
+    {
+      "slide": 7,
+      "source": "reports/park_id/franchise_rho.csv",
+      "row": {
+        "franchise": "5"
+      },
+      "column": "rho_mean",
+      "value": 0.820565318245592,
+      "factor": 1,
+      "display": "0.821"
+    },
+    {
+      "slide": 7,
+      "source": "reports/park_id/franchise_rho.csv",
+      "row": {
+        "franchise": "11"
+      },
+      "column": "rho_mean",
+      "value": 0.8133006062516371,
+      "factor": 1,
+      "display": "0.813"
+    },
+    {
+      "slide": 9,
+      "source": "reports/business_value/runs_per_win.csv",
+      "row": {
+        "entorno": "liga"
+      },
+      "column": "carreras_por_victoria",
+      "value": 11.785,
+      "factor": 1,
+      "display": "11.79"
+    },
+    {
+      "slide": 9,
+      "source": "reports/business_value/runs_per_win.csv",
+      "row": {
+        "entorno": "Extreme Altitude"
+      },
+      "column": "carreras_por_victoria",
+      "value": 14.329,
+      "factor": 1,
+      "display": "14.33"
+    }
+  ]
+}

@@ -20,6 +20,12 @@ jobs:
         run: for f in .uak/bin/* .uak/bin/lib/*.sh; do [ -f "$f" ] && bash -n "$f"; done
       - name: Backlog graph (no cycles, no unknown deps)
         run: if [ -f .uak/TASKS.md ]; then bash .uak/bin/graph --file .uak/TASKS.md; fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install Python dependencies
+        run: python -m pip install -r requirements.txt
       - name: Product smoke
         run: |
           if [ -f .uak/bin/smoke-project ]; then bash .uak/bin/smoke-project

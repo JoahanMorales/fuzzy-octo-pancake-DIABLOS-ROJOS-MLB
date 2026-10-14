@@ -1,0 +1,9 @@
+regressor,final_runs_per_sd,fold_mean,fold_sd,expected_sign
+whiff_rate,0.0,0.0,0.0,-1
+called_strike_rate,-0.00045,-0.0005,0.00035,-1
+chase_rate,-0.00068,-0.0007,0.00012,-1
+weak_contact_rate,0.0,0.0,0.0,-1
+groundball_rate,0.0,0.0,0.0,-1
+hard_contact_rate,0.0,0.0,0.0,1
+out_in_pa,-0.01997,-0.01997,0.0001,-1
+xrv_components,0.04705,0.04701,0.00039,1

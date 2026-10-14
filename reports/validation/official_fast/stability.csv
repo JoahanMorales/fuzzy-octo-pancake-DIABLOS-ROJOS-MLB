@@ -1,0 +1,97 @@
+model,check,source,pitches,pairs,correlation,status,demo_data,evidence
+baseline,split_half_games,pred,0,1418,0.25919120847053306,evaluated,False,exploratory_transductive
+baseline,split_half_games,obs,0,1418,0.103745446429515,evaluated,False,exploratory_transductive
+baseline,year_stability_2024_2025,pred,0,275,0.3318265641345511,evaluated,False,exploratory_transductive
+baseline,next_season_rv_2024_2025,pred,0,275,-0.13911298650712736,evaluated,False,exploratory_transductive
+baseline,next_season_rv_2024_2025,obs,0,275,0.12917595972022844,evaluated,False,exploratory_transductive
+baseline,next_season_rv_2024_2025,raw_whiff,0,261,-0.16133982989557222,evaluated,False,exploratory_transductive
+baseline,year_stability_2025_2026,pred,0,263,0.2827114480140267,evaluated,False,exploratory_transductive
+baseline,next_season_rv_2025_2026,pred,0,263,-0.0769296066124727,evaluated,False,exploratory_transductive
+baseline,next_season_rv_2025_2026,obs,0,263,-0.022319491250531724,evaluated,False,exploratory_transductive
+baseline,next_season_rv_2025_2026,raw_whiff,0,249,-0.17645492627564818,evaluated,False,exploratory_transductive
+baseline,sample_stability,pred,10,1547,0.08713933620399784,evaluated,False,exploratory_transductive
+baseline,sample_stability,obs,10,1547,0.07068199893356295,evaluated,False,exploratory_transductive
+baseline,sample_stability,pred,25,1424,0.058406782444657766,evaluated,False,exploratory_transductive
+baseline,sample_stability,obs,25,1424,0.01091657150939055,evaluated,False,exploratory_transductive
+baseline,sample_stability,pred,50,1280,0.13676157607157802,evaluated,False,exploratory_transductive
+baseline,sample_stability,obs,50,1280,0.09466924546986774,evaluated,False,exploratory_transductive
+Stuff+,split_half_games,pred,0,1418,0.6967295490025509,evaluated,False,exploratory_transductive
+Stuff+,split_half_games,obs,0,1418,0.103745446429515,evaluated,False,exploratory_transductive
+Stuff+,year_stability_2024_2025,pred,0,275,0.7074808979505866,evaluated,False,exploratory_transductive
+Stuff+,next_season_rv_2024_2025,pred,0,275,0.04736867900224478,evaluated,False,exploratory_transductive
+Stuff+,next_season_rv_2024_2025,obs,0,275,0.12917595972022844,evaluated,False,exploratory_transductive
+Stuff+,next_season_rv_2024_2025,raw_whiff,0,261,-0.16133982989557222,evaluated,False,exploratory_transductive
+Stuff+,year_stability_2025_2026,pred,0,263,0.7114740555649722,evaluated,False,exploratory_transductive
+Stuff+,next_season_rv_2025_2026,pred,0,263,0.12062387925265228,evaluated,False,exploratory_transductive
+Stuff+,next_season_rv_2025_2026,obs,0,263,-0.022319491250531724,evaluated,False,exploratory_transductive
+Stuff+,next_season_rv_2025_2026,raw_whiff,0,249,-0.17645492627564818,evaluated,False,exploratory_transductive
+Stuff+,sample_stability,pred,10,1547,0.7665898577427239,evaluated,False,exploratory_transductive
+Stuff+,sample_stability,obs,10,1547,0.07068199893356295,evaluated,False,exploratory_transductive
+Stuff+,sample_stability,pred,25,1424,0.658968425864383,evaluated,False,exploratory_transductive
+Stuff+,sample_stability,obs,25,1424,0.01091657150939055,evaluated,False,exploratory_transductive
+Stuff+,sample_stability,pred,50,1280,0.6033501191200087,evaluated,False,exploratory_transductive
+Stuff+,sample_stability,obs,50,1280,0.09466924546986774,evaluated,False,exploratory_transductive
+Location+,split_half_games,pred,0,1418,0.4559443277252644,evaluated,False,exploratory_transductive
+Location+,split_half_games,obs,0,1418,0.103745446429515,evaluated,False,exploratory_transductive
+Location+,year_stability_2024_2025,pred,0,275,0.4127440634456154,evaluated,False,exploratory_transductive
+Location+,next_season_rv_2024_2025,pred,0,275,0.15937773312412204,evaluated,False,exploratory_transductive
+Location+,next_season_rv_2024_2025,obs,0,275,0.12917595972022844,evaluated,False,exploratory_transductive
+Location+,next_season_rv_2024_2025,raw_whiff,0,261,-0.16133982989557222,evaluated,False,exploratory_transductive
+Location+,year_stability_2025_2026,pred,0,263,0.436537675189714,evaluated,False,exploratory_transductive
+Location+,next_season_rv_2025_2026,pred,0,263,0.03284677781962992,evaluated,False,exploratory_transductive
+Location+,next_season_rv_2025_2026,obs,0,263,-0.022319491250531724,evaluated,False,exploratory_transductive
+Location+,next_season_rv_2025_2026,raw_whiff,0,249,-0.17645492627564818,evaluated,False,exploratory_transductive
+Location+,sample_stability,pred,10,1547,0.10201743364675638,evaluated,False,exploratory_transductive
+Location+,sample_stability,obs,10,1547,0.07068199893356295,evaluated,False,exploratory_transductive
+Location+,sample_stability,pred,25,1424,0.21537904721542334,evaluated,False,exploratory_transductive
+Location+,sample_stability,obs,25,1424,0.01091657150939055,evaluated,False,exploratory_transductive
+Location+,sample_stability,pred,50,1280,0.27839130067323287,evaluated,False,exploratory_transductive
+Location+,sample_stability,obs,50,1280,0.09466924546986774,evaluated,False,exploratory_transductive
+Pitching+,split_half_games,pred,0,1418,0.5671459297268067,evaluated,False,exploratory_transductive
+Pitching+,split_half_games,obs,0,1418,0.103745446429515,evaluated,False,exploratory_transductive
+Pitching+,year_stability_2024_2025,pred,0,275,0.5891385612236063,evaluated,False,exploratory_transductive
+Pitching+,next_season_rv_2024_2025,pred,0,275,0.18289303734365078,evaluated,False,exploratory_transductive
+Pitching+,next_season_rv_2024_2025,obs,0,275,0.12917595972022844,evaluated,False,exploratory_transductive
+Pitching+,next_season_rv_2024_2025,raw_whiff,0,261,-0.16133982989557222,evaluated,False,exploratory_transductive
+Pitching+,year_stability_2025_2026,pred,0,263,0.5683224016734367,evaluated,False,exploratory_transductive
+Pitching+,next_season_rv_2025_2026,pred,0,263,0.05749035397241453,evaluated,False,exploratory_transductive
+Pitching+,next_season_rv_2025_2026,obs,0,263,-0.022319491250531724,evaluated,False,exploratory_transductive
+Pitching+,next_season_rv_2025_2026,raw_whiff,0,249,-0.17645492627564818,evaluated,False,exploratory_transductive
+Pitching+,sample_stability,pred,10,1547,0.18025038199255583,evaluated,False,exploratory_transductive
+Pitching+,sample_stability,obs,10,1547,0.07068199893356295,evaluated,False,exploratory_transductive
+Pitching+,sample_stability,pred,25,1424,0.29363567514926153,evaluated,False,exploratory_transductive
+Pitching+,sample_stability,obs,25,1424,0.01091657150939055,evaluated,False,exploratory_transductive
+Pitching+,sample_stability,pred,50,1280,0.37839651965875815,evaluated,False,exploratory_transductive
+Pitching+,sample_stability,obs,50,1280,0.09466924546986774,evaluated,False,exploratory_transductive
+Stuff+ no density,split_half_games,pred,0,1418,0.7584711634819838,evaluated,False,exploratory_transductive
+Stuff+ no density,split_half_games,obs,0,1418,0.103745446429515,evaluated,False,exploratory_transductive
+Stuff+ no density,year_stability_2024_2025,pred,0,275,0.7513438728391383,evaluated,False,exploratory_transductive
+Stuff+ no density,next_season_rv_2024_2025,pred,0,275,0.026804876589239735,evaluated,False,exploratory_transductive
+Stuff+ no density,next_season_rv_2024_2025,obs,0,275,0.12917595972022844,evaluated,False,exploratory_transductive
+Stuff+ no density,next_season_rv_2024_2025,raw_whiff,0,261,-0.16133982989557222,evaluated,False,exploratory_transductive
+Stuff+ no density,year_stability_2025_2026,pred,0,263,0.7551143653797583,evaluated,False,exploratory_transductive
+Stuff+ no density,next_season_rv_2025_2026,pred,0,263,0.11389829455784929,evaluated,False,exploratory_transductive
+Stuff+ no density,next_season_rv_2025_2026,obs,0,263,-0.022319491250531724,evaluated,False,exploratory_transductive
+Stuff+ no density,next_season_rv_2025_2026,raw_whiff,0,249,-0.17645492627564818,evaluated,False,exploratory_transductive
+Stuff+ no density,sample_stability,pred,10,1547,0.7244594045672088,evaluated,False,exploratory_transductive
+Stuff+ no density,sample_stability,obs,10,1547,0.07068199893356295,evaluated,False,exploratory_transductive
+Stuff+ no density,sample_stability,pred,25,1424,0.6645026456818829,evaluated,False,exploratory_transductive
+Stuff+ no density,sample_stability,obs,25,1424,0.01091657150939055,evaluated,False,exploratory_transductive
+Stuff+ no density,sample_stability,pred,50,1280,0.6445932227703115,evaluated,False,exploratory_transductive
+Stuff+ no density,sample_stability,obs,50,1280,0.09466924546986774,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,split_half_games,pred,0,1418,0.7734183305086508,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,split_half_games,obs,0,1418,0.103745446429515,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,year_stability_2024_2025,pred,0,275,0.8082597249780951,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2024_2025,pred,0,275,0.0516984911814318,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2024_2025,obs,0,275,0.12917595972022844,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2024_2025,raw_whiff,0,261,-0.16133982989557222,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,year_stability_2025_2026,pred,0,263,0.7913710035397026,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2025_2026,pred,0,263,0.12034549181890682,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2025_2026,obs,0,263,-0.022319491250531724,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,next_season_rv_2025_2026,raw_whiff,0,249,-0.17645492627564818,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,sample_stability,pred,10,1547,0.6444710160050797,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,sample_stability,obs,10,1547,0.07068199893356295,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,sample_stability,pred,25,1424,0.6495674117242675,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,sample_stability,obs,25,1424,0.01091657150939055,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,sample_stability,pred,50,1280,0.6520615234835471,evaluated,False,exploratory_transductive
+Stuff+ physics neutral,sample_stability,obs,50,1280,0.09466924546986774,evaluated,False,exploratory_transductive

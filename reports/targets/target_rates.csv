@@ -1,0 +1,9 @@
+target,rate,denominator_n,definition,denominator
+t_swing,0.4699,627602,batter swings,all pitches
+t_whiff,0.2414,294895,swing and miss,swings
+t_chase,0.343,407036,swing at a pitch outside the zone,pitches outside the zone
+t_called_strike,0.2898,332707,called strike,takes (no swing)
+t_weak_contact,0.5557,107096,exit velocity < 88 mph or popup,balls in play with tracking
+t_groundball,0.4579,106034,ground ball,balls in play (bunts excluded)
+t_hard_contact,0.1235,107096,EV >= 95 mph and launch angle 8-32 deg,balls in play with tracking
+t_out_in_pa,0.6192,622257,the plate appearance ends in an out,pitches of PAs with a known ending

@@ -1,0 +1,16 @@
+feature,mean_abs_points,label
+InducedVertBreak,3.3567,quiebre vertical
+rho,3.2757,densidad del aire
+RelSpeed,2.9475,velocidad
+velo_diff_fb,2.1324,diferencia de velocidad vs su recta
+hb_arm,1.8667,quiebre horizontal
+AutoPitchType,1.6523,tipo de pitch
+spin_axis_arm,1.4086,eje de giro
+arm_angle,1.2696,ángulo de brazo
+ivb_diff_fb,1.1557,diferencia vertical vs su recta
+Extension,1.0055,extensión
+hb_diff_fb,0.959,diferencia horizontal vs su recta
+rel_side_arm,0.9374,soltado lateral
+is_rhp,0.7745,mano
+SpinRate,0.7328,giro
+RelHeight,0.6647,altura de soltado

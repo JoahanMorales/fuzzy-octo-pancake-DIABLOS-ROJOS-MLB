@@ -1,0 +1,8 @@
+stat,lmb,mlb,lmb_over_mlb,mlb_source,mlb_verified
+Walk runs vs out,0.7999,0.5548,1.442,"FanGraphs Guts! wOBA and FIP constants, 2024 (web-search snapshot)",False
+HitByPitch runs vs out,0.8061,0.5797,1.3905,"FanGraphs Guts! wOBA and FIP constants, 2024 (web-search snapshot)",False
+Single runs vs out,0.9336,0.7101,1.3146,"FanGraphs Guts! wOBA and FIP constants, 2024 (web-search snapshot)",False
+Double runs vs out,1.2415,1.0097,1.2297,"FanGraphs Guts! wOBA and FIP constants, 2024 (web-search snapshot)",False
+Triple runs vs out,1.587,1.2802,1.2396,"FanGraphs Guts! wOBA and FIP constants, 2024 (web-search snapshot)",False
+HomeRun runs vs out,1.8475,1.6506,1.1193,"FanGraphs Guts! wOBA and FIP constants, 2024 (web-search snapshot)",False
+runs per PA,0.1444,0.117,1.2344,"FanGraphs Guts! wOBA and FIP constants, 2024 (web-search snapshot)",False

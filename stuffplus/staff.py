@@ -128,6 +128,11 @@ def pitch_plan(d: pd.DataFrame, franchises, min_pitches: int = 50, min_usage: fl
     return p.sort_values(KEY + ["usage"], ascending=[True, True, False]).reset_index(drop=True)
 
 
+def _label(t: pd.DataFrame, side: str) -> pd.Series:
+    """Shape plus mean velocity: a pitcher can have two pitch_ids with the same shape name (e.g. two four-seamers)."""
+    return t[f"shape_{side}"].astype(str) + " · " + t[f"velo_{side}"].round(1).astype(str) + " mph"
+
+
 def mix_runs(plan: pd.DataFrame, pitchers: pd.DataFrame, rates: dict, shift: float = 0.10) -> pd.DataFrame:
     """Runs saved per season by moving ``shift`` of home usage from the 'reduce' pitch to the 'lean on' pitch.
 
@@ -141,7 +146,7 @@ def mix_runs(plan: pd.DataFrame, pitchers: pd.DataFrame, rates: dict, shift: flo
     both = both.join(pt[["seasons", "home_pitches", "role"]], how="inner")
     n_seasons = both.seasons.str.count("-") + 1
     out = pd.DataFrame({
-        "role": both.role, "lean_pitch": both.shape_lean, "cut_pitch": both.shape_cut,
+        "role": both.role, "lean_pitch": _label(both, "lean"), "cut_pitch": _label(both, "cut"),
         "lean_stuff_hh": both.stuff_plus_harp_helu_lean, "cut_stuff_hh": both.stuff_plus_harp_helu_cut,
         "gap_points": both.stuff_plus_harp_helu_lean - both.stuff_plus_harp_helu_cut,
         "cut_usage_home": both.usage_home_cut, "home_pitches_per_season": both.home_pitches / n_seasons})

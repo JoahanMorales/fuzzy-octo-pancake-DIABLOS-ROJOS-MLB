@@ -6,7 +6,7 @@
 - Why: HACK-033 conflicts with UI owner; EconML incompatible with shared sklearn1.9; causal ignorability is not established; strong checkpoint unavailable at pace critical cap0
 - Failing: No code/test/runtime/CI failures;formal registered approval still pending
 - Commands: OMP_NUM_THREADS=2 python -m pytest -q tests/test_causal.py; python -m analysis.causal.run --fast; gh pr view23; smoke;secret-scan --tracked
-- Next: Apply option: Use isolated optional EconML extra; grouped nuisance CV; pre-pitch covariates; report only exploratory aggregate contrasts with overlap gates
+- Next: Integrated in main: bd8a82d5720764d71ed7f669fd8f7c9f305916fa
 
 ## History
 - 1791942337 | CLAIMED | sebastian-1 | claim; next: treatment/outcome frame from Pitching+ OOF predictions.
@@ -18,3 +18,4 @@
 - 1791944034 | REVIEW | sebastian-1 | handoff; next: Registered independent reviewer runs Verify with optionalextra and records verdict for916d445; owner can uak merge only after approval
 - 1791944204 | REVIEW | scheduler | deadline decision HACK-027-1791942485; option: Use isolated optional EconML extra; grouped nuisance CV; pre-pitch covariates; report only exploratory aggregate contrasts with overlap gates; Why: HACK-033 conflicts with UI owner; EconML incompatible with shared sklearn1.9; causal ignorability is not established; strong checkpoint unavailable at pace critical cap0
 - 1791944419 | REVIEW | sebastian-2 | review; approve; SHA 916d44574ca80155c470ca427b27adbe6e9e1336; reviewer sebastian-2
+- 1791944636 | INTEGRATED | sebastian-1 | merge; smoke and Verify PASS; commit bd8a82d5720764d71ed7f669fd8f7c9f305916fa; reviewer sebastian-2

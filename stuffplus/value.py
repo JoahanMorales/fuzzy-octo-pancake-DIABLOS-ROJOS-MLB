@@ -6,8 +6,8 @@ Cadena:
 3. ``runs_per_win``: con W% = 1/(1+(RA/RS)^x) y r carreras por equipo-juego, una carrera menos permitida por juego
    vale x/(4r) de W%, o sea **carreras por victoria = 4r/x** (r mayor en altura ⇒ cada carrera vale menos).
 4. ``runs_per_stuff_point``: por definición de la escala (HACK-013), 1 punto de Stuff+ = 0.1·σ de xRV *predicho* por
-   lanzamiento; con un modelo calibrado, eso son carreras por lanzamiento. σ viene del modelo (bundle) o de un
-   escenario de varianza explicada; **no se inventa**: sin modelo final se presentan escenarios etiquetados.
+   lanzamiento; las carreras realizadas dependen de la pendiente de calibración fuera de muestra (``calibration_slope``).
+   σ viene del bundle del modelo (``scalers.stuff.stats``); no se inventa.
 5. ``conversion_table`` y ``altitude_proof_example``: puntos → carreras → victorias en casa (CDMX) y en la liga.
 """
 from __future__ import annotations
@@ -100,6 +100,28 @@ def runs_per_stuff_point(sigma_xrv: float, calibration: float = 1.0) -> float:
 
     ``sigma_xrv``: desviación estándar por lanzamiento del xRV *predicho* (la que usa ``PlusScaler``)."""
     return POINT_SD_FRACTION * float(sigma_xrv) * float(calibration)
+
+
+def calibration_slope(x, y, groups, n_boot: int = 1000, seed: int = SEED) -> dict:
+    """Pendiente de calibración de ``y`` (rv_x observado) sobre ``x`` (xRV predicho fuera de muestra): carreras realizadas
+    por carrera predicha. IC 95 % bootstrap por grupo (pitcher), con sumas por grupo (no recalcula nada por fila)."""
+    x, y = np.asarray(x, float), np.asarray(y, float)
+    ok = np.isfinite(x) & np.isfinite(y)
+    codes, uniq = pd.factorize(pd.Series(np.asarray(groups)[ok]))
+    k = len(uniq)
+    sums = {n: np.bincount(codes, weights=v, minlength=k) for n, v in
+            {"n": np.ones(ok.sum()), "x": x[ok], "y": y[ok], "xy": x[ok] * y[ok], "xx": x[ok] ** 2}.items()}
+
+    def slope(c):
+        n, sx, sy = c @ sums["n"], c @ sums["x"], c @ sums["y"]
+        return ((c @ sums["xy"]) - sx * sy / n) / ((c @ sums["xx"]) - sx**2 / n)
+
+    point = slope(np.ones(k))
+    rng = np.random.default_rng(seed)
+    boots = np.array([slope(rng.multinomial(k, np.full(k, 1 / k)).astype(float)) for _ in range(n_boot)])
+    lo, hi = np.percentile(boots, [2.5, 97.5])
+    return {"slope": float(point), "lo": float(lo), "hi": float(hi), "sd_x": float(x[ok].std()), "n": int(ok.sum()),
+            "n_groups": int(k)}
 
 
 def sigma_from_variance_explained(sd_rv: float, r2: float) -> float:

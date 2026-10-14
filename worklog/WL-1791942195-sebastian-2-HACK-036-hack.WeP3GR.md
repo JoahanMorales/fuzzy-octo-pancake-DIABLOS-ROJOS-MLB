@@ -12,3 +12,4 @@
 - 1791942195 | CLAIMED | sebastian-2 | claim; next: storyboard the 10 slides in `demo/deck/README.md` with the source CSV of each number.
 - 1791942780 | CLAIMED | sebastian-2 | checkpoint; next: Finish smoke, commit/push and open draft PR with dependencies; checkpoint/handoff under critical pace
 - 1791942997 | CLAIMED | sebastian-2 | checkpoint; next: Resume branch feat/hack-036 and PR #22; fill slides 7/8/10 from verified HACK-032/021/dashboard outputs, refresh slide 4 with HACK-014 and slide 9 with final scale; rebuild, verify/render, review before ready
+- 1791943003 | CLAIMED | sebastian-2 | handoff; next: Resume branch feat/hack-036 and PR #22; fill slides 7/8/10 from verified HACK-032/021/dashboard outputs, refresh slide 4 with HACK-014 and slide 9 with final scale; rebuild, verify/render, review before ready

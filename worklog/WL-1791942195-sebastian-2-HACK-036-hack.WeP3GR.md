@@ -1,13 +1,14 @@
 # worklog/WL-1791942195-sebastian-2-HACK-036-hack.WeP3GR.md · HACK-036
 
 ## Live summary
-- Done: 10-slide PPTX/PDF and 1-page GM PDF built;21 CSV bindings+hashes verified;actual LibreOffice export10 pages text-match;visual QA no overlap;storyboard Verify exit0
-- Decision: Exploratory draft; preserve visible pending staff/prospect/live demo/inductive validation instead of fabricated outputs
-- Why: Actual source Stuff+ at baseline; anonymous park identity unresolved; dependent artifacts absent
-- Failing: Full smoke pending; pace critical cap strong0, no strong advisor; independent formal review pending
-- Commands: build.py;verify.py;LibreOffice headless export;verify.py --rendered;test -s demo/deck/README.md
-- Next: Finish smoke, commit/push and open draft PR with dependencies; checkpoint/handoff under critical pace
+- Done: 7a4a928 pushed; draft PR #22; editable 10-slide PPTX and PDF, GM one-page PDF; 21 source values and hashes verified; real LibreOffice render QA; backlog Verify and smoke PRODUCT_PASS
+- Decision: Keep final acceptance incomplete and draft explicit; official aggregates only; no fabricated staff, prospect or live-demo claims
+- Why: Required downstream artifacts unavailable; pace critical requires handoff after current criterion
+- Failing: Final acceptance awaits verified staff/prospect outputs, inductive holdouts, integrated demo and calibrated business conversion; no test failures
+- Commands: python demo/deck/build.py; python demo/deck/verify.py --rendered PDF; test -s demo/deck/README.md; smoke exit 0; git push; gh pr create --draft
+- Next: Resume branch feat/hack-036 and PR #22; fill slides 7/8/10 from verified HACK-032/021/dashboard outputs, refresh slide 4 with HACK-014 and slide 9 with final scale; rebuild, verify/render, review before ready
 
 ## History
 - 1791942195 | CLAIMED | sebastian-2 | claim; next: storyboard the 10 slides in `demo/deck/README.md` with the source CSV of each number.
 - 1791942780 | CLAIMED | sebastian-2 | checkpoint; next: Finish smoke, commit/push and open draft PR with dependencies; checkpoint/handoff under critical pace
+- 1791942997 | CLAIMED | sebastian-2 | checkpoint; next: Resume branch feat/hack-036 and PR #22; fill slides 7/8/10 from verified HACK-032/021/dashboard outputs, refresh slide 4 with HACK-014 and slide 9 with final scale; rebuild, verify/render, review before ready

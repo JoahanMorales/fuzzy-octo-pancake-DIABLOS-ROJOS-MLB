@@ -35,3 +35,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791925103 | deadline lease/HACK-014/1791923739 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791925103 | deadline queue-lock/hack.O87yH8-sebastian-1-HACK-026/1791922783 | HUMAN | Lock lease expired; revalidate before merging
 - 1791939288 | deadline lease/HACK-026/1791934738 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1791939824 | HACK-014 | Draft implementation only; task acceptance remains incomplete | Why: Official input absent; shared preparation still transductive

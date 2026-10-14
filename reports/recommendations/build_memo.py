@@ -114,7 +114,9 @@ add(f"1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y a
 add(f"2. **Extensión alta.** Quintil superior (≥ {f(ext_hi.bin_lo, 2)} ft): ΔStuff+ {f(ext_hi.delta_stuff, 1, True)}; quintil inferior (≤ {f(ext_lo.bin_hi, 2)} ft): "
     f"{f(ext_lo.delta_stuff, 1, True)} (la extensión pesa más en altura: rango {f(rho.loc['Extension', 'swing_sea'], 1, True)} → {f(rho.loc['Extension', 'swing_alt'], 1, True)}).")
 add(f"3. **Ángulo de aproximación (VAA) bajo, neto de la altura del lanzamiento.** Quintil inferior: {f(vaa_lo.delta_stuff, 1, True)}; superior: {f(vaa_hi.delta_stuff, 1, True)}.")
-add(f"4. **Velocidad: suma más en altura** (rango {f(rho.loc['RelSpeed', 'swing_sea'], 1, True)} → {f(rho.loc['RelSpeed', 'swing_alt'], 1, True)} puntos).")
+spd = trait[trait.trait == "velocidad"].sort_values("bin_lo")["delta_stuff"].round(1).tolist()
+add(f"4. **Velocidad: sin umbral.** El efecto no es robusto: el rango de Stuff+ por velocidad pasa de {f(rho.loc['RelSpeed', 'swing_sea'], 1, True)} (mar) a {f(rho.loc['RelSpeed', 'swing_alt'], 1, True)} en el Harp Helú "
+    f"con el efecto total, pero a {f(rho.loc['RelSpeed', 'swing_alt_physics_only'], 1, True)} con solo la física (`rho_sensitivity.csv`), y los quintiles de ΔStuff+ no son monótonos ({', '.join(f'{v:+.1f}' for v in spd)}; `delta_by_trait.csv`).")
 add(f"5. **Secundarios:** preferir {', '.join(gain['shape'])}; desconfiar de {', '.join(lose['shape'].iloc[1:])}.")
 add(f"6. **Perfil de referencia de recta** en el aire del Harp Helú (`ideal_profile/best_fastballs.csv`): {best.RelSpeed:.1f} mph, IVB {best.InducedVertBreak:.1f}\" y HB {best.hb_arm:.1f}\" a nivel del mar, "
     f"extensión {best.Extension:.2f} ft, salida {best.RelHeight:.2f} ft → Stuff+ {best.stuff_alt:.1f} en el Harp Helú ({best.stuff_sea:.1f} a nivel del mar).")
@@ -123,17 +125,20 @@ add("*Límite:* la eficiencia de giro no se usa como criterio: la brecha de ~15 
 add("")
 
 # 4
-add("## 4. Tácticas en casa frente a gira")
+add("## 4. Tácticas en casa frente a gira (hipótesis basadas en el modelo)")
 add("")
-mid4 = zone("Four-Seam", "4")
-add(f"Efecto del aire por zona del plato, en carreras por lanzamiento (+ = peor para el pitcher; `location_model/altitude_by_zone.csv`, basado en el modelo y con ρ a nivel de juego):")
+add("Efecto del aire por zona del plato, en carreras por lanzamiento (+ = peor para el pitcher; `location_model/altitude_by_zone.csv`). Es el modelo de ubicación (Location+) con ρ a nivel de juego: "
+    "son **hipótesis para probar**, no un experimento. Zonas 1–9 = filas de arriba a abajo y columnas del lado del brazo al del guante (`stuffplus/models/location.py`, `zone_label`).")
 add("")
-add(f"- **El centro cuesta más:** recta zona 4 {zone('Four-Seam', '4'):+.3f} y zona 5 {zone('Four-Seam', '5'):+.3f}; slider zona 4 {zone('Slider', '4'):+.3f}. Evitar el medio de la zona en casa.")
-add(f"- **Abajo pierde más que arriba:** recta zonas 7–8 ({zone('Four-Seam', '7'):+.3f}, {zone('Four-Seam', '8'):+.3f}) frente a zonas 1–3 ({zone('Four-Seam', '1'):+.3f} a {zone('Four-Seam', '3'):+.3f}).")
-add(f"- **El borde fuera de la zona casi no cambia** (recta {zone('Four-Seam', 'chase'):+.4f}, slider {zone('Slider', 'chase'):+.4f}): en casa conviene buscar el *chase* en lugar de pelear la zona.")
-add(f"- **La esquina baja del lado del guante (zona 9) aguanta mejor** (recta {zone('Four-Seam', '9'):+.3f}, slider {zone('Slider', '9'):+.3f}).")
+add(f"- **El centro cuesta más:** recta zona 4 {zone('Four-Seam', '4'):+.3f} y zona 5 {zone('Four-Seam', '5'):+.3f}; slider zona 4 {zone('Slider', '4'):+.3f} y zona 3 {zone('Slider', '3'):+.3f}. Evitar el medio de la zona en casa.")
+add(f"- **Recta: abajo pierde más que arriba** (zonas 7–8: {zone('Four-Seam', '7'):+.3f}, {zone('Four-Seam', '8'):+.3f}; zonas 1–3: {zone('Four-Seam', '1'):+.3f} a {zone('Four-Seam', '3'):+.3f}). "
+    f"No se generaliza al slider (zonas 7–8: {zone('Slider', '7'):+.3f}, {zone('Slider', '8'):+.3f}; zonas 1–3: {zone('Slider', '1'):+.3f} a {zone('Slider', '3'):+.3f}).")
+absval = float(zones[(zones.pitch_family == 'Four-Seam') & (zones.zone == 'chase')]['harp_helu'].iloc[0])
+add(f"- **Borde fuera de la zona:** el *cambio* por la altura es casi nulo (recta {zone('Four-Seam', 'chase'):+.4f}, slider {zone('Slider', 'chase'):+.4f}), pero su valor absoluto sigue siendo el peor de todas las regiones (recta {absval:+.3f} en el Harp Helú): "
+    "la altura no lo empeora, y eso no basta para recomendar buscarlo.")
+add(f"- **Zona 9 (abajo, lado del guante) aguanta mejor el cambio** (recta {zone('Four-Seam', '9'):+.3f}, slider {zone('Slider', '9'):+.3f}).")
 add("")
-add("*Pendiente:* secuencias y conteos de Diablos en casa contra gira dependen de la auditoría del staff (HACK-032), todavía no integrada; este memo no las inventa.")
+add("*Pendiente (aceptación incompleta):* secuencias y conteos de Diablos en casa contra gira dependen de la auditoría del staff (HACK-032), todavía no integrada; este memo no las inventa.")
 add("")
 
 # 5
@@ -142,7 +147,7 @@ add("")
 add(f"- **Carreras por victoria:** liga {rpw_lg:.1f}; Harp Helú (bucket Extreme) {rpw_ext:.1f} (`business_value/runs_per_win.csv`). En altura se anota más, así que cada carrera ahorrada vale menos victorias.")
 add(f"- **Un punto de Stuff+ vale {stuff_pp.carreras_por_punto_lanzamiento:.2e} carreras por lanzamiento** [{stuff_pp.lo:.2e}, {stuff_pp.hi:.2e}] (estimación directa fuera de muestra, `business_value/runs_per_point_direct.csv`).")
 add(f"- **Ejemplo:** +10 puntos de Stuff+ en 2,500 lanzamientos son {gm_s.carreras:.1f} carreras ≈ **{gm_s.victorias:.2f} victorias** en el Harp Helú (`business_value/gm_example.csv`). "
-    f"Una desviación estándar entre pitcher-temporadas ({sp.sd_puntos_entre_pitcher_temporadas:.1f} puntos) equivale a {sp.carreras_por_1sd:.1f} carreras ≈ {sp.victorias_por_1sd:.2f} victorias (`business_value/pitcher_spread_example.csv`).")
+    f"Una desviación estándar *observada* entre pitcher-temporadas, que incluye ruido de muestreo ({sp.sd_puntos_entre_pitcher_temporadas:.1f} puntos) equivale a {sp.carreras_por_1sd:.1f} carreras ≈ {sp.victorias_por_1sd:.2f} victorias (`business_value/pitcher_spread_example.csv`).")
 add(f"- **Costo medio de la altura:** {cost.loc['Extreme', 'mean_delta']:+.4f} carreras por lanzamiento (Extreme frente a sin altitud, `business_value/altitude_cost.csv`): ~{cost.loc['Extreme', 'mean_delta'] * 77:.1f} carreras por apertura de 77 lanzamientos.")
 swap = float(shapes[shapes['shape'] == 'riding 4S']['delta_stuff'].iloc[0] - shapes[shapes['shape'] == 'sweeper']['delta_stuff'].iloc[0])
 add(f"- **Orden de magnitud de la decisión de reclutamiento:** la diferencia de pérdida entre riding 4S y sweeper es {abs(swap):.1f} puntos; por cada 1,000 lanzamientos son "

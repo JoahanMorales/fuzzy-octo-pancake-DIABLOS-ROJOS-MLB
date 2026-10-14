@@ -31,28 +31,28 @@ Umbrales sacados de los quintiles observados (`ideal_profile/delta_by_trait.csv`
 1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es +20.9 puntos a nivel del mar y solo +7.6 en el Harp Helú; la recta de más *ride* es la que más pierde (riding 4S -16.0).
 2. **Extensión alta.** Quintil superior (≥ 6.43 ft): ΔStuff+ -9.7; quintil inferior (≤ 5.58 ft): -12.8 (la extensión pesa más en altura: rango +2.2 → +4.9).
 3. **Ángulo de aproximación (VAA) bajo, neto de la altura del lanzamiento.** Quintil inferior: -9.1; superior: -13.1.
-4. **Velocidad: suma más en altura** (rango +8.4 → +9.4 puntos).
+4. **Velocidad: sin umbral.** El efecto no es robusto: el rango de Stuff+ por velocidad pasa de +8.4 (mar) a +9.4 en el Harp Helú con el efecto total, pero a +6.8 con solo la física (`rho_sensitivity.csv`), y los quintiles de ΔStuff+ no son monótonos (-10.2, -10.4, -11.3, -12.3, -11.6; `delta_by_trait.csv`).
 5. **Secundarios:** preferir sweeper, 12-6 CB, slider; desconfiar de power CH, changeup.
 6. **Perfil de referencia de recta** en el aire del Harp Helú (`ideal_profile/best_fastballs.csv`): 90.7 mph, IVB 16.3" y HB 6.6" a nivel del mar, extensión 6.25 ft, salida 6.14 ft → Stuff+ 108.2 en el Harp Helú (115.5 a nivel del mar).
 
 *Límite:* la eficiencia de giro no se usa como criterio: la brecha de ~15 % entre altitudes sigue sin explicarse (`physics/README.md`).
 
-## 4. Tácticas en casa frente a gira
+## 4. Tácticas en casa frente a gira (hipótesis basadas en el modelo)
 
-Efecto del aire por zona del plato, en carreras por lanzamiento (+ = peor para el pitcher; `location_model/altitude_by_zone.csv`, basado en el modelo y con ρ a nivel de juego):
+Efecto del aire por zona del plato, en carreras por lanzamiento (+ = peor para el pitcher; `location_model/altitude_by_zone.csv`). Es el modelo de ubicación (Location+) con ρ a nivel de juego: son **hipótesis para probar**, no un experimento. Zonas 1–9 = filas de arriba a abajo y columnas del lado del brazo al del guante (`stuffplus/models/location.py`, `zone_label`).
 
-- **El centro cuesta más:** recta zona 4 +0.027 y zona 5 +0.025; slider zona 4 +0.025. Evitar el medio de la zona en casa.
-- **Abajo pierde más que arriba:** recta zonas 7–8 (+0.018, +0.021) frente a zonas 1–3 (+0.012 a +0.014).
-- **El borde fuera de la zona casi no cambia** (recta -0.0007, slider +0.0035): en casa conviene buscar el *chase* en lugar de pelear la zona.
-- **La esquina baja del lado del guante (zona 9) aguanta mejor** (recta +0.006, slider +0.010).
+- **El centro cuesta más:** recta zona 4 +0.027 y zona 5 +0.025; slider zona 4 +0.025 y zona 3 +0.025. Evitar el medio de la zona en casa.
+- **Recta: abajo pierde más que arriba** (zonas 7–8: +0.018, +0.021; zonas 1–3: +0.012 a +0.014). No se generaliza al slider (zonas 7–8: +0.018, +0.017; zonas 1–3: +0.014 a +0.025).
+- **Borde fuera de la zona:** el *cambio* por la altura es casi nulo (recta -0.0007, slider +0.0035), pero su valor absoluto sigue siendo el peor de todas las regiones (recta +0.040 en el Harp Helú): la altura no lo empeora, y eso no basta para recomendar buscarlo.
+- **Zona 9 (abajo, lado del guante) aguanta mejor el cambio** (recta +0.006, slider +0.010).
 
-*Pendiente:* secuencias y conteos de Diablos en casa contra gira dependen de la auditoría del staff (HACK-032), todavía no integrada; este memo no las inventa.
+*Pendiente (aceptación incompleta):* secuencias y conteos de Diablos en casa contra gira dependen de la auditoría del staff (HACK-032), todavía no integrada; este memo no las inventa.
 
 ## 5. Valor en carreras y victorias
 
 - **Carreras por victoria:** liga 11.8; Harp Helú (bucket Extreme) 14.3 (`business_value/runs_per_win.csv`). En altura se anota más, así que cada carrera ahorrada vale menos victorias.
 - **Un punto de Stuff+ vale 7.24e-04 carreras por lanzamiento** [6.78e-04, 7.69e-04] (estimación directa fuera de muestra, `business_value/runs_per_point_direct.csv`).
-- **Ejemplo:** +10 puntos de Stuff+ en 2,500 lanzamientos son 18.1 carreras ≈ **1.26 victorias** en el Harp Helú (`business_value/gm_example.csv`). Una desviación estándar entre pitcher-temporadas (5.4 puntos) equivale a 9.9 carreras ≈ 0.69 victorias (`business_value/pitcher_spread_example.csv`).
+- **Ejemplo:** +10 puntos de Stuff+ en 2,500 lanzamientos son 18.1 carreras ≈ **1.26 victorias** en el Harp Helú (`business_value/gm_example.csv`). Una desviación estándar *observada* entre pitcher-temporadas, que incluye ruido de muestreo (5.4 puntos) equivale a 9.9 carreras ≈ 0.69 victorias (`business_value/pitcher_spread_example.csv`).
 - **Costo medio de la altura:** +0.0116 carreras por lanzamiento (Extreme frente a sin altitud, `business_value/altitude_cost.csv`): ~0.9 carreras por apertura de 77 lanzamientos.
 - **Orden de magnitud de la decisión de reclutamiento:** la diferencia de pérdida entre riding 4S y sweeper es 11.4 puntos; por cada 1,000 lanzamientos son ~8.2 carreras (~0.57 victorias en el Harp Helú). Es una diferencia de pérdida entre formas, no el efecto causal de cambiar un lanzamiento por otro.
 

@@ -18,34 +18,34 @@ Exponente pitagórico **x = 1.90** (IC 95 % bootstrap 1.62–2.15, 60 equipo-tem
 
 ## Tabla de conversión: +1 punto de Stuff+ → carreras → victorias
 
-Por definición de la escala (HACK-013), 1 punto = 0.1 σ del xRV *predicho* por lanzamiento. Esa σ depende del modelo final (HACK-010/012), que todavía no está integrado, así que se muestran **escenarios de calidad del modelo** (fracción de la varianza del `rv_x` por lanzamiento que explica; σ(rv_x) = 0.198). **No son resultados del modelo**: cuando exista el bundle final se sustituye la σ real en `analysis/business_value/run.py`.
+Por definición de la escala (HACK-013), 1 punto = 0.1 σ del xRV predicho por lanzamiento, y σ sale del **bundle v1** (`scalers.stuff.stats`, creado 2026-10-13T22:22:40+00:00): σ = 0.01055 carreras por lanzamiento (por temporada 2024: 0.01063, 2025: 0.01057, 2026: 0.01033). Las carreras *realizadas* por carrera predicha se miden fuera de muestra (validación cruzada por pitcher): pendiente de calibración **0.69** [IC 95 % por pitcher 0.64, 0.73] sobre 627,602 lanzamientos. Entonces +1 punto ≈ 7.24e-04 carreras por lanzamiento (filas «calibración baja/alta» = extremos del IC). Sin escenarios supuestos: la σ y la calibración son del modelo real.
 
 | escenario | lanzamientos | entorno | carreras | victorias |
 |---|---|---|---|---|
-| modelo débil (R²=0.25 % del xRV) | 100 | liga | 0.09899 | 0.0084 |
-| modelo débil (R²=0.25 % del xRV) | 100 | Harp Helú (bucket Extreme) | 0.09899 | 0.006908 |
-| modelo débil (R²=0.25 % del xRV) | 500 | liga | 0.495 | 0.042 |
-| modelo débil (R²=0.25 % del xRV) | 500 | Harp Helú (bucket Extreme) | 0.495 | 0.03454 |
-| modelo débil (R²=0.25 % del xRV) | 1000 | liga | 0.9899 | 0.084 |
-| modelo débil (R²=0.25 % del xRV) | 1000 | Harp Helú (bucket Extreme) | 0.9899 | 0.06908 |
-| modelo débil (R²=0.25 % del xRV) | 2500 | liga | 2.475 | 0.21 |
-| modelo débil (R²=0.25 % del xRV) | 2500 | Harp Helú (bucket Extreme) | 2.475 | 0.1727 |
-| modelo moderado (R²=1 %) | 100 | liga | 0.198 | 0.0168 |
-| modelo moderado (R²=1 %) | 100 | Harp Helú (bucket Extreme) | 0.198 | 0.01382 |
-| modelo moderado (R²=1 %) | 500 | liga | 0.9899 | 0.084 |
-| modelo moderado (R²=1 %) | 500 | Harp Helú (bucket Extreme) | 0.9899 | 0.06908 |
-| modelo moderado (R²=1 %) | 1000 | liga | 1.98 | 0.168 |
-| modelo moderado (R²=1 %) | 1000 | Harp Helú (bucket Extreme) | 1.98 | 0.1382 |
-| modelo moderado (R²=1 %) | 2500 | liga | 4.95 | 0.42 |
-| modelo moderado (R²=1 %) | 2500 | Harp Helú (bucket Extreme) | 4.95 | 0.3454 |
-| modelo fuerte (R²=3 %) | 100 | liga | 0.3429 | 0.0291 |
-| modelo fuerte (R²=3 %) | 100 | Harp Helú (bucket Extreme) | 0.3429 | 0.02393 |
-| modelo fuerte (R²=3 %) | 500 | liga | 1.715 | 0.1455 |
-| modelo fuerte (R²=3 %) | 500 | Harp Helú (bucket Extreme) | 1.715 | 0.1197 |
-| modelo fuerte (R²=3 %) | 1000 | liga | 3.429 | 0.291 |
-| modelo fuerte (R²=3 %) | 1000 | Harp Helú (bucket Extreme) | 3.429 | 0.2393 |
-| modelo fuerte (R²=3 %) | 2500 | liga | 8.573 | 0.7274 |
-| modelo fuerte (R²=3 %) | 2500 | Harp Helú (bucket Extreme) | 8.573 | 0.5983 |
+| calibración central | 100 | liga | 0.07236 | 0.00614 |
+| calibración central | 100 | Harp Helú (bucket Extreme) | 0.07236 | 0.00505 |
+| calibración central | 500 | liga | 0.3618 | 0.0307 |
+| calibración central | 500 | Harp Helú (bucket Extreme) | 0.3618 | 0.02525 |
+| calibración central | 1000 | liga | 0.7236 | 0.0614 |
+| calibración central | 1000 | Harp Helú (bucket Extreme) | 0.7236 | 0.0505 |
+| calibración central | 2500 | liga | 1.809 | 0.1535 |
+| calibración central | 2500 | Harp Helú (bucket Extreme) | 1.809 | 0.1263 |
+| calibración baja (IC 2.5 %) | 100 | liga | 0.0677 | 0.005744 |
+| calibración baja (IC 2.5 %) | 100 | Harp Helú (bucket Extreme) | 0.0677 | 0.004724 |
+| calibración baja (IC 2.5 %) | 500 | liga | 0.3385 | 0.02872 |
+| calibración baja (IC 2.5 %) | 500 | Harp Helú (bucket Extreme) | 0.3385 | 0.02362 |
+| calibración baja (IC 2.5 %) | 1000 | liga | 0.677 | 0.05744 |
+| calibración baja (IC 2.5 %) | 1000 | Harp Helú (bucket Extreme) | 0.677 | 0.04724 |
+| calibración baja (IC 2.5 %) | 2500 | liga | 1.692 | 0.1436 |
+| calibración baja (IC 2.5 %) | 2500 | Harp Helú (bucket Extreme) | 1.692 | 0.1181 |
+| calibración alta (IC 97.5 %) | 100 | liga | 0.07688 | 0.006524 |
+| calibración alta (IC 97.5 %) | 100 | Harp Helú (bucket Extreme) | 0.07688 | 0.005365 |
+| calibración alta (IC 97.5 %) | 500 | liga | 0.3844 | 0.03262 |
+| calibración alta (IC 97.5 %) | 500 | Harp Helú (bucket Extreme) | 0.3844 | 0.02683 |
+| calibración alta (IC 97.5 %) | 1000 | liga | 0.7688 | 0.06524 |
+| calibración alta (IC 97.5 %) | 1000 | Harp Helú (bucket Extreme) | 0.7688 | 0.05365 |
+| calibración alta (IC 97.5 %) | 2500 | liga | 1.922 | 0.1631 |
+| calibración alta (IC 97.5 %) | 2500 | Harp Helú (bucket Extreme) | 1.922 | 0.1341 |
 
 Referencia: un abridor lanza ~77 lanzamientos por apertura (mediana de los datos).
 
@@ -66,7 +66,9 @@ Brecha entre el brazo de alta pérdida y el de a prueba de altura: **8.1 carrera
 ## Advertencias
 
 - `rv_x` valora las bolas en juego con la altitud como rasgo (HACK-030): el costo de la altura incluye parte del modelo de contacto, no solo los lanzamientos.
-- La tabla Stuff+ → carreras usa escenarios, no el modelo final (aún no integrado). Las cifras absolutas cambiarán; la fórmula y el cociente entre entornos no.
+- La σ es la del bundle v1 reconstruido localmente con `analysis/stuff_model/run.py` (los bundles no se comparten por git); si el modelo se reentrena, hay que volver a correr este análisis.
+- La calibración se mide sobre el xRV predicho fuera de muestra (modelo de cinco resultados), mientras la escala del bundle usa el modelo destilado (R² 0.92 con él): son aproximaciones del mismo modelo.
+- A este nivel de calibración el valor de un punto por lanzamiento es pequeño: el efecto aparece en sumas grandes (mil lanzamientos o más) y en grupos de lanzamientos, no en un lanzamiento suelto.
 - Marcadores reconstruidos: partidos incompletos en los datos o carreras fuera de los lanzamientos pueden sesgar; los datos solo cubren una muestra de la temporada por equipo.
 - Linealización pitagórica válida cerca de un equipo promedio; ±1σ en sensibilidad supone dispersión aproximadamente normal.
 - La identidad CDMX vs Puebla sigue sin verificar (HACK-003): «entorno Extreme» agrupa los parques de altura.

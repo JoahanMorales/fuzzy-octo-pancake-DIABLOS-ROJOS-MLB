@@ -1,0 +1,15 @@
+feature,main_pts,rho_interaction_pts,distill_r2
+InducedVertBreak,2.5068,0.7629,0.9411
+velo_diff_fb,1.5086,0.4311,0.9411
+ivb_diff_fb,0.7355,0.4145,0.9411
+spin_axis_arm,1.2634,0.4114,0.9411
+hb_arm,2.1583,0.4101,0.9411
+RelSpeed,2.3761,0.3139,0.9411
+SpinRate,0.504,0.3049,0.9411
+rel_side_arm,0.7931,0.279,0.9411
+hb_diff_fb,0.7812,0.251,0.9411
+arm_angle,0.8333,0.2333,0.9411
+Extension,0.6385,0.2266,0.9411
+pitch_family,0.8652,0.2107,0.9411
+RelHeight,0.3831,0.1762,0.9411
+is_rhp,0.5502,0.0807,0.9411

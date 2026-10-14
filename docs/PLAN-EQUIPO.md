@@ -1,6 +1,8 @@
 # Plan de equipo · Stuff+ 2240 · 10 días (13 → 22 oct 2026)
 
-4 humanos × 2 agentes = 8 agentes. Backlog: `.uak/TASKS.md` (36 tareas). Grafo: `docs/backlog-graph.md`. Estado en vivo: `bash .uak/bin/uak board --watch 10`.
+4 humanos × 2 agentes = 8 agentes.
+
+> **Agentes retirados (2026-10-13):** `victor-3`, `victor-4` y `victor-5` **ya no existen** (los creó por error una sesión anterior). De Victor solo trabajan `victor-1` y `victor-2`, una terminal cada uno. No asignarles tareas ni mensajes: reasignar a `victor-1`/`victor-2`. Sus claims vencidos (p.ej. HACK-007) se recuperan con `uak release ID --expired --read-summary`. Backlog: `.uak/TASKS.md` (36 tareas). Grafo: `docs/backlog-graph.md`. Estado en vivo: `bash .uak/bin/uak board --watch 10`.
 `uak next` siempre dice qué sigue; la tabla de abajo es la ruta **sugerida** (el kit reparte según dependencias y rutas libres).
 
 ## Quién hace qué

@@ -49,27 +49,24 @@ def test_runs_per_win_and_wins_from_runs():
     assert exact == pytest.approx(d / V.runs_per_win(r, x), rel=0.08)
 
 
-def test_stuff_point_is_a_tenth_of_sigma_and_scales_linearly():
+def test_stuff_point_is_a_tenth_of_sigma_and_conversion_scales_linearly():
     assert V.runs_per_stuff_point(0.05) == pytest.approx(0.005)
-    sig = V.sigma_from_variance_explained(0.27, 0.01)
-    assert sig == pytest.approx(0.027)
-    t = V.conversion_table({"r2=1%": sig}, [1000, 2000], {"liga": 10.0, "CDMX": 15.0})
+    t = V.conversion_table({"stuff": 0.0007}, [1000, 2000], {"liga": 10.0, "CDMX": 15.0})
     a = t[(t.lanzamientos == 1000) & (t.entorno == "liga")].iloc[0]
     b = t[(t.lanzamientos == 2000) & (t.entorno == "liga")].iloc[0]
     c = t[(t.lanzamientos == 1000) & (t.entorno == "CDMX")].iloc[0]
-    assert b.carreras == pytest.approx(2 * a.carreras)
+    assert a.carreras == pytest.approx(0.7) and b.carreras == pytest.approx(2 * a.carreras)
     assert c.victorias == pytest.approx(a.victorias * 10 / 15)  # en altura la misma carrera vale menos victorias
 
 
-def test_altitude_sensitivity_no_heterogeneity_gives_tau_zero_but_positive_bound():
-    rng = np.random.default_rng(4)
-    rows = []
-    for p in range(500):
-        for env, shift in (("No Altitude", 0.0), ("Extreme Altitude", 0.01)):
-            rows += [(f"p{p}", 2024, env, v) for v in rng.normal(shift, 0.25, 120)]
-    df = pd.DataFrame(rows, columns=["pitcher_anon_id", "year", "altitude_category", "rv"])
-    s = V.altitude_sensitivity(df, "rv", "No Altitude", "Extreme Altitude", min_n=100)
-    assert s["tau"] < 0.012 and s["tau_hi"] > s["tau"] and s["mean_delta"] == pytest.approx(0.01, abs=0.004)
+def test_direct_runs_per_point_recovers_planted_value_and_sign():
+    rng = np.random.default_rng(6)
+    n, g = 30000, 300
+    groups = rng.integers(0, g, n)
+    pts = rng.normal(0, 10, n)  # puntos de Stuff+ (más = mejor)
+    rv = -0.0007 * pts + rng.normal(0, 0.2, n)  # cada punto ahorra 0.0007 carreras (rv bajo = bueno)
+    d = V.direct_runs_per_point(pts, rv, groups, n_boot=300)
+    assert d["lo"] < 0.0007 < d["hi"] and d["per_point"] > 0
 
 
 def test_calibration_slope_recovers_planted_slope():

@@ -8,7 +8,7 @@ Cadena:
 4. ``runs_per_stuff_point``: por definición de la escala (HACK-013), 1 punto de Stuff+ = 0.1·σ de xRV *predicho* por
    lanzamiento; las carreras realizadas dependen de la pendiente de calibración fuera de muestra (``calibration_slope``).
    σ viene del bundle del modelo (``scalers.stuff.stats``); no se inventa.
-5. ``conversion_table`` y ``altitude_proof_example``: puntos → carreras → victorias en casa (CDMX) y en la liga.
+5. ``direct_runs_per_point`` (estimación directa), ``conversion_table`` y ``altitude_proof_example``: puntos → carreras → victorias en casa (CDMX) y en la liga.
 """
 from __future__ import annotations
 
@@ -129,18 +129,25 @@ def sigma_from_variance_explained(sd_rv: float, r2: float) -> float:
     return float(np.sqrt(r2) * sd_rv)
 
 
-def conversion_table(sigmas: dict[str, float], pitches: Iterable[int], rpw: dict[str, float]) -> pd.DataFrame:
-    """+1 punto de Stuff+ sostenido en N lanzamientos → carreras ahorradas → victorias, por escenario de σ y entorno.
+def direct_runs_per_point(points, y, groups, n_boot: int = 1000, seed: int = SEED) -> dict:
+    """Carreras ahorradas por +1 punto de Stuff+/Pitching+: menos la pendiente de ``y`` (run value observado, vista del
+    bateador: menor = mejor) sobre los puntos fuera de muestra escalados con el scaler del modelo. Estimación DIRECTA,
+    sin mezclar la σ del scaler (aire neutral) con la dispersión del xRV predicho en aire real. IC 95 % por grupo."""
+    c = calibration_slope(points, y, groups, n_boot=n_boot, seed=seed)
+    return {"per_point": -c["slope"], "lo": -c["hi"], "hi": -c["lo"], "n": c["n"], "n_groups": c["n_groups"]}
 
-    ``sigmas``: etiqueta → σ(xRV predicho); ``rpw``: entorno → carreras por victoria."""
+
+def conversion_table(per_point: dict[str, float], pitches: Iterable[int], rpw: dict[str, float]) -> pd.DataFrame:
+    """+1 punto sostenido en N lanzamientos → carreras ahorradas → victorias, por escala/estimación y entorno.
+
+    ``per_point``: etiqueta → carreras ahorradas por lanzamiento por punto; ``rpw``: entorno → carreras por victoria."""
     rows = []
-    for label, s in sigmas.items():
-        per_pitch = runs_per_stuff_point(s)
+    for label, pp in per_point.items():
         for n in pitches:
-            runs = per_pitch * n
+            runs = pp * n
             for env, r in rpw.items():
-                rows.append(dict(escenario=label, sigma_xrv=s, lanzamientos=int(n), carreras=runs, entorno=env,
-                                 carreras_por_victoria=r, victorias=runs / r))
+                rows.append(dict(escenario=label, carreras_por_punto_lanzamiento=pp, lanzamientos=int(n), carreras=runs,
+                                 entorno=env, carreras_por_victoria=r, victorias=runs / r))
     return pd.DataFrame(rows)
 
 

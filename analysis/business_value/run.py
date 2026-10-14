@@ -14,12 +14,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from analysis.pitching_model import run as pitching_run
 from analysis.stuff_model import run as stuff_run
 from stuffplus import splits
 from stuffplus import value as V
 from stuffplus.bundle import load_bundle
 from stuffplus.io import load_raw
+from stuffplus.models import pitching as pitching_models
 from stuffplus.physics import parks
+from stuffplus.scale import PlusScaler
 from stuffplus.schema import clean
 
 warnings.filterwarnings("ignore")
@@ -30,7 +33,7 @@ PITCH_GRID = (100, 500, 1000, 2500)
 RED, BLACK = "#B71C1C", "#111111"
 
 raw = clean(load_raw())
-df = stuff_run.prepare(raw)  # targets (rv_x) + rasgos; mismo marco con el que se entrena Stuff+
+df = pitching_run.prepare(raw)  # targets (rv, rv_x) + rasgos de Stuff+ y Pitching+; mismo marco con el que se entrenan
 
 # --- 1. marcadores, equipo-temporadas y exponente pitagórico
 scores = V.game_scores(raw)
@@ -69,22 +72,75 @@ pitches_per_start = float(per_start.median())
 games_per_team_season = float(ts["games"].median())
 home_starts = max(int(round(games_per_team_season / 2 / 5)), 1)  # juegos de local por temporada en los datos / rotación de 5
 
-# --- 4. σ real del Stuff+ (bundle v1) y calibración fuera de muestra → carreras por punto
+# --- 4. carreras por punto: estimación DIRECTA fuera de muestra (puntos con el scaler del modelo, regresión del run value realizado)
 bundle = load_bundle()
 st = bundle.manifest["scalers"]["stuff"]["stats"]
 sigma = float(st["__all__"]["sd"])
 sigma_years = {k: float(v["sd"]) for k, v in st.items() if k != "__all__"}
-folds = list(splits.pitcher_group_kfold(df))
-oof = stuff_run.StuffModel().oof(df, folds)  # xRV predicho fuera de muestra, por pitcher
-cal = V.calibration_slope(oof["xrv"].to_numpy(float), df["rv_x"].to_numpy(float), df["pitcher_anon_id"].to_numpy())
-pd.DataFrame([dict(sigma_scaler_all=sigma, **{f"sigma_{k}": v for k, v in sigma_years.items()}, **cal,
-                   bundle_version=bundle.manifest["version"], bundle_created=bundle.manifest["created_at"])]).round(6).to_csv(
-    OUT / "stuff_scale_calibration.csv", index=False)
-sd_rv = float(df["rv_x"].std())
-sigmas = {"calibración central": sigma * cal["slope"], "calibración baja (IC 2.5 %)": sigma * cal["lo"],
-          "calibración alta (IC 97.5 %)": sigma * cal["hi"]}  # σ efectiva: realizado = pendiente × predicho
-conv = V.conversion_table(sigmas, PITCH_GRID, {"liga": rpw["liga"], "Harp Helú (bucket Extreme)": rpw[EXT]})
-conv.round(5).to_csv(OUT / "conversion_table.csv", index=False)
+cache = Path("artifacts/business_value_oof.parquet")
+if cache.exists():
+    oofdf = pd.read_parquet(cache)
+else:
+    folds = list(splits.pitcher_group_kfold(df))
+    stuff_oof = stuff_run.StuffModel().oof(df, folds)["xrv"].to_numpy(float)  # xRV predicho fuera de muestra, por pitcher
+    po = pitching_models.run_oof(df, folds)
+    pitch_neutral = pitching_models.combine(po, df["rv_x"].to_numpy(), folds)["combined_neutral"]  # Pitching+ del dashboard: bateador neutral
+    oofdf = pd.DataFrame({"stuff_xrv": stuff_oof, "pitching_xrv": pitch_neutral})
+    cache.parent.mkdir(parents=True, exist_ok=True)
+    oofdf.to_parquet(cache, index=False)
+pts = {
+    "Stuff+": bundle.scalers["stuff"].transform(df.assign(x=oofdf["stuff_xrv"].to_numpy()), "x"),
+    # el scaler de Pitching+ del bundle local no es el de joahan-1: se reajusta con el mismo procedimiento (PlusScaler por temporada)
+    "Pitching+": PlusScaler().fit(df.assign(x=oofdf["pitching_xrv"].to_numpy()), "x").transform(
+        df.assign(x=oofdf["pitching_xrv"].to_numpy()), "x"),
+}
+groups = df["pitcher_anon_id"].to_numpy()
+est, rows = {}, []
+for name, p_ in pts.items():
+    for tgt, label in (("rv_x", "rv_x (valor esperado de la bola en juego)"), ("rv", "rv observado")):
+        ok = np.isfinite(p_) & df[tgt].notna().to_numpy()
+        e = V.direct_runs_per_point(np.asarray(p_)[ok], df[tgt].to_numpy(float)[ok], groups[ok])
+        est[(name, tgt)] = e
+        rows.append(dict(escala=name, objetivo=tgt, carreras_por_punto_lanzamiento=e["per_point"], lo=e["lo"], hi=e["hi"],
+                         n=e["n"], pitchers=e["n_groups"]))
+direct = pd.DataFrame(rows)
+direct.round(7).to_csv(OUT / "runs_per_point_direct.csv", index=False)
+# control cruzado: σ del scaler × pendiente de calibración (xRV predicho OOF) × 0.1 debe ser similar a la estimación directa de Stuff+
+cal = V.calibration_slope(oofdf["stuff_xrv"].to_numpy(float), df["rv_x"].to_numpy(float), groups)
+check = 0.1 * sigma * cal["slope"]
+pd.DataFrame([dict(sigma_scaler_all=sigma, **{f"sigma_{k}": v for k, v in sigma_years.items()}, **cal, sigma_x_slope_x_0p1=check,
+                   direct_stuff_rv_x=est[("Stuff+", "rv_x")]["per_point"], bundle_version=bundle.manifest["version"],
+                   bundle_created=bundle.manifest["created_at"])]).round(7).to_csv(OUT / "stuff_scale_calibration.csv", index=False)
+per_point = {}
+for name in pts:
+    e = est[(name, "rv_x")]
+    per_point |= {f"{name} · rv_x (central)": e["per_point"], f"{name} · rv_x (IC 2.5 %)": e["lo"],
+                  f"{name} · rv_x (IC 97.5 %)": e["hi"], f"{name} · rv observado": est[(name, "rv")]["per_point"]}
+conv = V.conversion_table(per_point, PITCH_GRID, {"liga": rpw["liga"], "Harp Helú (bucket Extreme)": rpw[EXT]})
+conv.round(6).to_csv(OUT / "conversion_table.csv", index=False)
+GM_POINTS, GM_PITCHES = 10, 2500
+gm = []
+for name in pts:
+    e = est[(name, "rv_x")]
+    for env, r in (("liga", rpw["liga"]), ("Harp Helú (bucket Extreme)", rpw[EXT])):
+        runs = [GM_POINTS * GM_PITCHES * v for v in (e["per_point"], e["lo"], e["hi"])]
+        gm.append(dict(escala=name, entorno=env, carreras=runs[0], carreras_lo=runs[1], carreras_hi=runs[2],
+                       victorias=runs[0] / r, victorias_lo=runs[1] / r, victorias_hi=runs[2] / r))
+gm = pd.DataFrame(gm)
+gm.round(4).to_csv(OUT / "gm_example.csv", index=False)
+# escala realista: dispersión de los puntos MEDIOS por pitcher-temporada (≥ 300 lanzamientos); +10 puntos en TODOS los lanzamientos es un salto enorme
+spread = []
+for name, p_ in pts.items():
+    m = pd.DataFrame({"ps": df["pitcher_anon_id"].astype(str) + "_" + df["year"].astype(str), "x": np.asarray(p_)}).groupby("ps")["x"].agg(["mean", "size"])
+    m = m[m["size"] >= 300]
+    sd = float(m["mean"].std())
+    e = est[(name, "rv_x")]
+    for env, r in (("liga", rpw["liga"]), ("Harp Helú (bucket Extreme)", rpw[EXT])):
+        runs = sd * GM_PITCHES * e["per_point"]
+        spread.append(dict(escala=name, entorno=env, sd_puntos_entre_pitcher_temporadas=sd, pitcher_temporadas=len(m),
+                           carreras_por_1sd=runs, victorias_por_1sd=runs / r))
+spread = pd.DataFrame(spread)
+spread.round(4).to_csv(OUT / "pitcher_spread_example.csv", index=False)
 
 # --- 5. costo observado de la altura y brazo a prueba de altura
 sens = V.altitude_sensitivity(df, "rv_x", NO, EXT, min_n=100)
@@ -93,14 +149,15 @@ ex = V.altitude_proof_example(sens["mean_delta"], sens["tau_hi"], pitches_per_st
 ex.round(4).to_csv(OUT / "altitude_proof_example.csv", index=False)
 pd.DataFrame([dict(entorno="Extreme", **sens), dict(entorno="Medium", **sens_med)]).round(5).to_csv(OUT / "altitude_cost.csv", index=False)
 
-# --- figura: victorias por +1 punto de Stuff+ sostenido en 1,000 lanzamientos, por escenario y entorno
-sub = conv[conv["lanzamientos"] == 1000]
+# --- figura: victorias de +10 puntos sostenidos en 2,500 lanzamientos (IC 95 %), por escala y entorno
 fig, ax = plt.subplots(figsize=(7, 3.8))
-for i, (env, g) in enumerate(sub.groupby("entorno")):
-    ax.bar(np.arange(len(g)) + i * 0.38, g["victorias"], 0.36, label=env, color=[RED, BLACK][i])
-ax.set_xticks(np.arange(len(g)) + 0.19); ax.set_xticklabels([s.split(" (")[0] for s in g["escenario"]], fontsize=8)
-ax.set_ylabel("victorias por +1 Stuff+ en 1,000 lanzamientos"); ax.legend(fontsize=8)
-ax.set_title("Valor de un punto de Stuff+ (según la calidad del modelo)")
+for i, (env, g) in enumerate(gm.groupby("entorno")):
+    xs = np.arange(len(g)) + i * 0.38
+    ax.bar(xs, g["victorias"], 0.36, label=env, color=[RED, BLACK][i],
+           yerr=[g["victorias"] - g["victorias_lo"], g["victorias_hi"] - g["victorias"]], capsize=3)
+ax.set_xticks(np.arange(len(g)) + 0.19); ax.set_xticklabels(list(g["escala"]))
+ax.set_ylabel("victorias"); ax.legend(fontsize=8)
+ax.set_title(f"+{GM_POINTS} puntos sostenidos en {GM_PITCHES:,} lanzamientos")
 fig.tight_layout(); fig.savefig(OUT / "stuff_point_wins.png", dpi=130); plt.close(fig)
 
 # --- resumen
@@ -122,29 +179,38 @@ lines = [
     tbl(rpw_table, ["entorno", "carreras_por_equipo_juego", "carreras_por_victoria", "victorias_por_100_carreras"]), "",
     f"**Lectura:** en el Harp Helú (bucket Extreme) se anota más, así que cada carrera ahorrada vale **menos** victorias que en la liga "
     f"({rpw[EXT]:.1f} vs {rpw['liga']:.1f} carreras por victoria).", "",
-    "## Tabla de conversión: +1 punto de Stuff+ → carreras → victorias", "",
-    f"Por definición de la escala (HACK-013), 1 punto = 0.1 σ del xRV predicho por lanzamiento, y σ sale del **bundle {bundle.manifest['version']}** "
-    f"(`scalers.stuff.stats`, creado {bundle.manifest['created_at']}): σ = {sigma:.5f} carreras por lanzamiento (por temporada {', '.join(f'{k}: {v:.5f}' for k, v in sigma_years.items())}). "
-    f"Las carreras *realizadas* por carrera predicha se miden fuera de muestra (validación cruzada por pitcher): pendiente de calibración **{cal['slope']:.2f}** "
-    f"[IC 95 % por pitcher {cal['lo']:.2f}, {cal['hi']:.2f}] sobre {cal['n']:,} lanzamientos. Entonces +1 punto ≈ {sigma * cal['slope'] * 0.1:.2e} carreras por lanzamiento "
-    "(filas «calibración baja/alta» = extremos del IC). Sin escenarios supuestos: la σ y la calibración son del modelo real.", "",
-    tbl(conv, ["escenario", "lanzamientos", "entorno", "carreras", "victorias"], "{:.4g}"), "",
+    "## Tabla de conversión: +1 punto → carreras → victorias", "",
+    "**Estimación directa, fuera de muestra:** los puntos de Stuff+ y Pitching+ (xRV predicho con validación cruzada por pitcher, escalado con el scaler del modelo: 100 + 10·z) "
+    "se regresan contra el run value realizado; las carreras ahorradas por punto y por lanzamiento son menos la pendiente. IC 95 % por pitcher (bootstrap).", "",
+    tbl(direct, ["escala", "objetivo", "carreras_por_punto_lanzamiento", "lo", "hi"], "{:.3g}"), "",
+    f"Control cruzado (Stuff+): σ del scaler del bundle {bundle.manifest['version']} ({sigma:.5f}) × calibración {cal['slope']:.2f} × 0.1 = {check:.2e}, "
+    f"frente a {est[('Stuff+', 'rv_x')]['per_point']:.2e} directo. El bundle se reconstruyó localmente con `analysis/stuff_model/run.py` (creado {bundle.manifest['created_at']}). "
+    "Pitching+ usa el xRV combinado con bateador neutral (el que sirve el dashboard) escalado con un `PlusScaler` ajustado con el mismo procedimiento.", "",
+    "### Ejemplo para el GM", "",
+    f"**+{GM_POINTS} puntos de Stuff+ sostenidos en {GM_PITCHES:,} lanzamientos** (orden de magnitud de una temporada de abridor: ~30 aperturas × ~80 lanzamientos; supuesto, no de los datos):", "",
+    tbl(gm, ["escala", "entorno", "carreras", "carreras_lo", "carreras_hi", "victorias", "victorias_lo", "victorias_hi"], "{:.3g}"), "",
+    "Cada carrera ahorrada vale menos victorias en el Harp Helú que en la liga (más anotación), pero el valor en carreras es el mismo. "
+    "**+10 puntos en todos los lanzamientos es un salto muy grande**: es 1 σ del xRV *por lanzamiento* (incluye conteo, ubicación y contexto), mucho más que la diferencia típica entre pitchers, sobre todo para Pitching+. "
+    "Una escala más realista es 1 desviación estándar entre pitcher-temporadas (≥ 300 lanzamientos; observada, incluye ruido de muestreo):", "",
+    tbl(spread, ["escala", "entorno", "sd_puntos_entre_pitcher_temporadas", "pitcher_temporadas", "carreras_por_1sd", "victorias_por_1sd"], "{:.3g}"), "",
+    "Tabla completa (lanzamientos × entorno × estimación) en `conversion_table.csv`; aquí 1,000 y 2,500 lanzamientos en la liga y en el Harp Helú:", "",
+    tbl(conv[conv["lanzamientos"].isin([1000, 2500])], ["escenario", "lanzamientos", "entorno", "carreras", "victorias"], "{:.3g}"), "",
     f"Referencia: un abridor lanza ~{pitches_per_start:.0f} lanzamientos por apertura (mediana de los datos).", "",
     "## Ejemplo: valor de un brazo a prueba de altura", "",
     f"Costo observado de la altura (Δ `rv_x` por lanzamiento, Extreme − sin altitud, intra pitcher-temporada, {sens['n_pitcher_seasons']} pitcher-temporadas con ≥ 100 lanzamientos en ambos): "
     f"**{sens['mean_delta']:+.4f} carreras por lanzamiento** (Medium: {sens_med['mean_delta']:+.4f}). Dispersión verdadera entre pitchers (descontado el ruido de muestreo, método de momentos): "
     f"τ̂ = {sens['tau']:.4f} (sd observada {sens['raw_sd']:.4f}, ruido de muestreo medio {sens['mean_sampling_sd']:.4f}); cota superior 95 % (bootstrap) τ ≤ {sens['tau_hi']:.4f}. "
     "**Con el run value por lanzamiento no se detecta heterogeneidad entre pitchers más allá del ruido**: el ejemplo usa esa cota como la brecha *máxima compatible con los datos*, no como una medición. "
-    "La sensibilidad por pitcher la medirá HACK-018 con la física (ΔStuff+), no con el resultado ruidoso.", "",
+    "La sensibilidad por pitcher con la física (ΔStuff+) está en HACK-018 (`reports/pitcher_sensitivity/`), no con el resultado ruidoso.", "",
     f"Escenario: {home_starts} aperturas en casa por temporada (juegos de local por equipo-temporada en los datos ÷ rotación de 5) × {pitches_per_start:.0f} lanzamientos, "
     f"a {rpw[EXT]:.1f} carreras por victoria en altura.", "",
     tbl(ex, ["brazo", "carreras_extra_por_lanzamiento", "carreras_extra", "victorias_perdidas"]), "",
     f"Brecha entre el brazo de alta pérdida y el de a prueba de altura: **{ex.attrs['gap_runs']:.1f} carreras ≈ {ex.attrs['gap_wins']:.2f} victorias** en esa temporada de aperturas en casa.", "",
     "## Advertencias", "",
     "- `rv_x` valora las bolas en juego con la altitud como rasgo (HACK-030): el costo de la altura incluye parte del modelo de contacto, no solo los lanzamientos.",
-    "- La σ es la del bundle v1 reconstruido localmente con `analysis/stuff_model/run.py` (los bundles no se comparten por git); si el modelo se reentrena, hay que volver a correr este análisis.",
-    "- La calibración se mide sobre el xRV predicho fuera de muestra (modelo de cinco resultados), mientras la escala del bundle usa el modelo destilado (R² 0.92 con él): son aproximaciones del mismo modelo.",
-    "- A este nivel de calibración el valor de un punto por lanzamiento es pequeño: el efecto aparece en sumas grandes (mil lanzamientos o más) y en grupos de lanzamientos, no en un lanzamiento suelto.",
+    "- Los bundles no se comparten por git: la escala se reconstruyó localmente (`analysis/stuff_model/run.py`); si el modelo se reentrena, hay que volver a correr este análisis (la caché OOF está en `artifacts/`, git-ignored).",
+    "- Los puntos usan el xRV de los modelos completos fuera de muestra, no el modelo destilado del dashboard (R² 0.92 / 0.94 con ellos): aproximan el mismo número.",
+    "- El efecto de un punto es chico por lanzamiento y crece con el volumen: sumas grandes (miles de lanzamientos) y grupos de lanzamientos, no un lanzamiento suelto. El `rv` observado es más ruidoso que `rv_x`: su IC es más ancho.",
     "- Marcadores reconstruidos: partidos incompletos en los datos o carreras fuera de los lanzamientos pueden sesgar; los datos solo cubren una muestra de la temporada por equipo.",
     "- Linealización pitagórica válida cerca de un equipo promedio; ±1σ en sensibilidad supone dispersión aproximadamente normal.",
     "- La identidad CDMX vs Puebla sigue sin verificar (HACK-003): «entorno Extreme» agrupa los parques de altura.",

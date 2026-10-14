@@ -1,25 +1,65 @@
-escenario,sigma_xrv,lanzamientos,carreras,entorno,carreras_por_victoria,victorias
-calibración central,0.00724,100,0.07236,liga,11.78496,0.00614
-calibración central,0.00724,100,0.07236,Harp Helú (bucket Extreme),14.32902,0.00505
-calibración central,0.00724,500,0.36181,liga,11.78496,0.0307
-calibración central,0.00724,500,0.36181,Harp Helú (bucket Extreme),14.32902,0.02525
-calibración central,0.00724,1000,0.72363,liga,11.78496,0.0614
-calibración central,0.00724,1000,0.72363,Harp Helú (bucket Extreme),14.32902,0.0505
-calibración central,0.00724,2500,1.80906,liga,11.78496,0.15351
-calibración central,0.00724,2500,1.80906,Harp Helú (bucket Extreme),14.32902,0.12625
-calibración baja (IC 2.5 %),0.00677,100,0.0677,liga,11.78496,0.00574
-calibración baja (IC 2.5 %),0.00677,100,0.0677,Harp Helú (bucket Extreme),14.32902,0.00472
-calibración baja (IC 2.5 %),0.00677,500,0.33849,liga,11.78496,0.02872
-calibración baja (IC 2.5 %),0.00677,500,0.33849,Harp Helú (bucket Extreme),14.32902,0.02362
-calibración baja (IC 2.5 %),0.00677,1000,0.67697,liga,11.78496,0.05744
-calibración baja (IC 2.5 %),0.00677,1000,0.67697,Harp Helú (bucket Extreme),14.32902,0.04724
-calibración baja (IC 2.5 %),0.00677,2500,1.69244,liga,11.78496,0.14361
-calibración baja (IC 2.5 %),0.00677,2500,1.69244,Harp Helú (bucket Extreme),14.32902,0.11811
-calibración alta (IC 97.5 %),0.00769,100,0.07688,liga,11.78496,0.00652
-calibración alta (IC 97.5 %),0.00769,100,0.07688,Harp Helú (bucket Extreme),14.32902,0.00537
-calibración alta (IC 97.5 %),0.00769,500,0.3844,liga,11.78496,0.03262
-calibración alta (IC 97.5 %),0.00769,500,0.3844,Harp Helú (bucket Extreme),14.32902,0.02683
-calibración alta (IC 97.5 %),0.00769,1000,0.7688,liga,11.78496,0.06524
-calibración alta (IC 97.5 %),0.00769,1000,0.7688,Harp Helú (bucket Extreme),14.32902,0.05365
-calibración alta (IC 97.5 %),0.00769,2500,1.92201,liga,11.78496,0.16309
-calibración alta (IC 97.5 %),0.00769,2500,1.92201,Harp Helú (bucket Extreme),14.32902,0.13413
+escenario,carreras_por_punto_lanzamiento,lanzamientos,carreras,entorno,carreras_por_victoria,victorias
+Stuff+ · rv_x (central),0.000724,100,0.072371,liga,11.784962,0.006141
+Stuff+ · rv_x (central),0.000724,100,0.072371,Harp Helú (bucket Extreme),14.329019,0.005051
+Stuff+ · rv_x (central),0.000724,500,0.361856,liga,11.784962,0.030705
+Stuff+ · rv_x (central),0.000724,500,0.361856,Harp Helú (bucket Extreme),14.329019,0.025253
+Stuff+ · rv_x (central),0.000724,1000,0.723712,liga,11.784962,0.06141
+Stuff+ · rv_x (central),0.000724,1000,0.723712,Harp Helú (bucket Extreme),14.329019,0.050507
+Stuff+ · rv_x (central),0.000724,2500,1.809279,liga,11.784962,0.153524
+Stuff+ · rv_x (central),0.000724,2500,1.809279,Harp Helú (bucket Extreme),14.329019,0.126267
+Stuff+ · rv_x (IC 2.5 %),0.000677,100,0.067746,liga,11.784962,0.005749
+Stuff+ · rv_x (IC 2.5 %),0.000677,100,0.067746,Harp Helú (bucket Extreme),14.329019,0.004728
+Stuff+ · rv_x (IC 2.5 %),0.000677,500,0.338731,liga,11.784962,0.028743
+Stuff+ · rv_x (IC 2.5 %),0.000677,500,0.338731,Harp Helú (bucket Extreme),14.329019,0.023639
+Stuff+ · rv_x (IC 2.5 %),0.000677,1000,0.677462,liga,11.784962,0.057485
+Stuff+ · rv_x (IC 2.5 %),0.000677,1000,0.677462,Harp Helú (bucket Extreme),14.329019,0.047279
+Stuff+ · rv_x (IC 2.5 %),0.000677,2500,1.693654,liga,11.784962,0.143713
+Stuff+ · rv_x (IC 2.5 %),0.000677,2500,1.693654,Harp Helú (bucket Extreme),14.329019,0.118197
+Stuff+ · rv_x (IC 97.5 %),0.000769,100,0.076911,liga,11.784962,0.006526
+Stuff+ · rv_x (IC 97.5 %),0.000769,100,0.076911,Harp Helú (bucket Extreme),14.329019,0.005367
+Stuff+ · rv_x (IC 97.5 %),0.000769,500,0.384553,liga,11.784962,0.032631
+Stuff+ · rv_x (IC 97.5 %),0.000769,500,0.384553,Harp Helú (bucket Extreme),14.329019,0.026837
+Stuff+ · rv_x (IC 97.5 %),0.000769,1000,0.769107,liga,11.784962,0.065262
+Stuff+ · rv_x (IC 97.5 %),0.000769,1000,0.769107,Harp Helú (bucket Extreme),14.329019,0.053675
+Stuff+ · rv_x (IC 97.5 %),0.000769,2500,1.922767,liga,11.784962,0.163154
+Stuff+ · rv_x (IC 97.5 %),0.000769,2500,1.922767,Harp Helú (bucket Extreme),14.329019,0.134187
+Stuff+ · rv observado,0.000726,100,0.072636,liga,11.784962,0.006163
+Stuff+ · rv observado,0.000726,100,0.072636,Harp Helú (bucket Extreme),14.329019,0.005069
+Stuff+ · rv observado,0.000726,500,0.363182,liga,11.784962,0.030817
+Stuff+ · rv observado,0.000726,500,0.363182,Harp Helú (bucket Extreme),14.329019,0.025346
+Stuff+ · rv observado,0.000726,1000,0.726364,liga,11.784962,0.061635
+Stuff+ · rv observado,0.000726,1000,0.726364,Harp Helú (bucket Extreme),14.329019,0.050692
+Stuff+ · rv observado,0.000726,2500,1.81591,liga,11.784962,0.154087
+Stuff+ · rv observado,0.000726,2500,1.81591,Harp Helú (bucket Extreme),14.329019,0.12673
+Pitching+ · rv_x (central),0.005519,100,0.551921,liga,11.784962,0.046833
+Pitching+ · rv_x (central),0.005519,100,0.551921,Harp Helú (bucket Extreme),14.329019,0.038518
+Pitching+ · rv_x (central),0.005519,500,2.759604,liga,11.784962,0.234163
+Pitching+ · rv_x (central),0.005519,500,2.759604,Harp Helú (bucket Extreme),14.329019,0.192588
+Pitching+ · rv_x (central),0.005519,1000,5.519208,liga,11.784962,0.468326
+Pitching+ · rv_x (central),0.005519,1000,5.519208,Harp Helú (bucket Extreme),14.329019,0.385177
+Pitching+ · rv_x (central),0.005519,2500,13.798021,liga,11.784962,1.170816
+Pitching+ · rv_x (central),0.005519,2500,13.798021,Harp Helú (bucket Extreme),14.329019,0.962942
+Pitching+ · rv_x (IC 2.5 %),0.00547,100,0.54702,liga,11.784962,0.046417
+Pitching+ · rv_x (IC 2.5 %),0.00547,100,0.54702,Harp Helú (bucket Extreme),14.329019,0.038176
+Pitching+ · rv_x (IC 2.5 %),0.00547,500,2.735098,liga,11.784962,0.232084
+Pitching+ · rv_x (IC 2.5 %),0.00547,500,2.735098,Harp Helú (bucket Extreme),14.329019,0.190878
+Pitching+ · rv_x (IC 2.5 %),0.00547,1000,5.470197,liga,11.784962,0.464168
+Pitching+ · rv_x (IC 2.5 %),0.00547,1000,5.470197,Harp Helú (bucket Extreme),14.329019,0.381757
+Pitching+ · rv_x (IC 2.5 %),0.00547,2500,13.675492,liga,11.784962,1.160419
+Pitching+ · rv_x (IC 2.5 %),0.00547,2500,13.675492,Harp Helú (bucket Extreme),14.329019,0.954391
+Pitching+ · rv_x (IC 97.5 %),0.005568,100,0.556826,liga,11.784962,0.047249
+Pitching+ · rv_x (IC 97.5 %),0.005568,100,0.556826,Harp Helú (bucket Extreme),14.329019,0.03886
+Pitching+ · rv_x (IC 97.5 %),0.005568,500,2.78413,liga,11.784962,0.236244
+Pitching+ · rv_x (IC 97.5 %),0.005568,500,2.78413,Harp Helú (bucket Extreme),14.329019,0.1943
+Pitching+ · rv_x (IC 97.5 %),0.005568,1000,5.568261,liga,11.784962,0.472489
+Pitching+ · rv_x (IC 97.5 %),0.005568,1000,5.568261,Harp Helú (bucket Extreme),14.329019,0.3886
+Pitching+ · rv_x (IC 97.5 %),0.005568,2500,13.920652,liga,11.784962,1.181222
+Pitching+ · rv_x (IC 97.5 %),0.005568,2500,13.920652,Harp Helú (bucket Extreme),14.329019,0.971501
+Pitching+ · rv observado,0.005624,100,0.562399,liga,11.784962,0.047722
+Pitching+ · rv observado,0.005624,100,0.562399,Harp Helú (bucket Extreme),14.329019,0.039249
+Pitching+ · rv observado,0.005624,500,2.811996,liga,11.784962,0.238609
+Pitching+ · rv observado,0.005624,500,2.811996,Harp Helú (bucket Extreme),14.329019,0.196245
+Pitching+ · rv observado,0.005624,1000,5.623991,liga,11.784962,0.477218
+Pitching+ · rv observado,0.005624,1000,5.623991,Harp Helú (bucket Extreme),14.329019,0.39249
+Pitching+ · rv observado,0.005624,2500,14.059979,liga,11.784962,1.193044
+Pitching+ · rv observado,0.005624,2500,14.059979,Harp Helú (bucket Extreme),14.329019,0.981224

@@ -53,3 +53,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791946631 | deadline lease/HACK-017/1791945455 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791947590 | HACK-007 | luis picked Transmision Diablos | Why: human choice; tokens already lived in app/theme.py
 - 1791948462 | deadline decision/HACK-007-1791947555/1791948455 | BLOCKED_OTHER_TASK | Option: Direction A; Why: luis eligió Transmisión Diablos el 2026-10-13; la dirección ya está construida en app/theme.py; no money, accounts, publishing or scope expansion.
+- 1791948465 | deadline lease/HACK-016/1791948464 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.

@@ -1,0 +1,6 @@
+tweak,label,pitcher_season_family_pairs,admissible_share,arsenal_gain_hh,hh_lo,hh_hi,arsenal_gain_sea,arsenal_diff,diff_lo,diff_hi,share_above_noise
+axis_+5,eje de giro +5°,1640,0.9738,-0.2837,-0.3113,-0.2587,-0.2105,-0.0732,-0.0928,-0.0538,0.2286
+axis_-5,eje de giro −5°,1640,0.9768,0.3472,0.3189,0.3732,0.2899,0.0573,0.0369,0.0771,0.5499
+slot_-5,slot de brazo 5° más bajo,1640,0.9701,0.1532,0.1206,0.1878,0.0744,0.0789,0.0503,0.1079,0.4727
+spineff_+5,+5 % de eficiencia de giro (más movimiento),1640,0.978,0.2373,0.2218,0.2537,0.6582,-0.4209,-0.4427,-0.4036,0.5312
+velo_+1,+1 mph de velocidad,1640,0.975,0.5727,0.5469,0.6008,0.5341,0.0385,0.026,0.0512,0.7267

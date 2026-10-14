@@ -9,9 +9,9 @@ Priority: P0
 Paths: app/Home.py, app/theme.py, app/DESIGN.md, app/pages/, app/assets/, .streamlit/, tests/test_app_smoke.py
 Depends: None
 Verify: `python -m pytest -q tests/test_app_smoke.py`
-Lease-Until: 1791950284
-Updated: 1791947584
+Lease-Until: 1791950290
+Updated: 1791947590
 Task-Base: f0f2298437311fb5f3e3fcc293f8585e339633b3
-Next: Lock app/DESIGN.md to Direction A; human luis picked Transmision Diablos
+Next: Await review of 8f4cf1c before merge; 785b2bf approval does not cover it
 PR: -
 Evidence: -

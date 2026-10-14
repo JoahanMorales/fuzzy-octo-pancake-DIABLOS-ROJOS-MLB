@@ -1,5 +1,5 @@
 Task: HACK-007
-Events: 9
-Checkpoints: 1
+Events: 10
+Checkpoints: 2
 Sessions: 4
-Last-Checkpoint: 1791899057
+Last-Checkpoint: 1791947590

@@ -1,12 +1,12 @@
 # worklog/WL-1791898686-victor-5-HACK-007-hack.8H5Koy.md · HACK-007
 
 ## Live summary
-- Done: skeleton, theme, simulator, DESIGN.md provisional
-- Decision: implement brief direction only; lock left to human
-- Why: needs luis pick
+- Done: Direction A locked in app/DESIGN.md, commit 8f4cf1c
+- Decision: luis picked Transmision Diablos
+- Why: human choice; tokens already lived in app/theme.py
 - Failing: none
-- Commands: python -m pytest -q tests/test_app_smoke.py
-- Next: Lock app/DESIGN.md to Direction A; human luis picked Transmision Diablos
+- Commands: uv run pytest tests/test_app_smoke.py: 10 passed
+- Next: Await review of 8f4cf1c before merge; 785b2bf approval does not cover it
 
 ## History
 - 1791898686 | CLAIMED | victor-5 | claim; next: `tests/test_app_smoke.py` with `streamlit.testing.v1.AppTest.from_file("app/Home.py").run()`.
@@ -18,3 +18,4 @@
 - 1791947394 | CLAIMED | luis-1 | heartbeat; lease until 1791950094
 - 1791947555 | CLAIMED | luis-1 | pending decision HACK-007-1791947555; option: Direction A; Why: luis eligió Transmisión Diablos el 2026-10-13; la dirección ya está construida en app/theme.py
 - 1791947584 | CLAIMED | luis-1 | heartbeat; lease until 1791950284
+- 1791947590 | CLAIMED | luis-1 | checkpoint; next: Await review of 8f4cf1c before merge; 785b2bf approval does not cover it

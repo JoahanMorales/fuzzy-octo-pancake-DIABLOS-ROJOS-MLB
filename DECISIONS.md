@@ -43,3 +43,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791941551 | HACK-018 | Publicar rankings exploratorios con baseline/uso/fits fijos en CI; no certeza de rango | Why: Limitación estadística explícita del advisor
 - 1791941609 | HACK-018 | Exploratory rankings with conditional EB CIs; no causal or holdout claim | Why: Models globally prepared; baseline and usage fixed
 - 1791941671 | HACK-018 | Task stays REVIEW until eligible independent agent records approval; no author approval or human impersonation | Why: UAK rejects owner and unregistered reviewer; formal review routed by done
+- 1791941947 | HACK-018 | Explicit user merge authorization fulfilled via GitHub; preserve actual UAK REVIEW until independently approved | Why: User explicitly said Haz merge; technical reviews passed but reviewer role not registered

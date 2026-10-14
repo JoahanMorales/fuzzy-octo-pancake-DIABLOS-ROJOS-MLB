@@ -1,12 +1,12 @@
 # worklog/WL-1791920599-sebastian-1-HACK-014-hack.Q6gbOp.md · HACK-014
 
 ## Live summary
-- Done: 9ee6af7 pushed; shared split runner includes final Pitching+, nested weights, train-fitted physics variant; 16 tests, demo, full smoke and secret scan pass
-- Decision: Draft implementation only; task acceptance remains incomplete
-- Why: Official input absent; shared preparation still transductive
-- Failing: No test failures; inductive fold preparation and official-data acceptance pending
-- Commands: python -m pytest -q tests/test_validation.py; python -m analysis.validation.run --demo --fast; bash .uak/bin/smoke; bash .uak/bin/secret-scan --tracked
-- Next: Review draft feat/hack-014 at 9ee6af7; implement documented fold-preparation contract, then run official-data validation before marking HACK-014 complete
+- Done: PR20 draft at9ee6af7; 16 tests/fullsmoke/secret-scan pass; CIgreen; PR16 merged4c1be56 and UAKINTEGRATED
+- Decision: Use newly supplied official parquet for a fast exploratory diagnostic run before updating draft evidence
+- Why: User confirmed main data/raw; parquet635002rows84columns; global preparation still transductive
+- Failing: No failing tests; official run in progress; inductive fold preparation still pending
+- Commands: python -m analysis.validation.run --fast --out reports/validation/official_fast; gh pr view20; python -m pytest -q tests/test_validation.py
+- Next: Wait official fast run, inspect aggregate metrics/provenance, update PR20 and reports; independent draft review pending
 
 ## History
 - 1791920599 | CLAIMED | sebastian-1 | claim; next: `stuffplus/validation/run_all.py` iterating `splits.*` × models.
@@ -14,3 +14,4 @@
 - 1791939342 | CLAIMED | sebastian-1 | heartbeat; lease until 1791942042
 - 1791939674 | CLAIMED | sebastian-1 | heartbeat; lease until 1791942374
 - 1791939824 | CLAIMED | sebastian-1 | checkpoint; next: Review draft feat/hack-014 at 9ee6af7; implement documented fold-preparation contract, then run official-data validation before marking HACK-014 complete
+- 1791939998 | CLAIMED | sebastian-1 | checkpoint; next: Wait official fast run, inspect aggregate metrics/provenance, update PR20 and reports; independent draft review pending

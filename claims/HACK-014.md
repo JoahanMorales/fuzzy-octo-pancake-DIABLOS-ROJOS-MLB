@@ -9,9 +9,9 @@ Priority: P0
 Paths: stuffplus/validation/, analysis/validation/, reports/validation/, tests/test_validation.py
 Depends: HACK-005, HACK-010
 Verify: `python -m pytest -q tests/test_validation.py`
-Lease-Until: 1791942524
-Updated: 1791939824
+Lease-Until: 1791942698
+Updated: 1791939998
 Task-Base: f0de095681b4c572ce62e45430de89a9f89dce77
-Next: Review draft feat/hack-014 at 9ee6af7; implement documented fold-preparation contract, then run official-data validation before marking HACK-014 complete
+Next: Wait official fast run, inspect aggregate metrics/provenance, update PR20 and reports; independent draft review pending
 PR: -
 Evidence: -

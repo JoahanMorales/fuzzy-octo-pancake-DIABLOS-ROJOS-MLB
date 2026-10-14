@@ -15,7 +15,7 @@ Task-Base: 55b5591d2a2c2f63d0600fd9435f98f88f0350bb
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/26; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/26
 Evidence: 97586bf: agrega theme.demo_badge(False) junto al titulo (DESIGN.md:19); test_design_lab+test_app_smoke 21 passed; AppTest sin excepciones
-Events: 6
+Events: 7
 Checkpoints: 0
 Sessions: 2
 Last-Checkpoint: 0

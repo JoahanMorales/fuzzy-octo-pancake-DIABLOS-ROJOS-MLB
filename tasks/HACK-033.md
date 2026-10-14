@@ -9,14 +9,14 @@ Priority: P1
 Paths: stuffplus/design_lab.py, app/pages/6_Laboratorio.py, reports/design_lab/, tests/test_design_lab.py
 Depends: HACK-004, HACK-010
 Verify: `python -m pytest -q tests/test_design_lab.py`
-Lease-Until: 1791965224
-Updated: 1791950824
+Lease-Until: 1791965231
+Updated: 1791950831
 Task-Base: 55b5591d2a2c2f63d0600fd9435f98f88f0350bb
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/26; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/26
-Evidence: d837860: test_design_lab 11 passed + test_app_smoke; smoke-project OK; corrida real 784 pitcher-temporadas / 235,200 lanzamientos; pagina 6_Laboratorio sin excepciones (AppTest); diff solo en Paths
-Events: 5
+Evidence: 97586bf: agrega theme.demo_badge(False) junto al titulo (DESIGN.md:19); test_design_lab+test_app_smoke 21 passed; AppTest sin excepciones
+Events: 6
 Checkpoints: 0
 Sessions: 2
 Last-Checkpoint: 0
-Task-Tip: d8378607791d027bb4284251ed18a250f0c61641
+Task-Tip: 97586bffb3ae3f420a7afc86e914569313cc99d0

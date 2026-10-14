@@ -1,7 +1,7 @@
 # worklog/WL-1791949680-victor-2-HACK-033-hack.xR3sTB.md · HACK-033
 
 ## Live summary
-- Done: d837860: test_design_lab 11 passed + test_app_smoke; smoke-project OK; corrida real 784 pitcher-temporadas / 235,200 lanzamientos; pagina 6_Laboratorio sin excepciones (AppTest); diff solo en Paths
+- Done: 97586bf: agrega theme.demo_badge(False) junto al titulo (DESIGN.md:19); test_design_lab+test_app_smoke 21 passed; AppTest sin excepciones
 - Decision: Own branch and worktree
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
@@ -14,3 +14,4 @@
 - 1791950484 | REVIEW | victor-2 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/26; evidence: d837860: test_design_lab 11 passed + test_app_smoke; smoke-project OK; corrida real 784 pitcher-temporadas / 235,200 lanzamientos; pagina 6_Laboratorio sin excepciones (AppTest); diff solo en Paths; reviewer: -
 - 1791950720 | REVIEW | victor-1 | review; reject; SHA d8378607791d027bb4284251ed18a250f0c61641; reviewer victor-1
 - 1791950824 | REVIEW | victor-2 | heartbeat; lease until 1791965224
+- 1791950831 | REVIEW | victor-2 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/26; evidence: 97586bf: agrega theme.demo_badge(False) junto al titulo (DESIGN.md:19); test_design_lab+test_app_smoke 21 passed; AppTest sin excepciones; reviewer: -

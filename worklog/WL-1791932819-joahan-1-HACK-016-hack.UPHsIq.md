@@ -6,7 +6,7 @@
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
 - Commands: `python -m pytest -q tests/test_score.py`
-- Next: Humano: Smoke red or product unverified
+- Next: Integrated in main: d89141e5b32b4b921679d90e0573cc6dfcb9316c
 
 ## History
 - 1791932819 | CLAIMED | joahan-1 | claim; next: batch predict with `serving.load_bundle()`.
@@ -14,3 +14,4 @@
 - 1791948009 | REVIEW | victor-1 | review; approve; SHA a1296c796fd0d4475232b65b0775adbb9f2e8be0; reviewer victor-1
 - 1791984730 | REVIEW | joahan-1 | heartbeat; lease until 1791999130
 - 1791984768 | REVIEW | joahan-1 | merge rechazado; Smoke red or product unverified
+- 1791986237 | INTEGRATED | joahan-1 | merge; smoke and Verify PASS; commit d89141e5b32b4b921679d90e0573cc6dfcb9316c; reviewer victor-1

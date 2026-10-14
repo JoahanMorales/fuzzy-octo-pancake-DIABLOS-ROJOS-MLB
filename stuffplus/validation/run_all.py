@@ -37,23 +37,37 @@ class ModelSpec:
     transform: Callable = lambda x: x
 
 
-def default_models(fast: bool = False) -> dict[str, ModelSpec]:
+def default_models(fast: bool = False, pitching_inner_k: int | None = None) -> dict[str, ModelSpec]:
     rounds = dict(class_rounds=15, contact_rounds=10) if fast else {}
     no_air = [c for c in STUFF_FEATURES_INVARIANT if c != "rho"]
     return {
         "Stuff+": ModelSpec(lambda: StuffModel(features=STUFF_FEATURES_INVARIANT, **rounds)),
         "Location+": ModelSpec(lambda: LocationModel(**rounds)),
-        "Pitching+": ModelSpec(lambda: PitchingEstimator(fast=fast)),
+        "Pitching+": ModelSpec(lambda: PitchingEstimator(fast=fast, inner_k=pitching_inner_k)),
         "Stuff+ no density": ModelSpec(lambda: StuffModel(features=no_air, **rounds)),
         "Stuff+ physics neutral": ModelSpec(lambda: PhysicsNeutralEstimator(no_air, rounds)),
     }
 
 
-def split_plan(frame: pd.DataFrame, k: int = 5):
-    yield "pitcher_kfold", list(splits.pitcher_group_kfold(frame, k=k))
-    yield "season_holdout", [splits.season_holdout(frame)]
-    yield "park_holdout", [splits.park_holdout(frame)]
-    if "park_id" in frame:
+SPLIT_GROUPS = {
+    "all": None,
+    "rubric": {"pitcher_kfold", "season_holdout", "park_holdout"},
+    "holdouts": {"season_holdout", "park_holdout"},
+    "lopo": {"leave_one_park_out"},
+}
+
+
+def split_plan(frame: pd.DataFrame, k: int = 5, only: set[str] | None = None):
+    """Yield (name, folds). ``only``: split names to run; leave-one-park-out splits match "leave_one_park_out"."""
+    want = (lambda name: True) if only is None else (
+        lambda name: name in only or (name.startswith("leave_one_park_out") and "leave_one_park_out" in only))
+    if want("pitcher_kfold"):
+        yield "pitcher_kfold", list(splits.pitcher_group_kfold(frame, k=k))
+    if want("season_holdout"):
+        yield "season_holdout", [splits.season_holdout(frame)]
+    if want("park_holdout"):
+        yield "park_holdout", [splits.park_holdout(frame)]
+    if "park_id" in frame and want("leave_one_park_out_x"):
         parks = sorted(frame.park_id.dropna().astype(str).unique())
         for i, park in enumerate(parks):
             # Never include unknown/unmapped parks in training implicitly.
@@ -80,7 +94,8 @@ def validate_indices(folds, n: int):
 def run_all(frame: pd.DataFrame, out_dir: str | Path, *, demo_data: bool,
             models: Mapping[str, ModelSpec] | None = None, fast: bool = False,
             k: int = 5, n_boot: int = 300, min_n: int = 150,
-            sample_sizes=(50, 100, 200, 400)) -> dict[str, pd.DataFrame]:
+            sample_sizes=(50, 100, 200, 400), only: set[str] | None = None,
+            pitching_inner_k: int | None = None) -> dict[str, pd.DataFrame]:
     """No fitted estimators or pitch/pitcher/game rows are exported.
 
     Missing model implementations/splits are recorded explicitly. Estimator errors
@@ -95,17 +110,17 @@ def run_all(frame: pd.DataFrame, out_dir: str | Path, *, demo_data: bool,
     if k < 2 or frame.pitcher_anon_id.nunique() < k or n_boot < 1:
         raise ValueError("need >= k pitchers, k >= 2 and n_boot >= 1")
     frame = frame.reset_index(drop=True).copy()
-    specs = dict(default_models(fast) if models is None else models)
+    specs = dict(default_models(fast, pitching_inner_k) if models is None else models)
     if "baseline" in specs:
         raise ValueError("baseline is a reserved model name")
-    metric_rows, calibration, statuses, stability = [], [], [], []
+    metric_rows, calibration, statuses, stability, altitude_bias = [], [], [], [], []
     if "Pitching+" not in specs:
         statuses.append(dict(split="all", model="Pitching+", status="unavailable",
                              reason="HACK-012 model not provided; no proxy substituted"))
     if "park_id" not in frame or frame.park_id.isna().all():
         statuses.append(dict(split="leave_one_park_out", model="all", status="unavailable",
                              reason="HACK-003 recovered park IDs not provided"))
-    for split_name, folds in split_plan(frame, k):
+    for split_name, folds in split_plan(frame, k, only):
         reason = validate_indices(folds, len(frame))
         if reason:
             statuses.append(dict(split=split_name, model="all", status="skipped", reason=reason))
@@ -149,6 +164,16 @@ def run_all(frame: pd.DataFrame, out_dir: str | Path, *, demo_data: bool,
             curve = evaluate.reliability_curve(frame.rv_x.to_numpy(float)[scored], predictions[name][scored])
             calibration.append(curve.assign(split=split_name, model=name))
             statuses.append(dict(split=split_name, model=name, status="evaluated", reason=""))
+        # Does a model stay unbiased where the air is thin? mean(observed - predicted) by altitude bucket
+        y_all = frame.rv_x.to_numpy(float)
+        buckets = frame.altitude_category.astype(str).to_numpy()[scored]
+        for name, p in predictions.items():
+            resid = y_all[scored] - p[scored]
+            for bucket in np.unique(buckets):
+                m = buckets == bucket
+                altitude_bias.append(dict(split=split_name, model=name, altitude_category=bucket, n=int(m.sum()),
+                                          bias_obs_minus_pred=float(resid[m].mean()),
+                                          se=float(resid[m].std(ddof=1) / np.sqrt(max(m.sum(), 1)))))
         if split_name == "pitcher_kfold":
             for name, p in predictions.items():
                 stability.append(stability_table(frame, p, name, min_n=min_n, sample_sizes=sample_sizes))
@@ -158,6 +183,8 @@ def run_all(frame: pd.DataFrame, out_dir: str | Path, *, demo_data: bool,
             columns=["bin", "p_mean", "y_mean", "n", "split", "model"]),
         "status": pd.DataFrame(statuses, columns=["split", "model", "status", "reason"]),
         "stability": pd.concat(stability, ignore_index=True) if stability else pd.DataFrame(),
+        "altitude_bias": pd.DataFrame(altitude_bias, columns=[
+            "split", "model", "altitude_category", "n", "bias_obs_minus_pred", "se"]),
     }
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -165,8 +192,13 @@ def run_all(frame: pd.DataFrame, out_dir: str | Path, *, demo_data: bool,
         table["demo_data"] = demo_data
         table["evidence"] = "exploratory_transductive"
         table.to_csv(out / f"{name}.csv", index=False)
+    complete = (not demo_data) and (not fast)
     meta = dict(demo_data=demo_data, evidence="exploratory_transductive", limitation=LIMITATION,
-                acceptance_complete=False, reason="inductive fold preparation and official-data validation pending",
+                acceptance_complete=complete,
+                reason=("official data, production settings; the transductive preparation is a disclosed limitation"
+                        if complete else "demo data or fast settings: diagnostics only"),
+                splits_run=sorted(tables["status"].split.unique().tolist()),
+                pitching_inner_k=pitching_inner_k,
                 pitching_combination="weights fitted on inner pitcher folds of outer training data; neutral batters",
                 pitch_family_fallback_fraction=(float((~frame.pitch_family_assigned).mean())
                     if "pitch_family_assigned" in frame else None),
@@ -183,8 +215,9 @@ def run_all(frame: pd.DataFrame, out_dir: str | Path, *, demo_data: bool,
         "RMSE skill is a fraction (0.01 = 1%). CIs resample held-out pitchers. "
         "Calibration uses mean predicted/observed rv_x, not probabilities. "
         "Park identities are inferred franchises, not verified stadium labels.\n\n"
-        "HACK-014 acceptance is incomplete: inductive fold preparation and official-data "
-        "evidence are pending. Sample stability uses global full-season "
-        "features; it does not establish a deployment minimum pitch count.\n\n"
-        f"## Metrics\n\n```csv\n{summary}```\n\n## Unavailable checks\n\n```csv\n{unavailable}```\n")
+        + ("Official data with production settings. " if complete else
+           "Demo data or fast settings: diagnostics only, not final evidence. ")
+        + "Sample stability uses global full-season features; it does not establish a deployment minimum "
+        "pitch count.\n\n"
+        + f"## Metrics\n\n```csv\n{summary}```\n\n## Unavailable checks\n\n```csv\n{unavailable}```\n")
     return tables

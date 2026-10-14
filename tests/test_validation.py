@@ -227,3 +227,23 @@ def test_cli_preserves_pitch_identity_fallback_provenance(_synthetic_cache, tmp_
     cli.main()
     provenance = json.loads((tmp_path / "provenance.json").read_text())
     assert provenance["pitch_family_fallback_fraction"] >= 5 / len(initial)
+
+
+def test_split_filter_runs_only_requested_splits(frame, tmp_path):
+    tables = run(frame, tmp_path, only={"season_holdout", "park_holdout"})
+    evaluated = set(tables["status"].query("status == 'evaluated'").split)
+    assert evaluated == {"season_holdout", "park_holdout"}
+    lopo = run(frame, tmp_path / "lopo", only={"leave_one_park_out"})
+    assert set(lopo["status"].query("status == 'evaluated'").split) == {
+        f"leave_one_park_out_{i}" for i in (1, 2, 3)}
+
+
+def test_altitude_bias_table_reports_every_bucket_and_model(frame, tmp_path):
+    tables = run(frame, tmp_path, only={"park_holdout"})
+    bias = tables["altitude_bias"]
+    assert set(bias.model) == {"baseline", "signal"}
+    assert set(bias.altitude_category) == {"Extreme Altitude"}  # park holdout tests only Extreme
+    assert (bias.n > 0).all() and np.isfinite(bias.bias_obs_minus_pred).all()
+    assert (tmp_path / "altitude_bias.csv").exists()
+    meta = json.loads((tmp_path / "provenance.json").read_text())
+    assert meta["acceptance_complete"] is False  # demo data never closes acceptance

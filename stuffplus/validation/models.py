@@ -15,11 +15,11 @@ from stuffplus.models.stuff import StuffModel
 
 
 class PitchingEstimator:
-    def __init__(self, fast=False):
+    def __init__(self, fast=False, inner_k=None):
         self.class_rounds = 10 if fast else 300
         self.contact_rounds = 8 if fast else 200
         self.target_rounds = 8 if fast else 200
-        self.inner_k = 2 if fast else 5
+        self.inner_k = inner_k if inner_k is not None else (2 if fast else 5)
 
     def fit(self, frame):
         train = frame.reset_index(drop=True).copy()

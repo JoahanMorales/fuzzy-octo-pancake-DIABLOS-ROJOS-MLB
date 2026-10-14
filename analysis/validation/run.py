@@ -9,7 +9,7 @@ from stuffplus import config, schema
 from stuffplus.io import load_raw
 from stuffplus.models.pitching import build_features
 from stuffplus.physics.parks import build_maps
-from stuffplus.validation.run_all import run_all
+from stuffplus.validation.run_all import SPLIT_GROUPS, run_all
 
 
 def main():
@@ -18,6 +18,10 @@ def main():
     p.add_argument("--fast", action="store_true")
     p.add_argument("--data", type=Path)
     p.add_argument("--out", type=Path, default=config.REPORTS_DIR / "validation")
+    p.add_argument("--splits", choices=sorted(SPLIT_GROUPS), default="all",
+                   help="rubric = pitcher+season+park; holdouts = season+park; lopo = leave one park out")
+    p.add_argument("--pitching-inner-k", type=int, default=None,
+                   help="inner pitcher folds for the Pitching+ combination weights (default 5, fast 2)")
     args = p.parse_args()
     if args.demo and args.data:
         p.error("--demo and --data are mutually exclusive")
@@ -33,7 +37,8 @@ def main():
     frame["park_id"] = frame.game_anon_id.map(maps.set_index("game_anon_id").franchise).astype("string")
     result = run_all(frame, args.out, demo_data=args.demo, fast=args.fast,
                      n_boot=30 if args.fast else 300, min_n=15 if args.fast else 150,
-                     sample_sizes=(10, 25, 50) if args.fast else (50, 100, 200, 400))
+                     sample_sizes=(10, 25, 50) if args.fast else (50, 100, 200, 400),
+                     only=SPLIT_GROUPS[args.splits], pitching_inner_k=args.pitching_inner_k)
     print(f"Aggregate diagnostics: {args.out}; demo_data={args.demo}; evidence=exploratory_transductive")
     print(result["status"].query("status != 'evaluated'").to_string(index=False))
 

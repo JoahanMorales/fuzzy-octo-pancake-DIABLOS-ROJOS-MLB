@@ -1,6 +1,6 @@
 # HACK-021
 ID: HACK-021
-State: CLAIMED
+State: REVIEW
 Owner: luis-2
 Branch: feat/hack-021
 Worktree: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-021
@@ -9,13 +9,14 @@ Priority: P0
 Paths: stuffplus/prospect.py, app/pages/3_Prospecto.py, tests/test_prospect.py
 Depends: HACK-016
 Verify: `python -m pytest -q tests/test_prospect.py`
-Lease-Until: 1791992988
-Updated: 1791990288
+Lease-Until: 1792005147
+Updated: 1791990747
 Task-Base: 7dc8f4dc72b7e862e24f9bcf668095595c735345
-Next: Commit y PR cuando lo pida el humano
-PR: -
-Evidence: -
-Events: 6
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/28; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/28
+Evidence: python -m pytest -q tests/test_prospect.py: 8 passed (a92e134)
+Events: 7
 Checkpoints: 1
 Sessions: 1
 Last-Checkpoint: 1791990122
+Task-Tip: a92e134285af27dadc7f2b903502cffb9b35a473

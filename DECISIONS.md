@@ -37,3 +37,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791939288 | deadline lease/HACK-026/1791934738 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791939824 | HACK-014 | Draft implementation only; task acceptance remains incomplete | Why: Official input absent; shared preparation still transductive
 - 1791939998 | HACK-014 | Use newly supplied official parquet for a fast exploratory diagnostic run before updating draft evidence | Why: User confirmed main data/raw; parquet635002rows84columns; global preparation still transductive
+- 1791941339 | HACK-018 | Índice relativo 100 + delta EB - delta liga; split observado estandarizado por arsenal común | Why: Evitar confusión entre composición, resistencia relativa y efecto causal

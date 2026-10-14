@@ -9,13 +9,13 @@ Priority: P0
 Paths: analysis/pitcher_sensitivity/, reports/pitcher_sensitivity/, stuffplus/sensitivity.py, tests/test_sensitivity.py
 Depends: HACK-015
 Verify: `python -m pytest -q tests/test_sensitivity.py`
-Lease-Until: 1791943786
-Updated: 1791941086
+Lease-Until: 1791944039
+Updated: 1791941339
 Task-Base: dcb3f2809a47993e919f4c7e426890a561f21376
-Next: usage-weighted aggregation of per-pitch ΔStuff+ by pitcher-season.
+Next: Terminar corrida oficial --fast, revisar agregados, smoke, commit y PR
 PR: -
 Evidence: -
-Events: 1
-Checkpoints: 0
+Events: 2
+Checkpoints: 1
 Sessions: 1
-Last-Checkpoint: 0
+Last-Checkpoint: 1791941339

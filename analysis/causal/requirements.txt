@@ -1,0 +1,4 @@
+# Optional research extra; EconML is MIT licensed.
+# https://github.com/py-why/EconML
+# Install with the repository requirements in an isolated environment.
+econml==0.16.0

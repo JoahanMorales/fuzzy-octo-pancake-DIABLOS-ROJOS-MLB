@@ -1,6 +1,6 @@
 # HACK-022
 ID: HACK-022
-State: CLAIMED
+State: REVIEW
 Owner: victor-2
 Branch: feat/hack-022
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-022
@@ -9,9 +9,9 @@ Priority: P0
 Paths: reports/recommendations/, app/pages/5_Recomendaciones.py
 Depends: HACK-015, HACK-017, HACK-018
 Verify: `test -s reports/recommendations/memo.md`
-Lease-Until: 1791952268
-Updated: 1791949568
+Lease-Until: 1791963975
+Updated: 1791949575
 Task-Base: 55b5591d2a2c2f63d0600fd9435f98f88f0350bb
-Next: top-3 gainers/losers from `reports/altitude_delta/delta_by_shape.csv`.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/25; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/25
 Evidence: -

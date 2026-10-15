@@ -1,0 +1,22 @@
+pitch_type,altitude_category,pitches,rho,stuff_plus_neutral
+Changeup,Extreme Altitude,19099,0.841,94.7
+Changeup,Medium Altitude,17557,0.887,94.235
+Changeup,No Altitude,41131,1.003,96.081
+Curveball,Extreme Altitude,14271,0.838,100.52
+Curveball,Medium Altitude,14017,0.891,100.01
+Curveball,No Altitude,24992,1.002,101.539
+Cutter,Extreme Altitude,10006,0.834,99.271
+Cutter,Medium Altitude,6563,0.883,100.238
+Cutter,No Altitude,9554,0.999,101.052
+Four-Seam,Extreme Altitude,61292,0.839,97.98
+Four-Seam,Medium Altitude,55136,0.888,98.902
+Four-Seam,No Altitude,98967,1.0,103.076
+Sinker,Extreme Altitude,31406,0.837,96.666
+Sinker,Medium Altitude,23465,0.888,96.547
+Sinker,No Altitude,54783,1.0,98.769
+Slider,Extreme Altitude,42766,0.838,102.825
+Slider,Medium Altitude,35958,0.887,103.433
+Slider,No Altitude,59426,1.002,103.407
+Splitter,Extreme Altitude,2192,0.833,100.69
+Splitter,Medium Altitude,1497,0.893,101.729
+Splitter,No Altitude,3524,0.981,98.772

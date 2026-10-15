@@ -1,0 +1,6 @@
+# Pegar en Streamlit Community Cloud → app → Settings → Secrets.
+# No son secretos: son dos rutas. Streamlit expone las claves de nivel raíz como variables de entorno.
+# STUFFPLUS_BUNDLE: el bundle versionado (modelos + tablas agregadas), sin datos crudos.
+# STUFFPLUS_DATA: apunta a un archivo que NO existe, para que ninguna vista intente leer datos por lanzamiento.
+STUFFPLUS_BUNDLE = "deploy/bundle"
+STUFFPLUS_DATA = "/nonexistent/no-raw-data.parquet"

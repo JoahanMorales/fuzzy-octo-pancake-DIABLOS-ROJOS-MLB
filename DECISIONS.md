@@ -62,3 +62,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792022898 | deadline lease/HACK-023/1792017779 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792022898 | deadline lease/HACK-028/1792013568 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792022898 | deadline lease/HACK-034/1792018984 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792027676 | HACK-036 | Staff numbers only from runs_saved.csv; franchises 5 and 11 never combined | Why: HACK-032 contract and the park identity is still inferred

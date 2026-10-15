@@ -9,9 +9,9 @@ Priority: P0
 Paths: demo/deck/, demo/one-pager/
 Depends: HACK-015
 Verify: `test -s demo/deck/README.md`
-Lease-Until: 1792042070
-Updated: 1792027670
+Lease-Until: 1792042076
+Updated: 1792027676
 Task-Base: 8347f3dbbe549eff74f400d16ebe44ce12751ddd
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/31; run .uak/bin/smoke
+Next: Wait for review of SHA 5447c83
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/31
 Evidence: -

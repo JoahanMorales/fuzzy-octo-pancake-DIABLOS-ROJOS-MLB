@@ -57,3 +57,8 @@ Why: a reversible option after 15 min keeps work moving.
 - 1791984614 | deadline lease/HACK-014/1791964430 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1791990122 | HACK-021 | Indice = 100 + delta del modelo - media liga; no EB | Why: Un prospecto no tiene splits observados
 - 1791991752 | HACK-020 | Read aggregates from bundle tables; schematic contour when spread is unpublished | Why: Acceptance forbids raw scatters on the deployed pages
+- 1792022898 | deadline lease/HACK-020/1792006158 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792022898 | deadline lease/HACK-021/1792005147 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792022898 | deadline lease/HACK-023/1792017779 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792022898 | deadline lease/HACK-028/1792013568 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792022898 | deadline lease/HACK-034/1792018984 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.

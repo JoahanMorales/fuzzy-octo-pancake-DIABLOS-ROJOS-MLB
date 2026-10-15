@@ -6,7 +6,7 @@
 - Why: HACK-032 contract and the park identity is still inferred
 - Failing: LibreOffice export of the PPTX was not re-run
 - Commands: test -s demo/deck/README.md; python demo/deck/verify.py
-- Next: Wait for review of SHA 5447c83
+- Next: Integrated in main: 695a8f318432f6f6f8e5af0cb076027a84eaba04
 
 ## History
 - 1791942195 | CLAIMED | sebastian-2 | claim; next: storyboard the 10 slides in `demo/deck/README.md` with the source CSV of each number.
@@ -22,3 +22,4 @@
 - 1792028376 | REVIEW | luis-1 | heartbeat; lease until 1792042776
 - 1792028439 | REVIEW | joahan-2 | review; approve; SHA 5447c8307c60514d05e06218390d261a3c4f405d; reviewer joahan-2
 - 1792028593 | REVIEW | luis-1 | heartbeat; lease until 1792042993
+- 1792028816 | INTEGRATED | luis-1 | merge; smoke and Verify PASS; commit 695a8f318432f6f6f8e5af0cb076027a84eaba04; reviewer joahan-2

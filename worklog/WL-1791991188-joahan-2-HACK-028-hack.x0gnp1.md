@@ -12,3 +12,4 @@
 - 1791991188 | CLAIMED | joahan-2 | claim; next: search space and objective on `pitcher_group_kfold`.
 - 1791998890 | REVIEW | joahan-2 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-028?expand=1; evidence: 3360f89: pytest tests/test_tuning.py 8 passed; smoke PASS; real search 2024-25 (14 boosters improve held-out loss) + before/after kfold/altitude/holdouts; pre-registered rule adopts only Location+; human (joahan) decided keep production, recorded in reports/tuning/README.md; reviewer: -
 - 1791999168 | REVIEW | joahan-2 | heartbeat; lease until 1792013568
+- 1792084624 | REVIEW | luis-2 | review; approve; SHA 40ea5855a1479bf05f178899b888b70e375381e6; reviewer luis-2

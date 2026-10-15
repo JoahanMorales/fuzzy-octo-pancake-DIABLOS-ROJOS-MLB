@@ -1,6 +1,6 @@
 # HACK-036
 ID: HACK-036
-State: CLAIMED
+State: REVIEW
 Owner: luis-1
 Branch: feat/hack-036
 Worktree: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-036
@@ -9,13 +9,14 @@ Priority: P0
 Paths: demo/deck/, demo/one-pager/
 Depends: HACK-015
 Verify: `test -s demo/deck/README.md`
-Lease-Until: 1792030203
-Updated: 1792027503
+Lease-Until: 1792042070
+Updated: 1792027670
 Task-Base: 8347f3dbbe549eff74f400d16ebe44ce12751ddd
-Next: Resume branch feat/hack-036 and PR #22; fill slides 7/8/10 from verified HACK-032/021/dashboard outputs, refresh slide 4 with HACK-014 and slide 9 with final scale; rebuild, verify/render, review before ready
-PR: -
-Evidence: -
-Events: 8
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/31; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/31
+Evidence: test -s demo/deck/README.md exit 0; python demo/deck/verify.py PASS 30 CSV values; SHA 5447c83
+Events: 9
 Checkpoints: 2
 Sessions: 2
 Last-Checkpoint: 1791942997
+Task-Tip: 5447c8307c60514d05e06218390d261a3c4f405d

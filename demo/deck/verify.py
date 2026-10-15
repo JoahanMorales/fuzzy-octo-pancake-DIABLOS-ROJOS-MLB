@@ -41,10 +41,10 @@ def main():
         assert actual == entry['value']
         assert entry['display'] in pdf[entry['slide']-1].get_text(), entry
     all_text = '\n'.join(page.get_text() for page in pdf)
-    assert 'inductiva sigue pendiente' in all_text
+    assert 'No se suman' in all_text
     assert 'Identidades anónimas' in all_text
-    assert 'pendientes' in pdf[0].get_text()
-    assert 'escenarios' in pdf[8].get_text()
+    assert 'sin confirmarse' in pdf[0].get_text()
+    assert 'escenario' in pdf[8].get_text()
     # A geometry check alone does not replace rendering; source text and real
     # export must also survive, and pages are inspected visually by the author.
     for i, slide in enumerate(prs.slides):

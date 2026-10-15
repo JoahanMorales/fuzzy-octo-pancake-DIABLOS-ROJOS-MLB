@@ -125,7 +125,7 @@ def main():
               'Fuente: reports/altitude_delta/delta_by_shape.csv. Estimaciones exploratorias.',
               '45 s. Problema: un buen arsenal a nivel del mar puede cambiar en casa. Proponemos comparar la misma forma de lanzamiento bajo dos ambientes. Abrir con una decisión del coach, sin prometer superioridad predictiva.', True)
     p.text('Comparación física y estadística para discutir\nel uso del arsenal y la evaluación de lanzadores.',40,162,640,22,WHITE)
-    p.text('Documento para entrevista. Datos oficiales agregados.\nStaff, prospectos y validación inductiva siguen pendientes.',40,263,640,17,LIGHT)
+    p.text('Documento para entrevista. Datos oficiales agregados.\nLa sede del staff sigue sin confirmarse.',40,263,640,17,LIGHT)
     end()
 
     density = 'reports/physics/rho_by_bucket.csv'
@@ -150,17 +150,17 @@ def main():
     p.text('IVB: movimiento vertical inducido. Comparaciones exploratorias.',40,319,640,14,GRAY)
     end()
 
-    stuff = 'reports/stuff_model/metrics.csv'; pitching = 'reports/pitching_model/metrics.csv'
-    b=number(4,stuff,{'model':'baseline','baseline_name':'mean xRV by count'},'rmse',5)
-    s=number(4,stuff,{'model':'stuff_v1','baseline_name':'mean xRV by count'},'rmse',5)
-    q=number(4,pitching,{'model':'pitching_combined','target':'rv_x'},'rmse',5)
-    skill=number(4,pitching,{'model':'pitching_combined','target':'rv_x'},'skill_vs_baseline',2,100)
-    p = slide('Pitching+ mejora el error. Stuff+ queda cerca', stuff + '; ' + pitching + ' · rv_x, baseline por conteo.',
-              '75 s. RMSE menor es mejor. La mejora de Pitching+ no se atribuye a Stuff+ puro. La preparación global es transductiva: faltan holdouts inductivos reales por lanzador, temporada y parque. No usar benchmark/demo como calidad real.')
-    for y,label,v,color in [(144,'Baseline',b,GRAY),(191,'Stuff+',s,RED),(238,'Pitching+',q,INK)]:
-        bar(p,label,float(v),v,y,.22,color)
-    p.text('Pitching+: '+skill+'% menos RMSE frente al baseline por conteo.',40,294,640,17,bold=True)
-    p.text('Preparación global. La validación inductiva sigue pendiente.',40,325,640,14,GRAY)
+    hold = 'reports/validation/headline.csv'
+    pk=number(4,hold,{'split':'pitcher_kfold','model':'Pitching+'},'skill',2,100)
+    park_s=number(4,hold,{'split':'park_holdout','model':'Pitching+'},'skill',2,100)
+    season_s=number(4,hold,{'split':'season_holdout','model':'Pitching+'},'skill',2,100)
+    stuff_s=number(4,hold,{'split':'pitcher_kfold','model':'Stuff+'},'skill',2,100)
+    p = slide('Pitching+ se sostiene fuera de muestra', hold + ' · skill frente al baseline por conteo.',
+              '75 s. Skill es la fracción de RMSE que el modelo le quita al baseline por conteo. Pitching+ se mantiene en k-fold de pitcher, holdout de parque y holdout de temporada. Stuff+ no mejora ese baseline. Los rasgos se armaron con toda la muestra: es evidencia exploratoria, no un pronóstico ciego. No citar validation/demo.')
+    for y,label,v in [(144,'Pitcher',pk),(191,'Parque',park_s),(238,'Temporada',season_s)]:
+        bar(p,label,float(v),v+'%',y,5)
+    p.text('Pitching+: % de RMSE que baja frente al baseline por conteo.',40,294,640,15,bold=True)
+    p.text('Stuff+ en k-fold de pitcher: '+stuff_s+'%. No mejora ese baseline.',40,322,640,14,GRAY)
     end()
 
     p = slide('Las pérdidas dependen de la forma del pitch', shape + ' · delta_stuff; misma forma, CDMX menos nivel del mar.',
@@ -186,41 +186,61 @@ def main():
     p.text('Ranking exploratorio. Identidades anónimas. EB reduce ruido de muestras.',40,319,640,14,GRAY)
     end()
 
-    park='reports/park_id/franchise_rho.csv'
-    x=number(7,park,{'franchise':'5'},'rho_mean',3); y=number(7,park,{'franchise':'11'},'rho_mean',3)
-    p=slide('El staff requiere confirmar la sede', park + '; reports/park_id/harp_helu.md · identidad provisional.',
-            '55 s. Las franquicias 5 y 11 son candidatos por densidad, no identificación verificada de Diablos. La auditoría de uso en casa frente a gira está pendiente. No nombrar una rotación, un bullpen o pitches para cortar sin el vínculo oficial y HACK-032.')
-    p.text('Franquicia 5: '+x+'\nFranquicia 11: '+y,40,146,300,24,bold=True)
-    p.text('Candidatos por densidad.\nLa identidad del Harp Helú\nsigue sin verificarse.',40,238,300,18)
-    p.text('Antes de recomendar uso',380,146,300,22,RED,True)
-    p.text('Confirmar equipo y estadio.\nVincular arsenal por temporada.\nRevisar el split casa y gira\ny su cobertura.',380,192,300,19)
+    saved='reports/staff_audit/runs_saved.csv'
+    def saved_num(franchise, component, column, digits=2):
+        return number(7,saved,{'franchise':franchise,'component':component},column,digits)
+    r5=saved_num('5','total','runs_per_season'); w5=saved_num('5','total','wins_per_season')
+    r11=saved_num('11','total','runs_per_season'); w11=saved_num('11','total','wins_per_season')
+    m5=saved_num('5','mezcla de lanzamientos en casa','runs_per_season')
+    a5=saved_num('5','asignación de aperturas en casa','runs_per_season')
+    m11=saved_num('11','mezcla de lanzamientos en casa','runs_per_season')
+    a11=saved_num('11','asignación de aperturas en casa','runs_per_season')
+    p=slide('Dos sedes, dos cuentas de carreras', saved + ' · franquicias 5 y 11, por separado.',
+            '55 s. Leer cada franquicia sola. Son los dos candidatos por densidad, no un staff confirmado de Diablos. Las carreras salen del modelo: mezcla de lanzamientos en casa más reasignación de aperturas. No sumar 5 y 11. No nombrar al club hasta que el staff confirme la sede.')
+    p.text('Franquicia 5',40,140,300,18,RED,True)
+    p.text(r5+' carreras',40,168,300,32,RED,True)
+    p.text(w5+' victorias por temporada',40,208,300,16)
+    p.text('Mezcla '+m5+' · aperturas '+a5,40,236,300,15,GRAY)
+    p.text('Franquicia 11',380,140,300,18,RED,True)
+    p.text(r11+' carreras',380,168,300,32,RED,True)
+    p.text(w11+' victorias por temporada',380,208,300,16)
+    p.text('Mezcla '+m11+' · aperturas '+a11,380,236,300,15,GRAY)
+    p.text('Por temporada, según el modelo. No se suman.\nLa sede sigue sin confirmarse.',40,300,640,16)
     end()
 
-    p=slide('El prospecto comienza con un perfil físico', 'Contrato: docs/CONTRACT.md; stuffplus/schema.py. Flujo propuesto, sin evaluación real de prospectos.',
-            '50 s. Solicitar velocidad, giro, eje de giro, punto de liberación y extensión del arsenal. El motor compara movimiento y calidad en dos ambientes. La salida del evaluador de prospectos y sus comparables aún debe integrarse y verificarse. No emitir Firmar o Evitar con evidencia incompleta.')
-    p.text('Entrada',40,146,280,22,RED,True)
-    p.text('Velocidad y giro\nEje de giro\nPunto de liberación\nExtensión y uso del arsenal',40,190,280,20)
-    p.text('Discusión con scouting',380,146,300,22,RED,True)
-    p.text('Cambio de movimiento\nCalidad en ambos ambientes\nCobertura e incertidumbre\nNecesidades de desarrollo',380,190,300,20)
-    p.text('Evaluador y comparables pendientes. Este flujo no constituye un dictamen.',40,329,640,14,GRAY)
+    fast='reports/ideal_profile/best_fastballs.csv'
+    sea=number(8,fast,{'rank_alt':'1.0'},'stuff_sea',1)
+    alt=number(8,fast,{'rank_alt':'1.0'},'stuff_alt',1)
+    p=slide('El prospecto se mide en el aire de casa', fast + ' · recta de rango 1 por Stuff+ en el Harp Helú.',
+            '50 s. El perfilador toma de 2 a 5 lanzamientos y devuelve Stuff+ neutral y en el Harp Helú, comparables anónimos y un veredicto: Firmar, Desarrollar o Evitar para casa. Esta lámina no evalúa a una persona: muestra la recta de referencia que mejor rankea en ese aire. No pagar por ride de nivel del mar.')
+    p.text(alt,40,146,280,52,RED,True)
+    p.text('Stuff+ en el Harp Helú\nRecta de referencia',40,214,280,18)
+    p.text(sea,380,146,280,52,RED,True)
+    p.text('Stuff+ a nivel del mar\nLa misma recta',380,214,280,18)
+    p.text('El perfilador compara el arsenal en los dos aires. Esto no es un dictamen con nombre.',40,312,640,15,GRAY)
     end()
 
     value='reports/business_value/runs_per_win.csv'
-    league=number(9,value,{'entorno':'liga'},'carreras_por_victoria'); extreme=number(9,value,{'entorno':'Extreme Altitude'},'carreras_por_victoria')
-    p=slide('El entorno cambia el valor de una carrera', value + ' · aproximación pitagórica; no proyección de ahorro del staff.',
-            '65 s. Carreras por victoria como conversión descriptiva: liga y bucket Extreme. El bucket no certifica identidad del estadio. Las conversiones de puntos Stuff+ a carreras dependen de la desviación del xRV predicho y calibración final. Las tablas por calidad del modelo son escenarios, no ahorros observados.')
-    p.text(league,40,146,300,53,RED,True)
-    p.text('Carreras por victoria\nLiga',40,218,300,20)
-    p.text(extreme,380,146,300,53,RED,True)
-    p.text('Carreras por victoria\nAltitud extrema',380,218,300,20)
-    p.text('El ahorro proyectado exige calibrar la escala del modelo final.',40,304,640,18,bold=True)
-    p.text('Las tablas de conversión Stuff+ actuales describen escenarios.',40,334,640,14,GRAY)
+    scale='reports/business_value/runs_per_point_direct.csv'
+    league=number(9,value,{'entorno':'liga'},'carreras_por_victoria')
+    extreme=number(9,value,{'entorno':'Extreme Altitude'},'carreras_por_victoria')
+    per=number(9,scale,{'escala':'Stuff+','objetivo':'rv_x'},'carreras_por_punto_lanzamiento',6)
+    p=slide('El entorno cambia el valor de una carrera', value + '; ' + scale + ' · Stuff+, rv_x, fuera de muestra.',
+            '65 s. Carreras por victoria: liga contra el bucket Extreme. En altura cada carrera vale menos victorias. La escala es carreras por punto de Stuff+ y por lanzamiento, ajustada fuera de muestra. Un salto de muchos puntos en todo el arsenal es un escenario, no el ahorro del staff de la lámina anterior.')
+    p.text(league,40,140,200,46,RED,True)
+    p.text('Carreras por victoria\nLiga',40,198,200,16)
+    p.text(extreme,250,140,200,46,RED,True)
+    p.text('Carreras por victoria\nAltitud extrema',250,198,210,16)
+    p.text(per,490,140,190,28,RED,True,32)
+    p.text('Carreras por punto\nde Stuff+ y lanzamiento',490,198,190,16)
+    p.text('Escala fuera de muestra. +10 puntos en todo el arsenal es un escenario.',40,292,640,16,bold=True)
+    p.text('El ahorro del staff está en la lámina anterior, por franquicia.',40,322,640,14,GRAY)
     end()
 
-    p=slide('La demo compara y explica el arsenal', 'Respaldo: reports/altitude_delta/ y reports/pitcher_sensitivity/. Integración de dashboard pendiente.',
-            '70 s. Abrir comparación por forma, mostrar la pérdida del arsenal y discutir el pitch que más contribuye. Si dashboard no está integrado o falla, usar las tablas y estas láminas. Terminar con el siguiente paso: validar, confirmar el staff y contrastar recomendaciones con el coach. No afirmar demo en vivo verificada.', True)
-    p.text('Comparar movimiento entre ambientes.\nRevisar qué pitch impulsa la pérdida.\nMostrar cobertura y límites del resultado.',40,157,640,24,WHITE,leading=34)
-    p.text('Respaldo offline: agregados y PDF de esta presentación.\nLa recomendación final requiere validar y confirmar el staff.',40,294,640,17,LIGHT)
+    p=slide('La demo compara el mismo arsenal', 'Dashboard en el repo. Respaldo: reports/altitude_delta/ y este PDF.',
+            '70 s. Abrir el simulador con una forma y dos densidades. Pasar al leaderboard anónimo y al mapa de altitud. Si la red o el deploy fallan, quedarse en este PDF y en los CSV agregados. Cerrar confirmando que las franquicias 5 y 11 no se suman y que la sede no está confirmada.', True)
+    p.text('Simulador: la misma forma, dos aires.\nLeaderboard: arsenales anónimos.\nMapa: dónde se pierde el movimiento.',40,157,640,24,WHITE,leading=34)
+    p.text('Respaldo offline: este PDF y los CSV agregados.\nLa sede del staff sigue sin confirmarse.',40,294,640,17,LIGHT)
     end()
     pdf.save(); prs.save(OUT/'stuffplus2240.pptx')
 
@@ -234,14 +254,14 @@ def main():
     p.text('Resumen ejecutivo para discusión con el GM y el coach',38,111,519,13,GRAY)
     p.text('Hallazgos disponibles',38,158,519,18,RED,True)
     p.text(f'La recta Four-Seam pierde {abs(float(obs)):.2f} pulgadas de IVB en el contraste observado entre altitud extrema y nivel del mar. El modelo físico estima {abs(float(cf)):.2f} pulgadas para la forma 4S al cambiar de ambiente.',38,193,519,14,leading=19)
-    p.text(f'Pitching+ reduce el RMSE {skill}% frente al baseline por conteo. Stuff+ queda cerca del baseline. La preparación global impide presentar estos resultados como validación inductiva final.',38,278,519,14,leading=19)
-    p.text('Sweeper pierde menos Stuff+ que riding 4S en el modelo. Los rankings de lanzadores son exploratorios y usan identidades anónimas. Ninguna de estas comparaciones garantiza desempeño futuro.',38,363,519,14,leading=19)
+    p.text(f'Pitching+ baja el RMSE {pk}% en k-fold de pitcher, {park_s}% en holdout de parque y {season_s}% en holdout de temporada. Stuff+ queda en {stuff_s}%: no mejora el baseline por conteo.',38,278,519,14,leading=19)
+    p.text(f'Franquicia 5: {r5} carreras y {w5} victorias por temporada. Franquicia 11: {r11} carreras y {w11} victorias. No se suman. La recta de referencia hace {alt} en el Harp Helú y {sea} a nivel del mar.',38,363,519,14,leading=19)
     p.text('Decisión propuesta',38,451,519,18,RED,True)
     p.text('Usar la comparación por ambiente para priorizar una revisión de arsenal con scouting y coaching. Confirmar primero la identidad del staff y la sede, validar fuera de muestra y contrastar los cambios físicos con evidencia propia.',38,486,519,14,leading=19)
     p.text('Valor y límites',38,573,519,18,RED,True)
-    p.text(f'La aproximación de carreras por victoria es {league} en liga y {extreme} en altitud extrema. El ahorro del staff aún no está cuantificado. Las conversiones de Stuff+ a carreras actuales son escenarios.',38,608,519,14,leading=19)
+    p.text(f'Una carrera vale {league} en liga y {extreme} en altitud extrema. Un punto de Stuff+ vale {per} carreras por lanzamiento, fuera de muestra. El ahorro del staff ya está contado, por franquicia.',38,608,519,14,leading=19)
     p.text('Fuentes y trazabilidad',38,705,519,12,bold=True)
-    p.text('physics/delta_extreme_vs_no.csv; altitude_delta/delta_by_shape.csv;\nstuff_model/metrics.csv; pitching_model/metrics.csv;\nbusiness_value/runs_per_win.csv. Todos bajo reports/.\nDetalle de filas, columnas y hashes: demo/deck/sources.json.',38,733,519,10,GRAY,leading=14)
+    p.text('validation/headline.csv; staff_audit/runs_saved.csv;\nideal_profile/best_fastballs.csv; business_value/runs_per_win.csv;\nbusiness_value/runs_per_point_direct.csv. Todos bajo reports/.\nDetalle de filas, columnas y hashes: demo/deck/sources.json.',38,733,519,10,GRAY,leading=14)
     c.showPage(); c.save()
 
     (OUT/'sources.json').write_text(json.dumps({'demo_data':False,'exploratory':True,
@@ -249,7 +269,7 @@ def main():
     timing=[45,55,55,75,65,65,55,50,65,70]
     rows=['# Presentación ejecutiva · HACK-036','',
           '10 diapositivas para una entrevista de 10 minutos. Identidad tipográfica Diablos con rojo #D71920, gris carbón y Arial, consistente con los reportes existentes. No sustituye ni cambia el diseño de la aplicación.','',
-          '**Estado:** evidencia oficial agregada, exploratoria. PPTX editable y PDF disponibles. Staff, evaluador de prospectos, dashboard integrado y validación inductiva final pendientes. La presentación lo dice explícitamente.','',
+          '**Estado:** evidencia oficial agregada, exploratoria. PPTX editable y PDF disponibles. Holdouts, cuentas de staff y perfilador están citados. Las franquicias 5 y 11 no se suman y la sede sigue sin confirmarse.','',
           '| Lámina | Idea principal | Tiempo | Fuente de cifras |','|---|---|---:|---|']
     for i,(t,f,sec) in enumerate(zip(titles,footers,timing),1):
         rows.append(f'| {i} | {t.replace(chr(10)," ")} | {sec} s | {f} |')
@@ -258,7 +278,7 @@ def main():
              '`sources.json` conserva archivo, fila, columna, factor de formato y SHA-256 por cifra. El guion oral y los límites están en las notas de cada diapositiva. Todos los datos provienen de CSV agregados versionados. No se leen datos privados.', '',
              'Reconstruir con Python 3.12 y `python-pptx`, `reportlab`, `pandas`, `pymupdf`: `python demo/deck/build.py`. Para PDF se usan Arial y Arial Bold de macOS. LibreOffice sirve para exportar el PPTX real a PDF y comparar visualmente. `python demo/deck/verify.py` valida fuentes, cifras y artefactos.','',
              '## Revisión antes de entrevista','',
-             'Confirmar el staff y el estadio con el equipo, integrar salidas de HACK-032/021 y refrescar HACK-014 con holdouts inductivos reales. Sustituir los estados pendientes solo con resultados verificables. No citar `reports/benchmark/demo` como evidencia real.','',
+             'Confirmar con el club cuál de las franquicias 5 y 11 es la sede. No citar `reports/validation/demo` ni `reports/benchmark/demo` como evidencia real.','',
              'En la demo integrada mostrar movimiento por ambiente, pérdida del arsenal y cobertura. Si no está integrada, presentar el PDF y abrir los CSV agregados. El respaldo actual no depende de servicios ni incluye una grabación plan B.','',
              '## Verificación','',
              'Verify del backlog: `test -s demo/deck/README.md`. Verificación de artefactos y trazabilidad: `python demo/deck/verify.py`. La evidencia real de ejecución y QA visual se documenta en `verification.md`.']

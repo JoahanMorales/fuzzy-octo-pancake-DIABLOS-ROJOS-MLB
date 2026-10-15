@@ -245,3 +245,4 @@ Append-only; use bash .uak/bin/uak msg / inbox. Format: - N | epoch | from | to 
 - 241 | 1792022022 | joahan-1 | agent:luis-1 | request | HACK-023 | HACK-020 aprobada (a72d440). Para HACK-024: el scatter crudo de 4_Altitud solo depende de que exista el parquet; agregar un flag explicito de deploy que lo apague siempre. Los contornos son gaussianas esquematicas (sigma 1.8 in): o se calculan de un agregado real o queda claro 'esquematico' en la demo.
 - 242 | 1792023396 | luis-2 | human | human | HACK-021 | Merge of HACK-021 in human queue: Smoke red or product unverified
 - 243 | 1792024383 | luis-2 | human | human | HACK-021 | Merge of HACK-021 in human queue: Queue busy
+- 244 | 1792024384 | luis-2 | agent:luis-1 | integrated | HACK-021 | HACK-021 integrated in main (420471db9e320ac8cf53aa1c20b3308b6186f6e2). If you depend on it: git fetch origin && git merge origin/main (affects: HACK-020)

@@ -5,12 +5,13 @@
     "reports/physics/rho_by_bucket.csv": "89a8ae487040fe6a2e91ee4a4212bcf57110dcdfc4da13f1c682f9b6eaa9a951",
     "reports/physics/delta_extreme_vs_no.csv": "94b066a7897fd55eefad50d7b1f4969b23bae4a5da64fe201520ba53dbd85901",
     "reports/altitude_delta/delta_by_shape.csv": "d8fa928aad4956367c76a9e6c0493a553b2e09ba278b51e07d2c6eae08faa434",
-    "reports/stuff_model/metrics.csv": "0ee2cac66c78f22afb61a0356e70e14428d4aa0664e40f4822f5006a092b6337",
-    "reports/pitching_model/metrics.csv": "05726d1c92d5d243c88b8e18f6eda2614b3f79002b69d59e96ed91a2bb74e054",
+    "reports/validation/headline.csv": "d9fe1baa87055e4a546d38be6d721989557bdd5f77d6a8b9ac5a1a0861680979",
     "reports/pitcher_sensitivity/top15.csv": "a925ac9dd11034cda12ed799fafc563aae5a9dd88c4fc142ee6b143b4836b58e",
     "reports/pitcher_sensitivity/bottom15.csv": "9f299aa26b5b252f8cb2dfcfc11a2786d0ec673e2f7616fbcbb1119487d7bf21",
-    "reports/park_id/franchise_rho.csv": "34b2cb6b59abcb6c356bc89dfba3a625b181bc433f4a877a86cf567c61c12619",
-    "reports/business_value/runs_per_win.csv": "5f7f52a5b250fd82df6af3bb91a711f2882655a0749625fbf2899369b04e1772"
+    "reports/staff_audit/runs_saved.csv": "a8634c64b449e82001c2ffe7b7a7d5cf4e9469d7910e45e1fa6780fcd019d8cf",
+    "reports/ideal_profile/best_fastballs.csv": "4745825823a1c605585113db6ff5340c797a60e4190e23b29e5a49ad5a29fa3a",
+    "reports/business_value/runs_per_win.csv": "5f7f52a5b250fd82df6af3bb91a711f2882655a0749625fbf2899369b04e1772",
+    "reports/business_value/runs_per_point_direct.csv": "ea8303d2dc4f41563ee9ef52d135d502a6431d27bd2320f284f0465d1d7dd71c"
   },
   "evidence": [
     {
@@ -71,51 +72,51 @@
     },
     {
       "slide": 4,
-      "source": "reports/stuff_model/metrics.csv",
+      "source": "reports/validation/headline.csv",
       "row": {
-        "model": "baseline",
-        "baseline_name": "mean xRV by count"
+        "split": "pitcher_kfold",
+        "model": "Pitching+"
       },
-      "column": "rmse",
-      "value": 0.19776,
-      "factor": 1,
-      "display": "0.19776"
-    },
-    {
-      "slide": 4,
-      "source": "reports/stuff_model/metrics.csv",
-      "row": {
-        "model": "stuff_v1",
-        "baseline_name": "mean xRV by count"
-      },
-      "column": "rmse",
-      "value": 0.19782,
-      "factor": 1,
-      "display": "0.19782"
-    },
-    {
-      "slide": 4,
-      "source": "reports/pitching_model/metrics.csv",
-      "row": {
-        "model": "pitching_combined",
-        "target": "rv_x"
-      },
-      "column": "rmse",
-      "value": 0.19009,
-      "factor": 1,
-      "display": "0.19009"
-    },
-    {
-      "slide": 4,
-      "source": "reports/pitching_model/metrics.csv",
-      "row": {
-        "model": "pitching_combined",
-        "target": "rv_x"
-      },
-      "column": "skill_vs_baseline",
+      "column": "skill",
       "value": 0.0388,
       "factor": 100,
       "display": "3.88"
+    },
+    {
+      "slide": 4,
+      "source": "reports/validation/headline.csv",
+      "row": {
+        "split": "park_holdout",
+        "model": "Pitching+"
+      },
+      "column": "skill",
+      "value": 0.03277,
+      "factor": 100,
+      "display": "3.28"
+    },
+    {
+      "slide": 4,
+      "source": "reports/validation/headline.csv",
+      "row": {
+        "split": "season_holdout",
+        "model": "Pitching+"
+      },
+      "column": "skill",
+      "value": 0.03738,
+      "factor": 100,
+      "display": "3.74"
+    },
+    {
+      "slide": 4,
+      "source": "reports/validation/headline.csv",
+      "row": {
+        "split": "pitcher_kfold",
+        "model": "Stuff+"
+      },
+      "column": "skill",
+      "value": -0.0003,
+      "factor": 100,
+      "display": "-0.03"
     },
     {
       "slide": 5,
@@ -211,25 +212,121 @@
     },
     {
       "slide": 7,
-      "source": "reports/park_id/franchise_rho.csv",
+      "source": "reports/staff_audit/runs_saved.csv",
       "row": {
-        "franchise": "5"
+        "franchise": "5",
+        "component": "total"
       },
-      "column": "rho_mean",
-      "value": 0.820565318245592,
+      "column": "runs_per_season",
+      "value": 4.36935,
       "factor": 1,
-      "display": "0.821"
+      "display": "4.37"
     },
     {
       "slide": 7,
-      "source": "reports/park_id/franchise_rho.csv",
+      "source": "reports/staff_audit/runs_saved.csv",
       "row": {
-        "franchise": "11"
+        "franchise": "5",
+        "component": "total"
       },
-      "column": "rho_mean",
-      "value": 0.8133006062516371,
+      "column": "wins_per_season",
+      "value": 0.30493,
       "factor": 1,
-      "display": "0.813"
+      "display": "0.30"
+    },
+    {
+      "slide": 7,
+      "source": "reports/staff_audit/runs_saved.csv",
+      "row": {
+        "franchise": "11",
+        "component": "total"
+      },
+      "column": "runs_per_season",
+      "value": 3.22492,
+      "factor": 1,
+      "display": "3.22"
+    },
+    {
+      "slide": 7,
+      "source": "reports/staff_audit/runs_saved.csv",
+      "row": {
+        "franchise": "11",
+        "component": "total"
+      },
+      "column": "wins_per_season",
+      "value": 0.22506,
+      "factor": 1,
+      "display": "0.23"
+    },
+    {
+      "slide": 7,
+      "source": "reports/staff_audit/runs_saved.csv",
+      "row": {
+        "franchise": "5",
+        "component": "mezcla de lanzamientos en casa"
+      },
+      "column": "runs_per_season",
+      "value": 3.0194,
+      "factor": 1,
+      "display": "3.02"
+    },
+    {
+      "slide": 7,
+      "source": "reports/staff_audit/runs_saved.csv",
+      "row": {
+        "franchise": "5",
+        "component": "asignación de aperturas en casa"
+      },
+      "column": "runs_per_season",
+      "value": 1.34995,
+      "factor": 1,
+      "display": "1.35"
+    },
+    {
+      "slide": 7,
+      "source": "reports/staff_audit/runs_saved.csv",
+      "row": {
+        "franchise": "11",
+        "component": "mezcla de lanzamientos en casa"
+      },
+      "column": "runs_per_season",
+      "value": 1.21524,
+      "factor": 1,
+      "display": "1.22"
+    },
+    {
+      "slide": 7,
+      "source": "reports/staff_audit/runs_saved.csv",
+      "row": {
+        "franchise": "11",
+        "component": "asignación de aperturas en casa"
+      },
+      "column": "runs_per_season",
+      "value": 2.00968,
+      "factor": 1,
+      "display": "2.01"
+    },
+    {
+      "slide": 8,
+      "source": "reports/ideal_profile/best_fastballs.csv",
+      "row": {
+        "rank_alt": "1.0"
+      },
+      "column": "stuff_sea",
+      "value": 115.511,
+      "factor": 1,
+      "display": "115.5"
+    },
+    {
+      "slide": 8,
+      "source": "reports/ideal_profile/best_fastballs.csv",
+      "row": {
+        "rank_alt": "1.0"
+      },
+      "column": "stuff_alt",
+      "value": 108.242,
+      "factor": 1,
+      "display": "108.2"
     },
     {
       "slide": 9,
@@ -252,6 +349,18 @@
       "value": 14.329,
       "factor": 1,
       "display": "14.33"
+    },
+    {
+      "slide": 9,
+      "source": "reports/business_value/runs_per_point_direct.csv",
+      "row": {
+        "escala": "Stuff+",
+        "objetivo": "rv_x"
+      },
+      "column": "carreras_por_punto_lanzamiento",
+      "value": 0.0007237,
+      "factor": 1,
+      "display": "0.000724"
     }
   ]
 }

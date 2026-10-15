@@ -12,6 +12,6 @@ Verify: `python -m pytest -q tests/test_prospect.py`
 Lease-Until: 1792037657
 Updated: 1792023257
 Task-Base: 7dc8f4dc72b7e862e24f9bcf668095595c735345
-Next: Humano: Smoke red or product unverified
+Next: Humano: Queue busy
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/28
 Evidence: -

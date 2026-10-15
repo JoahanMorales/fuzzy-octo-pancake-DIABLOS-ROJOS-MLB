@@ -1,5 +1,5 @@
 ID: HACK-021
-State: MERGING
+State: HUMAN
 Owner: luis-2
-Queued: 1792023385
-Reason: Waiting for queue
+Updated: 1792023396
+Reason: Smoke red or product unverified

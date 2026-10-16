@@ -24,20 +24,21 @@ output of every step goes to `artifacts/pipeline/<timestamp>.log` (git-ignored).
 | 6 | location_model | `python -m analysis.location_model.run` | bundle, `reports/location_model/` |
 | 7 | pitching_model | `python -m analysis.pitching_model.run` | bundle, `reports/pitching_model/` |
 | 8 | altitude_delta | `python -m analysis.altitude_delta.run` | `reports/altitude_delta/` |
-| 9 | validation_holdouts | `python -m analysis.validation.run --splits holdouts --pitching-inner-k 3 --out reports/validation/official_full` | `official_full/` |
-| 10 | validation_fast | `python -m analysis.validation.run --fast --out reports/validation/official_fast` | `official_fast/` |
-| 11 | validation_summary | `python -m stuffplus.validation.summary` | `reports/validation/summary.md`, `headline.csv` |
-| 12 | score | `python -m stuffplus.score` | `artifacts/scores/pitch_scores.parquet`, `reports/leaderboards/` |
-| 13 | pitcher_sensitivity | `python -m analysis.pitcher_sensitivity.run` | `reports/pitcher_sensitivity/` |
-| 14 | ideal_profile | `python -m analysis.ideal_profile.run` | `reports/ideal_profile/` |
-| 15 | design_lab | `python reports/design_lab/run.py` | `reports/design_lab/` |
-| 16 | business_value | `python -m analysis.business_value.run` | `reports/business_value/` |
-| 17 | staff_audit | `python -m analysis.staff_audit.run` | `reports/staff_audit/` |
-| 18 | memo | `python reports/recommendations/build_memo.py` | `reports/recommendations/memo.md` |
-| 19 | web_export | `python -m analysis.export_web.run` | skipped while `analysis/export_web/` does not exist |
+| 9 | hypotheses | `python -m analysis.hypotheses.run` | `reports/hypotheses/` (the memo cites `results.csv`) |
+| 10 | validation_holdouts | `python -m analysis.validation.run --splits holdouts --pitching-inner-k 3 --out reports/validation/official_full` | `official_full/` |
+| 11 | validation_fast | `python -m analysis.validation.run --fast --out reports/validation/official_fast` | `official_fast/` |
+| 12 | validation_summary | `python -m stuffplus.validation.summary` | `reports/validation/summary.md`, `headline.csv` |
+| 13 | score | `python -m stuffplus.score` | `artifacts/scores/pitch_scores.parquet`, `reports/leaderboards/` |
+| 14 | pitcher_sensitivity | `python -m analysis.pitcher_sensitivity.run` | `reports/pitcher_sensitivity/` |
+| 15 | ideal_profile | `python -m analysis.ideal_profile.run` | `reports/ideal_profile/` |
+| 16 | design_lab | `python reports/design_lab/run.py` | `reports/design_lab/` |
+| 17 | business_value | `python -m analysis.business_value.run` | `reports/business_value/` |
+| 18 | staff_audit | `python -m analysis.staff_audit.run` | `reports/staff_audit/` |
+| 19 | cards | `python -m stuffplus.cards` | `reports/cards/` |
+| 20 | memo | `python reports/recommendations/build_memo.py` | `reports/recommendations/memo.md` |
+| 21 | web_export | `python -m analysis.export_web.run` | skipped while `analysis/export_web/` does not exist |
 
-Not in the pipeline (exploratory, not needed for the shipped numbers): `analysis.hypotheses.run`,
-`analysis.benchmark.run`, `analysis.causal.run`, `analysis.v0.run`, `stuffplus.cards`, `stuffplus.explain`.
+Not in the pipeline (exploratory, not needed for the shipped numbers): `analysis.benchmark.run`, `analysis.causal.run`, `analysis.v0.run`, `stuffplus.explain`.
 Add a `Step` to `STEPS` in `run.py` (dependencies must be listed earlier; `tests/test_pipeline.py` checks it).
 
 ## Roster drop-in (named finals data)

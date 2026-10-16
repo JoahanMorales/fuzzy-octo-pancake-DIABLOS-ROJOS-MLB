@@ -70,6 +70,8 @@ STEPS: tuple[Step, ...] = (
          reads=RAW + "; artifacts/bundle", writes="artifacts/bundle (+Pitching+); reports/pitching_model/*"),
     _mod("altitude_delta", "analysis.altitude_delta.run", deps=("stuff_model", "physics"), reads=RAW,
          writes="reports/altitude_delta/*"),
+    _mod("hypotheses", "analysis.hypotheses.run", deps=("targets", "park_id", "physics"), reads=RAW,
+         writes="reports/hypotheses/* (H1-H4; the memo cites results.csv)"),
     _mod("validation_holdouts", "analysis.validation.run", "--splits", "holdouts", "--pitching-inner-k", "3",
          "--out", "reports/validation/official_full", deps=("stuff_model", "location_model", "pitching_model"),
          reads=RAW, writes="reports/validation/official_full/*"),
@@ -93,8 +95,12 @@ STEPS: tuple[Step, ...] = (
     _mod("staff_audit", "analysis.staff_audit.run", deps=("score", "pitcher_sensitivity", "park_id"),
          reads="artifacts/scores/pitch_scores.parquet; artifacts/*_map.parquet; reports/pitcher_sensitivity/",
          writes="reports/staff_audit/*"),
+    _mod("cards", "stuffplus.cards", deps=("score", "pitcher_sensitivity", "altitude_delta", "park_id"),
+         reads="reports/leaderboards, pitcher_sensitivity, altitude_delta; artifacts/team_map.parquet",
+         writes="reports/cards/ (PNG/PDF pitcher cards, manifest.csv)"),
+    # The memo reads only these CSV folders: altitude_delta, business_value, hypotheses, ideal_profile, location_model.
     _script("memo", "reports/recommendations/build_memo.py",
-            deps=("altitude_delta", "design_lab", "business_value", "staff_audit", "validation_summary"),
+            deps=("altitude_delta", "hypotheses", "ideal_profile", "location_model", "business_value"),
             reads="reports/**/*.csv (no raw data)", writes="reports/recommendations/memo.md"),
     # Placeholder: a later task adds the exporter; until analysis/export_web exists the step is skipped.
     _mod("web_export", "analysis.export_web.run", deps=("score", "staff_audit", "memo"), optional=True,

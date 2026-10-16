@@ -52,6 +52,20 @@ fi
 [ "$(git config --get core.hooksPath)" = .githooks ] && ok "pre-commit secret scanner active" || {
   if [ "$fix" = yes ]; then git config core.hooksPath .githooks && ok "core.hooksPath=.githooks (fixed)"
   else bad "core.hooksPath is not .githooks: commits skip the scanner (doctor --fix)"; fi; }
+# Hooks must be executable where git checks the bit (macOS/Linux). Why (MLB hackathon, Codex): the pre-commit
+# scanner was silently skipped because .githooks/pre-commit lost its executable bit.
+for h in .githooks/*; do
+  [ -f "$h" ] || continue
+  case "$(uname -s 2>/dev/null)" in MINGW*|MSYS*|CYGWIN*) break;; esac
+  if [ ! -x "$h" ]; then
+    if [ "$fix" = yes ]; then chmod +x "$h" && git update-index --chmod=+x "$h" 2>/dev/null; ok "$h made executable (fixed; commit it)"
+    else bad "$h is not executable: git skips it (doctor --fix)"; fi
+  fi
+done
+# Synced folders lock files while git writes them. Why (MLB hackathon): the repo and worktrees lived in
+# OneDrive\Escritorio and Windows showed sporadic "git init failed" and lock errors.
+case "$root" in *OneDrive*|*Dropbox*|*iCloud*|*"Google Drive"*)
+  warn "the repo is in a synced folder ($root): sync locks files git is writing; move it outside OneDrive/Dropbox/iCloud";; esac
 grep -qx '.env' .gitignore 2>/dev/null && ok ".env is git-ignored" || bad ".gitignore does not ignore .env"
 grep -qx '.uak-env' .gitignore 2>/dev/null || warn ".gitignore does not ignore .uak-env"
 
@@ -91,6 +105,13 @@ if [ -n "$used" ]; then
   [ -z "$busy" ] && ok "common ports free" || warn "busy ports: $busy— wt assigns UAK_PORT per worktree (base $base)"
 fi
 
+# MCP server (optional): the harness as native tools. Needs Python 3.8+ (standard library only).
+if [ -f .mcp.json ] || [ -f .cursor/mcp.json ]; then
+  py=  # python3 can be the Windows Store alias: found by command -v, but it does not run
+  for c in python3 python py; do "$c" -c 'import sys; sys.exit(sys.version_info < (3, 8))' 2>/dev/null && { py=$c; break; }; done
+  if [ -n "$py" ] && "$py" .uak/bin/uak-mcp --version >/dev/null 2>&1; then ok "MCP server: $("$py" .uak/bin/uak-mcp --version) (Claude Code asks once to approve the project server)"
+  else warn "MCP server configured but no Python 3.8+ to run it: the uak CLI still works; install Python or remove .mcp.json"; fi
+fi
 # Harnesses, pacing and black box (v4.1)
 here_d=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 top_d=$(git rev-parse --show-toplevel 2>/dev/null || pwd)

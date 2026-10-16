@@ -20,3 +20,8 @@ bash.exe.stackdump
 *.stackdump
 # Model bundles and scores are rebuilt locally; never commit them
 artifacts/
+.pytest_cache/
+node_modules/
+.next/
+dist/
+.DS_Store

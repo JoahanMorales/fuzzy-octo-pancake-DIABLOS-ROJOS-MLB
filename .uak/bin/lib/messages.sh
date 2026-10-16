@@ -52,37 +52,64 @@ msg_notify_related() {
     owner=$(field "$TX/claims/$r.md" Owner)
     case " $owners " in *" $owner "*) ;; *) owners="$owners $owner";; esac
   done
-  for owner in $owners; do
-    tasks=$(for r in $(msg_related "$1"); do
-      [ -f "$TX/claims/$r.md" ] && [ "$(field "$TX/claims/$r.md" Owner)" = "$owner" ] && printf '%s ' "$r"
-    done)
-    msg_append "agent:$owner" integrated "$1" "$3 (affects: ${tasks% })"
-  done
+  # One line for every owner: "affects: HACK-003 ana-1, HACK-004 ana-2" (MLB: 3 lines per integration).
+  [ -n "$owners" ] || return 0
+  tasks=$(for r in $(msg_related "$1"); do
+    [ -f "$TX/claims/$r.md" ] || continue; owner=$(field "$TX/claims/$r.md" Owner)
+    [ "$owner" != "$AGENT" ] && printf '%s %s, ' "$r" "$owner"
+  done)
+  msg_append "$(printf 'agent:%s,' $owners | sed 's/,$//')" integrated "$1" "$3 (affects: ${tasks%, })"
 }
-# Suggested reviewer: active agent (messages in the last 3 h), not the owner, with the fewest reviews.
-# Why: at Hack-Nation 2 agents gave 51 of 70 review verdicts.
-# Idle agents (no CLAIMED/BLOCKED task) come first. Why (Reap): the rotation picked agents busy on their own
-# task ("I can't review right now"), and each review cycle took 10-15 min.
+# Suggested reviewer: an active agent (a message or an event in the last 3 h), never the owner nor a retired
+# identity. Order: whoever rejected the previous SHA (they know the diff), then another human's agent, then
+# idle agents (no CLAIMED/BLOCKED task), then the fewest verdicts.
+# Why: Hack-Nation (2 agents gave 51 of 70 verdicts), Reap (busy agents answered "I can't review now"), MLB
+# (15 rotations went to identities without a session; the author's own human got its review twice; every
+# re-review needed an extra message to the rejecter).
+MSG_PICK_REJECTER=
+# Who rejected the current review of task $2 (not owner $1, not retired); empty otherwise.
+msg_last_rejecter() {
+  local rv="$TX/reviews/$2.md" who
+  [ -f "$rv" ] && [ "$(field "$rv" Verdict)" = reject ] || return 0
+  who=$(field "$rv" Reviewer)
+  [ -n "$who" ] && [ "$who" != "$1" ] && [ ! -f "$TX/meta/retired/$who.md" ] && printf '%s' "$who"
+  return 0
+}
+msg_retired() { local f; for f in "$TX"/meta/retired/*.md; do [ -f "$f" ] && basename "$f" .md; done | tr '\n' ' '; }
 msg_pick_reviewer() {
-  local c busy=' '
+  local c f busy=' ' seen=' ' rv="$TX/reviews/${2:-none}.md" retired
+  MSG_PICK_REJECTER=
   [ -f "$TX/$MSG_LOG" ] || return 0
+  retired=" $(msg_retired) "
   for c in "$TX"/claims/*.md; do
     [ -f "$c" ] || continue
     case "$(field "$c" State)" in CLAIMED|BLOCKED) busy="$busy$(field "$c" Owner) ";; esac
   done
-  awk -F' [|] ' -v owner="$1" -v now="$NOW" -v busy="$busy" '
+  for f in "$TX"/meta/agents/*.md; do
+    [ -f "$f" ] || continue
+    u=$(field "$f" Updated); case "$u" in ''|*[!0-9]*) continue;; esac
+    [ $((NOW - u)) -gt 10800 ] || seen="$seen$(basename "$f" .md) "
+  done
+  MSG_PICK_REJECTER=$(msg_last_rejecter "$1" "${2:-none}")
+  awk -F' [|] ' -v owner="$1" -v now="$NOW" -v busy="$busy" -v seen="$seen" -v retired="$retired" -v rej="$MSG_PICK_REJECTER" '
+    function human(n) { if (n ~ /-[A-Za-z0-9]+$/) sub(/-[A-Za-z0-9]+$/, "", n); return n }
     /^- [0-9]/ {
       from=$3
-      if (from == owner || from == "scheduler" || from == "" ) next
+      if (from == owner || from == "scheduler" || from == "" || index(retired, " " from " ")) next
       if (now - $2 <= 10800) active[from]=1
       if ($5 == "approve" || $5 == "reject") load[from]++
     }
     function better(a, b) {
+      if ((a == rej) != (b == rej)) return a == rej
+      oa = human(a) != human(owner); ob = human(b) != human(owner)
+      if (oa != ob) return oa
       ia = index(busy, " " a " ") == 0; ib = index(busy, " " b " ") == 0
       if (ia != ib) return ia
       return load[a]+0 < load[b]+0 || (load[a]+0 == load[b]+0 && a < b)
     }
-    END { best=""; for (a in active) if (best == "" || better(a, best)) best=a; print best }' "$TX/$MSG_LOG"
+    END {
+      n = split(seen, s, " "); for (i = 1; i <= n; i++) if (s[i] != owner && !index(retired, " " s[i] " ")) active[s[i]] = 1
+      best=""; for (a in active) if (best == "" || better(a, best)) best=a; print best }' "$TX/$MSG_LOG"
 }
 msg_owned() {
   local c
@@ -103,7 +130,10 @@ msg_select() {
   # A newer contract from the same sender about the same task supersedes the older one: the inbox shows only
   # the current one, the task thread marks the old one. Why (Reap buildathon): two contracts for the same
   # endpoint (#127, #129) arrived minutes apart and a consumer had to ask which shape was final.
-  awk -F' [|] ' -v me="$AGENT" -v owned=" $(msg_owned) " -v last="$(msg_last_read)" -v mode="$1" -v now="$NOW" '
+  # A new identity (no read pointer yet) starts with the last 6 h, plus anything addressed to it by name.
+  # Why (MLB hackathon): 5 identities joined mid-event and each got up to 22 unread "all" messages, 60 h old.
+  local since=0; [ -f "$TX/inbox/read/$AGENT.md" ] || since=$((NOW - ${UAK_INBOX_FRESH_SECONDS:-21600}))
+  awk -F' [|] ' -v me="$AGENT" -v owned=" $(msg_owned) " -v last="$(msg_last_read)" -v mode="$1" -v now="$NOW" -v since="$since" '
     FNR == NR { if ($0 ~ /^- [0-9]/ && $5 == "contract" && $6 != "-") latest[$3 "|" $6] = substr($1, 3) + 0; next }
     /^- [0-9]/ {
       n=substr($1, 3) + 0; from=$3; to=$4; sup=""
@@ -118,14 +148,25 @@ msg_select() {
         mine=0
         for (i=1; i<=nt; i++) mine = mine || (t[i] == "agent:" me) || (t[i] == "all" && from != me) || (t[i] ~ /^task:/ && index(owned, " " substr(t[i], 6) " "))
         if (!mine || (mode == "unread" && n <= last)) next
+        if (mode == "unread" && $2 < since && to != "agent:" me) next
       }
       age=int((now - $2) / 60)
       printf "#%d · %dm ago · %s → %s · %s · %s%s\n  %s\n", n, age, from, to, $5, $6, sup, $7
     }' "$TX/$MSG_LOG" "$TX/$MSG_LOG"
 }
 msg_resolve_targets() {
-  # Expands MSG_TO into canonical targets, one per line.
+  # Expands MSG_TO into canonical targets, one per line. "A,B" is a list; impact:ID asks the code map which tasks
+  # import the files of ID (uak map impact). Why: related:ID only knows the Depends/Uses edges people wrote; at MLB
+  # 27 tasks imported HACK-001's files and a contract change reached them by hand-picked messages.
   case "$MSG_TO" in
+    *,*)
+      local one all=$MSG_TO
+      for one in $(printf '%s' "$all" | tr ',' ' '); do MSG_TO=$one; msg_resolve_targets; done
+      MSG_TO=$all; return 0;;
+    impact:*)
+      valid_id "${MSG_TO#impact:}" || die "Invalid target: $MSG_TO"
+      bash "$UAK_BIN/map" impact --tasks "${MSG_TO#impact:}" 2>/dev/null | grep -E '^[A-Z][A-Z0-9]*-[0-9]+$' | sed 's/^/task:/'
+      return 0;;
     all|human) printf '%s\n' "$MSG_TO";;
     related:*)
       valid_id "${MSG_TO#related:}" || die "Invalid target: $MSG_TO"
@@ -136,6 +177,7 @@ msg_resolve_targets() {
       local name=${MSG_TO#agent:}
       case "$name" in ''|*[!A-Za-z0-9_.-]*) die "Invalid target: use NAME, ID, related:ID, all or human.";; esac
       [ "$name" != "$AGENT" ] || die "Do not message yourself."
+      [ ! -f "$TX/meta/retired/$name.md" ] || die "$name is retired (no session). Message its task (ID), its human (human) or all."
       printf 'agent:%s\n' "$name";;
   esac
 }
@@ -150,7 +192,8 @@ msg_mutate() {
   fi
   [ "${#MSG_TEXT}" -le 1200 ] || die "Message over 1200 characters: keep 3 lines; put detail in the PR or a file and send its path."
   targets=$(msg_resolve_targets) || exit $?
-  [ -n "$targets" ] || die "$MSG_TO has no related tasks in TASKS.md (Depends on / Uses contract / Related)."
+  [ -n "$targets" ] || die "$MSG_TO has no related tasks (related:ID reads Depends on / Uses contract / Related in TASKS.md; impact:ID reads the code map)."
+  targets=$(printf '%s\n' "$targets" | awk '!seen[$0]++')
   MSG_SENT=
   msg_append "$(printf '%s\n' "$targets" | tr '\n' ',' | sed 's/,$//')" "$MSG_KIND" "$MSG_TASK" "$MSG_TEXT"
 }

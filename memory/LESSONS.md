@@ -8,3 +8,4 @@ Append-only. Format: - N | epoch | agent | task | paths | text. `uak recall` and
 - 4 | 1792183015 | joahan-1 | HACK-052 | stuffplus/models/stuff_v2.py,analysis/stuff_v2/,reports/stuff_v2/,tests/test_stuff_v2.py | Heredoc en Git Bash con comillas o backslash falla en silencio · scripts largos · escribir el archivo con el editor y correrlo con python
 - 5 | 1792183086 | joahan-1 | - | - | forget #4
 - 6 | 1792183104 | joahan-1 | - | - | forget #3
+- 7 | 1792183123 | joahan-1 | - | - | forget #2

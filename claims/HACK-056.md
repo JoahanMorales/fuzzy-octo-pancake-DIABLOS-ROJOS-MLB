@@ -1,6 +1,6 @@
 # HACK-056
 ID: HACK-056
-State: CLAIMED
+State: REVIEW
 Owner: joahan-2
 Branch: feat/hack-056
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-056
@@ -9,9 +9,9 @@ Priority: P0
 Paths: analysis/pipeline/, Makefile, stuffplus/roster.py, tests/test_pipeline.py, tests/test_roster.py
 Depends: None
 Verify: `python -m pytest -q tests/test_pipeline.py tests/test_roster.py`
-Lease-Until: 1792185018
-Updated: 1792182318
+Lease-Until: 1792199173
+Updated: 1792184773
 Task-Base: 2a2792a3b0a9998e462d0b0539e0eb3ea23d561c
-Next: list the existing `analysis/*/run.py` entry points and their inputs.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-056?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-056?expand=1
 Evidence: -

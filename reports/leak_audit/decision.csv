@@ -1,0 +1,4 @@
+set,label,habilidad mejora (IC sobre física),nivel pitcher no baja,adopt,nota
+vaa_neto,+ VAA/HAA netos de ubicación,True,False,False,
+mano,+ diferencias por mano del bateador,False,False,False,
+vaa_crudo,+ VAA/HAA crudos,,,False,lleva ubicación: nunca en Stuff+

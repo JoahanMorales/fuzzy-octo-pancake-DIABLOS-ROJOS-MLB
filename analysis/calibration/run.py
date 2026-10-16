@@ -121,7 +121,7 @@ def readme(t: pd.DataFrame, dec: pd.DataFrame) -> str:
             failed = [c for c in ("log-loss baja", "nivel pitcher no baja", "habilidad por lanzamiento no baja") if not r[c]]
             L.append(f"  - {LABELS[r.method]}: {'pasa' if r.passes else 'no cumple: ' + ', '.join(failed)}.")
     L += ["", "El nivel pitcher de Stuff+ v2 usa su valor integrado sobre conteos (`stuff_value`); el de los demás, el xRV.",
-          "El calibrador elegido se aplica en producción en HACK-057 con `stuffplus.calibration.fit_nested`.", ""]
+          "El calibrador elegido se aplica en producción en HACK-057 con `stuffplus.calibration.fit_nested`. Stuff+ v2 (HACK-052) se evalúa con este mismo script (`--models stuff_v2`) cuando esté integrado; HACK-057 aplica su veredicto.", ""]
     return "\n".join(L)
 
 

@@ -10,3 +10,10 @@ app:
 	$(PY) -m streamlit run app/Home.py
 synthetic:
 	$(PY) -m tests.fixtures.synthetic data/sample/synthetic_pitches.parquet
+
+# HACK-056: one-command pipeline (hours on the real data; pipeline-dry just lists the steps)
+.PHONY: pipeline pipeline-dry
+pipeline:
+	$(PY) -m analysis.pipeline.run
+pipeline-dry:
+	$(PY) -m analysis.pipeline.run --dry-run

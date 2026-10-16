@@ -1,0 +1,6 @@
+model,first50_r,first200_r,observed_first50_r,split_half_r,year_to_year_r,calibration_slope
+Stuff+ v1,0.264798,0.306473,0.048139,0.807172,0.738282,
+Stuff+ v2 (familia),0.269245,0.322588,0.048139,0.803045,0.724781,
+Stuff+ v2 (liga),0.265267,0.319295,0.048139,0.802069,0.727126,
+Stuff+ v1 · por lanzamiento,,,,,,0.694322
+Stuff+ v2 · por lanzamiento,,,,,,0.803928

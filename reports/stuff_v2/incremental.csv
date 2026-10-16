@@ -1,0 +1,4 @@
+model,n,rmse,mae,r2,bias,skill_vs_baseline,skill_lo,skill_hi,split,vs
+Stuff+ v2,623231.0,0.197218,0.127927,0.005765,-0.00086,0.001778,0.001529,0.002051,pitcher_kfold,solo conteo
+Stuff+ v2,127853.0,0.199984,0.1288,0.006192,-0.001894,0.002027,0.001406,0.002673,season_holdout,solo conteo
+Stuff+ v2,179166.0,0.204327,0.130465,0.00462,0.001774,0.002303,0.001807,0.002826,park_holdout,solo conteo

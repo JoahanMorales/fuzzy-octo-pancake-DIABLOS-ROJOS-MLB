@@ -65,3 +65,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792027676 | HACK-036 | Staff numbers only from runs_saved.csv; franchises 5 and 11 never combined | Why: HACK-032 contract and the park identity is still inferred
 - 1792083539 | deadline lease/HACK-024/1792043159 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792181140 | plan | joahan/joahan | tasks added: HACK-037 HACK-038 HACK-039 HACK-040 HACK-041 HACK-042 HACK-043 HACK-044 HACK-045 HACK-046 HACK-047 HACK-048 HACK-049 HACK-050 HACK-051 HACK-052 HACK-053 HACK-054 HACK-055 HACK-056 HACK-057 HACK-058 HACK-059 | Why: backlog without PR (Plan-Channel: claims)
+- 1792183234 | HACK-052 | count enters only via Balls/Strikes; Stuff+ marginalized over the family's train count distribution; league weights = sensitivity | Why: rubric null is mean xRV by count; honest framing = incremental value of stuff over the count null

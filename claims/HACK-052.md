@@ -9,9 +9,9 @@ Priority: P0
 Paths: stuffplus/models/stuff_v2.py, analysis/stuff_v2/, reports/stuff_v2/, tests/test_stuff_v2.py
 Depends: None
 Verify: `python -m pytest -q tests/test_stuff_v2.py`
-Lease-Until: 1792184702
-Updated: 1792182002
+Lease-Until: 1792185934
+Updated: 1792183234
 Task-Base: 2a2792a3b0a9998e462d0b0539e0eb3ea23d561c
-Next: subclass `StuffModel` with a residual target; reuse `analysis/tuning/evaluate.py` patterns.
+Next: read reports/stuff_v2/decision.csv; commit reports; uak done
 PR: -
 Evidence: -

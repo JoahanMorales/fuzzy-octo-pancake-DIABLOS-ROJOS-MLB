@@ -101,12 +101,18 @@ Every tool output stays in the context and is re-sent on every later turn. At Re
 295 times and `status` 258 times, mostly with identical output. What the kit does, per harness:
 | Mechanism | Claude Code | Codex · Cursor · Gemini |
 |---|---|---|
-| Huge shell output → head 30 + tail 50 + saved log (`Output-Cap-Chars`, default 12000) | PostToolUse `updatedToolOutput` (`hook output`) | **Codex:** PostToolUse `decision: "block"` replaces the result with the shortened output (`hook output codex`; the command already ran). **Cursor:** `postToolUse` can only edit MCP output, so `preToolUse` `updated_input` wraps tests, builds, linters and read-only git/search commands in `{ cmd; } > log` + `cap` (exit code, `cd` and `export` kept; servers, watchers, background jobs and guard-blocked commands are never wrapped). **Gemini:** `q` |
+| Huge shell output → head 30 + tail 50 + saved log (`Output-Cap-Chars`, default 12000) | PostToolUse `updatedToolOutput` (`hook output`) | **Codex:** PreToolUse `permissionDecision: "allow"` + `updatedInput.command` sends tests, builds, linters and read-only git/search commands base64 to `cap --b64` (v4.3; the v4.2 PostToolUse `block` cut doc reads and broke tool batches). **Cursor:** `postToolUse` can only edit MCP output, so `preToolUse` `updated_input` wraps the same commands in `{ cmd; } > log` + `cap` (exit code, `cd` and `export` kept); on Windows, where the agent shell is PowerShell, they go base64 to `cap --b64`, which both shells read the same. Servers, watchers, background jobs, reads (`cat`, `sed`) and guard-blocked commands are never wrapped. A huge diff becomes a per-file index with line ranges. **Gemini:** `q` |
 | Same `status`/`next`/`digest` twice in one session → `= unchanged` (one line) | yes | yes (session = the harness process) |
 | Unread messages shown once per session, not on every `inbox` | yes | yes |
 | `LOOP:` after the same error 3 times in 10 min | yes | yes |
 | Noisy tests/builds → `bash .uak/bin/q` (1 line on success, tail on failure) | rule + output cap | rule |
 | Inbox injected only when actionable; info becomes one line | PostToolUse `additionalContext` | `uak inbox` |
+
+## Check it against the bill (`uak tokens`)
+The tiers are a plan; the transcripts are the result. `bash .uak/bin/uak tokens --by model` and `--by scope` show
+whether the fast tier really did the reading (subagents with a large share on the fast model) and whether the strong
+model stayed at the checkpoints (a small share). `--team` adds every machine. Claude Code and Codex only: Cursor
+keeps no local token log.
 
 ## What we did NOT adopt (claims that circulate online)
 | Claim | Status |

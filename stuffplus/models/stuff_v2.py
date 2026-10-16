@@ -6,8 +6,9 @@ count) — a strike is worth more at 3-0 than at 0-2. v2 lets the count *value* 
 1. ``P(outcome | stuff, count)`` (LightGBM multiclass) and ``E[rv_x | in play, stuff, count]``: the count enters
    only as ``Balls``/``Strikes`` (``check_features``: never location, never anything else);
 2. ``V_k(c)``: mean ``rv_x`` of outcome k in count c, shrunk toward the class mean in sparse cells (train only);
-3. per-pitch prediction ``xRV(stuff, c) = Σ_k P_k V_k(c)`` (in play: the contact model) uses the pitch's real
-   count, so the count null is nested: this is the **incremental value of stuff over the count null**;
+3. per-pitch prediction ``xRV(stuff, c) = Σ_k P_k V_k(c) + o_c`` (in play: the contact model) uses the pitch's
+   real count; ``o_c`` re-centres each count on its train mean m_c, so the count null is nested exactly: the
+   difference is the **incremental value of stuff over the count null**;
 4. **Stuff+ v2** marginalizes the count away: ``value = Σ_c w_f(c) · [xRV(stuff, c) − m_c]`` with ``m_c`` the
    train mean of ``rv_x`` in count c and ``w_f`` the train share of each count *for the pitch's family*
    (a slider is valued in the counts where sliders are thrown). A pitcher's own count mix never moves his Stuff+.
@@ -54,6 +55,7 @@ class StuffV2Model(StuffModel):
     count_mean: pd.Series | None = None  # m_c: train mean rv_x by count
     family_weights: pd.DataFrame | None = None  # index pitch_family, columns count, rows sum to 1
     league_weights: pd.Series | None = None
+    count_offset: pd.Series | None = None  # m_c − mean model xRV in count c (train): nests the count null exactly
 
     def _fit_parts(self, df: pd.DataFrame):
         check_features(self.features)
@@ -84,11 +86,16 @@ class StuffV2Model(StuffModel):
         share = pd.crosstab(df["pitch_family"].astype(str), key, normalize="index") if "pitch_family" in df else None
         self.league_weights = pd.Series(key).value_counts(normalize=True).reindex(table.index).fillna(0.0)
         self.family_weights = (share.reindex(columns=table.index).fillna(0.0) if share is not None else None)
+        self.count_offset = pd.Series(0.0, index=table.index)
+        raw = pd.Series(self.predict_components(df)["xrv"].to_numpy()).groupby(key).mean()
+        self.count_offset = (self.count_mean - raw.reindex(table.index)).fillna(0.0)
         return self
 
     def _xrv(self, df: pd.DataFrame, probs: np.ndarray, contact: np.ndarray) -> np.ndarray:
-        v = self.count_values.loc[_count_key(df)].to_numpy(float)
-        return (probs[:, :4] * v[:, :4]).sum(axis=1) + probs[:, 4] * contact
+        key = _count_key(df)
+        v = self.count_values.loc[key].to_numpy(float)
+        offset = self.count_offset.loc[key].to_numpy(float) if self.count_offset is not None else 0.0
+        return (probs[:, :4] * v[:, :4]).sum(axis=1) + probs[:, 4] * contact + offset
 
     def predict_components(self, df: pd.DataFrame) -> pd.DataFrame:
         X = as_model_frame(df, self.features)

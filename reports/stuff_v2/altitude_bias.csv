@@ -1,0 +1,4 @@
+model,n,bias_obs_minus_pred,lo,hi,r4_v2_matches_better
+baseline (conteo),179166,0.010784,0.009467,0.011957,True
+Stuff+ v1,179166,0.002522,0.001379,0.003649,True
+Stuff+ v2,179166,0.001774,0.000555,0.003001,True

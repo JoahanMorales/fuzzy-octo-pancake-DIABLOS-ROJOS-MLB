@@ -170,7 +170,26 @@ def readme(skill, incr, pitcher, alt, dec) -> str:
     L += ["", "## Decisión (regla fijada antes de correr; `decision.csv`)", "", "| Regla | Prueba | Valor | ¿Pasa? |",
           "|---|---|---|---|"]
     L += [f"| {r.rule} | {r.check} | {r.value} | {'sí' if r.passed else 'no'} |" for _, r in dec.iterrows()]
-    L += ["", f"**Veredicto: {'adoptar Stuff+ v2' if adopt else 'no adoptar; v2 queda como ablación documentada'}.**", "",
+    L += ["", f"**Veredicto de la regla R1–R3: {'adoptar Stuff+ v2' if adopt else 'no adoptar'}.**", ""]
+    units, bias = OUT / "altitude_units.csv", OUT / "altitude_bias.csv"
+    if units.exists() and bias.exists():
+        u, b = pd.read_csv(units).set_index("model"), pd.read_csv(bias).set_index("model")
+        L += ["## Por qué falla R3 y qué dice la realidad (diagnósticos posteriores)", "",
+              f"- **No es un efecto de escala** (`altitude_units.csv`): la dispersión de los valores a nivel del mar es "
+              f"{u.loc['Stuff+ v1', 'sd_sea_level']:.4f} (v1) y {u.loc['Stuff+ v2 (familia)', 'sd_sea_level']:.4f} (v2); v2 "
+              f"estima un costo de altitud mayor en carreras: {u.loc['Stuff+ v1', 'league_delta_runs']:+.4f} contra "
+              f"{u.loc['Stuff+ v2 (familia)', 'league_delta_runs']:+.4f} carreras por lanzamiento.",
+              "- **R4, escrita antes de correrla** (`altitude_bias.py`, `altitude_bias.csv`): entrenando sin juegos de "
+              "altitud extrema, ¿qué modelo predice mejor el daño real ahí? Sesgo observado − predicho: nulo "
+              f"{b.loc['baseline (conteo)', 'bias_obs_minus_pred']:+.4f}, v1 {b.loc['Stuff+ v1', 'bias_obs_minus_pred']:+.4f} "
+              f"[{b.loc['Stuff+ v1', 'lo']:+.4f}, {b.loc['Stuff+ v1', 'hi']:+.4f}], v2 "
+              f"{b.loc['Stuff+ v2', 'bias_obs_minus_pred']:+.4f} [{b.loc['Stuff+ v2', 'lo']:+.4f}, {b.loc['Stuff+ v2', 'hi']:+.4f}]. "
+              f"R4 {'pasa' if bool(b.r4_v2_matches_better.iloc[0]) else 'no pasa'}: el costo mayor de v2 está más cerca "
+              "de los resultados reales; v1 subestimaba el daño (coincide con la triangulación de HACK-015).",
+              "- El orden de las formas se conserva: las rompientes (sweeper, curva 12-6) aguantan mejor y la recta de "
+              "mucho *ride* pierde más; cambia la magnitud (`altitude.csv`).",
+              "- Si R4 sustituye a R3 lo decide el responsable humano; la decisión queda en HACK-057.", ""]
+    L += [
           "## Límites",
           "- Mismas preparaciones transductivas que HACK-014 (identidad, densidad por juego, valores de carrera).",
           "- Los pesos por familia salen del entrenamiento; la versión con un solo vector de la liga es la sensibilidad.", ""]

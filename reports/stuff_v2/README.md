@@ -48,7 +48,14 @@ Pendiente de calibración por lanzamiento (1 = ideal): Stuff+ v1 0.69; Stuff+ v2
 | R3 | ΔStuff+ de la liga en CDMX a ±1.5 de v1 | -10.3 → -12.7 | no |
 | R3 | misma forma que más resiste y que más pierde | sweeper/riding 4S → 12-6 CB/riding 4S | no |
 
-**Veredicto: no adoptar; v2 queda como ablación documentada.**
+**Veredicto de la regla R1–R3: no adoptar.**
+
+## Por qué falla R3 y qué dice la realidad (diagnósticos posteriores)
+
+- **No es un efecto de escala** (`altitude_units.csv`): la dispersión de los valores a nivel del mar es 0.0122 (v1) y 0.0121 (v2); v2 estima un costo de altitud mayor en carreras: +0.0126 contra +0.0153 carreras por lanzamiento.
+- **R4, escrita antes de correrla** (`altitude_bias.py`, `altitude_bias.csv`): entrenando sin juegos de altitud extrema, ¿qué modelo predice mejor el daño real ahí? Sesgo observado − predicho: nulo +0.0108, v1 +0.0025 [+0.0014, +0.0036], v2 +0.0018 [+0.0006, +0.0030]. R4 pasa: el costo mayor de v2 está más cerca de los resultados reales; v1 subestimaba el daño (coincide con la triangulación de HACK-015).
+- El orden de las formas se conserva: las rompientes (sweeper, curva 12-6) aguantan mejor y la recta de mucho *ride* pierde más; cambia la magnitud (`altitude.csv`).
+- Si R4 sustituye a R3 lo decide el responsable humano; la decisión queda en HACK-057.
 
 ## Límites
 - Mismas preparaciones transductivas que HACK-014 (identidad, densidad por juego, valores de carrera).

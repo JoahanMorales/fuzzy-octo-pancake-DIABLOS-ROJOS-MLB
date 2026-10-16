@@ -12,3 +12,4 @@ Append-only. Format: - N | epoch | agent | task | paths | text. `uak recall` and
 - 8 | 1792183142 | joahan-1 | HACK-052 | web/,tests/,stuffplus/export_trees.py | Los fixtures de paridad TS vs Python con filas del parquet son datos por lanzamiento en git (el limite de 1000 filas no los atrapa) · generar golden sinteticos
 - 9 | 1792183160 | joahan-1 | HACK-052 | analysis/ | La consola de Windows (cp1252) truena al imprimir rho o Delta · escribir el texto a archivo utf-8 y solo imprimir la ruta
 - 10 | 1792183179 | joahan-1 | HACK-052 | scripts/,analysis/ | Heredoc en Git Bash con comillas o backslash falla en silencio · escribir el script con el editor y correrlo con python
+- 11 | 1792187357 | joahan-1 | HACK-037 | web/ | UI: cargar la skill design-taste-frontend antes de disenar o revisar; nada con look de plantilla (pedido de joahan)

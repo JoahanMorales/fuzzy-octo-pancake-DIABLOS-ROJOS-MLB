@@ -48,6 +48,16 @@ the landing.
 - Budget: 60 fps on a mid laptop, < 150k triangles, lazy-load three.js off the landing's first paint; WebGL missing →
   2D catcher view (same data, SVG/canvas).
 
+## Charts (dataviz skill; reference implementation `design/charts.js`)
+- Two-series comparisons are **highlight vs reference**: Harp Helú air = `--red`, solid 2.5px; sea level = `--sea`,
+  **dashed** 2px (secondary encoding, never color alone). Validated on `--bg`/`--surface`: deutan ΔE 31.5,
+  normal ΔE 37.9, both ≥ 3:1 contrast (the grey is a neutral reference, not a categorical hue).
+- Pitch graphics look like broadcast tracking, not schematics: real proportions (zone 17 in, ball 2.9 in), axes with
+  units, recessive grid (`--line`), flight tubes that widen toward the catcher, an arrow or bracket that states the
+  movement lost, direct labels in a right-hand column. Text always in text tokens; the swatch carries identity.
+- A legend for every chart with ≥ 2 series, plus direct labels; no dual axes; markers ≥ 8px with a 2px surface ring;
+  every chart has hover/focus tooltips in the product and a short text conclusion beside it.
+
 ## Copy (Spanish)
 - Plain, concrete sentences. Zero em-dashes. Hyphen for ranges; the minus sign for negative numbers.
 - Every number comes from a contract JSON (`public/data/`), never typed in a component. Mocks say "ejemplo".

@@ -29,11 +29,11 @@
   .btn.primary { background: var(--red); color: var(--fg); }
   .btn.primary:hover { background: var(--red-strong); }
   .btn.ghost { border: 1px solid var(--line-strong); color: var(--fg); }
-  .flight { position: relative; aspect-ratio: 16 / 10; border-radius: var(--radius); overflow: hidden; background: radial-gradient(120% 90% at 70% 100%, var(--grass) 0%, var(--grass-dark) 38%, var(--bg) 78%); border: 1px solid var(--line); }
+  .flight { position: relative; aspect-ratio: 16 / 10; border-radius: var(--radius); overflow: hidden; background: radial-gradient(90% 55% at 50% 118%, rgb(47 74 53 / .55) 0%, transparent 70%), var(--surface); border: 1px solid var(--line); }
   .flight canvas { width: 100%; height: 100%; display: block; }
-  .legend { position: absolute; left: var(--s-4); bottom: var(--s-4); display: flex; gap: var(--s-4); font-size: var(--text-xs); color: var(--fg-muted); }
-  .legend span::before { content: ''; display: inline-block; width: 18px; height: 3px; margin-right: 6px; vertical-align: middle; border-radius: 2px; background: var(--sea); }
-  .legend span.cdmx::before { background: var(--red); }
+  .legend { position: absolute; left: var(--s-4); top: var(--s-3); display: flex; gap: var(--s-4); font-size: var(--text-xs); color: var(--fg-muted); }
+  .legend span::before { content: ''; display: inline-block; width: 18px; height: 0; margin-right: 6px; vertical-align: middle; border-top: 2px dashed var(--sea); }
+  .legend span.cdmx::before { border-top: 2.5px solid var(--red); }
 
   /* PROOF: three numbers that win, broadcast lower-third style, no cards */
   .proof { display: grid; grid-template-columns: 1.2fr 1fr 1fr; border-top: 1px solid var(--line); margin-top: var(--s-16); }
@@ -45,7 +45,7 @@
 
   /* SIMULATOR HUD */
   .sim { margin: var(--s-24) 0; display: grid; grid-template-columns: 1fr 340px; grid-template-rows: auto auto; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-  .view { position: relative; background: radial-gradient(110% 80% at 50% 110%, var(--grass) 0%, var(--grass-dark) 45%, #101014 82%); min-height: 460px; }
+  .view { position: relative; background: radial-gradient(80% 60% at 50% 115%, rgb(47 74 53 / .6) 0%, transparent 70%), #0f0f12; min-height: 460px; }
   .view canvas { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
   .cams { position: absolute; top: var(--s-4); left: var(--s-4); display: flex; gap: var(--s-2); z-index: var(--z-hud); }
   .chip { height: 32px; padding: 0 var(--s-4); border-radius: var(--radius-pill); border: 1px solid var(--line-strong); background: rgb(12 12 14 / .72); color: var(--fg-muted); font-size: var(--text-sm); display: inline-flex; align-items: center; }
@@ -123,28 +123,7 @@
   <p class="note">Maqueta de diseño (HACK-039). Las cifras del simulador son de ejemplo; en el producto salen del modelo en el navegador y de los JSON del contrato.</p>
 </div>
 
-<script>
-// Two flights of the same release: sea level (neutral) vs Harp Helú air (red). Simple projectile + lift scaled by rho.
-function flight(rho) { const pts = []; let x = 0, y = 6.0, vx = 1, vy = -0.02; for (let t = 0; t < 60; t++) { pts.push([x, y]); x += vx; vy += -0.0042 + 0.0031 * rho; y += vy; } return pts; }
-function draw(id, mode) {
-  const c = document.getElementById(id), dpr = window.devicePixelRatio || 1, r = c.getBoundingClientRect();
-  c.width = r.width * dpr; c.height = r.height * dpr; const g = c.getContext('2d'); g.scale(dpr, dpr);
-  const css = getComputedStyle(document.documentElement), sea = css.getPropertyValue('--sea').trim(), red = css.getPropertyValue('--red').trim(), chalk = css.getPropertyValue('--chalk').trim();
-  if (mode === 'side') {
-    const sx = (x) => 40 + x / 59 * (r.width - 80), sy = (y) => r.height * 0.18 + (6.4 - y) / 4.6 * r.height * 0.62;
-    g.strokeStyle = chalk; g.globalAlpha = .35; g.lineWidth = 1; g.beginPath(); g.moveTo(30, sy(1.6)); g.lineTo(r.width - 30, sy(1.6)); g.stroke(); g.globalAlpha = 1;
-    [[1.0, sea, 2], [0.819, red, 3]].forEach(([rho, col, w]) => { const p = flight(rho); g.strokeStyle = col; g.lineWidth = w; g.beginPath(); p.forEach(([x, y], i) => i ? g.lineTo(sx(x), sy(y)) : g.moveTo(sx(x), sy(y))); g.stroke(); const [lx, ly] = p[p.length - 1]; g.fillStyle = col; g.beginPath(); g.arc(sx(lx), sy(ly), 7, 0, 7); g.fill(); });
-  } else {
-    const zw = r.width * 0.2, zh = zw * 1.25, zx = r.width / 2 - zw / 2, zy = r.height * 0.2;
-    g.strokeStyle = chalk; g.lineWidth = 2; g.strokeRect(zx, zy, zw, zh);
-    g.globalAlpha = .25; for (let i = 1; i < 3; i++) { g.beginPath(); g.moveTo(zx + zw * i / 3, zy); g.lineTo(zx + zw * i / 3, zy + zh); g.moveTo(zx, zy + zh * i / 3); g.lineTo(zx + zw, zy + zh * i / 3); g.stroke(); } g.globalAlpha = 1;
-    const pts = [[zx + zw * .62, zy + zh * .22, sea], [zx + zw * .55, zy + zh * .42, red]];
-    g.setLineDash([4, 4]); g.strokeStyle = sea; g.beginPath(); g.moveTo(pts[0][0], pts[0][1]); g.lineTo(pts[1][0], pts[1][1]); g.stroke(); g.setLineDash([]);
-    pts.forEach(([x, y, col]) => { g.fillStyle = col; g.beginPath(); g.arc(x, y, 11, 0, 7); g.fill(); });
-  }
-}
-function all() { draw('side', 'side'); draw('catcher', 'catcher'); }
-window.addEventListener('resize', all); document.fonts.ready.then(all);
-</script>
+<script src="charts.js"></script>
+<script>window.addEventListener("resize", drawAll); document.fonts.ready.then(drawAll);</script>
 </body>
 </html>

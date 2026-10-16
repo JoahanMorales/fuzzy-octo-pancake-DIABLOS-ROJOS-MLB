@@ -10,3 +10,4 @@ Append-only. Format: - N | epoch | agent | task | paths | text. `uak recall` and
 - 6 | 1792183104 | joahan-1 | - | - | forget #3
 - 7 | 1792183123 | joahan-1 | - | - | forget #2
 - 8 | 1792183142 | joahan-1 | HACK-052 | web/,tests/,stuffplus/export_trees.py | Los fixtures de paridad TS vs Python con filas del parquet son datos por lanzamiento en git (el limite de 1000 filas no los atrapa) · generar golden sinteticos
+- 9 | 1792183160 | joahan-1 | HACK-052 | analysis/ | La consola de Windows (cp1252) truena al imprimir rho o Delta · escribir el texto a archivo utf-8 y solo imprimir la ruta

@@ -9,3 +9,4 @@ Append-only. Format: - N | epoch | agent | task | paths | text. `uak recall` and
 - 5 | 1792183086 | joahan-1 | - | - | forget #4
 - 6 | 1792183104 | joahan-1 | - | - | forget #3
 - 7 | 1792183123 | joahan-1 | - | - | forget #2
+- 8 | 1792183142 | joahan-1 | HACK-052 | web/,tests/,stuffplus/export_trees.py | Los fixtures de paridad TS vs Python con filas del parquet son datos por lanzamiento en git (el limite de 1000 filas no los atrapa) · generar golden sinteticos

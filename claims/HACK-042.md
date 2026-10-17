@@ -9,9 +9,9 @@ Priority: P0
 Paths: web/src/physics/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/physics`
-Lease-Until: 1792217296
-Updated: 1792202896
+Lease-Until: 1792217300
+Updated: 1792202900
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/48; run .uak/bin/smoke
+Next: Wait for review of SHA fb5844f
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/48
 Evidence: -

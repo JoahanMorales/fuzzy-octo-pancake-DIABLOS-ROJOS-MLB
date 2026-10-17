@@ -70,3 +70,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792199013 | plan | joahan/joahan | tasks added: HACK-060 HACK-061 | Why: backlog without PR (Plan-Channel: claims)
 - 1792199183 | deadline lease/HACK-056/1792199173 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792200722 | deadline lease/HACK-052/1792199823 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792202900 | HACK-042 | input is velo+sea-level ivb/hb (break-calibrated), not spin/axis | Why: flight.py is break-calibrated; physics.json has no C_L(S)

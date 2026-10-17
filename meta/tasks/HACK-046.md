@@ -1,5 +1,5 @@
 Task: HACK-046
-Events: 5
+Events: 6
 Checkpoints: 1
 Sessions: 1
 Last-Checkpoint: 1792261226

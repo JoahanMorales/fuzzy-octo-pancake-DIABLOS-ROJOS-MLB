@@ -1,5 +1,5 @@
 Task: HACK-041
-Events: 5
+Events: 6
 Checkpoints: 0
-Sessions: 4
+Sessions: 5
 Last-Checkpoint: 0

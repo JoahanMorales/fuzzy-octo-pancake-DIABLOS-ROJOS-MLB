@@ -1,0 +1,17 @@
+# HACK-042
+ID: HACK-042
+State: CLAIMED
+Owner: victor-1
+Branch: feat/hack-042
+Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-042
+Worklog: worklog/WL-1792202438-victor-1-HACK-042-hack.Rp8uwR.md
+Priority: P0
+Paths: web/src/physics/
+Depends: HACK-037
+Verify: `npm --prefix web test -- --run src/physics`
+Lease-Until: 1792205138
+Updated: 1792202438
+Task-Base: 455e796b50a15fc590d0487647db8692739b9379
+Next: port the RK4 step from HACK-041 and its golden CSV.
+PR: -
+Evidence: -

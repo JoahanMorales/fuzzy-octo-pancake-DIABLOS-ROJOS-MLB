@@ -6,7 +6,7 @@
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
 - Commands: `npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`
-- Next: Integrated in main: 629530baadaf8aca8beab9bd8a7d0f1a2fda0524 (recorded by victor-1)
+- Next: Humano: Verify / acceptance red: programa o archivo por lotes ejecutable. (log: C:/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792273078.log)
 
 ## History
 - 1792263550 | CLAIMED | joahan-3 | claim; next: table from `leaderboard.json`.
@@ -15,3 +15,4 @@
 - 1792272850 | REVIEW | joahan-3 | heartbeat; lease until 1792287250
 - 1792271968 | REVIEW | victor-1 | merge rechazado; Verify / acceptance red: sh: vitest: command not found (log: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792271968.log)
 - 1792273125 | INTEGRATED | victor-1 | integrate; recorded by victor-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1; merged 629530baadaf8aca8beab9bd8a7d0f1a2fda0524; proof ancestry
+- 1792273078 | INTEGRATED | joahan-3 | merge rechazado; Verify / acceptance red: programa o archivo por lotes ejecutable. (log: C:/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792273078.log)

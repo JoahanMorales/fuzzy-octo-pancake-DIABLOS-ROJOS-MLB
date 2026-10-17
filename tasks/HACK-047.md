@@ -12,10 +12,10 @@ Verify: `npm --prefix web test -- --run src/features/leaderboard src/features/pi
 Lease-Until: 0
 Updated: 1792273125
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Integrated in main: 629530baadaf8aca8beab9bd8a7d0f1a2fda0524; claim next P0
+Next: Humano: Verify / acceptance red: programa o archivo por lotes ejecutable. (log: C:/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792273078.log)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1
 Evidence: c8d48b2: vitest src/features/leaderboard + pitcher 9 passed; tsc OK; npm build OK; Edge screenshots 1440 and 390 (no horizontal overflow); PNG card download verified; smoke PRODUCT_PASS
-Events: 6
+Events: 7
 Checkpoints: 0
 Sessions: 4
 Last-Checkpoint: 0

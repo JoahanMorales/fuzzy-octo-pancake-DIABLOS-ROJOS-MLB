@@ -1,0 +1,79 @@
+{
+  "model_version": "stuff_v2",
+  "model": "pitch_family Stuff+ composite",
+  "translation": "physics_translator",
+  "demo_data": true,
+  "sources": [
+    "reports/leaderboards/pitcher_season.csv",
+    "reports/leaderboards/pitcher_pitch.csv"
+  ],
+  "id": "pitcher_00664",
+  "seasons": [
+    {
+      "year": 2026,
+      "pitches": 526,
+      "throws": "Right",
+      "stuff_plus": 99.913,
+      "stuff_plus_harp_helu": 86.759,
+      "stuff_plus_own_air": 90.55,
+      "location_plus": 98.319,
+      "pitching_plus": 96.977,
+      "delta_cdmx": -13.153,
+      "arsenal": "4S 32% · running 2S 22% · changeup 18%",
+      "stuff_plus_percentile": 49.651,
+      "arsenal_pitches": [
+        {
+          "pitch_id": 0,
+          "pitch_family": "Sinker",
+          "shape": "running 2S",
+          "pitches": 167,
+          "usage": 0.317,
+          "velo": 93.301,
+          "ivb": 10.769,
+          "hb": 10.459,
+          "spin": 2270.483,
+          "stuff_plus": 97.05,
+          "stuff_plus_harp_helu": 88.215,
+          "stuff_plus_own_air": 89.926,
+          "location_plus": 99.485,
+          "pitching_plus": 97.13,
+          "delta_cdmx": -8.835
+        },
+        {
+          "pitch_id": 1,
+          "pitch_family": "Four-Seam",
+          "shape": "4S",
+          "pitches": 189,
+          "usage": 0.359,
+          "velo": 93.072,
+          "ivb": 10.291,
+          "hb": 11.472,
+          "spin": 2248.375,
+          "stuff_plus": 101.58,
+          "stuff_plus_harp_helu": 85.054,
+          "stuff_plus_own_air": 89.782,
+          "location_plus": 98.312,
+          "pitching_plus": 96.518,
+          "delta_cdmx": -16.526
+        },
+        {
+          "pitch_id": 3,
+          "pitch_family": "Changeup",
+          "shape": "changeup",
+          "pitches": 125,
+          "usage": 0.238,
+          "velo": 85.011,
+          "ivb": 2.41,
+          "hb": 3.119,
+          "spin": 2031.331,
+          "stuff_plus": 101.62,
+          "stuff_plus_harp_helu": 88.237,
+          "stuff_plus_own_air": 90.995,
+          "location_plus": 97.891,
+          "pitching_plus": 97.842,
+          "delta_cdmx": -13.383
+        }
+      ]
+    }
+  ]
+}

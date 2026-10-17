@@ -1,0 +1,128 @@
+{
+  "model_version": "stuff_v2",
+  "model": "pitch_family Stuff+ composite",
+  "translation": "physics_translator",
+  "demo_data": true,
+  "sources": [
+    "reports/leaderboards/pitcher_season.csv",
+    "reports/leaderboards/pitcher_pitch.csv"
+  ],
+  "id": "pitcher_01038",
+  "seasons": [
+    {
+      "year": 2024,
+      "pitches": 338,
+      "throws": "Left",
+      "stuff_plus": 95.855,
+      "stuff_plus_harp_helu": 90.061,
+      "stuff_plus_own_air": 93.437,
+      "location_plus": 100.372,
+      "pitching_plus": 99.441,
+      "delta_cdmx": -5.794,
+      "arsenal": "4S 54% · riding 4S 28% · changeup 8%",
+      "stuff_plus_percentile": 33.926,
+      "arsenal_pitches": [
+        {
+          "pitch_id": 0,
+          "pitch_family": "Four-Seam",
+          "shape": "4S",
+          "pitches": 122,
+          "usage": 0.361,
+          "velo": 89.169,
+          "ivb": 14.79,
+          "hb": -6.251,
+          "spin": 2185.373,
+          "stuff_plus": 97.752,
+          "stuff_plus_harp_helu": 92.713,
+          "stuff_plus_own_air": 93.698,
+          "location_plus": 101.176,
+          "pitching_plus": 100.371,
+          "delta_cdmx": -5.039
+        },
+        {
+          "pitch_id": 1,
+          "pitch_family": "Four-Seam",
+          "shape": "4S",
+          "pitches": 154,
+          "usage": 0.456,
+          "velo": 88.466,
+          "ivb": 15.163,
+          "hb": -6.299,
+          "spin": 2199.538,
+          "stuff_plus": 96.749,
+          "stuff_plus_harp_helu": 89.876,
+          "stuff_plus_own_air": 94.903,
+          "location_plus": 99.509,
+          "pitching_plus": 98.636,
+          "delta_cdmx": -6.873
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "pitches": 344,
+      "throws": "Left",
+      "stuff_plus": 93.808,
+      "stuff_plus_harp_helu": 88.624,
+      "stuff_plus_own_air": 92.618,
+      "location_plus": 99.694,
+      "pitching_plus": 98.488,
+      "delta_cdmx": -5.184,
+      "arsenal": "4S 36% · riding 4S 27% · 12-6 CB 15%",
+      "stuff_plus_percentile": 26.789,
+      "arsenal_pitches": [
+        {
+          "pitch_id": 1,
+          "pitch_family": "Four-Seam",
+          "shape": "4S",
+          "pitches": 109,
+          "usage": 0.317,
+          "velo": 87.228,
+          "ivb": 14.557,
+          "hb": -6.073,
+          "spin": 2129.269,
+          "stuff_plus": 98.318,
+          "stuff_plus_harp_helu": 90.335,
+          "stuff_plus_own_air": 93.909,
+          "location_plus": 99.715,
+          "pitching_plus": 99.16,
+          "delta_cdmx": -7.984
+        },
+        {
+          "pitch_id": 2,
+          "pitch_family": "Four-Seam",
+          "shape": "4S",
+          "pitches": 89,
+          "usage": 0.259,
+          "velo": 86.836,
+          "ivb": 14.787,
+          "hb": -6.315,
+          "spin": 2128.981,
+          "stuff_plus": 96.861,
+          "stuff_plus_harp_helu": 89.065,
+          "stuff_plus_own_air": 93.927,
+          "location_plus": 99.443,
+          "pitching_plus": 97.595,
+          "delta_cdmx": -7.796
+        },
+        {
+          "pitch_id": 4,
+          "pitch_family": "Curveball",
+          "shape": "12-6 CB",
+          "pitches": 79,
+          "usage": 0.23,
+          "velo": 76.489,
+          "ivb": -5.782,
+          "hb": 3.895,
+          "spin": 2140.412,
+          "stuff_plus": 83.91,
+          "stuff_plus_harp_helu": 84.729,
+          "stuff_plus_own_air": 88.08,
+          "location_plus": 99.851,
+          "pitching_plus": 98.589,
+          "delta_cdmx": 0.819
+        }
+      ]
+    }
+  ]
+}

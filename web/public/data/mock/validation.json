@@ -1,0 +1,904 @@
+{
+  "model_version": "stuff_v2",
+  "model": "pitch_family Stuff+ composite",
+  "translation": "physics_translator",
+  "demo_data": true,
+  "sources": [
+    "reports/validation/official_full/validation_table.csv",
+    "reports/stuff_v2/altitude.csv",
+    "reports/stuff_v2/decision.csv"
+  ],
+  "highlights": {
+    "league_delta_cdmx": -12.654,
+    "best_shape": "12-6 CB",
+    "best_delta": -9.1603,
+    "worst_shape": "riding 4S",
+    "worst_delta": -17.4262,
+    "source_model": "Stuff+ v2 (familia)"
+  },
+  "altitude_models": [
+    {
+      "model": "Stuff+ v1",
+      "league_delta": -10.2633,
+      "best_shape": "sweeper",
+      "best_delta": -4.6351,
+      "worst_shape": "riding 4S",
+      "worst_delta": -15.9916,
+      "delta_11-5 CB": -10.4987,
+      "delta_12-6 CB": -6.1405,
+      "delta_4S": -8.7259,
+      "delta_changeup": -11.3809,
+      "delta_cutter": -9.9244,
+      "delta_gyro slider": -8.6066,
+      "delta_power CH": -12.6991,
+      "delta_riding 4S": -15.9916,
+      "delta_running 2S": -9.6232,
+      "delta_sinking 2S": -9.8289,
+      "delta_slider": -7.2398,
+      "delta_splitter": -7.5988,
+      "delta_sweeper": -4.6351
+    },
+    {
+      "model": "Stuff+ v2 (familia)",
+      "league_delta": -12.654,
+      "best_shape": "12-6 CB",
+      "best_delta": -9.1603,
+      "worst_shape": "riding 4S",
+      "worst_delta": -17.4262,
+      "delta_11-5 CB": -14.3778,
+      "delta_12-6 CB": -9.1603,
+      "delta_4S": -11.1386,
+      "delta_changeup": -14.098,
+      "delta_cutter": -12.4742,
+      "delta_gyro slider": -10.8621,
+      "delta_power CH": -15.2293,
+      "delta_riding 4S": -17.4262,
+      "delta_running 2S": -11.5218,
+      "delta_sinking 2S": -11.6316,
+      "delta_slider": -10.6877,
+      "delta_splitter": -10.0083,
+      "delta_sweeper": -9.2796
+    },
+    {
+      "model": "Stuff+ v2 (liga)",
+      "league_delta": -12.4631,
+      "best_shape": "12-6 CB",
+      "best_delta": -8.421,
+      "worst_shape": "riding 4S",
+      "worst_delta": -17.7695,
+      "delta_11-5 CB": -12.5698,
+      "delta_12-6 CB": -8.421,
+      "delta_4S": -11.1313,
+      "delta_changeup": -13.4751,
+      "delta_cutter": -12.868,
+      "delta_gyro slider": -10.5358,
+      "delta_power CH": -14.6518,
+      "delta_riding 4S": -17.7695,
+      "delta_running 2S": -11.6366,
+      "delta_sinking 2S": -11.853,
+      "delta_slider": -10.1778,
+      "delta_splitter": -9.5472,
+      "delta_sweeper": -8.5905
+    }
+  ],
+  "adoption": [
+    {
+      "rule": "R1",
+      "check": "habilidad por lanzamiento sobre el nulo, pitcher_kfold: IC > 0",
+      "value": "+0.178 % [+0.153, +0.205]",
+      "passed": true
+    },
+    {
+      "rule": "R1",
+      "check": "habilidad por lanzamiento sobre el nulo, season_holdout: IC > 0",
+      "value": "+0.203 % [+0.141, +0.267]",
+      "passed": true
+    },
+    {
+      "rule": "R1",
+      "check": "habilidad por lanzamiento sobre el nulo, park_holdout: IC > 0",
+      "value": "+0.230 % [+0.181, +0.283]",
+      "passed": true
+    },
+    {
+      "rule": "R2",
+      "check": "primeros 50 → resto: v2 ≥ v1 − 0.005",
+      "value": "0.265 → 0.269",
+      "passed": true
+    },
+    {
+      "rule": "R2",
+      "check": "primeros 200 → resto: v2 ≥ v1 − 0.005",
+      "value": "0.306 → 0.323",
+      "passed": true
+    },
+    {
+      "rule": "R2",
+      "check": "confiabilidad mitad contra mitad: v2 ≥ v1 − 0.005",
+      "value": "0.807 → 0.803",
+      "passed": true
+    },
+    {
+      "rule": "R3",
+      "check": "ΔStuff+ de la liga en CDMX a ±1.5 de v1",
+      "value": "-10.3 → -12.7",
+      "passed": false
+    },
+    {
+      "rule": "R3",
+      "check": "misma forma que más resiste y que más pierde",
+      "value": "sweeper/riding 4S → 12-6 CB/riding 4S",
+      "passed": false
+    }
+  ],
+  "rows": [
+    {
+      "split": "season_holdout",
+      "model": "baseline",
+      "metric": "n",
+      "value": 129570.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "baseline",
+      "metric": "rmse",
+      "value": 0.20071,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "baseline",
+      "metric": "mae",
+      "value": 0.12889,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "baseline",
+      "metric": "r2",
+      "value": 0.00225,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "baseline",
+      "metric": "bias",
+      "value": -0.00272,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "baseline",
+      "metric": "skill_vs_baseline",
+      "value": 0.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "baseline",
+      "metric": "skill_lo",
+      "value": 0.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "baseline",
+      "metric": "skill_hi",
+      "value": 0.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+",
+      "metric": "n",
+      "value": 129570.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+",
+      "metric": "rmse",
+      "value": 0.2007,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+",
+      "metric": "mae",
+      "value": 0.12913,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+",
+      "metric": "r2",
+      "value": 0.00238,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+",
+      "metric": "bias",
+      "value": -0.00204,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+",
+      "metric": "skill_vs_baseline",
+      "value": 7e-05,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+",
+      "metric": "skill_lo",
+      "value": -0.00039,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+",
+      "metric": "skill_hi",
+      "value": 0.00055,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Location+",
+      "metric": "n",
+      "value": 129570.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Location+",
+      "metric": "rmse",
+      "value": 0.19506,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Location+",
+      "metric": "mae",
+      "value": 0.11261,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Location+",
+      "metric": "r2",
+      "value": 0.05768,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Location+",
+      "metric": "bias",
+      "value": -0.00283,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Location+",
+      "metric": "skill_vs_baseline",
+      "value": 0.02817,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Location+",
+      "metric": "skill_lo",
+      "value": 0.02655,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Location+",
+      "metric": "skill_hi",
+      "value": 0.02989,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Pitching+",
+      "metric": "n",
+      "value": 129570.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Pitching+",
+      "metric": "rmse",
+      "value": 0.19321,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Pitching+",
+      "metric": "mae",
+      "value": 0.10962,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Pitching+",
+      "metric": "r2",
+      "value": 0.07544,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Pitching+",
+      "metric": "bias",
+      "value": -0.00319,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Pitching+",
+      "metric": "skill_vs_baseline",
+      "value": 0.03738,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Pitching+",
+      "metric": "skill_lo",
+      "value": 0.03539,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Pitching+",
+      "metric": "skill_hi",
+      "value": 0.03935,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ no density",
+      "metric": "n",
+      "value": 129570.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ no density",
+      "metric": "rmse",
+      "value": 0.20073,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ no density",
+      "metric": "mae",
+      "value": 0.1292,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ no density",
+      "metric": "r2",
+      "value": 0.00204,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ no density",
+      "metric": "bias",
+      "value": -0.00251,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ no density",
+      "metric": "skill_vs_baseline",
+      "value": -0.00011,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ no density",
+      "metric": "skill_lo",
+      "value": -0.00055,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ no density",
+      "metric": "skill_hi",
+      "value": 0.00037,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "n",
+      "value": 129570.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "rmse",
+      "value": 0.20079,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "mae",
+      "value": 0.12921,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "r2",
+      "value": 0.00148,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "bias",
+      "value": -0.00251,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "skill_vs_baseline",
+      "value": -0.00039,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "skill_lo",
+      "value": -0.00084,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "season_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "skill_hi",
+      "value": 6e-05,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "baseline",
+      "metric": "n",
+      "value": 181032.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "baseline",
+      "metric": "rmse",
+      "value": 0.20516,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "baseline",
+      "metric": "mae",
+      "value": 0.13004,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "baseline",
+      "metric": "r2",
+      "value": 1e-05,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "baseline",
+      "metric": "bias",
+      "value": 0.01088,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "baseline",
+      "metric": "skill_vs_baseline",
+      "value": 0.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "baseline",
+      "metric": "skill_lo",
+      "value": 0.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "baseline",
+      "metric": "skill_hi",
+      "value": 0.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+",
+      "metric": "n",
+      "value": 181032.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+",
+      "metric": "rmse",
+      "value": 0.20513,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+",
+      "metric": "mae",
+      "value": 0.13066,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+",
+      "metric": "r2",
+      "value": 0.00034,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+",
+      "metric": "bias",
+      "value": 0.00253,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+",
+      "metric": "skill_vs_baseline",
+      "value": 0.00017,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+",
+      "metric": "skill_lo",
+      "value": -0.00022,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+",
+      "metric": "skill_hi",
+      "value": 0.00053,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Location+",
+      "metric": "n",
+      "value": 181032.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Location+",
+      "metric": "rmse",
+      "value": 0.20033,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Location+",
+      "metric": "mae",
+      "value": 0.11576,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Location+",
+      "metric": "r2",
+      "value": 0.04656,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Location+",
+      "metric": "bias",
+      "value": 0.00351,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Location+",
+      "metric": "skill_vs_baseline",
+      "value": 0.02355,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Location+",
+      "metric": "skill_lo",
+      "value": 0.02236,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Location+",
+      "metric": "skill_hi",
+      "value": 0.02452,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Pitching+",
+      "metric": "n",
+      "value": 181032.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Pitching+",
+      "metric": "rmse",
+      "value": 0.19844,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Pitching+",
+      "metric": "mae",
+      "value": 0.11377,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Pitching+",
+      "metric": "r2",
+      "value": 0.06447,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Pitching+",
+      "metric": "bias",
+      "value": 0.00201,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Pitching+",
+      "metric": "skill_vs_baseline",
+      "value": 0.03277,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Pitching+",
+      "metric": "skill_lo",
+      "value": 0.03148,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Pitching+",
+      "metric": "skill_hi",
+      "value": 0.03394,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ no density",
+      "metric": "n",
+      "value": 181032.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ no density",
+      "metric": "rmse",
+      "value": 0.20514,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ no density",
+      "metric": "mae",
+      "value": 0.13058,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ no density",
+      "metric": "r2",
+      "value": 0.00022,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ no density",
+      "metric": "bias",
+      "value": 0.00456,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ no density",
+      "metric": "skill_vs_baseline",
+      "value": 0.0001,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ no density",
+      "metric": "skill_lo",
+      "value": -0.00024,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ no density",
+      "metric": "skill_hi",
+      "value": 0.00042,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "n",
+      "value": 181032.0,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "rmse",
+      "value": 0.20522,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "mae",
+      "value": 0.13058,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "r2",
+      "value": -0.00057,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "bias",
+      "value": 0.00587,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "skill_vs_baseline",
+      "value": -0.00029,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "skill_lo",
+      "value": -0.00066,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    },
+    {
+      "split": "park_holdout",
+      "model": "Stuff+ physics neutral",
+      "metric": "skill_hi",
+      "value": 7e-05,
+      "demo_data": false,
+      "evidence": "exploratory_transductive"
+    }
+  ]
+}

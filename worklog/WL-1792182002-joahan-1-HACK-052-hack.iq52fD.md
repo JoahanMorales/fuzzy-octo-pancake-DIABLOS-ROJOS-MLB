@@ -13,3 +13,4 @@
 - 1792183234 | CLAIMED | joahan-1 | checkpoint; next: read reports/stuff_v2/decision.csv; commit reports; uak done
 - 1792185278 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-052?expand=1; evidence: a83d9d8: pytest tests/test_stuff_v2.py 7 passed; full run: v2 +0.178/+0.203/+0.230 % over count null (CI>0, count-only = null), first-200 r 0.306->0.323, calib slope 0.69->0.80; R3 fails (league dCDMX -10.3->-12.7); R4 (pre-written) passes: Extreme bias v1 +0.0025 -> v2 +0.0018. Adoption decision for HACK-057 (human).; reviewer: -
 - 1792185423 | REVIEW | joahan-1 | checkpoint; next: HACK-057 wires StuffV2Model into production and adds data/roster.csv to .gitignore
+- 1792199909 | REVIEW | luis-2 | review; approve; SHA a83d9d867073a1926b20e63cb13d5a13456a30a8; reviewer luis-2

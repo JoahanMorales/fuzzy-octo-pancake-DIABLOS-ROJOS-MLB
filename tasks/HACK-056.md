@@ -9,14 +9,14 @@ Priority: P0
 Paths: analysis/pipeline/, Makefile, stuffplus/roster.py, tests/test_pipeline.py, tests/test_roster.py
 Depends: None
 Verify: `python -m pytest -q tests/test_pipeline.py tests/test_roster.py`
-Lease-Until: 1792216983
-Updated: 1792202583
+Lease-Until: 1792217950
+Updated: 1792203550
 Task-Base: 2a2792a3b0a9998e462d0b0539e0eb3ea23d561c
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-056?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-056?expand=1
-Evidence: 155047f: 20 passed (tests/test_pipeline.py + tests/test_roster.py); dry-run lists 21 steps (web_export skipped, placeholder); smoke PASS (full suite + PRODUCT_PASS; started at 7ae6087, 155047f only adds steps); data/roster.csv NOT git-ignored, needs .gitignore rule outside Paths
-Events: 4
+Evidence: f5530c8: tests/test_pipeline.py + test_roster.py 22 passed; dry-run shows validation_summary -> altitude_delta, roster_names before web_export; smoke PRODUCT_PASS
+Events: 5
 Checkpoints: 0
 Sessions: 3
 Last-Checkpoint: 0
-Task-Tip: 155047fd94661e05b3c1e98a394c4862dcff1d04
+Task-Tip: f5530c8cdaaa552d4b5d360992df1112049d43e4

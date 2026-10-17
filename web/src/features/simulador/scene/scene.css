@@ -1,0 +1,230 @@
+/* Simulator stage. Colors are tokens only (web/DESIGN.md). Dark theme, one red accent. */
+
+.sim {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 70dvh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+}
+
+.sim-stage {
+  position: relative;
+  min-height: 68dvh;
+  background: radial-gradient(ellipse at 50% 88%, color-mix(in srgb, var(--grass) 70%, var(--bg)) 0%, var(--bg) 58%);
+}
+
+.sim-world,
+.sim-world canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sim-world {
+  position: absolute;
+  inset: 0;
+}
+
+.sim-cams {
+  position: absolute;
+  z-index: var(--z-hud);
+  top: var(--s-4);
+  left: var(--s-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  max-width: calc(100% - var(--s-8));
+}
+
+.sim button {
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--fg);
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: var(--s-2) var(--s-3);
+  cursor: pointer;
+}
+
+.sim button[aria-pressed='true'] {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--fg);
+}
+
+.sim button:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.sim-fallback {
+  min-height: 68dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: calc(var(--s-16) + var(--s-8)) var(--s-4) 148px;
+}
+
+.sim-note,
+.sim-wait {
+  margin: 0;
+  max-width: 36rem;
+  font-size: var(--text-base);
+  line-height: 1.45;
+}
+
+.sim-fallback svg {
+  width: min(100%, 440px);
+  height: auto;
+}
+
+.fb-ridge { fill: var(--surface-2); }
+.fb-flat { stroke: var(--sea); stroke-width: 2; }
+.fb-zone { fill: none; stroke: var(--fg); stroke-width: 1.5; }
+.fb-in { fill: var(--red-soft); stroke: var(--red); stroke-width: 1.5; }
+.fb-plate { fill: var(--chalk); }
+.fb-batter { fill: var(--dirt); }
+.fb-sea { fill: none; stroke: var(--sea); stroke-width: 2; stroke-dasharray: 5 4; opacity: 0.85; }
+.fb-harp { fill: none; stroke: var(--red); stroke-width: 2.5; }
+.fb-ghost { fill: var(--sea); opacity: 0.5; }
+.fb-ball { fill: var(--ball); }
+
+.sim-lower {
+  position: absolute;
+  z-index: var(--z-hud);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3) var(--s-4);
+  margin: 0;
+  padding: var(--s-3) var(--s-4) var(--s-4);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border-top: 1px solid var(--line);
+  border-left: 4px solid var(--red);
+}
+
+.sim-lower div { min-width: 0; }
+
+.sim-k,
+.sim-v,
+.sim-source {
+  margin: 0;
+}
+
+.sim-k {
+  font-size: var(--text-xs);
+  color: var(--fg-muted);
+}
+
+.sim-v {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-lg);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.sim-v span,
+.sim-ejemplo {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.sim-ejemplo {
+  display: inline-block;
+  margin-left: var(--s-2);
+  padding: 0 var(--s-2);
+  border-radius: var(--radius-pill);
+  background: var(--red-soft);
+  color: var(--fg);
+  font-size: var(--text-xs);
+}
+
+.sim-source {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: var(--text-xs);
+}
+
+.sim-fps {
+  position: absolute;
+  z-index: var(--z-hud);
+  top: var(--s-4);
+  right: var(--s-4);
+  margin: 0;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  pointer-events: none;
+}
+
+.sim-rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+  padding: var(--s-4);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+}
+
+.sim-rail fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: var(--s-2);
+}
+
+.sim-rail legend {
+  margin-bottom: var(--s-1);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.sim-rail button { width: 100%; }
+
+.sim-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 900px) {
+  .sim {
+    grid-template-columns: minmax(0, 1fr) 232px;
+    min-height: calc(100dvh - 72px);
+  }
+
+  .sim-lower { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .sim-rail {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sim button { transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out); }
+  .sim button:active { transform: scale(0.98); }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .sim-lower { background: var(--surface); }
+}

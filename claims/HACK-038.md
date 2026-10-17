@@ -9,9 +9,9 @@ Priority: P0
 Paths: docs/CONTRACT-WEB.md, web/src/contract/, web/public/data/mock/, stuffplus/export_web.py, tests/test_export_web.py
 Depends: HACK-037
 Verify: `python -m pytest -q tests/test_export_web.py && npm --prefix web test -- --run src/contract`
-Lease-Until: 1792218027
-Updated: 1792203627
+Lease-Until: 1792218036
+Updated: 1792203636
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/49; run .uak/bin/smoke
+Next: Wait for review of SHA 92aef6e
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/49
 Evidence: -

@@ -6,7 +6,7 @@
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
 - Commands: `python -m pytest -q tests/test_calibration.py`
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-053?expand=1; run .uak/bin/smoke
+- Next: Integrated in main: 2c31f417dc5ba2a54788629a58085214c2bc47bd (recorded by joahan-3)
 
 ## History
 - 1792188686 | CLAIMED | joahan-1 | claim; next: fit temperature on OOF logits from `analysis/stuff_model/run.py`.
@@ -17,3 +17,4 @@
 - 1792211129 | REVIEW | joahan-3 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-053?expand=1; evidence: db0f5f6: tests/test_calibration.py 7 passed; smoke PRODUCT_PASS; methods.csv now has Pitching+ components and Stuff+ v2 (log-loss, ECE, xRV slope, skill, first-N r, split-half); decision: Stuff+ v1 none, Location+ temperature, Pitching+ none, Stuff+ v2 temperature; reviewer: -
 - 1792262746 | REVIEW | joahan-3 | heartbeat; lease until 1792277146
 - 1792264296 | REVIEW | luis-2 | review; approve; SHA db0f5f67bfec63825f5956a7e1b5cb9f3e31312e; reviewer luis-2
+- 1792267092 | INTEGRATED | joahan-3 | integrate; recorded by joahan-3; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-053?expand=1; merged 2c31f417dc5ba2a54788629a58085214c2bc47bd; proof ancestry

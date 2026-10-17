@@ -15,7 +15,7 @@ Task-Base: 455e796b50a15fc590d0487647db8692739b9379
 Next: HACK-045 monta index.tsx, conecta flyPitch y el panel. La escena aún no tiene ruta.
 PR: -
 Evidence: -
-Events: 15
+Events: 16
 Checkpoints: 3
 Sessions: 1
 Last-Checkpoint: 1792265418

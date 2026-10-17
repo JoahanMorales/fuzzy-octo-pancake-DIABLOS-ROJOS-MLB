@@ -12,10 +12,10 @@ Verify: `npm --prefix web test -- --run src/physics`
 Lease-Until: 1792223819
 Updated: 1792209419
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: Wait for review of SHA fb5844f
+Next: Humano: Verify / acceptance red: sh: vitest: command not found (log: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/worktrees/hack-042/uak-out/gate-HACK-042-verify-1792209429.log)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/48
 Evidence: npm --prefix web test -- --run src/physics exit 0 (54 passed: 50 parity vs flight.py, HACK-041 dIVB -3.64 within 0.3); tsc+build OK; smoke PRODUCT_PASS
-Events: 5
+Events: 6
 Checkpoints: 1
 Sessions: 2
 Last-Checkpoint: 1792202900

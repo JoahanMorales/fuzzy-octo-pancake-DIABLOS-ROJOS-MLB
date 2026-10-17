@@ -1,5 +1,5 @@
 ID: HACK-042
-State: MERGING
+State: HUMAN
 Owner: victor-1
-Queued: 1792209422
-Reason: Waiting for queue
+Updated: 1792209429
+Reason: Verify / acceptance red: sh: vitest: command not found (log: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/worktrees/hack-042/uak-out/gate-HACK-042-verify-1792209429.log)

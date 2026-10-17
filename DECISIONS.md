@@ -77,3 +77,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792206137 | HACK-062 | follow-up of HACK-038 by luis-1: Contrato web acepta arboles packed, Plus sign/stats y reference de location | Why: same Paths, no scope change
 - 1792208488 | deadline lease/HACK-044/1792208345 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792209419 | deadline lease/HACK-043/1792208849 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792211060 | HACK-041 | top 10 % efficiency instead of >=95 % (unreachable with C_L-inferred efficiency) | Why: only 2 identities reach 95 %; README states it

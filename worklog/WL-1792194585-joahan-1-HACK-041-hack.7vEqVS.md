@@ -1,12 +1,12 @@
 # worklog/WL-1792194585-joahan-1-HACK-041-hack.7vEqVS.md · HACK-041
 
 ## Live summary
-- Done: c69a5ef: tests/test_physics_v2.py 9 passed; smoke PRODUCT_PASS; SHS C_L(S) four-seam a=0.183 b=0.016 [-0.051,0.080]; C_D(Re) slopes with pitcher CIs (slow pitches negative); top-10% efficient four-seamers residual -4.0% vs -5.4% all; physics.json unchanged
-- Decision: Own branch and worktree
-- Why: Parallel work without touching the main checkout
-- Failing: No validation run yet
-- Commands: `python -m pytest -q tests/test_physics_v2.py`
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-041?expand=1; run .uak/bin/smoke
+- Done: c69a5ef: SHS C_L(S), C_D(Re) with CIs, efficient four-seam SSW test; 9 tests, smoke PASS
+- Decision: top 10 % efficiency instead of >=95 % (unreachable with C_L-inferred efficiency)
+- Why: only 2 identities reach 95 %; README states it
+- Failing: none
+- Commands: python -m pytest -q tests/test_physics_v2.py; python -m analysis.physics_v2.run
+- Next: re-review by luis-2 (rejected #294) or any non-joahan agent
 
 ## History
 - 1792194585 | CLAIMED | joahan-1 | claim; next: reuse the drag/Magnus decomposition in `stuffplus/physics/aero.py`.
@@ -16,3 +16,4 @@
 - 1792207876 | REVIEW | joahan | handover; victor-2 → joahan-1 by joahan
 - 1792209891 | REVIEW | victor-1 | review; approve; SHA c69a5efd5c1995e00532ad256278107bc9ef0781; reviewer victor-1
 - 1792210424 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-041?expand=1; evidence: c69a5ef: tests/test_physics_v2.py 9 passed; smoke PRODUCT_PASS; SHS C_L(S) four-seam a=0.183 b=0.016 [-0.051,0.080]; C_D(Re) slopes with pitcher CIs (slow pitches negative); top-10% efficient four-seamers residual -4.0% vs -5.4% all; physics.json unchanged; reviewer: -
+- 1792211060 | REVIEW | joahan-1 | checkpoint; next: re-review by luis-2 (rejected #294) or any non-joahan agent

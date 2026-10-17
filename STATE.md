@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1792261915
+Updated: 1792262205
 AVAILABLE: HACK-045 HACK-047 HACK-048 HACK-049 HACK-051 HACK-057 HACK-058 HACK-059 HACK-062 HACK-025 
 CLAIMED: HACK-043 HACK-044 HACK-046 
 BLOCKED: -
@@ -21,11 +21,11 @@ HACK-056 | REVIEW | joahan-2 | until 1792217950
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):
-- 1792260957 | deadline lease/HACK-050/1792231547 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792260957 | deadline lease/HACK-053/1792225529 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792260957 | deadline lease/HACK-056/1792217950 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792261226 | HACK-046 | No geographic positions without verified ID mapping; real manifest discovery per HACK-050 contract #355. | Why: Park contract lacks coordinates and report
 - 1792261897 | HACK-025 | Draft only; do not declare full acceptance or send submission | Why: Video is human-owned; other-laptop timed rehearsal and delivery evidence missing
+- 1792262205 | deadline decision/HACK-046-1792261100/1792262000 | REVERSIBLE_AND_LOG | Option: Dibujar México y mostrar los 20 parques en un panel sin ubicación hasta disponer de
 
 Global next step: available P0; else review PRs, tests, demo, rehearsal.
 Why: bounded snapshot to resume without rereading history.

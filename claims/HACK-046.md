@@ -12,6 +12,6 @@ Verify: `npm --prefix web test -- --run src/features/altitud`
 Lease-Until: 1792263926
 Updated: 1792261226
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Review Verify/build, run browser desktop/mobile, smoke, open clearly partial PR for independent review.
+Next: Apply option: Dibujar México y mostrar los 20 parques en un panel sin ubicación hasta disponer de correspondencia geográfica documentada.
 PR: -
 Evidence: -

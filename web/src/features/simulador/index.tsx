@@ -111,9 +111,12 @@ export function Simulador({ models: given }: { models?: Models } = {}) {
     <div className="sim-app">
       <SimulatorScene
         flight={thrown.pair ? {
-          harpPath: scenePath(thrown.pair.park),
-          seaPath: scenePath(thrown.pair.sea),
+          harpPath: scenePath(thrown.pair.park, draft.release.throws),
+          seaPath: scenePath(thrown.pair.sea, draft.release.throws),
           hand: draft.batter,
+          throws: draft.release.throws,
+          spin: draft.release.spin,
+          axis: draft.release.axis,
           park: sky,
           playId: draft.playId,
           parkName: label,
@@ -122,18 +125,6 @@ export function Simulador({ models: given }: { models?: Models } = {}) {
         } : undefined}
       />
       <div className="sim-dock">
-        <Controls
-          draft={draft}
-          parks={parks}
-          onRelease={(release) => setDraft((prev) => ({ ...prev, release, playId: prev.playId + 1 }))}
-          onPatch={(patch) => setDraft((prev) => ({
-            ...prev,
-            release: editRelease(prev.release, patch),
-            playId: prev.playId + 1,
-          }))}
-          onDraft={(patch) => setDraft((prev) => ({ ...prev, ...patch, playId: prev.playId + 1 }))}
-          onThrow={() => setDraft((prev) => ({ ...prev, playId: prev.playId + 1 }))}
-        />
         {score ? (
           <Panel
             score={score}
@@ -149,6 +140,18 @@ export function Simulador({ models: given }: { models?: Models } = {}) {
         ) : (
           <p className="sim-error" role="status">{modelError ?? flightError ?? 'Cargando el modelo.'}</p>
         )}
+        <Controls
+          draft={draft}
+          parks={parks}
+          onRelease={(release) => setDraft((prev) => ({ ...prev, release, playId: prev.playId + 1 }))}
+          onPatch={(patch) => setDraft((prev) => ({
+            ...prev,
+            release: editRelease(prev.release, patch),
+            playId: prev.playId + 1,
+          }))}
+          onDraft={(patch) => setDraft((prev) => ({ ...prev, ...patch, playId: prev.playId + 1 }))}
+          onThrow={() => setDraft((prev) => ({ ...prev, playId: prev.playId + 1 }))}
+        />
       </div>
     </div>
   );

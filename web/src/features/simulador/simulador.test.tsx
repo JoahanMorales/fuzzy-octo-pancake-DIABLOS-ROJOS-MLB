@@ -76,6 +76,13 @@ describe('vuelo', () => {
     expect(Math.abs(gap.ivb)).toBeGreaterThan(0.5);
     expect(Math.hypot(gap.xIn, gap.zIn)).toBeGreaterThan(0.5);
   });
+
+  it('pone la salida de un derecho a la izquierda del receptor y la de un zurdo a la derecha', () => {
+    const ride = SHAPE_PRESETS[0];
+    const { sea } = throwPair(ride, HARP_RHO);
+    expect(scenePath(sea, 'R')[0][0]).toBeLessThan(0);
+    expect(scenePath(sea, 'L')[0][0]).toBeGreaterThan(0);
+  });
 });
 
 describe('panel', () => {

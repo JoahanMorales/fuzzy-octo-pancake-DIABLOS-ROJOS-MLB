@@ -29,6 +29,11 @@ export interface SceneFlight {
   harpPath: Vec3[];
   seaPath: Vec3[];
   hand: Hand;
+  /** Pitcher's hand: mirrors the pitcher figure and the release side. */
+  throws?: Hand;
+  /** rpm and degrees (Trackman spin axis): the ball spins with them in the 3D view. */
+  spin?: number;
+  axis?: number;
   park: ParkSide;
   playId: number;
   parkName: string;
@@ -112,6 +117,9 @@ export function SimulatorScene({ flight }: { flight?: SceneFlight } = {}) {
             <World
               view={view}
               hand={shownHand}
+              throws={flight?.throws ?? 'R'}
+              spin={flight?.spin ?? 2300}
+              axis={flight?.axis ?? 210}
               park={shownPark}
               harpPath={harpPath}
               seaPath={seaPath}

@@ -9,15 +9,16 @@ export interface Gap {
   hb: number;
 }
 
-/** Trackman feet (x arm side, y toward the mound, z up) → scene feet (x arm, y up, z toward the plate). */
-export function toScene(point: Track): Vec3 {
-  return [point[0], point[2], -point[1]];
+/** Flight feet (x arm side, y toward the mound, z up) → scene feet (x = catcher's right, y up, z toward the
+ *  catcher). A right-hander's arm side is the catcher's left, so his x flips; a lefty's does not. */
+export function toScene(point: Track, throws: 'R' | 'L' = 'R'): Vec3 {
+  return [throws === 'R' ? -point[0] : point[0], point[2], -point[1]];
 }
 
-export function scenePath(flight: Flight, step = 4): Vec3[] {
+export function scenePath(flight: Flight, throws: 'R' | 'L' = 'R', step = 4): Vec3[] {
   const points: Vec3[] = [];
-  for (let i = 0; i < flight.pos.length; i += step) points.push(toScene(flight.pos[i]));
-  const last = toScene(flight.pos[flight.pos.length - 1]);
+  for (let i = 0; i < flight.pos.length; i += step) points.push(toScene(flight.pos[i], throws));
+  const last = toScene(flight.pos[flight.pos.length - 1], throws);
   const prev = points[points.length - 1];
   if (!prev || prev[0] !== last[0] || prev[1] !== last[1] || prev[2] !== last[2]) points.push(last);
   return points;

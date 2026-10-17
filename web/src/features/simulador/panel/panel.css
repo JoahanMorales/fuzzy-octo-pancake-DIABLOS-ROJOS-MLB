@@ -119,3 +119,26 @@
 @media (max-width: 899px) {
   .sp-grid { flex-direction: column; }
 }
+
+.sp-col dl {
+  margin: var(--s-2) 0 0;
+  display: grid;
+  gap: 2px;
+}
+
+.sp-col dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-2);
+  padding-right: var(--s-3);
+  font-size: var(--text-xs);
+}
+
+.sp-col dt {
+  color: var(--fg-muted);
+}
+
+.sp-col dd {
+  margin: 0;
+  font-family: var(--font-mono);
+}

@@ -94,3 +94,5 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792265298 | HACK-044 | No hay cesión a sebastian-2; HACK-044 sigue con luis-2 | Why: El humano dejó 044 y 045 aquí; el review pedía esos tres fallos
 - 1792265418 | HACK-044 | Sin cesión. Harp Helú solo si el parque trae esa identidad. La trayectoria sigue siendo ejemplo hasta flyPitch. | Why: El humano dejó 044 aquí y el review marcó tres fallos; el pulido visual era el pedido de la escena.
 - 1792265784 | HACK-063 | follow-up of HACK-001 by joahan-1: CI kit syntax check: bash -n only on shell scripts (uak-mcp is Python) | Why: same Paths, no scope change
+- 1792267123 | deadline lease/HACK-046/1792266556 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792267123 | deadline lease/HACK-049/1792267092 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.

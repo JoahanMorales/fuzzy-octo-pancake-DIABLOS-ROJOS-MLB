@@ -95,3 +95,21 @@ def test_nested_evaluation_never_uses_the_scored_fold(frame, monkeypatch):
     y = outcome_class(frame).to_numpy()
     for m in ("none", "temperature", "isotonic"):
         assert np.isfinite(out[m]["xrv"]).all() and np.isfinite(cal.log_loss(out[m]["P"], y))
+
+
+def test_pitching_components_calibrate_with_train_only_batter_quality(frame):
+    spec = importlib.util.spec_from_file_location("cal_run", ROOT / "analysis" / "calibration" / "run.py")
+    run = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(run)
+    from stuffplus.models.pitching import build_features
+
+    d = build_features(frame).reset_index(drop=True)
+    assert "pitching" in run.model_specs(FAST)
+    folds = list(splits.pitcher_group_kfold(d, k=3))
+    tr, te = folds[0]
+    m = run.PitchingWithBatter(**FAST).fit(d.iloc[tr])
+    assert set(m._tab.index.get_level_values(0)) <= set(d.iloc[tr].batter_anon_id)  # learned from train only
+    w = cal.calibrated(m, cal.Temperature(T=1.5))
+    out = w.predict_components(d.iloc[te])
+    assert np.isfinite(out[cal.P_COLS].to_numpy()).all() and np.allclose(out[cal.P_COLS].sum(axis=1), 1)
+    assert not np.allclose(out.xrv, m.predict_components(d.iloc[te]).xrv)

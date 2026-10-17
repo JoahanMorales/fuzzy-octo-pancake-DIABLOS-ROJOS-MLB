@@ -419,3 +419,15 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:**
   - data.ts: real/ only when manifest.json parses as JSON (static hosts answer index.html with 200)
 - **Verify:** `npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`
+
+## HACK-065 · export real/design_lab.json from reports/design_lab (request #400) (follow-up of HACK-050)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Depends on:** HACK-050
+- **Follow-up of:** HACK-050
+- **Paths:** web/public/data/real/, analysis/export_web/, deploy/web/, scripts/check_web_dist.py, tests/test_check_web_dist.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - export real/design_lab.json from reports/design_lab (request #400)
+- **Verify:** `python -m pytest -q tests/test_check_web_dist.py`

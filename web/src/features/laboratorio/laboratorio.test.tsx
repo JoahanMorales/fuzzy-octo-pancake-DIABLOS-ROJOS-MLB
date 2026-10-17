@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import data from './design_lab.json';
-import { familyRows, LabView, type LabDoc } from './LabView';
+import { FAMILY_ES, familyRows, LabView, type LabDoc } from './LabView';
 
 const doc = data as unknown as LabDoc;
 
@@ -19,8 +19,8 @@ describe('design lab page', () => {
   it('filters by family with the family CI columns', () => {
     render(<LabView doc={doc} />);
     const fam = doc.by_family[0].family as string;
-    fireEvent.click(screen.getByRole('button', { name: fam }));
-    expect(screen.getByRole('region', { name: `Ajustes aplicados a ${fam}` })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: FAMILY_ES[fam] }));
+    expect(screen.getByRole('region', { name: `Ajustes aplicados a ${FAMILY_ES[fam]}` })).toBeInTheDocument();
     const rows = familyRows(doc, fam);
     expect(rows.every((r) => r.hh_lo <= r.arsenal_gain_hh && r.arsenal_gain_hh <= r.hh_hi)).toBe(true);
   });

@@ -36,7 +36,7 @@ function analyze(text: string, model: CompositeModel, label: string): State {
   }
 }
 
-function Result({ profile, label }: { profile: Profile; label: string }) {
+function Summary({ profile, label }: { profile: Profile; label: string }) {
   const delta = profile.arsenalCdmx - profile.arsenalNeutral;
   return (
     <section aria-labelledby="resultado-title" aria-live="polite">
@@ -50,14 +50,21 @@ function Result({ profile, label }: { profile: Profile; label: string }) {
         En el aire del Harp Helú este arsenal {delta < 0 ? 'pierde' : 'gana'} {fmt(Math.abs(delta))} puntos de Stuff+
         contra el nivel del mar. El promedio pondera cada lanzamiento por su uso.
       </p>
+    </section>
+  );
+}
+
+function PitchTable({ profile }: { profile: Profile }) {
+  return (
+    <section className="h48-block" aria-label="Detalle por lanzamiento">
       <div className="h48-scroll" tabIndex={0} role="region" aria-label="Stuff+ por lanzamiento">
         <table className="h48-table">
           <thead>
             <tr>
               <th scope="col">Lanzamiento</th>
               <th scope="col" className="num">Uso</th>
-              <th scope="col" className="num">Velocidad (mph)</th>
-              <th scope="col" className="num">IVB (in)</th>
+              <th scope="col" className="num opt">Velocidad (mph)</th>
+              <th scope="col" className="num opt">IVB (in)</th>
               <th scope="col" className="num is-sea">Stuff+ neutral</th>
               <th scope="col" className="num is-hh">Stuff+ en CDMX</th>
               <th scope="col" className="num">Cambio</th>
@@ -68,10 +75,10 @@ function Result({ profile, label }: { profile: Profile; label: string }) {
               <tr key={p.pitch.pitch_type}>
                 <th scope="row">{FAMILY[p.pitch.pitch_type] ?? p.pitch.pitch_type}</th>
                 <td className="num">{Math.round(p.usage * 100)} %</td>
-                <td className="num">{fmt(p.pitch.velo)}</td>
-                <td className="num">{fmt(p.pitch.ivb)}</td>
-                <td className="num is-sea">{fmt(p.stuffNeutral)}</td>
-                <td className="num is-hh">{fmt(p.stuffCdmx)}</td>
+                <td className="num opt">{fmt(p.pitch.velo)}</td>
+                <td className="num opt">{fmt(p.pitch.ivb)}</td>
+                <td className="num">{fmt(p.stuffNeutral)}</td>
+                <td className="num">{fmt(p.stuffCdmx)}</td>
                 <td className="num">{fmt(p.stuffCdmx - p.stuffNeutral, 1, true)}</td>
               </tr>
             ))}
@@ -85,8 +92,10 @@ function Result({ profile, label }: { profile: Profile; label: string }) {
 /** Upload → parse and score in the browser. `model` comes from data/models/stuff.json; the file never leaves. */
 export function ProspectView({ model }: { model: CompositeModel | null }) {
   const [state, setState] = useState<State>({ kind: 'idle' });
+  const [fileName, setFileName] = useState<string | null>(null);
   const onFile = async (file: File | undefined) => {
     if (!file || !model) return;
+    setFileName(file.name);
     setState(analyze(await readText(file), model, file.name));
   };
   return (
@@ -102,9 +111,13 @@ export function ProspectView({ model }: { model: CompositeModel | null }) {
         <section className="h48-panel" aria-labelledby="archivo-title">
           <h2 id="archivo-title" className="h48-h2">Archivo</h2>
           <div className="h48-field">
-            <label htmlFor="prospect-csv">CSV del arsenal</label>
-            <input id="prospect-csv" type="file" accept=".csv,text/csv" disabled={!model}
-              onChange={(e) => void onFile(e.target.files?.[0])} />
+            <span id="prospect-csv-label">CSV del arsenal</span>
+            <label className="h48-file">
+              <input id="prospect-csv" className="h48-visually-hidden" type="file" accept=".csv,text/csv" disabled={!model}
+                aria-labelledby="prospect-csv-label" onChange={(e) => void onFile(e.target.files?.[0])} />
+              <span className="h48-button" aria-hidden="true">Elegir archivo</span>
+              <span className="h48-muted">{fileName ?? 'Ningún archivo elegido'}</span>
+            </label>
             <small>
               Una fila por lanzamiento (2 a 5) con pitch_type, throws, velo, spin_rate, spin_axis, ivb, hb y, si quieres,
               rel_height, rel_side, extension, usage y rho_measured. También acepta lanzamientos de Trackman.
@@ -121,11 +134,12 @@ export function ProspectView({ model }: { model: CompositeModel | null }) {
           </p>
         </section>
         <div>
-          {state.kind === 'ready' ? <Result profile={state.profile} label={state.label} /> : (
+          {state.kind === 'ready' ? <Summary profile={state.profile} label={state.label} /> : (
             <p className="h48-muted">Aún no hay arsenal. Sube un CSV o usa el ejemplo.</p>
           )}
         </div>
       </div>
+      {state.kind === 'ready' && <PitchTable profile={state.profile} />}
     </article>
   );
 }

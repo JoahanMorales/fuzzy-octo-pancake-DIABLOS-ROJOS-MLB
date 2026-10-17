@@ -39,14 +39,14 @@ function FranchiseTable({ id, pitchers }: { id: string; pitchers: Pitcher[] }) {
           <thead>
             <tr>
               <th scope="col">Pitcher</th>
-              <th scope="col">Mano</th>
-              <th scope="col">Rol</th>
-              <th scope="col" className="num">Lanzamientos en casa</th>
+              <th scope="col" className="opt">Mano</th>
+              <th scope="col" className="opt">Rol</th>
+              <th scope="col" className="num opt">Lanzamientos en casa</th>
               <th scope="col" className="num">Stuff+ neutral</th>
               <th scope="col" className="num is-hh">Stuff+ en CDMX</th>
               <th scope="col" className="num">Cambio CDMX</th>
-              <th scope="col" className="num">Location+</th>
-              <th scope="col" className="num">Pitching+</th>
+              <th scope="col" className="num opt">Location+</th>
+              <th scope="col" className="num opt">Pitching+</th>
             </tr>
           </thead>
           <tbody>
@@ -55,14 +55,14 @@ function FranchiseTable({ id, pitchers }: { id: string; pitchers: Pitcher[] }) {
                 <th scope="row">
                   <a href={`#/pitcher/${p.pitcher_anon_id}`}>{p.pitcher_anon_id}</a>
                 </th>
-                <td>{THROWS[p.throws] ?? p.throws}</td>
-                <td>{p.role}</td>
-                <td className="num">{p.home_pitches.toLocaleString('es-MX')}</td>
+                <td className="opt">{THROWS[p.throws] ?? p.throws}</td>
+                <td className="opt">{p.role}</td>
+                <td className="num opt">{p.home_pitches.toLocaleString('es-MX')}</td>
                 <td className="num">{fmt(p.stuff_plus)}</td>
                 <td className="num is-hh">{fmt(p.stuff_plus_harp_helu)}</td>
                 <td className="num">{fmt(p.delta_cdmx, 1, true)}</td>
-                <td className="num">{fmt(p.location_plus)}</td>
-                <td className="num">{fmt(p.pitching_plus)}</td>
+                <td className="num opt">{fmt(p.location_plus)}</td>
+                <td className="num opt">{fmt(p.pitching_plus)}</td>
               </tr>
             ))}
           </tbody>

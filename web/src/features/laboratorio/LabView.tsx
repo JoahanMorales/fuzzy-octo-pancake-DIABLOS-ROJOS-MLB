@@ -41,7 +41,12 @@ export interface LabDoc {
 }
 
 const pct = (v: number | null | undefined) => (v === null || v === undefined ? '-' : `${Math.round(v * 100)} %`);
-const ci = (lo: number | null, hi: number | null) => (lo === null || hi === null ? '' : ` [${fmt(lo, 2, true)}, ${fmt(hi, 2, true)}]`);
+const ci = (lo: number | null, hi: number | null) =>
+  lo === null || hi === null ? null : <span className="ci"> [{fmt(lo, 2, true)}, {fmt(hi, 2, true)}]</span>;
+export const FAMILY_ES: Record<string, string> = {
+  'Four-Seam': 'Recta de 4 costuras', Sinker: 'Sinker', Cutter: 'Cutter', Slider: 'Slider', Curveball: 'Curva',
+  Changeup: 'Cambio', Splitter: 'Splitter',
+};
 const NEW_PITCH: Record<string, string> = { splitter: 'Splitter', sinker: 'Sinker', sweeper: 'Sweeper' };
 
 /** by_family rows name the CI columns arsenal_hh_lo/hi; the summary uses hh_lo/hi. */
@@ -61,8 +66,8 @@ function TweakTable({ rows, caption }: { rows: TweakRow[]; caption: string }) {
           <tr>
             <th scope="col">Ajuste</th>
             <th scope="col" className="num is-hh">Ganancia en CDMX [IC 95 %]</th>
-            <th scope="col" className="num is-sea">Ganancia a nivel del mar</th>
-            <th scope="col" className="num">CDMX menos mar [IC 95 %]</th>
+            <th scope="col" className="num is-sea opt">Ganancia a nivel del mar</th>
+            <th scope="col" className="num opt">CDMX menos mar [IC 95 %]</th>
             <th scope="col" className="num">Aplica a</th>
           </tr>
         </thead>
@@ -70,9 +75,9 @@ function TweakTable({ rows, caption }: { rows: TweakRow[]; caption: string }) {
           {sorted.map((r) => (
             <tr key={`${r.tweak}-${r.family ?? 'all'}`}>
               <th scope="row">{r.label}</th>
-              <td className="num is-hh">{fmt(r.arsenal_gain_hh, 2, true)}{ci(r.hh_lo, r.hh_hi)}</td>
-              <td className="num is-sea">{fmt(r.arsenal_gain_sea, 2, true)}</td>
-              <td className="num">{fmt(r.arsenal_diff, 2, true)}{ci(r.diff_lo, r.diff_hi)}</td>
+              <td className="num">{fmt(r.arsenal_gain_hh, 2, true)}{ci(r.hh_lo, r.hh_hi)}</td>
+              <td className="num opt">{fmt(r.arsenal_gain_sea, 2, true)}</td>
+              <td className="num opt">{fmt(r.arsenal_diff, 2, true)}{ci(r.diff_lo, r.diff_hi)}</td>
               <td className="num">{pct(r.admissible_share)}</td>
             </tr>
           ))}
@@ -155,13 +160,13 @@ export function LabView({ doc }: { doc: LabDoc }) {
           </button>
           {families.map((f) => (
             <button key={f} type="button" className="h48-chip" aria-pressed={family === f} onClick={() => setFamily(f)}>
-              {f}
+              {FAMILY_ES[f] ?? f}
             </button>
           ))}
         </div>
         <TweakTable
           rows={family ? familyRows(doc, family) : doc.tweaks}
-          caption={family ? `Ajustes aplicados a ${family}` : 'Ajustes aplicados a cada familia del arsenal'}
+          caption={family ? `Ajustes aplicados a ${FAMILY_ES[family] ?? family}` : 'Ajustes aplicados a cada familia del arsenal'}
         />
       </section>
       <section className="h48-block" aria-labelledby="nuevo-title">

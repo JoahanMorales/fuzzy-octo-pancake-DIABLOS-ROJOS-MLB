@@ -36,7 +36,7 @@
   border: 1px solid var(--line-strong, #3a3a43);
   color: var(--fg-muted, #a6a6b0);
 }
-.h48-badge.is-real { border-color: var(--red, #c8102e); color: var(--fg, #f1f1f3); }
+.h48-badge.is-real { border-color: var(--ok, #4fae7b); color: var(--fg, #f1f1f3); }
 
 .h48-scroll { overflow-x: auto; }
 .h48-scroll:focus-visible, .h48-page a:focus-visible, .h48-page button:focus-visible,
@@ -53,23 +53,31 @@
 }
 .h48-table tbody tr:hover { background: var(--surface, #141417); }
 .h48-table .num { text-align: right; font-family: var(--font-mono, ui-monospace, monospace); font-variant-numeric: tabular-nums; }
-.h48-table .is-hh { color: var(--red-strong, #e0213f); }
 .h48-table thead .is-hh { color: var(--red-strong, #e0213f); }
-.h48-table .is-sea { color: var(--sea, #c9ccd3); }
+.h48-table thead .is-sea { color: var(--sea, #c9ccd3); }
+.h48-table .ci { color: var(--fg-muted, #a6a6b0); }
 .h48-table a { color: inherit; text-decoration-color: var(--line-strong, #3a3a43); }
 .h48-table tfoot td { color: var(--fg-muted, #a6a6b0); border-top: 1px solid var(--line-strong, #3a3a43); }
 
 .h48-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8, 32px); }
 .h48-grid > * { min-width: 0; }
+.h48-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.h48-file { display: flex; align-items: center; gap: var(--s-3, 12px); flex-wrap: wrap; }
+.h48-file .h48-button { display: inline-block; }
+.h48-file:focus-within .h48-button { outline: 2px solid var(--fg, #f1f1f3); outline-offset: 2px; }
 .h48-field small, .h48-note { overflow-wrap: anywhere; }
 @media (max-width: 900px) {
+  .h48-table .opt, .h48-table .ci { display: none; }
+  .h48-table th, .h48-table td { padding: 8px 6px; }
+  .h48-table { font-size: var(--text-xs, 0.75rem); }
+  .h48-table thead th { white-space: normal; vertical-align: bottom; }
   .h48-grid { grid-template-columns: minmax(0, 1fr); }
   .h48-page { padding: var(--s-6, 24px) 16px 48px; }
 }
 
 .h48-panel { background: var(--surface, #141417); border: 1px solid var(--line, #2a2a31); border-radius: var(--radius, 6px); padding: var(--s-6, 24px); }
 .h48-field { display: grid; gap: var(--s-2, 8px); margin-bottom: var(--s-4, 16px); }
-.h48-field label { font-size: var(--text-sm, 0.875rem); color: var(--fg, #f1f1f3); }
+.h48-field > span:first-child, .h48-field label { font-size: var(--text-sm, 0.875rem); color: var(--fg, #f1f1f3); }
 .h48-field small { color: var(--fg-muted, #a6a6b0); }
 .h48-button {
   font: inherit;

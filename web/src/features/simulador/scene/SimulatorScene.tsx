@@ -6,6 +6,7 @@ import {
   hasWebGL2,
   loadParkBook,
   endLabel,
+  pathNote,
   pickEnds,
   placeholderPath,
   readReduced,
@@ -15,6 +16,7 @@ import {
   type Hand,
   type LoadedParks,
   type ParkSide,
+  type Vec3,
   type ViewId,
 } from './sceneModel';
 import './scene.css';
@@ -23,7 +25,18 @@ const World = lazy(() => import('./World'));
 
 const VIEWS = Object.keys(VIEW_LABEL) as ViewId[];
 
-export function SimulatorScene() {
+export interface SceneFlight {
+  harpPath: Vec3[];
+  seaPath: Vec3[];
+  hand: Hand;
+  park: ParkSide;
+  playId: number;
+  parkName: string;
+  rho: number;
+  lost: string;
+}
+
+export function SimulatorScene({ flight }: { flight?: SceneFlight } = {}) {
   const [webgl2, setWebgl2] = useState(hasWebGL2);
   const [reduced, setReduced] = useState(readReduced);
   const [loaded, setLoaded] = useState<LoadedParks>({ book: LOCAL_BOOK, origin: 'local' });
@@ -55,18 +68,27 @@ export function SimulatorScene() {
   }, []);
 
   const ends = useMemo(() => pickEnds(loaded.book), [loaded.book]);
-  const harpPath = useMemo(() => placeholderPath(ends.harp.rho, ends.sea.rho), [ends]);
-  const seaPath = useMemo(() => placeholderPath(ends.sea.rho, ends.sea.rho), [ends]);
-  const active = park === 'harp' ? ends.harp : ends.sea;
-  const parkName = endLabel(active, park);
-  const summary = sceneSummary({
-    hand,
-    park,
+  const placeholderHarp = useMemo(() => placeholderPath(ends.harp.rho, ends.sea.rho), [ends]);
+  const placeholderSea = useMemo(() => placeholderPath(ends.sea.rho, ends.sea.rho), [ends]);
+  const harpPath = flight?.harpPath ?? placeholderHarp;
+  const seaPath = flight?.seaPath ?? placeholderSea;
+  const shownHand = flight?.hand ?? hand;
+  const shownPark = flight?.park ?? park;
+  const shownPlay = flight?.playId ?? playId;
+  const active = shownPark === 'harp' ? ends.harp : ends.sea;
+  const parkName = flight?.parkName ?? endLabel(active, shownPark);
+  const rho = flight?.rho ?? active.rho;
+  const placeholderSummary = sceneSummary({
+    hand: shownHand,
+    park: shownPark,
     parkName,
-    rho: active.rho,
+    rho,
     view,
-    demo: loaded.book.demoData,
+    demo: flight ? false : loaded.book.demoData,
   });
+  const summary = flight
+    ? `${placeholderSummary.replace(pathNote(), 'Trayectoria física.')} ${flight.lost}`
+    : placeholderSummary;
 
   const choosePark = (next: ParkSide) => {
     setPark(next);
@@ -79,22 +101,23 @@ export function SimulatorScene() {
       aria-label="Simulador del estadio"
       data-motion={reduced ? 'cut' : 'smooth'}
       data-view={view}
-      data-side={hand}
-      data-park={park}
+      data-side={shownHand}
+      data-park={shownPark}
       data-free={free && !reduced ? 'on' : 'off'}
+      data-controlled={flight ? 'on' : 'off'}
     >
       <div className="sim-stage">
         {webgl2 ? (
           <Suspense fallback={<p className="sim-wait">Preparando el estadio.</p>}>
             <World
               view={view}
-              hand={hand}
-              park={park}
+              hand={shownHand}
+              park={shownPark}
               harpPath={harpPath}
               seaPath={seaPath}
               reduced={reduced}
               free={free}
-              playId={playId}
+              playId={shownPlay}
               devStats={devStats}
               fpsNode={fpsRef}
               onNoWebGL2={() => setWebgl2(false)}
@@ -103,7 +126,7 @@ export function SimulatorScene() {
         ) : (
           <div className="sim-fallback">
             <p className="sim-note">Este navegador no tiene WebGL2. La vista del receptor queda en 2D.</p>
-            <Fallback2D hand={hand} park={park} harpPath={harpPath} seaPath={seaPath} label={summary} />
+            <Fallback2D hand={shownHand} park={shownPark} harpPath={harpPath} seaPath={seaPath} label={summary} />
           </div>
         )}
 
@@ -128,23 +151,24 @@ export function SimulatorScene() {
           <div>
             <p className="sim-k">Densidad</p>
             <p className="sim-v">
-              <span>{active.rho.toFixed(3)}</span>
-              <span className="sim-ejemplo">trayectoria de ejemplo</span>
-              {loaded.book.demoData ? <span className="sim-ejemplo">datos de ejemplo</span> : null}
+              <span>{rho.toFixed(3)}</span>
+              {flight ? <span className="sim-ejemplo">vuelo físico</span> : <span className="sim-ejemplo">trayectoria de ejemplo</span>}
+              {!flight && loaded.book.demoData ? <span className="sim-ejemplo">datos de ejemplo</span> : null}
             </p>
           </div>
           <div>
             <p className="sim-k">Bateador</p>
-            <p className="sim-v">{hand === 'R' ? 'Diestro' : 'Zurdo'}</p>
+            <p className="sim-v">{shownHand === 'R' ? 'Diestro' : 'Zurdo'}</p>
           </div>
           <div>
             <p className="sim-k">Cámara</p>
             <p className="sim-v">{VIEW_LABEL[view]}</p>
           </div>
-          <p className="sim-source">{sourceLine(loaded.origin, loaded.book.demoData)}</p>
+          <p className="sim-source">{flight ? `Fuente: flyPitch · physics.json. ${flight.lost}` : sourceLine(loaded.origin, loaded.book.demoData)}</p>
         </div>
       </div>
 
+      {flight ? null : (
       <aside className="sim-rail" aria-label="Controles del estadio">
         <fieldset>
           <legend>Bateador</legend>
@@ -157,6 +181,7 @@ export function SimulatorScene() {
           <button type="button" aria-pressed={park === 'sea'} onClick={() => choosePark('sea')}>Nivel del mar</button>
         </fieldset>
       </aside>
+      )}
 
       <p className="sim-sr" role="status">{summary}</p>
     </section>

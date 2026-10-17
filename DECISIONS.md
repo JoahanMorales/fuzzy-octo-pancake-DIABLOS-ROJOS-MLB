@@ -96,3 +96,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792265784 | HACK-063 | follow-up of HACK-001 by joahan-1: CI kit syntax check: bash -n only on shell scripts (uak-mcp is Python) | Why: same Paths, no scope change
 - 1792267123 | deadline lease/HACK-046/1792266556 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792267123 | deadline lease/HACK-049/1792267092 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792268746 | HACK-044 | Escena lista para criterios de HACK-044; flyPitch y ruta quedan en 045. | Why: Usuario pidió mandar a review

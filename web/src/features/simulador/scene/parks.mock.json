@@ -1,0 +1,23 @@
+{
+  "model_version": "stuff_v2",
+  "model": "pitch_family Stuff+ composite",
+  "translation": "physics_translator",
+  "demo_data": true,
+  "sources": ["web/src/features/simulador/scene/parks.mock.json"],
+  "parks": [
+    {
+      "id": "mar",
+      "rho": 1,
+      "bucket": "No Altitude",
+      "air_effect": 0,
+      "altitude": "No Altitude"
+    },
+    {
+      "id": "alto",
+      "rho": 0.82,
+      "bucket": "Extreme Altitude",
+      "air_effect": 0,
+      "altitude": "Extreme Altitude"
+    }
+  ]
+}

@@ -9,8 +9,8 @@ Priority: P0
 Paths: web/src/features/simulador/scene/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/simulador/scene`
-Lease-Until: 1792267073
-Updated: 1792264373
+Lease-Until: 1792267780
+Updated: 1792265080
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
 Next: HACK-045 monta index.tsx y conecta flyPitch
 PR: -

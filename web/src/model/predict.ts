@@ -162,7 +162,8 @@ export function predict(model: CompositeModel, row: FeatureRow): Prediction {
   return predictEncoded(model, encode(model, row));
 }
 
-/** xRV → Plus on the park-neutral ruler; `group` = values of `plus.by` (e.g. the season), else the LMB reference. */
+/** Score → Plus on the park-neutral ruler: pass xRV for Stuff+ and `locationValue` (not xRV) for Location+.
+ *  `group` = values of `plus.by` (e.g. the season), else the LMB reference. */
 export function toPlus(model: CompositeModel, xrv: number, group?: (string | number)[]): number {
   const { center, spread, sign = -1, stats } = model.plus;
   if (!stats?.[GLOBAL]) throw new Error(`${model.name}: plus.stats missing (export with stuffplus/export_trees.py)`);

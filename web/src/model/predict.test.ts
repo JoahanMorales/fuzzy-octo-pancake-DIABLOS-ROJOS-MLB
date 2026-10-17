@@ -68,5 +68,7 @@ describe('encoding and Plus scale', () => {
     expect(toPlus(model, g.mean)).toBeCloseTo(100, 9);
     expect(toPlus(model, g.mean - g.sd)).toBeCloseTo(110, 9);
     expect(model.plus.reference).toBe('park-neutral');
+    const loc = location as CompositeModel;
+    expect(toPlus(loc, loc.plus.stats!.__all__.mean)).toBeCloseTo(100, 9); // Location+ scales locationValue
   });
 });

@@ -1,0 +1,400 @@
+{
+  "version": "v1",
+  "created_at": "2026-10-13T14:45:18+00:00",
+  "git_sha": "645baa2",
+  "models": {
+    "stuff_xrv": {
+      "file": "models/stuff_xrv.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "AutoPitchType",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb"
+      ],
+      "target": "xrv_stuff_components",
+      "objective": "regression",
+      "distill_r2": 0.9189
+    },
+    "stuff_t_whiff": {
+      "file": "models/stuff_t_whiff.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "AutoPitchType",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb"
+      ],
+      "target": "t_whiff",
+      "objective": "binary"
+    },
+    "stuff_t_chase": {
+      "file": "models/stuff_t_chase.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "AutoPitchType",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb"
+      ],
+      "target": "t_chase",
+      "objective": "binary"
+    },
+    "stuff_t_called_strike": {
+      "file": "models/stuff_t_called_strike.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "AutoPitchType",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb"
+      ],
+      "target": "t_called_strike",
+      "objective": "binary"
+    },
+    "stuff_t_weak_contact": {
+      "file": "models/stuff_t_weak_contact.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "AutoPitchType",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb"
+      ],
+      "target": "t_weak_contact",
+      "objective": "binary"
+    },
+    "stuff_t_groundball": {
+      "file": "models/stuff_t_groundball.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "AutoPitchType",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb"
+      ],
+      "target": "t_groundball",
+      "objective": "binary"
+    },
+    "stuff_t_hard_contact": {
+      "file": "models/stuff_t_hard_contact.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "AutoPitchType",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb"
+      ],
+      "target": "t_hard_contact",
+      "objective": "binary"
+    },
+    "stuff_t_out_in_pa": {
+      "file": "models/stuff_t_out_in_pa.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "AutoPitchType",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb"
+      ],
+      "target": "t_out_in_pa",
+      "objective": "binary"
+    },
+    "location_xrv": {
+      "file": "models/location_xrv.txt",
+      "features": [
+        "plate_x_arm",
+        "PlateLocHeight",
+        "Balls",
+        "Strikes",
+        "same_side",
+        "is_rhp",
+        "pitch_family",
+        "rho"
+      ],
+      "target": "location_value (xRV_loc - mean by count x pitch type)",
+      "objective": "regression",
+      "distill_r2": 0.9788,
+      "task": "HACK-011"
+    },
+    "pitching_xrv": {
+      "file": "models/pitching_xrv.txt",
+      "features": [
+        "RelSpeed",
+        "SpinRate",
+        "spin_axis_arm",
+        "InducedVertBreak",
+        "hb_arm",
+        "RelHeight",
+        "rel_side_arm",
+        "Extension",
+        "arm_angle",
+        "is_rhp",
+        "pitch_family",
+        "rho",
+        "velo_diff_fb",
+        "ivb_diff_fb",
+        "hb_diff_fb",
+        "plate_x_arm",
+        "PlateLocHeight",
+        "Balls",
+        "Strikes",
+        "same_side"
+      ],
+      "target": "Pitching+ combined xRV, neutral batter (HACK-012)",
+      "objective": "regression",
+      "distill_r2": 0.9419,
+      "task": "HACK-012"
+    }
+  },
+  "rho": {
+    "sea_level": 1.0,
+    "harp_helu": 0.81,
+    "extreme_altitude": 0.8381270299968946,
+    "medium_altitude": 0.8878563848158019
+  },
+  "scalers": {
+    "stuff": {
+      "by": [
+        "year"
+      ],
+      "sign": -1,
+      "center": 100.0,
+      "spread": 10.0,
+      "stats": {
+        "__all__": {
+          "mean": 0.00040263711482538717,
+          "sd": 0.010545116147744915,
+          "n": 627602
+        },
+        "2024": {
+          "mean": 0.0003933246690442159,
+          "sd": 0.010633267613726103,
+          "n": 243037
+        },
+        "2025": {
+          "mean": 0.0003345674359224441,
+          "sd": 0.01056647704530259,
+          "n": 254995
+        },
+        "2026": {
+          "mean": 0.0005540664322381719,
+          "sd": 0.010333342736692015,
+          "n": 129570
+        }
+      }
+    },
+    "location": {
+      "by": [
+        "year"
+      ],
+      "sign": -1,
+      "center": 100.0,
+      "spread": 10.0,
+      "stats": {
+        "__all__": {
+          "mean": -2.3518334639062013e-08,
+          "sd": 0.0467220131372207,
+          "n": 627602
+        },
+        "2024": {
+          "mean": 0.0006132938522711674,
+          "sd": 0.046211557155494035,
+          "n": 243037
+        },
+        "2025": {
+          "mean": -0.00017001108822173213,
+          "sd": 0.04689893986503907,
+          "n": 254995
+        },
+        "2026": {
+          "mean": -0.0008158978211560027,
+          "sd": 0.04730646406213668,
+          "n": 129570
+        }
+      }
+    },
+    "pitching": {
+      "by": [
+        "year"
+      ],
+      "sign": -1,
+      "center": 100.0,
+      "spread": 10.0,
+      "stats": {
+        "__all__": {
+          "mean": 0.0032790906792380496,
+          "sd": 0.051127998906101826,
+          "n": 627602
+        },
+        "2024": {
+          "mean": 0.004177747966016634,
+          "sd": 0.050759432976036266,
+          "n": 243037
+        },
+        "2025": {
+          "mean": 0.0028081452836291967,
+          "sd": 0.05138602806155688,
+          "n": 254995
+        },
+        "2026": {
+          "mean": 0.002520286559044119,
+          "sd": 0.05128280075043721,
+          "n": 129570
+        }
+      }
+    }
+  },
+  "metrics": {
+    "stuff_skill_vs_count": -0.0003001839288343522,
+    "stuff_skill_vs_pitch_type": 0.000698821861155885,
+    "distill_r2": 0.9188705625260565,
+    "seconds": 173.0,
+    "fast": false,
+    "predictiveness": [
+      {
+        "first_n": 50,
+        "pitcher_seasons": 712,
+        "stuff_model": 0.2299,
+        "observed_rv": 0.051,
+        "observed_rv_x": 0.119
+      },
+      {
+        "first_n": 100,
+        "pitcher_seasons": 625,
+        "stuff_model": 0.2476,
+        "observed_rv": 0.1087,
+        "observed_rv_x": 0.1507
+      },
+      {
+        "first_n": 200,
+        "pitcher_seasons": 462,
+        "stuff_model": 0.2699,
+        "observed_rv": 0.11,
+        "observed_rv_x": 0.1749
+      },
+      {
+        "first_n": 400,
+        "pitcher_seasons": 250,
+        "stuff_model": 0.2527,
+        "observed_rv": 0.2304,
+        "observed_rv_x": 0.2059
+      }
+    ],
+    "reliability": {
+      "pairs": 633,
+      "stuff_model": 0.799,
+      "observed_rv": 0.1775
+    }
+  },
+  "scaler": {
+    "by": [
+      "year"
+    ],
+    "sign": -1,
+    "center": 100.0,
+    "spread": 10.0,
+    "stats": {
+      "__all__": {
+        "mean": 0.00040263711482538717,
+        "sd": 0.010545116147744915,
+        "n": 627602
+      },
+      "2024": {
+        "mean": 0.0003933246690442159,
+        "sd": 0.010633267613726103,
+        "n": 243037
+      },
+      "2025": {
+        "mean": 0.0003345674359224441,
+        "sd": 0.01056647704530259,
+        "n": 254995
+      },
+      "2026": {
+        "mean": 0.0005540664322381719,
+        "sd": 0.010333342736692015,
+        "n": 129570
+      }
+    }
+  }
+}

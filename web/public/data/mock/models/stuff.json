@@ -1,0 +1,171 @@
+{
+  "model_version": "stuff_v2",
+  "model": "pitch_family Stuff+ composite",
+  "translation": "physics_translator",
+  "demo_data": true,
+  "sources": [
+    "deploy/bundle/tables/class_values.csv"
+  ],
+  "name": "stuff",
+  "features": [
+    "RelSpeed",
+    "SpinRate",
+    "spin_axis_arm",
+    "InducedVertBreak",
+    "hb_arm",
+    "RelHeight",
+    "rel_side_arm",
+    "Extension",
+    "arm_angle",
+    "is_rhp",
+    "pitch_family",
+    "rho",
+    "velo_diff_fb",
+    "ivb_diff_fb",
+    "hb_diff_fb"
+  ],
+  "categories": {
+    "pitch_family": [
+      "Changeup",
+      "Curveball",
+      "Cutter",
+      "Four-Seam",
+      "Sinker",
+      "Slider",
+      "Splitter"
+    ]
+  },
+  "class_values": [
+    {
+      "outcome": "ball",
+      "rv": 0.08636
+    },
+    {
+      "outcome": "called_strike",
+      "rv": -0.10011
+    },
+    {
+      "outcome": "whiff",
+      "rv": -0.16222
+    },
+    {
+      "outcome": "foul",
+      "rv": -0.05796
+    },
+    {
+      "outcome": "in_play",
+      "rv": 0.08278
+    }
+  ],
+  "plus": {
+    "center": 100.0,
+    "spread": 10.0,
+    "reference": "park-neutral"
+  },
+  "outcome": {
+    "num_class": 5,
+    "trees": [
+      {
+        "tree_index": 0,
+        "tree_structure": {
+          "split_feature": 0,
+          "threshold": 0.0,
+          "decision_type": "<=",
+          "default_left": true,
+          "missing_type": "None",
+          "left_child": {
+            "leaf_index": 0,
+            "leaf_value": 0.0
+          },
+          "right_child": {
+            "leaf_index": 1,
+            "leaf_value": 0.0
+          }
+        }
+      },
+      {
+        "tree_index": 1,
+        "tree_structure": {
+          "split_feature": 0,
+          "threshold": 0.0,
+          "decision_type": "<=",
+          "default_left": true,
+          "missing_type": "None",
+          "left_child": {
+            "leaf_index": 0,
+            "leaf_value": 0.0
+          },
+          "right_child": {
+            "leaf_index": 1,
+            "leaf_value": 0.0
+          }
+        }
+      },
+      {
+        "tree_index": 2,
+        "tree_structure": {
+          "split_feature": 0,
+          "threshold": 0.0,
+          "decision_type": "<=",
+          "default_left": true,
+          "missing_type": "None",
+          "left_child": {
+            "leaf_index": 0,
+            "leaf_value": 0.0
+          },
+          "right_child": {
+            "leaf_index": 1,
+            "leaf_value": 0.0
+          }
+        }
+      },
+      {
+        "tree_index": 3,
+        "tree_structure": {
+          "split_feature": 0,
+          "threshold": 0.0,
+          "decision_type": "<=",
+          "default_left": true,
+          "missing_type": "None",
+          "left_child": {
+            "leaf_index": 0,
+            "leaf_value": 0.0
+          },
+          "right_child": {
+            "leaf_index": 1,
+            "leaf_value": 0.0
+          }
+        }
+      },
+      {
+        "tree_index": 4,
+        "tree_structure": {
+          "split_feature": 0,
+          "threshold": 0.0,
+          "decision_type": "<=",
+          "default_left": true,
+          "missing_type": "None",
+          "left_child": {
+            "leaf_index": 0,
+            "leaf_value": 0.0
+          },
+          "right_child": {
+            "leaf_index": 1,
+            "leaf_value": 0.0
+          }
+        }
+      }
+    ]
+  },
+  "contact": {
+    "trees": [
+      {
+        "tree_index": 0,
+        "tree_structure": {
+          "leaf_index": 0,
+          "leaf_value": 0.0
+        }
+      }
+    ]
+  }
+}

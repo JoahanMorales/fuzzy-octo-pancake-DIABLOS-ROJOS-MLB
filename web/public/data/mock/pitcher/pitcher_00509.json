@@ -1,0 +1,96 @@
+{
+  "model_version": "stuff_v2",
+  "model": "pitch_family Stuff+ composite",
+  "translation": "physics_translator",
+  "demo_data": true,
+  "sources": [
+    "reports/leaderboards/pitcher_season.csv",
+    "reports/leaderboards/pitcher_pitch.csv"
+  ],
+  "id": "pitcher_00509",
+  "seasons": [
+    {
+      "year": 2024,
+      "pitches": 496,
+      "throws": "Left",
+      "stuff_plus": 97.979,
+      "stuff_plus_harp_helu": 91.566,
+      "stuff_plus_own_air": 94.213,
+      "location_plus": 100.168,
+      "pitching_plus": 100.405,
+      "delta_cdmx": -6.414,
+      "arsenal": "4S 51% · power CH 16% · gyro slider 16%",
+      "stuff_plus_percentile": 41.994,
+      "arsenal_pitches": [
+        {
+          "pitch_id": 0,
+          "pitch_family": "Four-Seam",
+          "shape": "4S",
+          "pitches": 150,
+          "usage": 0.302,
+          "velo": 91.466,
+          "ivb": 10.893,
+          "hb": -7.987,
+          "spin": 2300.175,
+          "stuff_plus": 100.235,
+          "stuff_plus_harp_helu": 95.215,
+          "stuff_plus_own_air": 96.508,
+          "location_plus": 100.28,
+          "pitching_plus": 100.012,
+          "delta_cdmx": -5.02
+        },
+        {
+          "pitch_id": 1,
+          "pitch_family": "Four-Seam",
+          "shape": "4S",
+          "pitches": 131,
+          "usage": 0.264,
+          "velo": 90.585,
+          "ivb": 10.822,
+          "hb": -8.542,
+          "spin": 2252.155,
+          "stuff_plus": 97.788,
+          "stuff_plus_harp_helu": 89.761,
+          "stuff_plus_own_air": 92.913,
+          "location_plus": 100.433,
+          "pitching_plus": 99.565,
+          "delta_cdmx": -8.027
+        },
+        {
+          "pitch_id": 2,
+          "pitch_family": "Changeup",
+          "shape": "power CH",
+          "pitches": 103,
+          "usage": 0.208,
+          "velo": 86.522,
+          "ivb": 3.957,
+          "hb": -3.369,
+          "spin": 1744.505,
+          "stuff_plus": 95.771,
+          "stuff_plus_harp_helu": 90.825,
+          "stuff_plus_own_air": 94.178,
+          "location_plus": 99.815,
+          "pitching_plus": 101.008,
+          "delta_cdmx": -4.947
+        },
+        {
+          "pitch_id": 4,
+          "pitch_family": "Slider",
+          "shape": "gyro slider",
+          "pitches": 79,
+          "usage": 0.159,
+          "velo": 85.091,
+          "ivb": 3.515,
+          "hb": -3.061,
+          "spin": 1762.261,
+          "stuff_plus": 96.229,
+          "stuff_plus_harp_helu": 88.756,
+          "stuff_plus_own_air": 91.553,
+          "location_plus": 99.744,
+          "pitching_plus": 100.919,
+          "delta_cdmx": -7.473
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Tunneling por tiempo (HACK-061)
 
-El punto de decisión del bateador se fija en el **tiempo**: 150 ms antes de que la pelota llegue al frente del plato (17/12 ft), resuelto con el ajuste de aceleración constante de 9 parámetros de cada lanzamiento. En aire delgado la pelota llega antes, así que esos 150 ms corresponden a otra distancia. La separación se mide contra la recta principal del mismo pitcher y temporada, en ese punto y en el plato, y el cociente de tunneling es separación en el plato / separación en la decisión. Son rasgos físicos: nunca usan resultados.
+El punto de decisión del bateador se fija en el **tiempo**: 150 ms antes de que la pelota llegue al frente del plato (17/12 ft), resuelto con el ajuste de aceleración constante de 9 parámetros de cada lanzamiento. En aire delgado la pelota llega antes, así que esos 150 ms corresponden a otra distancia. La separación se mide contra la recta principal del mismo pitcher (promedio del juego con al menos 3 rectas, si no de la temporada), en ese punto y en el plato, y el cociente de tunneling es separación en el plato / separación en la decisión. Son rasgos físicos: nunca usan resultados.
 
-Para que no sean ubicación disfrazada, se comparan trayectorias promedio por tipo de pitch y juego (no lanzamientos sueltos) contra la recta principal construida igual. Ver la auditoría de ubicación abajo.
+Para que no sean ubicación disfrazada, se comparan trayectorias promedio por tipo de pitch y juego (no lanzamientos sueltos; promedio del juego con al menos 3 lanzamientos, si no de la temporada) contra la recta principal construida igual. Ver la auditoría de ubicación abajo.
 
 Datos: 623,231 lanzamientos de 924 pitchers.
 

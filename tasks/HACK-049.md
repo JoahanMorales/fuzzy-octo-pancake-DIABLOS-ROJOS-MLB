@@ -9,13 +9,13 @@ Priority: P1
 Paths: web/src/features/metodologia/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/metodologia`
-Lease-Until: 1792265139
-Updated: 1792262439
+Lease-Until: 1792265335
+Updated: 1792262635
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
 Next: chart from `validation.json`.
 PR: -
 Evidence: -
-Events: 1
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

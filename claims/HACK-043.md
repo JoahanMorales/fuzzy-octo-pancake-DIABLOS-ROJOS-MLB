@@ -9,9 +9,9 @@ Priority: P0
 Paths: web/src/features/landing/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/landing`
-Lease-Until: 1792278786
-Updated: 1792264386
+Lease-Until: 1792278790
+Updated: 1792264390
 Task-Base: 7b8f70c2aed60cc65d847234fdda361ea163c1a6
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54; run .uak/bin/smoke
+Next: Wait for review of SHA 97b299a
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54
 Evidence: -

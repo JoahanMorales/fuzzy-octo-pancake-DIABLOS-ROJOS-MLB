@@ -90,3 +90,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792263814 | HACK-046 | Keep draft; no geographic placement without documented IDs to coordinates. | Why: Park identity is anonymous and contract has no coordinates; source report explicitly unverified.
 - 1792263847 | HACK-046 | Keep draft and preserve geographic acceptance gap; no task completion or merge. | Why: No documented anonymous park ID to geographic coordinate mapping.
 - 1792264093 | HACK-049 | Consume HACK050 optional aggregate fields locally; keep old mock empty; no global contract changes | Why: Source owner published real rows_fast/bins/methods/audit via contract364; avoid inventing or relabeling xRV as probability
+- 1792264390 | HACK-043 | Cifras del JSON: liga -12.7, Pitching+ +3.7 por ciento season holdout, sesgo -81.5 por ciento park holdout | Why: El informe vigente ya no trae los numeros del enunciado original

@@ -9,14 +9,14 @@ Priority: P0
 Paths: web/src/features/landing/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/landing`
-Lease-Until: 1792278786
-Updated: 1792264386
+Lease-Until: 1792278790
+Updated: 1792264390
 Task-Base: 7b8f70c2aed60cc65d847234fdda361ea163c1a6
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54; run .uak/bin/smoke
+Next: Wait for review of SHA 97b299a
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54
 Evidence: npm --prefix web test -- --run src/features/landing exit 0 (6); npm --prefix web run build exit 0; Lighthouse desktop performance 96 accessibility 96; hero CTA abre /simulador
-Events: 6
-Checkpoints: 1
+Events: 7
+Checkpoints: 2
 Sessions: 2
-Last-Checkpoint: 1792263813
+Last-Checkpoint: 1792264390
 Task-Tip: 97b299a63c819bb7a63e170dcb4ec7a378af0ee7

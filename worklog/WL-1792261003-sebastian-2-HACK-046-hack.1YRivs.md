@@ -10,3 +10,4 @@
 
 ## History
 - 1792261003 | CLAIMED | sebastian-2 | claim; next: d3-geo projection of a public-domain Mexico outline (cite the source in the page).
+- 1792261100 | CLAIMED | sebastian-2 | pending decision HACK-046-1792261100; option: Dibujar México y mostrar los 20 parques en un panel sin ubicación hasta disponer de correspondencia geográfica documentada.; Why: El contrato no tiene coordenadas; asignarlas inventaría identidades. Se continúa forest plot y selector sin bloquear trabajo independiente.

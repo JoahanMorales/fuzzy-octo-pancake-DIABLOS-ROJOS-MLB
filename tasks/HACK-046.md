@@ -15,7 +15,7 @@ Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
 Next: d3-geo projection of a public-domain Mexico outline (cite the source in the page).
 PR: -
 Evidence: -
-Events: 1
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

@@ -1,6 +1,6 @@
 # HACK-041
 ID: HACK-041
-State: CLAIMED
+State: REVIEW
 Owner: joahan-1
 Branch: feat/hack-041
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-041
@@ -9,9 +9,9 @@ Priority: P0
 Paths: stuffplus/physics/flight.py, stuffplus/physics/coefficients.py, analysis/physics_v2/, reports/physics_v2/, tests/test_physics_v2.py
 Depends: None
 Verify: `python -m pytest -q tests/test_physics_v2.py`
-Lease-Until: 1792197285
-Updated: 1792194585
+Lease-Until: 1792209814
+Updated: 1792195414
 Task-Base: 05ff7a941d9dfba8900623f057a412c34c87bcfd
-Next: reuse the drag/Magnus decomposition in `stuffplus/physics/aero.py`.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-041?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-041?expand=1
 Evidence: -

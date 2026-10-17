@@ -1,0 +1,80 @@
+{
+  "note": "ejemplo: lanzamientos sintéticos de un pitcher típico, no datos de un pitcher real",
+  "pitches": [
+    {
+      "id": "fb",
+      "family": "Four-Seam",
+      "label": "Recta",
+      "release": {
+        "velo_mph": 94,
+        "ivb_in": 17,
+        "hb_in": 8,
+        "rel_height_ft": 6.0,
+        "rel_side_ft": 1.8,
+        "extension_ft": 6.3,
+        "target_z_ft": 2.7,
+        "target_x_ft": 0.1
+      }
+    },
+    {
+      "id": "si",
+      "family": "Sinker",
+      "label": "Sinker",
+      "release": {
+        "velo_mph": 93,
+        "ivb_in": 8,
+        "hb_in": 15,
+        "rel_height_ft": 5.8,
+        "rel_side_ft": 1.9,
+        "extension_ft": 6.2,
+        "target_z_ft": 2.0,
+        "target_x_ft": 0.4
+      }
+    },
+    {
+      "id": "sl",
+      "family": "Slider",
+      "label": "Slider",
+      "release": {
+        "velo_mph": 85,
+        "ivb_in": 2,
+        "hb_in": -5,
+        "rel_height_ft": 5.9,
+        "rel_side_ft": 1.8,
+        "extension_ft": 6.1,
+        "target_z_ft": 2.0,
+        "target_x_ft": -0.6
+      }
+    },
+    {
+      "id": "cu",
+      "family": "Curveball",
+      "label": "Curva",
+      "release": {
+        "velo_mph": 79,
+        "ivb_in": -12,
+        "hb_in": -7,
+        "rel_height_ft": 6.1,
+        "rel_side_ft": 1.7,
+        "extension_ft": 6.0,
+        "target_z_ft": 1.9,
+        "target_x_ft": -0.3
+      }
+    },
+    {
+      "id": "ch",
+      "family": "Changeup",
+      "label": "Cambio",
+      "release": {
+        "velo_mph": 86,
+        "ivb_in": 7,
+        "hb_in": 14,
+        "rel_height_ft": 5.9,
+        "rel_side_ft": 1.8,
+        "extension_ft": 6.3,
+        "target_z_ft": 1.8,
+        "target_x_ft": 0.5
+      }
+    }
+  ]
+}

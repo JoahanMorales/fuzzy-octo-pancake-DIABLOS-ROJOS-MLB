@@ -1,0 +1,21 @@
+{
+  "source": "reports/physics_v2/physics.json (feat/hack-041, HACK-041); copied subset for the HACK-060 spike",
+  "rho": {
+    "sea_level": 1.0,
+    "harp_helu": 0.819
+  },
+  "cd_sea": {
+    "Four-Seam": 0.292,
+    "Sinker": 0.2916,
+    "Slider": 0.2789,
+    "Curveball": 0.2917,
+    "Changeup": 0.2865
+  },
+  "magnus_elasticity": {
+    "Four-Seam": 1.362,
+    "Sinker": 1.404,
+    "Slider": 1.151,
+    "Curveball": 1.38,
+    "Changeup": 1.758
+  }
+}

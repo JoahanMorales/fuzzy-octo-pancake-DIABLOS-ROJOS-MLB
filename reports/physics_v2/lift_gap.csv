@@ -1,0 +1,8 @@
+pitch_family,cl_ratio,gap_pct,explained_by_spin_param_pct,explained_by_density_bias_pct,residual_pct
+Changeup,0.802,-19.841,0.109,-3.854,-16.718
+Curveball,0.922,-7.83,-0.055,-3.854,-4.082
+Cutter,0.938,-6.223,-0.073,-3.854,-2.393
+Four-Seam,0.909,-9.055,-0.009,-3.854,-5.401
+Sinker,0.914,-8.617,0.014,-3.854,-4.967
+Slider,0.933,-6.706,-0.01,-3.854,-2.957
+Splitter,0.849,-15.101,0.025,-3.854,-11.719

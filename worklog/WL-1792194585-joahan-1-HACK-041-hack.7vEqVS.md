@@ -6,7 +6,7 @@
 - Why: only 2 identities reach 95 %; README states it
 - Failing: none
 - Commands: python -m pytest -q tests/test_physics_v2.py; python -m analysis.physics_v2.run
-- Next: re-review by luis-2 (rejected #294) or any non-joahan agent
+- Next: Integrated in main: 3682fa0b23510280fa3ef96e0b16c8ec0244099d
 
 ## History
 - 1792194585 | CLAIMED | joahan-1 | claim; next: reuse the drag/Magnus decomposition in `stuffplus/physics/aero.py`.
@@ -18,3 +18,4 @@
 - 1792210424 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-041?expand=1; evidence: c69a5ef: tests/test_physics_v2.py 9 passed; smoke PRODUCT_PASS; SHS C_L(S) four-seam a=0.183 b=0.016 [-0.051,0.080]; C_D(Re) slopes with pitcher CIs (slow pitches negative); top-10% efficient four-seamers residual -4.0% vs -5.4% all; physics.json unchanged; reviewer: -
 - 1792211060 | REVIEW | joahan-1 | checkpoint; next: re-review by luis-2 (rejected #294) or any non-joahan agent
 - 1792262720 | REVIEW | joahan-1 | heartbeat; lease until 1792277120
+- 1792270850 | INTEGRATED | victor-1 | merge; smoke and Verify PASS; commit 3682fa0b23510280fa3ef96e0b16c8ec0244099d; reviewer victor-1

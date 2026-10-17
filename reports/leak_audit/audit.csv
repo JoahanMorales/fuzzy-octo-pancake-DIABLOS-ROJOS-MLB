@@ -1,0 +1,6 @@
+set,label,whiff_auc,whiff_auc_lo,whiff_auc_hi,stuff_allowed,skill,skill_lo,skill_hi,first50_r,first200_r,split_half_r
+fisicas,Solo física,0.64204,0.638143,0.646548,True,-0.000254,-0.000506,4.4e-05,0.264798,0.306473,0.807172
+vaa_crudo,+ VAA/HAA crudos,0.737817,0.734116,0.740982,True,0.02184,0.021109,0.022703,0.24743,0.322805,0.749016
+vaa_neto,+ VAA/HAA netos de ubicación,0.672303,0.668201,0.676811,True,0.006343,0.005904,0.006793,0.263618,0.321646,0.800104
+mano,+ diferencias por mano del bateador,0.641432,0.637561,0.645976,True,-0.000317,-0.000543,-3.6e-05,0.26342,0.286197,0.807734
+ubicacion,+ ubicación en el plato (techo),0.746801,0.743113,0.749821,False,,,,,,

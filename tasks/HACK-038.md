@@ -9,13 +9,13 @@ Priority: P0
 Paths: docs/CONTRACT-WEB.md, web/src/contract/, web/public/data/mock/, stuffplus/export_web.py, tests/test_export_web.py
 Depends: HACK-037
 Verify: `python -m pytest -q tests/test_export_web.py && npm --prefix web test -- --run src/contract`
-Lease-Until: 1792205580
-Updated: 1792202880
+Lease-Until: 1792205632
+Updated: 1792202932
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
 Next: write types.ts from the bundle tables in deploy/bundle/tables/ and reports/
 PR: -
 Evidence: -
-Events: 2
+Events: 3
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

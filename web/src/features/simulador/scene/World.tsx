@@ -373,6 +373,14 @@ function Paths({ harp, sea, reduced, playId, c }: { harp: Vec3[]; sea: Vec3[]; r
     <group>
       <Line points={sea} color={c.sea} lineWidth={2} dashed dashSize={0.8} gapSize={0.45} transparent opacity={0.85} />
       <Line points={harp} color={c.red} lineWidth={2.5} />
+      <mesh position={sea[sea.length - 1]}>
+        <sphereGeometry args={[0.12, 10, 8]} />
+        <meshBasicMaterial color={c.sea} />
+      </mesh>
+      <mesh position={harp[harp.length - 1]}>
+        <sphereGeometry args={[0.12, 10, 8]} />
+        <meshBasicMaterial color={c.red} />
+      </mesh>
       <mesh ref={ghost}>
         <icosahedronGeometry args={[BALL_R, 0]} />
         <meshStandardMaterial color={c.sea} transparent opacity={0.5} flatShading />

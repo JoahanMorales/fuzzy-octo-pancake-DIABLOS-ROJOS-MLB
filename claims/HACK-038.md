@@ -12,6 +12,6 @@ Verify: `python -m pytest -q tests/test_export_web.py && npm --prefix web test -
 Lease-Until: 1792220163
 Updated: 1792205763
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: Wait for review of SHA 92aef6e
+Next: Humano: Verify / acceptance red: sh: vitest: command not found (log: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-038-verify-1792205770.log)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/49
 Evidence: -

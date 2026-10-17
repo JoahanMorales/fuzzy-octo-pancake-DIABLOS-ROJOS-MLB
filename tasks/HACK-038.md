@@ -12,10 +12,10 @@ Verify: `python -m pytest -q tests/test_export_web.py && npm --prefix web test -
 Lease-Until: 1792220163
 Updated: 1792205763
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: Wait for review of SHA 92aef6e
+Next: Humano: Verify / acceptance red: sh: vitest: command not found (log: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-038-verify-1792205770.log)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/49
 Evidence: pytest tests/test_export_web.py exit 0; npm --prefix web test -- --run src/contract exit 0; smoke exit 0; 20 parques, stuff_v2 leído de reports/stuff_v2/altitude.csv
-Events: 8
+Events: 9
 Checkpoints: 1
 Sessions: 3
 Last-Checkpoint: 1792203636

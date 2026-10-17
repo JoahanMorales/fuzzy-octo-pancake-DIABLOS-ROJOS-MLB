@@ -9,13 +9,13 @@ Priority: P0
 Paths: web/src/features/landing/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/landing`
-Lease-Until: 1792266009
-Updated: 1792263309
+Lease-Until: 1792266513
+Updated: 1792263813
 Task-Base: 7b8f70c2aed60cc65d847234fdda361ea163c1a6
-Next: build the hero on the DESIGN.md mock.
+Next: Revisar hero a 1280x720 y Lighthouse desktop
 PR: -
 Evidence: -
-Events: 3
-Checkpoints: 0
+Events: 4
+Checkpoints: 1
 Sessions: 2
-Last-Checkpoint: 0
+Last-Checkpoint: 1792263813

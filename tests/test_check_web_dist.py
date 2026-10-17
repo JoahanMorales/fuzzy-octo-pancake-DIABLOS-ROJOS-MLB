@@ -85,3 +85,8 @@ def test_build_real_from_committed_reports_is_aggregate_only(tmp_path):
     assert "manifest.json" in docs and all(d.get("demo_data") is False for d in docs.values())
     assert sum(r.startswith("pitcher/") for r in docs) == docs["manifest.json"]["pitchers"]
     assert not any(r.startswith("models/") for r in docs)  # real trees stay in web/public/data/models/
+    val = docs["validation.json"]
+    for key, rel in run.VALIDATION_EXTRA.items():
+        if (run.repo_root() / rel).is_file():
+            assert val[key] and rel in val["sources"]
+    assert {r["split"] for r in val["rows_fast"]} >= {"pitcher_kfold", "leave_one_park_out_1"}

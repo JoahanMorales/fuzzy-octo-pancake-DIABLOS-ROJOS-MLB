@@ -23,6 +23,14 @@ from stuffplus import export_web as ew
 from stuffplus.config import repo_root
 
 MODELS_REL = "../models/"  # relative to real/: web/public/data/models/ (HACK-040)
+# extra validation tables for the methodology page (HACK-049): all aggregates, read from committed reports
+VALIDATION_EXTRA = {
+    "rows_fast": "reports/validation/official_fast/validation_table.csv",  # pitcher_kfold, leave_one_park_out_1..20
+    "calibration_bins": "reports/validation/official_fast/calibration.csv",  # predicted vs observed xRV by bin
+    "calibration_bins_holdouts": "reports/validation/official_full/calibration.csv",  # season / park holdouts
+    "calibration_methods": "reports/calibration/methods.csv",  # HACK-053: log-loss, ECE, slope per method
+    "leak_audit": "reports/leak_audit/audit.csv",  # HACK-054: whiff AUC by feature set
+}
 
 
 def _real(obj):
@@ -41,6 +49,11 @@ def build_real(root: Path | None = None) -> dict[str, dict]:
     every = set(pd.read_csv(root / "reports/leaderboards/pitcher_season.csv", usecols=["pitcher_anon_id"])
                 .pitcher_anon_id.astype(str))
     docs.update(ew._pitcher_docs(root, every))
+    val = docs["validation.json"]
+    for key, rel in VALIDATION_EXTRA.items():
+        if (root / rel).is_file():
+            val[key] = ew._records(pd.read_csv(root / rel))
+            val["sources"] = [*val["sources"], rel]
     docs = {rel: _real(doc) for rel, doc in docs.items()}
     for doc in docs.values():
         ew.assert_aggregate(doc)

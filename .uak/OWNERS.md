@@ -13,7 +13,7 @@ An owner is not a prerequisite for everyone: consumers work on published contrac
 | tests/conftest.py | HACK-001 |
 | README.md | HACK-001 |
 | .uak/PROJECT.md | HACK-001 |
-| .github/workflows/ | HACK-001 |
+| .github/workflows/ | HACK-073 |
 | stuffplus/schema.py | HACK-002 |
 | stuffplus/targets.py | HACK-030 |
 | stuffplus/splits.py | HACK-002 |
@@ -30,7 +30,7 @@ An owner is not a prerequisite for everyone: consumers work on published contrac
 | web/package-lock.json | HACK-037 |
 | web/vite.config.ts | HACK-037 |
 | web/tsconfig.json | HACK-037 |
-| web/src/routes.tsx | HACK-037 |
+| web/src/routes.tsx | HACK-067 |
 | web/src/styles/tokens.css | HACK-039 |
-| web/src/contract/ | HACK-038 |
+| web/src/contract/ | HACK-066 |
 | .gitignore | HACK-057 |

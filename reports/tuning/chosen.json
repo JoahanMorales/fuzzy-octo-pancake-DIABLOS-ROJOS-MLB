@@ -1,0 +1,157 @@
+{
+  "stuff_outcome": {
+    "params": {
+      "learning_rate": 0.05,
+      "num_leaves": 15,
+      "min_data_in_leaf": 3000,
+      "lambda_l2": 10
+    },
+    "rounds": 133,
+    "test_loss": 1.4945628153162804,
+    "production_loss": 1.5056198842052357,
+    "production_rounds": 300
+  },
+  "stuff_contact": {
+    "params": {
+      "learning_rate": 0.05,
+      "num_leaves": 15,
+      "min_data_in_leaf": 1000
+    },
+    "rounds": 52,
+    "test_loss": 0.1339671984535679,
+    "production_loss": 0.13455959668105485,
+    "production_rounds": 200
+  },
+  "location_outcome": {
+    "params": {
+      "learning_rate": 0.05,
+      "num_leaves": 63,
+      "min_data_in_leaf": 1500
+    },
+    "rounds": 210,
+    "test_loss": 1.040525700174226,
+    "production_loss": 1.0531428106587406,
+    "production_rounds": 300
+  },
+  "location_contact": {
+    "params": {
+      "learning_rate": 0.05,
+      "num_leaves": 15,
+      "min_data_in_leaf": 1000
+    },
+    "rounds": 175,
+    "test_loss": 0.1281992037088313,
+    "production_loss": 0.12833908604008906,
+    "production_rounds": 200
+  },
+  "pitching_outcome": {
+    "params": {
+      "learning_rate": 0.05,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 449,
+    "test_loss": 0.9975483565114022,
+    "production_loss": 1.0050400558739139,
+    "production_rounds": 300
+  },
+  "pitching_contact": {
+    "params": {
+      "learning_rate": 0.05,
+      "num_leaves": 15,
+      "min_data_in_leaf": 1000
+    },
+    "rounds": 190,
+    "test_loss": 0.12714055099887941,
+    "production_loss": 0.12735643651762615,
+    "production_rounds": 200
+  },
+  "target_t_swing": {
+    "params": {
+      "learning_rate": 0.08,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 501,
+    "test_loss": 0.44422469853267077,
+    "production_loss": 0.4469059388268901,
+    "production_rounds": 200
+  },
+  "target_t_whiff": {
+    "params": {
+      "learning_rate": 0.08,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 188,
+    "test_loss": 0.45540525346941285,
+    "production_loss": 0.4555176664695968,
+    "production_rounds": 200
+  },
+  "target_t_chase": {
+    "params": {
+      "learning_rate": 0.08,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 413,
+    "test_loss": 0.4386255123739468,
+    "production_loss": 0.439890765361576,
+    "production_rounds": 200
+  },
+  "target_t_called_strike": {
+    "params": {
+      "learning_rate": 0.08,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 136,
+    "test_loss": 0.18680436728612185,
+    "production_loss": 0.1872104336276219,
+    "production_rounds": 200
+  },
+  "target_t_weak_contact": {
+    "params": {
+      "learning_rate": 0.08,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 100,
+    "test_loss": 0.6339303133618076,
+    "production_loss": 0.6379945650167097,
+    "production_rounds": 200
+  },
+  "target_t_groundball": {
+    "params": {
+      "learning_rate": 0.08,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 102,
+    "test_loss": 0.6473508674962042,
+    "production_loss": 0.6511281287845011,
+    "production_rounds": 200
+  },
+  "target_t_hard_contact": {
+    "params": {
+      "learning_rate": 0.08,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 66,
+    "test_loss": 0.352095990233331,
+    "production_loss": 0.35842519540980633,
+    "production_rounds": 200
+  },
+  "target_t_out_in_pa": {
+    "params": {
+      "learning_rate": 0.08,
+      "num_leaves": 63,
+      "min_data_in_leaf": 300
+    },
+    "rounds": 58,
+    "test_loss": 0.6328790850162349,
+    "production_loss": 0.6345976340027212,
+    "production_rounds": 200
+  }
+}

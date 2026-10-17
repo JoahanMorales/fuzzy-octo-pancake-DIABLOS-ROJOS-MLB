@@ -1,0 +1,29 @@
+split,model,altitude_category,n,bias_obs_minus_pred,se,demo_data,evidence
+season_holdout,baseline,Extreme Altitude,41010,0.006745777752056724,0.0010292587298841623,False,exploratory_transductive
+season_holdout,baseline,Medium Altitude,27067,0.002100819332516791,0.0012464680799710221,False,exploratory_transductive
+season_holdout,baseline,No Altitude,59776,-0.011621854753184177,0.0007854210928478812,False,exploratory_transductive
+season_holdout,Stuff+,Extreme Altitude,41010,0.0008824344476815875,0.0010304534809259568,False,exploratory_transductive
+season_holdout,Stuff+,Medium Altitude,27067,-3.112354508242851e-05,0.001248740004848525,False,exploratory_transductive
+season_holdout,Stuff+,No Altitude,59776,-0.005176498061297771,0.0007854707342384122,False,exploratory_transductive
+season_holdout,Stuff+ ajustado,Extreme Altitude,41010,0.0019868829673903876,0.0010302085757181488,False,exploratory_transductive
+season_holdout,Stuff+ ajustado,Medium Altitude,27067,0.0009659931118724606,0.0012480809262082435,False,exploratory_transductive
+season_holdout,Stuff+ ajustado,No Altitude,59776,-0.005468295959967882,0.0007853224480992463,False,exploratory_transductive
+season_holdout,Location+,Extreme Altitude,41010,0.00015745971090656003,0.001006322597753933,False,exploratory_transductive
+season_holdout,Location+,Medium Altitude,27067,-0.0002479336406361562,0.0012140331973482163,False,exploratory_transductive
+season_holdout,Location+,No Altitude,59776,-0.006260244067335734,0.0007600668719523642,False,exploratory_transductive
+season_holdout,Location+ ajustado,Extreme Altitude,41010,9.679006173771932e-05,0.0010050735224579012,False,exploratory_transductive
+season_holdout,Location+ ajustado,Medium Altitude,27067,-0.0001960684286107691,0.001213680814090017,False,exploratory_transductive
+season_holdout,Location+ ajustado,No Altitude,59776,-0.006097678474518525,0.0007592601858953368,False,exploratory_transductive
+season_holdout,Pitching+,Extreme Altitude,41010,-0.002004140448614296,0.000996957234439549,False,exploratory_transductive
+season_holdout,Pitching+,Medium Altitude,27067,-0.0005127144940918831,0.0012045723844375249,False,exploratory_transductive
+season_holdout,Pitching+,No Altitude,59776,-0.005471794680161346,0.0007522508350613441,False,exploratory_transductive
+season_holdout,Pitching+ ajustado,Extreme Altitude,41010,-0.0013279507077467128,0.0009969954836855934,False,exploratory_transductive
+season_holdout,Pitching+ ajustado,Medium Altitude,27067,7.644072831164788e-06,0.0012046766491628914,False,exploratory_transductive
+season_holdout,Pitching+ ajustado,No Altitude,59776,-0.0039302138927316205,0.0007519476060835951,False,exploratory_transductive
+park_holdout,baseline,Extreme Altitude,179166,0.010783696580813537,0.00048316711337245666,False,exploratory_transductive
+park_holdout,Stuff+,Extreme Altitude,179166,0.00252184258789719,0.00048378327971388893,False,exploratory_transductive
+park_holdout,Stuff+ ajustado,Extreme Altitude,179166,0.003569862172084719,0.0004835115662670495,False,exploratory_transductive
+park_holdout,Location+,Extreme Altitude,179166,0.0035505126813127727,0.00047240507214880436,False,exploratory_transductive
+park_holdout,Location+ ajustado,Extreme Altitude,179166,0.003549882069498068,0.00047170345246582123,False,exploratory_transductive
+park_holdout,Pitching+,Extreme Altitude,179166,0.0015140122268436193,0.0004680122223594263,False,exploratory_transductive
+park_holdout,Pitching+ ajustado,Extreme Altitude,179166,0.000817627832119841,0.0004675438780475808,False,exploratory_transductive

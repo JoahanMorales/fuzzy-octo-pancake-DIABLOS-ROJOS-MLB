@@ -1,0 +1,16 @@
+split,model,status,reason,demo_data,evidence
+leave_one_park_out,all,unavailable,HACK-003 recovered park IDs not provided,False,exploratory_transductive
+season_holdout,baseline,evaluated,,False,exploratory_transductive
+season_holdout,Stuff+,evaluated,,False,exploratory_transductive
+season_holdout,Stuff+ ajustado,evaluated,,False,exploratory_transductive
+season_holdout,Location+,evaluated,,False,exploratory_transductive
+season_holdout,Location+ ajustado,evaluated,,False,exploratory_transductive
+season_holdout,Pitching+,evaluated,,False,exploratory_transductive
+season_holdout,Pitching+ ajustado,evaluated,,False,exploratory_transductive
+park_holdout,baseline,evaluated,,False,exploratory_transductive
+park_holdout,Stuff+,evaluated,,False,exploratory_transductive
+park_holdout,Stuff+ ajustado,evaluated,,False,exploratory_transductive
+park_holdout,Location+,evaluated,,False,exploratory_transductive
+park_holdout,Location+ ajustado,evaluated,,False,exploratory_transductive
+park_holdout,Pitching+,evaluated,,False,exploratory_transductive
+park_holdout,Pitching+ ajustado,evaluated,,False,exploratory_transductive

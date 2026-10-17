@@ -1,0 +1,15 @@
+feature,location,r_global,r_within_family_max_abs
+tunnel_dec_dx_in,PlateLocHeight,-0.0968,0.146
+tunnel_dec_dx_in,plate_x_arm,-0.283,0.3078
+tunnel_dec_dz_in,PlateLocHeight,0.3546,0.3407
+tunnel_dec_dz_in,plate_x_arm,0.107,0.1531
+tunnel_dec_sep_in,PlateLocHeight,-0.1551,0.1941
+tunnel_dec_sep_in,plate_x_arm,-0.0444,0.1619
+tunnel_plate_dx_in,PlateLocHeight,-0.1453,0.1509
+tunnel_plate_dx_in,plate_x_arm,-0.3501,0.3495
+tunnel_plate_dz_in,PlateLocHeight,0.3926,0.3495
+tunnel_plate_dz_in,plate_x_arm,0.1308,0.1565
+tunnel_plate_sep_in,PlateLocHeight,-0.2779,0.2752
+tunnel_plate_sep_in,plate_x_arm,-0.1522,0.192
+tunnel_ratio_t,PlateLocHeight,-0.0891,0.085
+tunnel_ratio_t,plate_x_arm,-0.0938,0.1073

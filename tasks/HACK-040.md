@@ -1,6 +1,6 @@
 # HACK-040
 ID: HACK-040
-State: CLAIMED
+State: REVIEW
 Owner: victor-1
 Branch: feat/hack-040
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-040
@@ -9,13 +9,14 @@ Priority: P0
 Paths: web/src/model/, stuffplus/export_trees.py, tests/test_export_trees.py, web/public/data/models/
 Depends: HACK-037
 Verify: `python -m pytest -q tests/test_export_trees.py && npm --prefix web test -- --run src/model`
-Lease-Until: 1792207112
-Updated: 1792204412
+Lease-Until: 1792220109
+Updated: 1792205709
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: `booster.dump_model()` on `deploy/bundle/models/stuff_xrv.txt`.
-PR: -
-Evidence: -
-Events: 1
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/51; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/51
+Evidence: pytest tests/test_export_trees.py + vitest src/model exit 0 (TS=LightGBM <1e-6 synthetic+real); 13.41 MB <= 15; smoke PRODUCT_PASS
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0
+Task-Tip: 3e7b85eeee4aa64bf973ee7606866fac9cdfa697

@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1792196838
+Updated: 1792199013
 AVAILABLE: (16; last 12) ... HACK-043 HACK-044 HACK-045 HACK-046 HACK-047 HACK-048 HACK-049 HACK-050 HACK-051 HACK-057 HACK-058 HACK-059 
 CLAIMED: -
 BLOCKED: -
@@ -24,11 +24,11 @@ HACK-056 | REVIEW | joahan-2 | until 1792199173
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):
-- 1792027676 | HACK-036 | Staff numbers only from runs_saved.csv; franchises 5 and 11 never combined | Why: HACK-032 contract and the park identity is still inferred
 - 1792083539 | deadline lease/HACK-024/1792043159 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792181140 | plan | joahan/joahan | tasks added: HACK-037 HACK-038 HACK-039 HACK-040 HACK-041 HACK-042 HACK-043 HACK-044 HACK-045 HACK-046 HACK-047 HACK-048 HACK-049 HACK-050 HAC
 - 1792183234 | HACK-052 | count enters only via Balls/Strikes; Stuff+ marginalized over the family's train count distribution; league weights = sensitivity | Why: rubric null is me
 - 1792185423 | HACK-052 | human adopted v2; R4 replaces R3 (2026-10-16) | Why: v2 beats count null, better pitcher-level and calibration; its larger altitude cost is closer to held
+- 1792199013 | plan | joahan/joahan | tasks added: HACK-060 HACK-061 | Why: backlog without PR (Plan-Channel: claims)
 
 Global next step: available P0; else review PRs, tests, demo, rehearsal.
 Why: bounded snapshot to resume without rereading history.

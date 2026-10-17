@@ -351,3 +351,35 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:** the four strongest numbers (league −10.3 Stuff+ CDMX, 50 pitches r 0.230 vs 0.051, bias −82 %, +10 Stuff+ = 1.26 wins) updated to v2; staff "identificación inferida"; simulator screenshots from HACK-051; builds on Windows (no macOS font paths).
 - **Verify:** `test -s demo/deck/deck.pdf && test -s demo/one-pager/one-pager.pdf`
 - **Next step:** replace `/System/Library/Fonts` with a bundled font.
+## HACK-060 · Spike: 3D simulator prototype (low-poly stadium, batter switch, same pitch in two airs)
+
+- **Type:** spike
+- **Priority:** P0
+- **Estimate:** 3 h
+- **Rubric / Spec:** C4
+- **Depends on:** None
+- **Uses contract:** HACK-041, HACK-039
+- **Paths:** web/spikes/simulator/
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - Standalone page `web/spikes/simulator/index.html` (served by the existing Vite setup at `/spikes/simulator/`), react-three-fiber, following `web/DESIGN.md`: low-poly flat-shaded field, mound, plate, strike zone, stadium lights; batter figure that switches L/R with a short animation; cameras Catcher / Pitcher / Lateral / Transmisión.
+  - Throw: the same release flown at sea level (grey ghost, dashed trail) and in Harp Helú air (red), RK4 port of `stuffplus/physics/flight.py` with the measured Magnus elasticity; plate dots and inches of movement lost.
+  - 60 fps target, reduced motion = no camera moves and instant flights; WebGL missing → message. Screenshot in the PR. HACK-044/045 adopt the code.
+- **Verify:** `npm --prefix web run build && test -s web/spikes/simulator/index.html`
+- **Next step:** port `fly()` to `web/spikes/simulator/flight.ts`.
+
+## HACK-061 · Time-based tunneling (decision point 150 ms before the plate) as a Stuff+ feature
+
+- **Type:** feature
+- **Priority:** P1
+- **Estimate:** 2 h
+- **Rubric / Spec:** C3 C1 · Baseball Prospectus "Pitch Tunnels" (decision point by time, not distance)
+- **Depends on:** None
+- **Paths:** stuffplus/features/tunnel.py, analysis/tunnel/, reports/tunnel/, tests/test_tunnel.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - From each pitch's 9-parameter fit: position 150 ms before reaching the plate (time-based, so thin air with a faster ball moves the decision point); separation vs the pitcher-season primary fastball at that point and at the plate; time-based tunnel ratio; physical traits only.
+  - Before/after on pitcher-grouped OOF with a rule fixed before running (per-pitch skill CI above the base, pitcher-level r and split-half not lower than base − 0.005); altitude check: how much the tunnel ratio changes Extreme vs No within pitcher.
+  - Adoption into production goes through HACK-057 (model freeze 2026-10-20 12:00).
+- **Verify:** `python -m pytest -q tests/test_tunnel.py`
+- **Next step:** reuse `stuffplus.features.arsenal.trajectory_at` with t instead of x.

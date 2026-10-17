@@ -13,3 +13,4 @@ Append-only. Format: - N | epoch | agent | task | paths | text. `uak recall` and
 - 9 | 1792183160 | joahan-1 | HACK-052 | analysis/ | La consola de Windows (cp1252) truena al imprimir rho o Delta · escribir el texto a archivo utf-8 y solo imprimir la ruta
 - 10 | 1792183179 | joahan-1 | HACK-052 | scripts/,analysis/ | Heredoc en Git Bash con comillas o backslash falla en silencio · escribir el script con el editor y correrlo con python
 - 11 | 1792187357 | joahan-1 | HACK-037 | web/ | UI: cargar la skill design-taste-frontend antes de disenar o revisar; nada con look de plantilla (pedido de joahan)
+- 12 | 1792268771 | luis-2 | HACK-044 | web/src/features/simulador/scene/ | prospect CSV snake_case · stuffplus/prospect.py:_from_mapping · leer rel_height/rel_side/extension además de Trackman; default rel_side=1.8 debe ser lado del brazo en zurdos (web HACK-048 ya lo hace)

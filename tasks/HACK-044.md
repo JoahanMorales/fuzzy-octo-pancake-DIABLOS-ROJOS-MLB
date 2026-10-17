@@ -15,8 +15,8 @@ Task-Base: 455e796b50a15fc590d0487647db8692739b9379
 Next: uak wait HACK-044 --for approve; luis-2 puede uak next para otra tarea hasta INTEGRATED
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/50
 Evidence: npm --prefix web test -- --run src/features/simulador/scene exit 0 (9 tests); bash .uak/bin/smoke exit 0; estadio, 4 cámaras + libre, bateador L/R, fallback WebGL2, fps en dev
-Events: 18
+Events: 19
 Checkpoints: 4
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 1792268746
 Task-Tip: 66bd1d308ed5e9acf496c483b675f5fc5387af45

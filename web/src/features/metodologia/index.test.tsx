@@ -46,7 +46,7 @@ describe('metodología: evidencia y límites', () => {
     fireEvent.change(screen.getByLabelText('Partición de evaluación'), { target: { value: 'leave_one_park_out' } });
     expect(screen.getByLabelText('Parque inferido · 20 disponibles').children).toHaveLength(20);
     fireEvent.change(screen.getByLabelText('Parque inferido · 20 disponibles'), { target: { value: 'leave_one_park_out_20' } });
-    expect(screen.getByText(/Corrida rápida · leave_one_park_out_20/)).toBeInTheDocument();
+    expect(screen.getByText(/Corrida rápida.*leave_one_park_out_20/)).toBeInTheDocument();
     const point = screen.getByRole('img', { name: /Predicho -0.02, observado -0.01, muestra 10/ });
     fireEvent.focus(point);
     expect(screen.getByText('Predicho -0.02 · observado -0.01 · muestra 10')).toBeInTheDocument();
@@ -97,6 +97,26 @@ describe('carga del contrato de validación', () => {
     vi.stubGlobal('fetch', fetcher);
     await expect(loadValidation(new AbortController().signal)).rejects.toThrow('identificado');
     fetcher.mockResolvedValueOnce(response(null, 404)).mockResolvedValueOnce(response({ ...data, rows: [{ value: 'bad' }] }));
+    await expect(loadValidation(new AbortController().signal)).rejects.toThrow();
+  });
+  it('combines the optional supplement only when its provenance matches the base', async () => {
+    const extra = { model_version: data.model_version, model: data.model, translation: data.translation, demo_data: data.demo_data, sources: ['reports/synthetic.csv'], rows_fast: [{ split: 'pitcher_kfold', model: 'Synthetic model', metric: 'rmse', value: .123, demo_data: true, evidence: 'synthetic' }] };
+    const fetcher = vi.fn().mockResolvedValueOnce(response({})).mockResolvedValueOnce(response(data)).mockResolvedValueOnce(response(extra));
+    vi.stubGlobal('fetch', fetcher);
+    const loaded = await loadValidation(new AbortController().signal);
+    expect(loaded.rows_fast).toHaveLength(1);
+    expect(loaded.sources).toContain('reports/synthetic.csv');
+    expect(fetcher.mock.calls[2][0]).toContain('validation_extra.json');
+    fetcher.mockResolvedValueOnce(response({})).mockResolvedValueOnce(response(data)).mockResolvedValueOnce(response({ ...extra, model_version: 'other-version' }));
+    await expect(loadValidation(new AbortController().signal)).rejects.toThrow('versiones');
+  });
+  it('accepts an older real export without the supplement, but rejects a broken supplement', async () => {
+    const fetcher = vi.fn().mockResolvedValueOnce(response({})).mockResolvedValueOnce(response(data)).mockResolvedValueOnce(response(null, 404));
+    vi.stubGlobal('fetch', fetcher);
+    expect((await loadValidation(new AbortController().signal)).rows_fast).toBeUndefined();
+    fetcher.mockResolvedValueOnce(response({})).mockResolvedValueOnce(response(data)).mockResolvedValueOnce(response(null, 500));
+    await expect(loadValidation(new AbortController().signal)).rejects.toThrow('complementaria');
+    fetcher.mockResolvedValueOnce(response({})).mockResolvedValueOnce(response(data)).mockResolvedValueOnce(response({ model_version: data.model_version, model: data.model, translation: data.translation, demo_data: data.demo_data, sources: data.sources, calibration_bins: 'invalid' }));
     await expect(loadValidation(new AbortController().signal)).rejects.toThrow();
   });
   it('reports manifest errors instead of silently switching to example data', async () => {

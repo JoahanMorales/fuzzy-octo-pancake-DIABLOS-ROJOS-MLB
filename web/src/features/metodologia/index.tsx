@@ -12,7 +12,7 @@ function MetricTable({ data, split }: { data: Validation; split: string }) {
   const models = [...new Set(rows.map((row) => row.model))];
   if (!models.length) return <p className="method-empty">Esta partición aún no está incluida en los resultados publicados.</p>;
   return <div className="method-result">{split === 'leave_one_park_out' && <div><label htmlFor="method-park">Parque inferido · {parks.length} disponibles</label><select id="method-park" value={selected} onChange={(event) => setPark(event.target.value)}>{parks.map((value) => <option key={value} value={value}>{value.replace('leave_one_park_out_', 'Parque ')}</option>)}</select></div>}
-    <p className="method-source">{full.length ? 'Evaluación completa' : 'Corrida rápida'} · {selected}</p><div className="method-table" tabIndex={0} role="region" aria-label="Métricas de la partición"><table>
+    <p className="method-source">{full.length ? 'Evaluación completa' : 'Corrida rápida (validation_extra.json)'} · {selected}</p><div className="method-table" tabIndex={0} role="region" aria-label="Métricas de la partición"><table>
     <caption>Comparación con el nulo por conteo. Menor RMSE es mejor; habilidad positiva significa mejora.</caption>
     <thead><tr><th scope="col">Modelo</th><th scope="col">RMSE · carreras/pitch</th><th scope="col">Mejora del RMSE</th><th scope="col">Intervalo de confianza</th></tr></thead>
     <tbody>{models.map((model) => {
@@ -51,7 +51,7 @@ export function Results({ data }: { data: Validation }) {
       <p>Comparamos el error con el promedio de valor de carrera por conteo, ajustado en entrenamiento.</p>
       <label htmlFor="method-split">Partición de evaluación</label><select id="method-split" value={split} onChange={(event) => setSplit(event.target.value)}>
         {SPLITS.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-      </select><p className="method-source">Fuente: validation.json · rows. Los nombres de modelo se conservan tal como fueron exportados.</p>
+      </select><p className="method-source">Fuente: validation.json · rows; validation_extra.json · rows_fast para las particiones rápidas. Los nombres de modelo se conservan tal como fueron exportados.</p>
     </div><MetricTable data={data} split={split} /></section>
     <aside className="method-limits"><h2>Qué permiten concluir estos datos</h2>
       <p>La preparación de targets, densidad, identidad y arsenal es transductiva. Estas cifras no prueban generalización inductiva completa ni efectos causales.</p>
@@ -64,7 +64,7 @@ export function Results({ data }: { data: Validation }) {
     <section className="method-section"><h2>Reglas de adopción del modelo</h2><p>Una regla cumplida no implica que el conjunto esté aprobado.</p>
       <ul className="method-checks">{data.adoption.map((item, i) => <li key={`${item.rule}-${i}`}><span className={item.passed ? 'method-pass' : 'method-pending'}>{item.passed ? 'Cumple' : 'No cumple'}</span><div><strong>{item.check}</strong><p>{item.value || 'Sin valor publicado'}</p></div></li>)}</ul>
       <p className="method-source">Fuente: validation.json · adoption. Estado limitado a las reglas exportadas.</p></section>
-    <section className="method-section method-sources"><h2>Seguir la evidencia</h2><p>Fuentes declaradas por validation.json:</p><ul>{data.sources.map((source) => <li key={source}><a href={sourceLink(source)}>{source}</a></li>)}</ul>
+    <section className="method-section method-sources"><h2>Seguir la evidencia</h2><p>Fuentes declaradas por los archivos de validación:</p><ul>{data.sources.map((source) => <li key={source}><a href={sourceLink(source)}>{source}</a></li>)}</ul>
       <div className="method-links"><a href={sourceLink('docs/technical/stuffplus2240.pdf')}>Abrir documento técnico PDF</a><a href={REPO}>Explorar repositorio</a><a href={`${import.meta.env.BASE_URL}data/${data.demo_data ? 'mock' : 'real'}/validation.json`}>Consultar JSON de validación</a></div>
     </section>
   </>;

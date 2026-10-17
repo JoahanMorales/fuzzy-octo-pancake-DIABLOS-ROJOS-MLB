@@ -16,7 +16,7 @@ export const VIEW_LABEL: Record<ViewId, string> = {
 export const VIEWS: Record<ViewId, { pos: Vec3; target: Vec3; fov: number }> = {
   catcher: { pos: [0, 4.2, 16], target: [0, 2.6, -2], fov: 28 },
   pitcher: { pos: [0.6, 7.2, -66], target: [0, 3.2, -2], fov: 18 },
-  lateral: { pos: [46, 10, -16], target: [0, 3, -58], fov: 28 },
+  lateral: { pos: [46, 10, -16], target: [0, 2.6, -(17 / 12)], fov: 28 },
   broadcast: { pos: [9, 15, 20], target: [0, 3.2, -62], fov: 46 },
 };
 
@@ -34,6 +34,7 @@ export interface Park {
   bucket: string;
   airEffect: number | null;
   altitude: string;
+  name: string;
 }
 
 export interface ParkBook {
@@ -62,6 +63,7 @@ export function parseParkBook(raw: unknown): ParkBook | null {
       bucket: typeof item.bucket === 'string' ? item.bucket : '',
       airEffect: typeof item.air_effect === 'number' ? item.air_effect : null,
       altitude: typeof item.altitude === 'string' ? item.altitude : '',
+      name: typeof item.name === 'string' ? item.name : '',
     });
   }
   if (parks.length === 0) return null;
@@ -95,9 +97,26 @@ export async function loadParkBook(fetchImpl: typeof fetch = fetch): Promise<Loa
   }
 }
 
+export function identifiesHarp(park: Park): boolean {
+  const blob = `${park.id} ${park.name} ${park.altitude} ${park.bucket}`.toLowerCase();
+  return /harp|helu|helú|cdmx/.test(blob);
+}
+
+export function endLabel(park: Park, side: ParkSide): string {
+  if (side === 'harp' && identifiesHarp(park)) return 'Harp Helú';
+  if (side === 'sea') return 'Nivel del mar';
+  return 'Aire delgado';
+}
+
+/** The arc from placeholderPath is not flyPitch. The tag stays even when the park file is real. */
+export function pathNote(): string {
+  return 'Trayectoria de ejemplo.';
+}
+
 export function sourceLine(origin: LoadedParks['origin'], demo: boolean): string {
-  if (origin === 'local') return 'Ejemplo. parks.json no está en esta base.';
-  return demo ? 'Ejemplo. Fuente: parks.json.' : 'Fuente: parks.json.';
+  const path = pathNote();
+  if (origin === 'local') return `Ejemplo. parks.json no está en esta base. ${path}`;
+  return demo ? `Ejemplo. Fuente: parks.json. ${path}` : `Fuente: parks.json. ${path}`;
 }
 
 export function cameraMoves(reduced: boolean): boolean {
@@ -225,10 +244,16 @@ export function batterFrame(from: Hand, to: Hand, t: number): { x: number; y: nu
   };
 }
 
-export function sceneSummary(input: { hand: Hand; park: ParkSide; rho: number; view: ViewId; demo: boolean }): string {
+export function sceneSummary(input: {
+  hand: Hand;
+  park: ParkSide;
+  parkName: string;
+  rho: number;
+  view: ViewId;
+  demo: boolean;
+}): string {
   const batter = input.hand === 'R' ? 'diestro' : 'zurdo';
   const edge = input.hand === 'R' ? 'izquierda' : 'derecha';
-  const park = input.park === 'harp' ? 'Harp Helú' : 'Nivel del mar';
-  const demo = input.demo ? ' Ejemplo.' : '';
-  return `Bateador ${batter}. Adentro hacia la ${edge} del receptor. ${park}, densidad relativa ${input.rho.toFixed(3)}. Cámara ${VIEW_LABEL[input.view]}.${demo}`;
+  const data = input.demo ? ' Datos de ejemplo.' : '';
+  return `Bateador ${batter}. Adentro hacia la ${edge} del receptor. ${input.parkName}, densidad relativa ${input.rho.toFixed(3)}. Cámara ${VIEW_LABEL[input.view]}. ${pathNote()}${data}`;
 }

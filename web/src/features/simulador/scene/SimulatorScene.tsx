@@ -5,6 +5,7 @@ import {
   VIEW_LABEL,
   hasWebGL2,
   loadParkBook,
+  endLabel,
   pickEnds,
   placeholderPath,
   readReduced,
@@ -30,6 +31,7 @@ export function SimulatorScene() {
   const [hand, setHand] = useState<Hand>('R');
   const [park, setPark] = useState<ParkSide>('harp');
   const [playId, setPlayId] = useState(0);
+  const [free, setFree] = useState(false);
   const fpsRef = useRef<HTMLParagraphElement>(null);
   const devStats = showDevStats(import.meta.env.DEV) && webgl2;
 
@@ -56,9 +58,11 @@ export function SimulatorScene() {
   const harpPath = useMemo(() => placeholderPath(ends.harp.rho, ends.sea.rho), [ends]);
   const seaPath = useMemo(() => placeholderPath(ends.sea.rho, ends.sea.rho), [ends]);
   const active = park === 'harp' ? ends.harp : ends.sea;
+  const parkName = endLabel(active, park);
   const summary = sceneSummary({
     hand,
     park,
+    parkName,
     rho: active.rho,
     view,
     demo: loaded.book.demoData,
@@ -77,6 +81,7 @@ export function SimulatorScene() {
       data-view={view}
       data-side={hand}
       data-park={park}
+      data-free={free && !reduced ? 'on' : 'off'}
     >
       <div className="sim-stage">
         {webgl2 ? (
@@ -88,6 +93,7 @@ export function SimulatorScene() {
               harpPath={harpPath}
               seaPath={seaPath}
               reduced={reduced}
+              free={free}
               playId={playId}
               devStats={devStats}
               fpsNode={fpsRef}
@@ -107,6 +113,9 @@ export function SimulatorScene() {
               {VIEW_LABEL[id]}
             </button>
           ))}
+          <button type="button" aria-pressed={free} disabled={reduced} onClick={() => setFree((on) => !on)}>
+            Libre
+          </button>
         </div>
 
         {devStats ? <p className="sim-fps" data-testid="sim-fps" ref={fpsRef} aria-hidden="true" /> : null}
@@ -114,13 +123,14 @@ export function SimulatorScene() {
         <div className="sim-lower">
           <div>
             <p className="sim-k">Parque</p>
-            <p className="sim-v">{park === 'harp' ? 'Harp Helú' : 'Nivel del mar'}</p>
+            <p className="sim-v">{parkName}</p>
           </div>
           <div>
             <p className="sim-k">Densidad</p>
             <p className="sim-v">
               <span>{active.rho.toFixed(3)}</span>
-              {loaded.book.demoData ? <span className="sim-ejemplo">ejemplo</span> : null}
+              <span className="sim-ejemplo">trayectoria de ejemplo</span>
+              {loaded.book.demoData ? <span className="sim-ejemplo">datos de ejemplo</span> : null}
             </p>
           </div>
           <div>
@@ -143,7 +153,7 @@ export function SimulatorScene() {
         </fieldset>
         <fieldset>
           <legend>Parque</legend>
-          <button type="button" aria-pressed={park === 'harp'} onClick={() => choosePark('harp')}>Harp Helú</button>
+          <button type="button" aria-pressed={park === 'harp'} onClick={() => choosePark('harp')}>{endLabel(ends.harp, 'harp')}</button>
           <button type="button" aria-pressed={park === 'sea'} onClick={() => choosePark('sea')}>Nivel del mar</button>
         </fieldset>
       </aside>

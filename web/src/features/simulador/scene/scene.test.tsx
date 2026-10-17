@@ -8,14 +8,17 @@ import {
   batterFrame,
   cameraMoves,
   cameraSmoothTime,
+  endLabel,
   insideBand,
   loadParkBook,
   parseParkBook,
   pickEnds,
   placeholderPath,
   readReduced,
+  sceneSummary,
   showDevStats,
   skylineProfile,
+  sourceLine,
 } from './sceneModel';
 
 beforeAll(() => {
@@ -67,11 +70,22 @@ describe('parques y trayectoria', () => {
     expect(thin[16][1]).toBeGreaterThan(sea[16][1]);
     expect(sea[sea.length - 1][2]).toBeCloseTo(ZONE.z);
   });
+
+  it('conserva la etiqueta de ejemplo en la trayectoria aunque el parque no sea demo', () => {
+    const text = sceneSummary({
+      hand: 'R', park: 'harp', parkName: 'Aire delgado', rho: 0.82, view: 'catcher', demo: false,
+    });
+    expect(text.toLowerCase()).toMatch(/ejemplo/);
+    expect(text).not.toMatch(/Harp Helú/);
+    expect(sourceLine('file', false).toLowerCase()).toMatch(/ejemplo/);
+  });
 });
 
 describe('cámaras, zona y bateador', () => {
   it('tiene las cuatro cámaras y corta la transición si hay menos movimiento', () => {
     expect(Object.keys(VIEWS)).toEqual(['catcher', 'pitcher', 'lateral', 'broadcast']);
+    expect(VIEWS.lateral.target[2]).toBeCloseTo(ZONE.z);
+    expect(VIEWS.lateral.target[2]).toBeGreaterThan(ZONE.z - 1);
     expect(cameraMoves(true)).toBe(false);
     expect(cameraMoves(false)).toBe(true);
     expect(cameraSmoothTime(true)).toBe(0);
@@ -89,6 +103,21 @@ describe('cámaras, zona y bateador', () => {
     expect(skylineProfile('harp').ridges).toBe(true);
     expect(skylineProfile('sea').ridges).toBe(false);
     expect(Math.max(...skylineProfile('harp').stand)).toBeGreaterThan(Math.max(...skylineProfile('sea').stand));
+  });
+
+  it('no llama Harp Helú al rho mínimo si el parque no trae esa identidad', () => {
+    const book = parseParkBook({
+      demo_data: false,
+      parks: [
+        { id: '9', rho: 1, bucket: 'No Altitude', air_effect: 0, altitude: 'No Altitude' },
+        { id: '11', name: '', rho: 0.812, bucket: 'Extreme Altitude', air_effect: 0, altitude: 'Extreme Altitude' },
+      ],
+    })!;
+    const ends = pickEnds(book);
+    expect(endLabel(ends.harp, 'harp')).toBe('Aire delgado');
+    expect(endLabel(ends.sea, 'sea')).toBe('Nivel del mar');
+    const named = { ...ends.harp, name: 'Harp Helú' };
+    expect(endLabel(named, 'harp')).toBe('Harp Helú');
   });
 });
 
@@ -108,6 +137,15 @@ describe('vista sin WebGL2', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Nivel del mar' }));
     expect(screen.getByRole('img', { name: /Nivel del mar, densidad relativa 1\.000/ })).toHaveAttribute('data-sky', 'sea');
+
+    const libre = screen.getByRole('button', { name: 'Libre' });
+    if (readReduced()) {
+      expect(libre).toBeDisabled();
+    } else {
+      fireEvent.click(libre);
+      expect(libre).toHaveAttribute('aria-pressed', 'true');
+      expect(document.querySelector('.sim')).toHaveAttribute('data-free', 'on');
+    }
 
     fireEvent.click(screen.getByRole('button', { name: 'Lanzador' }));
     expect(screen.getByRole('button', { name: 'Lanzador' })).toHaveAttribute('aria-pressed', 'true');

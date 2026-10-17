@@ -1,0 +1,4 @@
+model,league_delta,best_shape,best_delta,worst_shape,worst_delta,delta_11-5 CB,delta_12-6 CB,delta_4S,delta_changeup,delta_cutter,delta_gyro slider,delta_power CH,delta_riding 4S,delta_running 2S,delta_sinking 2S,delta_slider,delta_splitter,delta_sweeper
+Stuff+ v1,-10.2633,sweeper,-4.6351,riding 4S,-15.9916,-10.4987,-6.1405,-8.7259,-11.3809,-9.9244,-8.6066,-12.6991,-15.9916,-9.6232,-9.8289,-7.2398,-7.5988,-4.6351
+Stuff+ v2 (familia),-12.654,12-6 CB,-9.1603,riding 4S,-17.4262,-14.3778,-9.1603,-11.1386,-14.098,-12.4742,-10.8621,-15.2293,-17.4262,-11.5218,-11.6316,-10.6877,-10.0083,-9.2796
+Stuff+ v2 (liga),-12.4631,12-6 CB,-8.421,riding 4S,-17.7695,-12.5698,-8.421,-11.1313,-13.4751,-12.868,-10.5358,-14.6518,-17.7695,-11.6366,-11.853,-10.1778,-9.5472,-8.5905

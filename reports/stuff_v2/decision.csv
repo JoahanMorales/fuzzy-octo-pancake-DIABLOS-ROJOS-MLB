@@ -1,0 +1,9 @@
+rule,check,value,passed
+R1,"habilidad por lanzamiento sobre el nulo, pitcher_kfold: IC > 0","+0.178 % [+0.153, +0.205]",True
+R1,"habilidad por lanzamiento sobre el nulo, season_holdout: IC > 0","+0.203 % [+0.141, +0.267]",True
+R1,"habilidad por lanzamiento sobre el nulo, park_holdout: IC > 0","+0.230 % [+0.181, +0.283]",True
+R2,primeros 50 → resto: v2 ≥ v1 − 0.005,0.265 → 0.269,True
+R2,primeros 200 → resto: v2 ≥ v1 − 0.005,0.306 → 0.323,True
+R2,confiabilidad mitad contra mitad: v2 ≥ v1 − 0.005,0.807 → 0.803,True
+R3,ΔStuff+ de la liga en CDMX a ±1.5 de v1,-10.3 → -12.7,False
+R3,misma forma que más resiste y que más pierde,sweeper/riding 4S → 12-6 CB/riding 4S,False

@@ -9,13 +9,13 @@ Priority: P0
 Paths: web/src/features/simulador/scene/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/simulador/scene`
-Lease-Until: 1792207243
-Updated: 1792204543
+Lease-Until: 1792207246
+Updated: 1792204546
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: r3f Canvas with drei CameraControls and a placeholder ball path
+Next: HACK-045 monta index.tsx y conecta flyPitch
 PR: -
 Evidence: -
-Events: 5
-Checkpoints: 0
+Events: 6
+Checkpoints: 1
 Sessions: 1
-Last-Checkpoint: 0
+Last-Checkpoint: 1792204546

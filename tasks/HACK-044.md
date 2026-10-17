@@ -9,13 +9,13 @@ Priority: P0
 Paths: web/src/features/simulador/scene/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/simulador/scene`
-Lease-Until: 1792206180
-Updated: 1792203480
+Lease-Until: 1792206195
+Updated: 1792203495
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
 Next: r3f Canvas with drei CameraControls and a placeholder ball path
 PR: -
 Evidence: -
-Events: 1
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

@@ -1,0 +1,425 @@
+{
+ "source": "stuffplus/physics/flight.py (feat/hack-041), synthetic releases",
+ "cases": [
+  {
+   "family": "Four-Seam",
+   "release": {
+    "velo_mph": 94,
+    "ivb_in": 17,
+    "hb_in": 8,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.6,
+    "target_x_ft": 0.0,
+    "cd": 0.29
+   },
+   "rho": 1.0,
+   "elasticity": 1.0,
+   "plate_x": 2.6233684046785e-07,
+   "plate_z": 2.6000010519994157,
+   "ivb_in": 17.00000009211876,
+   "hb_in": 8.0000000031359,
+   "flight_time": 0.39949070636551504,
+   "plate_mph": 86.92978929093823,
+   "n": 97,
+   "mid": [
+    0.7096624840122552,
+    27.246565102587834,
+    4.543783495829902
+   ]
+  },
+  {
+   "family": "Four-Seam",
+   "release": {
+    "velo_mph": 94,
+    "ivb_in": 17,
+    "hb_in": 8,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.6,
+    "target_x_ft": 0.0,
+    "cd": 0.29
+   },
+   "rho": 0.819,
+   "elasticity": 1.3619358443413714,
+   "plate_x": -0.16372946797133475,
+   "plate_z": 2.278333435068196,
+   "ivb_in": 12.827241328338076,
+   "hb_in": 6.035243239437794,
+   "flight_time": 0.3965751672165667,
+   "plate_mph": 88.30848389063006,
+   "n": 97,
+   "mid": [
+    0.6650578252402456,
+    27.147752824939765,
+    4.453362829657659
+   ]
+  },
+  {
+   "family": "Four-Seam",
+   "release": {
+    "velo_mph": 94,
+    "ivb_in": 17,
+    "hb_in": 8,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.6,
+    "target_x_ft": 0.0,
+    "cd": 0.29
+   },
+   "rho": 0.819,
+   "elasticity": 1.0,
+   "plate_x": -0.12610930918792743,
+   "plate_z": 2.3582227704669827,
+   "ivb_in": 13.785913353123515,
+   "hb_in": 6.486685144838683,
+   "flight_time": 0.39653601067384403,
+   "plate_mph": 88.29641343765869,
+   "n": 97,
+   "mid": [
+    0.6746880507570633,
+    27.14643540304018,
+    4.473781256983084
+   ]
+  },
+  {
+   "family": "Sinker",
+   "release": {
+    "velo_mph": 93,
+    "ivb_in": 8,
+    "hb_in": 15,
+    "rel_height_ft": 5.8,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.0,
+    "target_x_ft": 0.0,
+    "cd": 0.29
+   },
+   "rho": 1.0,
+   "elasticity": 1.0,
+   "plate_x": 5.796969398891641e-07,
+   "plate_z": 2.00000064092419,
+   "ivb_in": 8.000000063533902,
+   "hb_in": 14.999999999629747,
+   "flight_time": 0.40401802933002706,
+   "plate_mph": 86.07900394643102,
+   "n": 98,
+   "mid": [
+    0.551207599876567,
+    26.992063744436592,
+    4.3280525353210795
+   ]
+  },
+  {
+   "family": "Sinker",
+   "release": {
+    "velo_mph": 93,
+    "ivb_in": 8,
+    "hb_in": 15,
+    "rel_height_ft": 5.8,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.0,
+    "target_x_ft": 0.0,
+    "cd": 0.29
+   },
+   "rho": 0.819,
+   "elasticity": 1.4040608729321706,
+   "plate_x": -0.3149192597060258,
+   "plate_z": 1.8588405038436837,
+   "ivb_in": 5.98623421653572,
+   "hb_in": 11.22096192679416,
+   "flight_time": 0.40104875365365183,
+   "plate_mph": 87.41566498761448,
+   "n": 98,
+   "mid": [
+    0.4669205901926395,
+    26.891258516086985,
+    4.281346407715781
+   ]
+  },
+  {
+   "family": "Sinker",
+   "release": {
+    "velo_mph": 93,
+    "ivb_in": 8,
+    "hb_in": 15,
+    "rel_height_ft": 5.8,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.0,
+    "target_x_ft": 0.0,
+    "cd": 0.29
+   },
+   "rho": 0.819,
+   "elasticity": 1.0,
+   "plate_x": -0.23648708549615882,
+   "plate_z": 1.9006194740095261,
+   "ivb_in": 6.487581858525829,
+   "hb_in": 12.162148017312562,
+   "flight_time": 0.4010104486449832,
+   "plate_mph": 87.40953729317121,
+   "n": 98,
+   "mid": [
+    0.48742541629979264,
+    26.889835034734226,
+    4.2921500530107695
+   ]
+  },
+  {
+   "family": "Slider",
+   "release": {
+    "velo_mph": 85,
+    "ivb_in": 2,
+    "hb_in": -5,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.0,
+    "target_x_ft": -0.6,
+    "cd": 0.279
+   },
+   "rho": 1.0,
+   "elasticity": 1.0,
+   "plate_x": -0.6000000309845754,
+   "plate_z": 1.9999999972909241,
+   "ivb_in": 2.0000000033748906,
+   "hb_in": -4.999999982689014,
+   "flight_time": 0.4415586947006203,
+   "plate_mph": 79.06950391488708,
+   "n": 107,
+   "mid": [
+    0.6822570120208886,
+    27.263432487878266,
+    4.699945454746164
+   ]
+  },
+  {
+   "family": "Slider",
+   "release": {
+    "velo_mph": 85,
+    "ivb_in": 2,
+    "hb_in": -5,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.0,
+    "target_x_ft": -0.6,
+    "cd": 0.279
+   },
+   "rho": 0.819,
+   "elasticity": 1.1512104973679735,
+   "plate_x": -0.5111090063078211,
+   "plate_z": 1.9949508844329513,
+   "ivb_in": 1.5736158476691342,
+   "hb_in": -3.933307686567992,
+   "flight_time": 0.4382642163897923,
+   "plate_mph": 80.23116734891558,
+   "n": 107,
+   "mid": [
+    0.6999529417003587,
+    27.16273277843847,
+    4.687287143633862
+   ]
+  },
+  {
+   "family": "Slider",
+   "release": {
+    "velo_mph": 85,
+    "ivb_in": 2,
+    "hb_in": -5,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 2.0,
+    "target_x_ft": -0.6,
+    "cd": 0.279
+   },
+   "rho": 0.819,
+   "elasticity": 1.0,
+   "plate_x": -0.5211584242471748,
+   "plate_z": 1.9989684357972477,
+   "ivb_in": 1.6218264640406908,
+   "hb_in": -4.053900701840237,
+   "flight_time": 0.4382662079778935,
+   "plate_mph": 80.23044222051436,
+   "n": 107,
+   "mid": [
+    0.6973770383497252,
+    27.162800172176052,
+    4.688325597340413
+   ]
+  },
+  {
+   "family": "Curveball",
+   "release": {
+    "velo_mph": 79,
+    "ivb_in": -12,
+    "hb_in": -7,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 1.9,
+    "target_x_ft": 0.0,
+    "cd": 0.2917
+   },
+   "rho": 1.0,
+   "elasticity": 1.0,
+   "plate_x": -9.440525955591028e-08,
+   "plate_z": 1.8999994052318159,
+   "ivb_in": -11.999999472661619,
+   "hb_in": -6.999999934036751,
+   "flight_time": 0.4762220541245342,
+   "plate_mph": 73.34862476209051,
+   "n": 116,
+   "mid": [
+    1.0166577081695671,
+    26.827914500272186,
+    5.0414025915900345
+   ]
+  },
+  {
+   "family": "Curveball",
+   "release": {
+    "velo_mph": 79,
+    "ivb_in": -12,
+    "hb_in": -7,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 1.9,
+    "target_x_ft": 0.0,
+    "cd": 0.2917
+   },
+   "rho": 0.819,
+   "elasticity": 1.3795504328847057,
+   "plate_x": 0.1452615745218408,
+   "plate_z": 2.186282409870717,
+   "ivb_in": -9.007865131842765,
+   "hb_in": -5.256859906911547,
+   "flight_time": 0.4723355269419388,
+   "plate_mph": 74.41924359386668,
+   "n": 115,
+   "mid": [
+    1.065159581239247,
+    27.182530925138362,
+    5.136306824550881
+   ]
+  },
+  {
+   "family": "Curveball",
+   "release": {
+    "velo_mph": 79,
+    "ivb_in": -12,
+    "hb_in": -7,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 1.9,
+    "target_x_ft": 0.0,
+    "cd": 0.2917
+   },
+   "rho": 0.819,
+   "elasticity": 1.0,
+   "plate_x": 0.11072895735710901,
+   "plate_z": 2.1270539339016628,
+   "ivb_in": -9.718606843471418,
+   "hb_in": -5.671251312888328,
+   "flight_time": 0.47237745662111785,
+   "plate_mph": 74.42992419272922,
+   "n": 115,
+   "mid": [
+    1.0563520718315103,
+    27.183145561871687,
+    5.121272085805235
+   ]
+  },
+  {
+   "family": "Changeup",
+   "release": {
+    "velo_mph": 86,
+    "ivb_in": 7,
+    "hb_in": 14,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 1.8,
+    "target_x_ft": 0.5,
+    "cd": 0.2865
+   },
+   "rho": 1.0,
+   "elasticity": 1.0,
+   "plate_x": 0.5000003461745407,
+   "plate_z": 1.8000004129550962,
+   "ivb_in": 7.0000000112201946,
+   "hb_in": 13.999999971010004,
+   "flight_time": 0.43654027234746595,
+   "plate_mph": 79.84573307559697,
+   "n": 106,
+   "mid": [
+    0.8297545849095551,
+    26.96663227857445,
+    4.451066156764467
+   ]
+  },
+  {
+   "family": "Changeup",
+   "release": {
+    "velo_mph": 86,
+    "ivb_in": 7,
+    "hb_in": 14,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 1.8,
+    "target_x_ft": 0.5,
+    "cd": 0.2865
+   },
+   "rho": 0.819,
+   "elasticity": 1.7580271334372917,
+   "plate_x": 0.14658592126665537,
+   "plate_z": 1.6542636866695963,
+   "ivb_in": 4.882293068892365,
+   "hb_in": 9.759026872115394,
+   "flight_time": 0.43336890685899754,
+   "plate_mph": 81.07231871836208,
+   "n": 106,
+   "mid": [
+    0.73607221375217,
+    26.866713387271826,
+    4.401736589569701
+   ]
+  },
+  {
+   "family": "Changeup",
+   "release": {
+    "velo_mph": 86,
+    "ivb_in": 7,
+    "hb_in": 14,
+    "rel_height_ft": 6.0,
+    "rel_side_ft": 1.8,
+    "extension_ft": 6.3,
+    "target_z_ft": 1.8,
+    "target_x_ft": 0.5,
+    "cd": 0.2865
+   },
+   "rho": 0.819,
+   "elasticity": 1.0,
+   "plate_x": 0.2792955328148683,
+   "plate_z": 1.7205381057798053,
+   "ivb_in": 5.6775860982148725,
+   "hb_in": 11.351542210693948,
+   "flight_time": 0.4333076827080718,
+   "plate_mph": 81.06163093049302,
+   "n": 105,
+   "mid": [
+    0.7853338192873222,
+    27.371877326682558,
+    4.460392827984326
+   ]
+  }
+ ]
+}

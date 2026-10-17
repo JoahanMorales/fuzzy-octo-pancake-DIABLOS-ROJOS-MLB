@@ -1,0 +1,78 @@
+/* Stuff+ 2240 design tokens (HACK-039, frozen). Read web/DESIGN.md before changing anything here.
+   Theme lock: dark only (night-game broadcast). One accent: Diablos red. Sea level is always neutral grey. */
+:root {
+  /* surfaces: off-black, never #000 */
+  --bg: #0c0c0e;
+  --surface: #141417;
+  --surface-2: #1c1c21;
+  --line: #2a2a31;
+  --line-strong: #3a3a43;
+
+  /* text: off-white, never #fff */
+  --fg: #f1f1f3;
+  --fg-muted: #a6a6b0;
+  --fg-faint: #6e6e78;
+
+  /* the one accent: Diablos red. Also = "Harp Helú / CDMX air" in every chart */
+  --red: #c8102e;
+  --red-strong: #e0213f;
+  --red-soft: rgb(200 16 46 / 0.14);
+
+  /* comparison neutral: "sea level" in every chart, ghost ball, reference lines */
+  --sea: #c9ccd3;
+  --sea-soft: rgb(201 204 211 / 0.16);
+
+  /* field palette for the 3D scene only (desaturated, low-poly flat shading) */
+  --grass: #2f4a35;
+  --grass-dark: #263d2c;
+  --dirt: #6b4f3a;
+  --chalk: #e8e6e1;
+  --ball: #efece6;
+
+  /* semantic state (inline, never decorative) */
+  --ok: #4fae7b;
+  --warn: #d9a441;
+
+  /* type */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --font-body: 'Geist Variable', 'Geist', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono Variable', 'Geist Mono', 'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: clamp(2.5rem, 4.6vw, 4rem);
+  --text-stat: clamp(2.75rem, 6vw, 5rem);
+
+  /* shape system: panels and controls 6px; chips and toggles full pill; data marks square */
+  --radius: 6px;
+  --radius-pill: 999px;
+
+  /* spacing scale (4px base) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-24: 96px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 160ms;
+  --dur: 320ms;
+  --dur-slow: 700ms;
+
+  /* layers (the only z-index values allowed) */
+  --z-scene: 0;
+  --z-hud: 10;
+  --z-nav: 20;
+  --z-overlay: 30;
+
+  --max-w: 1320px;
+}

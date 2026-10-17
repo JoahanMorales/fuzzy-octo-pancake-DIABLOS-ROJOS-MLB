@@ -93,3 +93,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792264390 | HACK-043 | Cifras del JSON: liga -12.7, Pitching+ +3.7 por ciento season holdout, sesgo -81.5 por ciento park holdout | Why: El informe vigente ya no trae los numeros del enunciado original
 - 1792265298 | HACK-044 | No hay cesión a sebastian-2; HACK-044 sigue con luis-2 | Why: El humano dejó 044 y 045 aquí; el review pedía esos tres fallos
 - 1792265418 | HACK-044 | Sin cesión. Harp Helú solo si el parque trae esa identidad. La trayectoria sigue siendo ejemplo hasta flyPitch. | Why: El humano dejó 044 aquí y el review marcó tres fallos; el pulido visual era el pedido de la escena.
+- 1792265784 | HACK-063 | follow-up of HACK-001 by joahan-1: CI kit syntax check: bash -n only on shell scripts (uak-mcp is Python) | Why: same Paths, no scope change

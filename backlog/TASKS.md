@@ -395,3 +395,15 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:**
   - Contrato web acepta arboles packed, Plus sign/stats y reference de location
 - **Verify:** `python -m pytest -q tests/test_export_web.py && npm --prefix web test -- --run src/contract`
+
+## HACK-063 · CI kit syntax check: bash -n only on shell scripts (uak-mcp is Python) (follow-up of HACK-001)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Depends on:** HACK-001
+- **Follow-up of:** HACK-001
+- **Paths:** requirements.txt, pyproject.toml, stuffplus/__init__.py, stuffplus/io.py, stuffplus/config.py, tests/__init__.py, tests/conftest.py, tests/fixtures/, tests/test_io.py, README.md, Makefile
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - CI kit syntax check: bash -n only on shell scripts (uak-mcp is Python)
+- **Verify:** `python -m pytest -q tests/test_io.py`

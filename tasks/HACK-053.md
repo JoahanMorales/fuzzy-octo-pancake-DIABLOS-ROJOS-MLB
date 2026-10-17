@@ -15,7 +15,7 @@ Task-Base: a0232b0d58994189a12ead5ca44d132290fe62b7
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-053?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-053?expand=1
 Evidence: db0f5f6: tests/test_calibration.py 7 passed; smoke PRODUCT_PASS; methods.csv now has Pitching+ components and Stuff+ v2 (log-loss, ECE, xRV slope, skill, first-N r, split-half); decision: Stuff+ v1 none, Location+ temperature, Pitching+ none, Stuff+ v2 temperature
-Events: 7
+Events: 8
 Checkpoints: 0
 Sessions: 6
 Last-Checkpoint: 0

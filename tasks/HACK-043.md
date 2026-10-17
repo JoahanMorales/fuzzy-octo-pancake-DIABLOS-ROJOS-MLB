@@ -1,6 +1,6 @@
 # HACK-043
 ID: HACK-043
-State: CLAIMED
+State: REVIEW
 Owner: luis-1
 Branch: feat/hack-043
 Worktree: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-043
@@ -9,13 +9,14 @@ Priority: P0
 Paths: web/src/features/landing/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/landing`
-Lease-Until: 1792266912
-Updated: 1792264212
+Lease-Until: 1792278786
+Updated: 1792264386
 Task-Base: 7b8f70c2aed60cc65d847234fdda361ea163c1a6
-Next: Revisar hero a 1280x720 y Lighthouse desktop
-PR: -
-Evidence: -
-Events: 5
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54
+Evidence: npm --prefix web test -- --run src/features/landing exit 0 (6); npm --prefix web run build exit 0; Lighthouse desktop performance 96 accessibility 96; hero CTA abre /simulador
+Events: 6
 Checkpoints: 1
 Sessions: 2
 Last-Checkpoint: 1792263813
+Task-Tip: 97b299a63c819bb7a63e170dcb4ec7a378af0ee7

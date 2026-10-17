@@ -1,6 +1,6 @@
 # HACK-043
 ID: HACK-043
-State: CLAIMED
+State: REVIEW
 Owner: luis-1
 Branch: feat/hack-043
 Worktree: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-043
@@ -9,9 +9,9 @@ Priority: P0
 Paths: web/src/features/landing/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/landing`
-Lease-Until: 1792266912
-Updated: 1792264212
+Lease-Until: 1792278786
+Updated: 1792264386
 Task-Base: 7b8f70c2aed60cc65d847234fdda361ea163c1a6
-Next: Revisar hero a 1280x720 y Lighthouse desktop
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54
 Evidence: -

@@ -122,20 +122,23 @@ def cd_vs_re(d: pd.DataFrame, n_boot: int = 200, min_n: int = 500) -> pd.DataFra
     return pd.DataFrame(rows)
 
 
-def efficient_pitches(d: pd.DataFrame, key: str = "pitch_key", bucket: str = "No Altitude", min_eff: float = 0.95,
-                      min_pitches: int = 30) -> tuple[set, pd.Series]:
-    """Pitch identities whose median spin efficiency is >= ``min_eff`` in ``bucket`` games, measured on the
-    selection half only (odd-numbered games of that identity), so the other half can test them without selecting
-    on the same noise. Returns (identities, mask of the held-out rows: every non-selection game of those pitches)."""
+def efficient_pitches(d: pd.DataFrame, key: str = "pitch_key", bucket: str = "No Altitude", min_eff: float | None = 0.95,
+                      min_pitches: int = 30, top_share: float = 0.10) -> tuple[set, pd.Series, float]:
+    """Pitch identities whose median spin efficiency is >= ``min_eff`` in ``bucket`` games (or, with
+    ``min_eff=None``, the most efficient ``top_share`` of identities), measured on the selection half only
+    (odd-numbered games of that identity), so the other half can test them without selecting on the same noise.
+    Returns (identities, mask of the held-out rows: every non-selection game of those pitches, threshold used)."""
     g = d[d.altitude_category.astype(str) == bucket].dropna(subset=["spin_eff"])
     order = g.groupby(key, observed=True)["game_anon_id"].transform(lambda s: pd.factorize(s)[0])
     sel = g[order % 2 == 1]
     med = sel.groupby(key, observed=True).spin_eff.agg(["median", "size"])
-    keep = set(med[(med["median"] >= min_eff) & (med["size"] >= min_pitches)].index)
+    med = med[med["size"] >= min_pitches]
+    thr = float(med["median"].quantile(1 - top_share)) if min_eff is None else float(min_eff)
+    keep = set(med[med["median"] >= thr].index)
     sel_games = set(zip(sel[key], sel.game_anon_id))
     in_keep = d[key].isin(keep)
     held_out = in_keep & ~pd.Series(list(zip(d[key], d.game_anon_id)), index=d.index).isin(sel_games)
-    return keep, held_out
+    return keep, held_out, thr
 
 
 def magnus_elasticity(d: pd.DataFrame, key: str = "pitch_key", min_games: int = 3, n_boot: int = 300) -> pd.DataFrame:

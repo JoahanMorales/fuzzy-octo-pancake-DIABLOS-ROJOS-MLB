@@ -67,11 +67,18 @@ def main() -> None:
     bias = RHO_HARP_HELU_BAROMETRIC / RHO_HARP_HELU
     gap = co.gap_decomposition(t, slope, bias)
     cdre = co.cd_vs_re(d)
-    # seam-shifted-wake test: four-seamers with >= 95 % spin efficiency, chosen on half of their sea-level games
-    keep, held = co.efficient_pitches(d[d.pitch_family.astype(str) == "Four-Seam"])
-    eff = d[held.reindex(d.index, fill_value=False) & (d.pitch_family.astype(str) == "Four-Seam")]
+    # seam-shifted-wake test on the most efficient four-seamers, chosen on half of their sea-level games. The spec
+    # asked for >= 95 % efficiency; with efficiency inferred from C_L (Nathan) almost no four-seamer reaches it
+    # (median about 0.63), so the test uses the top 10 % of pitch identities and reports the threshold.
+    fs4 = d[d.pitch_family.astype(str) == "Four-Seam"]
+    n95 = len(co.efficient_pitches(fs4)[0])
+    keep, held, thr = co.efficient_pitches(fs4, min_eff=None, top_share=0.10)
+    eff = fs4[held]
     t_eff = co.bucket_table(eff)
-    gap_eff = co.gap_decomposition(t_eff, slope, bias).assign(pitch_identities=len(keep), pitches=len(eff))
+    gap_eff = co.gap_decomposition(t_eff, slope, bias) if len(t_eff) else pd.DataFrame()
+    if len(gap_eff):
+        gap_eff = gap_eff.assign(pitch_identities=len(keep), pitches=len(eff), eff_threshold=thr,
+                                 identities_at_95=n95, eff_median_sea=float(fs4[fs4.altitude_category.astype(str) == NO].spin_eff.median()))
     el = co.magnus_elasticity(d)
     observed = pd.read_csv(config.REPORTS_DIR / "physics" / "delta_extreme_vs_no.csv")
     check = flight_check(t, dict(zip(el.pitch_family, el.elasticity)), observed)
@@ -146,8 +153,10 @@ def readme(t, gap, el, check, shs, bias, cdre, gap_eff) -> str:
     if len(gap_eff):
         e4 = gap_eff.iloc[0]
         L += ["", "## Prueba de estela desplazada por costura (`lift_gap_efficient_fourseam.csv`)", "",
-              f"Solo rectas con eficiencia de giro de 95 % o más ({int(e4.pitch_identities):,} lanzamientos-identidad, "
-              f"{int(e4.pitches):,} lanzamientos). La eficiencia se elige con la mitad de sus juegos a nivel del mar y se mide "
+              f"La tarea pedía rectas con eficiencia de giro de 95 % o más, pero con la eficiencia inferida del C_L (Nathan) "
+              f"solo {int(e4.identities_at_95)} identidades llegan ahí (mediana a nivel del mar {e4.eff_median_sea:.2f}). "
+              f"Usamos el 10 % más eficiente: eficiencia de {e4.eff_threshold:.2f} o más ({int(e4.pitch_identities):,} "
+              f"identidades, {int(e4.pitches):,} lanzamientos). La eficiencia se elige con la mitad de sus juegos a nivel del mar y se mide "
               "con la otra mitad, para no seleccionar sobre el mismo ruido. Con casi todo el giro transversal, la estela "
               "desplazada por costura debería pesar poco; si el residuo sigue igual, no es la explicación.", "",
               f"- Brecha de C_L {e4.gap_pct:+.1f} % (todas las rectas: {g4.gap_pct:+.1f} %); parámetro de giro "

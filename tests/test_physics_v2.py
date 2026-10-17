@@ -99,8 +99,10 @@ def test_efficient_pitches_select_on_one_half_and_hold_out_the_other():
                 rows.append(dict(pitch_key=f"k{k}", game_anon_id=f"k{k}g{g}", altitude_category="No Altitude",
                                  spin_eff=0.98 if k < 3 else 0.80))
     d = pd.DataFrame(rows)
-    keep, held = co.efficient_pitches(d, min_pitches=20)
-    assert keep == {"k0", "k1", "k2"}
+    keep, held, thr = co.efficient_pitches(d, min_pitches=20)
+    assert keep == {"k0", "k1", "k2"} and thr == 0.95
+    top, _, thr_top = co.efficient_pitches(d, min_eff=None, min_pitches=20, top_share=0.4)
+    assert top == {"k0", "k1", "k2"} and thr_top == pytest.approx(0.98)
     sel_rows = d[d.pitch_key.isin(keep)]
     assert 0 < held.sum() < len(sel_rows)  # only the non-selection games are held out
     assert not held[~d.pitch_key.isin(keep)].any()

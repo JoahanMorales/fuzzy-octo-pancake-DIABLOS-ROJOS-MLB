@@ -9,13 +9,13 @@ Priority: P1
 Paths: web/src/features/altitud/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/altitud`
-Lease-Until: 1792266423
-Updated: 1792263723
+Lease-Until: 1792266514
+Updated: 1792263814
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Apply option: Dibujar México y mostrar los 20 parques en un panel sin ubicación hasta disponer de correspondencia geográfica documentada.
+Next: Finish final rerun and push. Resume draft #53 only with verified geographic mapping; never mark done or merge partial task.
 PR: -
 Evidence: -
-Events: 6
-Checkpoints: 1
+Events: 7
+Checkpoints: 2
 Sessions: 1
-Last-Checkpoint: 1792261226
+Last-Checkpoint: 1792263814

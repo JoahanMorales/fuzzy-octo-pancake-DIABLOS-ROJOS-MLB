@@ -1,6 +1,6 @@
 # HACK-047
 ID: HACK-047
-State: CLAIMED
+State: REVIEW
 Owner: joahan-3
 Branch: feat/hack-047
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-047
@@ -9,9 +9,9 @@ Priority: P1
 Paths: web/src/features/leaderboard/, web/src/features/pitcher/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`
-Lease-Until: 1792266250
-Updated: 1792263550
+Lease-Until: 1792280907
+Updated: 1792266507
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: table from `leaderboard.json`.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1
 Evidence: -

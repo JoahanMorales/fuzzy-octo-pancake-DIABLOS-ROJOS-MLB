@@ -102,3 +102,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792272455 | HACK-045 | Pitching+ equals Stuff+ until models/pitching.json is exported; models are fetched, not bundled | Why: the pitching composite is not in the web export and a static import made a 13 MB chunk
 - 1792273955 | HACK-064 | follow-up of HACK-047 by joahan-3: data.ts: real/ only when manifest.json parses as JSON (static hosts answer index.html with 200) | Why: same Paths, no scope change
 - 1792273983 | HACK-065 | follow-up of HACK-050 by joahan-1: export real/design_lab.json from reports/design_lab (request #400) | Why: same Paths, no scope change
+- 1792278254 | plan | joahan/joahan | tasks added: HACK-066 HACK-067 HACK-068 HACK-069 HACK-070 HACK-071 HACK-072 HACK-073 | Why: backlog without PR (Plan-Channel: claims)

@@ -431,3 +431,134 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:**
   - export real/design_lab.json from reports/design_lab (request #400)
 - **Verify:** `python -m pytest -q tests/test_check_web_dist.py`
+## HACK-066 · Browser Stuff+ v2: export and evaluate the production model (count recentring, count-marginalized value, temperature)
+
+- **Type:** feature
+- **Priority:** P0
+- **Estimate:** 3 h
+- **Rubric / Spec:** C1 C4
+- **Depends on:** HACK-057
+- **Uses contract:** HACK-040, HACK-062
+- **Paths:** stuffplus/export_trees.py, tests/test_export_trees.py, web/src/model/, web/src/contract/, web/public/data/models/
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - `export_trees.py` exports the production Stuff+ (`stuffplus.models.stuff.fit_production_stuff`): trees, count value table, count offsets, count means, family count weights, temperature T and the Plus scaler fitted on the count-neutral value; Location+ with its temperature.
+  - `predict.ts` reproduces `CountNeutral.predict_xrv` and Stuff+ within 1e-6 on synthetic goldens (every count, every family, NaNs); the contract types accept the v2 fields and keep v1 files parsing (absorbs HACK-062: packed trees, Plus sign/stats, location reference).
+  - Total models ≤ 15 MB; contract message to HACK-045, HACK-048 and HACK-069 before pushing.
+- **Verify:** `python -m pytest -q tests/test_export_trees.py && npm --prefix web test -- --run src/model src/contract`
+- **Next step:** read `CountNeutral` and `StuffV2Model.stuff_value` in stuffplus/models/.
+
+## HACK-067 · Cuerpo técnico page: home vs road pitch mix per Diablos pitcher, bullpen PDF, and the wave-3 routes
+
+- **Type:** feature
+- **Priority:** P1
+- **Estimate:** 2.5 h
+- **Rubric / Spec:** C4
+- **Depends on:** None
+- **Uses contract:** HACK-050, HACK-057
+- **Paths:** web/src/routes.tsx, web/src/features/cuerpo-tecnico/
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - `routes.tsx` adds `/cuerpo-tecnico`, `/reclutamiento`, `/presentacion` and `/fisica` (placeholders until each feature exists); nothing else in the file changes.
+  - Per Diablos staff pitcher (franchises 5 and 11 apart, "identificación inferida"): arsenal at sea level vs Harp Helú, the pitch that loses most, a suggested home mix (usage moved from the pitches that lose most in CDMX air to the ones that resist, capped and labelled as a model suggestion, not a measured effect) and one pitch to develop from reports/design_lab.
+  - "Imprimir reporte" produces a one-page bullpen PDF per pitcher (print stylesheet); numbers read from data/real or data/mock, never typed.
+- **Verify:** `npm --prefix web test -- --run src/features/cuerpo-tecnico src/shell`
+- **Next step:** reuse the loader in web/src/features/staff/data.tsx.
+
+## HACK-068 · Reclutamiento page: league pitchers whose arsenal survives CDMX air
+
+- **Type:** feature
+- **Priority:** P1
+- **Estimate:** 2 h
+- **Rubric / Spec:** C4 C3
+- **Depends on:** None
+- **Uses contract:** HACK-050, HACK-067
+- **Paths:** web/src/features/reclutamiento/
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - Ranking of pitcher-seasons (not on the Diablos) by Stuff+ in CDMX air with a small CDMX loss, filters (season, hand, minimum pitches, pitch shapes in the arsenal), both Stuff+ flavours labelled.
+  - Shortlist: pick up to 10 and export CSV (aggregates only) and a PNG card; each row links to /pitcher/:id.
+  - Short text conclusion beside the table; empty and loading states.
+- **Verify:** `npm --prefix web test -- --run src/features/reclutamiento`
+- **Next step:** filters from web/src/features/leaderboard/logic.ts.
+
+## HACK-069 · Uncertainty visible: conformal intervals on Stuff+ in leaderboard and pitcher page
+
+- **Type:** feature
+- **Priority:** P1
+- **Estimate:** 2 h
+- **Rubric / Spec:** C1 C2
+- **Depends on:** HACK-064, HACK-065
+- **Uses contract:** HACK-055, HACK-066
+- **Paths:** analysis/export_web/, web/public/data/real/, web/src/features/leaderboard/, web/src/features/pitcher/, tests/test_check_web_dist.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - `real/uncertainty.json` from reports/uncertainty (aggregates): interval half-width by number of pitches and by air (weighted conformal), with its coverage.
+  - Leaderboard and pitcher page show Stuff+ as value ± half-width for the row's sample size, with a one-line tooltip on what it means; absent file = no band, no error.
+  - Tests: interval lookup by pitches, missing-file state.
+- **Verify:** `python -m pytest -q tests/test_check_web_dist.py && npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`
+- **Next step:** read reports/uncertainty/README.md and its CSVs.
+
+## HACK-070 · Visual QA of every page (design-critic, desktop and phone)
+
+- **Type:** polish
+- **Priority:** P1
+- **Estimate:** 2 h
+- **Rubric / Spec:** C4
+- **Depends on:** HACK-045, HACK-046, HACK-049, HACK-067, HACK-068, HACK-069
+- **Uses contract:** HACK-039
+- **Paths:** web/src/features/, web/src/shell/, web/src/styles/base.css, web/e2e/qa/
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - Screenshots of all pages at 1440 and 390 px (reduced motion) reviewed with design-critic against web/DESIGN.md; every finding fixed or listed with a reason.
+  - No horizontal overflow at 390 px, visible focus rings, Spanish copy without em-dashes, one accent (red = Harp Helú air).
+  - Screenshots committed under web/e2e/qa/.
+- **Verify:** `npm --prefix web run build && npm --prefix web test -- --run`
+- **Next step:** one Playwright script that walks every route.
+
+## HACK-071 · Presentation mode: guided 5-minute tour for the jury interview and the video
+
+- **Type:** feature
+- **Priority:** P1
+- **Estimate:** 2 h
+- **Rubric / Spec:** C4
+- **Depends on:** None
+- **Uses contract:** HACK-067
+- **Paths:** web/src/features/presentacion/
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - `/presentacion`: steps landing → simulador → altitud → staff → reclutamiento → metodología, each with a one-line speaker note and the number to say (read from the contract JSON); arrow keys and space advance, Esc exits; reduced motion respected.
+  - A printable script (speaker notes) and a 5-minute timer.
+- **Verify:** `npm --prefix web test -- --run src/features/presentacion`
+- **Next step:** reuse demo/script.md from HACK-025 for the notes.
+
+## HACK-072 · Physics explainer: why the fastball loses ride in CDMX air (interactive)
+
+- **Type:** feature
+- **Priority:** P2
+- **Estimate:** 2 h
+- **Rubric / Spec:** C3
+- **Depends on:** None
+- **Uses contract:** HACK-041, HACK-042
+- **Paths:** web/src/features/fisica/
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - `/fisica`: a density slider from sea level to Harp Helú that recomputes drag and Magnus with web/src/physics (flyPitch) and shows the measured Magnus elasticity per family next to textbook physics (elasticity 1); numbers from physics.json.
+  - Side view and catcher view of the two flights; reduced motion = static final frame; text summary for screen readers.
+- **Verify:** `npm --prefix web test -- --run src/features/fisica`
+- **Next step:** flyPitch from web/src/physics/flight.ts.
+
+## HACK-073 · CI: the kit syntax check runs bash -n only on shell scripts
+
+- **Type:** fix
+- **Priority:** P1
+- **Estimate:** 15 min
+- **Rubric / Spec:** -
+- **Depends on:** None
+- **Paths:** .github/workflows/
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - The "Kit syntax" step checks a file with `bash -n` only when its shebang names bash or sh, so `.uak/bin/uak-mcp` (Python) no longer fails every PR; the other gates stay as they are.
+  - A PR run of the workflow is green on that step (link in the evidence). Replaces HACK-063, whose Paths include files HACK-001 owns.
+- **Verify:** `for f in .uak/bin/* .uak/bin/lib/*.sh; do [ -f "$f" ] && head -1 "$f" | grep -qE 'bash|sh$' && bash -n "$f"; done`
+- **Next step:** edit the Kit syntax step in .github/workflows/uak.yml.

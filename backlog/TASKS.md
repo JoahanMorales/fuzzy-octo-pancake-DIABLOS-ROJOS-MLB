@@ -383,3 +383,15 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
   - Adoption into production goes through HACK-057 (model freeze 2026-10-20 12:00).
 - **Verify:** `python -m pytest -q tests/test_tunnel.py`
 - **Next step:** reuse `stuffplus.features.arsenal.trajectory_at` with t instead of x.
+
+## HACK-062 · Contrato web acepta arboles packed, Plus sign/stats y reference de location (follow-up of HACK-038)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Depends on:** HACK-038
+- **Follow-up of:** HACK-038
+- **Paths:** docs/CONTRACT-WEB.md, web/src/contract/, web/public/data/mock/, stuffplus/export_web.py, tests/test_export_web.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - Contrato web acepta arboles packed, Plus sign/stats y reference de location
+- **Verify:** `python -m pytest -q tests/test_export_web.py && npm --prefix web test -- --run src/contract`

@@ -9,8 +9,8 @@ Priority: P0
 Paths: web/src/features/simulador/flight/, web/src/features/simulador/panel/, web/src/features/simulador/index.tsx
 Depends: HACK-044
 Verify: `npm --prefix web test -- --run src/features/simulador`
-Lease-Until: 1792273263
-Updated: 1792270563
+Lease-Until: 1792274051
+Updated: 1792271351
 Task-Base: f874187dbc6a7ef65dcd59f150bcd7950f26613b
 Next: wire `flyPitch` into a `<Trail>` and the model into the panel.
 PR: -

@@ -1,6 +1,6 @@
 # HACK-038
 ID: HACK-038
-State: CLAIMED
+State: REVIEW
 Owner: luis-1
 Branch: feat/hack-038
 Worktree: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-038
@@ -9,9 +9,9 @@ Priority: P0
 Paths: docs/CONTRACT-WEB.md, web/src/contract/, web/public/data/mock/, stuffplus/export_web.py, tests/test_export_web.py
 Depends: HACK-037
 Verify: `python -m pytest -q tests/test_export_web.py && npm --prefix web test -- --run src/contract`
-Lease-Until: 1792206068
-Updated: 1792203368
+Lease-Until: 1792218027
+Updated: 1792203627
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: write types.ts from the bundle tables in deploy/bundle/tables/ and reports/
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/49; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/49
 Evidence: -

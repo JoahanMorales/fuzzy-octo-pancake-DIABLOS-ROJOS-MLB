@@ -9,9 +9,9 @@ Priority: P0
 Paths: web/src/features/simulador/flight/, web/src/features/simulador/panel/, web/src/features/simulador/index.tsx
 Depends: HACK-044
 Verify: `npm --prefix web test -- --run src/features/simulador`
-Lease-Until: 1792274958
-Updated: 1792272258
+Lease-Until: 1792275155
+Updated: 1792272455
 Task-Base: f874187dbc6a7ef65dcd59f150bcd7950f26613b
-Next: write flight/, panel/, index.tsx and pass flyPitch paths into SimulatorScene
+Next: open the PR when review is wanted
 PR: -
 Evidence: -

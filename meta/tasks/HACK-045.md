@@ -1,5 +1,5 @@
 Task: HACK-045
-Events: 6
-Checkpoints: 1
+Events: 7
+Checkpoints: 2
 Sessions: 1
-Last-Checkpoint: 1792271792
+Last-Checkpoint: 1792272455

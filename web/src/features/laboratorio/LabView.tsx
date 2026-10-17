@@ -97,6 +97,7 @@ function Plan({ plan }: { plan: LabDoc['plan'] }) {
         <small>{ids.length.toLocaleString('es-MX')} pitcher-temporadas con plan. Identificadores anonimizados.</small>
       </div>
       {rows ? (
+        <div className="h48-scroll" tabIndex={0} role="region" aria-label={`Plan de desarrollo de ${query}`}>
         <table className="h48-table" aria-label={`Plan de ${query}`}>
           <thead>
             <tr>
@@ -119,6 +120,7 @@ function Plan({ plan }: { plan: LabDoc['plan'] }) {
             ))}
           </tbody>
         </table>
+        </div>
       ) : (
         <p className="h48-muted" role="status">Sin plan para ese identificador. Escribe uno de la lista, por ejemplo {ids[0]}.</p>
       )}
@@ -165,6 +167,7 @@ export function LabView({ doc }: { doc: LabDoc }) {
       <section className="h48-block" aria-labelledby="nuevo-title">
         <h2 id="nuevo-title" className="h48-h2">Agregar un lanzamiento</h2>
         <p className="h48-note">Perfil mediano de pitchers comparables con un uso supuesto del 10 %. Puede restar si el nuevo lanzamiento vale menos que el arsenal.</p>
+        <div className="h48-scroll" tabIndex={0} role="region" aria-label="Lanzamiento nuevo">
         <table className="h48-table">
           <thead>
             <tr>
@@ -191,6 +194,7 @@ export function LabView({ doc }: { doc: LabDoc }) {
             ))}
           </tbody>
         </table>
+        </div>
       </section>
       <Plan plan={doc.plan} />
       <p className="h48-note h48-block">

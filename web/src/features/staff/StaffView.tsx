@@ -82,7 +82,7 @@ export function StaffView({ doc, source }: { doc: StaffDoc; source: Source }) {
       </header>
       <p className="h48-lede">
         Stuff+ neutral es el valor a nivel del mar. Stuff+ en CDMX es el mismo lanzamiento en el aire del Harp Helú.
-        Las identidades de franquicia son inferidas: {doc.note}
+        Las identidades de franquicia son inferidas. {doc.note}
       </p>
       {doc.franchises.map((f) => (
         <FranchiseTable key={f.id} id={f.id} pitchers={f.pitchers} />

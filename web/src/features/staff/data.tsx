@@ -16,8 +16,10 @@ export function resetSourceCache() {
 
 export function dataSource(fetcher: Fetcher = fetch): Promise<Source> {
   if (!sourcePromise) {
+    // Static hosts (and vite preview) answer a missing file with index.html and 200: only a manifest that
+    // parses as JSON means real/ exists.
     sourcePromise = fetcher(`${DATA_BASE}real/manifest.json`)
-      .then((r) => (r.ok ? 'real' : 'mock') as Source)
+      .then((r) => (r.ok ? r.json().then(() => 'real' as Source) : ('mock' as Source)))
       .catch(() => 'mock' as Source);
   }
   return sourcePromise;

@@ -60,8 +60,10 @@
 .h48-table tfoot td { color: var(--fg-muted, #a6a6b0); border-top: 1px solid var(--line-strong, #3a3a43); }
 
 .h48-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8, 32px); }
+.h48-grid > * { min-width: 0; }
+.h48-field small, .h48-note { overflow-wrap: anywhere; }
 @media (max-width: 900px) {
-  .h48-grid { grid-template-columns: 1fr; }
+  .h48-grid { grid-template-columns: minmax(0, 1fr); }
   .h48-page { padding: var(--s-6, 24px) 16px 48px; }
 }
 

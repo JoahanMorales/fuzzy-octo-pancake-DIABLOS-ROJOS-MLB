@@ -40,5 +40,9 @@ describe('staff page', () => {
     resetSourceCache();
     expect(await dataSource(async () => ({ ok: true, json: async () => ({}) }))).toBe('real');
     resetSourceCache();
+    // SPA fallback: 200 with index.html is not a manifest
+    const html = async () => ({ ok: true, json: async () => JSON.parse('<!doctype html>') });
+    expect(await dataSource(html)).toBe('mock');
+    resetSourceCache();
   });
 });

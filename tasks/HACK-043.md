@@ -12,10 +12,10 @@ Verify: `npm --prefix web test -- --run src/features/landing`
 Lease-Until: 1792280288
 Updated: 1792265888
 Task-Base: 7b8f70c2aed60cc65d847234fdda361ea163c1a6
-Next: Wait for review of SHA 97b299a
+Next: Humano: Verify / acceptance red: sh: vitest: command not found (log: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-043-verify-1792268083.log)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/54
 Evidence: npm --prefix web test -- --run src/features/landing exit 0 (6); npm --prefix web run build exit 0; Lighthouse desktop performance 96 accessibility 96; hero CTA abre /simulador
-Events: 9
+Events: 10
 Checkpoints: 2
 Sessions: 3
 Last-Checkpoint: 1792264390

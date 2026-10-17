@@ -254,8 +254,8 @@ def write_readme(out_dir: Path) -> str:
         h = aud[(aud.feature == f) & (aud.location == "PlateLocHeight")].iloc[0]
         s = aud[(aud.feature == f) & (aud.location == "plate_x_arm")].iloc[0]
         L.append(f"| {f} | {_f(h.r_global, 2, True)} | {_f(s.r_global, 2, True)} | {_f(max(h.r_within_family_max_abs, s.r_within_family_max_abs), 2)} |")
-    L += ["", f"La correlación global más alta es {_f(abs(top.r_global), 2)} ({top.feature} con {top.location}); parte viene de que cada "
-          "tipo de pitch se ubica en una zona distinta (el modelo ya conoce la familia del pitch).", "",
+    L += ["", f"La correlación global más alta es {_f(abs(top.r_global), 2)} ({top.feature} con {top.location}); dentro de cada "
+          f"familia de pitch la correlación más alta baja a {_f(aud.r_within_family_max_abs.max(), 2)}.", "",
           "## Reproducir", "", "```", "python analysis/tunnel/run.py", "```", ""]
     text = "\n".join(L)
     (out_dir / "README.md").write_text(text, encoding="utf-8")

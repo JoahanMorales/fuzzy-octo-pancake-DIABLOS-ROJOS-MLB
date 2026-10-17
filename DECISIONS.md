@@ -83,3 +83,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792260957 | deadline lease/HACK-050/1792231547 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792260957 | deadline lease/HACK-053/1792225529 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792260957 | deadline lease/HACK-056/1792217950 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792261226 | HACK-046 | No geographic positions without verified ID mapping; real manifest discovery per HACK-050 contract #355. | Why: Park contract lacks coordinates and report disclaims city identities.

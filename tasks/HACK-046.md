@@ -9,13 +9,13 @@ Priority: P1
 Paths: web/src/features/altitud/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/altitud`
-Lease-Until: 1792263921
-Updated: 1792261221
+Lease-Until: 1792263926
+Updated: 1792261226
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: d3-geo projection of a public-domain Mexico outline (cite the source in the page).
+Next: Review Verify/build, run browser desktop/mobile, smoke, open clearly partial PR for independent review.
 PR: -
 Evidence: -
-Events: 3
-Checkpoints: 0
+Events: 4
+Checkpoints: 1
 Sessions: 1
-Last-Checkpoint: 0
+Last-Checkpoint: 1792261226

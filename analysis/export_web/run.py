@@ -34,6 +34,30 @@ VALIDATION_EXTRA = {
 }
 
 
+DESIGN_LAB = "reports/design_lab"
+DESIGN_LAB_FILES = ("tweak_summary.csv", "tweak_gains_by_family.csv", "new_pitch_summary.csv",
+                    "development_plan_top3.csv", "run_meta.csv")
+
+
+def design_lab(root: Path) -> dict | None:
+    """``real/design_lab.json`` for /laboratorio (HACK-048, request #400): the same payload as
+    ``web/src/features/laboratorio/make_data.py`` with the contract envelope. None if the report is missing."""
+    src = root / DESIGN_LAB
+    if not all((src / f).is_file() for f in DESIGN_LAB_FILES):
+        return None
+    plan = pd.read_csv(src / "development_plan_top3.csv")
+    return {
+        **ew.envelope([f"{DESIGN_LAB}/{f}" for f in DESIGN_LAB_FILES]),
+        "meta": ew._records(pd.read_csv(src / "run_meta.csv"))[0],
+        "tweaks": ew._records(pd.read_csv(src / "tweak_summary.csv")),
+        "by_family": ew._records(pd.read_csv(src / "tweak_gains_by_family.csv")),
+        "new_pitch": ew._records(pd.read_csv(src / "new_pitch_summary.csv")),
+        # compact: pitcher-season -> [[rank, ajuste, gain_hh, gain_sea, diff], ...]
+        "plan": {str(pid): ew._clean(g.sort_values("rank")[["rank", "ajuste", "gain_hh", "gain_sea", "diff"]].values.tolist())
+                 for pid, g in plan.groupby("pitcher_id")},
+    }
+
+
 def _real(obj):
     """Copy of a contract document with every ``demo_data`` flag set to False."""
     if isinstance(obj, dict):
@@ -53,6 +77,9 @@ def build_real(root: Path | None = None) -> dict[str, dict]:
     found = {k: rel for k, rel in VALIDATION_EXTRA.items() if (root / rel).is_file()}
     docs["validation_extra.json"] = {**ew.envelope(list(found.values()) or ["analysis/export_web/run.py"]),
                                      **{k: ew._records(pd.read_csv(root / rel)) for k, rel in found.items()}}
+    lab = design_lab(root)
+    if lab is not None:
+        docs["design_lab.json"] = lab
     docs = {rel: _real(doc) for rel, doc in docs.items()}
     for doc in docs.values():
         ew.assert_aggregate(doc)

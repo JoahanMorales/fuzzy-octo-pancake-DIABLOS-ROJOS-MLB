@@ -20,7 +20,9 @@ export async function loadAltitude(signal?: AbortSignal): Promise<Data> {
   // HACK-050 contract message #355: real manifest present -> real, otherwise mock.
   const manifest = await fetch(`${root}real/manifest.json`, { signal });
   const isJson = manifest.headers.get('content-type')?.includes('application/json');
+  const isHtml = manifest.headers.get('content-type')?.includes('text/html');
   if (!manifest.ok && manifest.status !== 404) throw new Error('No se pudo consultar el catálogo de datos.');
+  if (manifest.ok && !isJson && !isHtml) throw new Error('El catálogo tiene un formato inesperado.');
   if (manifest.ok && isJson) await manifest.json();
   // Vite serves index.html for absent JSON paths. This is absence, not a real dataset.
   const source = manifest.ok && isJson ? 'real' : 'mock';
@@ -60,7 +62,7 @@ function Charts({ parks, shapes }: Data) {
       <div className="alt-forest-wrap">
         <svg className="alt-desktop-forest" viewBox={`0 0 760 ${height}`} role="img" aria-label="ΔStuff+ CDMX menos nivel del mar, con intervalos del contrato">
           <text x="145" y="20">ΔStuff+ · puntos e intervalos</text>
-          <text x="580" y="20">Stuff+ {cdmx ? 'CDMX' : 'mar'}</text>
+          <text x="565" y="10">Stuff+<tspan x="565" dy="16">{cdmx ? 'en CDMX' : 'nivel del mar'}</tspan></text>
           <text x="670" y="20">Δ</text>
           {x.ticks(5).map(t => <g key={t}><line className="alt-gridline" x1={x(t)} x2={x(t)} y1="30" y2={height - 30} /><text x={x(t)} y={height - 8} textAnchor="middle">{t.toFixed(0)}</text></g>)}
           <line className="alt-zero" x1={x(0)} x2={x(0)} y1="30" y2={height - 30} />
@@ -83,7 +85,7 @@ function Charts({ parks, shapes }: Data) {
               <line className="alt-ci" x1={x(s.delta_lo)} x2={x(s.delta_hi)} y1="12" y2="12" />
               <circle className="alt-point" cx={x(s.delta_stuff)} cy="12" r="6" />
             </svg>
-            <span className="alt-note">Stuff+ {cdmx ? 'CDMX' : 'mar'}: {(cdmx ? s.stuff_harp_helu : s.stuff_sea_level).toFixed(2)} · intervalo [{signed(s.delta_lo)}, {signed(s.delta_hi)}]</span>
+            <span className="alt-note">Stuff+ {cdmx ? 'en CDMX' : 'nivel del mar'}: {(cdmx ? s.stuff_harp_helu : s.stuff_sea_level).toFixed(2)} · intervalo [{signed(s.delta_lo)}, {signed(s.delta_hi)}]</span>
           </button>)}
         </div>
       </div>

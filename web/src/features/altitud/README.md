@@ -46,3 +46,11 @@ Tests cover projection bounds, density area encoding, manifest discovery,
 invalid/provenance-mismatched aggregates, 20-park selection, scenario scores,
 unchanged intervals, source labels, and error recovery. Browser verification
 must use reduced motion and the worktree's `$UAK_PORT + 1` on desktop and mobile.
+
+Verified on 2026-10-17: all web tests and the production build passed. Chrome via
+Playwright (reduced motion, 1440x1000 and 390x844) confirmed the forest in the first
+viewport, visible focus details, park keyboard selection, scenario switching,
+and no page/forest overflow or JavaScript errors. Screenshots:
+`/tmp/hack046-desktop.png` and `/tmp/hack046-mobile.png` (local QA artifacts).
+The full product smoke remains blocked: `exec: python: not found`, adapter exit
+127; this environment also lacks the Python test/model dependencies.

@@ -49,6 +49,13 @@ it('loads real data only after a real manifest and does not silently mock malfor
   await expect(loadAltitude()).rejects.toThrow();
 });
 
+it('does not silently mock an unexpected manifest format', async () => {
+  const fetcher = vi.fn(async () => new Response('unexpected', { headers: { 'content-type': 'text/plain' } }));
+  vi.stubGlobal('fetch', fetcher);
+  await expect(loadAltitude()).rejects.toThrow('formato inesperado');
+  expect(fetcher).toHaveBeenCalledTimes(1);
+});
+
 it.each(['density', 'duplicate', 'interval', 'provenance'])('rejects invalid %s aggregates', async kind => {
   const p = structuredClone(parks), s = structuredClone(shapes);
   if (kind === 'density') p.parks[0].rho = 0;

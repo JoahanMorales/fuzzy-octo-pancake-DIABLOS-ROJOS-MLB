@@ -200,5 +200,5 @@ def test_run_end_to_end_writes_aggregate_reports(prepared, tmp_path):
         assert (tmp_path / f"{name}.csv").exists()
     assert not res["altitude_check"].empty
     text = (tmp_path / "README.md").read_text(encoding="utf-8")
-    assert "Regla de adopción" in text and "—" not in text
+    assert "Regla de adopción" in text and chr(0x2014) not in text
     assert all((tmp_path / f.name).stat().st_size < 2_000_000 for f in tmp_path.iterdir())

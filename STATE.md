@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1792269234
+Updated: 1792269240
 AVAILABLE: HACK-045 HACK-051 HACK-057 HACK-058 HACK-059 HACK-062 HACK-063 HACK-025 
 CLAIMED: HACK-049 
 BLOCKED: HACK-046 
@@ -15,18 +15,18 @@ HACK-041 | REVIEW | joahan-1 | until 1792277120
 HACK-044 | REVIEW | luis-2 | until 1792283146
 HACK-046 | BLOCKED | sebastian-2 | until 1792266556
 HACK-047 | REVIEW | joahan-3 | until 1792280907
-HACK-048 | REVIEW | victor-1 | until 1792283634
+HACK-048 | REVIEW | victor-1 | until 1792283640
 HACK-049 | CLAIMED | sebastian-1 | until 1792267092
 HACK-050 | REVIEW | joahan-1 | until 1792280857
 HACK-056 | REVIEW | joahan-2 | until 1792282131
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):
-- 1792265418 | HACK-044 | Sin cesión. Harp Helú solo si el parque trae esa identidad. La trayectoria sigue siendo ejemplo hasta flyPitch. | Why: El humano dejó 044 aquí y el re
 - 1792265784 | HACK-063 | follow-up of HACK-001 by joahan-1: CI kit syntax check: bash -n only on shell scripts (uak-mcp is Python) | Why: same Paths, no scope change
 - 1792267123 | deadline lease/HACK-046/1792266556 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792267123 | deadline lease/HACK-049/1792267092 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792268746 | HACK-044 | Escena lista para criterios de HACK-044; flyPitch y ruta quedan en 045. | Why: Usuario pidió mandar a review
+- 1792269240 | HACK-048 | loader uses real/ only if manifest parses; design_lab.json embedded until export_web adds it | Why: SPA fallback returns index.html 200; no contract file 
 
 Global next step: available P0; else review PRs, tests, demo, rehearsal.
 Why: bounded snapshot to resume without rereading history.

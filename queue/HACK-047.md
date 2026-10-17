@@ -1,5 +1,5 @@
 ID: HACK-047
-State: MERGING
-Owner: victor-1
-Queued: 1792271962
+State: WAITING
+Owner: joahan-3
+Queued: 1792272960
 Reason: Waiting for queue

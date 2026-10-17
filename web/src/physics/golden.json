@@ -1110,6 +1110,8 @@
   "rho_ext": 0.83826,
   "elasticity": 1.362,
   "reported_delta_ivb": -3.639,
-  "observed_delta_ivb": -3.54
+  "observed_delta_ivb": -3.54,
+  "rho_hh": 0.819,
+  "python_delta_ivb_sea_to_hh": -4.064975768270488
  }
 }

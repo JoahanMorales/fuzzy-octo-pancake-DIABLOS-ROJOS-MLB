@@ -12,6 +12,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from stuffplus.physics.constants import RHO_HARP_HELU
 from stuffplus.physics.flight import Release, fly
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -41,10 +42,14 @@ def main() -> None:
     check = pd.read_csv(ROOT / "reports/physics_v2/flight_check.csv")
     rep = check[(check.pitch_family == "Four-Seam") & (check.model == "elasticidad medida")].iloc[0]
     no = fs.loc["No Altitude"]
+    median_fs = Release(velo_mph=float(no.velo), ivb_in=float(no.ivb), hb_in=float(no.hb), cd=float(no.cd))
+    el = float(rep.elasticity)
+    literal = fly(median_fs, RHO_HARP_HELU, el).ivb_in - fly(median_fs, 1.0, el).ivb_in  # ρ 1.0 → ρ_HH
     flight_check = dict(velo=float(no.velo), ivb=float(no.ivb), hb=float(no.hb), cd=float(no.cd),
                         rho_no=float(no.rho), rho_ext=float(fs.loc["Extreme Altitude", "rho"]),
                         elasticity=float(rep.elasticity), reported_delta_ivb=float(rep.pred_delta_ivb),
-                        observed_delta_ivb=float(rep.obs_delta_ivb))
+                        observed_delta_ivb=float(rep.obs_delta_ivb), rho_hh=float(RHO_HARP_HELU),
+                        python_delta_ivb_sea_to_hh=float(literal))
     OUT.write_text(json.dumps(dict(cases=cases, flight_check=flight_check), indent=1) + "\n")
     print(f"wrote {OUT} ({len(cases)} cases)")
 

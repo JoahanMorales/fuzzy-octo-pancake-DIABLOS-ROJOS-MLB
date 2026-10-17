@@ -47,6 +47,15 @@ describe('flyPitch behaviour', () => {
     expect(Math.abs(delta - c.observed_delta_ivb)).toBeLessThan(0.3);
   });
 
+  it('ρ 1.0 → ρ_HH (0.819) on the same four-seamer matches flight.py', () => {
+    // HACK-041 reports ΔIVB at bucket ρ̂ (above); at the literal 1.0 → 0.819 the same engine gives ≈ −4.06 in.
+    const c = golden.flight_check;
+    const throwAt = (rho: number) =>
+      flyPitch({ velo: c.velo, ivb: c.ivb, hb: c.hb, cd: c.cd, elasticity: c.elasticity, rho });
+    const delta = throwAt(c.rho_hh).ivb - throwAt(1).ivb;
+    expect(Math.abs(delta - c.python_delta_ivb_sea_to_hh)).toBeLessThan(0.01);
+  });
+
   it('thin air (ρ 1.0 → 0.819) loses ride and arrives faster for every family', () => {
     for (const family of FAMILIES) {
       const sea = flyPitch({ velo: 90, ivb: 14, hb: 8, family, rho: 1 });

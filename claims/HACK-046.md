@@ -9,9 +9,9 @@ Priority: P1
 Paths: web/src/features/altitud/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/altitud`
-Lease-Until: 1792266514
-Updated: 1792263814
+Lease-Until: 1792266547
+Updated: 1792263847
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Finish final rerun and push. Resume draft #53 only with verified geographic mapping; never mark done or merge partial task.
+Next: Resume PR #53 with verified ID->coordinates or responsible human criterion revision, then rerun web/browser and full smoke in Python environment; independent exact-SHA review before done/merge.
 PR: -
 Evidence: -

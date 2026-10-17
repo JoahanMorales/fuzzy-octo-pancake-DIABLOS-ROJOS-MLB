@@ -1,6 +1,6 @@
 # HACK-042
 ID: HACK-042
-State: CLAIMED
+State: REVIEW
 Owner: victor-1
 Branch: feat/hack-042
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-042
@@ -9,13 +9,14 @@ Priority: P0
 Paths: web/src/physics/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/physics`
-Lease-Until: 1792205138
-Updated: 1792202438
+Lease-Until: 1792217296
+Updated: 1792202896
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
-Next: port the RK4 step from HACK-041 and its golden CSV.
-PR: -
-Evidence: -
-Events: 1
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/48; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/48
+Evidence: npm --prefix web test -- --run src/physics exit 0 (54 passed: 50 parity vs flight.py, HACK-041 dIVB -3.64 within 0.3); tsc+build OK; smoke PRODUCT_PASS
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0
+Task-Tip: fb5844fe7041c5e8c595bd4210604a382715e3a5

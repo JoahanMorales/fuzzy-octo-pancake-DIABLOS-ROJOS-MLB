@@ -1,0 +1,6 @@
+criterio,tunnel,referencia,umbral,cumple,adoptar
+1. habilidad: IC inferior del tunnel >= habilidad del base,-0.00048,-0.00025,0.0,False,False
+2. r primeros 50 -> resto >= base - 0.005,0.24768,0.2648,-0.005,False,False
+2. r primeros 100 -> resto >= base - 0.005,0.27748,0.29152,-0.005,False,False
+2. r primeros 200 -> resto >= base - 0.005,0.27173,0.30647,-0.005,False,False
+3. split-half >= base - 0.005,0.77942,0.80717,-0.005,False,False

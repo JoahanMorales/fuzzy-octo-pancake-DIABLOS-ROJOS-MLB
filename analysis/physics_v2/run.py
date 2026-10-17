@@ -108,6 +108,7 @@ def main() -> None:
 
 
 def readme(t, gap, el, check, shs, bias, cdre, gap_eff) -> str:
+    slope = shs["b"]
     fs = t[t.pitch_family == "Four-Seam"].set_index("bucket")
     L = ["# Física v2: coeficientes, brecha de sustentación y vuelo RK4 (HACK-041)", "",
          "Generado por `python -m analysis.physics_v2.run` desde los CSV de esta carpeta; ninguna cifra se escribió a mano.", "",

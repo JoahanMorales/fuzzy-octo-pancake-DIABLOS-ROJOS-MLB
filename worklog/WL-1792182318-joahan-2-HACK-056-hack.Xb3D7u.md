@@ -6,7 +6,7 @@
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
 - Commands: `python -m pytest -q tests/test_pipeline.py tests/test_roster.py`
-- Next: Humano: Edits a file outside Paths: .gitignore. Revert that file on the branch (git checkout origin/main -- .gitignore), or the human merges the PR
+- Next: Integrated in main: 68cca17282e868415f237a87255b64a8975b6a0b (recorded by victor-1)
 
 ## History
 - 1792182318 | CLAIMED | joahan-2 | claim; next: list the existing `analysis/*/run.py` entry points and their inputs.
@@ -20,3 +20,4 @@
 - 1792267731 | REVIEW | joahan-2 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-056?expand=1; evidence: 13ed6d5: tests/test_pipeline.py + test_roster.py 23 passed (new: default roster path is git-ignored); git check-ignore data/roster.csv OK; smoke PRODUCT_PASS; reviewer: -
 - 1792270590 | REVIEW | victor-1 | merge rechazado; Edits a file outside Paths: .gitignore. Revert that file on the branch (git checkout origin/main -- .gitignore), or the human merges the PR
 - 1792272425 | REVIEW | joahan-2 | heartbeat; lease until 1792286825
+- 1792273081 | INTEGRATED | victor-1 | integrate; recorded by victor-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-056?expand=1; merged 68cca17282e868415f237a87255b64a8975b6a0b; proof ancestry

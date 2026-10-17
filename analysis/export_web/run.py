@@ -23,7 +23,8 @@ from stuffplus import export_web as ew
 from stuffplus.config import repo_root
 
 MODELS_REL = "../models/"  # relative to real/: web/public/data/models/ (HACK-040)
-# extra validation tables for the methodology page (HACK-049): all aggregates, read from committed reports
+# extra validation tables for the methodology page (HACK-049), in their own file ``validation_extra.json``
+# because the contract schemas are strict (validation.json must keep its exact keys). All aggregates.
 VALIDATION_EXTRA = {
     "rows_fast": "reports/validation/official_fast/validation_table.csv",  # pitcher_kfold, leave_one_park_out_1..20
     "calibration_bins": "reports/validation/official_fast/calibration.csv",  # predicted vs observed xRV by bin
@@ -49,11 +50,9 @@ def build_real(root: Path | None = None) -> dict[str, dict]:
     every = set(pd.read_csv(root / "reports/leaderboards/pitcher_season.csv", usecols=["pitcher_anon_id"])
                 .pitcher_anon_id.astype(str))
     docs.update(ew._pitcher_docs(root, every))
-    val = docs["validation.json"]
-    for key, rel in VALIDATION_EXTRA.items():
-        if (root / rel).is_file():
-            val[key] = ew._records(pd.read_csv(root / rel))
-            val["sources"] = [*val["sources"], rel]
+    found = {k: rel for k, rel in VALIDATION_EXTRA.items() if (root / rel).is_file()}
+    docs["validation_extra.json"] = {**ew.envelope(list(found.values()) or ["analysis/export_web/run.py"]),
+                                     **{k: ew._records(pd.read_csv(root / rel)) for k, rel in found.items()}}
     docs = {rel: _real(doc) for rel, doc in docs.items()}
     for doc in docs.values():
         ew.assert_aggregate(doc)

@@ -43,6 +43,7 @@ La URL que se entrega al jurado es la del sitio publicado; el repo sigue privado
 - Si existe `data/real/manifest.json`, la app lee `data/real/` y la insignia dice "datos reales".
 - Si no, lee `data/mock/` y la insignia dice "ejemplo" (`demo_data: true`).
 - Los modelos se leen de `data/models/` en los dos casos (`manifest.json` → `models_dir`).
+- `data/real/validation_extra.json` (solo en `real/`): pliegues por pitcher, parque fuera, calibración y auditoría de fugas para la metodología.
 
 ## 4. Antes de cada publicación
 

@@ -1,7 +1,7 @@
 # worklog/WL-1792194585-joahan-1-HACK-041-hack.7vEqVS.md · HACK-041
 
 ## Live summary
-- Done: 6f8f937: pytest tests/test_physics_v2.py 6 passed; smoke PASS; real data: 4S Magnus elasticity 1.36 [1.32,1.40]; RK4 with measured elasticity predicts 4S dIVB -3.64 in vs observed -3.54, plate +1.20 vs +1.30 mph; lift gap 9.1% = spin param 0% + density bias 3.9% + residual 5.4%; physics.json written
+- Done: c69a5ef: tests/test_physics_v2.py 9 passed; smoke PRODUCT_PASS; SHS C_L(S) four-seam a=0.183 b=0.016 [-0.051,0.080]; C_D(Re) slopes with pitcher CIs (slow pitches negative); top-10% efficient four-seamers residual -4.0% vs -5.4% all; physics.json unchanged
 - Decision: Own branch and worktree
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
@@ -15,3 +15,4 @@
 - 1792202560 | REVIEW | joahan-1 | handover; joahan-1 → victor-2 by joahan-1
 - 1792207876 | REVIEW | joahan | handover; victor-2 → joahan-1 by joahan
 - 1792209891 | REVIEW | victor-1 | review; approve; SHA c69a5efd5c1995e00532ad256278107bc9ef0781; reviewer victor-1
+- 1792210424 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-041?expand=1; evidence: c69a5ef: tests/test_physics_v2.py 9 passed; smoke PRODUCT_PASS; SHS C_L(S) four-seam a=0.183 b=0.016 [-0.051,0.080]; C_D(Re) slopes with pitcher CIs (slow pitches negative); top-10% efficient four-seamers residual -4.0% vs -5.4% all; physics.json unchanged; reviewer: -

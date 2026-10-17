@@ -44,9 +44,9 @@ Add a `Step` to `STEPS` in `run.py` (dependencies must be listed earlier; `tests
 
 ## Roster drop-in (named finals data)
 
-Optional CSV `pitcher_anon_id,name,team,role` at `data/roster.csv` (or the path in `STUFFPLUS_ROSTER`). It must stay
-out of git: `.gitignore` belongs to HACK-057 in `.uak/OWNERS.md`, and HACK-057 adds the `data/roster.csv` rule; until
-then keep it under `data/raw/` and point `STUFFPLUS_ROSTER` at it. The `roster_names` step
+Optional CSV `pitcher_anon_id,name,team,role` at `data/roster.csv` (or the path in `STUFFPLUS_ROSTER`). It never
+reaches git: `.gitignore` lists `data/roster.csv` (added here with joahan's authorization, although `.gitignore` belongs
+to HACK-057 in `.uak/OWNERS.md`). The `roster_names` step
 writes `pitcher_name` (plus `team_roster` / `role_roster` when given) into the leaderboard and staff CSVs, which the
 web export reads; without the file the step does nothing.
 

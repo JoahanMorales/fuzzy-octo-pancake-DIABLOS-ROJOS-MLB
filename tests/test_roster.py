@@ -90,3 +90,11 @@ def test_roster_names_step_names_board_csvs_and_is_idempotent(tmp_path, roster_f
     assert out["team_roster"].fillna("").tolist() == ["Diablos", "Tigres", ""]
     assert list(out.columns).count("pitcher_name") == 1
     assert name_csvs(["reports/leaderboards"], None, root=tmp_path) == []
+
+
+def test_default_roster_file_is_git_ignored():
+    import subprocess
+
+    rel = roster.DEFAULT_RELATIVE.as_posix()
+    r = subprocess.run(["git", "check-ignore", "-q", rel], cwd=roster.config.repo_root())
+    assert r.returncode == 0, f"{rel} must be git-ignored (named rosters never reach git)"

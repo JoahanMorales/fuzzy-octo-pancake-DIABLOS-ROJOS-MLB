@@ -10,6 +10,7 @@ __pycache__/
 .ipynb_checkpoints/
 # Hackathon data: ISAC/Diablos data must NOT be published (results only)
 data/raw/
+data/roster.csv
 data/interim/
 *.parquet
 *.pkl

@@ -73,3 +73,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792202900 | HACK-042 | input is velo+sea-level ivb/hb (break-calibrated), not spin/axis | Why: flight.py is break-calibrated; physics.json has no C_L(S)
 - 1792203636 | HACK-038 | mocks solo de agregados; delta de liga desde reports/stuff_v2 | Why: la web no puede fijar cifras antes del congelamiento
 - 1792204546 | HACK-044 | mock local con demo_data porque parks.json no está en main | Why: HACK-038 sigue en su rama
+- 1792205714 | HACK-040 | packed tree layout; Pitching+ not exported | Why: nested=41MB vs 13.4MB; Pitching+ is combine(run_oof), not outcome+contact

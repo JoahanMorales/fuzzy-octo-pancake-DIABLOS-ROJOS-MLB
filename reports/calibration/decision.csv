@@ -1,0 +1,7 @@
+model,method,log-loss baja,nivel pitcher no baja,habilidad por lanzamiento no baja,passes,chosen
+stuff_v1,temperature,True,False,True,False,
+stuff_v1,isotonic,True,False,True,False,
+stuff_v1,ELEGIDO,,,,,none
+location,temperature,True,True,True,True,
+location,isotonic,True,False,True,False,
+location,ELEGIDO,,,,,temperature

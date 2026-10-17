@@ -15,3 +15,4 @@
 - 1792202499 | REVIEW | joahan-1 | handover; joahan-1 → sebastian-1 by joahan-1
 - 1792207854 | REVIEW | joahan | handover; sebastian-1 → joahan-3 by joahan
 - 1792211129 | REVIEW | joahan-3 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-053?expand=1; evidence: db0f5f6: tests/test_calibration.py 7 passed; smoke PRODUCT_PASS; methods.csv now has Pitching+ components and Stuff+ v2 (log-loss, ECE, xRV slope, skill, first-N r, split-half); decision: Stuff+ v1 none, Location+ temperature, Pitching+ none, Stuff+ v2 temperature; reviewer: -
+- 1792262746 | REVIEW | joahan-3 | heartbeat; lease until 1792277146

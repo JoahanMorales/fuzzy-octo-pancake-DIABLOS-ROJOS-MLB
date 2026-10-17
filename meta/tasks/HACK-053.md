@@ -1,5 +1,5 @@
 Task: HACK-053
-Events: 6
+Events: 7
 Checkpoints: 0
-Sessions: 5
+Sessions: 6
 Last-Checkpoint: 0

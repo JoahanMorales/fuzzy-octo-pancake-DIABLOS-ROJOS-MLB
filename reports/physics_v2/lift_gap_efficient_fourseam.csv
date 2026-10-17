@@ -1,0 +1,2 @@
+pitch_family,cl_ratio,gap_pct,explained_by_spin_param_pct,explained_by_density_bias_pct,residual_pct,pitch_identities,pitches,eff_threshold,identities_at_95,eff_median_sea
+Four-Seam,0.923,-7.697,-0.023,-3.854,-3.975,58,9077,0.777,2,0.634

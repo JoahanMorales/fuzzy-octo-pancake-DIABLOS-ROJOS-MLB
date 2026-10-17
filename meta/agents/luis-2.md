@@ -1,8 +1,8 @@
 # luis-2
 Agent: luis-2
 Started: 1791989360
-Events: 30
-Events-Since-Checkpoint: 1
+Events: 31
+Events-Since-Checkpoint: 2
 Checkpoints: 2
 Sessions: 3
 Last-Checkpoint: 1792204546

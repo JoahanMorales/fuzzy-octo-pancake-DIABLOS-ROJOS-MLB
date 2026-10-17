@@ -16,7 +16,7 @@ HACK-043 | REVIEW | luis-1 | until 1792278790
 HACK-044 | CLAIMED | luis-2 | until 1792267073
 HACK-046 | BLOCKED | sebastian-2 | until 1792266556
 HACK-047 | CLAIMED | joahan-3 | until 1792266250
-HACK-049 | CLAIMED | sebastian-1 | until 1792266793
+HACK-049 | CLAIMED | sebastian-1 | until 1792267092
 HACK-050 | REVIEW | joahan-1 | until 1792277197
 HACK-053 | REVIEW | joahan-3 | until 1792277146
 HACK-056 | REVIEW | joahan-2 | until 1792277171

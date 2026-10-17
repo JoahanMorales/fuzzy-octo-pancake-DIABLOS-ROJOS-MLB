@@ -9,13 +9,13 @@ Priority: P1
 Paths: web/src/features/metodologia/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/metodologia`
-Lease-Until: 1792266793
-Updated: 1792264093
+Lease-Until: 1792267092
+Updated: 1792264392
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
 Next: Read final full-smoke verdict; update /tmp/hack049-pr-body.md and create PR; if smoke green uak done HACK049 then wait exact-SHA independent review; otherwise draft and checkpoint exact error
 PR: -
 Evidence: -
-Events: 6
+Events: 7
 Checkpoints: 1
 Sessions: 1
 Last-Checkpoint: 1792264093

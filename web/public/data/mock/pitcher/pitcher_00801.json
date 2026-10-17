@@ -1,0 +1,128 @@
+{
+  "model_version": "stuff_v2",
+  "model": "pitch_family Stuff+ composite",
+  "translation": "physics_translator",
+  "demo_data": true,
+  "sources": [
+    "reports/leaderboards/pitcher_season.csv",
+    "reports/leaderboards/pitcher_pitch.csv"
+  ],
+  "id": "pitcher_00801",
+  "seasons": [
+    {
+      "year": 2024,
+      "pitches": 496,
+      "throws": "Right",
+      "stuff_plus": 98.999,
+      "stuff_plus_harp_helu": 89.509,
+      "stuff_plus_own_air": 93.113,
+      "location_plus": 98.66,
+      "pitching_plus": 98.43,
+      "delta_cdmx": -9.491,
+      "arsenal": "4S 42% · riding 4S 20% · slider 17%",
+      "stuff_plus_percentile": 46.015,
+      "arsenal_pitches": [
+        {
+          "pitch_id": 0,
+          "pitch_family": "Four-Seam",
+          "shape": "riding 4S",
+          "pitches": 305,
+          "usage": 0.615,
+          "velo": 92.957,
+          "ivb": 13.649,
+          "hb": 4.367,
+          "spin": 2364.071,
+          "stuff_plus": 97.703,
+          "stuff_plus_harp_helu": 87.874,
+          "stuff_plus_own_air": 92.011,
+          "location_plus": 97.711,
+          "pitching_plus": 97.137,
+          "delta_cdmx": -9.829
+        },
+        {
+          "pitch_id": 1,
+          "pitch_family": "Slider",
+          "shape": "slider",
+          "pitches": 191,
+          "usage": 0.385,
+          "velo": 84.418,
+          "ivb": 0.447,
+          "hb": -5.163,
+          "spin": 2483.394,
+          "stuff_plus": 101.062,
+          "stuff_plus_harp_helu": 92.099,
+          "stuff_plus_own_air": 94.889,
+          "location_plus": 100.206,
+          "pitching_plus": 100.515,
+          "delta_cdmx": -8.962
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "pitches": 588,
+      "throws": "Right",
+      "stuff_plus": 94.975,
+      "stuff_plus_harp_helu": 87.322,
+      "stuff_plus_own_air": 90.568,
+      "location_plus": 97.843,
+      "pitching_plus": 97.441,
+      "delta_cdmx": -7.653,
+      "arsenal": "4S 55% · riding 4S 12% · sweeper 12%",
+      "stuff_plus_percentile": 30.766,
+      "arsenal_pitches": [
+        {
+          "pitch_id": 1,
+          "pitch_family": "Four-Seam",
+          "shape": "4S",
+          "pitches": 359,
+          "usage": 0.611,
+          "velo": 91.729,
+          "ivb": 11.796,
+          "hb": 4.02,
+          "spin": 2341.255,
+          "stuff_plus": 95.085,
+          "stuff_plus_harp_helu": 87.432,
+          "stuff_plus_own_air": 89.741,
+          "location_plus": 97.288,
+          "pitching_plus": 96.362,
+          "delta_cdmx": -7.652
+        },
+        {
+          "pitch_id": 2,
+          "pitch_family": "Changeup",
+          "shape": "power CH",
+          "pitches": 85,
+          "usage": 0.145,
+          "velo": 85.73,
+          "ivb": 4.44,
+          "hb": -0.577,
+          "spin": 2201.539,
+          "stuff_plus": 97.344,
+          "stuff_plus_harp_helu": 87.668,
+          "stuff_plus_own_air": 91.335,
+          "location_plus": 98.506,
+          "pitching_plus": 98.127,
+          "delta_cdmx": -9.676
+        },
+        {
+          "pitch_id": 3,
+          "pitch_family": "Slider",
+          "shape": "slider",
+          "pitches": 109,
+          "usage": 0.185,
+          "velo": 79.921,
+          "ivb": -4.194,
+          "hb": -9.593,
+          "spin": 2660.557,
+          "stuff_plus": 93.873,
+          "stuff_plus_harp_helu": 88.269,
+          "stuff_plus_own_air": 92.08,
+          "location_plus": 99.015,
+          "pitching_plus": 99.606,
+          "delta_cdmx": -5.604
+        }
+      ]
+    }
+  ]
+}

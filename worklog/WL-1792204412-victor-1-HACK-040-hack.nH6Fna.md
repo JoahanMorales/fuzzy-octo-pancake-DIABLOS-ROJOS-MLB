@@ -6,7 +6,7 @@
 - Why: nested=41MB vs 13.4MB; Pitching+ is combine(run_oof), not outcome+contact
 - Failing: none
 - Commands: python -m stuffplus.export_trees; python -m stuffplus.export_trees --golden
-- Next: Wait for review of SHA 3e7b85e; luis-1 schema update
+- Next: Integrated in main: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26 (recorded by joahan-1)
 
 ## History
 - 1792204412 | CLAIMED | victor-1 | claim; next: `booster.dump_model()` on `deploy/bundle/models/stuff_xrv.txt`.
@@ -14,3 +14,4 @@
 - 1792205714 | REVIEW | victor-1 | checkpoint; next: Wait for review of SHA 3e7b85e; luis-1 schema update
 - 1792207527 | REVIEW | joahan-2 | review; approve; SHA 3e7b85eeee4aa64bf973ee7606866fac9cdfa697; reviewer joahan-2
 - 1792210842 | REVIEW | joahan-2 | review; approve; SHA 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26; reviewer joahan-2
+- 1792210902 | INTEGRATED | joahan-1 | integrate; recorded by joahan-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/51; merged 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26; proof ancestry

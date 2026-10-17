@@ -1,4 +1,4 @@
-"""python -m analysis.calibration.run [--models stuff_v1 location stuff_v2] [--fast]  (HACK-053, ~30 min).
+"""python -m analysis.calibration.run [--models stuff_v1 location pitching stuff_v2] [--fast]  (HACK-053, ~30 min each).
 
 Nested calibration (temperature, one-vs-rest isotonic) of the 5-outcome models, evaluated on pitcher-grouped
 outer folds: multiclass log-loss, class-wise ECE, xRV calibration slope, per-pitch skill vs the count null and
@@ -14,6 +14,7 @@ ADOPTION RULE (fixed before the first real run; ``decide`` implements it), per m
 from __future__ import annotations
 
 import argparse
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -23,6 +24,7 @@ from stuffplus import config, evaluate, splits
 from stuffplus.altitude import STUFF_FEATURES_INVARIANT
 from stuffplus.baseline import CountBaseline
 from stuffplus.models.location import LocationModel
+from stuffplus.models.pitching import PitchingComponents, batter_table, with_batter
 from stuffplus.models.stuff import StuffModel, matched_sample_predictiveness, outcome_class, split_half_reliability
 
 OUT = config.REPORTS_DIR / "calibration"
@@ -44,10 +46,25 @@ def load_frame() -> pd.DataFrame:
     return build_features(prepare(clean(load_raw()))[1])
 
 
+@dataclass
+class PitchingWithBatter(PitchingComponents):
+    """Pitching+ components (``models.pitching``) with the batter-quality features learned from the training rows
+    only, as ``pitching.run_oof`` does: unseen batters get the league prior. ``calibration.calibrated`` wraps it
+    like any StuffModel (its predict_components calls this one, so the batter join is kept)."""
+
+    def fit(self, df: pd.DataFrame) -> "PitchingWithBatter":
+        self._tab, self._mu = batter_table(df)
+        return super().fit(with_batter(df, self._tab, self._mu))
+
+    def predict_components(self, df: pd.DataFrame) -> pd.DataFrame:
+        return super().predict_components(with_batter(df, self._tab, self._mu))
+
+
 def model_specs(rounds: dict) -> dict:
     specs = {
         "stuff_v1": ("Stuff+ v1", lambda: StuffModel(features=list(STUFF_FEATURES_INVARIANT), **rounds), None),
         "location": ("Location+", lambda: LocationModel(**rounds), None),
+        "pitching": ("Pitching+ (componentes)", lambda: PitchingWithBatter(**rounds), None),
     }
     try:  # Stuff+ v2 (HACK-052) when it is on this branch
         from stuffplus.models.stuff_v2 import StuffV2Model
@@ -120,7 +137,10 @@ def readme(t: pd.DataFrame, dec: pd.DataFrame) -> str:
         for _, r in g[g.method != "ELEGIDO"].iterrows():
             failed = [c for c in ("log-loss baja", "nivel pitcher no baja", "habilidad por lanzamiento no baja") if not r[c]]
             L.append(f"  - {LABELS[r.method]}: {'pasa' if r.passes else 'no cumple: ' + ', '.join(failed)}.")
-    L += ["", "El nivel pitcher de Stuff+ v2 usa su valor integrado sobre conteos (`stuff_value`); el de los demás, el xRV.",
+    L += ["", "Pitching+ se calibra en su composición de 5 resultados (`PitchingComponents`, la misma forma que Stuff+, "
+          "con ubicación y contexto); la calidad del bateador se aprende solo con el entrenamiento de cada pliegue. "
+          "La combinación de 8 objetivos de HACK-012 se ajusta encima de estas probabilidades y no se recalibra aquí.",
+          "", "El nivel pitcher de Stuff+ v2 usa su valor integrado sobre conteos (`stuff_value`); el de los demás, el xRV.",
           "El calibrador elegido se aplica en producción en HACK-057 con `stuffplus.calibration.fit_nested`. Stuff+ v2 (HACK-052) se evalúa con este mismo script (`--models stuff_v2`) cuando esté integrado; HACK-057 aplica su veredicto.", ""]
     return "\n".join(L)
 

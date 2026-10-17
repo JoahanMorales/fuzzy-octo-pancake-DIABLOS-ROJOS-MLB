@@ -9,8 +9,8 @@ Priority: P0
 Paths: web/src/features/landing/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/landing`
-Lease-Until: 1792266513
-Updated: 1792263813
+Lease-Until: 1792266912
+Updated: 1792264212
 Task-Base: 7b8f70c2aed60cc65d847234fdda361ea163c1a6
 Next: Revisar hero a 1280x720 y Lighthouse desktop
 PR: -

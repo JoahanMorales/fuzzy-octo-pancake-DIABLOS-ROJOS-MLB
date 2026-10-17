@@ -9,13 +9,13 @@ Priority: P0
 Paths: web/src/features/simulador/scene/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/simulador/scene`
-Lease-Until: 1792269823
-Updated: 1792267123
+Lease-Until: 1792270826
+Updated: 1792268126
 Task-Base: 455e796b50a15fc590d0487647db8692739b9379
 Next: HACK-045 monta index.tsx, conecta flyPitch y el panel. La escena aún no tiene ruta.
 PR: -
 Evidence: -
-Events: 14
+Events: 15
 Checkpoints: 3
 Sessions: 1
 Last-Checkpoint: 1792265418

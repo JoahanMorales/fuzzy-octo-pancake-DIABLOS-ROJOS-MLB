@@ -5,3 +5,9 @@ stuff_v1,ELEGIDO,,,,,none
 location,temperature,True,True,True,True,
 location,isotonic,True,False,True,False,
 location,ELEGIDO,,,,,temperature
+pitching,temperature,False,True,True,False,
+pitching,isotonic,True,False,True,False,
+pitching,ELEGIDO,,,,,none
+stuff_v2,temperature,True,True,True,True,
+stuff_v2,isotonic,True,False,True,False,
+stuff_v2,ELEGIDO,,,,,temperature

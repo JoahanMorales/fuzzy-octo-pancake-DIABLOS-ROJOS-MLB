@@ -12,3 +12,4 @@
 - 1792260975 | CLAIMED | sebastian-1 | claim; next: `demo/script.md` around the IDEA §4 flow.
 - 1792261897 | CLAIMED | sebastian-1 | checkpoint; next: Resume feat/hack-025 PR52; resolve leaderboard smoke timeout with app owner; human records other-laptop rehearsal and planb.mp4 in submission/checklist.md; confirm bundle, public URL, private score transfer and receipt before final review
 - 1792261906 | CLAIMED | sebastian-1 | handoff; next: Resume feat/hack-025 PR52; resolve leaderboard smoke timeout with app owner; human records other-laptop rehearsal and planb.mp4 in submission/checklist.md; confirm bundle, public URL, private score transfer and receipt before final review
+- 1792261911 | AVAILABLE | sebastian-1 | release; claim released by sebastian-1; reason: -; summary kept

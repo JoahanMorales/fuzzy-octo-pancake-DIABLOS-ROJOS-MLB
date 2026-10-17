@@ -1,5 +1,5 @@
 ID: HACK-047
-State: WAITING
-Owner: joahan-3
-Queued: 1792272960
-Reason: Waiting for queue
+State: HUMAN
+Owner: victor-1
+Updated: 1792271968
+Reason: Verify / acceptance red: sh: vitest: command not found (log: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792271968.log)

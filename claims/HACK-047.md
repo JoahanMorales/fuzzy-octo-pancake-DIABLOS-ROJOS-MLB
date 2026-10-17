@@ -12,6 +12,6 @@ Verify: `npm --prefix web test -- --run src/features/leaderboard src/features/pi
 Lease-Until: 1792287250
 Updated: 1792272850
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1; run .uak/bin/smoke
+Next: Humano: Verify / acceptance red: sh: vitest: command not found (log: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792271968.log)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1
 Evidence: -

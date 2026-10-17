@@ -6,10 +6,11 @@
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
 - Commands: `npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1; run .uak/bin/smoke
+- Next: Humano: Verify / acceptance red: sh: vitest: command not found (log: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792271968.log)
 
 ## History
 - 1792263550 | CLAIMED | joahan-3 | claim; next: table from `leaderboard.json`.
 - 1792266507 | REVIEW | joahan-3 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1; evidence: c8d48b2: vitest src/features/leaderboard + pitcher 9 passed; tsc OK; npm build OK; Edge screenshots 1440 and 390 (no horizontal overflow); PNG card download verified; smoke PRODUCT_PASS; reviewer: -
 - 1792267839 | REVIEW | victor-2 | review; approve; SHA c8d48b2f62a75e2d2ed241050b3945a2749390f4; reviewer victor-2
 - 1792272850 | REVIEW | joahan-3 | heartbeat; lease until 1792287250
+- 1792271968 | REVIEW | victor-1 | merge rechazado; Verify / acceptance red: sh: vitest: command not found (log: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792271968.log)

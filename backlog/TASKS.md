@@ -407,3 +407,15 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:**
   - CI kit syntax check: bash -n only on shell scripts (uak-mcp is Python)
 - **Verify:** `python -m pytest -q tests/test_io.py`
+
+## HACK-064 · data.ts: real/ only when manifest.json parses as JSON (static hosts answer index.html with 200) (follow-up of HACK-047)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Depends on:** HACK-047
+- **Follow-up of:** HACK-047
+- **Paths:** web/src/features/leaderboard/, web/src/features/pitcher/
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - data.ts: real/ only when manifest.json parses as JSON (static hosts answer index.html with 200)
+- **Verify:** `npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`

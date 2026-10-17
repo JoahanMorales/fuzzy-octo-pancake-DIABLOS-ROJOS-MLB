@@ -100,3 +100,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792269240 | HACK-048 | loader uses real/ only if manifest parses; design_lab.json embedded until export_web adds it | Why: SPA fallback returns index.html 200; no contract file for design lab
 - 1792271792 | HACK-045 | Pitching+ equals Stuff+ until models/pitching.json exists; Harp rho comes from physics.json rho.harp_helu | Why: the export has stuff and location only, and the scene still draws a placeholder arc
 - 1792272455 | HACK-045 | Pitching+ equals Stuff+ until models/pitching.json is exported; models are fetched, not bundled | Why: the pitching composite is not in the web export and a static import made a 13 MB chunk
+- 1792273955 | HACK-064 | follow-up of HACK-047 by joahan-3: data.ts: real/ only when manifest.json parses as JSON (static hosts answer index.html with 200) | Why: same Paths, no scope change

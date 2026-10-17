@@ -1,6 +1,6 @@
 # HACK-048
 ID: HACK-048
-State: REVIEW
+State: INTEGRATED
 Owner: victor-1
 Branch: feat/hack-048
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-048
@@ -9,14 +9,17 @@ Priority: P1
 Paths: web/src/features/staff/, web/src/features/prospecto/, web/src/features/laboratorio/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/staff src/features/prospecto src/features/laboratorio`
-Lease-Until: 1792283640
-Updated: 1792269240
+Lease-Until: 0
+Updated: 1792273203
 Task-Base: 2c31f417dc5ba2a54788629a58085214c2bc47bd
-Next: Wait for review of SHA 840be9d
+Next: Integrated in main: 876a4f4709284fe0b432e285adc650e4002c4839; claim next P0
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/57
 Evidence: vitest staff+prospecto+laboratorio 17 passed (profiler = Python golden <1e-6, no network on upload); tsc+build OK; smoke PRODUCT_PASS; design-critic P1s fixed
-Events: 4
+Events: 5
 Checkpoints: 1
-Sessions: 2
+Sessions: 3
 Last-Checkpoint: 1792269240
 Task-Tip: 840be9d3df3776d2b937ebd62d0868f64c665036
+Integration-Proof: ancestry
+Merge-Commit: 876a4f4709284fe0b432e285adc650e4002c4839
+Reviewer: joahan-2

@@ -1,6 +1,6 @@
 # HACK-047
 ID: HACK-047
-State: REVIEW
+State: INTEGRATED
 Owner: joahan-3
 Branch: feat/hack-047
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-047
@@ -9,14 +9,17 @@ Priority: P1
 Paths: web/src/features/leaderboard/, web/src/features/pitcher/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`
-Lease-Until: 1792287250
-Updated: 1792272850
+Lease-Until: 0
+Updated: 1792273125
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Humano: Verify / acceptance red: sh: vitest: command not found (log: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/.git/uak-out/gate-HACK-047-verify-1792271968.log)
+Next: Integrated in main: 629530baadaf8aca8beab9bd8a7d0f1a2fda0524; claim next P0
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-047?expand=1
 Evidence: c8d48b2: vitest src/features/leaderboard + pitcher 9 passed; tsc OK; npm build OK; Edge screenshots 1440 and 390 (no horizontal overflow); PNG card download verified; smoke PRODUCT_PASS
-Events: 5
+Events: 6
 Checkpoints: 0
 Sessions: 4
 Last-Checkpoint: 0
 Task-Tip: c8d48b2f62a75e2d2ed241050b3945a2749390f4
+Integration-Proof: ancestry
+Merge-Commit: 629530baadaf8aca8beab9bd8a7d0f1a2fda0524
+Reviewer: victor-2

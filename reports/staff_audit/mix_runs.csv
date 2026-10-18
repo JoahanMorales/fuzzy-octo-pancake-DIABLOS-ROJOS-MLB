@@ -1,37 +1,48 @@
 franchise,pitcher_anon_id,role,lean_pitch,cut_pitch,lean_stuff_hh,cut_stuff_hh,gap_points,cut_usage_home,home_pitches_per_season,shift,runs_saved_per_season
-5,pitcher_00736,relevista,gyro slider · 79.2 mph,cutter · 87.3 mph,105.6719,81.3814,24.2905,0.41602,387.0,0.1,0.68031
-5,pitcher_00123,abridor,riding 4S · 88.9 mph,11-5 CB · 78.3 mph,94.44385,86.74561,7.69824,0.18763,485.0,0.1,0.2702
-5,pitcher_00331,relevista,gyro slider · 89.5 mph,sinking 2S · 94.6 mph,95.07263,84.13732,10.93531,0.38368,288.0,0.1,0.22792
-5,pitcher_00964,abridor,4S · 95.4 mph,4S · 93.9 mph,99.67992,89.42486,10.25505,0.22575,268.0,0.1,0.1989
-5,pitcher_00660,relevista,gyro slider · 84.8 mph,4S · 89.6 mph,97.49075,86.60965,10.88109,0.264,250.0,0.1,0.19687
-5,pitcher_00705,abridor,changeup · 85.0 mph,riding 4S · 94.4 mph,92.17892,77.39155,14.78737,0.13609,169.0,0.1,0.18086
-5,pitcher_00019,abridor,running 2S · 92.6 mph,gyro slider · 84.0 mph,96.06596,90.48782,5.57814,0.16654,428.33333,0.1,0.17291
-5,pitcher_01051,relevista,gyro slider · 85.8 mph,4S · 93.2 mph,97.03189,82.12655,14.90534,0.27037,135.0,0.1,0.14562
-5,pitcher_00169,abridor,gyro slider · 81.1 mph,changeup · 86.0 mph,97.60196,84.23134,13.37062,0.24916,148.5,0.1,0.14369
-5,pitcher_00629,abridor,slider · 82.4 mph,power CH · 87.3 mph,95.8872,87.41993,8.46727,0.35885,209.0,0.1,0.12807
-5,pitcher_00913,relevista,riding 4S · 94.3 mph,gyro slider · 86.4 mph,98.60607,89.10202,9.50405,0.24044,183.0,0.1,0.12587
-5,pitcher_00610,relevista,sinking 2S · 92.1 mph,4S · 90.3 mph,95.44776,85.62663,9.82113,0.23197,159.5,0.1,0.11337
-5,pitcher_00855,relevista,4S · 95.6 mph,4S · 89.9 mph,94.63635,87.85846,6.77788,0.72857,210.0,0.1,0.10301
-5,pitcher_00767,relevista,changeup · 77.6 mph,running 2S · 89.2 mph,94.01932,87.15584,6.86348,0.3125,192.0,0.1,0.09537
-5,pitcher_00087,abridor,riding 4S · 89.9 mph,changeup · 80.0 mph,95.76163,90.32436,5.43727,0.35377,212.0,0.1,0.08342
-5,pitcher_00848,relevista,gyro slider · 86.2 mph,riding 4S · 93.9 mph,98.38795,88.7852,9.60275,0.06133,187.5,0.06133,0.07992
-5,pitcher_00999,relevista,sweeper · 83.6 mph,running 2S · 91.8 mph,92.32468,85.93236,6.39231,0.5,158.0,0.1,0.07309
-11,pitcher_00932,abridor,gyro slider · 80.3 mph,riding 4S · 88.7 mph,86.85763,76.52896,10.32867,0.21569,255.0,0.1,0.19061
-11,pitcher_00446,abridor,gyro slider · 80.4 mph,riding 4S · 90.7 mph,97.73195,85.18766,12.54429,0.04792,313.0,0.04792,0.13617
-11,pitcher_01028,relevista,gyro slider · 82.0 mph,riding 4S · 89.4 mph,89.41741,81.26224,8.15518,0.59716,211.0,0.1,0.12453
-11,pitcher_00401,abridor,changeup · 87.3 mph,changeup · 77.3 mph,93.11881,86.97489,6.14392,0.45312,256.0,0.1,0.11383
-11,pitcher_00775,relevista,12-6 CB · 82.4 mph,4S · 94.6 mph,105.13348,89.70987,15.42361,0.17734,101.5,0.1,0.11329
-11,pitcher_00967,abridor,slider · 82.5 mph,power CH · 88.3 mph,102.57982,84.79625,17.78357,0.13253,83.0,0.1,0.10682
-11,pitcher_00742,relevista,splitter · 81.5 mph,riding 4S · 88.2 mph,95.76627,86.04572,9.72055,0.38235,136.0,0.1,0.09567
-11,pitcher_00685,relevista,gyro slider · 84.6 mph,4S · 93.3 mph,97.77701,91.97535,5.80167,0.51515,198.0,0.1,0.08313
-11,pitcher_00605,abridor,gyro slider · 83.6 mph,4S · 91.1 mph,89.29418,83.43753,5.85665,0.49162,179.0,0.1,0.07587
-11,pitcher_00953,abridor,gyro slider · 82.0 mph,riding 4S · 89.4 mph,92.04469,84.93853,7.10617,0.3125,96.0,0.1,0.04937
-11,pitcher_01038,relevista,4S · 87.2 mph,12-6 CB · 76.5 mph,90.17655,84.51913,5.65742,0.30476,105.0,0.1,0.04299
-11,pitcher_00141,relevista,gyro slider · 84.9 mph,running 2S · 92.8 mph,96.58518,85.62137,10.96381,0.78313,41.5,0.1,0.03293
-11,pitcher_00301,relevista,running 2S · 89.1 mph,changeup · 79.5 mph,87.68355,80.35982,7.32373,0.47917,48.0,0.1,0.02544
-11,pitcher_00056,relevista,gyro slider · 83.1 mph,riding 4S · 92.9 mph,96.07804,82.45928,13.61876,0.72222,18.0,0.1,0.01774
-11,pitcher_00121,relevista,changeup · 80.0 mph,cutter · 88.4 mph,92.45949,86.16056,6.29892,0.53333,15.0,0.1,0.00684
-11,pitcher_00122,abridor,sweeper · 79.0 mph,power CH · 86.6 mph,100.78862,84.35839,16.43023,0.0,0.0,0.0,0.0
-11,pitcher_00337,relevista,changeup · 77.4 mph,power CH · 86.9 mph,95.7288,84.04117,11.68763,0.0,0.0,0.0,0.0
-11,pitcher_00887,relevista,slider · 79.7 mph,sinking 2S · 83.8 mph,95.24437,85.97156,9.27281,0.0,36.0,0.0,0.0
-11,pitcher_01084,abridor,power CH · 86.0 mph,running 2S · 91.4 mph,93.10593,80.45164,12.6543,0.0,82.0,0.0,0.0
+5,pitcher_00736,relevista,gyro slider · 79.2 mph,cutter · 87.3 mph,101.41436,79.597,21.81736,0.41602,387.0,0.1,0.61104
+5,pitcher_00958,abridor,gyro slider · 82.2 mph,running 2S · 92.1 mph,90.81353,81.32515,9.48838,0.11175,698.0,0.1,0.4793
+5,pitcher_00125,abridor,gyro slider · 84.3 mph,running 2S · 92.7 mph,92.39696,84.4489,7.94806,0.46408,515.0,0.1,0.29623
+5,pitcher_00331,relevista,gyro slider · 89.5 mph,sinking 2S · 94.6 mph,95.09406,81.77092,13.32314,0.38368,288.0,0.1,0.27769
+5,pitcher_00964,abridor,4S · 95.4 mph,4S · 93.9 mph,94.68843,82.58962,12.0988,0.22575,268.0,0.1,0.23466
+5,pitcher_00019,abridor,11-5 CB · 82.4 mph,running 2S · 92.6 mph,97.74682,90.42353,7.32329,0.29416,428.33333,0.1,0.22701
+5,pitcher_00664,abridor,changeup · 85.0 mph,4S · 93.1 mph,88.41778,81.03514,7.38264,0.35593,413.0,0.1,0.22066
+5,pitcher_00705,abridor,changeup · 85.0 mph,riding 4S · 92.4 mph,90.92598,74.43388,16.4921,0.43787,169.0,0.1,0.20171
+5,pitcher_00660,relevista,gyro slider · 84.8 mph,4S · 89.6 mph,94.35485,84.36761,9.98725,0.264,250.0,0.1,0.18069
+5,pitcher_00169,abridor,gyro slider · 81.1 mph,changeup · 86.0 mph,96.94663,80.99038,15.95625,0.24916,148.5,0.1,0.17148
+5,pitcher_00629,abridor,slider · 82.4 mph,power CH · 87.3 mph,96.52989,85.38783,11.14206,0.35885,209.0,0.1,0.16853
+5,pitcher_01051,relevista,gyro slider · 85.8 mph,4S · 93.2 mph,94.67227,79.8493,14.82296,0.27037,135.0,0.1,0.14482
+5,pitcher_00855,relevista,4S · 95.6 mph,4S · 89.9 mph,91.83268,83.75306,8.07962,0.72857,210.0,0.1,0.12279
+5,pitcher_00882,relevista,slider · 81.7 mph,4S · 89.8 mph,90.17128,82.33461,7.83667,0.48325,209.0,0.1,0.11853
+5,pitcher_00913,relevista,4S · 95.4 mph,gyro slider · 86.4 mph,97.71562,89.04817,8.66745,0.24044,183.0,0.1,0.11479
+5,pitcher_00610,relevista,sinking 2S · 92.1 mph,4S · 90.3 mph,92.80437,83.65318,9.15119,0.23197,159.5,0.1,0.10563
+5,pitcher_00999,relevista,sweeper · 83.6 mph,running 2S · 91.8 mph,91.54163,82.69471,8.84692,0.5,158.0,0.1,0.10116
+5,pitcher_00948,relevista,riding 4S · 92.2 mph,4S · 91.0 mph,90.21097,84.85946,5.35151,0.24063,253.5,0.1,0.09818
+5,pitcher_00851,relevista,slider · 82.3 mph,riding 4S · 93.8 mph,96.97965,88.55582,8.42383,0.58915,129.0,0.1,0.07864
+5,pitcher_00848,relevista,gyro slider · 86.2 mph,riding 4S · 93.9 mph,93.17243,83.96281,9.20963,0.06133,187.5,0.06133,0.07665
+5,pitcher_00987,relevista,riding 4S · 89.5 mph,riding 4S · 94.5 mph,92.96211,86.78686,6.17524,0.13043,161.0,0.1,0.07195
+5,pitcher_00662,relevista,gyro slider · 85.3 mph,sinking 2S · 90.4 mph,92.86273,83.32415,9.53859,0.47727,88.0,0.1,0.06075
+5,pitcher_00981,relevista,11-5 CB · 75.8 mph,4S · 87.6 mph,87.14083,81.09956,6.04128,0.40586,119.5,0.1,0.05225
+5,pitcher_00379,relevista,changeup · 84.8 mph,4S · 93.3 mph,88.82775,83.74151,5.08624,0.4876,121.0,0.1,0.04454
+5,pitcher_00473,relevista,riding 4S · 92.7 mph,changeup · 87.9 mph,87.7319,82.37234,5.35957,0.66667,105.0,0.1,0.04073
+11,pitcher_00685,relevista,gyro slider · 84.6 mph,4S · 93.3 mph,103.09429,86.05687,17.03742,0.51515,198.0,0.1,0.24413
+11,pitcher_00742,relevista,splitter · 81.5 mph,riding 4S · 88.2 mph,104.84339,82.84911,21.99428,0.38235,136.0,0.1,0.21647
+11,pitcher_01028,relevista,gyro slider · 82.0 mph,riding 4S · 89.4 mph,88.56549,75.69026,12.87523,0.59716,211.0,0.1,0.19661
+11,pitcher_00932,abridor,11-5 CB · 74.3 mph,riding 4S · 87.5 mph,84.68134,75.61406,9.06729,0.30196,255.0,0.1,0.16733
+11,pitcher_00938,abridor,changeup · 82.6 mph,4S · 89.8 mph,91.51698,79.36302,12.15396,0.19209,177.0,0.1,0.15569
+11,pitcher_00446,abridor,gyro slider · 80.4 mph,riding 4S · 90.7 mph,96.2579,82.25073,14.00717,0.04792,313.0,0.04792,0.15205
+11,pitcher_00464,abridor,changeup · 82.3 mph,running 2S · 87.9 mph,88.59073,81.64755,6.94319,0.23875,289.0,0.1,0.14522
+11,pitcher_00775,relevista,12-6 CB · 82.4 mph,4S · 94.6 mph,102.13509,84.19783,17.93726,0.17734,101.5,0.1,0.13176
+11,pitcher_00967,abridor,slider · 82.5 mph,power CH · 88.3 mph,100.53105,81.91194,18.6191,0.13253,83.0,0.1,0.11184
+11,pitcher_00636,abridor,gyro slider · 85.2 mph,sinking 2S · 90.7 mph,90.86221,84.3466,6.5156,0.17536,211.0,0.1,0.09949
+11,pitcher_00953,abridor,changeup · 80.3 mph,riding 4S · 89.4 mph,90.02375,77.19832,12.82543,0.3125,96.0,0.1,0.0891
+11,pitcher_00205,relevista,gyro slider · 83.7 mph,4S · 92.8 mph,94.3258,85.82399,8.50181,0.29167,120.0,0.1,0.07383
+11,pitcher_00141,relevista,gyro slider · 84.9 mph,running 2S · 92.8 mph,98.45723,81.17574,17.28149,0.78313,41.5,0.1,0.0519
+11,pitcher_00055,relevista,11-5 CB · 77.7 mph,running 2S · 87.4 mph,90.47444,81.86083,8.6136,0.30303,49.5,0.1,0.03086
+11,pitcher_00887,relevista,slider · 79.7 mph,sinking 2S · 86.9 mph,99.96387,89.19801,10.76585,0.61111,36.0,0.1,0.02805
+11,pitcher_00301,relevista,running 2S · 89.1 mph,changeup · 79.5 mph,86.59636,81.03532,5.56103,0.47917,48.0,0.1,0.01932
+11,pitcher_00056,relevista,gyro slider · 83.1 mph,riding 4S · 92.4 mph,93.19774,79.12443,14.07332,0.11111,18.0,0.1,0.01833
+11,pitcher_00121,relevista,changeup · 80.0 mph,cutter · 88.4 mph,93.06105,82.82287,10.23819,0.53333,15.0,0.1,0.01111
+11,pitcher_01031,relevista,slider · 84.9 mph,riding 4S · 94.8 mph,95.91171,87.14075,8.77096,0.38462,13.0,0.1,0.00825
+11,pitcher_00122,abridor,sweeper · 79.0 mph,power CH · 86.0 mph,98.59857,76.22074,22.37783,0.0,0.0,0.0,0.0
+11,pitcher_00337,relevista,changeup · 77.4 mph,power CH · 86.9 mph,94.96503,79.33884,15.62619,0.0,0.0,0.0,0.0
+11,pitcher_01084,abridor,power CH · 86.0 mph,running 2S · 91.4 mph,94.32581,74.76742,19.55839,0.0,82.0,0.0,0.0

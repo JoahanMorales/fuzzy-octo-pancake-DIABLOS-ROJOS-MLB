@@ -117,3 +117,42 @@ def test_matched_sample_predictiveness_rewards_a_true_signal():
     assert t.loc[0, "stuff_model"] > t.loc[0, "observed_rv"]
     rel = stuff.split_half_reliability(df, "pred", min_n=100)
     assert rel["stuff_model"] > rel["observed_rv"]
+
+
+@pytest.fixture(scope="module")
+def alt_frame(_synthetic_cache):
+    spec = importlib.util.spec_from_file_location("alt_run_prod", ROOT / "analysis" / "altitude_delta" / "run.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    _, d = mod.prepare(schema.clean(_synthetic_cache.copy()))
+    return d.reset_index(drop=True)
+
+
+def test_production_stuff_is_calibrated_v2_and_count_neutral(alt_frame):
+    from stuffplus.models.stuff_v2 import StuffV2Model
+
+    d = alt_frame
+    m = stuff.fit_production_stuff(d, k_inner=2, class_rounds=8, contact_rounds=6)
+    assert stuff.PRODUCTION_VERSION == "stuff_v2" and stuff.PRODUCTION_CALIBRATION == "temperature"
+    assert isinstance(m.model, StuffV2Model) and hasattr(m.model, "_calibrator")
+    v = m.predict_xrv(d)
+    assert np.isfinite(v).all() and np.allclose(v, m.model.stuff_value(d))
+    # the count the pitch was thrown in does not move its Stuff+ value
+    assert np.allclose(m.predict_xrv(d.assign(Balls=3, Strikes=0)), v)
+    comp = m.predict_at_rho(d, 1.0)
+    assert np.allclose(comp["xrv"], m.model.stuff_value(m.translate(d, 1.0, d["rho"].to_numpy())))
+    assert np.allclose(comp.filter(like="p_").sum(axis=1), 1)
+
+
+def test_production_location_uses_temperature_and_a_calibrated_reference(alt_frame):
+    from stuffplus.models import location
+
+    d = alt_frame
+    folds = list(splits.pitcher_group_kfold(d, k=3))
+    tr, te = folds[0]
+    m = location.fit_production_location(d.iloc[tr], k_inner=2, class_rounds=8, contact_rounds=6)
+    assert hasattr(m, "_calibrator")
+    ref = m._reference(d.iloc[tr], m.predict_xrv(d.iloc[tr]))
+    assert np.allclose(ref.sort_index(), m.reference.sort_index())
+    oof = location.production_location_oof(d, folds, k_inner=2, class_rounds=8, contact_rounds=6)
+    assert np.isfinite(oof).all()

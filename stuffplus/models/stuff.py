@@ -181,3 +181,46 @@ def split_half_reliability(df: pd.DataFrame, pred_col: str, obs_col: str = "rv",
     g = g[(g["n"][0] >= min_n) & (g["n"][1] >= min_n)]
     return {"pairs": int(len(g)), "stuff_model": float(g["p"][0].corr(g["p"][1])),
             f"observed_{obs_col}": float(g["o"][0].corr(g["o"][1]))}
+
+
+# --- production Stuff+ (HACK-057) ------------------------------------------------------------------------------
+# Adopted by joahan on 2026-10-16/17: Stuff+ v2 (HACK-052, R4 instead of R3, `uak decision`) with the temperature
+# calibrator chosen by the pre-registered rule of HACK-053 (reports/calibration/decision.csv). StuffModel above stays
+# as v1 for the ablations and v1 vs v2 comparisons.
+PRODUCTION_VERSION = "stuff_v2"
+PRODUCTION_CALIBRATION = "temperature"
+
+
+class CountNeutral:
+    """Production Stuff+: a fitted (calibrated) StuffV2Model whose ``xrv`` is the count-neutral stuff value
+    (``StuffV2Model.stuff_value``: Σ_c w_family(c)·[xRV(c) − m_c]), so Stuff+ never credits or blames the count the
+    pitch was thrown in. Components (probabilities, contact value) are the model's own at the pitch's count. Every
+    other attribute (``translate``, ``features``, ``class_values``...) is the wrapped model's."""
+
+    def __init__(self, model):
+        self.model = model
+
+    def __getattr__(self, name):
+        return getattr(self.model, name)
+
+    def predict_components(self, df: pd.DataFrame) -> pd.DataFrame:
+        out = self.model.predict_components(df).copy()
+        out["xrv"] = self.model.stuff_value(df)
+        return out
+
+    def predict_xrv(self, df: pd.DataFrame) -> np.ndarray:
+        return self.model.stuff_value(df)
+
+    def predict_at_rho(self, df: pd.DataFrame, rho, rho_from: str | float = "rho") -> pd.DataFrame:
+        src = df[rho_from].to_numpy(float) if isinstance(rho_from, str) else rho_from
+        return self.predict_components(self.model.translate(df, rho, src))
+
+
+def fit_production_stuff(train: pd.DataFrame, translate: Callable | None = None, calibration: str = PRODUCTION_CALIBRATION,
+                         k_inner: int = 3, **rounds) -> CountNeutral:
+    """The production Stuff+ model fitted on ``train``: StuffV2Model + nested calibration, count-neutral value."""
+    from stuffplus.calibration import fit_nested
+    from stuffplus.models.stuff_v2 import StuffV2Model
+
+    kw = dict(rounds, **({"translate": translate} if translate is not None else {}))
+    return CountNeutral(fit_nested(lambda: StuffV2Model(**kw), train, calibration, k_inner=k_inner))

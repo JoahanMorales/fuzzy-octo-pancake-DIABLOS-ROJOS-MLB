@@ -108,6 +108,7 @@ def build(reports: Path | None = None) -> tuple[str, pd.DataFrame]:
             lines.append(f"| Estabilidad {check[-9:].replace('_', '→')} (r, pitcher-temporada) | "
                          f"{rows.loc['Stuff+', 'correlation']:.3f} | {rows.loc['Pitching+', 'correlation']:.3f} | — | "
                          "`official_fast/stability.csv` |")
+    lines += v1_to_v2(reports)
     lines += ["", "## Límites", "",
               "- Preparación transductiva: la identidad de lanzamiento, la densidad por juego, las referencias de arsenal y los "
               "valores de carrera LMB (RE, pesos lineales, valor esperado del batazo) se estiman una vez con todos los datos. "
@@ -116,6 +117,50 @@ def build(reports: Path | None = None) -> tuple[str, pd.DataFrame]:
               "- Leave-one-park-out y estabilidad año a año vienen de la corrida rápida (pocos árboles): son conservadoras.",
               "- Los parques son franquicias inferidas (HACK-003), no etiquetas verificadas de estadio.", ""]
     return "\n".join(lines), h
+
+
+def v1_to_v2(reports: Path) -> list[str]:
+    """The production change of HACK-057: Stuff+ v1 → v2 on the same splits, pitcher level, altitude and calibration."""
+    sv = reports / "stuff_v2"
+    if not (sv / "skill.csv").exists():
+        return []
+    skill = pd.read_csv(sv / "skill.csv").set_index(["split", "model"])
+    pl = pd.read_csv(sv / "pitcher_level.csv").set_index("model")
+    bias = pd.read_csv(sv / "altitude_bias.csv").set_index("model")
+    alt = pd.read_csv(sv / "altitude.csv").set_index("model")
+    v1, v2, v2f = "Stuff+ v1", "Stuff+ v2", "Stuff+ v2 (familia)"
+    rows = []
+    for split in ("pitcher_kfold", "season_holdout", "park_holdout"):
+        if (split, v1) in skill.index and (split, v2) in skill.index:
+            a, b = skill.loc[(split, v1)], skill.loc[(split, v2)]
+            rows.append((f"Habilidad vs nulo, {split}", f"{_pct(a.skill_vs_baseline)} [{_pct(a.skill_lo)}, {_pct(a.skill_hi)}]",
+                         f"{_pct(b.skill_vs_baseline)} [{_pct(b.skill_lo)}, {_pct(b.skill_hi)}]", "`stuff_v2/skill.csv`"))
+    for col, label in (("first50_r", "Primeros 50 → resto (r)"), ("first200_r", "Primeros 200 → resto (r)"),
+                       ("split_half_r", "Mitad contra mitad (r)")):
+        rows.append((label, f"{pl.loc[v1, col]:.3f}", f"{pl.loc[v2f, col]:.3f}", "`stuff_v2/pitcher_level.csv`"))
+    rows.append(("Sesgo en altitud extrema no vista (carreras/lanz.)", f"{bias.loc[v1, 'bias_obs_minus_pred']:+.4f}",
+                 f"{bias.loc[v2, 'bias_obs_minus_pred']:+.4f}", "`stuff_v2/altitude_bias.csv`"))
+    rows.append(("ΔStuff+ de liga en el aire del Harp Helú", f"{alt.loc[v1, 'league_delta']:+.1f}",
+                 f"{alt.loc[v2f, 'league_delta']:+.1f}", "`stuff_v2/altitude.csv`"))
+    prod = reports / "altitude_delta" / "delta_by_shape.csv"
+    if prod.exists():
+        r = pd.read_csv(prod).iloc[0]
+        rows.append(("ΔStuff+ de liga en producción (v2 + temperatura)", "", f"{r.delta_stuff - r.relative_to_league:+.1f}",
+                     "`altitude_delta/delta_by_shape.csv` (Δ − relativo a la liga)"))
+    cal = reports / "calibration" / "decision.csv"
+    if cal.exists():
+        d = pd.read_csv(cal)
+        chosen = d[d.method == "ELEGIDO"].set_index("model")["chosen"]
+        rows.append(("Calibración elegida (regla de HACK-053)", str(chosen.get("stuff_v1", "none")),
+                     str(chosen.get("stuff_v2", "none")), "`calibration/decision.csv`"))
+    lines = ["", "## Stuff+ v1 → v2 (HACK-057, en producción)", "",
+             "Desde HACK-057 el Stuff+ de producción es v2: valor del lanzamiento neutral al conteo (HACK-052) con calibración "
+             "por temperatura (HACK-053); Location+ también usa temperatura y Pitching+ queda sin calibrar. Las filas de la "
+             "tabla de arriba siguen siendo la corrida oficial de v1; estas comparan v1 y v2 en las mismas particiones. "
+             "La regla R3 (ΔStuff+ de liga a ±1.5 de v1) no se cumple y el humano adoptó R4 (sesgo en altitud no vista).", "",
+             "| Prueba | v1 | v2 | Fuente |", "|---|---|---|---|"]
+    lines += [f"| {a} | {b} | {c} | {src} |" for a, b, c, src in rows]
+    return lines
 
 
 def main() -> None:

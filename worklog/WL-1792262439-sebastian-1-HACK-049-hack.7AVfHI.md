@@ -16,3 +16,4 @@
 - 1792264019 | CLAIMED | sebastian-1 | heartbeat; lease until 1792266719
 - 1792264093 | CLAIMED | sebastian-1 | checkpoint; next: Read final full-smoke verdict; update /tmp/hack049-pr-body.md and create PR; if smoke green uak done HACK049 then wait exact-SHA independent review; otherwise draft and checkpoint exact error
 - 1792264392 | CLAIMED | sebastian-1 | heartbeat; lease until 1792267092
+- 1792283894 | AVAILABLE | sebastian-1 | release; claim released by sebastian-1; reason: -; summary kept

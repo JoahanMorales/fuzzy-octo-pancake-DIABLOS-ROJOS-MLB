@@ -66,3 +66,43 @@ def test_coefficients_mark_impossible_values_missing():
     c = co.coefficients(d)
     assert np.isfinite(c.loc[0, ["cd", "S", "Re"]]).all()
     assert c.loc[0, "Re"] > 1e5 and c.loc[1, "cl"] != c.loc[1, "cl"]  # absurd acceleration -> NaN
+
+
+def _aero(n=6000, seed=3, a=0.10, b=0.55, cd_slope=-0.02):
+    rng = np.random.default_rng(seed)
+    S = rng.uniform(0.04, 0.35, n)
+    Re = rng.uniform(1.4e5, 2.0e5, n)
+    return pd.DataFrame(dict(pitch_family="Four-Seam", altitude_category="No Altitude",
+                             pitcher_anon_id=[f"p{i % 120}" for i in range(n)], S=S, Re=Re,
+                             cl=co.shs_cl(S, a, b) + rng.normal(0, 0.01, n),
+                             cd=0.33 + cd_slope * Re / 1e5 + rng.normal(0, 0.005, n)))
+
+
+def test_shs_fit_recovers_the_line_above_s_01_and_keeps_15s_below():
+    fit = co.cl_vs_s(_aero(), n_boot=40)
+    assert fit["a"] == pytest.approx(0.10, abs=0.01) and fit["b"] == pytest.approx(0.55, abs=0.03)
+    assert fit["b_lo"] <= fit["b"] <= fit["b_hi"] and fit["n_below"] > 0
+    assert co.shs_cl([0.05], 0.1, 0.55)[0] == pytest.approx(0.075)
+
+
+def test_cd_vs_re_finds_the_planted_drag_crisis_slope_with_a_ci():
+    t = co.cd_vs_re(_aero(), n_boot=40).iloc[0]
+    assert t.slope_per_1e5 == pytest.approx(-0.02, abs=0.003)
+    assert t.slope_lo <= t.slope_per_1e5 <= t.slope_hi < 0
+
+
+def test_efficient_pitches_select_on_one_half_and_hold_out_the_other():
+    rows = []
+    for k in range(6):
+        for g in range(8):
+            for _ in range(10):
+                rows.append(dict(pitch_key=f"k{k}", game_anon_id=f"k{k}g{g}", altitude_category="No Altitude",
+                                 spin_eff=0.98 if k < 3 else 0.80))
+    d = pd.DataFrame(rows)
+    keep, held, thr = co.efficient_pitches(d, min_pitches=20)
+    assert keep == {"k0", "k1", "k2"} and thr == 0.95
+    top, _, thr_top = co.efficient_pitches(d, min_eff=None, min_pitches=20, top_share=0.4)
+    assert top == {"k0", "k1", "k2"} and thr_top == pytest.approx(0.98)
+    sel_rows = d[d.pitch_key.isin(keep)]
+    assert 0 < held.sum() < len(sel_rows)  # only the non-selection games are held out
+    assert not held[~d.pitch_key.isin(keep)].any()

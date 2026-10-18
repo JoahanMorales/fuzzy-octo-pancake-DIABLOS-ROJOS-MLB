@@ -134,3 +134,11 @@ def test_main_accepts_injected_steps(tmp_path, capsys):
     out = capsys.readouterr().out
     assert "b" in out and "[ 1/1]" in out
     assert not list(marks.iterdir())
+
+
+def test_validation_runs_before_altitude_and_names_before_web_export():
+    pos = {s.name: i for i, s in enumerate(pipe.STEPS)}
+    assert pos["validation_summary"] < pos["altitude_delta"] < pos["score"]
+    assert pos["staff_audit"] < pos["roster_names"] < pos["web_export"]
+    web = next(s for s in pipe.STEPS if s.name == "web_export")
+    assert "roster_names" in web.deps

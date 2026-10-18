@@ -68,8 +68,6 @@ STEPS: tuple[Step, ...] = (
          writes="artifacts/bundle (+Location+); reports/location_model/*"),
     _mod("pitching_model", "analysis.pitching_model.run", deps=("stuff_model", "location_model"),
          reads=RAW + "; artifacts/bundle", writes="artifacts/bundle (+Pitching+); reports/pitching_model/*"),
-    _mod("altitude_delta", "analysis.altitude_delta.run", deps=("stuff_model", "physics"), reads=RAW,
-         writes="reports/altitude_delta/*"),
     _mod("hypotheses", "analysis.hypotheses.run", deps=("targets", "park_id", "physics"), reads=RAW,
          writes="reports/hypotheses/* (H1-H4; the memo cites results.csv)"),
     _mod("validation_holdouts", "analysis.validation.run", "--splits", "holdouts", "--pitching-inner-k", "3",
@@ -82,6 +80,9 @@ STEPS: tuple[Step, ...] = (
          deps=("stuff_model", "location_model", "pitching_model", "validation_holdouts", "validation_fast"),
          reads="reports/{stuff,location,pitching}_model/metrics.csv; reports/validation/official_*/",
          writes="reports/validation/summary.md, headline.csv"),
+    # Altitude comes after validation: the CDMX deltas are only reported for models that passed validation.
+    _mod("altitude_delta", "analysis.altitude_delta.run", deps=("stuff_model", "physics", "validation_summary"),
+         reads=RAW, writes="reports/altitude_delta/*"),
     _mod("score", "stuffplus.score", deps=("altitude_delta", "park_id"), reads=RAW,
          writes="artifacts/scores/pitch_scores.parquet; reports/leaderboards/*.csv"),
     _mod("pitcher_sensitivity", "analysis.pitcher_sensitivity.run", deps=("altitude_delta",), reads=RAW,
@@ -98,12 +99,15 @@ STEPS: tuple[Step, ...] = (
     _mod("cards", "stuffplus.cards", deps=("score", "pitcher_sensitivity", "altitude_delta", "park_id"),
          reads="reports/leaderboards, pitcher_sensitivity, altitude_delta; artifacts/team_map.parquet",
          writes="reports/cards/ (PNG/PDF pitcher cards, manifest.csv)"),
+    _mod("roster_names", "analysis.pipeline.names", deps=("score", "staff_audit"),
+         reads="data/roster.csv or $STUFFPLUS_ROSTER (optional, git-ignored)",
+         writes="pitcher_name/team_roster/role_roster in reports/leaderboards and reports/staff_audit CSVs"),
     # The memo reads only these CSV folders: altitude_delta, business_value, hypotheses, ideal_profile, location_model.
     _script("memo", "reports/recommendations/build_memo.py",
             deps=("altitude_delta", "hypotheses", "ideal_profile", "location_model", "business_value"),
             reads="reports/**/*.csv (no raw data)", writes="reports/recommendations/memo.md"),
     # Placeholder: a later task adds the exporter; until analysis/export_web exists the step is skipped.
-    _mod("web_export", "analysis.export_web.run", deps=("score", "staff_audit", "memo"), optional=True,
+    _mod("web_export", "analysis.export_web.run", deps=("score", "staff_audit", "roster_names", "memo"), optional=True,
          reads="reports/ and artifacts/ aggregates", writes="web data files (aggregates only)"),
 )
 

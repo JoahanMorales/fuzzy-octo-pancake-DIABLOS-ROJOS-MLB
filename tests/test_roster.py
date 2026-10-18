@@ -72,3 +72,29 @@ def test_env_override_beats_default_and_custom_column(tmp_path, monkeypatch):
 def test_explicit_roster_argument(roster_file):
     r = pd.DataFrame({"pitcher_anon_id": ["101"], "name": ["Solo"], "team": [""], "role": [""]})
     assert roster.apply_names(frame(), roster=r)["pitcher_name"].tolist() == ["Solo", "102", "103", "999", "Solo"]
+
+
+def test_roster_names_step_names_board_csvs_and_is_idempotent(tmp_path, roster_file):
+    from analysis.pipeline.names import name_csvs
+
+    board = tmp_path / "reports" / "leaderboards"
+    board.mkdir(parents=True)
+    pd.DataFrame({"pitcher_anon_id": ["101", "103", "999"], "stuff_plus": [110, 95, 100]}).to_csv(board / "b.csv", index=False)
+    pd.DataFrame({"park": ["x"]}).to_csv(board / "parks.csv", index=False)  # no id column: untouched
+    r = roster.load_roster()
+    for _ in range(2):
+        files = name_csvs(["reports/leaderboards"], r, root=tmp_path)
+    assert [f.name for f in files] == ["b.csv"]
+    out = pd.read_csv(board / "b.csv", dtype=str)
+    assert out["pitcher_name"].tolist() == ["Ana Perez", "103", "999"]
+    assert out["team_roster"].fillna("").tolist() == ["Diablos", "Tigres", ""]
+    assert list(out.columns).count("pitcher_name") == 1
+    assert name_csvs(["reports/leaderboards"], None, root=tmp_path) == []
+
+
+def test_default_roster_file_is_git_ignored():
+    import subprocess
+
+    rel = roster.DEFAULT_RELATIVE.as_posix()
+    r = subprocess.run(["git", "check-ignore", "-q", rel], cwd=roster.config.repo_root())
+    assert r.returncode == 0, f"{rel} must be git-ignored (named rosters never reach git)"

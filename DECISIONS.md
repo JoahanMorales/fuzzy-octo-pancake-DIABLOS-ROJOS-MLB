@@ -122,3 +122,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792293062 | HACK-069 | compute width by n in export_web from OOF pitch scores | Why: reports/uncertainty has only global widths
 - 1792306035 | HACK-066 | predict().xrv = count-neutral value for v2, like CountNeutral | Why: consumers keep working unchanged; parity with Python production model
 - 1792306915 | HACK-074 | follow-up of HACK-069 by victor-1: Recalibrate the Stuff+ uncertainty bands on the v2 production scores (HACK-057/066) | Why: same Paths, no scope change
+- 1792307251 | HACK-075 | follow-up of HACK-057 by joahan-2: Regenerate web/public/data/real with production Stuff+ v2 (real export still has v1 deltas) | Why: same Paths, no scope change

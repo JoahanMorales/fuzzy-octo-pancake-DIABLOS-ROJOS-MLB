@@ -574,3 +574,15 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:**
   - Recalibrate the Stuff+ uncertainty bands on the v2 production scores (HACK-057/066)
 - **Verify:** `python -m pytest -q tests/test_check_web_dist.py && npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`
+
+## HACK-075 · Regenerate web/public/data/real with production Stuff+ v2 (real export still has v1 deltas) (follow-up of HACK-057)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Depends on:** HACK-057
+- **Follow-up of:** HACK-057
+- **Paths:** stuffplus/models/stuff.py, stuffplus/models/location.py, stuffplus/models/pitching.py, stuffplus/validation/, reports/validation/, reports/stuff_model/, reports/location_model/, reports/pitching_model/, reports/altitude_delta/, reports/leaderboards/, reports/staff_audit/, reports/business_value/, deploy/bundle/
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - Regenerate web/public/data/real with production Stuff+ v2 (real export still has v1 deltas)
+- **Verify:** `python -m pytest -q tests/test_validation.py tests/test_model_stuff.py`

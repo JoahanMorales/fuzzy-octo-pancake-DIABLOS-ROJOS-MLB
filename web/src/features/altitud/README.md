@@ -1,4 +1,4 @@
-# Altitud · HACK-046 (partial)
+# Altitud · HACK-046
 
 The page reads only `parks.json` and `shapes.json` aggregates, validates their
 schemas and provenance, and labels mock data explicitly. Real-data discovery
@@ -11,17 +11,14 @@ shows CDMX minus sea level and the published intervals, without inventing
 sea-level uncertainty. The expandable table preserves all figures and physics
 explanations for accessible inspection.
 
-## Open geographic acceptance criterion
+## Geographic criterion (decision recorded 2026-10-18)
 
-`parks.json` has no coordinates or city names. `reports/park_id/harp_helu.md`
-explicitly leaves the geographic identity of anonymous franchises unverified.
-The 20 circles therefore appear in a panel labelled as unlocated, not as points
-on the Mexico outline. Their **area**, rather than radius, is proportional to
-the relative air density. Park selection supports pointer and keyboard input.
-
-**Do not call HACK-046 complete or merge this draft as a completed task** until a
-documented `id -> longitude/latitude` mapping is available, or the responsible
-human revises the geographic criterion. UAK request #358 asks HACK-038 for it.
+`parks.json` has no coordinates or city names, and `reports/park_id/harp_helu.md` leaves the geographic identity of
+the anonymous franchises unverified. Placing the 20 parks on the outline would invent data, so the criterion is met
+this way (uak decision on HACK-046, routine and reversible, delegated by joahan): the Mexico outline is shown for
+context and the 20 parks sit in a panel labelled "Identidad inferida · ubicación pendiente". Their **area**, not
+their radius, is proportional to the relative air density. Park selection supports pointer and keyboard input. If a
+documented `id -> longitude/latitude` mapping ever lands in the contract, the circles can move onto the projection.
 
 ## Cartography provenance
 

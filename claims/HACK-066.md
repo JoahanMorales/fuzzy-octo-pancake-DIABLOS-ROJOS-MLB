@@ -9,9 +9,9 @@ Priority: P0
 Paths: stuffplus/export_trees.py, tests/test_export_trees.py, web/src/model/, web/src/contract/, web/public/data/models/
 Depends: HACK-057
 Verify: `python -m pytest -q tests/test_export_trees.py && npm --prefix web test -- --run src/model src/contract`
-Lease-Until: 1792320428
-Updated: 1792306028
+Lease-Until: 1792320435
+Updated: 1792306035
 Task-Base: 0a6c1eda318abd1d1ba98abab4403cc1073e4152
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/71; run .uak/bin/smoke
+Next: Wait for review of SHA 7533e00b; then refresh HACK-069 bands on v2
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/71
 Evidence: -

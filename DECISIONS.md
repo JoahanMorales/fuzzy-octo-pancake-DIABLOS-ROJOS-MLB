@@ -120,3 +120,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792290870 | deadline lease/HACK-057/1792288063 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792290870 | deadline lease/HACK-072/1792287747 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792293062 | HACK-069 | compute width by n in export_web from OOF pitch scores | Why: reports/uncertainty has only global widths
+- 1792306035 | HACK-066 | predict().xrv = count-neutral value for v2, like CountNeutral | Why: consumers keep working unchanged; parity with Python production model

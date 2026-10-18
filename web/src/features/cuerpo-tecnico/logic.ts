@@ -50,23 +50,25 @@ export function losesMost(pitches: ArsenalPitch[]): ArsenalPitch | null {
   return pitches.length ? pitches.reduce((w, p) => (p.delta_cdmx < w.delta_cdmx ? p : w)) : null;
 }
 
-/** Move usage from the pitch that loses most in CDMX air to the one that resists best (capped). */
+/** Move usage from the pitch that loses most in CDMX air to a pitch that resists it (loses at least MIN_GAP
+ *  points less) and is worth the most in Harp Helú air; capped, and only when the CDMX arsenal improves. */
 export function suggestHomeMix(pitches: ArsenalPitch[]): MixSuggestion {
   const current = pitches.map((p) => p.usage);
   const used = pitches.filter((p) => p.usage > 0);
   const from = losesMost(used);
-  const to = used.length ? used.reduce((b, p) => (p.delta_cdmx > b.delta_cdmx ? p : b)) : null;
-  let moved = 0;
-  if (from && to && from !== to && to.delta_cdmx - from.delta_cdmx >= MIN_GAP) {
-    moved = Math.min(MIX_CAP, from.usage / 2);
-  }
-  const suggested = pitches.map((p) => p.usage - (p === from ? moved : 0) + (p === to ? moved : 0));
+  const resist = from ? used.filter((p) => p !== from && p.delta_cdmx - from.delta_cdmx >= MIN_GAP) : [];
+  const to = resist.length ? resist.reduce((b, p) => (p.stuff_plus_harp_helu > b.stuff_plus_harp_helu ? p : b)) : null;
+  const shift = (m: number) => pitches.map((p) => p.usage - (p === from ? m : 0) + (p === to ? m : 0));
+  const arsenalNow = weighted(pitches, current, 'stuff_plus_harp_helu');
+  let moved = from && to ? Math.min(MIX_CAP, from.usage / 2) : 0;
+  if (moved > 0 && !(weighted(pitches, shift(moved), 'stuff_plus_harp_helu') > arsenalNow)) moved = 0;
+  const suggested = shift(moved);
   return {
     rows: pitches.map((p, i) => ({ pitch: p, current: current[i], suggested: suggested[i] })),
     moved,
     from: moved > 0 ? from : null,
     to: moved > 0 ? to : null,
-    arsenalNow: weighted(pitches, current, 'stuff_plus_harp_helu'),
+    arsenalNow,
     arsenalSuggested: weighted(pitches, suggested, 'stuff_plus_harp_helu'),
   };
 }

@@ -30,6 +30,14 @@ describe('suggested home mix', () => {
     expect(Math.max(...mix.rows.map((r) => Math.abs(r.suggested - r.current)))).toBeLessThanOrEqual(MIX_CAP + 1e-12);
   });
 
+  it('sends usage to the resisting pitch worth most in CDMX air, not just the one that loses least', () => {
+    const arsenal = [p(1, 'Sinker', 0.3, 104, 98.6), p(2, 'Sinker', 0.2, 101.5, 92.5), p(3, 'Slider', 0.5, 96, 92.5)];
+    const mix = suggestHomeMix(arsenal);
+    expect(mix.from?.pitch_id).toBe(2);
+    expect(mix.to?.pitch_id).toBe(1);
+    expect(mix.arsenalSuggested).toBeGreaterThan(mix.arsenalNow);
+  });
+
   it('keeps the mix when every pitch loses about the same', () => {
     const mix = suggestHomeMix([p(1, 'Sinker', 0.6, 100, 95), p(2, 'Slider', 0.4, 100, 95.5)]);
     expect(mix.moved).toBe(0);

@@ -37,11 +37,11 @@ export function PitcherReport({ doc, plan }: { doc: PitcherDoc; plan: Record<str
             <tr>
               <th scope="col">Lanzamiento</th>
               <th scope="col" className="num opt">Velocidad (mph)</th>
-              <th scope="col" className="num">Stuff+ neutral</th>
+              <th scope="col" className="num opt">Stuff+ neutral</th>
               <th scope="col" className="num is-hh">Stuff+ en CDMX</th>
               <th scope="col" className="num">Cambio</th>
               <th scope="col" className="num">Uso actual</th>
-              <th scope="col" className="num">Uso sugerido en casa</th>
+              <th scope="col" className="num">Uso sugerido</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +49,7 @@ export function PitcherReport({ doc, plan }: { doc: PitcherDoc; plan: Record<str
               <tr key={p.pitch_id}>
                 <th scope="row">{pitchName(p)}</th>
                 <td className="num opt">{fmt(p.velo)}</td>
-                <td className="num">{fmt(p.stuff_plus)}</td>
+                <td className="num opt">{fmt(p.stuff_plus)}</td>
                 <td className="num">{fmt(p.stuff_plus_harp_helu)}</td>
                 <td className="num">{fmt(p.delta_cdmx, 1, true)}</td>
                 <td className="num">{pct(current)}</td>
@@ -61,8 +61,8 @@ export function PitcherReport({ doc, plan }: { doc: PitcherDoc; plan: Record<str
       </div>
       <p className="h48-note">
         {mix.from && mix.to
-          ? `Sugerencia del modelo, no un efecto medido: pasar ${pct(mix.moved)} del uso de ${pitchName(mix.from)} a ${pitchName(mix.to)} sube el Stuff+ en CDMX del arsenal de ${fmt(mix.arsenalNow)} a ${fmt(mix.arsenalSuggested)} (promedio ponderado por uso).`
-          : 'La mezcla actual ya usa los lanzamientos que mejor resisten el aire del Harp Helú; el modelo no sugiere cambios.'}{' '}
+          ? `Sugerencia del modelo, no un efecto medido: pasar ${pct(mix.moved)} del uso de ${pitchName(mix.from)} a ${pitchName(mix.to)} sube el Stuff+ en CDMX del arsenal ${fmt(mix.arsenalSuggested - mix.arsenalNow, 2, true)} puntos (de ${fmt(mix.arsenalNow, 2)} a ${fmt(mix.arsenalSuggested, 2)}, promedio ponderado por uso).`
+          : 'Ningún cambio de mezcla dentro del tope mejora el Stuff+ en CDMX de este arsenal; el modelo no sugiere cambios.'}{' '}
         Tope: {pct(MIX_CAP)} del uso y nunca más de la mitad de un lanzamiento.
       </p>
       <p className="h48-conclusion">

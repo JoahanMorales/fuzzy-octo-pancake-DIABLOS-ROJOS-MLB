@@ -21,3 +21,4 @@
 - 1792283888 | BLOCKED | sebastian-2 | checkpoint; next: PR53 remains partial; resume when ID->coordinates documented. Fix shared CI separately then refresh PR50 exact SHA.
 - 1792283892 | AVAILABLE | sebastian-2 | release; claim released by sebastian-2; reason: -; summary kept
 - 1792306499 | CLAIMED | joahan-4 | claim; next: PR53 remains partial; resume when ID->coordinates documented. Fix shared CI separately then refresh PR50 exact SHA.
+- 1792306683 | CLAIMED | joahan-4 | pending decision HACK-046-1792306683; option: Map criterion met as in sebastian-2 draft 88f6fc2: Mexico outline (Natural Earth, public domain) plus the 20 parks in an unlocated panel sized by rho, never placed on coordinates; Why: parks.json has no coordinates and reports/park_id/harp_helu.md says franchise identity is not verified; placing them would invent data (AGENTS 1.6). joahan delegated decisions in chat

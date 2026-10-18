@@ -15,7 +15,7 @@ Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
 Next: PR53 remains partial; resume when ID->coordinates documented. Fix shared CI separately then refresh PR50 exact SHA.
 PR: -
 Evidence: -
-Events: 12
+Events: 13
 Checkpoints: 4
 Sessions: 3
 Last-Checkpoint: 1792283888

@@ -123,7 +123,7 @@ function Rig({ pose, look, helmet, extra }: { pose: React.MutableRefObject<Pose>
 }
 
 /* ---------- batter: chest toward +x (the plate), pitcher toward -z; mirrored with scale.x for a lefty ---------- */
-const STANCE: Pose = {
+export const STANCE: Pose = {
   pelvis: [0, 3.0, 0], chest: [0.22, 4.75, 0.05], neck: [0.3, 5.2, 0], head: [0.36, 5.62, -0.06],
   hipL: [0.02, 3.0, -0.42], kneeL: [0.42, 1.65, -0.95], ankleL: [0.2, 0.3, -1.3], toeL: [0.75, 0.12, -1.3],
   hipR: [0.02, 3.0, 0.42], kneeR: [0.36, 1.65, 0.98], ankleR: [0.08, 0.3, 1.22], toeR: [0.62, 0.12, 1.22],

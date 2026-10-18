@@ -6,7 +6,7 @@
 - Why: Real assets are now in main; both envelopes must match model/version/translation/demo before combining
 - Failing: GitHub gates still fail global bash-n on Python uak-mcp; HACK073 PR62 CIgreen, reviewer victor2 owns lock; no own-code test failures
 - Commands: npm --prefix web test -- --run src/features/metodologia; npm --prefix web test -- --run; npm --prefix web run build; PATH=hack026/.venv/bin:$PATH bash .uak/bin/q bash .uak/bin/smoke; node /tmp/hack049-browser.cjs
-- Next: Humano: Local and remote HEAD differ; push the branch before review/merge
+- Next: Integrated in main: 34e2b1fa04961b6bd4fc30f6ccdccf2620c4bd80 (recorded by sebastian-2)
 
 ## History
 - 1792262439 | CLAIMED | sebastian-1 | claim; next: chart from `validation.json`.
@@ -24,3 +24,4 @@
 - 1792284855 | REVIEW | sebastian-2 | review; approve; SHA 701d5597a20917b10efb71cd1070e6cc6b778297; reviewer sebastian-2
 - 1792285027 | REVIEW | sebastian-1 | heartbeat; lease until 1792299427
 - 1792285042 | REVIEW | sebastian-1 | merge rechazado; Local and remote HEAD differ; push the branch before review/merge
+- 1792285104 | INTEGRATED | sebastian-2 | integrate; recorded by sebastian-2; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/55; merged 34e2b1fa04961b6bd4fc30f6ccdccf2620c4bd80; proof ancestry

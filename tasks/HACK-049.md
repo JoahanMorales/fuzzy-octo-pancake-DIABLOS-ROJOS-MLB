@@ -9,13 +9,13 @@ Priority: P1
 Paths: web/src/features/metodologia/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/metodologia`
-Lease-Until: 1792286615
-Updated: 1792283915
+Lease-Until: 1792286912
+Updated: 1792284212
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
 Next: Integrate origin/main, verify final methodology contract and finish PR55 review
 PR: -
 Evidence: -
-Events: 9
+Events: 10
 Checkpoints: 1
 Sessions: 3
 Last-Checkpoint: 1792264093

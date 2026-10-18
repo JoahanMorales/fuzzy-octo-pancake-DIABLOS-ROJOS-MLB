@@ -95,6 +95,11 @@ export function RecruitView({ board, source, diablos }: { board: Board; source: 
       )}
 
       {rows.length > 0 && (
+        <p className="h48-muted" role="status">
+          {list.length} de {SHORTLIST_MAX} en la <a href="#lista-title" onClick={(e) => { e.preventDefault(); document.getElementById('lista-title')?.scrollIntoView(); }}>lista corta</a>.
+        </p>
+      )}
+      {rows.length > 0 && (
         <div className="h48-scroll" tabIndex={0} role="region" aria-label="Candidatos">
           <table className="h48-table">
             <thead>
@@ -106,7 +111,7 @@ export function RecruitView({ board, source, diablos }: { board: Board; source: 
                 <th scope="col" className="num opt">Lanzamientos</th>
                 <th scope="col" className="num opt">Stuff+ neutral</th>
                 <th scope="col" className="num is-hh">Stuff+ en CDMX</th>
-                <th scope="col" className="num">Cambio</th>
+                <th scope="col" className="num">Cambio (pts)</th>
                 <th scope="col" className="opt">Arsenal</th>
               </tr>
             </thead>
@@ -146,6 +151,7 @@ export function RecruitView({ board, source, diablos }: { board: Board; source: 
           <>
             <div ref={card} className="h68-card" data-testid="tarjeta">
               <p className="h68-card-title">Lista corta de reclutamiento · Stuff+ 2240</p>
+              <div className="h68-card-head" aria-hidden="true"><span /><span className="is-sea">Neutral</span><span className="is-hh">CDMX</span></div>
               <ol>
                 {picked.map((r) => (
                   <li key={rowKey(r)}>

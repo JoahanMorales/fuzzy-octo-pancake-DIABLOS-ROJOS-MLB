@@ -560,5 +560,5 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:**
   - The "Kit syntax" step checks a file with `bash -n` only when its shebang names bash or sh, so `.uak/bin/uak-mcp` (Python) no longer fails every PR; the other gates stay as they are.
   - A PR run of the workflow is green on that step (link in the evidence). Replaces HACK-063, whose Paths include files HACK-001 owns.
-- **Verify:** `for f in .uak/bin/* .uak/bin/lib/*.sh; do [ -f "$f" ] && head -1 "$f" | grep -qE 'bash|sh$' && bash -n "$f"; done`
+- **Verify:** `for f in .uak/bin/* .uak/bin/lib/*.sh; do [ -f "$f" ] || continue; if head -n 1 "$f" | grep -qE '^#!.*(bash|/sh|[[:space:]]sh)([[:space:]]|$)'; then bash -n "$f" || exit; fi; done`
 - **Next step:** edit the Kit syntax step in .github/workflows/uak.yml.

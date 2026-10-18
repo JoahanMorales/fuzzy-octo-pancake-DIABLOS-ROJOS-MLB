@@ -1,12 +1,12 @@
 # worklog/WL-1792262439-sebastian-1-HACK-049-hack.7AVfHI.md · HACK-049
 
 ## Live summary
-- Done: PR55 ready REVIEW at701d5597; methodology13/fullweb121/build/productsmoke405s allPASS; actualreal+mock/error/retry browser desktop/mobile PASS; criticSHIP; advisorGO; sourceonly5files ownPaths
-- Decision: Local strict optional supplement; no fabricated calibration/audit metrics; label full vs fast and retain transductive caveats
-- Why: Real assets are now in main; both envelopes must match model/version/translation/demo before combining
-- Failing: GitHub gates still fail global bash-n on Python uak-mcp; HACK073 PR62 CIgreen, reviewer victor2 owns lock; no own-code test failures
-- Commands: npm --prefix web test -- --run src/features/metodologia; npm --prefix web test -- --run; npm --prefix web run build; PATH=hack026/.venv/bin:$PATH bash .uak/bin/q bash .uak/bin/smoke; node /tmp/hack049-browser.cjs
-- Next: Integrated in main: 34e2b1fa04961b6bd4fc30f6ccdccf2620c4bd80 (recorded by sebastian-2)
+- Done: PR55 merged34e2b1fa and UAK INTEGRATED by sebastian2. Branch65b4a8df includes upstream CI051ed274; product source identical to reviewed701d5597. Verify13/fullweb121/build/smoke405s/browser/critic PASS. HACK064 c184e931 approved10tests+Chrome; HACK06542cf6701 approved8tests+570doc export exactreports.
+- Decision: Preserve exact-SHA independent approvals and shared-path ownership
+- Why: Normal source-based methodology with real static assets and explicit transductive limits
+- Failing: -
+- Commands: gh pr view55 stateMERGED mergeCommit34e2b1fa; uak status HACK049 INTEGRATED; Verify13/fullweb121/build/smoke evidence in worklog
+- Next: Recover expired HACK057 after reading fresh summary; preserve remote branch162f1c53 before implementing production adoption. HACK066 depends on057;069 waits integration064/065.
 
 ## History
 - 1792262439 | CLAIMED | sebastian-1 | claim; next: chart from `validation.json`.
@@ -25,3 +25,4 @@
 - 1792285027 | REVIEW | sebastian-1 | heartbeat; lease until 1792299427
 - 1792285042 | REVIEW | sebastian-1 | merge rechazado; Local and remote HEAD differ; push the branch before review/merge
 - 1792285104 | INTEGRATED | sebastian-2 | integrate; recorded by sebastian-2; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/55; merged 34e2b1fa04961b6bd4fc30f6ccdccf2620c4bd80; proof ancestry
+- 1792285327 | INTEGRATED | sebastian-1 | checkpoint; next: Recover expired HACK057 after reading fresh summary; preserve remote branch162f1c53 before implementing production adoption. HACK066 depends on057;069 waits integration064/065.

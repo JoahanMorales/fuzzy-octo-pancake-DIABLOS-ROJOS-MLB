@@ -39,6 +39,11 @@ describe('leaderboard logic', () => {
 describe('data source', () => {
   afterEach(() => resetSourceCache());
 
+  it('falls back to mock/ when the host answers the missing manifest with index.html', async () => {
+    const html = async () => ({ ok: true, json: async () => { throw new SyntaxError('Unexpected token <'); } });
+    expect(await dataSource(html)).toBe('mock');
+  });
+
   it('reads real/ when its manifest exists, else mock/', async () => {
     const urls: string[] = [];
     const fake = (ok: boolean) => async (url: string) => {

@@ -1,9 +1,12 @@
 /* Low-poly players driven by keyframed joint positions (feet). Each frame the limbs are re-aimed between their two
    joints, so a pose is just a table of points and the windup is a blend between poses. No skinning, ~25 meshes. */
-import { useLayoutEffect, useMemo, useRef } from 'react';
+import { Suspense, useLayoutEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { batterFrame, MOUND_H, MOUND_Z, type Hand, type Vec3 } from './sceneModel';
+import { Mannequin } from './mannequin';
+
+const FT = 3.28084;
 
 type Joint =
   | 'pelvis' | 'chest' | 'neck' | 'head'
@@ -146,6 +149,7 @@ export function Batter({ hand, reduced, playId, look, windup }: { hand: Hand; re
   const clock = useRef({ id: -1, t0: 0 });
   if (swap.current.to !== hand) swap.current = { from: swap.current.to, to: hand, t: reduced ? 1 : 0 };
   const bat = useRef<THREE.Mesh>(null);
+  const batRig = useRef<THREE.Mesh>(null);
   useFrame((st, dt) => {
     const g = ref.current;
     if (!g) return;
@@ -166,16 +170,38 @@ export function Batter({ hand, reduced, playId, look, windup }: { hand: Hand; re
       b.quaternion.setFromUnitVectors(UP, tip.clone().sub(grip).normalize());
     }
   });
+  // batter space (chest toward +x, catcher toward +z) -> rig space (meters, rig faces +z, his right at -x)
+  const toRig = (q: Vec3) => new THREE.Vector3(-q[2] / FT, q[1] / FT, q[0] / FT);
+  const placeBat = (l: THREE.Vector3, r: THREE.Vector3) => {
+    const m = batRig.current;
+    if (!m) return;
+    const grip = l.clone().lerp(r, 0.5);
+    const dir = new THREE.Vector3(-0.42, 0.88, -0.22).normalize();
+    m.position.copy(grip).addScaledVector(dir, 0.4);
+    m.quaternion.setFromUnitVectors(UP, dir);
+  };
+  const fallback = (
+    <Rig pose={pose} look={look} helmet
+      extra={(
+        <mesh ref={bat} castShadow>
+          <cylinderGeometry args={[0.115, 0.05, 2.75, 8]} />
+          <meshStandardMaterial color="#b0875c" roughness={0.45} flatShading />
+        </mesh>
+      )}
+    />
+  );
   return (
     <group ref={ref}>
-      <Rig pose={pose} look={look} helmet
-        extra={(
-          <mesh ref={bat} castShadow>
-            <cylinderGeometry args={[0.115, 0.05, 2.75, 8]} />
-            <meshStandardMaterial color="#b0875c" roughness={0.45} flatShading />
-          </mesh>
-        )}
-      />
+      <Suspense fallback={fallback}>
+        <group rotation={[0, Math.PI / 2, 0]}>
+          <Mannequin pose={pose} look={look} toRig={toRig} helmet onPosed={placeBat}>
+            <mesh ref={batRig} castShadow>
+              <cylinderGeometry args={[0.034, 0.014, 0.86, 14]} />
+              <meshStandardMaterial color="#b0875c" roughness={0.4} />
+            </mesh>
+          </Mannequin>
+        </group>
+      </Suspense>
     </group>
   );
 }
@@ -233,9 +259,15 @@ export function Pitcher({ throws, release, reduced, playId, look, windup }: {
     if (clock.current.id !== playId) clock.current = { id: playId, t0: st.clock.elapsedTime };
     pose.current = reduced ? keys[3] : sample(keys, times, st.clock.elapsedTime - clock.current.t0);
   });
+  // pitcher space (+z toward home, +x arm side) -> rig space (meters; the rig's right hand is at -x)
+  const toRig = (q: Vec3) => new THREE.Vector3(-q[0] / FT, q[1] / FT, q[2] / FT);
   return (
-    <group position={[0, MOUND_H, MOUND_Z]} scale={[mirror, 1, 1]}>
-      <Rig pose={pose} look={look} helmet={false} />
+    <group position={[0, MOUND_H, MOUND_Z]}>
+      <Suspense fallback={<group scale={[mirror, 1, 1]}><Rig pose={pose} look={look} helmet={false} /></group>}>
+        <group scale={[throws === 'R' ? 1 : -1, 1, 1]}>
+          <Mannequin pose={pose} look={look} toRig={toRig} helmet />
+        </group>
+      </Suspense>
     </group>
   );
 }

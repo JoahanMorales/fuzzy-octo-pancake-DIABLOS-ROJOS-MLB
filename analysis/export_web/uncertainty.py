@@ -27,6 +27,7 @@ N_PITCHES = (25, 50, 100, 200, 300, 500, 800)
 MIN_REST = 200
 DRAWS = 5
 ALPHA = 0.1
+MIN_SEASONS = 30  # pitcher-seasons per half; fewer gives an unreliable quantile (n = 800 had 4)
 KEY = ["pitcher_anon_id", "year"]
 
 
@@ -59,7 +60,7 @@ def table(d: pd.DataFrame, seed: int = 0) -> pd.DataFrame:
                 continue
             is_cal = np.array([(p, y) in cal for p, y in zip(s.pitcher_anon_id, s.year)])
             c, t = s[is_cal], s[~is_cal]
-            if len(c) < 20 or len(t) < 20:
+            if min(c[KEY].drop_duplicates().shape[0], t[KEY].drop_duplicates().shape[0]) < MIN_SEASONS:
                 continue
             hw = split_conformal(c.score.to_numpy(), alpha=ALPHA)
             alt = t[t.share_extreme >= 0.5]

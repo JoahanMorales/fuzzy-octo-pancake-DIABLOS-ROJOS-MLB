@@ -1,1 +1,0 @@
-No se exportó el staff candidato de Diablos (franquicias de menor densidad, reports/park_id/harp_helu.md). Falta el mapa local de equipos; no se usa el parquet en esta corrida. Detalle: DataNotFoundError

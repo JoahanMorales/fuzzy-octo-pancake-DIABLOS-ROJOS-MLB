@@ -1,7 +1,7 @@
 {
   "demo_data": false,
   "exploratory": true,
-  "fast": true,
+  "fast": false,
   "pitches": 623231,
   "pitcher_seasons": 1455,
   "ranked": 1277,

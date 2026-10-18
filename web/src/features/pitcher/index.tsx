@@ -5,6 +5,7 @@ import { ArrowLeft } from '@phosphor-icons/react';
 import { DataBadge } from '../leaderboard/DataBadge';
 import { fmt, useDoc, type Source } from '../leaderboard/data';
 import { handLabel } from '../leaderboard/logic';
+import { Band, useBands, type Bands } from '../leaderboard/uncertainty';
 import { PitcherCard } from './Card';
 import { MovementPlot } from './MovementPlot';
 import { ParksChart } from './ParksChart';
@@ -14,7 +15,7 @@ import './pitcher.css';
 
 type ParksDoc = { parks: Park[]; demo_data: boolean };
 
-export function PitcherView({ doc, parks, source }: { doc: PitcherDoc; parks: Park[]; source: Source }) {
+export function PitcherView({ doc, parks, source, bands = null }: { doc: PitcherDoc; parks: Park[]; source: Source; bands?: Bands | null }) {
   const seasons = useMemo(() => [...doc.seasons].sort((a, b) => b.year - a.year), [doc]);
   const [year, setYear] = useState(seasons[0].year);
   useEffect(() => setYear(seasons[0].year), [seasons]);
@@ -46,8 +47,8 @@ export function PitcherView({ doc, parks, source }: { doc: PitcherDoc; parks: Pa
       )}
 
       <dl className="pp-strip">
-        <div><dt>Stuff+ neutral</dt><dd>{fmt(season.stuff_plus)}</dd></div>
-        <div className="is-hh"><dt>Stuff+ en CDMX</dt><dd>{fmt(season.stuff_plus_harp_helu)}</dd></div>
+        <div><dt>Stuff+ neutral</dt><dd>{fmt(season.stuff_plus)}<Band bands={bands} air="neutral" pitches={season.pitches} /></dd></div>
+        <div className="is-hh"><dt>Stuff+ en CDMX</dt><dd>{fmt(season.stuff_plus_harp_helu)}<Band bands={bands} air="harp_helu" pitches={season.pitches} /></dd></div>
         <div><dt>Δ CDMX</dt><dd>{fmt(season.delta_cdmx, 1, true)}</dd></div>
         <div><dt>Location+</dt><dd>{fmt(season.location_plus)}</dd></div>
         <div><dt>Pitching+</dt><dd>{fmt(season.pitching_plus)}</dd></div>
@@ -119,6 +120,7 @@ export default function PitcherPage() {
   const { id = '' } = useParams();
   const doc = useDoc<PitcherDoc>(id ? `pitcher/${id}.json` : null);
   const parks = useDoc<ParksDoc>('parks.json');
+  const bands = useBands();
   if (doc.state === 'loading' || parks.state === 'loading') return <div className="page-loading" role="status">Cargando pitcher…</div>;
   if (doc.state === 'error') {
     return (
@@ -132,5 +134,5 @@ export default function PitcherPage() {
       </article>
     );
   }
-  return <PitcherView doc={doc.doc} parks={parks.state === 'ready' ? parks.doc.parks : []} source={doc.source} />;
+  return <PitcherView doc={doc.doc} parks={parks.state === 'ready' ? parks.doc.parks : []} source={doc.source} bands={bands} />;
 }

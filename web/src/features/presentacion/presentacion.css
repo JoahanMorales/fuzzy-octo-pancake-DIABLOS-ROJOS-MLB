@@ -1,0 +1,63 @@
+/* /presentacion (HACK-071): the real page on stage, a compact lower-third speaker strip, and a print-only script.
+   The stage reserves the strip's measured height (Tour.tsx), so the page is never hidden behind it. */
+.h71-hud {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: minmax(110px, auto) minmax(0, 1fr) auto;
+  grid-template-areas: 'step say controls' 'step say hint';
+  align-items: center;
+  gap: var(--s-6, 24px);
+  padding: var(--s-3, 12px) var(--s-6, 24px);
+  background: var(--surface);
+  border-top: 2px solid var(--red);
+  color: var(--fg);
+}
+.h71-step { grid-area: step; display: grid; gap: 2px; font-family: var(--font-display); text-transform: uppercase; font-size: var(--text-lg); }
+.h71-count { color: var(--fg-muted); font-family: var(--font-mono); font-size: var(--text-sm); }
+.h71-say { grid-area: say; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-6, 24px); align-items: center; }
+.h71-note { margin: 0; font-size: var(--text-lg); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.h71-number { margin: 0; display: grid; gap: 2px; max-width: 26ch; }
+.h71-number b { font-family: var(--font-display); font-size: var(--text-2xl); line-height: 1; color: var(--fg); }
+.h71-number.is-air b { color: var(--red-strong); }
+.h71-number span { color: var(--fg-muted); font-size: var(--text-xs); line-height: 1.3; }
+.h71-controls { grid-area: controls; display: flex; flex-wrap: nowrap; gap: var(--s-2, 8px); align-items: center; justify-content: flex-end; }
+.h71-controls .h48-button { padding: 8px 14px; }
+.h71-hud .h48-button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.h71-clock { font: inherit; font-family: var(--font-mono); font-size: var(--text-xl); color: var(--fg); background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 4px 10px; cursor: pointer; }
+.h71-clock[aria-pressed='true'] { border-color: var(--fg); }
+.h71-clock.is-over { color: var(--warn); }
+.h71-hint { grid-area: hint; margin: 0; text-align: right; color: var(--fg-muted); font-size: var(--text-xs); }
+.h71-link { font: inherit; color: var(--fg); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+.h71-script { display: none; }
+@media (max-width: 1100px) {
+  .h71-hud { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'say controls'; }
+  .h71-step { display: none; }
+  .h71-wide { display: none; }
+}
+@media (max-width: 700px) {
+  .h71-hud { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'say' 'controls'; gap: var(--s-2, 8px); padding: var(--s-2, 8px) 16px; }
+  .h71-note { display: none; }
+  .h71-say { grid-template-columns: minmax(0, 1fr); }
+  .h71-number b { font-size: var(--text-xl); }
+  .h71-controls { justify-content: space-between; }
+  .h71-controls .h48-button { padding: 8px 10px; }
+  .h71-clock { font-size: var(--text-lg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .h71-stage > * { animation: h71-in 180ms ease-out; }
+  @keyframes h71-in { from { opacity: 0; } to { opacity: 1; } }
+}
+@media print {
+  @page { size: letter portrait; margin: 14mm; }
+  body { background: #fff !important; }
+  body * { visibility: hidden; }
+  .h71-script, .h71-script * { visibility: visible; }
+  .h71-noprint { display: none !important; }
+  .h71-script { display: block; position: absolute; inset: 0; color: #111; font-size: 12pt; line-height: 1.5; }
+  .h71-script h1 { font-size: 18pt; margin: 0 0 12pt; }
+  .h71-script li { margin-bottom: 8pt; }
+}

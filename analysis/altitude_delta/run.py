@@ -1,5 +1,8 @@
 """Altitude effect (HACK-015): ΔStuff+ by pitch shape, Harp Helú air vs sea level, with observed triangulation.
 
+Production model since HACK-057: Stuff+ v2 (count-neutral value) with temperature calibration
+(``stuffplus.models.stuff.fit_production_stuff``); the v1 numbers stay in reports/stuff_v2/ for comparison.
+
     python analysis/altitude_delta/run.py          # real data, ~10 min
     python analysis/altitude_delta/run.py --fast
 
@@ -31,7 +34,7 @@ from stuffplus.altitude import (  # noqa: E402
 )
 from stuffplus.features.shapes import fit_shapes  # noqa: E402
 from stuffplus.models.location import add_pitch_family  # noqa: E402
-from stuffplus.models.stuff import StuffModel  # noqa: E402
+from stuffplus.models.stuff import fit_production_stuff  # noqa: E402
 from stuffplus.physics.constants import RHO_HARP_HELU  # noqa: E402
 from stuffplus.scale import PlusScaler  # noqa: E402
 
@@ -96,7 +99,7 @@ def _curves(curves: pd.DataFrame, by: str, path: Path) -> None:
 
 def run(shape_model, d: pd.DataFrame, fast: bool = False, write_reports: bool = True) -> dict:
     rounds = dict(class_rounds=60, contact_rounds=40) if fast else {}
-    model = StuffModel(features=list(STUFF_FEATURES_INVARIANT), translate=physics_translator(shape_model), **rounds).fit(d)
+    model = fit_production_stuff(d, translate=physics_translator(shape_model), k_inner=2 if fast else 3, **rounds)
     neutral = model.predict_at_rho(d, 1.0)
     scaler = PlusScaler().fit(d.assign(x=neutral["xrv"].to_numpy()), "x")
     contact = fit_contact_models(d, STUFF_FEATURES_INVARIANT, rounds=40 if fast else 200)

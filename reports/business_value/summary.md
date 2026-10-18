@@ -24,10 +24,10 @@ Exponente pitagórico **x = 1.90** (IC 95 % bootstrap 1.62–2.15, 60 equipo-tem
 |---|---|---|---|---|
 | Stuff+ | rv_x | 0.000724 | 0.000677 | 0.000769 |
 | Stuff+ | rv | 0.000726 | 0.00067 | 0.000783 |
-| Pitching+ | rv_x | 0.00552 | 0.00547 | 0.00557 |
-| Pitching+ | rv | 0.00562 | 0.00556 | 0.00569 |
+| Pitching+ | rv_x | 0.00551 | 0.00547 | 0.00556 |
+| Pitching+ | rv | 0.00561 | 0.00555 | 0.00567 |
 
-Control cruzado (Stuff+): σ del scaler del bundle v1 (0.01055) × calibración 0.69 × 0.1 = 7.24e-04, frente a 7.24e-04 directo. El bundle se reconstruyó localmente con `analysis/stuff_model/run.py` (creado 2026-10-13T22:22:40+00:00). Pitching+ usa el xRV combinado con bateador neutral (el que sirve el dashboard) escalado con un `PlusScaler` ajustado con el mismo procedimiento.
+Control cruzado (Stuff+): σ del scaler del bundle v1 (0.01055) × calibración 0.69 × 0.1 = 7.24e-04, frente a 7.24e-04 directo. El bundle se reconstruyó localmente con `analysis/stuff_model/run.py` (creado 2026-10-13T14:45:18+00:00). Pitching+ usa el xRV combinado con bateador neutral (el que sirve el dashboard) escalado con un `PlusScaler` ajustado con el mismo procedimiento.
 
 ### Ejemplo para el GM
 
@@ -38,7 +38,7 @@ Control cruzado (Stuff+): σ del scaler del bundle v1 (0.01055) × calibración 
 | Stuff+ | liga | 18.1 | 16.9 | 19.2 | 1.54 | 1.44 | 1.63 |
 | Stuff+ | Harp Helú (bucket Extreme) | 18.1 | 16.9 | 19.2 | 1.26 | 1.18 | 1.34 |
 | Pitching+ | liga | 138 | 137 | 139 | 11.7 | 11.6 | 11.8 |
-| Pitching+ | Harp Helú (bucket Extreme) | 138 | 137 | 139 | 9.63 | 9.54 | 9.72 |
+| Pitching+ | Harp Helú (bucket Extreme) | 138 | 137 | 139 | 9.62 | 9.54 | 9.7 |
 
 Cada carrera ahorrada vale menos victorias en el Harp Helú que en la liga (más anotación), pero el valor en carreras es el mismo. **+10 puntos en todos los lanzamientos es un salto muy grande**: es 1 σ del xRV *por lanzamiento* (incluye conteo, ubicación y contexto), mucho más que la diferencia típica entre pitchers, sobre todo para Pitching+. Una escala más realista es 1 desviación estándar entre pitcher-temporadas (≥ 300 lanzamientos; observada, incluye ruido de muestreo):
 
@@ -46,8 +46,8 @@ Cada carrera ahorrada vale menos victorias en el Harp Helú que en la liga (más
 |---|---|---|---|---|---|
 | Stuff+ | liga | 5.45 | 818 | 9.86 | 0.837 |
 | Stuff+ | Harp Helú (bucket Extreme) | 5.45 | 818 | 9.86 | 0.688 |
-| Pitching+ | liga | 1.53 | 818 | 21.1 | 1.79 |
-| Pitching+ | Harp Helú (bucket Extreme) | 1.53 | 818 | 21.1 | 1.47 |
+| Pitching+ | liga | 1.55 | 818 | 21.4 | 1.82 |
+| Pitching+ | Harp Helú (bucket Extreme) | 1.55 | 818 | 21.4 | 1.5 |
 
 Tabla completa (lanzamientos × entorno × estimación) en `conversion_table.csv`; aquí 1,000 y 2,500 lanzamientos en la liga y en el Harp Helú:
 
@@ -69,22 +69,22 @@ Tabla completa (lanzamientos × entorno × estimación) en `conversion_table.csv
 | Stuff+ · rv observado | 1000 | Harp Helú (bucket Extreme) | 0.726 | 0.0507 |
 | Stuff+ · rv observado | 2500 | liga | 1.82 | 0.154 |
 | Stuff+ · rv observado | 2500 | Harp Helú (bucket Extreme) | 1.82 | 0.127 |
-| Pitching+ · rv_x (central) | 1000 | liga | 5.52 | 0.468 |
-| Pitching+ · rv_x (central) | 1000 | Harp Helú (bucket Extreme) | 5.52 | 0.385 |
+| Pitching+ · rv_x (central) | 1000 | liga | 5.51 | 0.468 |
+| Pitching+ · rv_x (central) | 1000 | Harp Helú (bucket Extreme) | 5.51 | 0.385 |
 | Pitching+ · rv_x (central) | 2500 | liga | 13.8 | 1.17 |
-| Pitching+ · rv_x (central) | 2500 | Harp Helú (bucket Extreme) | 13.8 | 0.963 |
+| Pitching+ · rv_x (central) | 2500 | Harp Helú (bucket Extreme) | 13.8 | 0.962 |
 | Pitching+ · rv_x (IC 2.5 %) | 1000 | liga | 5.47 | 0.464 |
-| Pitching+ · rv_x (IC 2.5 %) | 1000 | Harp Helú (bucket Extreme) | 5.47 | 0.382 |
+| Pitching+ · rv_x (IC 2.5 %) | 1000 | Harp Helú (bucket Extreme) | 5.47 | 0.381 |
 | Pitching+ · rv_x (IC 2.5 %) | 2500 | liga | 13.7 | 1.16 |
 | Pitching+ · rv_x (IC 2.5 %) | 2500 | Harp Helú (bucket Extreme) | 13.7 | 0.954 |
-| Pitching+ · rv_x (IC 97.5 %) | 1000 | liga | 5.57 | 0.472 |
-| Pitching+ · rv_x (IC 97.5 %) | 1000 | Harp Helú (bucket Extreme) | 5.57 | 0.389 |
+| Pitching+ · rv_x (IC 97.5 %) | 1000 | liga | 5.56 | 0.472 |
+| Pitching+ · rv_x (IC 97.5 %) | 1000 | Harp Helú (bucket Extreme) | 5.56 | 0.388 |
 | Pitching+ · rv_x (IC 97.5 %) | 2500 | liga | 13.9 | 1.18 |
-| Pitching+ · rv_x (IC 97.5 %) | 2500 | Harp Helú (bucket Extreme) | 13.9 | 0.972 |
-| Pitching+ · rv observado | 1000 | liga | 5.62 | 0.477 |
-| Pitching+ · rv observado | 1000 | Harp Helú (bucket Extreme) | 5.62 | 0.392 |
-| Pitching+ · rv observado | 2500 | liga | 14.1 | 1.19 |
-| Pitching+ · rv observado | 2500 | Harp Helú (bucket Extreme) | 14.1 | 0.981 |
+| Pitching+ · rv_x (IC 97.5 %) | 2500 | Harp Helú (bucket Extreme) | 13.9 | 0.97 |
+| Pitching+ · rv observado | 1000 | liga | 5.61 | 0.476 |
+| Pitching+ · rv observado | 1000 | Harp Helú (bucket Extreme) | 5.61 | 0.391 |
+| Pitching+ · rv observado | 2500 | liga | 14 | 1.19 |
+| Pitching+ · rv observado | 2500 | Harp Helú (bucket Extreme) | 14 | 0.979 |
 
 Referencia: un abridor lanza ~77 lanzamientos por apertura (mediana de los datos).
 

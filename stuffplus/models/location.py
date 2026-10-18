@@ -137,3 +137,27 @@ def heatmap_grid(
     grid = pd.concat(frames, ignore_index=True)
     grid["loc_value"] = model.location_value(grid)
     return grid[["pitch_family", "count", "rho", "plate_x_arm", "PlateLocHeight", "loc_value"]]
+
+
+# --- production Location+ (HACK-057): temperature, chosen by the pre-registered rule of HACK-053 ------------------
+PRODUCTION_CALIBRATION = "temperature"
+
+
+def fit_production_location(train: pd.DataFrame, calibration: str = PRODUCTION_CALIBRATION, k_inner: int = 3,
+                            **rounds) -> LocationModel:
+    """LocationModel + nested calibration; the count × family reference is recomputed on calibrated predictions."""
+    from stuffplus.calibration import fit_nested
+
+    m = fit_nested(lambda: LocationModel(**rounds), train, calibration, k_inner=k_inner)
+    if calibration != "none":
+        m.reference = m._reference(train, m.predict_xrv(train))
+    return m
+
+
+def production_location_oof(df: pd.DataFrame, folds: Sequence[tuple[np.ndarray, np.ndarray]], **kw) -> np.ndarray:
+    """Out-of-fold Location+ value (negative = good location) with the production model."""
+    out = np.full(len(df), np.nan)
+    for tr, te in folds:
+        m = fit_production_location(df.iloc[tr], **kw)
+        out[te] = m.location_value(df.iloc[te])
+    return out

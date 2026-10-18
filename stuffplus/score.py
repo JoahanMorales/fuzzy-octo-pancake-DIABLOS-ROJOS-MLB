@@ -1,8 +1,9 @@
 """Scoring pipeline and leaderboards: Stuff+ (sea level / Harp Helú / own air), Location+, Pitching+ (HACK-016).
 
 Every pitch is scored OUT OF FOLD (folds grouped by pitcher): the model that scores a pitcher never saw him, so the
-leaderboards cannot reward memorization. Models: Stuff+ = component model with the altitude-invariant pitch family
-and fitted physics (HACK-015); Location+ = HACK-011; Pitching+ = HACK-012 combined xRV with league-average batters.
+leaderboards cannot reward memorization. Models (production, HACK-057): Stuff+ = Stuff+ v2 (HACK-052: count-neutral
+stuff value, altitude-invariant pitch family, fitted physics translator) with the temperature calibrator of HACK-053;
+Location+ = HACK-011 with temperature; Pitching+ = HACK-012 combined xRV with league-average batters (uncalibrated).
 
     python -m stuffplus.score          # real data (~40 min)
     python -m stuffplus.score --fast
@@ -44,10 +45,10 @@ def _plus(df: pd.DataFrame, xrv: np.ndarray, ref: np.ndarray | None = None) -> n
 
 def score_pitches(d: pd.DataFrame, shape_model, fast: bool = False) -> pd.DataFrame:
     """Per-pitch OOF scores. ``d`` = output of ``analysis/altitude_delta/run.py: prepare`` (has shape and pitch_family)."""
-    from stuffplus.altitude import STUFF_FEATURES_INVARIANT, physics_translator
-    from stuffplus.models.location import LocationModel
+    from stuffplus.altitude import physics_translator
+    from stuffplus.models.location import production_location_oof
     from stuffplus.models.pitching import build_features, combine, run_oof
-    from stuffplus.models.stuff import StuffModel
+    from stuffplus.models.stuff import fit_production_stuff
     from stuffplus.physics.constants import RHO_HARP_HELU
 
     folds = list(splits.pitcher_group_kfold(d))
@@ -55,12 +56,12 @@ def score_pitches(d: pd.DataFrame, shape_model, fast: bool = False) -> pd.DataFr
     translate = physics_translator(shape_model)
     neutral, hh, own = (np.full(len(d), np.nan) for _ in range(3))
     for tr, te in folds:
-        m = StuffModel(features=list(STUFF_FEATURES_INVARIANT), translate=translate, **rounds).fit(d.iloc[tr])
+        m = fit_production_stuff(d.iloc[tr], translate=translate, k_inner=2 if fast else 3, **rounds)
         te_df = d.iloc[te]
         own[te] = m.predict_xrv(te_df)
         neutral[te] = m.predict_at_rho(te_df, 1.0)["xrv"].to_numpy()
         hh[te] = m.predict_at_rho(te_df, RHO_HARP_HELU)["xrv"].to_numpy()
-    loc = LocationModel(**rounds).oof(d, folds)["loc_value"].to_numpy(float)
+    loc = production_location_oof(d, folds, k_inner=2 if fast else 3, **rounds)
     pf = build_features(d)
     pit_rounds = dict(class_rounds=40, contact_rounds=30, target_rounds=40) if fast else {}
     oof = run_oof(pf, folds, **pit_rounds)

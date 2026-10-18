@@ -38,6 +38,23 @@ Con la densidad del aire como variable, Stuff+ deja el 56 % del sesgo de la mism
 | Estabilidad 2024→2025 (r, pitcher-temporada) | 0.707 | 0.589 | — | `official_fast/stability.csv` |
 | Estabilidad 2025→2026 (r, pitcher-temporada) | 0.711 | 0.568 | — | `official_fast/stability.csv` |
 
+## Stuff+ v1 → v2 (HACK-057, en producción)
+
+Desde HACK-057 el Stuff+ de producción es v2: valor del lanzamiento neutral al conteo (HACK-052) con calibración por temperatura (HACK-053); Location+ también usa temperatura y Pitching+ queda sin calibrar. Las filas de la tabla de arriba siguen siendo la corrida oficial de v1; estas comparan v1 y v2 en las mismas particiones. La regla R3 (ΔStuff+ de liga a ±1.5 de v1) no se cumple y el humano adoptó R4 (sesgo en altitud no vista).
+
+| Prueba | v1 | v2 | Fuente |
+|---|---|---|---|
+| Habilidad vs nulo, pitcher_kfold | -0.03 % [-0.05 %, -0.00 %] | +0.18 % [+0.15 %, +0.21 %] | `stuff_v2/skill.csv` |
+| Habilidad vs nulo, season_holdout | -0.00 % [-0.06 %, +0.04 %] | +0.20 % [+0.14 %, +0.27 %] | `stuff_v2/skill.csv` |
+| Habilidad vs nulo, park_holdout | +0.00 % [-0.04 %, +0.04 %] | +0.23 % [+0.18 %, +0.28 %] | `stuff_v2/skill.csv` |
+| Primeros 50 → resto (r) | 0.265 | 0.269 | `stuff_v2/pitcher_level.csv` |
+| Primeros 200 → resto (r) | 0.306 | 0.323 | `stuff_v2/pitcher_level.csv` |
+| Mitad contra mitad (r) | 0.807 | 0.803 | `stuff_v2/pitcher_level.csv` |
+| Sesgo en altitud extrema no vista (carreras/lanz.) | +0.0025 | +0.0018 | `stuff_v2/altitude_bias.csv` |
+| ΔStuff+ de liga en el aire del Harp Helú | -10.3 | -12.7 | `stuff_v2/altitude.csv` |
+| ΔStuff+ de liga en producción (v2 + temperatura) |  | -13.0 | `altitude_delta/delta_by_shape.csv` (Δ − relativo a la liga) |
+| Calibración elegida (regla de HACK-053) | none | temperature | `calibration/decision.csv` |
+
 ## Límites
 
 - Preparación transductiva: la identidad de lanzamiento, la densidad por juego, las referencias de arsenal y los valores de carrera LMB (RE, pesos lineales, valor esperado del batazo) se estiman una vez con todos los datos. Ningún paso usa el resultado de un lanzamiento como variable de ese lanzamiento, y todos los modelos se ajustan solo con entrenamiento; aun así las cifras son condicionales a esas entradas.

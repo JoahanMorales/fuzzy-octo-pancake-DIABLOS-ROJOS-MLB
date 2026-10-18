@@ -363,3 +363,6 @@
     display: none;
   }
 }
+
+/* HACK-069: ± interval after a Stuff+ value */
+.lb-band { margin-left: 4px; font-size: 0.75em; color: var(--fg-muted, #a6a6b0); white-space: nowrap; cursor: help; }

@@ -5,6 +5,7 @@ import { parseContractFile } from '../../contract/types';
 import { dataSource, fmt, loadDoc, resetSourceCache } from './data';
 import { filterRows, sortRows, summarize, type Board } from './logic';
 import { LeaderboardView } from './index';
+import { halfWidth, loadBands, type Bands } from './uncertainty';
 
 const board = parseContractFile('leaderboard.json', mock) as Board;
 
@@ -75,5 +76,45 @@ describe('leaderboard page', () => {
     render(<MemoryRouter><LeaderboardView board={board} source="mock" /></MemoryRouter>);
     fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'no-existe-xyz' } });
     expect(screen.getByText(/Ningún pitcher cumple estos filtros/)).toBeInTheDocument();
+  });
+});
+
+describe('uncertainty bands (HACK-069)', () => {
+  const bands: Bands = {
+    alpha: 0.1,
+    rows: [
+      { air: 'neutral', n_pitches: 100, half_width: 3.2, coverage: 0.9 },
+      { air: 'neutral', n_pitches: 500, half_width: 1.4, coverage: 0.91 },
+      { air: 'harp_helu', n_pitches: 100, half_width: 3.5, coverage: 0.9 },
+    ],
+  };
+
+  it('looks up the half-width by number of pitches and air', () => {
+    expect(halfWidth(bands, 'neutral', 499)?.half_width).toBe(3.2);
+    expect(halfWidth(bands, 'neutral', 900)?.half_width).toBe(1.4);
+    expect(halfWidth(bands, 'neutral', 40)).toBeNull(); // below the smallest calibrated n: no band
+    expect(halfWidth(bands, 'harp_helu', 600)?.half_width).toBe(3.5);
+    expect(halfWidth(null, 'neutral', 600)).toBeNull();
+  });
+
+  it('missing or non-JSON uncertainty file means no band and no error', async () => {
+    resetSourceCache();
+    const html = (async (url: string) =>
+      url.endsWith('manifest.json')
+        ? { ok: true, json: async () => ({}) }
+        : { ok: true, json: async () => JSON.parse('<!doctype html>') }) as unknown as typeof fetch;
+    expect(await loadBands(html)).toBeNull();
+    resetSourceCache();
+    const missing = (async () => ({ ok: false, json: async () => ({}) })) as unknown as typeof fetch;
+    expect(await loadBands(missing)).toBeNull();
+    resetSourceCache();
+  });
+
+  it('renders ± next to Stuff+ only when bands exist, with a tooltip', () => {
+    const { rerender } = render(<MemoryRouter><LeaderboardView board={board} source="real" bands={null} /></MemoryRouter>);
+    expect(screen.queryAllByText(/^±/)).toHaveLength(0);
+    rerender(<MemoryRouter><LeaderboardView board={board} source="real" bands={bands} /></MemoryRouter>);
+    const b = screen.getAllByText(/^±/)[0];
+    expect(b.getAttribute('title')).toMatch(/90 % de las veces/);
   });
 });

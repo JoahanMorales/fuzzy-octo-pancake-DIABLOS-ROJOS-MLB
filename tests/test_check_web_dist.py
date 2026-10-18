@@ -101,3 +101,42 @@ def test_real_export_carries_the_design_lab():
     assert lab["tweaks"] and lab["plan"] and all(s.startswith("reports/design_lab/") for s in lab["sources"])
     docs = run.build_real()
     assert docs["design_lab.json"]["demo_data"] is False and "design_lab.json" in docs["manifest.json"]["files"]
+
+
+def _scores(seed: int = 0):
+    """Synthetic pitch scores: pitcher-season true Stuff+ plus per-pitch noise (sd 20), some altitude-heavy."""
+    import numpy as np
+    import pandas as pd
+
+    rng = np.random.default_rng(seed)
+    rows = []
+    for p in range(240):
+        true, n = rng.normal(100, 6), int(rng.integers(500, 1800))
+        alt = "Extreme Altitude" if p % 4 == 0 else "No Altitude"
+        x = true + rng.normal(0, 20, n)
+        rows.append(pd.DataFrame({"pitcher_anon_id": f"pitcher_{p:05d}", "year": 2025, "altitude_category": alt,
+                                  "stuff_plus": x, "stuff_plus_harp_helu": x - 8 + rng.normal(0, 3, n)}))
+    return pd.concat(rows, ignore_index=True)
+
+
+def test_uncertainty_by_n_narrows_with_pitches_and_covers():
+    unc = _load("analysis/export_web/uncertainty.py", "export_web_unc")
+    t = unc.table(_scores())
+    assert set(t.air) == {"neutral", "harp_helu"}
+    for _, g in t.groupby("air"):
+        g = g.sort_values("n_pitches")
+        assert g.half_width.is_monotonic_decreasing  # more pitches, narrower band
+        assert (g.coverage.between(0.85, 0.97)).all()
+    big = t[(t.air == "neutral") & (t.n_pitches == 100)].iloc[0]
+    assert 2.0 < big.half_width < 5.0  # ≈ 1.645 · 20/√100 widened by the noise of the rest
+
+
+def test_real_export_adds_uncertainty_only_when_computed(tmp_path):
+    run = _load("analysis/export_web/run.py", "export_web_run4")
+    assert run.uncertainty(tmp_path) is None  # no table, no file, no band
+    unc = _load("analysis/export_web/uncertainty.py", "export_web_unc2")
+    (tmp_path / run.UNCERTAINTY).parent.mkdir(parents=True)
+    unc.table(_scores(1)).to_csv(tmp_path / run.UNCERTAINTY, index=False)
+    doc = run.uncertainty(tmp_path)
+    assert doc["alpha"] == 0.1 and doc["rows"] and {"air", "n_pitches", "half_width", "coverage"} <= set(doc["rows"][0])
+    run.ew.assert_aggregate(doc)

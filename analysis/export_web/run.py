@@ -34,6 +34,8 @@ VALIDATION_EXTRA = {
 }
 
 
+UNCERTAINTY = "analysis/export_web/uncertainty_by_n.csv"  # HACK-069, from analysis/export_web/uncertainty.py
+UNCERTAINTY_ALPHA = 0.1  # 90 % intervals, uncertainty.ALPHA
 DESIGN_LAB = "reports/design_lab"
 DESIGN_LAB_FILES = ("tweak_summary.csv", "tweak_gains_by_family.csv", "new_pitch_summary.csv",
                     "development_plan_top3.csv", "run_meta.csv")
@@ -58,6 +60,16 @@ def design_lab(root: Path) -> dict | None:
     }
 
 
+def uncertainty(root: Path) -> dict | None:
+    """``real/uncertainty.json`` (HACK-069): Stuff+ interval half-width by number of pitches and by air. None if
+    the table was not computed (the pages then show no band)."""
+    src = root / UNCERTAINTY
+    if not src.is_file():
+        return None
+    return {**ew.envelope([UNCERTAINTY, "analysis/export_web/uncertainty.py"]), "method": "split_conformal_by_n",
+            "alpha": UNCERTAINTY_ALPHA, "rows": ew._records(pd.read_csv(src))}
+
+
 def _real(obj):
     """Copy of a contract document with every ``demo_data`` flag set to False."""
     if isinstance(obj, dict):
@@ -80,6 +92,9 @@ def build_real(root: Path | None = None) -> dict[str, dict]:
     lab = design_lab(root)
     if lab is not None:
         docs["design_lab.json"] = lab
+    unc = uncertainty(root)
+    if unc is not None:
+        docs["uncertainty.json"] = unc
     docs = {rel: _real(doc) for rel, doc in docs.items()}
     for doc in docs.values():
         ew.assert_aggregate(doc)

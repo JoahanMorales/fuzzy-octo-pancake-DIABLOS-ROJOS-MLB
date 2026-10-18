@@ -6,7 +6,7 @@
 - Why: Real assets are now in main; both envelopes must match model/version/translation/demo before combining
 - Failing: GitHub gates still fail global bash-n on Python uak-mcp; HACK073 PR62 CIgreen, reviewer victor2 owns lock; no own-code test failures
 - Commands: npm --prefix web test -- --run src/features/metodologia; npm --prefix web test -- --run; npm --prefix web run build; PATH=hack026/.venv/bin:$PATH bash .uak/bin/q bash .uak/bin/smoke; node /tmp/hack049-browser.cjs
-- Next: Wait exact-SHA independent review of701d5597; after HACK073 merge update base if needed and merge HACK049 through uak. Continue assigned review HACK064 c184e931 while waiting.
+- Next: Humano: Local and remote HEAD differ; push the branch before review/merge
 
 ## History
 - 1792262439 | CLAIMED | sebastian-1 | claim; next: chart from `validation.json`.
@@ -23,3 +23,4 @@
 - 1792284640 | REVIEW | sebastian-1 | checkpoint; next: Wait exact-SHA independent review of701d5597; after HACK073 merge update base if needed and merge HACK049 through uak. Continue assigned review HACK064 c184e931 while waiting.
 - 1792284855 | REVIEW | sebastian-2 | review; approve; SHA 701d5597a20917b10efb71cd1070e6cc6b778297; reviewer sebastian-2
 - 1792285027 | REVIEW | sebastian-1 | heartbeat; lease until 1792299427
+- 1792285042 | REVIEW | sebastian-1 | merge rechazado; Local and remote HEAD differ; push the branch before review/merge

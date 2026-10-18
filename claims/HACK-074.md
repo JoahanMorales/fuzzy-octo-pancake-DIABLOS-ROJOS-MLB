@@ -9,9 +9,9 @@ Priority: P1
 Paths: analysis/export_web/, web/public/data/real/, web/src/features/leaderboard/, web/src/features/pitcher/, tests/test_check_web_dist.py
 Depends: HACK-069
 Verify: `python -m pytest -q tests/test_check_web_dist.py && npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`
-Lease-Until: 1792324096
-Updated: 1792309696
+Lease-Until: 1792324107
+Updated: 1792309707
 Task-Base: 3f5831007718de49e0753e04b4288b3ddc454e7d
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/72; run .uak/bin/smoke
+Next: Wait for review of SHA af35c869
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/72
 Evidence: -

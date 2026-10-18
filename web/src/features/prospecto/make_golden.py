@@ -78,7 +78,7 @@ def score(csv_text: str, payload: dict, translator, rho_hh: float) -> dict:
             if len(out["pitches"]) <= i:
                 out["pitches"].append({"pitch_type": p.pitch_type, "usage": float(u),
                                        "features": {f: (None if pd.isna(df.loc[i, f]) else float(df.loc[i, f]))
-                                                    for f in payload["features"] if f != "pitch_family"}})
+                                                    for f in payload["features"] if f != "pitch_family" and f in df}})
             out["pitches"][i][f"stuff_{name}"] = float(plus[i])
             out["pitches"][i][f"xrv_{name}"] = float(xrv[i])
     return out

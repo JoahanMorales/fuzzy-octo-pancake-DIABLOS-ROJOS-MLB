@@ -132,3 +132,5 @@ def test_json_evaluator_matches_count_neutral_production_model(production):
     assert np.abs(out["xrv"].to_numpy() - np.asarray(m.predict_xrv(rows))).max() < 1e-9
     moved = rows.assign(Balls=3, Strikes=0)
     assert np.allclose(et.evaluate(p, moved)["xrv"], out["xrv"], atol=1e-12)  # the count never moves Stuff+
+    no_count = et.evaluate(p, rows.drop(columns=["Balls", "Strikes"]))  # e.g. the prospect profiler
+    assert np.allclose(no_count["xrv"], out["xrv"], atol=1e-12) and no_count["xrv_at_count"].isna().all()

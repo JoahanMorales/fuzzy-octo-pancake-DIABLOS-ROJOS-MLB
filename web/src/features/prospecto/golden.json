@@ -1,6 +1,6 @@
 {
  "rho_hh": 0.819,
- "model_version": "pitch_family_v1",
+ "model_version": "stuff_v2",
  "cases": [
   {
    "name": "pitch_level_rhp",
@@ -25,10 +25,10 @@
       "ivb_diff_fb": 0.0,
       "hb_diff_fb": 0.0
      },
-     "stuff_neutral": 113.22338411712515,
-     "xrv_neutral": -0.017088469204035145,
-     "stuff_cdmx": 96.9824216356995,
-     "xrv_cdmx": 0.002798716988274469
+     "stuff_neutral": 107.02658520425878,
+     "xrv_neutral": -0.013351254081578877,
+     "stuff_cdmx": 96.05031667719227,
+     "xrv_cdmx": -0.0005009210725929958
     },
     {
      "pitch_type": "Slider",
@@ -49,10 +49,10 @@
       "ivb_diff_fb": -16.949928571428572,
       "hb_diff_fb": -17.213857142857144
      },
-     "stuff_neutral": 104.90143372214395,
-     "xrv_neutral": -0.006898175545181266,
-     "stuff_cdmx": 90.51773251563932,
-     "xrv_cdmx": 0.010714779620219501
+     "stuff_neutral": 105.89296419313395,
+     "xrv_neutral": -0.012024081057065546,
+     "stuff_cdmx": 94.4139038988904,
+     "xrv_cdmx": 0.0014148893040832446
     },
     {
      "pitch_type": "Changeup",
@@ -73,14 +73,14 @@
       "ivb_diff_fb": -9.686500000000002,
       "hb_diff_fb": 4.163666666666664
      },
-     "stuff_neutral": 99.6736520019745,
-     "xrv_neutral": -0.0004967157449591083,
-     "stuff_cdmx": 89.78954215821244,
-     "xrv_cdmx": 0.011606454435560958
+     "stuff_neutral": 104.92913968324895,
+     "xrv_neutral": -0.010895695223236551,
+     "stuff_cdmx": 88.23655240354952,
+     "xrv_cdmx": 0.008646948508260012
     }
    ],
-   "arsenal_neutral": 107.72878138877402,
-   "arsenal_cdmx": 93.26956262053936
+   "arsenal_neutral": 106.23615833531971,
+   "arsenal_cdmx": 94.11163988446775
   },
   {
    "name": "summary_lhp",
@@ -105,10 +105,10 @@
       "ivb_diff_fb": 0.0,
       "hb_diff_fb": 0.0
      },
-     "stuff_neutral": 100.95618638122734,
-     "xrv_neutral": -0.0020671891714823185,
-     "stuff_cdmx": 94.52580734353312,
-     "xrv_cdmx": 0.005806860494970948
+     "stuff_neutral": 97.23203711215925,
+     "xrv_neutral": -0.0018844059131290342,
+     "stuff_cdmx": 93.3919485404728,
+     "xrv_cdmx": 0.0026113311225026987
     },
     {
      "pitch_type": "Curveball",
@@ -129,10 +129,10 @@
       "ivb_diff_fb": -20.5,
       "hb_diff_fb": -3.5
      },
-     "stuff_neutral": 103.62692939107627,
-     "xrv_neutral": -0.005337534975766986,
-     "stuff_cdmx": 102.28742824407941,
-     "xrv_cdmx": -0.0036973052944531473
+     "stuff_neutral": 114.10650671746721,
+     "xrv_neutral": -0.021639986167338678,
+     "stuff_cdmx": 108.19327788978755,
+     "xrv_cdmx": -0.014717145367057441
     },
     {
      "pitch_type": "Splitter",
@@ -153,14 +153,14 @@
       "ivb_diff_fb": -6.5,
       "hb_diff_fb": 11.5
      },
-     "stuff_neutral": 88.76142433256892,
-     "xrv_neutral": 0.012865392792791277,
-     "stuff_cdmx": 78.245413275027,
-     "xrv_cdmx": 0.02574233097554391
+     "stuff_neutral": 91.22989386777715,
+     "xrv_neutral": 0.005142530360136361,
+     "stuff_cdmx": 77.60234361233891,
+     "xrv_cdmx": 0.021096819237749462
     }
    ],
-   "arsenal_neutral": 97.96544351909205,
-   "arsenal_cdmx": 91.58209434811786
+   "arsenal_neutral": 99.6500115401716,
+   "arsenal_cdmx": 92.35539939936132
   },
   {
    "name": "no_fastball_measured_air",
@@ -185,10 +185,10 @@
       "ivb_diff_fb": null,
       "hb_diff_fb": null
      },
-     "stuff_neutral": 84.4320974643201,
-     "xrv_neutral": 0.018166687566096813,
-     "stuff_cdmx": 80.27578553192498,
-     "xrv_cdmx": 0.023256124190766864
+     "stuff_neutral": 97.31412158206754,
+     "xrv_neutral": -0.0019805053088924104,
+     "stuff_cdmx": 81.45056920388558,
+     "xrv_cdmx": 0.01659155588498667
     },
     {
      "pitch_type": "Curveball",
@@ -209,14 +209,14 @@
       "ivb_diff_fb": null,
       "hb_diff_fb": null
      },
-     "stuff_neutral": 88.09156896758064,
-     "xrv_neutral": 0.013685635951451051,
-     "stuff_cdmx": 81.26929967499747,
-     "xrv_cdmx": 0.02203955831478676
+     "stuff_neutral": 105.22744810637265,
+     "xrv_neutral": -0.011244936184959774,
+     "stuff_cdmx": 89.27354547508388,
+     "xrv_cdmx": 0.007432901469927481
     }
    ],
-   "arsenal_neutral": 86.26183321595036,
-   "arsenal_cdmx": 80.77254260346123
+   "arsenal_neutral": 101.27078484422009,
+   "arsenal_cdmx": 85.36205733948472
   }
  ]
 }

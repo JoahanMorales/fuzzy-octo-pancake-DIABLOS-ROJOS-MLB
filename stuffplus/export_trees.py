@@ -255,7 +255,9 @@ def _components(payload: dict, rows: pd.DataFrame) -> tuple[np.ndarray, np.ndarr
 
 def _count_keys(rows: pd.DataFrame) -> list[str | None]:
     """stuffplus.models.stuff_v2._count_key: clipped only for the table lookup (trees see the raw count)."""
-    b, s = pd.to_numeric(rows.get("Balls"), errors="coerce"), pd.to_numeric(rows.get("Strikes"), errors="coerce")
+    if "Balls" not in rows or "Strikes" not in rows:
+        return [None] * len(rows)  # no count: components only; the count-neutral value does not need it
+    b, s = pd.to_numeric(rows["Balls"], errors="coerce"), pd.to_numeric(rows["Strikes"], errors="coerce")
     return [None if (pd.isna(x) or pd.isna(y)) else f"{min(max(int(x), 0), 3)}-{min(max(int(y), 0), 2)}"
             for x, y in zip(b, s)]
 

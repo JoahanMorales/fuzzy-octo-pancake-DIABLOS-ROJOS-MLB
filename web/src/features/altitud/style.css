@@ -1,0 +1,55 @@
+.alt-page { max-width: var(--max-w); margin: auto; padding: var(--s-8) var(--s-6) var(--s-16); }
+.alt-page h1, .alt-page h2, .alt-page h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; }
+.alt-page h1 { font-size: var(--text-3xl); max-width: 20ch; margin: 0 0 var(--s-4); }
+.alt-page h2 { font-size: var(--text-2xl); margin: 0 0 var(--s-4); }
+.alt-page h3 { font-size: var(--text-xl); margin-top: 0; }
+.alt-page p { max-width: 65ch; }
+.alt-source, .alt-note { color: var(--fg-muted); font-size: var(--text-sm); }
+.alt-source { padding: var(--s-3) 0; border-block: 1px solid var(--line); }
+.alt-parks { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-12); margin-block: var(--s-8) var(--s-12); }
+.alt-parks svg { display: block; width: 100%; }
+.alt-outline { fill: var(--surface-2); stroke: var(--sea); stroke-width: 1.5; }
+.alt-park-panel { border-left: 1px solid var(--line); padding-left: var(--s-8); }
+.alt-park-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-2); }
+.alt-page button { color: var(--fg); background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--radius); font: inherit; cursor: pointer; min-height: 44px; }
+.alt-page button:hover { background: var(--surface-2); }
+.alt-page button:focus-visible, .alt-page a:focus-visible, .alt-page summary:focus-visible, .alt-page g:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+.alt-page button[aria-pressed="true"] { border-color: var(--fg); background: var(--sea-soft); }
+.alt-park-grid button { padding: var(--s-1); font-family: var(--font-mono); }
+.alt-park-grid svg { height: 36px; }
+.alt-park-grid circle { fill: var(--sea); stroke: var(--surface); stroke-width: 2; }
+.alt-readout { border-top: 1px solid var(--line); margin-top: var(--s-6); }
+.alt-readout div { display: flex; justify-content: space-between; gap: var(--s-4); padding-top: var(--s-3); }
+.alt-readout dt { color: var(--fg-muted); }
+.alt-readout dd { font-family: var(--font-mono); margin: 0; text-align: right; }
+.alt-shapes { border-top: 1px solid var(--line); padding-top: var(--s-8); }
+.alt-toggle { display: flex; gap: var(--s-2); margin-block: var(--s-6); }
+.alt-toggle button { padding: var(--s-2) var(--s-4); white-space: nowrap; }
+.alt-forest-wrap, .alt-table-wrap { overflow-x: auto; }
+.alt-forest-wrap svg { display: block; width: 100%; min-width: 680px; max-width: 1000px; }
+.alt-mobile-forest { display: none; }
+.alt-shape-detail { padding: var(--s-4); background: var(--surface); border-left: 2px solid var(--red-strong); }
+.alt-forest-wrap text { fill: var(--fg); font: 13px var(--font-mono); }
+.alt-gridline { stroke: var(--line); }
+.alt-zero { stroke: var(--sea); stroke-dasharray: 5 4; }
+.alt-ci { stroke: var(--red-strong); stroke-width: 2.5; }
+.alt-point { fill: var(--red-strong); stroke: var(--surface); stroke-width: 2; }
+.alt-page details { margin-block: var(--s-8); }
+.alt-page summary { cursor: pointer; padding-block: var(--s-3); }
+.alt-page table { border-collapse: collapse; min-width: 740px; width: 100%; font-size: var(--text-sm); }
+.alt-page th, .alt-page td { padding: var(--s-3); text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.alt-page td:nth-child(2), .alt-page td:nth-child(3), .alt-page td:nth-child(4) { font-family: var(--font-mono); white-space: nowrap; }
+.alt-page caption { text-align: left; padding-block: var(--s-4); }
+.alt-loading { min-height: 400px; padding: var(--s-8); background: var(--surface); }
+@media (max-width: 899px) {
+  .alt-page { padding-inline: var(--s-4); }
+  .alt-parks { grid-template-columns: 1fr; gap: var(--s-8); }
+  .alt-park-panel { border-left: 0; padding-left: 0; }
+  .alt-parks > div:first-child svg { max-height: 280px; }
+  .alt-forest-wrap .alt-desktop-forest { display: none; }
+  .alt-mobile-forest { display: grid; gap: var(--s-2); }
+  .alt-mobile-forest button { text-align: left; padding: var(--s-3); }
+  .alt-mobile-forest button > span:first-child { display: flex; justify-content: space-between; }
+  .alt-mobile-forest svg { min-width: 0; height: 24px; }
+  .alt-mobile-forest .alt-note { display: block; font-size: var(--text-xs); }
+}

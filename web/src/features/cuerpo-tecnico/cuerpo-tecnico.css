@@ -1,0 +1,33 @@
+/* /cuerpo-tecnico (HACK-067). Shares staff/pages.css; this file adds the controls row and the print sheet. */
+.h67-controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--s-4, 16px); }
+.h67-controls .h48-field { margin: 0; min-width: 260px; }
+.h67-controls select {
+  font: inherit;
+  padding: 8px 10px;
+  border-radius: var(--radius, 6px);
+  border: 1px solid var(--line-strong, #3a3a43);
+  background: var(--surface, #141417);
+  color: var(--fg, #f1f1f3);
+}
+.h67-report { margin-top: var(--s-6, 24px); padding-top: var(--s-6, 24px); border-top: 1px solid var(--line, #2a2a31); }
+@media (max-width: 900px) {
+  .h67-controls .h48-field { min-width: 0; width: 100%; }
+  .h67-controls select { width: 100%; }
+}
+
+/* One-page bullpen sheet: only the report, black on white, no navigation. */
+@media print {
+  @page { size: letter portrait; margin: 12mm; }
+  body { background: #fff !important; }
+  body * { visibility: hidden; }
+  .h67-page, .h67-page .h67-report, .h67-page .h67-report * { visibility: visible; }
+  .h67-noprint { display: none !important; }
+  .h67-page { position: absolute; inset: 0; padding: 0; color: #111; }
+  .h67-report { border: 0; margin: 0; padding: 0; }
+  .h67-report .h48-muted, .h67-report .h48-note, .h67-report .h48-stat span { color: #444; }
+  .h67-report .h48-stat b, .h67-report .h48-table .is-hh { color: #111; }
+  .h67-report .h48-stat.is-hh b { color: #c8102e; }
+  .h67-report .h48-table thead th { color: #333; border-color: #999; }
+  .h67-report .h48-scroll { overflow: visible; }
+  .h67-report .h48-table .opt { display: table-cell; }
+}

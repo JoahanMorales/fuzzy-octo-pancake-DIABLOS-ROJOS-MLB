@@ -1,12 +1,12 @@
 # worklog/WL-1792262439-sebastian-1-HACK-049-hack.7AVfHI.md · HACK-049
 
 ## Live summary
-- Done: 701d5597: Verify13 passed; fullweb121 passed; build exit0; product smoke exit0 PRODUCT_PASS 405s; tracked secrets PASS1531; browser actual real assets desktop/mobile reduced-motion PASS; design critic SHIP. CI global blocked by HACK073 PR62.
-- Decision: Consume HACK050 optional aggregate fields locally; keep old mock empty; no global contract changes
-- Why: Source owner published real rows_fast/bins/methods/audit via contract364; avoid inventing or relabeling xRV as probability
-- Failing: Earlier full smoke AppTest Tarjeta timeout30s; isolated same test passed1 in3s; final full retry running with servers stopped
-- Commands: npm --prefix web test -- --run src/features/metodologia; npm --prefix web test -- --run; npm --prefix web run build; source .uak-env then HACK049_URL=http://127.0.0.1:$((UAK_PORT+1)) node /tmp/hack049-browser.cjs; secret-scan --staged
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/55; run .uak/bin/smoke
+- Done: PR55 ready REVIEW at701d5597; methodology13/fullweb121/build/productsmoke405s allPASS; actualreal+mock/error/retry browser desktop/mobile PASS; criticSHIP; advisorGO; sourceonly5files ownPaths
+- Decision: Local strict optional supplement; no fabricated calibration/audit metrics; label full vs fast and retain transductive caveats
+- Why: Real assets are now in main; both envelopes must match model/version/translation/demo before combining
+- Failing: GitHub gates still fail global bash-n on Python uak-mcp; HACK073 PR62 CIgreen, reviewer victor2 owns lock; no own-code test failures
+- Commands: npm --prefix web test -- --run src/features/metodologia; npm --prefix web test -- --run; npm --prefix web run build; PATH=hack026/.venv/bin:$PATH bash .uak/bin/q bash .uak/bin/smoke; node /tmp/hack049-browser.cjs
+- Next: Wait exact-SHA independent review of701d5597; after HACK073 merge update base if needed and merge HACK049 through uak. Continue assigned review HACK064 c184e931 while waiting.
 
 ## History
 - 1792262439 | CLAIMED | sebastian-1 | claim; next: chart from `validation.json`.
@@ -20,3 +20,4 @@
 - 1792283915 | CLAIMED | sebastian-1 | claim; next: Integrate origin/main, verify final methodology contract and finish PR55 review
 - 1792284212 | CLAIMED | sebastian-1 | heartbeat; lease until 1792286912
 - 1792284627 | REVIEW | sebastian-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/55; evidence: 701d5597: Verify13 passed; fullweb121 passed; build exit0; product smoke exit0 PRODUCT_PASS 405s; tracked secrets PASS1531; browser actual real assets desktop/mobile reduced-motion PASS; design critic SHIP. CI global blocked by HACK073 PR62.; reviewer: -
+- 1792284640 | REVIEW | sebastian-1 | checkpoint; next: Wait exact-SHA independent review of701d5597; after HACK073 merge update base if needed and merge HACK049 through uak. Continue assigned review HACK064 c184e931 while waiting.

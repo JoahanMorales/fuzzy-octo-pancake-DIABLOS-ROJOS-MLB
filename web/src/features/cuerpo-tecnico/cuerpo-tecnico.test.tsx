@@ -55,6 +55,7 @@ describe('cuerpo técnico page', () => {
     expect(options().some((id) => ids5.has(id as string))).toBe(false);
     expect(screen.getByText(/identificación inferida/)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Imprimir reporte' })).toBeDisabled();
+    expect(screen.getByText(/Elige una franquicia y un pitcher/)).toBeInTheDocument();
   });
 
   it('renders a pitcher report from the contract JSON and prints it', () => {

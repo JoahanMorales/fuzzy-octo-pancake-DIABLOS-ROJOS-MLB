@@ -38,7 +38,10 @@ export const FAMILY_ES: Record<string, string> = {
   Changeup: 'Cambio', Splitter: 'Splitter',
 };
 
-export const pitchName = (p: ArsenalPitch) => `${FAMILY_ES[p.pitch_family] ?? p.pitch_family} (${p.shape})`;
+export const pitchName = (p: ArsenalPitch) => {
+  const name = FAMILY_ES[p.pitch_family] ?? p.pitch_family;
+  return p.shape && p.shape.toLowerCase() !== p.pitch_family.toLowerCase() ? `${name} (${p.shape})` : name;
+};
 
 export function weighted(pitches: ArsenalPitch[], usage: number[], key: 'stuff_plus' | 'stuff_plus_harp_helu'): number {
   const total = usage.reduce((a, b) => a + b, 0);

@@ -113,7 +113,7 @@ export function BullpenView({ staff, source, pitcher, plan, onPick, pickedId, lo
             <option value="" disabled>Elige un pitcher</option>
             {roster.map((p) => (
               <option key={p.pitcher_anon_id} value={p.pitcher_anon_id}>
-                {p.pitcher_anon_id} · {p.role} · {p.home_pitches.toLocaleString('es-MX')} en casa
+                {p.pitcher_anon_id} · {p.role} · {p.home_pitches.toLocaleString('es-MX')} lanzamientos en el Harp Helú
               </option>
             ))}
           </select>
@@ -122,6 +122,7 @@ export function BullpenView({ staff, source, pitcher, plan, onPick, pickedId, lo
           Imprimir reporte
         </button>
       </div>
+      {!pickedId && <p className="h48-muted h67-noprint">Elige una franquicia y un pitcher para ver su reporte de bullpen.</p>}
       {loadingPitcher && <p className="h48-muted" role="status">Cargando el arsenal…</p>}
       {!loadingPitcher && pickedId && !pitcher && (
         <p className="h48-muted" role="status">Este pitcher no tiene suficientes lanzamientos para una tarjeta de arsenal.</p>

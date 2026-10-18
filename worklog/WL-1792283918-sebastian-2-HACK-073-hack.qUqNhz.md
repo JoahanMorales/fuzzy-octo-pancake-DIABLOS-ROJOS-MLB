@@ -6,7 +6,7 @@
 - Why: Task command falsely returns1 on last ignored shebangless module. Proposed corrected guard tested valid0/invalid2, no metadata mutation.
 - Failing: Required authorization pending for correcting own Verify. Product/CI have no known defects. PR58 rejected with reproduced handedness/count bugs.
 - Commands: bash .uak/bin/q bash .uak/bin/smoke =>PASS442s; GitHub gates SUCCESS; secret-scan staged PASS; Verify proposal in /tmp/hack073-corrected-verify.txt.
-- Next: On human authorization, amend only HACK073 Verify metadata auditably, independently re-review SHA59fa43ba, uak merge and confirm GitHub/claims. Do not claim a merge already happened.
+- Next: Humano: Shared resource/CI needs a human: .github/workflows/uak.yml
 
 ## History
 - 1792283918 | CLAIMED | sebastian-2 | claim; next: edit the Kit syntax step in .github/workflows/uak.yml.
@@ -20,3 +20,4 @@
 - 1792284471 | REVIEW | victor-2 | review; reject; SHA 59fa43ba7e2cdcd4fa6cfd7bf6304a62fd07dbbd; reviewer victor-2
 - 1792284476 | REVIEW | sebastian-2 | checkpoint; next: On human authorization, amend only HACK073 Verify metadata auditably, independently re-review SHA59fa43ba, uak merge and confirm GitHub/claims. Do not claim a merge already happened.
 - 1792284829 | REVIEW | victor-2 | review; approve; SHA 59fa43ba7e2cdcd4fa6cfd7bf6304a62fd07dbbd; reviewer victor-2
+- 1792284872 | REVIEW | sebastian-2 | merge rechazado; Shared resource/CI needs a human: .github/workflows/uak.yml

@@ -1,0 +1,32 @@
+/* /reclutamiento (HACK-068). Shares staff/pages.css; adds the filter row and the exportable shortlist card.
+   The card uses explicit colors (same values as tokens.css) so the PNG export keeps them. */
+.h68-filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4, 16px); align-items: end; }
+.h68-filters select, .h68-filters input[type='number'] {
+  font: inherit;
+  padding: 8px 10px;
+  border-radius: var(--radius, 6px);
+  border: 1px solid var(--line-strong, #3a3a43);
+  background: var(--surface, #141417);
+  color: var(--fg, #f1f1f3);
+}
+.h68-filters input[type='range'] { accent-color: #c8102e; }
+@media (max-width: 900px) {
+  .h68-filters { grid-template-columns: minmax(0, 1fr); }
+}
+
+.h68-card {
+  max-width: 560px;
+  padding: 20px 24px;
+  border: 1px solid #2a2a31;
+  border-radius: 6px;
+  background: #141417;
+  color: #f1f1f3;
+  margin: 16px 0;
+}
+.h68-card-title { font-family: var(--font-display, 'Arial Narrow', sans-serif); font-size: 1.25rem; text-transform: uppercase; margin: 0 0 12px; }
+.h68-card ol { margin: 0; padding-left: 1.25em; display: grid; gap: 6px; }
+.h68-card li { display: grid; grid-template-columns: 1fr 64px 64px; gap: 8px; }
+.h68-num { text-align: right; font-family: var(--font-mono, ui-monospace, monospace); font-variant-numeric: tabular-nums; }
+.h68-card .is-sea { color: #c9ccd3; }
+.h68-card .is-hh { color: #e0213f; }
+.h68-legend { margin: 12px 0 0; font-size: 0.75rem; color: #a6a6b0; }

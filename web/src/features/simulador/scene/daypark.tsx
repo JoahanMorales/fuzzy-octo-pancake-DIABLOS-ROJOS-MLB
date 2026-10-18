@@ -1,8 +1,8 @@
-/* Day game: physical sky (three's Preetham Sky), procedural clouds, a grass shader with real mowing stripes (their
+/* Day game: a custom sky shader with procedural clouds, a grass shader with real mowing stripes (their
    brightness flips with the view direction, as on a real field), clay infield, and the horizon that tells the air:
    the volcanoes behind CDMX in a deep high-altitude blue, or the sea under a hazier low-altitude sky.
    Feet; home plate's back tip at the origin, center field toward -z. */
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Line } from '@react-three/drei';
 import * as THREE from 'three';
@@ -191,18 +191,206 @@ export function GrassField({ c }: { c: Palette }) {
   );
 }
 
-/** Outfield wall and foul poles: enough to frame the field without hiding the sky or the mountains. */
-function Ballpark() {
-  const arc = { start: Math.PI - 1.15, len: 2.3 };
+/* ---------------------------------- wall --------------------------------- */
+
+const ARC = { start: Math.PI - 1.15, len: 2.3 };
+const WALL_H = 10;
+
+/** Padded outfield wall painted on a canvas: panels with seams, a darker kick plate, and a few signs. The batter's eye
+ *  (center field) stays plain. One texture covers the whole arc; a second canvas carries the seams as a bump map. */
+function wallTextures() {
+  const W = 4096, H = 64;
+  const mk = () => { const cv = document.createElement('canvas'); cv.width = W; cv.height = H; return cv; };
+  const cv = mk(), bc = mk();
+  const g = cv.getContext('2d'), b = bc.getContext('2d');
+  if (g && b) {
+    const ft = W / (FENCE_R * ARC.len);
+    const grad = g.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, '#2b5e41');
+    grad.addColorStop(0.55, '#225238');
+    grad.addColorStop(0.82, '#1a432d');
+    grad.addColorStop(0.83, '#14331f');
+    grad.addColorStop(1, '#102a1a');
+    g.fillStyle = grad;
+    g.fillRect(0, 0, W, H);
+    b.fillStyle = '#7a7a7a';
+    b.fillRect(0, 0, W, H);
+    // the pad bulges between seams: brighter in the middle of each 8 ft panel in the bump map
+    for (let x = 0; x < W; x += 8 * ft) {
+      const pg = b.createLinearGradient(x, 0, x + 8 * ft, 0);
+      pg.addColorStop(0, '#505050');
+      pg.addColorStop(0.5, '#b4b4b4');
+      pg.addColorStop(1, '#505050');
+      b.fillStyle = pg;
+      b.fillRect(x, 0, 8 * ft, H * 0.83);
+      g.fillStyle = 'rgba(0,0,0,0.42)';
+      g.fillRect(x, 0, 2, H);
+      g.fillStyle = 'rgba(255,255,255,0.07)';
+      g.fillRect(x + 2, 0, 1, H);
+    }
+    g.fillStyle = 'rgba(0,0,0,0.3)';
+    g.fillRect(0, H * 0.1, W, 1);
+    // fine vinyl grain
+    for (let i = 0; i < 9000; i++) {
+      g.fillStyle = Math.random() < 0.5 ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.04)';
+      g.fillRect(Math.random() * W, Math.random() * H, 2, 1);
+    }
+    const signs: [u: number, w: number, text: string, bg: string, fg: string][] = [
+      [0.12, 56, 'DIABLOS ROJOS', '#b3122b', '#ffffff'],
+      [0.27, 46, 'STUFF+ 2240', '#16161a', '#f3f1ec'],
+      [0.73, 46, '2240 m', '#f3f1ec', '#b3122b'],
+      [0.88, 56, 'DIABLOS ROJOS', '#b3122b', '#ffffff'],
+    ];
+    for (const [u, w, text, bg, fg] of signs) {
+      const sw = w * ft, x0 = u * W - sw / 2, y0 = H * 0.16, sh = H * 0.6;
+      g.fillStyle = bg;
+      g.fillRect(x0, y0, sw, sh);
+      g.fillStyle = 'rgba(255,255,255,0.12)';
+      g.fillRect(x0, y0, sw, 2);
+      g.fillStyle = fg;
+      g.font = `800 ${Math.round(sh * 0.62)}px "Segoe UI", Arial, sans-serif`;
+      g.textAlign = 'center';
+      g.textBaseline = 'middle';
+      g.fillText(text, u * W, y0 + sh * 0.54, sw * 0.9);
+      b.fillStyle = '#9a9a9a';
+      b.fillRect(x0, y0, sw, sh);
+    }
+  }
+  const tex = (c: HTMLCanvasElement, color: boolean) => {
+    const t = new THREE.CanvasTexture(c);
+    if (color) t.colorSpace = THREE.SRGBColorSpace;
+    // the arc's u runs right field -> left field: flip so the signs read from inside the park
+    t.wrapS = THREE.RepeatWrapping;
+    t.repeat.x = -1;
+    t.anisotropy = 8;
+    return t;
+  };
+  return { map: tex(cv, true), bump: tex(bc, false) };
+}
+
+/* Stands behind home plate: one sloped ring painted in the shader (concrete risers, red seats, aisles, and a crowd
+   where each seat is filled or empty by a hash), so thousands of fans cost one draw call. */
+const STAND = { r0: 70, r1: 205, y0: 6, rise: 62, start: -1.05, len: 2.1 };
+const CROWD_FRAG = /* glsl */ `
+  float r = length(vWorld.xz);
+  float ang = atan(vWorld.x, vWorld.z);
+  float rr = (r - ${STAND.r0.toFixed(1)}) / 2.9;
+  float row = floor(rr), fr = fract(rr);
+  float along = ang * r / 1.9;
+  float seat = floor(along), fs = fract(along);
+  float aisle = step(abs(fract(ang * 9.0) - 0.5), 0.022);
+  vec3 concrete = vec3(0.45, 0.44, 0.42);
+  vec3 col = mix(vec3(0.62, 0.11, 0.15), vec3(0.5, 0.08, 0.12), gh(vec2(row, seat)));
+  col = mix(col, concrete * 0.75, step(fr, 0.24));
+  float h = gh(vec2(seat * 1.37, row * 3.11));
+  float k = gh(vec2(row * 7.3, seat * 0.71));
+  // shirts: lots of Diablos red, then white, black, a few blues and yellows
+  vec3 shirt = k < 0.34 ? vec3(0.75, 0.08, 0.12) : k < 0.58 ? vec3(0.92, 0.91, 0.88) : k < 0.78 ? vec3(0.08, 0.08, 0.09)
+    : k < 0.9 ? vec3(0.16, 0.3, 0.62) : vec3(0.9, 0.72, 0.18);
+  vec3 skin = mix(vec3(0.42, 0.28, 0.2), vec3(0.72, 0.52, 0.4), gh(vec2(seat, row * 1.9)));
+  float body = step(0.2, fs) * step(fs, 0.8) * step(0.3, fr) * step(fr, 0.8);
+  float head = step(length(vec2((fs - 0.5) * 1.3, fr - 0.88)), 0.14);
+  float full = step(h, 0.66) * (1.0 - aisle);
+  col = mix(col, col * 0.55, full * step(0.24, fr) * step(fr, 0.32));
+  col = mix(col, shirt, body * full);
+  col = mix(col, skin, head * full * (1.0 - body));
+  col = mix(col, concrete, aisle);
+  // far away the pattern turns to noise: fade to its average color
+  float blur = smoothstep(0.35, 0.9, fwidth(rr));
+  col = mix(col, vec3(0.5, 0.2, 0.2), blur);
+  diffuseColor.rgb = col;`;
+
+function useCrowdMaterial() {
+  return useMemo(() => {
+    const m = new THREE.MeshStandardMaterial({ roughness: 0.9, metalness: 0, side: THREE.DoubleSide });
+    m.onBeforeCompile = (sh) => {
+      sh.vertexShader = sh.vertexShader
+        .replace('#include <common>', '#include <common>\nvarying vec3 vWorld;')
+        .replace('#include <worldpos_vertex>', '#include <worldpos_vertex>\nvWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;');
+      sh.fragmentShader = sh.fragmentShader
+        .replace('#include <common>', `#include <common>\nvarying vec3 vWorld;\n${NOISE_GLSL}`)
+        .replace('#include <color_fragment>', `#include <color_fragment>\n${CROWD_FRAG}`);
+    };
+    m.customProgramCacheKey = () => 'crowd';
+    return m;
+  }, []);
+}
+
+function Grandstand() {
+  const crowd = useCrowdMaterial();
+  useEffect(() => () => crowd.dispose(), [crowd]);
+  const { r0, r1, y0, rise, start, len } = STAND;
+  const top = y0 + rise;
+  const cols = Array.from({ length: 7 }, (_, i) => start + 0.08 + (i * (len - 0.16)) / 6);
   return (
     <group>
-      <mesh position={[0, 5, 0]} receiveShadow castShadow>
-        <cylinderGeometry args={[FENCE_R, FENCE_R, 10, 128, 1, true, arc.start, arc.len]} />
-        <meshStandardMaterial color="#1f4a32" roughness={0.85} side={THREE.DoubleSide} />
+      {/* backstop wall */}
+      <mesh position={[0, y0 / 2, 0]} receiveShadow>
+        <cylinderGeometry args={[r0 - 1, r0 - 1, y0, 96, 1, true, start, len]} />
+        <meshStandardMaterial color="#3a7853" emissive="#1b3a28" roughness={0.8} side={THREE.BackSide} />
       </mesh>
-      <mesh position={[0, 10.1, 0]}>
-        <cylinderGeometry args={[FENCE_R + 0.15, FENCE_R + 0.15, 0.4, 128, 1, true, arc.start, arc.len]} />
-        <meshStandardMaterial color="#e9c43a" roughness={0.6} side={THREE.DoubleSide} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, y0, 0]}>
+        <ringGeometry args={[r0 - 1.1, r0 + 0.2, 96, 1, start - Math.PI / 2, len]} />
+        <meshStandardMaterial color="#e9c43a" roughness={0.6} />
+      </mesh>
+      <mesh position={[0, y0 + rise / 2, 0]} material={crowd}>
+        <cylinderGeometry args={[r1, r0, rise, 160, 1, true, start, len]} />
+      </mesh>
+      {/* back wall, roof and its columns */}
+      <mesh position={[0, top + 9, 0]}>
+        <cylinderGeometry args={[r1, r1, 18, 96, 1, true, start, len]} />
+        <meshStandardMaterial color="#2a2a2e" roughness={0.9} side={THREE.DoubleSide} />
+      </mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, top + 18, 0]}>
+        <ringGeometry args={[r1 - 62, r1 + 2, 96, 1, start - Math.PI / 2, len]} />
+        <meshStandardMaterial color="#d9d9dc" roughness={0.7} side={THREE.DoubleSide} />
+      </mesh>
+      <mesh position={[0, top + 17.2, 0]}>
+        <cylinderGeometry args={[r1 - 62, r1 - 62, 1.6, 96, 1, true, start, len]} />
+        <meshStandardMaterial color="#b3122b" roughness={0.6} side={THREE.DoubleSide} />
+      </mesh>
+      {cols.map((a) => (
+        <mesh key={a} position={[Math.sin(a) * (r1 - 4), (top + 18) / 2 + 20, Math.cos(a) * (r1 - 4)]}>
+          <cylinderGeometry args={[0.8, 0.8, top + 18 - 40, 8]} />
+          <meshStandardMaterial color="#cfcfd2" roughness={0.6} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+/** Outfield wall with thickness (padded face, cap, yellow home-run line), the batter's eye and the foul poles. */
+function Ballpark() {
+  const { map, bump } = useMemo(wallTextures, []);
+  useEffect(() => () => { map.dispose(); bump.dispose(); }, [map, bump]);
+  const capStart = ARC.start - Math.PI / 2;
+  return (
+    <group>
+      <mesh position={[0, WALL_H / 2, 0]} receiveShadow castShadow>
+        <cylinderGeometry args={[FENCE_R - 1, FENCE_R - 1, WALL_H, 192, 1, true, ARC.start, ARC.len]} />
+        <meshStandardMaterial map={map} bumpMap={bump} bumpScale={1.5} roughness={0.78} side={THREE.BackSide} />
+      </mesh>
+      <mesh position={[0, WALL_H / 2, 0]}>
+        <cylinderGeometry args={[FENCE_R + 1, FENCE_R + 1, WALL_H, 96, 1, true, ARC.start, ARC.len]} />
+        <meshStandardMaterial color="#173a27" roughness={0.9} />
+      </mesh>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, WALL_H, 0]} receiveShadow>
+        <ringGeometry args={[FENCE_R - 1.05, FENCE_R + 1.05, 192, 1, capStart, ARC.len]} />
+        <meshStandardMaterial color="#e9c43a" roughness={0.55} />
+      </mesh>
+      <mesh position={[0, WALL_H - 0.25, 0]}>
+        <cylinderGeometry args={[FENCE_R - 1.04, FENCE_R - 1.04, 0.5, 192, 1, true, ARC.start, ARC.len]} />
+        <meshStandardMaterial color="#e9c43a" roughness={0.55} side={THREE.BackSide} />
+      </mesh>
+      <Grandstand />
+      {/* batter's eye: a dark, plain block behind center field */}
+      <mesh position={[0, 8, -FENCE_R - 10]} castShadow receiveShadow>
+        <boxGeometry args={[64, 16, 12]} />
+        <meshStandardMaterial color="#1a3a27" roughness={0.95} />
+      </mesh>
+      <mesh position={[0, 16.2, -FENCE_R - 10]}>
+        <boxGeometry args={[64.4, 0.5, 12.4]} />
+        <meshStandardMaterial color="#e9c43a" roughness={0.6} />
       </mesh>
       {[-1, 1].map((s) => (
         <mesh key={s} position={[(s * FENCE_R) / Math.SQRT2, 22, -FENCE_R / Math.SQRT2]} castShadow>
@@ -216,29 +404,127 @@ function Ballpark() {
 
 /* -------------------------------- horizon -------------------------------- */
 
-/** CDMX: Popocatépetl and Iztaccíhuatl far away, blue with distance and snow-capped; sea level: open water. */
-export function DayHorizon({ park }: { park: ParkSide }) {
-  if (park === 'harp') {
-    const peak = (x: number, z: number, r: number, h: number, sx: number, snow: number, seg: number) => (
-      <group position={[x, h / 2 - 30, z]} scale={[sx, 1, 1]}>
-        <mesh>
-          <coneGeometry args={[r, h, seg]} />
-          <meshStandardMaterial color="#6d82a3" roughness={1} />
-        </mesh>
-        <mesh position={[0, h / 2 - (h * snow) / 2, 0]}>
-          <coneGeometry args={[r * snow * 1.02, h * snow, seg]} />
-          <meshStandardMaterial color="#f2f5fa" roughness={0.8} />
-        </mesh>
-      </group>
-    );
-    return (
-      <group>
-        {peak(-600, -1700, 470, 380, 1.25, 0.24, 24)}
-        {peak(700, -1780, 280, 290, 3.0, 0.17, 18)}
-        {peak(60, -1550, 1000, 110, 2.3, 0.0001, 14)}
-      </group>
-    );
+const hash2 = (x: number, y: number) => { const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return s - Math.floor(s); };
+function vnoise(x: number, y: number) {
+  const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy;
+  const ux = fx * fx * (3 - 2 * fx), uy = fy * fy * (3 - 2 * fy);
+  const a = hash2(ix, iy), b = hash2(ix + 1, iy), c = hash2(ix, iy + 1), d = hash2(ix + 1, iy + 1);
+  return a + (b - a) * ux + (c - a) * uy + (a - b - c + d) * ux * uy;
+}
+function fbm2(x: number, y: number, oct = 5) {
+  let v = 0, a = 0.5;
+  for (let i = 0; i < oct; i++) { v += a * vnoise(x, y); x = x * 2.03 + 17; y = y * 2.03 + 9; a *= 0.5; }
+  return v;
+}
+/** Ridged noise: sharp crests and valleys, the look of eroded volcanic slopes. */
+function ridged2(x: number, y: number, oct = 5) {
+  let v = 0, a = 0.5;
+  for (let i = 0; i < oct; i++) {
+    const n = 1 - Math.abs(vnoise(x, y) * 2 - 1);
+    v += a * n * n;
+    x = x * 2.07 + 5; y = y * 2.07 + 23; a *= 0.5;
   }
+  return v;
+}
+const smooth = (e0: number, e1: number, x: number) => { const t = Math.min(1, Math.max(0, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); };
+const gauss = (d: number, s: number) => Math.exp(-(d * d) / (2 * s * s));
+
+/** Height (ft) of the volcano range at a world point. Seen from the city, Iztaccíhuatl (a long ridge: head, chest,
+ *  knees, feet) sits left of Popocatépetl (a regular cone with a crater). Heights are exaggerated for the cameras'
+ *  narrow vertical field; the shapes are what matter. */
+function volcanoHeight(x: number, z: number) {
+  const px = x - 620, pz = (z + 1950) * 1.15;
+  const pd = Math.hypot(px, pz);
+  const flank = Math.max(0, 1 - pd / 680);
+  let popo = 300 * Math.pow(flank, 1.9) - 9 * gauss(pd, 16);
+  // radial gullies down the cone
+  popo -= ridged2(Math.atan2(pz, px) * 9, pd * 0.006, 3) * 26 * flank * (1 - flank) * 2.2;
+  const ix = x + 560, iz = z + 2000;
+  // one continuous crest with the four summits rising from it
+  let izta = 178 * smooth(-560, -330, ix) * (1 - smooth(360, 600, ix)) * gauss(iz, 230);
+  for (const [cx, h, sx] of [[-330, 34, 70], [-95, 66, 110], [165, 46, 95], [400, 6, 80]] as const) {
+    izta += h * gauss(ix - cx, sx) * gauss(iz, 200);
+  }
+  const hills = 26 + 80 * fbm2(x * 0.0016, z * 0.0016, 4);
+  const mass = Math.max(popo, izta);
+  let h = Math.max(hills, mass + hills * 0.35);
+  h += (ridged2(x * 0.0055, z * 0.0055) - 0.32) * (14 + mass * 0.2);
+  // sink the near edge and the sides below the ground so no edge ever shows
+  const f = smooth(-1440, -1680, z) * smooth(1580, 1250, Math.abs(x));
+  return h * f - 40 * (1 - f);
+}
+
+function useVolcanoGeometry() {
+  return useMemo(() => {
+    const g = new THREE.PlaneGeometry(3200, 1000, 320, 100);
+    g.rotateX(-Math.PI / 2);
+    g.translate(0, 0, -1950);
+    const pos = g.attributes.position as THREE.BufferAttribute;
+    for (let i = 0; i < pos.count; i++) pos.setY(i, volcanoHeight(pos.getX(i), pos.getZ(i)));
+    g.computeVertexNormals();
+    const nrm = g.attributes.normal as THREE.BufferAttribute;
+    const col = new Float32Array(pos.count * 3);
+    const snow = new THREE.Color('#f2f6fb'), shade = new THREE.Color('#c9d5e6'), rock = new THREE.Color('#6b778b');
+    const dark = new THREE.Color('#4c566a'), forest = new THREE.Color('#3b5646');
+    const c = new THREE.Color(), s = new THREE.Color();
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
+      const slope = 1 - nrm.getY(i);
+      c.copy(rock).lerp(dark, smooth(0.35, 0.75, ridged2(x * 0.02, z * 0.02, 3)) * 0.7);
+      c.lerp(forest, 1 - smooth(55, 135, y + 30 * fbm2(x * 0.01, z * 0.01, 3)));
+      const line = 158 + 34 * fbm2(x * 0.012, z * 0.012, 4) + slope * 70;
+      s.copy(snow).lerp(shade, smooth(0.2, 0.6, slope));
+      c.lerp(s, smooth(line - 10, line + 14, y) * (1 - smooth(0.5, 0.85, slope)));
+      col.set([c.r, c.g, c.b], i * 3);
+    }
+    g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    return g;
+  }, []);
+}
+
+/** Soft puff texture for Popocatépetl's steam plume. */
+function usePuff() {
+  return useMemo(() => {
+    const cv = document.createElement('canvas');
+    cv.width = cv.height = 64;
+    const g = cv.getContext('2d');
+    if (g) {
+      const r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+      r.addColorStop(0, 'rgba(255,255,255,0.9)');
+      r.addColorStop(0.5, 'rgba(255,255,255,0.35)');
+      r.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = r;
+      g.fillRect(0, 0, 64, 64);
+    }
+    const t = new THREE.CanvasTexture(cv);
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }, []);
+}
+
+function Volcanoes() {
+  const geo = useVolcanoGeometry();
+  const puff = usePuff();
+  useEffect(() => () => { geo.dispose(); puff.dispose(); }, [geo, puff]);
+  const top = volcanoHeight(620, -1950);
+  return (
+    <group>
+      <mesh geometry={geo}>
+        <meshStandardMaterial vertexColors roughness={1} metalness={0} />
+      </mesh>
+      {/* a thin steam plume drifting east, as Popocatépetl usually shows */}
+      {[0, 1, 2, 3, 4, 5].map((i) => (
+        <sprite key={i} position={[620 + i * i * 6 + i * 10, top + 14 + i * 13, -1950 + i * 4]} scale={30 + i * 16}>
+          <spriteMaterial map={puff} color="#eef2f7" transparent opacity={0.5 - i * 0.065} depthWrite={false} />
+        </sprite>
+      ))}
+    </group>
+  );
+}
+
+/** CDMX: Iztaccíhuatl and Popocatépetl, blue with distance and snow-capped; sea level: open water. */
+export function DayHorizon({ park }: { park: ParkSide }) {
+  if (park === 'harp') return <Volcanoes />;
   return (
     <mesh position={[0, -1, -1400]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[6000, 1800]} />

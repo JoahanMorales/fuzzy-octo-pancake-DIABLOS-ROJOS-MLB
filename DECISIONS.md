@@ -106,3 +106,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792278536 | deadline lease/HACK-045/1792275155 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792278536 | deadline lease/HACK-057/1792276043 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792283888 | HACK-046 | Release Altitud pending geographic contract; handle human-authorized CI exception in separate branch. | Why: All open PRs fail bash syntax validation of Python uak-mcp.
+- 1792284157 | HACK-073 | Wait registered independent review and full checks before merge; preserve published Verify false-exit evidence. | Why: CI repair owns correct workflow scope; no other gate modifications.

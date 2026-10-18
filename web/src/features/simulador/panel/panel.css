@@ -142,3 +142,7 @@
   margin: 0;
   font-family: var(--font-mono);
 }
+.sp-col dd.sp-na { color: var(--fg-faint); font-size: var(--text-xs); }
+/* the three score columns are narrow: label above value, so Location+ and Pitching+ never run into the next column */
+.sp-col dl div { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; padding-right: var(--s-2); }
+.sp-col dd { overflow-wrap: anywhere; }

@@ -12,6 +12,9 @@ export interface Draft {
   playId: number;
 }
 
+/** A count field: whole numbers from 0 to `max` (typed 99, -1 or 1.5 never reach the model). */
+export const countValue = (raw: string, max: number) => Math.min(max, Math.max(0, Math.trunc(Number(raw) || 0)));
+
 export const PARK_HARP = 'harp';
 export const PARK_SEA = 'sea';
 
@@ -115,10 +118,10 @@ export function Controls({ draft, parks, onRelease, onPatch, onDraft, onThrow }:
         <legend>Cuenta</legend>
         <div className="ctl-count">
           <label>Bolas
-            <input type="number" min={0} max={3} value={draft.balls} onChange={(event) => onDraft({ balls: Number(event.target.value) })} />
+            <input type="number" min={0} max={3} step={1} value={draft.balls} onChange={(event) => onDraft({ balls: countValue(event.target.value, 3) })} />
           </label>
           <label>Strikes
-            <input type="number" min={0} max={2} value={draft.strikes} onChange={(event) => onDraft({ strikes: Number(event.target.value) })} />
+            <input type="number" min={0} max={2} step={1} value={draft.strikes} onChange={(event) => onDraft({ strikes: countValue(event.target.value, 2) })} />
           </label>
         </div>
       </fieldset>

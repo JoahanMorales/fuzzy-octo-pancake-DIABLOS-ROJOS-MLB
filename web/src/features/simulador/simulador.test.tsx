@@ -8,6 +8,7 @@ import { PLATE_FRONT_FT } from '../../physics/flight';
 import { HARP_RHO, SHAPE_PRESETS, STAFF, staffRelease } from './flight/presets';
 import { plateGap, scenePath, throwPair } from './flight/throw';
 import { stuffDelta, type Models } from './panel/score';
+import { countValue } from './panel/Controls';
 import { Simulador } from './index';
 
 const models: Models = {
@@ -103,5 +104,22 @@ describe('panel', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Lanzador del staff' }));
     expect(screen.getByRole('button', { name: 'Lanzador del staff' })).toHaveAttribute('aria-pressed', 'true');
     expect(screen.getByText(/agregado de ejemplo/)).toBeInTheDocument();
+  });
+});
+
+describe('revisión', () => {
+  it('no muestra Stuff+ en la celda de Pitching+ mientras no hay modelo de Pitching+', () => {
+    render(<Simulador models={models} />);
+    const cells = screen.getAllByTestId('pitching-cell');
+    expect(cells).toHaveLength(2);
+    for (const cell of cells) expect(cell).toHaveTextContent('sin modelo');
+  });
+
+  it('el conteo solo acepta enteros de 0 a 3 bolas y de 0 a 2 strikes', () => {
+    expect(countValue('99', 3)).toBe(3);
+    expect(countValue('-1', 3)).toBe(0);
+    expect(countValue('1.5', 3)).toBe(1);
+    expect(countValue('', 2)).toBe(0);
+    expect(countValue('2', 2)).toBe(2);
   });
 });

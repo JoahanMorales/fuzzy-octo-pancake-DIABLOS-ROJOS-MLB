@@ -1,7 +1,9 @@
 /**
- * Shape releases whose sea-level movement, scored by the published Stuff+ trees and
- * `physics_translator`, lands within ±1.5 of `reports/altitude_delta/delta_by_shape.csv`
- * at `physics.json` → `rho.harp_helu`. They are representative releases, not league means.
+ * Shape releases next to each shape's centroid in `reports/shapes/shapes.csv` (within 3 mph, 2 in of IVB, 4 in of HB
+ * and 200 rpm) whose ΔStuff+, scored by the production Stuff+ v2 trees (HACK-066) and `physics_translator`, lands
+ * within ±1.5 of `reports/altitude_delta/delta_by_shape.csv` at `physics.json` → `rho.harp_helu`. The primary
+ * fastball is the 4S centroid. Representative releases, not league means: the model is non-linear, so the centroid
+ * itself does not reproduce the shape's mean ΔStuff+.
  */
 import type { Family } from '../../../physics/flight';
 import physics from '../../../physics/physics.json';
@@ -31,7 +33,7 @@ export interface Release {
   source: string;
 }
 
-const FB = { fbVelo: 94, fbIvb: 16, fbHb: 8 };
+const FB = { fbVelo: 90.8, fbIvb: 12.8, fbHb: 9.1 }; // 4S centroid, reports/shapes/shapes.csv
 const BODY = { height: 5.9, side: 1.7, extension: 6.3, throws: 'R' as const };
 
 interface Seed {
@@ -47,19 +49,19 @@ interface Seed {
 }
 
 const SEEDS: Seed[] = [
-  { shape: 'riding 4S', label: 'Recta de ride', family: 'Four-Seam', velo: 95.5, spin: 2450, axis: 185, ivb: 18, hb: -2, fastball: true },
-  { shape: '4S', label: 'Recta de cuatro', family: 'Four-Seam', velo: 93, spin: 2250, axis: 200, ivb: 15, hb: 8, fastball: true },
-  { shape: 'sweeper', label: 'Sweeper', family: 'Slider', velo: 81, spin: 2700, axis: 280, ivb: 8, hb: -18 },
-  { shape: 'slider', label: 'Slider', family: 'Slider', velo: 85, spin: 2500, axis: 250, ivb: 0, hb: -14 },
-  { shape: 'gyro slider', label: 'Gyro', family: 'Slider', velo: 86, spin: 2750, axis: 220, ivb: 1, hb: -6 },
-  { shape: 'splitter', label: 'Splitter', family: 'Splitter', velo: 86, spin: 1400, axis: 190, ivb: -2, hb: -4 },
-  { shape: '12-6 CB', label: 'Curva 12-6', family: 'Curveball', velo: 78, spin: 2700, axis: 20, ivb: -15, hb: 0 },
-  { shape: '11-5 CB', label: 'Curva 11-5', family: 'Curveball', velo: 79, spin: 2550, axis: 50, ivb: -9, hb: 2 },
-  { shape: 'cutter', label: 'Cutter', family: 'Cutter', velo: 90, spin: 2350, axis: 160, ivb: 15, hb: 4 },
-  { shape: 'running 2S', label: 'Dos costuras', family: 'Sinker', velo: 93, spin: 2150, axis: 230, ivb: 12, hb: 16, fastball: true },
-  { shape: 'sinking 2S', label: 'Sinker', family: 'Sinker', velo: 92, spin: 2050, axis: 240, ivb: 4, hb: 12, fastball: true },
-  { shape: 'changeup', label: 'Cambio', family: 'Changeup', velo: 84, spin: 1750, axis: 220, ivb: 10, hb: 8 },
-  { shape: 'power CH', label: 'Cambio de poder', family: 'Changeup', velo: 88, spin: 1850, axis: 210, ivb: 4, hb: 6 },
+  { shape: 'riding 4S', label: 'Recta de ride', family: 'Four-Seam', velo: 91.7, spin: 2434, axis: 185, ivb: 20.5, hb: 9.7, fastball: true },
+  { shape: '4S', label: 'Recta de cuatro', family: 'Four-Seam', velo: 89.3, spin: 2386, axis: 200, ivb: 12.8, hb: 7.1, fastball: true },
+  { shape: 'sweeper', label: 'Sweeper', family: 'Slider', velo: 82.2, spin: 2606, axis: 280, ivb: -2.7, hb: -11.3 },
+  { shape: 'slider', label: 'Slider', family: 'Slider', velo: 83.1, spin: 2475, axis: 250, ivb: 2, hb: -8.7 },
+  { shape: 'gyro slider', label: 'Gyro', family: 'Slider', velo: 84.8, spin: 2246, axis: 220, ivb: 5.4, hb: 1.9 },
+  { shape: 'splitter', label: 'Splitter', family: 'Splitter', velo: 81.6, spin: 1518, axis: 190, ivb: -0.3, hb: 1.9 },
+  { shape: '12-6 CB', label: 'Curva 12-6', family: 'Curveball', velo: 80.1, spin: 2426, axis: 20, ivb: -4.5, hb: -2.2 },
+  { shape: '11-5 CB', label: 'Curva 11-5', family: 'Curveball', velo: 78.1, spin: 2514, axis: 50, ivb: -6.9, hb: -10.9 },
+  { shape: 'cutter', label: 'Cutter', family: 'Cutter', velo: 86.8, spin: 2365, axis: 160, ivb: 10.3, hb: 0.9 },
+  { shape: 'running 2S', label: 'Dos costuras', family: 'Sinker', velo: 91.5, spin: 2182, axis: 230, ivb: 15.3, hb: 12.3, fastball: true },
+  { shape: 'sinking 2S', label: 'Sinker', family: 'Sinker', velo: 88.9, spin: 2130, axis: 240, ivb: 6.4, hb: 16.4, fastball: true },
+  { shape: 'changeup', label: 'Cambio', family: 'Changeup', velo: 81.4, spin: 2060, axis: 220, ivb: 4, hb: 8.7 },
+  { shape: 'power CH', label: 'Cambio de poder', family: 'Changeup', velo: 89.7, spin: 2004, axis: 210, ivb: 12, hb: 12.1 },
 ];
 
 export const SHAPE_PRESETS: Release[] = SEEDS.map((seed) => ({

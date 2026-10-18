@@ -1,0 +1,42 @@
+.methodology { max-width: var(--max-w); margin: auto; padding: var(--s-12) var(--s-6); }
+.methodology h1, .methodology h2 { font-family: var(--font-display); text-transform: uppercase; line-height: 1.05; }
+.methodology h1 { font-size: var(--text-3xl); max-width: 20ch; margin: var(--s-3) 0 var(--s-4); }
+.methodology h2 { font-size: var(--text-xl); margin: 0 0 var(--s-4); }
+.methodology p { color: var(--fg-muted); max-width: 72ch; }
+.method-heading { margin-bottom: var(--s-8); }
+.method-heading > p:first-child { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .14em; color: var(--fg); }
+.method-status { padding: var(--s-3) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--warn); font-size: var(--text-sm); }
+.method-lead { display: grid; grid-template-columns: minmax(200px, 1fr) minmax(0, 2.3fr); gap: var(--s-8); padding: var(--s-8) 0; align-items: start; }
+.methodology label { display: block; margin-bottom: var(--s-2); font-size: var(--text-sm); }
+.methodology select, .methodology button { background: var(--surface-2); border: 1px solid var(--line-strong); border-radius: var(--radius); color: var(--fg); padding: var(--s-3); font: inherit; max-width: 100%; }
+.methodology button { cursor: pointer; } .methodology button:active { transform: translateY(1px); }
+.methodology :is(a, select, button, summary, [tabindex]):focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+.method-table { overflow-x: auto; } .methodology table { border-collapse: collapse; width: 100%; text-align: left; font-size: var(--text-sm); }
+.methodology caption { caption-side: bottom; padding-top: var(--s-4); text-align: left; color: var(--fg-muted); }
+.methodology th, .methodology td { padding: var(--s-3); vertical-align: top; } .methodology thead { background: var(--surface); color: var(--fg-muted); }
+.methodology tbody tr + tr { border-top: 1px solid var(--line); } .methodology td { font-family: var(--font-mono); white-space: nowrap; }
+.methodology .method-source { font-size: var(--text-xs); overflow-wrap: anywhere; }
+.method-limits { padding: var(--s-6); border-left: 3px solid var(--warn); background: var(--surface); margin-bottom: var(--s-12); }
+.method-limits p:last-child { margin-bottom: 0; } .methodology summary { cursor: pointer; color: var(--fg-muted); }
+.method-section { padding: var(--s-8) 0; border-top: 1px solid var(--line); } .method-section-title { display: flex; justify-content: space-between; gap: var(--s-6); align-items: baseline; }
+.method-bias { margin: var(--s-6) 0; max-width: 560px; } .method-bias svg { width: 100%; height: auto; overflow: visible; }
+.method-bias text { fill: var(--fg-muted); font: 14px var(--font-mono); } .method-bias figcaption { color: var(--fg-muted); font-size: var(--text-sm); max-width: 90ch; }
+.method-zero { stroke: var(--line-strong); } .method-air { stroke: var(--red-strong); stroke-width: 2.5; } .method-reference { stroke: var(--sea); stroke-width: 2; stroke-dasharray: 5 4; }
+.method-dot-air { fill: var(--red-strong); } .method-dot-reference { fill: var(--sea); } .method-bias circle { stroke: var(--surface); stroke-width: 2; }
+.method-bias g:hover text, .method-bias g:focus text { fill: var(--fg); } .method-bias g:focus circle { stroke: var(--fg); stroke-width: 3; }
+.method-duo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-12); border-top: 1px solid var(--line); padding: var(--s-8) 0; }
+.method-empty { border-left: 2px solid var(--line-strong); padding-left: var(--s-4); } .method-checks { padding: 0; list-style: none; }
+.method-checks li { display: grid; grid-template-columns: 90px 1fr; gap: var(--s-4); margin: var(--s-6) 0; } .method-checks strong { font-weight: 500; } .method-checks p { font-family: var(--font-mono); margin: var(--s-1) 0 0; font-size: var(--text-sm); }
+.method-pass { color: var(--ok); } .method-pending { color: var(--warn); } .method-links { display: flex; flex-wrap: wrap; gap: var(--s-6); margin-top: var(--s-6); }
+.method-sources ul { padding-left: var(--s-6); overflow-wrap: anywhere; } .method-sources li { margin: var(--s-2) 0; }
+.method-loading { min-height: 300px; padding-top: var(--s-8); } .method-loading div { height: 48px; background: var(--surface); margin-bottom: var(--s-4); } .method-loading div:last-child { width: 65%; }
+@media (max-width: 899px) { .method-lead, .method-duo { grid-template-columns: 1fr; } .method-section-title { display: block; } }
+@media (max-width: 600px) { .methodology { padding: var(--s-8) var(--s-4); } .methodology h1 { font-size: var(--text-2xl); }  .method-checks li { grid-template-columns: 75px 1fr; } }
+
+.method-calibration { margin: var(--s-6) 0; max-width: 540px; } .method-calibration svg { width: 100%; height: auto; }
+.method-calibration text { fill: var(--fg-muted); font: 14px var(--font-mono); } .method-calibration circle { fill: var(--fg); stroke: var(--surface); stroke-width: 2; }
+.method-calibration circle:focus, .method-calibration circle:hover { stroke: var(--fg); stroke-width: 4; }
+.method-calibration-line { stroke: var(--fg); stroke-width: 2; fill: none; } .method-calibration figcaption, .method-point { color: var(--fg-muted); font-size: var(--text-sm); }
+.methodology h3 { margin-top: var(--s-8); font-size: var(--text-lg); font-weight: 500; }
+
+.method-result { min-width: 0; }

@@ -26,8 +26,8 @@ An owner is not a prerequisite for everyone: consumers work on published contrac
 | app/Home.py | HACK-007 |
 | app/theme.py | HACK-007 |
 | .streamlit/ | HACK-007 |
-| web/package.json | HACK-037 |
-| web/package-lock.json | HACK-037 |
+| web/package.json | HACK-045 |
+| web/package-lock.json | HACK-045 |
 | web/vite.config.ts | HACK-037 |
 | web/tsconfig.json | HACK-037 |
 | web/src/routes.tsx | HACK-067 |

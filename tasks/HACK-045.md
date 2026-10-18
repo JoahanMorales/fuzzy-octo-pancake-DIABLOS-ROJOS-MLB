@@ -15,7 +15,7 @@ Task-Base: f874187dbc6a7ef65dcd59f150bcd7950f26613b
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-045?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-045?expand=1
 Evidence: 454ee2d: vitest src/features/simulador 14 passed; tsc + vite build OK; Edge 1440 headless 134-145 fps in all views, harp and sea parks, no page errors; city, trees, light towers, scoreboard, AO per joahan. Web-only.
-Events: 19
+Events: 20
 Checkpoints: 2
 Sessions: 5
 Last-Checkpoint: 1792272455

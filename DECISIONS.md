@@ -117,3 +117,5 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792286747 | HACK-067 | mix to resisting pitch with best CDMX Stuff+, capped 10%, only if arsenal improves | Why: moving usage to a weaker pitch made the arsenal worse
 - 1792287295 | HACK-068 | exclude staff ids; default max loss = league median | Why: acceptance: not on the Diablos, small CDMX loss
 - 1792290872 | HACK-071 | tour renders real pages via routes.pageElement; numbers from contract JSON | Why: acceptance: number read from the contract
+- 1792290870 | deadline lease/HACK-057/1792288063 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792290870 | deadline lease/HACK-072/1792287747 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.

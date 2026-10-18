@@ -1,0 +1,162 @@
+/* /fisica (HACK-072). Tokens from src/styles/tokens.css. Red = the chosen (CDMX) air, solid; sea level = neutral grey,
+   dashed; textbook physics = red, dotted. */
+.fis-page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--s-8) var(--s-6) var(--s-16);
+  color: var(--fg);
+  font-family: var(--font-body);
+}
+.fis-head { display: grid; gap: var(--s-3); justify-items: start; margin-bottom: var(--s-8); }
+.fis-head h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--text-3xl);
+  line-height: 1;
+  margin: 0;
+  max-width: 24ch;
+}
+.fis-head p { margin: 0; color: var(--fg-muted); max-width: 60ch; line-height: 1.5; }
+
+.fis-page button:focus-visible, .fis-page input:focus-visible, .fis-row:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+/* controls: family chips on the left, the density slider on the right */
+.fis-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--s-6);
+  align-items: end;
+  padding-bottom: var(--s-6);
+  border-bottom: 1px solid var(--line);
+}
+.fis-families { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.fis-families button, .fis-rho-row button {
+  font: 500 var(--text-sm) / 1 var(--font-body);
+  color: var(--fg-muted);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.fis-families button:hover, .fis-rho-row button:hover { color: var(--fg); border-color: var(--fg-faint); }
+.fis-families button[aria-checked='true'], .fis-rho-row button[aria-pressed='true'] {
+  color: var(--fg);
+  border-color: var(--red);
+  background: var(--red-soft);
+}
+.fis-families button:active, .fis-rho-row button:active { transform: translateY(1px); }
+.fis-rho label { display: block; font-size: var(--text-sm); color: var(--fg-muted); margin-bottom: var(--s-2); }
+.fis-rho-row { display: flex; align-items: center; gap: var(--s-3); }
+.fis-rho-row input { flex: 1; min-width: 80px; accent-color: var(--red); }
+.fis-rho-value { font: 500 var(--text-base) / 1 var(--font-mono); min-width: 7ch; text-align: right; }
+
+/* lower-third readout */
+.fis-readout {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: var(--s-6) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.fis-readout > div { padding: var(--s-4) var(--s-4) var(--s-4) 0; border-left: 1px solid var(--line); padding-left: var(--s-4); }
+.fis-readout > div:first-child { border-left: 0; padding-left: 0; }
+.fis-readout dt { font-size: var(--text-xs); color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.fis-readout dd {
+  margin: var(--s-1) 0;
+  font: 700 var(--text-2xl) / 1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+.fis-readout .is-hh dd { color: var(--red-strong); }
+.fis-readout span { font-size: var(--text-xs); color: var(--fg-faint); }
+
+/* graphics */
+.fis-views { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: var(--s-6); }
+.fis-fig { margin: 0; }
+.fis-fig figcaption { font-size: var(--text-sm); color: var(--fg-muted); margin-bottom: var(--s-2); }
+.fis-fig > svg { width: 100%; height: auto; display: block; overflow: visible; }
+.fis-fig-note { margin: var(--s-2) 0 0; font-size: var(--text-sm); color: var(--fg-muted); }
+.fis-fig-note strong { color: var(--fg); font-family: var(--font-mono); font-weight: 500; }
+.fis-grid { stroke: var(--line); stroke-width: 1; }
+.fis-tick { fill: var(--fg-faint); font: 11px var(--font-mono); }
+.fis-zone-edge { stroke: var(--line-strong); stroke-width: 2; }
+.fis-zone { fill: rgb(241 241 243 / 0.03); stroke: var(--line-strong); stroke-width: 1.5; }
+.fis-sea { fill: none; stroke: var(--sea); stroke-width: 2; stroke-dasharray: 6 5; }
+.fis-book { fill: none; stroke: var(--red); stroke-width: 1.5; stroke-dasharray: 1.5 4; stroke-linecap: round; opacity: 0.8; }
+.fis-hh { fill: none; stroke: var(--red-strong); stroke-width: 2.5; stroke-linecap: round; }
+.fis-dot-sea { fill: var(--bg); stroke: var(--sea); stroke-width: 2; }
+.fis-dot-hh { fill: var(--red-strong); stroke: var(--bg); stroke-width: 2; }
+.fis-bracket { fill: none; stroke: var(--fg-muted); stroke-width: 1.2; }
+.fis-gap { fill: var(--fg); font: 500 12px var(--font-mono); }
+.fis-ball-sea { fill: none; stroke: var(--sea); stroke-width: 2; stroke-dasharray: 4 3; }
+.fis-ball-book { fill: none; stroke: var(--red); stroke-width: 1.5; stroke-dasharray: 1.5 3; }
+.fis-ball-hh { fill: var(--red-strong); stroke: var(--bg); stroke-width: 2; }
+.fis-arrow { stroke: var(--fg-muted); stroke-width: 1.5; }
+.fis-head-mark { fill: var(--fg-muted); }
+
+.fis-legend { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); padding: 0; margin: var(--s-3) 0 0; font-size: var(--text-xs); color: var(--fg-muted); }
+.fis-legend li { display: flex; align-items: center; gap: var(--s-2); }
+.fis-legend svg { flex: none; }
+.fis-l-hh { stroke: var(--red-strong); stroke-width: 2.5; }
+.fis-l-book { stroke: var(--red); stroke-width: 1.5; stroke-dasharray: 1.5 4; stroke-linecap: round; }
+.fis-l-sea { stroke: var(--sea); stroke-width: 2; stroke-dasharray: 6 5; }
+
+/* the flight draws once on every change; reduced motion shows the final frame */
+.fis-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: fis-draw var(--dur-slow) var(--ease-out) forwards; }
+.fis-pop { animation: fis-pop var(--dur) var(--ease-out) both; transform-box: fill-box; transform-origin: center; }
+@keyframes fis-draw { to { stroke-dashoffset: 0; } }
+@keyframes fis-pop { from { opacity: 0; transform: scale(0.4); } }
+@media (prefers-reduced-motion: reduce) {
+  .fis-draw { animation: none; stroke-dasharray: none; stroke-dashoffset: 0; }
+  .fis-pop { animation: none; }
+}
+
+.fis-summary { margin: var(--s-6) 0 0; max-width: 78ch; line-height: 1.55; font-size: var(--text-lg); }
+
+/* why: text and the elasticity chart */
+.fis-why { margin-top: var(--s-12); padding-top: var(--s-8); border-top: 1px solid var(--line); }
+.fis-why h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: var(--text-xl);
+  margin: 0 0 var(--s-4);
+}
+.fis-why-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: var(--s-8); align-items: start; }
+.fis-why-text p { margin: 0 0 var(--s-4); line-height: 1.6; color: var(--fg-muted); max-width: 62ch; }
+.fis-why-text strong { color: var(--fg); font-family: var(--font-mono); font-weight: 500; }
+.fis-source { font-size: var(--text-xs); color: var(--fg-faint) !important; }
+.fis-ref { stroke: var(--fg-muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.fis-ref-label { fill: var(--fg-muted); font: 11px var(--font-body); }
+.fis-row { cursor: pointer; outline: none; }
+.fis-row-hit { fill: transparent; }
+.fis-row:hover .fis-row-hit { fill: rgb(241 241 243 / 0.03); }
+.fis-row:focus-visible .fis-row-hit { stroke: var(--fg); stroke-width: 2; }
+.fis-row-label { fill: var(--fg-muted); font: 13px var(--font-body); }
+.fis-row-value { fill: var(--fg-faint); font: 12px var(--font-mono); }
+.fis-ci { stroke: var(--fg-faint); stroke-width: 2; }
+.fis-est { fill: var(--fg-muted); stroke: var(--bg); stroke-width: 2; }
+.fis-row.is-on .fis-row-label { fill: var(--fg); font-weight: 600; }
+.fis-row.is-on .fis-ci { stroke: var(--red); }
+.fis-row.is-on .fis-est { fill: var(--red-strong); }
+.fis-row.is-on .fis-row-value { fill: var(--fg); }
+
+@media (max-width: 900px) {
+  .fis-page { padding: var(--s-6) var(--s-4) var(--s-12); }
+  .fis-controls, .fis-views, .fis-why-grid { grid-template-columns: minmax(0, 1fr); }
+  .fis-readout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fis-readout > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .fis-rho-row { flex-wrap: wrap; }
+  .fis-rho-row input { order: -1; flex-basis: 100%; }
+  /* SVG text is in viewBox units: a 640-wide chart on a phone shrinks it, so the units grow here */
+  .fis-tick, .fis-ref-label { font-size: 20px; }
+  .fis-gap { font-size: 20px; }
+  .fis-row-label { font-size: 22px; }
+  .fis-row-value { font-size: 20px; }
+  .fis-views .fis-fig:last-child .fis-tick { font-size: 12px; }
+}

@@ -1,6 +1,6 @@
 # HACK-068
 ID: HACK-068
-State: CLAIMED
+State: REVIEW
 Owner: victor-1
 Branch: feat/hack-068
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-068
@@ -9,13 +9,14 @@ Priority: P1
 Paths: web/src/features/reclutamiento/
 Depends: None
 Verify: `npm --prefix web test -- --run src/features/reclutamiento`
-Lease-Until: 1792289505
-Updated: 1792286805
+Lease-Until: 1792301689
+Updated: 1792287289
 Task-Base: 39530e82f290c3f10b8fcd0b34fffd972e860f6e
-Next: filters from web/src/features/leaderboard/logic.ts.
-PR: -
-Evidence: -
-Events: 1
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/65; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/65
+Evidence: vitest reclutamiento 5 passed; tsc+build OK; smoke PRODUCT_PASS; design-critic SHIP
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0
+Task-Tip: 34bedb96822b42042c87d5ee5b808f2f2c57ac02

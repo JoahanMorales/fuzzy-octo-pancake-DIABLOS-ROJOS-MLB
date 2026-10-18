@@ -1,7 +1,10 @@
-"""Tree models for the browser: the paper's Stuff+/Location+ composites as contract JSON (HACK-040).
+"""Tree models for the browser: the production Stuff+/Location+ models as contract JSON (HACK-040, HACK-066).
 
 A composite is a LightGBM multiclass booster (5 pitch outcomes) + a contact regressor (E[rv_x | in play]) + the
-LMB value of each outcome + the Plus scaler fitted on the park-neutral (ρ = 1) predictions. ``web/src/model/
+LMB value of each outcome + the Plus scaler fitted on the park-neutral (ρ = 1) predictions. Production (HACK-057,
+HACK-066) adds the temperature calibrator (``calibration.T``: P → softmax(log P / T)) and, for Stuff+ v2, the
+``count`` block: per-count outcome values, offsets, means and the family/league count weights, so the browser
+computes the count-neutral value Σ_c w_f(c)·[xRV(stuff, c) − m_c] exactly like ``CountNeutral.predict_xrv``. ``web/src/model/
 predict.ts`` evaluates the same trees; parity goldens are synthetic (conftest generator + random vectors).
 
 Trees keep only what evaluation needs. ``nested`` = HACK-038 ``tree_structure`` (``missing_type``/``default_left``
@@ -27,7 +30,6 @@ import numpy as np
 import pandas as pd
 
 from stuffplus import config
-from stuffplus.models.common import as_model_frame
 from stuffplus.models.stuff import OUTCOMES, StuffModel
 from stuffplus.scale import PlusScaler
 
@@ -114,10 +116,46 @@ def categories_of(booster, features: Sequence[str]) -> dict[str, list[str]]:
     return {f: [str(c) for c in levels] for f, levels in zip(cat_features, cats)}
 
 
-def export_composite(model: StuffModel, scaler: PlusScaler, name: str, *, model_version: str,
+EPS = 1e-9  # stuffplus.calibration.EPS
+
+
+def _base(model):
+    """The fitted (possibly calibrated) booster model behind a production wrapper."""
+    return getattr(model, "model", model) if type(model).__name__ == "CountNeutral" else model
+
+
+def _calibration(base) -> dict | None:
+    cal = getattr(base, "_calibrator", None)
+    if cal is None or type(cal).__name__ == "Identity":
+        return None
+    if type(cal).__name__ != "Temperature":
+        raise NotImplementedError(f"the browser only evaluates temperature calibration, got {type(cal).__name__}")
+    return {"method": "temperature", "T": float(cal.T)}
+
+
+def _count_block(base, count_neutral: bool) -> dict | None:
+    if getattr(base, "count_values", None) is None:
+        return None
+    counts = [str(c) for c in base.count_values.index]
+    fw = base.family_weights.reindex(columns=counts) if base.family_weights is not None else None
+    return {
+        "value": "count_neutral" if count_neutral else "at_count",
+        "counts": counts,  # "b-s", the order of every list below
+        "values": base.count_values.reindex(index=counts).to_numpy(float).tolist(),  # [count][outcome]
+        "offset": base.count_offset.reindex(counts).to_numpy(float).tolist(),
+        "mean": base.count_mean.reindex(counts).to_numpy(float).tolist(),
+        "league_weights": base.league_weights.reindex(counts).to_numpy(float).tolist(),
+        "family_weights": {str(f): row.tolist() for f, row in fw.iterrows()} if fw is not None else {},
+    }
+
+
+def export_composite(model, scaler: PlusScaler, name: str, *, model_version: str,
                      sources: Sequence[str], demo_data: bool, reference: pd.Series | None = None,
                      packed: bool = True) -> dict:
-    """Contract payload for one composite (``reference``: Location+ league mean xRV by ``count|pitch_family``)."""
+    """Contract payload for one model (``reference``: Location+ league mean xRV by ``count|pitch_family``).
+    ``model`` is a StuffModel (v1), a calibrated LocationModel or a production ``CountNeutral`` Stuff+ v2."""
+    count_neutral = type(model).__name__ == "CountNeutral"
+    model = _base(model)
     features = list(model.features)
     payload = {
         "model_version": model_version, "model": MODEL_LABEL, "translation": "physics_translator",
@@ -129,6 +167,12 @@ def export_composite(model: StuffModel, scaler: PlusScaler, name: str, *, model_
         "outcome": {"num_class": len(OUTCOMES), "trees": dump_trees(model.classifier, packed)},
         "contact": {"trees": dump_trees(model.contact, packed)},
     }
+    cal = _calibration(model)
+    if cal is not None:
+        payload["calibration"] = cal
+    count = _count_block(model, count_neutral)
+    if count is not None:
+        payload["count"] = count
     if reference is not None:
         payload["reference"] = {str(k): float(v) for k, v in reference.items()}
     return payload
@@ -177,47 +221,109 @@ def encode(payload: dict, rows: pd.DataFrame) -> np.ndarray:
     for f in payload["features"]:
         if f in payload["categories"]:
             codes = {c: i for i, c in enumerate(payload["categories"][f])}
-            cols.append(rows[f].map(lambda s: codes.get(str(s), np.nan)).to_numpy(float))
+            cols.append(rows[f].map(lambda s: codes.get(str(s), np.nan)).to_numpy(float) if f in rows
+                        else np.full(len(rows), np.nan))
         else:
-            cols.append(pd.to_numeric(rows[f], errors="coerce").to_numpy(float))
+            cols.append(pd.to_numeric(rows[f], errors="coerce").to_numpy(float) if f in rows
+                        else np.full(len(rows), np.nan))
     return np.column_stack(cols)
 
 
-def evaluate(payload: dict, rows: pd.DataFrame) -> pd.DataFrame:
+def _softmax(z: np.ndarray) -> np.ndarray:
+    e = np.exp(z - z.max(axis=1, keepdims=True))
+    return e / e.sum(axis=1, keepdims=True)
+
+
+def _components(payload: dict, rows: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
+    """Calibrated outcome probabilities and contact value at the rows' own features."""
     X = encode(payload, rows)
     k = payload["outcome"]["num_class"]
     raw = np.zeros((len(X), k))
     for t in payload["outcome"]["trees"]:
         root = _root(t)
         raw[:, t["tree_index"] % k] += [_leaf(root, r) for r in X]
-    p = np.exp(raw - raw.max(axis=1, keepdims=True))
-    p /= p.sum(axis=1, keepdims=True)
+    p = _softmax(raw)
+    cal = payload.get("calibration")
+    if cal and cal["method"] == "temperature":
+        p = _softmax(np.log(np.clip(p, EPS, 1.0)) / cal["T"])
     contact = np.zeros(len(X))
     for t in payload["contact"]["trees"]:
         root = _root(t)
         contact += [_leaf(root, r) for r in X]
+    return p, contact
+
+
+def _count_keys(rows: pd.DataFrame) -> list[str | None]:
+    """stuffplus.models.stuff_v2._count_key: clipped only for the table lookup (trees see the raw count)."""
+    if "Balls" not in rows or "Strikes" not in rows:
+        return [None] * len(rows)  # no count: components only; the count-neutral value does not need it
+    b, s = pd.to_numeric(rows["Balls"], errors="coerce"), pd.to_numeric(rows["Strikes"], errors="coerce")
+    return [None if (pd.isna(x) or pd.isna(y)) else f"{min(max(int(x), 0), 3)}-{min(max(int(y), 0), 2)}"
+            for x, y in zip(b, s)]
+
+
+def _xrv_at(payload: dict, p: np.ndarray, contact: np.ndarray, keys) -> np.ndarray:
     v = np.array([c["rv"] for c in payload["class_values"]])
+    cb = payload.get("count")
+    if cb is None:
+        return p[:, :4] @ v[:4] + p[:, 4] * contact
+    idx = {c: i for i, c in enumerate(cb["counts"])}
+    values, offset = np.array(cb["values"], float), np.array(cb["offset"], float)
+    out = np.full(len(p), np.nan)
+    for r, key in enumerate(keys):
+        if key is not None:
+            j = idx[key]
+            out[r] = p[r, :4] @ values[j, :4] + p[r, 4] * contact[r] + offset[j]
+    return out
+
+
+def stuff_value(payload: dict, rows: pd.DataFrame) -> np.ndarray:
+    """Count-neutral value Σ_c w_f(c)·[xRV(stuff, c) − m_c] (StuffV2Model.stuff_value, family weights)."""
+    cb = payload["count"]
+    league = np.array(cb["league_weights"], float)
+    fams = rows["pitch_family"].astype(str) if "pitch_family" in rows else pd.Series([""] * len(rows))
+    W = np.array([cb["family_weights"].get(f, league) for f in fams], float)
+    W[np.isnan(W).any(axis=1)] = league
+    out = np.zeros(len(rows))
+    for j, key in enumerate(cb["counts"]):
+        if not W[:, j].any():
+            continue
+        b, s = (int(x) for x in key.split("-"))
+        at = rows.assign(Balls=b, Strikes=s)
+        p, contact = _components(payload, at)
+        out += W[:, j] * (_xrv_at(payload, p, contact, [key] * len(at)) - cb["mean"][j])
+    return out
+
+
+def evaluate(payload: dict, rows: pd.DataFrame) -> pd.DataFrame:
+    """Components at the rows' own count; ``xrv`` is the count-neutral value for production Stuff+ v2
+    (``CountNeutral``), else the composite xRV (``xrv_at_count`` is always the latter)."""
+    p, contact = _components(payload, rows)
     out = pd.DataFrame(p, columns=[f"p_{o}" for o in OUTCOMES])
     out["contact_rv"] = contact
-    out["xrv"] = p[:, :4] @ v[:4] + p[:, 4] * contact
+    keys = _count_keys(rows) if "count" in payload else None
+    out["xrv_at_count"] = _xrv_at(payload, p, contact, keys)
+    count_neutral = payload.get("count", {}).get("value") == "count_neutral"
+    out["xrv"] = stuff_value(payload, rows) if count_neutral else out["xrv_at_count"]
     return out
 
 
 # ---- fitting ----
 
-def fit_stuff(d: pd.DataFrame, translate, **rounds) -> tuple[StuffModel, PlusScaler]:
-    """The paper's Stuff+ composite (pitch_family, physics translator) + its park-neutral scaler."""
-    from stuffplus.altitude import STUFF_FEATURES_INVARIANT
+def fit_stuff(d: pd.DataFrame, translate, k_inner: int = 3, **rounds):
+    """Production Stuff+ (HACK-057: v2 count-neutral value + temperature) and its park-neutral scaler."""
+    from stuffplus.models.stuff import fit_production_stuff
 
-    m = StuffModel(features=list(STUFF_FEATURES_INVARIANT), translate=translate, **rounds).fit(d)
+    m = fit_production_stuff(d, translate=translate, k_inner=k_inner, **rounds)
     sc = PlusScaler().fit(d.assign(x=m.predict_at_rho(d, 1.0)["xrv"].to_numpy()), "x")
     return m, sc
 
 
-def fit_location(d: pd.DataFrame, **rounds):
-    from stuffplus.models.location import LocationModel
+def fit_location(d: pd.DataFrame, k_inner: int = 3, **rounds):
+    """Production Location+ (temperature; reference recomputed on calibrated predictions) and its scaler."""
+    from stuffplus.models.location import fit_production_location
 
-    m = LocationModel(**rounds).fit(d)
+    m = fit_production_location(d, k_inner=k_inner, **rounds)
     sc = PlusScaler().fit(d.assign(x=m.location_value(d)), "x")
     return m, sc
 
@@ -243,19 +349,21 @@ def random_rows(payload: dict, n: int, ranges: pd.DataFrame, seed: int = 0) -> p
             vals = rng.uniform(lo, hi, n)
             if f in ("Balls", "Strikes", "is_rhp", "same_side") or set(ranges[f].dropna().unique()) <= {0, 1}:
                 vals = rng.integers(int(lo), int(hi) + 1, n).astype(float)
-            vals[rng.random(n) < 0.08] = np.nan
+            if f not in ("Balls", "Strikes"):  # v2 needs a real count to look up its table
+                vals[rng.random(n) < 0.08] = np.nan
             out[f] = vals
     return pd.DataFrame(out)
 
 
-def golden(model: StuffModel, payload: dict, rows: pd.DataFrame) -> dict:
-    """LightGBM's own predictions for ``rows`` (the parity target for vitest)."""
-    X = as_model_frame(rows, payload["features"])
-    probs = model.classifier.predict(X)
-    contact = model.contact.predict(X)
-    xrv = StuffModel._combine(probs, contact, model.class_values)
+def golden(model, payload: dict, rows: pd.DataFrame) -> dict:
+    """The fitted model's own predictions for ``rows`` (the parity target for vitest): calibrated probabilities and
+    contact at the row's count, ``xrv_at_count`` and ``xrv`` (count-neutral for production Stuff+ v2)."""
+    comps = _base(model).predict_components(rows)
+    xrv = model.predict_xrv(rows) if type(model).__name__ == "CountNeutral" else comps["xrv"].to_numpy()
     recs = rows.astype(object).where(rows.notna(), None).to_dict(orient="records")
-    return {"rows": recs, "probs": probs.tolist(), "contact": contact.tolist(), "xrv": xrv.tolist()}
+    return {"rows": recs, "probs": comps[[f"p_{o}" for o in OUTCOMES]].to_numpy().tolist(),
+            "contact": comps["contact_rv"].to_numpy().tolist(), "xrv_at_count": comps["xrv"].to_numpy().tolist(),
+            "xrv": np.asarray(xrv, float).tolist()}
 
 
 def synthetic_frame() -> pd.DataFrame:
@@ -272,6 +380,15 @@ def write_goldens(out_dir: Path = FIXTURES_DIR, n: int = 120) -> None:
     from stuffplus.models.stuff import magnus_translate
 
     d = synthetic_frame()
+    # production v2 (count block + temperature), small rounds: the parity fixture for HACK-066
+    v2 = fit_stuff(d, magnus_translate, k_inner=2, class_rounds=30, contact_rounds=20)
+    p2 = export_composite(v2[0], v2[1], "stuff", model_version="synthetic_v2", sources=["tests/fixtures/synthetic.py"],
+                          demo_data=True)
+    rows2 = pd.concat([d[p2["features"]].sample(n // 2, random_state=1).reset_index(drop=True),
+                       random_rows(p2, n - n // 2, d, seed=4)], ignore_index=True)
+    write_json(p2, out_dir / "stuff_v2_synthetic.json")
+    write_json(golden(v2[0], p2, rows2), out_dir / "stuff_v2_synthetic_golden.json")
+    # v1 composite (nested and packed layouts) keeps the HACK-040 path covered
     m = StuffModel(features=list(STUFF_FEATURES_INVARIANT), translate=magnus_translate, class_rounds=40,
                    contact_rounds=30).fit(d)
     sc = PlusScaler().fit(d.assign(x=m.predict_at_rho(d, 1.0)["xrv"].to_numpy()), "x")
@@ -298,16 +415,18 @@ def main() -> None:
 
     translate, d = _prepare(schema.clean(load_raw()))
     rounds = dict(class_rounds=40, contact_rounds=30) if args.fast else {}
-    version = "pitch_family_v1" + ("_fast" if args.fast else "")
-    src = ["stuffplus/export_trees.py", "stuffplus/models/stuff.py", "stuffplus/altitude.py"]
+    k_inner = 2 if args.fast else 3
+    version = "stuff_v2" + ("_fast" if args.fast else "")
+    src = ["stuffplus/export_trees.py", "stuffplus/models/stuff.py", "stuffplus/models/stuff_v2.py",
+           "stuffplus/calibration.py", "stuffplus/altitude.py"]
     total = 0.0
-    m, sc = fit_stuff(d, translate, **rounds)
+    m, sc = fit_stuff(d, translate, k_inner=k_inner, **rounds)
     stuff = export_composite(m, sc, "stuff", model_version=version, sources=src, demo_data=False)
     total += write_json(stuff, MODELS_DIR / "stuff.json")
     write_json(golden(m, stuff, random_rows(stuff, 60, d, seed=1)), FIXTURES_DIR / "stuff_real_golden.json")
-    lm, lsc = fit_location(d, **rounds)
+    lm, lsc = fit_location(d, k_inner=k_inner, **rounds)
     loc = export_composite(lm, lsc, "location", model_version=version, demo_data=False, reference=lm.reference,
-                           sources=["stuffplus/export_trees.py", "stuffplus/models/location.py"])
+                           sources=["stuffplus/export_trees.py", "stuffplus/models/location.py", "stuffplus/calibration.py"])
     total += write_json(loc, MODELS_DIR / "location.json")
     lrows = random_rows(loc, 60, d, seed=2)
     lg = golden(lm, loc, lrows)

@@ -7,6 +7,12 @@
  * numerical NaN becomes 0 unless missing_type is "NaN"; missing values follow default_left; categorical
  * thresholds are "a||b" code sets that go left, and NaN/negative/unseen codes go right. Trees come nested
  * (HACK-038 `tree_structure`) or packed (LightGBM's flat arrays, used by the real export to fit the size budget).
+ *
+ * Production (HACK-057/066): `calibration.T` rescales the probabilities (softmax(log P / T), stuffplus.calibration
+ * Temperature) and Stuff+ v2 carries a `count` block. xRV at a count c = Σ_{k<4} P_k·V_c(k) + P(in play)·contact
+ * + offset_c; with `count.value = "count_neutral"` the model's xRV is Σ_c w_f(c)·[xRV(stuff, c) − m_c]
+ * (CountNeutral.predict_xrv), so the pitch's own count never moves its Stuff+. Probabilities and contact are at
+ * the row's count, exactly like CountNeutral.predict_components.
  */
 
 // Same field names as the HACK-038 contract (`tree_structure`); kept local so this module has no contract import.
@@ -60,6 +66,18 @@ export interface CompositeModel {
   outcome: { num_class: number; trees: BoosterTree[] };
   contact: { trees: BoosterTree[] };
   reference?: Record<string, number>;
+  calibration?: { method: string; T: number };
+  count?: CountBlock;
+}
+
+export interface CountBlock {
+  value: 'count_neutral' | 'at_count';
+  counts: string[]; // "b-s", the order of every list
+  values: number[][]; // [count][outcome] rv_x
+  offset: number[];
+  mean: number[];
+  league_weights: number[];
+  family_weights: Record<string, (number | null)[]>;
 }
 
 export type FeatureValue = number | string | boolean | null | undefined;
@@ -68,7 +86,8 @@ export type FeatureRow = Record<string, FeatureValue>;
 export interface Prediction {
   probs: number[];
   contact: number;
-  xrv: number;
+  xrv: number; // count-neutral value for production Stuff+ v2, else the composite xRV
+  xrvAtCount: number; // xRV at the row's own count (NaN for v2 without Balls/Strikes)
 }
 
 const GLOBAL = '__all__';
@@ -142,24 +161,75 @@ function treeValue(t: BoosterTree, x: number[]): number {
 }
 
 /** Outcome probabilities, contact value and xRV for one encoded row. */
-export function predictEncoded(model: CompositeModel, x: number[]): Prediction {
+const EPS = 1e-9; // stuffplus.calibration.EPS
+
+function softmax(z: number[]): number[] {
+  const top = Math.max(...z);
+  const e = z.map((r) => Math.exp(r - top));
+  const sum = e.reduce((a, b) => a + b, 0);
+  return e.map((v) => v / sum);
+}
+
+/** Calibrated probabilities and contact value for one encoded row. */
+function components(model: CompositeModel, x: number[]): { probs: number[]; contact: number } {
   const k = model.outcome.num_class;
   const raw = new Array<number>(k).fill(0);
   for (const t of model.outcome.trees) raw[t.tree_index % k] += treeValue(t, x);
-  const top = Math.max(...raw);
-  const e = raw.map((r) => Math.exp(r - top));
-  const sum = e.reduce((a, b) => a + b, 0);
-  const probs = e.map((v) => v / sum);
+  let probs = softmax(raw);
+  if (model.calibration?.method === 'temperature') {
+    const T = model.calibration.T;
+    probs = softmax(probs.map((p) => Math.log(Math.min(1, Math.max(EPS, p))) / T));
+  }
   let contact = 0;
   for (const t of model.contact.trees) contact += treeValue(t, x);
-  const values = model.class_values.map((c) => c.rv);
-  let xrv = probs[k - 1] * contact;
-  for (let c = 0; c < k - 1; c++) xrv += probs[c] * values[c];
-  return { probs, contact, xrv };
+  return { probs, contact };
+}
+
+/** stuffplus.models.stuff_v2._count_key: the count is clipped only for the table lookup (trees see the raw value). */
+export function countKey(balls: FeatureValue, strikes: FeatureValue): string | null {
+  const b = Number(balls), s = Number(strikes);
+  if (balls === null || balls === undefined || strikes === null || strikes === undefined) return null;
+  if (!Number.isFinite(b) || !Number.isFinite(s)) return null;
+  return `${Math.min(Math.max(Math.trunc(b), 0), 3)}-${Math.min(Math.max(Math.trunc(s), 0), 2)}`;
+}
+
+function xrvAt(model: CompositeModel, probs: number[], contact: number, key: string | null): number {
+  const k = model.outcome.num_class;
+  const cb = model.count;
+  if (!cb) {
+    const values = model.class_values.map((c) => c.rv);
+    let xrv = probs[k - 1] * contact;
+    for (let c = 0; c < k - 1; c++) xrv += probs[c] * values[c];
+    return xrv;
+  }
+  const j = key === null ? -1 : cb.counts.indexOf(key);
+  if (j < 0) return NaN;
+  let xrv = probs[k - 1] * contact + cb.offset[j];
+  for (let c = 0; c < k - 1; c++) xrv += probs[c] * cb.values[j][c];
+  return xrv;
+}
+
+/** Count-neutral value Σ_c w_f(c)·[xRV(stuff, c) − m_c] with the family's train count weights (league if unseen). */
+export function stuffValue(model: CompositeModel, row: FeatureRow): number {
+  const cb = model.count;
+  if (!cb) throw new Error(`${model.name}: no count block (not a Stuff+ v2 export)`);
+  const fam = cb.family_weights[String(row.pitch_family)];
+  const w = fam && fam.every((v) => v !== null && Number.isFinite(v)) ? (fam as number[]) : cb.league_weights;
+  let total = 0;
+  cb.counts.forEach((key, j) => {
+    if (!w[j]) return;
+    const [b, s] = key.split('-').map(Number);
+    const { probs, contact } = components(model, encode(model, { ...row, Balls: b, Strikes: s }));
+    total += w[j] * (xrvAt(model, probs, contact, key) - cb.mean[j]);
+  });
+  return total;
 }
 
 export function predict(model: CompositeModel, row: FeatureRow): Prediction {
-  return predictEncoded(model, encode(model, row));
+  const { probs, contact } = components(model, encode(model, row));
+  const xrvAtCount = xrvAt(model, probs, contact, model.count ? countKey(row.Balls, row.Strikes) : null);
+  const xrv = model.count?.value === 'count_neutral' ? stuffValue(model, row) : xrvAtCount;
+  return { probs, contact, xrv, xrvAtCount };
 }
 
 /** Score → Plus on the park-neutral ruler: pass xRV for Stuff+ and `locationValue` (not xRV) for Location+.

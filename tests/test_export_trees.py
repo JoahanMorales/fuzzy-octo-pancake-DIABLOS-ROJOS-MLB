@@ -101,3 +101,36 @@ def test_write_json_is_strict_json_and_committed_files_fit_the_budget(exported, 
     assert total <= et.SIZE_BUDGET_MB
     for f in [*models.glob("*.json"), *(ROOT / "web" / "src" / "model" / "fixtures").glob("*.json")]:
         assert "PitchUID" not in f.read_text()[:200000]
+
+
+@pytest.fixture(scope="module")
+def production(exported):
+    """Production Stuff+ v2 (count-neutral value + temperature) on the synthetic fixture (HACK-066)."""
+    _, _, d, _ = exported
+    m, sc = et.fit_stuff(d, magnus_translate, k_inner=2, class_rounds=20, contact_rounds=15)
+    return m, sc, d, et.export_composite(m, sc, "stuff", model_version="test_v2", sources=["tests"], demo_data=True)
+
+
+def test_production_payload_carries_temperature_and_count_block(production):
+    m, _, _, p = production
+    assert p["calibration"]["method"] == "temperature" and p["calibration"]["T"] == pytest.approx(m.model._calibrator.T)
+    cb = p["count"]
+    assert cb["value"] == "count_neutral" and cb["counts"][0] == "0-0" and len(cb["counts"]) == 12
+    assert len(cb["values"]) == 12 and all(len(r) == 5 for r in cb["values"])
+    assert cb["offset"] == pytest.approx(m.model.count_offset.reindex(cb["counts"]).tolist())  # calibrated offsets
+    assert {"Balls", "Strikes"} <= set(p["features"])
+
+
+def test_json_evaluator_matches_count_neutral_production_model(production):
+    m, _, d, p = production
+    rows = pd.concat([d[p["features"]].sample(40, random_state=2).reset_index(drop=True),
+                      et.random_rows(p, 30, d, seed=7)], ignore_index=True)
+    g = et.golden(m, p, rows)
+    out = et.evaluate(json.loads(json.dumps(et._nan_to_none(p))), rows)
+    assert np.abs(out[[f"p_{o}" for o in OUTCOMES]].to_numpy() - np.array(g["probs"])).max() < 1e-9
+    assert np.abs(out["xrv_at_count"].to_numpy() - np.array(g["xrv_at_count"])).max() < 1e-9
+    assert np.abs(out["xrv"].to_numpy() - np.asarray(m.predict_xrv(rows))).max() < 1e-9
+    moved = rows.assign(Balls=3, Strikes=0)
+    assert np.allclose(et.evaluate(p, moved)["xrv"], out["xrv"], atol=1e-12)  # the count never moves Stuff+
+    no_count = et.evaluate(p, rows.drop(columns=["Balls", "Strikes"]))  # e.g. the prospect profiler
+    assert np.allclose(no_count["xrv"], out["xrv"], atol=1e-12) and no_count["xrv_at_count"].isna().all()

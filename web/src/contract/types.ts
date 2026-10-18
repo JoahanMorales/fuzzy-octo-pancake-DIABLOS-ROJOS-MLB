@@ -173,9 +173,37 @@ export const treeNodeSchema: z.ZodType<TreeNode> = z.lazy(() => z.object({
   leaf_value: z.number().optional(),
 }));
 
+/** LightGBM's flat layout used by the real export (HACK-040/066): child ≥ 0 = internal node, < 0 = leaf ~child;
+ *  decision bits 1 categorical, 2 default_left, 4 missing Zero, 8 missing NaN. */
+export const packedTreeSchema = z.object({
+  split_feature: z.array(z.number().int().nonnegative()),
+  threshold: z.array(z.union([z.number(), z.string()])),
+  decision: z.array(z.number().int().nonnegative()),
+  left: z.array(z.number().int()),
+  right: z.array(z.number().int()),
+  leaf_value: z.array(z.number()).min(1),
+}).strict();
+
+/** A tree is nested (`tree_structure`, the mocks) or packed (the real models), exactly one of the two. */
 export const boosterTreeSchema = z.object({
   tree_index: z.number().int().nonnegative(),
-  tree_structure: treeNodeSchema,
+  tree_structure: treeNodeSchema.optional(),
+  packed: packedTreeSchema.optional(),
+}).strict().refine((t) => (t.tree_structure === undefined) !== (t.packed === undefined), {
+  message: 'cada árbol trae tree_structure o packed, no ambos',
+});
+
+const plusStatsSchema = z.object({ mean: z.number(), sd: z.number().positive(), n: z.number().int().nonnegative().optional() }).strict();
+
+/** Stuff+ v2 count block (HACK-052/057): per-count outcome values, offsets, means and count weights. */
+export const countBlockSchema = z.object({
+  value: z.enum(['count_neutral', 'at_count']),
+  counts: z.array(z.string().regex(/^[0-3]-[0-2]$/)).length(12),
+  values: z.array(z.array(z.number()).min(1)).length(12),
+  offset: z.array(z.number()).length(12),
+  mean: z.array(z.number()).length(12),
+  league_weights: z.array(z.number()).length(12),
+  family_weights: z.record(z.array(z.number().nullable()).length(12)),
 }).strict();
 
 export const modelSchema = envelopeSchema.extend({
@@ -190,6 +218,9 @@ export const modelSchema = envelopeSchema.extend({
     center: z.number(),
     spread: z.number(),
     reference: z.literal('park-neutral'),
+    sign: z.union([z.literal(1), z.literal(-1)]).optional(),
+    by: z.array(z.string()).optional(),
+    stats: z.record(plusStatsSchema).optional(),
   }).strict(),
   outcome: z.object({
     num_class: z.number().int().positive(),
@@ -198,6 +229,9 @@ export const modelSchema = envelopeSchema.extend({
   contact: z.object({
     trees: z.array(boosterTreeSchema).min(1),
   }).strict(),
+  reference: z.record(z.number()).optional(), // Location+: league mean xRV by "b-s|family"
+  calibration: z.object({ method: z.literal('temperature'), T: z.number().positive() }).strict().optional(),
+  count: countBlockSchema.optional(),
 }).strict();
 
 export const arsenalPitchSchema = z.object({

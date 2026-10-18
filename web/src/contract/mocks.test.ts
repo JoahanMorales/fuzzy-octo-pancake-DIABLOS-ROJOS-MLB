@@ -47,3 +47,29 @@ describe('contrato web', () => {
     expect(body.seasons.some((season) => season.arsenal_pitches.some((pitch) => pitch.pitch_id >= 0))).toBe(true);
   });
 });
+
+describe('modelos exportados (HACK-066)', () => {
+  const models = import.meta.glob('../../public/data/models/*.json', { eager: true }) as Record<string, { default: unknown }>;
+  const fixtures = import.meta.glob('../model/fixtures/stuff*_synthetic*.json', { eager: true }) as Record<string, { default: unknown }>;
+
+  it('los modelos reales (packed, escala Plus completa, temperatura, bloque de conteo) pasan el contrato', () => {
+    const names = Object.keys(models).map((p) => p.split('/').pop());
+    expect(names).toEqual(expect.arrayContaining(['stuff.json', 'location.json']));
+    for (const [path, mod] of Object.entries(models)) {
+      const rel = `models/${path.split('/').pop()}`;
+      const doc = parseContractFile(rel, mod.default) as { plus: { stats?: object }; outcome: { trees: { packed?: object }[] } };
+      expect(doc.plus.stats).toBeDefined();
+      expect(doc.outcome.trees[0].packed).toBeDefined();
+    }
+  });
+
+  it('acepta árboles anidados y empaquetados, v1 y v2, y rechaza un árbol con ambos', () => {
+    for (const mod of Object.values(fixtures)) {
+      if (!(mod.default as { outcome?: unknown }).outcome) continue; // goldens are not models
+      expect(() => parseContractFile('models/stuff.json', { ...(mod.default as object), model: 'pitch_family Stuff+ composite', translation: 'physics_translator', name: 'stuff' })).not.toThrow();
+    }
+    const one = Object.values(models)[0].default as { outcome: { trees: { tree_index: number; packed?: unknown }[] } };
+    const bad = { ...(one as object), outcome: { ...one.outcome, trees: [{ ...one.outcome.trees[0], tree_structure: { leaf_value: 0 } }] } };
+    expect(() => parseContractFile('models/stuff.json', bad)).toThrow();
+  });
+});

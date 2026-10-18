@@ -9,9 +9,9 @@ Priority: P1
 Paths: web/src/features/reclutamiento/
 Depends: None
 Verify: `npm --prefix web test -- --run src/features/reclutamiento`
-Lease-Until: 1792301689
-Updated: 1792287289
+Lease-Until: 1792301695
+Updated: 1792287295
 Task-Base: 39530e82f290c3f10b8fcd0b34fffd972e860f6e
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/65; run .uak/bin/smoke
+Next: Wait for review of SHA 34bedb96
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/65
 Evidence: -

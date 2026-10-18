@@ -20,3 +20,4 @@
 - 1792263856 | BLOCKED | sebastian-2 | Draft https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/53 SHA 88f6fc2. Web tests/build/browser PASS; pending verified park coordinates (request #358) and Python smoke environment. Not complete; no merge.
 - 1792283888 | BLOCKED | sebastian-2 | checkpoint; next: PR53 remains partial; resume when ID->coordinates documented. Fix shared CI separately then refresh PR50 exact SHA.
 - 1792283892 | AVAILABLE | sebastian-2 | release; claim released by sebastian-2; reason: -; summary kept
+- 1792306499 | CLAIMED | joahan-4 | claim; next: PR53 remains partial; resume when ID->coordinates documented. Fix shared CI separately then refresh PR50 exact SHA.

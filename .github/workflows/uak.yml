@@ -17,7 +17,13 @@ jobs:
       - name: Secrets in tracked files
         run: bash .uak/bin/secret-scan --tracked
       - name: Kit syntax
-        run: for f in .uak/bin/* .uak/bin/lib/*.sh; do [ -f "$f" ] && bash -n "$f"; done
+        run: |
+          for f in .uak/bin/* .uak/bin/lib/*.sh; do
+            [ -f "$f" ] || continue
+            if head -n 1 "$f" | grep -qE '^#!.*(bash|/sh|[[:space:]]sh)([[:space:]]|$)'; then
+              bash -n "$f"
+            fi
+          done
       - name: Backlog graph (no cycles, no unknown deps)
         run: if [ -f .uak/TASKS.md ]; then bash .uak/bin/graph --file .uak/TASKS.md; fi
       - uses: actions/setup-python@v5

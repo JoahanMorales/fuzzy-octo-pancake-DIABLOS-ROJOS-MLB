@@ -9,13 +9,13 @@ Priority: P0
 Paths: demo/script.md, demo/qa.md, submission/
 Depends: HACK-022, HACK-023
 Verify: `test -s submission/checklist.md`
-Lease-Until: 1792312484
-Updated: 1792309784
+Lease-Until: 1792313733
+Updated: 1792311033
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Resume feat/hack-025 PR52; resolve leaderboard smoke timeout with app owner; human records other-laptop rehearsal and planb.mp4 in submission/checklist.md; confirm bundle, public URL, private score transfer and receipt before final review
+Next: Human: publish web/dist (deploy/web), record planb.mp4, rehearse on another laptop, then uak done
 PR: -
 Evidence: -
-Events: 5
-Checkpoints: 1
+Events: 6
+Checkpoints: 2
 Sessions: 2
-Last-Checkpoint: 1792261897
+Last-Checkpoint: 1792311033

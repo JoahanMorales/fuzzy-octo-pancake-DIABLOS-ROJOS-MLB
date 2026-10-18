@@ -119,3 +119,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792290872 | HACK-071 | tour renders real pages via routes.pageElement; numbers from contract JSON | Why: acceptance: number read from the contract
 - 1792290870 | deadline lease/HACK-057/1792288063 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792290870 | deadline lease/HACK-072/1792287747 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792293062 | HACK-069 | compute width by n in export_web from OOF pitch scores | Why: reports/uncertainty has only global widths

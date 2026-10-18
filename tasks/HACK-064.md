@@ -15,8 +15,8 @@ Task-Base: 876a4f4709284fe0b432e285adc650e4002c4839
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-064?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-064?expand=1
 Evidence: c184e93: vitest leaderboard+pitcher 10 passed (new: index.html fallback -> mock); tsc OK. Web-only change, Python smoke not affected.
-Events: 2
+Events: 3
 Checkpoints: 0
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 0
 Task-Tip: c184e931c65ac1a47701ccd69ef2dbd99f365d66

@@ -1,6 +1,6 @@
 # HACK-046
 ID: HACK-046
-State: CLAIMED
+State: REVIEW
 Owner: joahan-4
 Branch: feat/hack-046
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-046
@@ -9,9 +9,9 @@ Priority: P1
 Paths: web/src/features/altitud/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/altitud`
-Lease-Until: 1792309199
-Updated: 1792306499
+Lease-Until: 1792321390
+Updated: 1792306990
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: PR53 remains partial; resume when ID->coordinates documented. Fix shared CI separately then refresh PR50 exact SHA.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-046?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-046?expand=1
 Evidence: -

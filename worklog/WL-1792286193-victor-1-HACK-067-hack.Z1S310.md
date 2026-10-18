@@ -12,3 +12,4 @@
 - 1792286193 | CLAIMED | victor-1 | claim; next: reuse the loader in web/src/features/staff/data.tsx.
 - 1792286741 | REVIEW | victor-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/64; evidence: vitest cuerpo-tecnico+shell 11 passed; tsc+build OK; smoke PRODUCT_PASS; design-critic SHIP; reviewer: -
 - 1792286747 | REVIEW | victor-1 | checkpoint; next: Wait for review of SHA d600ecaf
+- 1792291612 | REVIEW | victor-2 | review; approve; SHA d600ecafe8087dc89d32f66d1a0148434a336e1d; reviewer victor-2

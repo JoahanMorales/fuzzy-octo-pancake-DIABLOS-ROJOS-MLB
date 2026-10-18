@@ -12,9 +12,9 @@ Fecha límite oficial: 2026-10-22 23:59 America/Mexico_City; objetivo interno: 2
 - [ ] Revisar [leaderboard por pitcher/temporada](../reports/leaderboards/pitcher_season.csv) y [por parque](../reports/leaderboards/by_park.csv), con sus columnas Stuff+/Location+/Pitching+ y referencia.
 - [ ] Preparar archivo de scores por pitch: ruta privada, versión, esquema, cobertura y tamaño pendientes. No adjuntar parquet original ni publicar filas privadas.
 - [ ] Joahan resuelve por escrito el permiso/canal privado de transferencia de scores por pitch: las bases permiten mostrar resultados, pero no divulgar datos. Si no está claro, consultar al organizador antes de transferir.
-- [ ] Confirmar enlace de dashboard desde navegador sin sesión del equipo: URL pendiente. No usar localhost como enlace de entrega.
+- [ ] Publicar `web/dist/` siguiendo [deploy/web](../deploy/web/README.md) (publica Joahan; `python scripts/check_web_dist.py` en verde) y confirmar la URL en una ventana privada con la insignia "datos reales": URL pendiente. No usar localhost como enlace de entrega.
 - [ ] Confirmar acceso del jurado al [repositorio](https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB) y revisar contenido público.
-- [ ] Adjuntar o enlazar [deck](../demo/deck/stuffplus2240.pdf) y recomendaciones; comprobar correspondencia con la versión entregada.
+- [ ] Adjuntar o enlazar [deck v2](../demo/deck/deck.pdf), [resumen de una página](../demo/one-pager/one-pager.pdf) y [recomendaciones](../reports/recommendations/memo.md); comprobar que dicen Stuff+ v2 (liga −13.0).
 - [ ] Tener listas constancias de inscripción/matrícula de cuatro miembros por canal privado; no versionarlas.
 - [ ] Una persona graba `demo/planb.mp4`, lo reproduce completo y comprueba audio, duración y acceso. Estado actual: pendiente.
 - [ ] Dos personas revisan correo, adjuntos, enlaces y restricciones de datos antes de enviarlo.
@@ -25,9 +25,9 @@ Pendiente: no se ha ejecutado este ensayo. La verificación automática de docum
 
 1. En otra laptop, clonar el repo a una carpeta nueva y registrar SHA, SO, arquitectura y versión Python (≥3.11). No copiar `.env` ni datos crudos.
 2. Crear entorno e instalar dependencias con los comandos de [README](../README.md). Medir instalación y arranque; objetivo total ≤5 min, pendiente de comprobar.
-3. Recibir por canal autorizado únicamente el bundle de modelos/agregados en `artifacts/bundle/`; verificar manifest, hashes y versión. No suponer que el clon incluye ese bundle.
-4. En un worktree UAK usar su puerto: `python -m streamlit run app/Home.py --server.port "$UAK_PORT"`. En un clon independiente registrar explícitamente el puerto elegido por la persona.
-5. Abrir navegador con movimiento reducido y viewport 1280×720. Ejecutar el [guion](../demo/script.md), recalcular cada cambio y esperar el estado final.
+3. La app web trae sus agregados y modelos en `web/public/data/` (versionados, sin datos crudos): `npm --prefix web ci && npm --prefix web run build && npm --prefix web run preview`. Registrar el puerto que imprime.
+4. Abrir también el sitio publicado, si ya existe, desde esa laptop.
+5. Navegador a 1280×720. Ejecutar el [guion](../demo/script.md) y esperar el estado final de cada pantalla; repetir una pasada con movimiento reducido.
 6. Comprobar ambas puntuaciones, movimiento, unidades y estado real/mock. Probar sin red una vez cargados modelos y agregados, sin raw data.
 7. Medir primer wow ≤40 s y flujo ≤180 s; abrir PDF si hay fallo y registrar el fallo. El respaldo no convierte el ensayo fallido en aprobado.
 8. Repetir tras arreglar cualquier bloqueo y registrar evidencia nueva; la persona que ensaya confirma el acta.
@@ -59,7 +59,7 @@ Ejecutar desde la raíz; estos checks sólo prueban existencia, no aceptación d
 
 ```bash
 test -s submission/checklist.md && test -s demo/script.md && test -s demo/qa.md
-test -s docs/technical/stuffplus2240.pdf && test -s demo/deck/stuffplus2240.pdf
+test -s docs/technical/stuffplus2240.pdf && test -s demo/deck/deck.pdf && test -s demo/one-pager/one-pager.pdf
 test -s reports/leaderboards/pitcher_season.csv && test -s reports/leaderboards/by_park.csv
 ```
 

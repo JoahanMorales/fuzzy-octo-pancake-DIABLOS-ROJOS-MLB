@@ -1,5 +1,5 @@
 Task: HACK-057
-Events: 4
+Events: 5
 Checkpoints: 0
-Sessions: 4
+Sessions: 5
 Last-Checkpoint: 0

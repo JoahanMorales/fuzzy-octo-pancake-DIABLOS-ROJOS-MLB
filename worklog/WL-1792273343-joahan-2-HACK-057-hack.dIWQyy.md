@@ -13,3 +13,4 @@
 - 1792285354 | AVAILABLE | sebastian-1 | release; claim released by sebastian-1; reason: -; summary kept
 - 1792285363 | CLAIMED | sebastian-1 | claim; next: read the adoption verdicts in reports/stuff_v2, reports/calibration, reports/leak_audit.
 - 1792296118 | CLAIMED | joahan | handover; sebastian-1 → joahan-2 by joahan
+- 1792296486 | AVAILABLE | joahan-2 | release; claim released by joahan-2; reason: -; summary kept

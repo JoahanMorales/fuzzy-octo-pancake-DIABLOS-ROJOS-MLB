@@ -7,7 +7,8 @@ of each leaderboard row. For each flavour (Stuff+ neutral, Stuff+ en CDMX) and e
 pitcher-season and score |mean of the n − mean of the rest of the season| (the rest stands in for the pitcher's
 value, so the band is slightly conservative). Pitcher-seasons are split in half: the calibration half gives the
 90 % split-conformal half-width (stuffplus.uncertainty.split_conformal), the test half its coverage, also on the
-altitude-heavy pitcher-seasons (≥ 50 % of pitches in Extreme Altitude). Writes the aggregate table
+altitude-heavy pitcher-seasons (≥ 50 % of pitches in Extreme Altitude; empty with fewer than MIN_SEASONS of them).
+The band is calibrated on pitcher-season means, so the pages show it only for season values, not per pitch type. Writes the aggregate table
 ``analysis/export_web/uncertainty_by_n.csv`` that the real export turns into ``real/uncertainty.json``.
 The band describes the raw n-pitch mean; leaderboard values are shrunk toward 100, so it is an upper bound there.
 """
@@ -66,7 +67,8 @@ def table(d: pd.DataFrame, seed: int = 0) -> pd.DataFrame:
             alt = t[t.share_extreme >= 0.5]
             out.append(dict(air=air, n_pitches=n, half_width=round(float(hw), 3),
                             coverage=round(coverage(t.score.to_numpy(), 0.0, hw), 4),
-                            coverage_altitude=round(coverage(alt.score.to_numpy(), 0.0, hw), 4) if len(alt) else np.nan,
+                            coverage_altitude=(round(coverage(alt.score.to_numpy(), 0.0, hw), 4)
+                                               if alt[KEY].drop_duplicates().shape[0] >= MIN_SEASONS else np.nan),
                             pitcher_seasons_cal=int(c[KEY].drop_duplicates().shape[0]),
                             pitcher_seasons_test=int(t[KEY].drop_duplicates().shape[0]),
                             n_altitude_test=int(alt[KEY].drop_duplicates().shape[0])))

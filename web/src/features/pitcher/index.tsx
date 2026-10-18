@@ -85,8 +85,8 @@ export function PitcherView({ doc, parks, source, bands = null }: { doc: Pitcher
                     <td className="num">{fmt(p.ivb)}</td>
                     <td className="num">{fmt(p.hb)}</td>
                     <td className="num">{Math.round(p.spin).toLocaleString('es-MX')}</td>
-                    <td className="num">{fmt(p.stuff_plus)}<Band bands={bands} air="neutral" pitches={p.pitches} /></td>
-                    <td className="num">{fmt(p.stuff_plus_harp_helu)}<Band bands={bands} air="harp_helu" pitches={p.pitches} /></td>
+                    <td className="num">{fmt(p.stuff_plus)}</td>
+                    <td className="num">{fmt(p.stuff_plus_harp_helu)}</td>
                     <td className="num">{fmt(p.delta_cdmx, 1, true)}</td>
                   </tr>
                 ))}

@@ -92,7 +92,7 @@ describe('uncertainty bands (HACK-069)', () => {
   it('looks up the half-width by number of pitches and air', () => {
     expect(halfWidth(bands, 'neutral', 499)?.half_width).toBe(3.2);
     expect(halfWidth(bands, 'neutral', 900)?.half_width).toBe(1.4);
-    expect(halfWidth(bands, 'neutral', 40)?.n_pitches).toBe(100);
+    expect(halfWidth(bands, 'neutral', 40)).toBeNull(); // below the smallest calibrated n: no band
     expect(halfWidth(bands, 'harp_helu', 600)?.half_width).toBe(3.5);
     expect(halfWidth(null, 'neutral', 600)).toBeNull();
   });

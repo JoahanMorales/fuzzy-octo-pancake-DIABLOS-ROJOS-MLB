@@ -19,12 +19,13 @@ export interface Bands {
 
 const BASE = `${import.meta.env.BASE_URL ?? './'}data/`;
 
-/** Half-width for `pitches` pitches: the row of the largest calibrated n not above it (the smallest n below it). */
+/** Half-width for `pitches` pitches: the row of the largest calibrated n not above it. Below the smallest calibrated
+ *  n there is no band (it would understate the uncertainty). Calibrated on pitcher-season means. */
 export function halfWidth(bands: Bands | null, air: Air, pitches: number): BandRow | null {
   if (!bands) return null;
   const rows = bands.rows.filter((r) => r.air === air && Number.isFinite(r.half_width)).sort((a, b) => a.n_pitches - b.n_pitches);
   if (!rows.length || !(pitches > 0)) return null;
-  return [...rows].reverse().find((r) => r.n_pitches <= pitches) ?? rows[0];
+  return [...rows].reverse().find((r) => r.n_pitches <= pitches) ?? null;
 }
 
 export async function loadBands(fetcher: typeof fetch = fetch): Promise<Bands | null> {

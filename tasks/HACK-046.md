@@ -9,13 +9,13 @@ Priority: P1
 Paths: web/src/features/altitud/
 Depends: HACK-037
 Verify: `npm --prefix web test -- --run src/features/altitud`
-Lease-Until: 1792266556
-Updated: 1792263856
+Lease-Until: 1792286588
+Updated: 1792283888
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Resume PR #53 with verified ID->coordinates or responsible human criterion revision, then rerun web/browser and full smoke in Python environment; independent exact-SHA review before done/merge.
+Next: PR53 remains partial; resume when ID->coordinates documented. Fix shared CI separately then refresh PR50 exact SHA.
 PR: -
 Evidence: -
-Events: 9
-Checkpoints: 3
-Sessions: 1
-Last-Checkpoint: 1792263847
+Events: 10
+Checkpoints: 4
+Sessions: 2
+Last-Checkpoint: 1792283888

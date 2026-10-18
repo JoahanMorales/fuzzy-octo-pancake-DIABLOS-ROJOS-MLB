@@ -105,3 +105,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792278254 | plan | joahan/joahan | tasks added: HACK-066 HACK-067 HACK-068 HACK-069 HACK-070 HACK-071 HACK-072 HACK-073 | Why: backlog without PR (Plan-Channel: claims)
 - 1792278536 | deadline lease/HACK-045/1792275155 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792278536 | deadline lease/HACK-057/1792276043 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792283888 | HACK-046 | Release Altitud pending geographic contract; handle human-authorized CI exception in separate branch. | Why: All open PRs fail bash syntax validation of Python uak-mcp.

@@ -1,5 +1,5 @@
 Task: HACK-073
-Events: 9
-Checkpoints: 2
+Events: 10
+Checkpoints: 3
 Sessions: 2
-Last-Checkpoint: 1792284412
+Last-Checkpoint: 1792284476

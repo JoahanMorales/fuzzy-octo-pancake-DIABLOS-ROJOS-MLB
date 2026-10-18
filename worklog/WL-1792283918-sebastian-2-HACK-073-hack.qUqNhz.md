@@ -1,12 +1,12 @@
 # worklog/WL-1792283918-sebastian-2-HACK-073-hack.qUqNhz.md · HACK-073
 
 ## Live summary
-- Done: PR62 59fa43ba all Actions checks GREEN (run39083600679) incl product smoke; independent code APPROVE; corrected Verify proposal tested positive/negative, no metadata mutation.
-- Decision: Explicit human authorization pending to correct own published Verify as required LOOPS; formal reviewer holding verdict.
-- Why: Original command returns1 on final ignored sourced module. Corrected guarded loop exit0 valid repo, exit2 invalid Bash fixture.
-- Failing: Formal merge blocked by erroneous task Verify; no product-code defect. Await user response to precise correction+merge request.
-- Commands: gh run39083600679 SUCCESS; exact workflow exit0; proposed Verify valid0/invalid2; GitHub PR62 mergeable.
-- Next: After user authorization, correct only HACK073 Verify metadata with auditable claims commit, get independent victor-2 review, run merge and confirm integration; otherwise preserve blocked draft.
+- Done: PR62 SHA59fa43ba; all CI green run39083600679; fresh073 full smoke PRODUCT_PASS exit0 442s; workflow valid0/invalidBash2; independent code advisory APPROVE.
+- Decision: No merge until explicit human authorization corrects published Verify per LOOPS; actual reviewer must preserve current failure.
+- Why: Task command falsely returns1 on last ignored shebangless module. Proposed corrected guard tested valid0/invalid2, no metadata mutation.
+- Failing: Required authorization pending for correcting own Verify. Product/CI have no known defects. PR58 rejected with reproduced handedness/count bugs.
+- Commands: bash .uak/bin/q bash .uak/bin/smoke =>PASS442s; GitHub gates SUCCESS; secret-scan staged PASS; Verify proposal in /tmp/hack073-corrected-verify.txt.
+- Next: On human authorization, amend only HACK073 Verify metadata auditably, independently re-review SHA59fa43ba, uak merge and confirm GitHub/claims. Do not claim a merge already happened.
 
 ## History
 - 1792283918 | CLAIMED | sebastian-2 | claim; next: edit the Kit syntax step in .github/workflows/uak.yml.
@@ -18,3 +18,4 @@
 - 1792284412 | REVIEW | sebastian-2 | checkpoint; next: After user authorization, correct only HACK073 Verify metadata with auditable claims commit, get independent victor-2 review, run merge and confirm integration; otherwise preserve blocked draft.
 - 1792284463 | REVIEW | sebastian-2 | heartbeat; lease until 1792298863
 - 1792284471 | REVIEW | victor-2 | review; reject; SHA 59fa43ba7e2cdcd4fa6cfd7bf6304a62fd07dbbd; reviewer victor-2
+- 1792284476 | REVIEW | sebastian-2 | checkpoint; next: On human authorization, amend only HACK073 Verify metadata auditably, independently re-review SHA59fa43ba, uak merge and confirm GitHub/claims. Do not claim a merge already happened.

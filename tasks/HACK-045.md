@@ -9,14 +9,14 @@ Priority: P0
 Paths: web/src/features/simulador/flight/, web/src/features/simulador/panel/, web/src/features/simulador/index.tsx
 Depends: HACK-044
 Verify: `npm --prefix web test -- --run src/features/simulador`
-Lease-Until: 1792325586
-Updated: 1792311186
+Lease-Until: 1792326106
+Updated: 1792311706
 Task-Base: f874187dbc6a7ef65dcd59f150bcd7950f26613b
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-045?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-045?expand=1
-Evidence: 454ee2d: vitest src/features/simulador 14 passed; tsc + vite build OK; Edge 1440 headless 134-145 fps in all views, harp and sea parks, no page errors; city, trees, light towers, scoreboard, AO per joahan. Web-only.
-Events: 21
+Evidence: c6261807: main merged (3f58310+); vitest simulador 16 passed incl. presets ±1.5 vs delta_by_shape.csv with v2 models; web suite 153 passed; build OK; Edge 1440 no page errors
+Events: 22
 Checkpoints: 2
 Sessions: 5
 Last-Checkpoint: 1792272455
-Task-Tip: 454ee2d160f1038e666c3ab2bcb5241b1c6fba77
+Task-Tip: c62618078dd0721a30df89ba319a93c140aadb62

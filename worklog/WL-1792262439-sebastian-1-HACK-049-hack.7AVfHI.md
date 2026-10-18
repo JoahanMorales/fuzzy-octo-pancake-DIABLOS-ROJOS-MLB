@@ -6,7 +6,7 @@
 - Why: Source owner published real rows_fast/bins/methods/audit via contract364; avoid inventing or relabeling xRV as probability
 - Failing: Earlier full smoke AppTest Tarjeta timeout30s; isolated same test passed1 in3s; final full retry running with servers stopped
 - Commands: npm --prefix web test -- --run src/features/metodologia; npm --prefix web test -- --run; npm --prefix web run build; source .uak-env then HACK049_URL=http://127.0.0.1:$((UAK_PORT+1)) node /tmp/hack049-browser.cjs; secret-scan --staged
-- Next: Read final full-smoke verdict; update /tmp/hack049-pr-body.md and create PR; if smoke green uak done HACK049 then wait exact-SHA independent review; otherwise draft and checkpoint exact error
+- Next: Integrate origin/main, verify final methodology contract and finish PR55 review
 
 ## History
 - 1792262439 | CLAIMED | sebastian-1 | claim; next: chart from `validation.json`.
@@ -17,3 +17,4 @@
 - 1792264093 | CLAIMED | sebastian-1 | checkpoint; next: Read final full-smoke verdict; update /tmp/hack049-pr-body.md and create PR; if smoke green uak done HACK049 then wait exact-SHA independent review; otherwise draft and checkpoint exact error
 - 1792264392 | CLAIMED | sebastian-1 | heartbeat; lease until 1792267092
 - 1792283894 | AVAILABLE | sebastian-1 | release; claim released by sebastian-1; reason: -; summary kept
+- 1792283915 | CLAIMED | sebastian-1 | claim; next: Integrate origin/main, verify final methodology contract and finish PR55 review

@@ -9,8 +9,8 @@ Priority: P1
 Paths: web/public/data/real/, analysis/export_web/, deploy/web/, scripts/check_web_dist.py, tests/test_check_web_dist.py
 Depends: HACK-050
 Verify: `python -m pytest -q tests/test_check_web_dist.py`
-Lease-Until: 1792291705
-Updated: 1792277305
+Lease-Until: 1792300800
+Updated: 1792286400
 Task-Base: 876a4f4709284fe0b432e285adc650e4002c4839
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-065?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-065?expand=1

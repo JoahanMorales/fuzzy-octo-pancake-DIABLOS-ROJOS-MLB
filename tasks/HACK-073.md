@@ -9,13 +9,13 @@ Priority: P1
 Paths: .github/workflows/
 Depends: None
 Verify: `for f in .uak/bin/* .uak/bin/lib/*.sh; do [ -f "$f" ] && head -1 "$f" | grep -qE 'bash|sh$' && bash -n "$f"; done`
-Lease-Until: 1792298468
-Updated: 1792284068
+Lease-Until: 1792298481
+Updated: 1792284081
 Task-Base: 5afea1a2566b20fc494995ad72a8261a3df1f408
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/62; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/62
 Evidence: 59fa43ba: exact workflow shell step exit0; malformed-Bash regression exits2, Python excluded and valid Bash/sh accepted; secret-scan PASS; independent advisory APPROVE on exact SHA. Full smoke and Actions running; published Verify false-exit bug reported to planner #434, not hidden.
-Events: 3
+Events: 4
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

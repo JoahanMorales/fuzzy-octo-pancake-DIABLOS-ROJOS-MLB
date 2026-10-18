@@ -1,12 +1,12 @@
 # worklog/WL-1792283918-sebastian-2-HACK-073-hack.qUqNhz.md · HACK-073
 
 ## Live summary
-- Done: PR62 SHA59fa43ba pushed; exact workflow + malformed-shell fixture PASS; independent advisory APPROVE; Kit syntax step green in Actions run39083600679.
-- Decision: Wait registered independent review and full checks before merge; preserve published Verify false-exit evidence.
-- Why: CI repair owns correct workflow scope; no other gate modifications.
-- Failing: Published Verify returns1 on final shebangless module; planner requested correction #434. Full local smoke and GitHub product smoke running.
-- Commands: Exact workflow bash-e exit0; malformed Bash exits2; secret-scan staged PASS; gh run view39083600679 Kit syntax success.
-- Next: Get formal exact-SHA review, finish smoke/Actions, merge PR62 through UAK or report explicit Verify gate blocker; then continue simulador PR58 review.
+- Done: PR62 59fa43ba all Actions checks GREEN (run39083600679) incl product smoke; independent code APPROVE; corrected Verify proposal tested positive/negative, no metadata mutation.
+- Decision: Explicit human authorization pending to correct own published Verify as required LOOPS; formal reviewer holding verdict.
+- Why: Original command returns1 on final ignored sourced module. Corrected guarded loop exit0 valid repo, exit2 invalid Bash fixture.
+- Failing: Formal merge blocked by erroneous task Verify; no product-code defect. Await user response to precise correction+merge request.
+- Commands: gh run39083600679 SUCCESS; exact workflow exit0; proposed Verify valid0/invalid2; GitHub PR62 mergeable.
+- Next: After user authorization, correct only HACK073 Verify metadata with auditable claims commit, get independent victor-2 review, run merge and confirm integration; otherwise preserve blocked draft.
 
 ## History
 - 1792283918 | CLAIMED | sebastian-2 | claim; next: edit the Kit syntax step in .github/workflows/uak.yml.
@@ -15,3 +15,4 @@
 - 1792284081 | REVIEW | sebastian-2 | heartbeat; lease until 1792298481
 - 1792284157 | REVIEW | sebastian-2 | checkpoint; next: Get formal exact-SHA review, finish smoke/Actions, merge PR62 through UAK or report explicit Verify gate blocker; then continue simulador PR58 review.
 - 1792284269 | REVIEW | sebastian-2 | heartbeat; lease until 1792298669
+- 1792284412 | REVIEW | sebastian-2 | checkpoint; next: After user authorization, correct only HACK073 Verify metadata with auditable claims commit, get independent victor-2 review, run merge and confirm integration; otherwise preserve blocked draft.

@@ -9,14 +9,14 @@ Priority: P1
 Paths: .github/workflows/
 Depends: None
 Verify: `for f in .uak/bin/* .uak/bin/lib/*.sh; do [ -f "$f" ] && head -1 "$f" | grep -qE 'bash|sh$' && bash -n "$f"; done`
-Lease-Until: 1792298669
-Updated: 1792284269
+Lease-Until: 1792298812
+Updated: 1792284412
 Task-Base: 5afea1a2566b20fc494995ad72a8261a3df1f408
-Next: Get formal exact-SHA review, finish smoke/Actions, merge PR62 through UAK or report explicit Verify gate blocker; then continue simulador PR58 review.
+Next: After user authorization, correct only HACK073 Verify metadata with auditable claims commit, get independent victor-2 review, run merge and confirm integration; otherwise preserve blocked draft.
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/62
 Evidence: 59fa43ba: exact workflow shell step exit0; malformed-Bash regression exits2, Python excluded and valid Bash/sh accepted; secret-scan PASS; independent advisory APPROVE on exact SHA. Full smoke and Actions running; published Verify false-exit bug reported to planner #434, not hidden.
-Events: 6
-Checkpoints: 1
+Events: 7
+Checkpoints: 2
 Sessions: 1
-Last-Checkpoint: 1792284157
+Last-Checkpoint: 1792284412
 Task-Tip: 59fa43ba7e2cdcd4fa6cfd7bf6304a62fd07dbbd

@@ -6,7 +6,7 @@
 - Why: parks.json has no coordinates and reports/park_id/harp_helu.md says franchise identity is not verified; placing them would invent data (AGENTS 1.6). joahan delegated decisions in chat
 - Failing: Geographic positions remain unverified; PR50 moved during review to66bd1d3, so no stale-SHA verdict recorded.
 - Commands: bash .uak/bin/q bash .uak/bin/smoke => PRODUCT_PASS; npm --prefix web test -- --run =>78pass; npm --prefix web run build =>exit0
-- Next: Apply option: Map criterion met as in sebastian-2 draft 88f6fc2: Mexico outline (Natural Earth, public domain) plus the 20 parks in an unlocated panel sized by rho, never placed on coordinates
+- Next: Integrated in main: 1680363b2ac0745f73e9d8a6ecede7060f4f78e3 (recorded by victor-1)
 
 ## History
 - 1792261003 | CLAIMED | sebastian-2 | claim; next: d3-geo projection of a public-domain Mexico outline (cite the source in the page).
@@ -25,3 +25,4 @@
 - 1792306990 | REVIEW | joahan-4 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-046?expand=1; evidence: 7254b27: npm --prefix web test -- --run src/features/altitud 11 passed; full web suite 152 passed; vite build OK; Edge 1440 and 390 reduced motion, real data, no errors, no overflow; geo criterion per uak decision (parks unlocated, ids anonymous); reviewer: -
 - 1792307358 | REVIEW | victor-2 | review; approve; SHA 7254b27bf18802276776deadb4c2a43c221f76b4; reviewer victor-2
 - 1792307997 | REVIEW | scheduler | deadline decision HACK-046-1792306683; option: Map criterion met as in sebastian-2 draft 88f6fc2: Mexico outline (Natural Earth, public domain) plus the 20 parks in an unlocated panel sized by rho, never placed on coordinates; Why: parks.json has no coordinates and reports/park_id/harp_helu.md says franchise identity is not verified; placing them would invent data (AGENTS 1.6). joahan delegated decisions in chat
+- 1792310661 | INTEGRATED | victor-1 | integrate; recorded by victor-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-046?expand=1; merged 1680363b2ac0745f73e9d8a6ecede7060f4f78e3; proof ancestry

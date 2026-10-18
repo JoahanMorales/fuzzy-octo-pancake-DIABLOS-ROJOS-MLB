@@ -12,6 +12,6 @@ Verify: `npm --prefix web test -- --run src/features/altitud`
 Lease-Until: 1792321390
 Updated: 1792306990
 Task-Base: 54d5e2b61eb96a8e1e5c1177e6e053ac34f2aa26
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-046?expand=1; run .uak/bin/smoke
+Next: Apply option: Map criterion met as in sebastian-2 draft 88f6fc2: Mexico outline (Natural Earth, public domain) plus the 20 parks in an unlocated panel sized by rho, never placed on coordinates
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-046?expand=1
 Evidence: -

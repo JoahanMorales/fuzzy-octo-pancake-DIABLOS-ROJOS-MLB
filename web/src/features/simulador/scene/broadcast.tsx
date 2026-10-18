@@ -370,9 +370,10 @@ export function TrackedFlights({ harp, sea, c, reduced, playId, timing, ball }: 
 /* --------------------------------- batter --------------------------------- */
 
 const GHOST: Look = { jersey: '#c9ccd3', pants: '#c9ccd3', skin: '#c9ccd3', dark: '#e8e6e1', helmet: '#c9ccd3' };
+const HOME: Look = { jersey: '#f1efe9', pants: '#e6e2d8', skin: '#9a7a62', dark: '#1c2a4a', helmet: '#1c2a4a' };
 
 /** Translucent batter in his stance; switches sides with the same walk-behind-the-plate move. */
-export function GhostBatter({ hand, reduced }: { hand: Hand; reduced: boolean }) {
+export function GhostBatter({ hand, reduced, solid = false }: { hand: Hand; reduced: boolean; solid?: boolean }) {
   const ref = useRef<THREE.Group>(null);
   const pose = useRef<Pose>(STANCE);
   const swap = useRef({ from: hand, to: hand, t: 1 });
@@ -399,10 +400,11 @@ export function GhostBatter({ hand, reduced }: { hand: Hand; reduced: boolean })
     <group ref={ref}>
       <Suspense fallback={null}>
         <group rotation={[0, Math.PI / 2, 0]}>
-          <Mannequin pose={pose} look={GHOST} toRig={toRig} onPosed={placeBat} ghost>
-            <mesh ref={bat}>
+          <Mannequin pose={pose} look={solid ? HOME : GHOST} toRig={toRig} onPosed={placeBat} ghost={!solid} helmet={solid}>
+            <mesh ref={bat} castShadow={solid}>
               <cylinderGeometry args={[0.034, 0.014, 0.86, 12]} />
-              <meshBasicMaterial color="#c9ccd3" transparent opacity={0.22} depthWrite={false} />
+              {solid ? <meshStandardMaterial color="#b0875c" roughness={0.4} />
+                : <meshBasicMaterial color="#c9ccd3" transparent opacity={0.22} depthWrite={false} />}
             </mesh>
           </Mannequin>
         </group>

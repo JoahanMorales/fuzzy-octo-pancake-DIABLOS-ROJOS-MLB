@@ -5,7 +5,8 @@ import { CameraControls, PerformanceMonitor } from '@react-three/drei';
 import { Bloom, EffectComposer, SMAA, ToneMapping, Vignette } from '@react-three/postprocessing';
 import { ToneMappingMode } from 'postprocessing';
 import * as THREE from 'three';
-import { GhostBatter, Horizon, NightSky, TrackedField, TrackedFlights, ZoneGlass } from './broadcast';
+import { GhostBatter, TrackedFlights, ZoneGlass } from './broadcast';
+import { DayHorizon, DaySky, GrassField, SUN } from './daypark';
 import { ballTexture } from './textures';
 import {
   BALL_R,
@@ -42,7 +43,7 @@ export interface WorldProps {
 function Air({ park, bg }: { park: ParkSide; bg: string }) {
   const scene = useThree((s) => s.scene);
   useLayoutEffect(() => {
-    scene.fog = new THREE.Fog(bg, 260, 1300);
+    scene.fog = new THREE.Fog(bg, 700, 4200);
   }, [scene, park, bg]);
   return null;
 }
@@ -177,15 +178,29 @@ function Stage(props: WorldProps) {
   const timing = useMemo(() => ({ windup: WINDUP, duration: 1.7 }), []);
   return (
     <>
-      <Air park={props.park} bg={props.park === 'harp' ? '#2a3150' : '#1f4560'} />
-      <NightSky park={props.park} />
-      <Horizon park={props.park} />
-      <hemisphereLight args={['#8fa3c8', '#0b0f14', 0.6]} />
-      <directionalLight position={[-120, 160, 80]} intensity={1.2} color="#f4f1e8" />
+      <Air park={props.park} bg={props.park === 'harp' ? '#a9cff5' : '#cfe1f2'} />
+      <DaySky park={props.park} />
+      <DayHorizon park={props.park} />
+      <hemisphereLight args={['#bcd6f5', '#3d6b33', 1.1]} />
+      <directionalLight
+        position={SUN.clone().multiplyScalar(320).toArray()}
+        intensity={3.2}
+        color="#fff3df"
+        castShadow
+        shadow-mapSize-width={rich ? 2048 : 1024}
+        shadow-mapSize-height={rich ? 2048 : 1024}
+        shadow-bias={-0.0004}
+        shadow-camera-near={50}
+        shadow-camera-far={700}
+        shadow-camera-left={-110}
+        shadow-camera-right={110}
+        shadow-camera-top={110}
+        shadow-camera-bottom={-110}
+      />
       <CameraRig view={props.view} reduced={props.reduced} free={props.free} />
-      <TrackedField c={c} />
+      <GrassField c={c} />
       <ZoneGlass c={c} />
-      <GhostBatter hand={props.hand} reduced={props.reduced} />
+      <GhostBatter hand={props.hand} reduced={props.reduced} solid />
       <TrackedFlights harp={props.harpPath} sea={props.seaPath} c={c} reduced={props.reduced} playId={props.playId}
         timing={timing}
         ball={<Paths harp={props.harpPath} sea={props.seaPath} reduced={props.reduced} playId={props.playId} c={c}
@@ -211,11 +226,12 @@ export default function World(props: WorldProps) {
       <Canvas
         dpr={[1, 1.25]}
         frameloop="demand"
+        shadows="soft"
         gl={{ antialias: true, powerPreference: 'high-performance', stencil: false, alpha: false }}
-        camera={{ position: VIEWS.catcher.pos, fov: VIEWS.catcher.fov, near: 0.2, far: 4000 }}
+        camera={{ position: VIEWS.catcher.pos, fov: VIEWS.catcher.fov, near: 0.2, far: 6000 }}
         onCreated={({ gl }) => {
           gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.toneMappingExposure = 1.25;
+          gl.toneMappingExposure = 0.7;
           if (!gl.capabilities.isWebGL2) props.onNoWebGL2();
         }}
       >

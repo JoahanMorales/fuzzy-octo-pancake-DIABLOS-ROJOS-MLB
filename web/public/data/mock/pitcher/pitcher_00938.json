@@ -13,14 +13,14 @@
       "year": 2024,
       "pitches": 1704,
       "throws": "Right",
-      "stuff_plus": 99.517,
-      "stuff_plus_harp_helu": 88.67,
-      "stuff_plus_own_air": 95.972,
-      "location_plus": 99.218,
+      "stuff_plus": 99.661,
+      "stuff_plus_harp_helu": 87.408,
+      "stuff_plus_own_air": 94.446,
+      "location_plus": 99.22,
       "pitching_plus": 99.179,
-      "delta_cdmx": -10.847,
+      "delta_cdmx": -12.253,
       "arsenal": "4S 37% · splitter 37% · riding 4S 27%",
-      "stuff_plus_percentile": 48.075,
+      "stuff_plus_percentile": 48.647,
       "arsenal_pitches": [
         {
           "pitch_id": 0,
@@ -32,12 +32,12 @@
           "ivb": 15.628,
           "hb": 9.065,
           "spin": 2215.322,
-          "stuff_plus": 100.158,
-          "stuff_plus_harp_helu": 89.528,
-          "stuff_plus_own_air": 99.523,
-          "location_plus": 98.689,
+          "stuff_plus": 100.621,
+          "stuff_plus_harp_helu": 87.833,
+          "stuff_plus_own_air": 98.129,
+          "location_plus": 98.658,
           "pitching_plus": 98.81,
-          "delta_cdmx": -10.63
+          "delta_cdmx": -12.788
         },
         {
           "pitch_id": 1,
@@ -49,12 +49,12 @@
           "ivb": 15.347,
           "hb": 8.608,
           "spin": 2194.837,
-          "stuff_plus": 101.59,
-          "stuff_plus_harp_helu": 89.554,
-          "stuff_plus_own_air": 97.84,
-          "location_plus": 98.836,
+          "stuff_plus": 100.656,
+          "stuff_plus_harp_helu": 85.859,
+          "stuff_plus_own_air": 94.68,
+          "location_plus": 98.821,
           "pitching_plus": 98.587,
-          "delta_cdmx": -12.036
+          "delta_cdmx": -14.798
         },
         {
           "pitch_id": 2,
@@ -66,12 +66,12 @@
           "ivb": 15.475,
           "hb": 8.097,
           "spin": 2213.128,
-          "stuff_plus": 103.007,
-          "stuff_plus_harp_helu": 90.952,
-          "stuff_plus_own_air": 97.888,
-          "location_plus": 99.515,
+          "stuff_plus": 100.101,
+          "stuff_plus_harp_helu": 85.064,
+          "stuff_plus_own_air": 93.345,
+          "location_plus": 99.505,
           "pitching_plus": 99.207,
-          "delta_cdmx": -12.055
+          "delta_cdmx": -15.037
         },
         {
           "pitch_id": 3,
@@ -83,12 +83,12 @@
           "ivb": 8.474,
           "hb": 3.515,
           "spin": 1831.49,
-          "stuff_plus": 93.355,
-          "stuff_plus_harp_helu": 88.204,
-          "stuff_plus_own_air": 92.767,
-          "location_plus": 99.699,
+          "stuff_plus": 94.153,
+          "stuff_plus_harp_helu": 89.423,
+          "stuff_plus_own_air": 91.32,
+          "location_plus": 99.711,
           "pitching_plus": 98.794,
-          "delta_cdmx": -5.151
+          "delta_cdmx": -4.73
         },
         {
           "pitch_id": 4,
@@ -100,12 +100,12 @@
           "ivb": 3.404,
           "hb": 0.301,
           "spin": 1635.488,
-          "stuff_plus": 96.396,
-          "stuff_plus_harp_helu": 85.485,
-          "stuff_plus_own_air": 91.83,
-          "location_plus": 99.604,
+          "stuff_plus": 100.057,
+          "stuff_plus_harp_helu": 90.148,
+          "stuff_plus_own_air": 94.638,
+          "location_plus": 99.64,
           "pitching_plus": 100.207,
-          "delta_cdmx": -10.911
+          "delta_cdmx": -9.909
         }
       ]
     },
@@ -113,14 +113,14 @@
       "year": 2025,
       "pitches": 1947,
       "throws": "Right",
-      "stuff_plus": 97.395,
-      "stuff_plus_harp_helu": 86.591,
-      "stuff_plus_own_air": 96.412,
-      "location_plus": 100.258,
+      "stuff_plus": 97.911,
+      "stuff_plus_harp_helu": 85.217,
+      "stuff_plus_own_air": 96.611,
+      "location_plus": 100.256,
       "pitching_plus": 99.648,
-      "delta_cdmx": -10.804,
+      "delta_cdmx": -12.694,
       "arsenal": "4S 34% · gyro slider 29% · riding 4S 26%",
-      "stuff_plus_percentile": 39.724,
+      "stuff_plus_percentile": 41.726,
       "arsenal_pitches": [
         {
           "pitch_id": 0,
@@ -132,12 +132,12 @@
           "ivb": 15.655,
           "hb": 10.327,
           "spin": 2209.558,
-          "stuff_plus": 100.738,
-          "stuff_plus_harp_helu": 88.437,
-          "stuff_plus_own_air": 100.554,
-          "location_plus": 100.786,
+          "stuff_plus": 99.223,
+          "stuff_plus_harp_helu": 83.448,
+          "stuff_plus_own_air": 98.24,
+          "location_plus": 100.794,
           "pitching_plus": 99.619,
-          "delta_cdmx": -12.301
+          "delta_cdmx": -15.774
         },
         {
           "pitch_id": 1,
@@ -149,12 +149,12 @@
           "ivb": 15.123,
           "hb": 8.716,
           "spin": 2172.766,
-          "stuff_plus": 95.162,
-          "stuff_plus_harp_helu": 87.112,
-          "stuff_plus_own_air": 95.259,
-          "location_plus": 97.422,
+          "stuff_plus": 93.496,
+          "stuff_plus_harp_helu": 82.037,
+          "stuff_plus_own_air": 92.467,
+          "location_plus": 97.381,
           "pitching_plus": 97.084,
-          "delta_cdmx": -8.05
+          "delta_cdmx": -11.459
         },
         {
           "pitch_id": 2,
@@ -166,12 +166,12 @@
           "ivb": 3.828,
           "hb": 0.118,
           "spin": 1839.772,
-          "stuff_plus": 94.078,
-          "stuff_plus_harp_helu": 83.058,
-          "stuff_plus_own_air": 91.535,
-          "location_plus": 100.73,
+          "stuff_plus": 97.106,
+          "stuff_plus_harp_helu": 87.513,
+          "stuff_plus_own_air": 95.126,
+          "location_plus": 100.729,
           "pitching_plus": 100.84,
-          "delta_cdmx": -11.02
+          "delta_cdmx": -9.593
         },
         {
           "pitch_id": 3,
@@ -183,12 +183,12 @@
           "ivb": 4.156,
           "hb": 0.831,
           "spin": 1574.381,
-          "stuff_plus": 92.333,
-          "stuff_plus_harp_helu": 88.21,
-          "stuff_plus_own_air": 91.062,
-          "location_plus": 99.285,
+          "stuff_plus": 98.375,
+          "stuff_plus_harp_helu": 91.4,
+          "stuff_plus_own_air": 97.389,
+          "location_plus": 99.265,
           "pitching_plus": 98.915,
-          "delta_cdmx": -4.123
+          "delta_cdmx": -6.975
         }
       ]
     },
@@ -196,14 +196,14 @@
       "year": 2026,
       "pitches": 570,
       "throws": "Right",
-      "stuff_plus": 96.156,
-      "stuff_plus_harp_helu": 88.24,
-      "stuff_plus_own_air": 94.65,
-      "location_plus": 99.405,
+      "stuff_plus": 96.843,
+      "stuff_plus_harp_helu": 86.635,
+      "stuff_plus_own_air": 93.954,
+      "location_plus": 99.392,
       "pitching_plus": 98.546,
-      "delta_cdmx": -7.916,
+      "delta_cdmx": -10.208,
       "arsenal": "riding 4S 36% · changeup 32% · 4S 32%",
-      "stuff_plus_percentile": 35.036,
+      "stuff_plus_percentile": 37.611,
       "arsenal_pitches": [
         {
           "pitch_id": 0,
@@ -215,12 +215,12 @@
           "ivb": 18.365,
           "hb": 8.413,
           "spin": 2349.073,
-          "stuff_plus": 105.92,
-          "stuff_plus_harp_helu": 89.78,
-          "stuff_plus_own_air": 107.591,
-          "location_plus": 102.593,
+          "stuff_plus": 108.029,
+          "stuff_plus_harp_helu": 90.862,
+          "stuff_plus_own_air": 109.045,
+          "location_plus": 102.617,
           "pitching_plus": 103.287,
-          "delta_cdmx": -16.14
+          "delta_cdmx": -17.167
         },
         {
           "pitch_id": 1,
@@ -232,12 +232,12 @@
           "ivb": 13.146,
           "hb": 8.14,
           "spin": 2174.438,
-          "stuff_plus": 95.692,
-          "stuff_plus_harp_helu": 87.506,
-          "stuff_plus_own_air": 90.535,
-          "location_plus": 98.683,
+          "stuff_plus": 91.279,
+          "stuff_plus_harp_helu": 79.623,
+          "stuff_plus_own_air": 84.418,
+          "location_plus": 98.664,
           "pitching_plus": 97.029,
-          "delta_cdmx": -8.185
+          "delta_cdmx": -11.656
         },
         {
           "pitch_id": 2,
@@ -249,12 +249,12 @@
           "ivb": 14.097,
           "hb": 6.688,
           "spin": 2250.946,
-          "stuff_plus": 96.009,
-          "stuff_plus_harp_helu": 88.376,
-          "stuff_plus_own_air": 92.676,
-          "location_plus": 97.585,
+          "stuff_plus": 94.46,
+          "stuff_plus_harp_helu": 84.385,
+          "stuff_plus_own_air": 89.306,
+          "location_plus": 97.555,
           "pitching_plus": 96.517,
-          "delta_cdmx": -7.633
+          "delta_cdmx": -10.074
         },
         {
           "pitch_id": 4,
@@ -266,12 +266,12 @@
           "ivb": 3.031,
           "hb": 0.097,
           "spin": 1736.302,
-          "stuff_plus": 92.664,
-          "stuff_plus_harp_helu": 88.114,
-          "stuff_plus_own_air": 91.497,
-          "location_plus": 100.256,
+          "stuff_plus": 98.299,
+          "stuff_plus_harp_helu": 91.612,
+          "stuff_plus_own_air": 96.399,
+          "location_plus": 100.262,
           "pitching_plus": 99.712,
-          "delta_cdmx": -4.55
+          "delta_cdmx": -6.687
         }
       ]
     }

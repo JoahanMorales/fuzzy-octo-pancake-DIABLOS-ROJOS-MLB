@@ -13,14 +13,14 @@
       "year": 2024,
       "pitches": 401,
       "throws": "Left",
-      "stuff_plus": 99.841,
-      "stuff_plus_harp_helu": 93.029,
-      "stuff_plus_own_air": 96.853,
-      "location_plus": 99.349,
+      "stuff_plus": 100.705,
+      "stuff_plus_harp_helu": 91.872,
+      "stuff_plus_own_air": 95.896,
+      "location_plus": 99.313,
       "pitching_plus": 100.05,
-      "delta_cdmx": -6.813,
+      "delta_cdmx": -8.833,
       "arsenal": "changeup 36% · riding 4S 31% · 12-6 CB 17%",
-      "stuff_plus_percentile": 49.368,
+      "stuff_plus_percentile": 52.811,
       "arsenal_pitches": [
         {
           "pitch_id": 0,
@@ -32,12 +32,12 @@
           "ivb": 13.359,
           "hb": -3.882,
           "spin": 2451.59,
-          "stuff_plus": 106.059,
-          "stuff_plus_harp_helu": 95.858,
-          "stuff_plus_own_air": 101.213,
-          "location_plus": 98.573,
+          "stuff_plus": 106.326,
+          "stuff_plus_harp_helu": 93.993,
+          "stuff_plus_own_air": 98.912,
+          "location_plus": 98.533,
           "pitching_plus": 100.166,
-          "delta_cdmx": -10.201
+          "delta_cdmx": -12.333
         },
         {
           "pitch_id": 1,
@@ -49,12 +49,12 @@
           "ivb": 1.812,
           "hb": -2.695,
           "spin": 2222.596,
-          "stuff_plus": 98.12,
-          "stuff_plus_harp_helu": 90.445,
-          "stuff_plus_own_air": 94.144,
-          "location_plus": 99.451,
+          "stuff_plus": 98.175,
+          "stuff_plus_harp_helu": 89.645,
+          "stuff_plus_own_air": 93.677,
+          "location_plus": 99.436,
           "pitching_plus": 99.907,
-          "delta_cdmx": -7.676
+          "delta_cdmx": -8.53
         },
         {
           "pitch_id": 2,
@@ -66,12 +66,12 @@
           "ivb": -5.102,
           "hb": 0.67,
           "spin": 2603.02,
-          "stuff_plus": 87.273,
-          "stuff_plus_harp_helu": 91.057,
-          "stuff_plus_own_air": 91.165,
-          "location_plus": 101.12,
+          "stuff_plus": 91.262,
+          "stuff_plus_harp_helu": 90.942,
+          "stuff_plus_own_air": 92.677,
+          "location_plus": 101.076,
           "pitching_plus": 100.028,
-          "delta_cdmx": 3.783
+          "delta_cdmx": -0.321
         }
       ]
     }

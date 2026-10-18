@@ -13,14 +13,14 @@
       "year": 2025,
       "pitches": 338,
       "throws": "Right",
-      "stuff_plus": 100.461,
-      "stuff_plus_harp_helu": 87.898,
-      "stuff_plus_own_air": 93.381,
-      "location_plus": 100.639,
+      "stuff_plus": 100.883,
+      "stuff_plus_harp_helu": 84.986,
+      "stuff_plus_own_air": 91.638,
+      "location_plus": 100.649,
       "pitching_plus": 100.268,
-      "delta_cdmx": -12.563,
+      "delta_cdmx": -15.897,
       "arsenal": "running 2S 43% · sinking 2S 31% · gyro slider 26%",
-      "stuff_plus_percentile": 51.837,
+      "stuff_plus_percentile": 53.517,
       "arsenal_pitches": [
         {
           "pitch_id": 1,
@@ -32,12 +32,12 @@
           "ivb": 11.094,
           "hb": 14.25,
           "spin": 2272.741,
-          "stuff_plus": 100.655,
-          "stuff_plus_harp_helu": 85.699,
-          "stuff_plus_own_air": 92.517,
-          "location_plus": 101.129,
+          "stuff_plus": 98.817,
+          "stuff_plus_harp_helu": 80.827,
+          "stuff_plus_own_air": 87.986,
+          "location_plus": 101.143,
           "pitching_plus": 100.407,
-          "delta_cdmx": -14.955
+          "delta_cdmx": -17.99
         },
         {
           "pitch_id": 2,
@@ -49,12 +49,12 @@
           "ivb": 0.528,
           "hb": 1.085,
           "spin": 2140.526,
-          "stuff_plus": 101.377,
-          "stuff_plus_harp_helu": 94.399,
-          "stuff_plus_own_air": 93.375,
-          "location_plus": 98.96,
+          "stuff_plus": 108.281,
+          "stuff_plus_harp_helu": 96.872,
+          "stuff_plus_own_air": 99.993,
+          "location_plus": 98.965,
           "pitching_plus": 99.352,
-          "delta_cdmx": -6.979
+          "delta_cdmx": -11.409
         }
       ]
     },
@@ -62,14 +62,14 @@
       "year": 2026,
       "pitches": 426,
       "throws": "Right",
-      "stuff_plus": 100.604,
-      "stuff_plus_harp_helu": 92.305,
-      "stuff_plus_own_air": 98.864,
-      "location_plus": 100.675,
+      "stuff_plus": 103.033,
+      "stuff_plus_harp_helu": 90.414,
+      "stuff_plus_own_air": 101.355,
+      "location_plus": 100.716,
       "pitching_plus": 101.257,
-      "delta_cdmx": -8.299,
+      "delta_cdmx": -12.619,
       "arsenal": "gyro slider 46% · running 2S 31% · sinking 2S 23%",
-      "stuff_plus_percentile": 52.407,
+      "stuff_plus_percentile": 61.917,
       "arsenal_pitches": [
         {
           "pitch_id": 0,
@@ -81,12 +81,12 @@
           "ivb": 11.957,
           "hb": 15.679,
           "spin": 2378.75,
-          "stuff_plus": 101.085,
-          "stuff_plus_harp_helu": 88.09,
-          "stuff_plus_own_air": 99.641,
-          "location_plus": 101.236,
+          "stuff_plus": 98.733,
+          "stuff_plus_harp_helu": 84.364,
+          "stuff_plus_own_air": 97.741,
+          "location_plus": 101.285,
           "pitching_plus": 101.21,
-          "delta_cdmx": -12.995
+          "delta_cdmx": -14.369
         },
         {
           "pitch_id": 1,
@@ -98,12 +98,12 @@
           "ivb": 1.193,
           "hb": 1.044,
           "spin": 2204.062,
-          "stuff_plus": 99.51,
-          "stuff_plus_harp_helu": 96.504,
-          "stuff_plus_own_air": 97.14,
-          "location_plus": 99.472,
+          "stuff_plus": 108.453,
+          "stuff_plus_harp_helu": 97.71,
+          "stuff_plus_own_air": 105.785,
+          "location_plus": 99.504,
           "pitching_plus": 100.956,
-          "delta_cdmx": -3.006
+          "delta_cdmx": -10.742
         },
         {
           "pitch_id": 2,
@@ -115,12 +115,12 @@
           "ivb": 1.684,
           "hb": -0.07,
           "spin": 2233.403,
-          "stuff_plus": 101.389,
-          "stuff_plus_harp_helu": 98.83,
-          "stuff_plus_own_air": 100.116,
-          "location_plus": 100.937,
+          "stuff_plus": 106.548,
+          "stuff_plus_harp_helu": 96.495,
+          "stuff_plus_own_air": 104.658,
+          "location_plus": 100.953,
           "pitching_plus": 101.442,
-          "delta_cdmx": -2.56
+          "delta_cdmx": -10.054
         }
       ]
     }

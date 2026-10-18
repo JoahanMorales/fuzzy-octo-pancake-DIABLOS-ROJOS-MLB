@@ -59,7 +59,7 @@ describe('presentation tour', () => {
     const print = vi.spyOn(window, 'print').mockImplementation(() => {});
     render(<Tour docs={docs} renderPage={page} onExit={() => {}} />);
     expect(screen.getByRole('timer')).toHaveTextContent('5:00');
-    fireEvent.click(screen.getByRole('button', { name: 'Iniciar' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Iniciar el tiempo' }));
     act(() => vi.advanceTimersByTime(61_000));
     expect(screen.getByRole('timer')).toHaveTextContent('3:59');
     expect(formatClock(-3)).toBe('0:00');

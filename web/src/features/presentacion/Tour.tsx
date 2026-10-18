@@ -73,14 +73,18 @@ export function Tour({ docs, renderPage, onExit, start = 0 }: {
           <p className={`h71-number${step.air ? ' is-air' : ''}`}><b>{num.value}</b><span>{num.label}</span></p>
         </div>
         <div className="h71-controls">
-          <span className={`h71-clock${left === 0 ? ' is-over' : ''}`} role="timer" aria-live="off" aria-label="Tiempo restante">{formatClock(left)}</span>
-          <button type="button" className="h48-button is-ghost" onClick={() => setRunning((r) => !r)}>{running ? 'Pausar' : 'Iniciar'}</button>
+          <button type="button" className={`h71-clock${left === 0 ? ' is-over' : ''}`} onClick={() => setRunning((r) => !r)}
+            aria-label={running ? 'Pausar el tiempo' : 'Iniciar el tiempo'} aria-pressed={running}>
+            <span role="timer" aria-live="off" aria-label="Tiempo restante">{formatClock(left)}</span>
+          </button>
           <button type="button" className="h48-button is-ghost" onClick={() => go(-1)} disabled={i === 0}>Anterior</button>
           <button type="button" className="h48-button" onClick={() => { setRunning(true); go(1); }} disabled={i === STEPS.length - 1}>Siguiente</button>
-          <button type="button" className="h48-button is-ghost h71-wide" onClick={() => window.print()}>Imprimir guion</button>
           <button type="button" className="h48-button is-ghost" onClick={onExit}>Salir</button>
-          <span className="h71-hint h71-wide" aria-hidden="true">flechas o espacio avanzan · Esc sale</span>
         </div>
+        <p className="h71-hint h71-wide">
+          Flechas o espacio avanzan, Esc sale, el reloj inicia o pausa.{' '}
+          <button type="button" className="h71-link" onClick={() => window.print()}>Imprimir guion</button>
+        </p>
       </aside>
       <section className="h71-script" aria-label="Guion del presentador">
         <h1>Guion · Stuff+ 2240 · 5 minutos</h1>

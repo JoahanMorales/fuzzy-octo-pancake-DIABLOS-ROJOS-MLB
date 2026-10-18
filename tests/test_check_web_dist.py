@@ -91,3 +91,13 @@ def test_build_real_from_committed_reports_is_aggregate_only(tmp_path):
         if (run.repo_root() / rel).is_file():
             assert extra[key] and rel in extra["sources"]
     assert {r["split"] for r in extra["rows_fast"]} >= {"pitcher_kfold", "leave_one_park_out_1"}
+
+
+@pytest.mark.skipif(not (ROOT / "reports/design_lab/tweak_summary.csv").exists(), reason="needs committed reports")
+def test_real_export_carries_the_design_lab():
+    run = _load("analysis/export_web/run.py", "export_web_run3")
+    lab = run.design_lab(run.repo_root())
+    assert lab["demo_data"] is True  # envelope; build_real flips it to False
+    assert lab["tweaks"] and lab["plan"] and all(s.startswith("reports/design_lab/") for s in lab["sources"])
+    docs = run.build_real()
+    assert docs["design_lab.json"]["demo_data"] is False and "design_lab.json" in docs["manifest.json"]["files"]

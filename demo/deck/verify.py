@@ -1,8 +1,9 @@
-"""Validate source bindings, editable deck structure, PDFs and optional real export."""
+"""Validate source bindings, derived values, editable deck structure, PDFs and optional real export (HACK-036, v2 HACK-059)."""
 from __future__ import annotations
 import argparse
 from collections import Counter
 import csv
+from decimal import Decimal, ROUND_HALF_UP
 import hashlib
 import json
 from pathlib import Path
@@ -24,27 +25,39 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--rendered', type=Path, help='PDF exported from the real PPTX with LibreOffice')
     args = parser.parse_args()
-    sources = json.loads((DECK/'sources.json').read_text())
+    sources = json.loads((DECK/'sources.json').read_text(encoding='utf-8'))
     assert sources['demo_data'] is False and sources['exploratory'] is True
     for path, expected in sources['source_sha256'].items():
         assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == expected, f'Stale source: {path}'
-    prs = Presentation(DECK/'stuffplus2240.pptx')
+    prs = Presentation(DECK/'deck.pptx')
     assert len(prs.slides) == 10
-    pdf = pymupdf.open(DECK/'stuffplus2240.pdf')
-    one = pymupdf.open(ROOT/'demo/one-pager/resumen_ejecutivo.pdf')
+    pdf = pymupdf.open(DECK/'deck.pdf')
+    one = pymupdf.open(ROOT/'demo/one-pager/one-pager.pdf')
     assert len(pdf) == 10 and len(one) == 1
     for entry in sources['evidence']:
-        rows = list(csv.DictReader((ROOT/entry['source']).open()))
+        rows = list(csv.DictReader((ROOT/entry['source']).open(encoding='utf-8')))
         selected = [r for r in rows if all(r[k] == str(v) for k,v in entry['row'].items())]
         assert len(selected) == 1
         actual = float(selected[0][entry['column']])
         assert actual == entry['value']
         assert entry['display'] in pdf[entry['slide']-1].get_text(), entry
+    for entry in sources['derived']:
+        vals = []
+        for i in entry['inputs']:
+            rows = list(csv.DictReader((ROOT/i['source']).open(encoding='utf-8')))
+            sel = [r for r in rows if all(r[k] == str(v) for k, v in i['row'].items())]
+            assert len(sel) == 1, i
+            vals.append(Decimal(sel[0][i['column']]))
+        v = vals[0] - vals[1] if entry['formula'] == 'a-b' else (1 - vals[0] / vals[1]) * 100
+        shown = str(v.quantize(Decimal('1').scaleb(-entry['digits']), rounding=ROUND_HALF_UP)).replace('-', '−')
+        assert shown == entry['display'], entry
+        assert entry['display'].lstrip('−') in pdf[entry['slide']-1].get_text(), entry
     all_text = '\n'.join(page.get_text() for page in pdf)
-    assert 'No se suman' in all_text
-    assert 'Identidades anónimas' in all_text
-    assert 'sin confirmarse' in pdf[0].get_text()
+    assert 'No se suman' in pdf[6].get_text() and 'Identificación inferida' in pdf[6].get_text()
+    assert 'sin confirmarse' in pdf[0].get_text() and 'Identificación inferida' in pdf[0].get_text()
     assert 'escenario' in pdf[8].get_text()
+    assert 'Stuff+ v2' in all_text and 'No mejora' not in all_text
+    assert 'Identificación inferida' in one[0].get_text()
     # A geometry check alone does not replace rendering; source text and real
     # export must also survive, and pages are inspected visually by the author.
     for i, slide in enumerate(prs.slides):
@@ -69,7 +82,7 @@ def main():
         assert len(real) == 10
         for i,page in enumerate(real):
             assert tokens(page.get_text()) == tokens(pdf[i].get_text()), f'Rendered PPTX lost text on {i+1}'
-    print(f'PASS: 10 editable slides; 10-page presentation PDF; 1-page summary; {len(sources["evidence"])} verified CSV values; source hashes current' + ('; real PPTX export text matches' if args.rendered else ''))
+    print(f'PASS: 10 editable slides; 10-page presentation PDF; 1-page summary; {len(sources["evidence"])} verified CSV values; {len(sources["derived"])} derived values; source hashes current' + ('; real PPTX export text matches' if args.rendered else ''))
 
 
 if __name__ == '__main__': main()

@@ -1,17 +1,19 @@
 {
   "demo_data": false,
   "exploratory": true,
+  "model": "Stuff+ v2 (HACK-057)",
   "source_sha256": {
+    "reports/altitude_delta/delta_by_shape.csv": "ed7603167d18647511aa65ccc0c7d215e6ee21b5ef33001e3a2312f906731650",
     "reports/physics/rho_by_bucket.csv": "89a8ae487040fe6a2e91ee4a4212bcf57110dcdfc4da13f1c682f9b6eaa9a951",
     "reports/physics/delta_extreme_vs_no.csv": "94b066a7897fd55eefad50d7b1f4969b23bae4a5da64fe201520ba53dbd85901",
-    "reports/altitude_delta/delta_by_shape.csv": "d8fa928aad4956367c76a9e6c0493a553b2e09ba278b51e07d2c6eae08faa434",
+    "reports/physics_v2/magnus_elasticity.csv": "5b66f4c34c6f3a127a6d4655173d221d3f542ee744a9d16860804457c9a8d8d3",
     "reports/validation/headline.csv": "d9fe1baa87055e4a546d38be6d721989557bdd5f77d6a8b9ac5a1a0861680979",
-    "reports/pitcher_sensitivity/top15.csv": "a925ac9dd11034cda12ed799fafc563aae5a9dd88c4fc142ee6b143b4836b58e",
-    "reports/pitcher_sensitivity/bottom15.csv": "9f299aa26b5b252f8cb2dfcfc11a2786d0ec673e2f7616fbcbb1119487d7bf21",
-    "reports/staff_audit/runs_saved.csv": "a8634c64b449e82001c2ffe7b7a7d5cf4e9469d7910e45e1fa6780fcd019d8cf",
-    "reports/ideal_profile/best_fastballs.csv": "4745825823a1c605585113db6ff5340c797a60e4190e23b29e5a49ad5a29fa3a",
+    "reports/stuff_v2/skill.csv": "6dcf2f4f6878316ae16e5ccc6901882b5877bb099d627f1eb05c143d37c7e7b8",
+    "reports/stuff_v2/pitcher_level.csv": "d40f2adf48c188c7395b4a7ffe10e5924f58de1c703f115351386ccbae019e2b",
+    "reports/stuff_v2/altitude_bias.csv": "fead96a4e8a8c8238fd914e24e1794eb1c913074dcf633e762297b5533ceac06",
+    "reports/staff_audit/runs_saved.csv": "3dbce13e2758ae935c7d2804c38e2cde92c2e87c20b166d5d44b61c5ddb63193",
     "reports/business_value/runs_per_win.csv": "5f7f52a5b250fd82df6af3bb91a711f2882655a0749625fbf2899369b04e1772",
-    "reports/business_value/runs_per_point_direct.csv": "ea8303d2dc4f41563ee9ef52d135d502a6431d27bd2320f284f0465d1d7dd71c"
+    "reports/business_value/gm_example.csv": "378af2376eef5aaf6396b1a456bad4bac65098fd43618a495bce501125c80139"
   },
   "evidence": [
     {
@@ -23,6 +25,7 @@
       "column": "mean",
       "value": 1.0006,
       "factor": 1,
+      "digits": 3,
       "display": "1.001"
     },
     {
@@ -34,6 +37,7 @@
       "column": "mean",
       "value": 0.8915,
       "factor": 1,
+      "digits": 3,
       "display": "0.892"
     },
     {
@@ -45,6 +49,7 @@
       "column": "mean",
       "value": 0.841,
       "factor": 1,
+      "digits": 3,
       "display": "0.841"
     },
     {
@@ -57,7 +62,8 @@
       "column": "delta",
       "value": -3.54,
       "factor": 1,
-      "display": "-3.54"
+      "digits": 2,
+      "display": "−3.54"
     },
     {
       "slide": 3,
@@ -68,7 +74,20 @@
       "column": "delta_ivb_in",
       "value": -3.5604,
       "factor": 1,
-      "display": "-3.56"
+      "digits": 2,
+      "display": "−3.56"
+    },
+    {
+      "slide": 3,
+      "source": "reports/physics_v2/magnus_elasticity.csv",
+      "row": {
+        "pitch_family": "Four-Seam"
+      },
+      "column": "elasticity",
+      "value": 1.3619,
+      "factor": 1,
+      "digits": 2,
+      "display": "1.36"
     },
     {
       "slide": 4,
@@ -80,135 +99,129 @@
       "column": "skill",
       "value": 0.0388,
       "factor": 100,
+      "digits": 2,
       "display": "3.88"
     },
     {
       "slide": 4,
-      "source": "reports/validation/headline.csv",
+      "source": "reports/stuff_v2/skill.csv",
       "row": {
-        "split": "park_holdout",
-        "model": "Pitching+"
+        "model": "Stuff+ v2",
+        "split": "pitcher_kfold"
       },
-      "column": "skill",
-      "value": 0.03277,
+      "column": "skill_vs_baseline",
+      "value": 0.001778,
       "factor": 100,
-      "display": "3.28"
+      "digits": 2,
+      "display": "0.18"
     },
     {
       "slide": 4,
-      "source": "reports/validation/headline.csv",
+      "source": "reports/stuff_v2/pitcher_level.csv",
       "row": {
-        "split": "season_holdout",
-        "model": "Pitching+"
+        "model": "Stuff+ v2 (familia)"
       },
-      "column": "skill",
-      "value": 0.03738,
-      "factor": 100,
-      "display": "3.74"
+      "column": "first50_r",
+      "value": 0.269245,
+      "factor": 1,
+      "digits": 3,
+      "display": "0.269"
     },
     {
       "slide": 4,
-      "source": "reports/validation/headline.csv",
+      "source": "reports/stuff_v2/pitcher_level.csv",
       "row": {
-        "split": "pitcher_kfold",
-        "model": "Stuff+"
+        "model": "Stuff+ v2 (familia)"
       },
-      "column": "skill",
-      "value": -0.0003,
-      "factor": 100,
-      "display": "-0.03"
+      "column": "observed_first50_r",
+      "value": 0.048139,
+      "factor": 1,
+      "digits": 3,
+      "display": "0.048"
     },
     {
       "slide": 5,
+      "source": "reports/stuff_v2/altitude_bias.csv",
+      "row": {
+        "model": "baseline (conteo)"
+      },
+      "column": "bias_obs_minus_pred",
+      "value": 0.010784,
+      "factor": 1,
+      "digits": 4,
+      "display": "0.0108"
+    },
+    {
+      "slide": 5,
+      "source": "reports/stuff_v2/altitude_bias.csv",
+      "row": {
+        "model": "Stuff+ v1"
+      },
+      "column": "bias_obs_minus_pred",
+      "value": 0.002522,
+      "factor": 1,
+      "digits": 4,
+      "display": "0.0025"
+    },
+    {
+      "slide": 5,
+      "source": "reports/stuff_v2/altitude_bias.csv",
+      "row": {
+        "model": "Stuff+ v2"
+      },
+      "column": "bias_obs_minus_pred",
+      "value": 0.001774,
+      "factor": 1,
+      "digits": 4,
+      "display": "0.0018"
+    },
+    {
+      "slide": 6,
+      "source": "reports/altitude_delta/delta_by_shape.csv",
+      "row": {
+        "shape": "12-6 CB"
+      },
+      "column": "delta_stuff",
+      "value": -9.4932,
+      "factor": 1,
+      "digits": 1,
+      "display": "−9.5"
+    },
+    {
+      "slide": 6,
       "source": "reports/altitude_delta/delta_by_shape.csv",
       "row": {
         "shape": "sweeper"
       },
       "column": "delta_stuff",
-      "value": -4.6351,
+      "value": -9.6005,
       "factor": 1,
-      "display": "-4.64"
+      "digits": 1,
+      "display": "−9.6"
     },
     {
-      "slide": 5,
-      "source": "reports/altitude_delta/delta_by_shape.csv",
-      "row": {
-        "shape": "slider"
-      },
-      "column": "delta_stuff",
-      "value": -7.2398,
-      "factor": 1,
-      "display": "-7.24"
-    },
-    {
-      "slide": 5,
+      "slide": 6,
       "source": "reports/altitude_delta/delta_by_shape.csv",
       "row": {
         "shape": "4S"
       },
       "column": "delta_stuff",
-      "value": -8.7259,
+      "value": -11.3659,
       "factor": 1,
-      "display": "-8.73"
+      "digits": 1,
+      "display": "−11.4"
     },
     {
-      "slide": 5,
+      "slide": 6,
       "source": "reports/altitude_delta/delta_by_shape.csv",
       "row": {
         "shape": "riding 4S"
       },
       "column": "delta_stuff",
-      "value": -15.9916,
+      "value": -17.8729,
       "factor": 1,
-      "display": "-15.99"
-    },
-    {
-      "slide": 6,
-      "source": "reports/pitcher_sensitivity/top15.csv",
-      "row": {
-        "pitcher_anon_id": "pitcher_01003",
-        "year": "2025"
-      },
-      "column": "altitude_proof_index",
-      "value": 107.99898052397262,
-      "factor": 1,
-      "display": "108.00"
-    },
-    {
-      "slide": 6,
-      "source": "reports/pitcher_sensitivity/bottom15.csv",
-      "row": {
-        "pitcher_anon_id": "pitcher_00529",
-        "year": "2025"
-      },
-      "column": "altitude_proof_index",
-      "value": 89.55571370140157,
-      "factor": 1,
-      "display": "89.56"
-    },
-    {
-      "slide": 6,
-      "source": "reports/pitcher_sensitivity/top15.csv",
-      "row": {
-        "pitcher_anon_id": "pitcher_01003",
-        "year": "2025"
-      },
-      "column": "delta_eb",
-      "value": -4.126371440496024,
-      "factor": 1,
-      "display": "-4.13"
-    },
-    {
-      "slide": 6,
-      "source": "reports/pitcher_sensitivity/bottom15.csv",
-      "row": {
-        "pitcher_anon_id": "pitcher_00529",
-        "year": "2025"
-      },
-      "column": "delta_eb",
-      "value": -22.569638263067084,
-      "factor": 1,
-      "display": "-22.57"
+      "digits": 1,
+      "display": "−17.9"
     },
     {
       "slide": 7,
@@ -218,9 +231,10 @@
         "component": "total"
       },
       "column": "runs_per_season",
-      "value": 4.36935,
+      "value": 5.45198,
       "factor": 1,
-      "display": "4.37"
+      "digits": 1,
+      "display": "5.5"
     },
     {
       "slide": 7,
@@ -230,9 +244,10 @@
         "component": "total"
       },
       "column": "wins_per_season",
-      "value": 0.30493,
+      "value": 0.38049,
       "factor": 1,
-      "display": "0.30"
+      "digits": 2,
+      "display": "0.38"
     },
     {
       "slide": 7,
@@ -242,9 +257,10 @@
         "component": "total"
       },
       "column": "runs_per_season",
-      "value": 3.22492,
+      "value": 3.77057,
       "factor": 1,
-      "display": "3.22"
+      "digits": 1,
+      "display": "3.8"
     },
     {
       "slide": 7,
@@ -254,9 +270,10 @@
         "component": "total"
       },
       "column": "wins_per_season",
-      "value": 0.22506,
+      "value": 0.26314,
       "factor": 1,
-      "display": "0.23"
+      "digits": 2,
+      "display": "0.26"
     },
     {
       "slide": 7,
@@ -266,9 +283,10 @@
         "component": "mezcla de lanzamientos en casa"
       },
       "column": "runs_per_season",
-      "value": 3.0194,
+      "value": 4.3004,
       "factor": 1,
-      "display": "3.02"
+      "digits": 1,
+      "display": "4.3"
     },
     {
       "slide": 7,
@@ -278,9 +296,10 @@
         "component": "asignación de aperturas en casa"
       },
       "column": "runs_per_season",
-      "value": 1.34995,
+      "value": 1.15158,
       "factor": 1,
-      "display": "1.35"
+      "digits": 1,
+      "display": "1.2"
     },
     {
       "slide": 7,
@@ -290,9 +309,10 @@
         "component": "mezcla de lanzamientos en casa"
       },
       "column": "runs_per_season",
-      "value": 1.21524,
+      "value": 1.95136,
       "factor": 1,
-      "display": "1.22"
+      "digits": 1,
+      "display": "2.0"
     },
     {
       "slide": 7,
@@ -302,31 +322,10 @@
         "component": "asignación de aperturas en casa"
       },
       "column": "runs_per_season",
-      "value": 2.00968,
+      "value": 1.81922,
       "factor": 1,
-      "display": "2.01"
-    },
-    {
-      "slide": 8,
-      "source": "reports/ideal_profile/best_fastballs.csv",
-      "row": {
-        "rank_alt": "1.0"
-      },
-      "column": "stuff_sea",
-      "value": 115.511,
-      "factor": 1,
-      "display": "115.5"
-    },
-    {
-      "slide": 8,
-      "source": "reports/ideal_profile/best_fastballs.csv",
-      "row": {
-        "rank_alt": "1.0"
-      },
-      "column": "stuff_alt",
-      "value": 108.242,
-      "factor": 1,
-      "display": "108.2"
+      "digits": 1,
+      "display": "1.8"
     },
     {
       "slide": 9,
@@ -337,7 +336,8 @@
       "column": "carreras_por_victoria",
       "value": 11.785,
       "factor": 1,
-      "display": "11.79"
+      "digits": 1,
+      "display": "11.8"
     },
     {
       "slide": 9,
@@ -348,19 +348,80 @@
       "column": "carreras_por_victoria",
       "value": 14.329,
       "factor": 1,
-      "display": "14.33"
+      "digits": 1,
+      "display": "14.3"
     },
     {
       "slide": 9,
-      "source": "reports/business_value/runs_per_point_direct.csv",
+      "source": "reports/business_value/gm_example.csv",
       "row": {
         "escala": "Stuff+",
-        "objetivo": "rv_x"
+        "entorno": "Harp Helú (bucket Extreme)"
       },
-      "column": "carreras_por_punto_lanzamiento",
-      "value": 0.0007237,
+      "column": "victorias",
+      "value": 1.2627,
       "factor": 1,
-      "display": "0.000724"
+      "digits": 2,
+      "display": "1.26"
+    },
+    {
+      "slide": 9,
+      "source": "reports/business_value/gm_example.csv",
+      "row": {
+        "escala": "Stuff+",
+        "entorno": "Harp Helú (bucket Extreme)"
+      },
+      "column": "carreras",
+      "value": 18.0928,
+      "factor": 1,
+      "digits": 1,
+      "display": "18.1"
+    }
+  ],
+  "derived": [
+    {
+      "slide": 1,
+      "formula": "a-b",
+      "digits": 1,
+      "display": "−13.0",
+      "inputs": [
+        {
+          "source": "reports/altitude_delta/delta_by_shape.csv",
+          "row": {
+            "shape": "sweeper"
+          },
+          "column": "delta_stuff"
+        },
+        {
+          "source": "reports/altitude_delta/delta_by_shape.csv",
+          "row": {
+            "shape": "sweeper"
+          },
+          "column": "relative_to_league"
+        }
+      ]
+    },
+    {
+      "slide": 5,
+      "formula": "1-a/b",
+      "digits": 0,
+      "display": "84",
+      "inputs": [
+        {
+          "source": "reports/stuff_v2/altitude_bias.csv",
+          "row": {
+            "model": "Stuff+ v2"
+          },
+          "column": "bias_obs_minus_pred"
+        },
+        {
+          "source": "reports/stuff_v2/altitude_bias.csv",
+          "row": {
+            "model": "baseline (conteo)"
+          },
+          "column": "bias_obs_minus_pred"
+        }
+      ]
     }
   ]
 }

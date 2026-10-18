@@ -17,6 +17,7 @@ export interface Step {
   title: string;
   note: string;
   number: (d: TourDocs) => { value: string; label: string };
+  air?: boolean; // the number is a Harp Helú air value (shown in red)
 }
 
 export const TOUR_SECONDS = 5 * 60;
@@ -34,12 +35,14 @@ export const STEPS: Step[] = [
   {
     path: '/', feature: 'landing', title: 'Inicio',
     note: 'El mismo lanzamiento vale distinto en el aire de la Ciudad de México; medimos cuánto y qué hacer en casa.',
-    number: (d) => ({ value: fmt(d.validation.highlights.league_delta_cdmx, 1, true), label: 'puntos de Stuff+ que pierde la liga en el aire del Harp Helú' }),
+    number: (d) => ({ value: fmt(d.validation.highlights.league_delta_cdmx, 1, true), label: 'cambio de Stuff+ de la liga en el aire del Harp Helú' }),
+    air: true,
   },
   {
     path: '/simulador', feature: 'simulador', title: 'Simulador',
     note: 'Mismo lanzamiento, dos aires: la bola fantasma es el nivel del mar y la roja es el Harp Helú.',
-    number: (d) => ({ value: fmt(d.validation.highlights.worst_delta, 1, true), label: `puntos pierde la forma más castigada (${d.validation.highlights.worst_shape})` }),
+    number: (d) => ({ value: fmt(d.validation.highlights.worst_delta, 1, true), label: `cambio de Stuff+ de la forma más castigada (${d.validation.highlights.worst_shape})` }),
+    air: true,
   },
   {
     path: '/altitud', feature: 'altitud', title: 'Altitud',

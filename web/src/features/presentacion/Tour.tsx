@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { formatClock, STEPS, TOUR_SECONDS, type TourDocs } from './steps';
 
 const NEXT = new Set(['ArrowRight', 'ArrowDown', 'PageDown', ' ']);
@@ -19,6 +19,8 @@ export function Tour({ docs, renderPage, onExit, start = 0 }: {
   const [i, setI] = useState(start);
   const [running, setRunning] = useState(false);
   const [left, setLeft] = useState(TOUR_SECONDS);
+  const hud = useRef<HTMLElement>(null);
+  const [hudH, setHudH] = useState(0);
   const step = STEPS[i];
   const num = step.number(docs);
   const go = (d: number) => setI((k) => Math.min(STEPS.length - 1, Math.max(0, k + d)));
@@ -49,23 +51,35 @@ export function Tour({ docs, renderPage, onExit, start = 0 }: {
     return () => window.clearInterval(t);
   }, [running]);
 
+  useEffect(() => {
+    // the stage reserves exactly the strip's height so nothing hides behind it
+    const el = hud.current;
+    if (!el || typeof ResizeObserver === 'undefined') return undefined;
+    const ro = new ResizeObserver(() => setHudH(el.getBoundingClientRect().height));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
     <div className="h71-tour">
-      <div className="h71-stage h71-noprint" aria-hidden={false}>{renderPage(step.path, step.feature, step.title)}</div>
-      <aside className="h71-hud h71-noprint" aria-label="Presentación" aria-live="polite">
+      <div className="h71-stage h71-noprint" style={{ paddingBottom: hudH + 16 }}>{renderPage(step.path, step.feature, step.title)}</div>
+      <aside ref={hud} className="h71-hud h71-noprint" aria-label="Presentación">
         <div className="h71-step">
           <span className="h71-count">{i + 1} / {STEPS.length}</span>
           <strong>{step.title}</strong>
         </div>
-        <p className="h71-note">{step.note}</p>
-        <p className="h71-number"><b>{num.value}</b><span>{num.label}</span></p>
+        <div className="h71-say" aria-live="polite">
+          <p className="h71-note">{step.note}</p>
+          <p className={`h71-number${step.air ? ' is-air' : ''}`}><b>{num.value}</b><span>{num.label}</span></p>
+        </div>
         <div className="h71-controls">
+          <span className={`h71-clock${left === 0 ? ' is-over' : ''}`} role="timer" aria-live="off" aria-label="Tiempo restante">{formatClock(left)}</span>
+          <button type="button" className="h48-button is-ghost" onClick={() => setRunning((r) => !r)}>{running ? 'Pausar' : 'Iniciar'}</button>
           <button type="button" className="h48-button is-ghost" onClick={() => go(-1)} disabled={i === 0}>Anterior</button>
           <button type="button" className="h48-button" onClick={() => { setRunning(true); go(1); }} disabled={i === STEPS.length - 1}>Siguiente</button>
-          <span className={`h71-clock${left === 0 ? ' is-over' : ''}`} role="timer" aria-label="Tiempo restante">{formatClock(left)}</span>
-          <button type="button" className="h48-button is-ghost" onClick={() => setRunning((r) => !r)}>{running ? 'Pausar' : 'Iniciar'}</button>
-          <button type="button" className="h48-button is-ghost" onClick={() => window.print()}>Imprimir guion</button>
-          <button type="button" className="h48-button is-ghost" onClick={onExit}>Salir (Esc)</button>
+          <button type="button" className="h48-button is-ghost h71-wide" onClick={() => window.print()}>Imprimir guion</button>
+          <button type="button" className="h48-button is-ghost" onClick={onExit}>Salir</button>
+          <span className="h71-hint h71-wide" aria-hidden="true">flechas o espacio avanzan · Esc sale</span>
         </div>
       </aside>
       <section className="h71-script" aria-label="Guion del presentador">

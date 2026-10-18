@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { CaretDown, CaretUp, MagnifyingGlass } from '@phosphor-icons/react';
 import { DataBadge } from './DataBadge';
 import { fmt, useDoc } from './data';
+import { Band, useBands, type Bands } from './uncertainty';
 import {
   FLAVOUR_KEY,
   filterRows,
@@ -45,7 +46,7 @@ function Seg<T extends string>({ label, value, options, onChange }: {
   );
 }
 
-export function LeaderboardView({ board, source }: { board: Board; source: 'real' | 'mock' }) {
+export function LeaderboardView({ board, source, bands = null }: { board: Board; source: 'real' | 'mock'; bands?: Bands | null }) {
   const allYears = useMemo(() => years(board.rows), [board]);
   const [flavour, setFlavour] = useState<Flavour>('neutral');
   const [filters, setFilters] = useState<Filters>({ year: allYears[0] ?? 'all', hand: 'all', minPitches: 200, query: '' });
@@ -135,8 +136,8 @@ export function LeaderboardView({ board, source }: { board: Board; source: 'real
                     <td className="num hide-sm">{r.year}</td>
                     <td className="hide-sm">{handLabel(r.throws)}</td>
                     <td className="num">{r.pitches.toLocaleString('es-MX')}</td>
-                    <td className={`num ${flavour === 'neutral' ? 'is-flavour' : ''}`}>{fmt(r.stuff_plus)}</td>
-                    <td className={`num ${flavour === 'cdmx' ? 'is-flavour' : ''}`}>{fmt(r.stuff_plus_harp_helu)}</td>
+                    <td className={`num ${flavour === 'neutral' ? 'is-flavour' : ''}`}>{fmt(r.stuff_plus)}<Band bands={bands} air="neutral" pitches={r.pitches} /></td>
+                    <td className={`num ${flavour === 'cdmx' ? 'is-flavour' : ''}`}>{fmt(r.stuff_plus_harp_helu)}<Band bands={bands} air="harp_helu" pitches={r.pitches} /></td>
                     <td className="num delta">
                       <span className="delta-bar" aria-hidden>
                         <span style={r.delta_cdmx < 0 ? { right: '50%', width: `${w}%` } : { left: '50%', width: `${w}%` }} />
@@ -184,7 +185,8 @@ export function LeaderboardView({ board, source }: { board: Board; source: 'real
 
 export default function LeaderboardPage() {
   const data = useDoc<Board>('leaderboard.json');
+  const bands = useBands();
   if (data.state === 'loading') return <div className="page-loading" role="status">Cargando leaderboard…</div>;
   if (data.state === 'error') return <p className="lb-empty" role="alert">No se pudo cargar el leaderboard: {data.message}</p>;
-  return <LeaderboardView board={data.doc} source={data.source} />;
+  return <LeaderboardView board={data.doc} source={data.source} bands={bands} />;
 }

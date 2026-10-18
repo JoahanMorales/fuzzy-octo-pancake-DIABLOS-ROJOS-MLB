@@ -8,6 +8,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js';
 import type { Look, Pose } from './figures';
+import { uniformMaterial, type UniformLook } from './uniform';
 
 export const MANNEQUIN_URL = `${import.meta.env.BASE_URL ?? './'}models/mannequin.glb`;
 const FT = 3.28084;
@@ -30,13 +31,15 @@ const CHAINS: Chain[] = [
 /** Pose space → rig space (meters, +z forward, character's right at -x). `toRig` maps a pose point in feet. */
 export type ToRig = (p: [number, number, number]) => THREE.Vector3;
 
-export function Mannequin({ pose, look, toRig, helmet, onPosed, children, ghost }: {
+export function Mannequin({ pose, look, toRig, helmet, onPosed, children, ghost, kit }: {
   pose: React.MutableRefObject<Pose>;
   look: Look;
   toRig: ToRig;
   helmet?: boolean;
   /** Translucent "ghost" look (broadcast tracking graphics): no lighting, no shadows. */
   ghost?: boolean;
+  /** Painted uniform for the solid look. */
+  kit?: UniformLook;
   children?: React.ReactNode;
   /** Called after posing with both hands' positions in rig space (meters). */
   onPosed?: (handL: THREE.Vector3, handR: THREE.Vector3) => void;
@@ -46,7 +49,7 @@ export function Mannequin({ pose, look, toRig, helmet, onPosed, children, ghost 
     const r = clone(gltf.scene) as THREE.Object3D;
     const main: THREE.Material = ghost
       ? new THREE.MeshBasicMaterial({ color: look.jersey, transparent: true, opacity: 0.2 })
-      : new THREE.MeshStandardMaterial({ color: look.jersey, roughness: 0.62, metalness: 0.0 });
+      : kit ? uniformMaterial(kit) : new THREE.MeshStandardMaterial({ color: look.jersey, roughness: 0.62, metalness: 0.0 });
     const joints: THREE.Material = ghost
       ? new THREE.MeshBasicMaterial({ color: look.dark, transparent: true, opacity: 0.3 })
       : new THREE.MeshStandardMaterial({ color: look.dark, roughness: 0.4 });
@@ -60,7 +63,7 @@ export function Mannequin({ pose, look, toRig, helmet, onPosed, children, ghost 
       m.material = mats.length > 1 ? mats.map((x) => (x.name === 'M_Joints' ? joints : main)) : (mats[0]?.name === 'M_Joints' ? joints : main);
     });
     return r;
-  }, [gltf.scene, look, ghost]);
+  }, [gltf.scene, look, ghost, kit]);
 
   const bones = useMemo(() => {
     // GLTFLoader sanitizes node names ("DEF-hand.L" -> "DEF-handL"): look them up the same way

@@ -2,7 +2,8 @@
    brightness flips with the view direction, as on a real field), clay infield, and the horizon that tells the air:
    the volcanoes behind CDMX in a deep high-altitude blue, or the sea under a hazier low-altitude sky.
    Feet; home plate's back tip at the origin, center field toward -z. */
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
 import { Line } from '@react-three/drei';
 import * as THREE from 'three';
 import { MOUND_H, MOUND_Z, type Palette, type ParkSide, type Vec3 } from './sceneModel';
@@ -244,4 +245,100 @@ export function DayHorizon({ park }: { park: ParkSide }) {
       <meshStandardMaterial color="#1f5f86" roughness={0.08} metalness={0.6} />
     </mesh>
   );
+}
+
+/* ------------------------------ grass blades ------------------------------ */
+
+const BLADE_VERT = /* glsl */ `
+  uniform float uTime; uniform vec3 uSun;
+  attribute vec4 aBlade;          // x, z, height, phase
+  varying float vT; varying float vShade; varying vec3 vWorld;
+  void main() {
+    float t = position.y;          // 0 at the root, 1 at the tip
+    vT = t;
+    float hgt = aBlade.z;
+    float ang = aBlade.w * 6.2831;
+    vec3 p = vec3(position.x * (1.0 - t) * 0.06, t * hgt, 0.0);
+    // random facing, then a curve and a gentle wind that grows toward the tip
+    float bend = (0.25 + 0.35 * fract(aBlade.w * 7.3)) * t * t;
+    float gust = sin(uTime * 1.6 + aBlade.x * 0.15 + aBlade.y * 0.11) * 0.12 + sin(uTime * 3.1 + aBlade.w * 9.0) * 0.04;
+    p.z += (bend + gust * t * t) * hgt;
+    float c = cos(ang), s = sin(ang);
+    vec3 w = vec3(aBlade.x + p.x * c - p.z * s, p.y, aBlade.y + p.x * s + p.z * c);
+    vWorld = w;
+    vShade = 0.55 + 0.45 * t;      // fake ambient occlusion: darker roots
+    gl_Position = projectionMatrix * viewMatrix * vec4(w, 1.0);
+  }`;
+const BLADE_FRAG = /* glsl */ `
+  uniform vec3 uRoot; uniform vec3 uTip; uniform vec3 fogColor; uniform float fogNear; uniform float fogFar; uniform vec3 uSun;
+  varying float vT; varying float vShade; varying vec3 vWorld;
+  void main() {
+    vec3 col = mix(uRoot, uTip, vT) * vShade;
+    // sunlit tips glint when looking toward the sun
+    vec3 toCam = normalize(cameraPosition - vWorld);
+    col += vec3(0.9, 0.95, 0.6) * pow(max(dot(-toCam, normalize(uSun)), 0.0), 6.0) * vT * 0.25;
+    float d = length(cameraPosition - vWorld);
+    col = mix(col, fogColor, smoothstep(fogNear, fogFar, d));
+    gl_FragColor = vec4(col, 1.0);
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+  }`;
+
+function insideGrass(x: number, z: number) {
+  // infield grass square (rotated 45°, 80 ft, centered between home and second) minus the mound circle
+  const cx = 0, cz = -BASE;
+  const rx = (x - cx + (z - cz)) / Math.SQRT2, rz = (-(x - cx) + (z - cz)) / Math.SQRT2;
+  const inSquare = Math.abs(rx) < 39 && Math.abs(rz) < 39;
+  const onMound = Math.hypot(x, z - MOUND_Z) < 10;
+  // outfield grass beyond the infield dirt, in front of the warning track
+  const r = Math.hypot(x, z);
+  const fair = z < 0 && Math.abs(x) < -z;
+  const outfield = fair && Math.hypot(x, z - MOUND_Z) > 96 && r < FENCE_R - 18;
+  return (inSquare && !onMound) || outfield;
+}
+
+/** One instanced mesh of 3-segment blades, denser near home plate (where the cameras are) and thinning out. */
+export function GrassBlades({ count, animate }: { count: number; animate: boolean }) {
+  const ref = useRef<THREE.Mesh>(null);
+  const geo = useMemo(() => {
+    const blade = new THREE.PlaneGeometry(1, 1, 1, 3).translate(0, 0.5, 0);
+    const g = new THREE.InstancedBufferGeometry();
+    g.index = blade.index;
+    g.setAttribute('position', blade.getAttribute('position'));
+    const data = new Float32Array(count * 4);
+    let s = 7;
+    const r = () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296);
+    let k = 0;
+    while (k < count) {
+      // radius from home plate biased toward the plate: most blades where the camera looks closely
+      const rad = 14 + Math.pow(r(), 1.8) * 300;
+      const a = (r() - 0.5) * (Math.PI / 2) * 1.02;
+      const x = Math.sin(a) * rad, z = -Math.cos(a) * rad;
+      if (!insideGrass(x, z)) continue;
+      data.set([x, z, 0.22 + r() * 0.16, r()], k * 4);
+      k++;
+    }
+    g.setAttribute('aBlade', new THREE.InstancedBufferAttribute(data, 4));
+    g.instanceCount = count;
+    g.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 0, -150), 400);
+    return g;
+  }, [count]);
+  const mat = useMemo(() => new THREE.ShaderMaterial({
+    vertexShader: BLADE_VERT,
+    fragmentShader: BLADE_FRAG,
+    uniforms: {
+      uTime: { value: 0 },
+      uSun: { value: SUN.clone() },
+      uRoot: { value: new THREE.Color('#2c5222') },
+      uTip: { value: new THREE.Color('#6c9f4c') },
+      fogColor: { value: new THREE.Color('#a9cff5') },
+      fogNear: { value: 700 },
+      fogFar: { value: 4200 },
+    },
+    side: THREE.DoubleSide,
+  }), []);
+  useFrame(({ clock }) => {
+    if (animate) mat.uniforms.uTime.value = clock.elapsedTime;
+  });
+  return <mesh ref={ref} geometry={geo} material={mat} frustumCulled={false} />;
 }

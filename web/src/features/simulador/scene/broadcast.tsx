@@ -370,7 +370,8 @@ export function TrackedFlights({ harp, sea, c, reduced, playId, timing, ball }: 
 /* --------------------------------- batter --------------------------------- */
 
 const GHOST: Look = { jersey: '#c9ccd3', pants: '#c9ccd3', skin: '#c9ccd3', dark: '#e8e6e1', helmet: '#c9ccd3' };
-const HOME: Look = { jersey: '#f1efe9', pants: '#e6e2d8', skin: '#9a7a62', dark: '#1c2a4a', helmet: '#1c2a4a' };
+const HOME: Look = { jersey: '#f1efe9', pants: '#e6e2d8', skin: '#9a7a62', dark: '#16161a', helmet: '#b3122b' };
+const KIT = { base: '#f3f1ec', trim: '#b3122b', dark: '#16161a', skin: '#a07a5e', number: '24', name: 'Diablos' };
 
 /** Translucent batter in his stance; switches sides with the same walk-behind-the-plate move. */
 export function GhostBatter({ hand, reduced, solid = false }: { hand: Hand; reduced: boolean; solid?: boolean }) {
@@ -400,7 +401,7 @@ export function GhostBatter({ hand, reduced, solid = false }: { hand: Hand; redu
     <group ref={ref}>
       <Suspense fallback={null}>
         <group rotation={[0, Math.PI / 2, 0]}>
-          <Mannequin pose={pose} look={solid ? HOME : GHOST} toRig={toRig} onPosed={placeBat} ghost={!solid} helmet={solid}>
+          <Mannequin pose={pose} look={solid ? HOME : GHOST} toRig={toRig} onPosed={placeBat} ghost={!solid} helmet={solid} kit={solid ? KIT : undefined}>
             <mesh ref={bat} castShadow={solid}>
               <cylinderGeometry args={[0.034, 0.014, 0.86, 12]} />
               {solid ? <meshStandardMaterial color="#b0875c" roughness={0.4} />

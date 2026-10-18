@@ -1,12 +1,12 @@
 /* r3f only. Motion stays out of this tree (web/DESIGN.md). */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { CameraControls, PerformanceMonitor } from '@react-three/drei';
-import { Bloom, EffectComposer, SMAA, ToneMapping, Vignette } from '@react-three/postprocessing';
+import { CameraControls, ContactShadows, Environment, Lightformer, PerformanceMonitor } from '@react-three/drei';
+import { Bloom, BrightnessContrast, EffectComposer, HueSaturation, SMAA, ToneMapping, Vignette } from '@react-three/postprocessing';
 import { ToneMappingMode } from 'postprocessing';
 import * as THREE from 'three';
 import { GhostBatter, TrackedFlights, ZoneGlass } from './broadcast';
-import { DayHorizon, DaySky, GrassField, SUN } from './daypark';
+import { DayHorizon, DaySky, GrassBlades, GrassField, SUN } from './daypark';
 import { ballTexture } from './textures';
 import {
   BALL_R,
@@ -197,8 +197,16 @@ function Stage(props: WorldProps) {
         shadow-camera-top={110}
         shadow-camera-bottom={-110}
       />
+      {/* image-based light from procedural light cards: sky dome, sun, ground bounce (no HDR download) */}
+      <Environment resolution={128} frames={1}>
+        <Lightformer form="rect" intensity={1.4} color="#9cc6f2" scale={[40, 40, 1]} position={[0, 20, 0]} rotation={[Math.PI / 2, 0, 0]} />
+        <Lightformer form="circle" intensity={6} color="#fff1d6" scale={6} position={SUN.clone().multiplyScalar(18).toArray()} />
+        <Lightformer form="rect" intensity={0.6} color="#4f8a3a" scale={[40, 40, 1]} position={[0, -6, 0]} rotation={[-Math.PI / 2, 0, 0]} />
+      </Environment>
       <CameraRig view={props.view} reduced={props.reduced} free={props.free} />
       <GrassField c={c} />
+      <GrassBlades count={rich ? 70000 : 30000} animate={!props.reduced} />
+      <ContactShadows position={[0, 0.08, -1]} scale={16} resolution={512} blur={2.2} opacity={0.55} far={7} frames={Infinity} />
       <ZoneGlass c={c} />
       <GhostBatter hand={props.hand} reduced={props.reduced} solid />
       <TrackedFlights harp={props.harpPath} sea={props.seaPath} c={c} reduced={props.reduced} playId={props.playId}
@@ -210,9 +218,11 @@ function Stage(props: WorldProps) {
       <PerformanceMonitor flipflops={2} onIncline={() => setRich(true)} onDecline={() => setRich(false)} />
       {rich ? (
         <EffectComposer multisampling={0}>
-          <Bloom mipmapBlur intensity={0.9} luminanceThreshold={0.75} luminanceSmoothing={0.2} />
+          <Bloom mipmapBlur intensity={0.5} luminanceThreshold={0.85} luminanceSmoothing={0.2} />
           <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
-          <Vignette offset={0.25} darkness={0.6} />
+          <HueSaturation saturation={0.04} />
+          <BrightnessContrast contrast={0.08} />
+          <Vignette offset={0.3} darkness={0.45} />
           <SMAA />
         </EffectComposer>
       ) : null}

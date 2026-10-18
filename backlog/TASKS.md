@@ -562,3 +562,15 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
   - A PR run of the workflow is green on that step (link in the evidence). Replaces HACK-063, whose Paths include files HACK-001 owns.
 - **Verify:** `for f in .uak/bin/* .uak/bin/lib/*.sh; do [ -f "$f" ] || continue; if head -n 1 "$f" | grep -qE '^#!.*(bash|/sh|[[:space:]]sh)([[:space:]]|$)'; then bash -n "$f" || exit; fi; done`
 - **Next step:** edit the Kit syntax step in .github/workflows/uak.yml.
+
+## HACK-074 · Recalibrate the Stuff+ uncertainty bands on the v2 production scores (HACK-057/066) (follow-up of HACK-069)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Depends on:** HACK-069
+- **Follow-up of:** HACK-069
+- **Paths:** analysis/export_web/, web/public/data/real/, web/src/features/leaderboard/, web/src/features/pitcher/, tests/test_check_web_dist.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - Recalibrate the Stuff+ uncertainty bands on the v2 production scores (HACK-057/066)
+- **Verify:** `python -m pytest -q tests/test_check_web_dist.py && npm --prefix web test -- --run src/features/leaderboard src/features/pitcher`

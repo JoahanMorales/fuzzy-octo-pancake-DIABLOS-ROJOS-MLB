@@ -1,7 +1,7 @@
 # STATE
 
 Phase: execution
-Updated: 1792306911
+Updated: 1792306915
 AVAILABLE: HACK-051 HACK-058 HACK-059 HACK-062 HACK-063 HACK-070 HACK-025 
 CLAIMED: HACK-046 HACK-072 
 BLOCKED: -
@@ -16,11 +16,11 @@ HACK-072 | CLAIMED | joahan-1 | until 1792307357
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):
-- 1792290872 | HACK-071 | tour renders real pages via routes.pageElement; numbers from contract JSON | Why: acceptance: number read from the contract
 - 1792290870 | deadline lease/HACK-057/1792288063 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792290870 | deadline lease/HACK-072/1792287747 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792293062 | HACK-069 | compute width by n in export_web from OOF pitch scores | Why: reports/uncertainty has only global widths
 - 1792306035 | HACK-066 | predict().xrv = count-neutral value for v2, like CountNeutral | Why: consumers keep working unchanged; parity with Python production model
+- 1792306915 | HACK-074 | follow-up of HACK-069 by victor-1: Recalibrate the Stuff+ uncertainty bands on the v2 production scores (HACK-057/066) | Why: same Paths, no scope change
 
 Global next step: available P0; else review PRs, tests, demo, rehearsal.
 Why: bounded snapshot to resume without rereading history.

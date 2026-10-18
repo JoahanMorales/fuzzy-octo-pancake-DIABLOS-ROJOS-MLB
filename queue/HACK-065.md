@@ -1,5 +1,5 @@
 ID: HACK-065
-State: MERGING
+State: HUMAN
 Owner: victor-1
-Queued: 1792287492
-Reason: Waiting for queue
+Updated: 1792289364
+Reason: Lock expired; candidate cancelled

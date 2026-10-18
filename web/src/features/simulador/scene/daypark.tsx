@@ -238,7 +238,7 @@ function wallTextures() {
     const signs: [u: number, w: number, text: string, bg: string, fg: string][] = [
       [0.12, 56, 'DIABLOS ROJOS', '#b3122b', '#ffffff'],
       [0.27, 46, 'STUFF+ 2240', '#16161a', '#f3f1ec'],
-      [0.73, 46, '2240 m', '#f3f1ec', '#b3122b'],
+      [0.73, 46, 'PITCHEO', '#f3f1ec', '#b3122b'],
       [0.88, 56, 'DIABLOS ROJOS', '#b3122b', '#ffffff'],
     ];
     for (const [u, w, text, bg, fg] of signs) {
@@ -321,6 +321,16 @@ function Grandstand() {
   useEffect(() => () => crowd.dispose(), [crowd]);
   const { r0, r1, y0, rise, start, len } = STAND;
   const top = y0 + rise;
+  const endWall = useMemo(() => {
+    const s = new THREE.Shape();
+    s.moveTo(r0 - 1, 0);
+    s.lineTo(r1, 0);
+    s.lineTo(r1, top + 18);
+    s.lineTo(r1 - 4, top + 18);
+    s.lineTo(r0 - 1, y0);
+    s.closePath();
+    return s;
+  }, [r0, r1, y0, top]);
   const cols = Array.from({ length: 7 }, (_, i) => start + 0.08 + (i * (len - 0.16)) / 6);
   return (
     <group>
@@ -336,6 +346,13 @@ function Grandstand() {
       <mesh position={[0, y0 + rise / 2, 0]} material={crowd}>
         <cylinderGeometry args={[r1, r0, rise, 160, 1, true, start, len]} />
       </mesh>
+      {/* concrete end walls close the bowl at both ends */}
+      {[start, start + len].map((a) => (
+        <mesh key={a} rotation={[0, a - Math.PI / 2, 0]}>
+          <shapeGeometry args={[endWall]} />
+          <meshStandardMaterial color="#8d8a86" roughness={0.9} side={THREE.DoubleSide} />
+        </mesh>
+      ))}
       {/* back wall, roof and its columns */}
       <mesh position={[0, top + 9, 0]}>
         <cylinderGeometry args={[r1, r1, 18, 96, 1, true, start, len]} />

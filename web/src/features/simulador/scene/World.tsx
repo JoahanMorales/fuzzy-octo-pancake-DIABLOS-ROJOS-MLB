@@ -1,12 +1,13 @@
 /* r3f only. Motion stays out of this tree (web/DESIGN.md). */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { CameraControls, ContactShadows, Environment, Lightformer, PerformanceMonitor } from '@react-three/drei';
-import { Bloom, BrightnessContrast, EffectComposer, HueSaturation, SMAA, ToneMapping, Vignette } from '@react-three/postprocessing';
+import { CameraControls, Environment, Lightformer, PerformanceMonitor } from '@react-three/drei';
+import { Bloom, BrightnessContrast, EffectComposer, HueSaturation, N8AO, SMAA, ToneMapping, Vignette } from '@react-three/postprocessing';
 import { ToneMappingMode } from 'postprocessing';
 import * as THREE from 'three';
 import { GhostBatter, TrackedFlights, ZoneGlass } from './broadcast';
 import { DayHorizon, DaySky, GrassBlades, GrassField, SUN } from './daypark';
+import { Surroundings } from './surroundings';
 import { ballTexture } from './textures';
 import {
   BALL_R,
@@ -205,8 +206,8 @@ function Stage(props: WorldProps) {
       </Environment>
       <CameraRig view={props.view} reduced={props.reduced} free={props.free} />
       <GrassField c={c} />
+      <Surroundings park={props.park} />
       <GrassBlades count={rich ? 70000 : 30000} animate={!props.reduced} />
-      <ContactShadows position={[0, 0.08, -1]} scale={16} resolution={512} blur={2.2} opacity={0.55} far={7} frames={Infinity} />
       <ZoneGlass c={c} />
       <GhostBatter hand={props.hand} reduced={props.reduced} solid />
       <TrackedFlights harp={props.harpPath} sea={props.seaPath} c={c} reduced={props.reduced} playId={props.playId}
@@ -218,6 +219,7 @@ function Stage(props: WorldProps) {
       <PerformanceMonitor flipflops={2} onIncline={() => setRich(true)} onDecline={() => setRich(false)} />
       {rich ? (
         <EffectComposer multisampling={0}>
+          <N8AO halfRes aoRadius={3} distanceFalloff={1} intensity={2.2} color="#1a2418" />
           <Bloom mipmapBlur intensity={0.5} luminanceThreshold={0.85} luminanceSmoothing={0.2} />
           <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
           <HueSaturation saturation={0.04} />

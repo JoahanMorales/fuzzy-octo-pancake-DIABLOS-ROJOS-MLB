@@ -1,6 +1,6 @@
 # HACK-072
 ID: HACK-072
-State: CLAIMED
+State: AVAILABLE
 Owner: sebastian-2
 Branch: feat/hack-072
 Worktree: /Users/sebastian/Desktop/Hackathones/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-072
@@ -9,13 +9,13 @@ Priority: P2
 Paths: web/src/features/fisica/
 Depends: None
 Verify: `npm --prefix web test -- --run src/features/fisica`
-Lease-Until: 1792287747
-Updated: 1792285047
+Lease-Until: 0
+Updated: 1792304619
 Task-Base: 051ed274b8506d7d7cd2d82977b95837f40a9fc4
 Next: flyPitch from web/src/physics/flight.ts.
 PR: -
 Evidence: -
-Events: 1
+Events: 2
 Checkpoints: 0
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 0

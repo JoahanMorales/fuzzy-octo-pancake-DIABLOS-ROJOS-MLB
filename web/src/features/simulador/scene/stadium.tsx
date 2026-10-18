@@ -130,7 +130,7 @@ export function Field({ c }: { c: Palette }) {
         <meshStandardMaterial map={dirt} roughness={1} />
       </mesh>
       {/* mound and rubber */}
-      <mesh position={[0, MOUND_H / 2 + 0.05, MOUND_Z]} receiveShadow castShadow>
+      <mesh position={[0, MOUND_H / 2 + 0.05, MOUND_Z]} receiveShadow>
         <cylinderGeometry args={[2.6, 9, MOUND_H, 24]} />
         <meshStandardMaterial map={dirt} roughness={1} />
       </mesh>

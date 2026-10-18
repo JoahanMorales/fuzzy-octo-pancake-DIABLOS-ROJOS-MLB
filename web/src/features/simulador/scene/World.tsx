@@ -1,7 +1,7 @@
 /* r3f only. Motion stays out of this tree (web/DESIGN.md). */
-import { useLayoutEffect, useMemo, useRef } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { CameraControls, Line } from '@react-three/drei';
+import { CameraControls, Line, PerformanceMonitor } from '@react-three/drei';
 import { Bloom, EffectComposer, N8AO, SMAA, ToneMapping, Vignette } from '@react-three/postprocessing';
 import { ToneMappingMode } from 'postprocessing';
 import * as THREE from 'three';
@@ -189,8 +189,27 @@ function Fps({ node }: { node: React.RefObject<HTMLParagraphElement | null> }) {
   return null;
 }
 
+/** frameloop="demand": render only while something moves (a throw, a batter switch, a camera move), so an idle
+ *  simulator costs nothing on a laptop. CameraControls invalidates by itself while it moves. */
+function Animate({ keys }: { keys: unknown[] }) {
+  const invalidate = useThree((s) => s.invalidate);
+  useEffect(() => {
+    let raf = 0;
+    const until = performance.now() + 4200;
+    const tick = () => {
+      invalidate();
+      if (performance.now() < until) raf = requestAnimationFrame(tick);
+    };
+    tick();
+    return () => cancelAnimationFrame(raf);
+  }, keys); // eslint-disable-line react-hooks/exhaustive-deps
+  return null;
+}
+
 function Stage(props: WorldProps) {
   const c = useMemo(palette, []);
+  // Adaptive quality: start light; turn on contact shading only if the machine keeps a high frame rate.
+  const [rich, setRich] = useState(false);
   const release = props.harpPath[0] ?? [-1.8, 6, -54.2];
   return (
     <>
@@ -202,8 +221,8 @@ function Stage(props: WorldProps) {
         intensity={2.1}
         color="#fff4e6"
         castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
+        shadow-mapSize-width={rich ? 2048 : 1024}
+        shadow-mapSize-height={rich ? 2048 : 1024}
         shadow-bias={-0.0004}
         shadow-camera-near={50}
         shadow-camera-far={420}
@@ -224,14 +243,18 @@ function Stage(props: WorldProps) {
       <Paths harp={props.harpPath} sea={props.seaPath} reduced={props.reduced} playId={props.playId} c={c}
         spin={props.spin} axis={props.axis} throws={props.throws} />
       {props.devStats ? <Fps node={props.fpsNode} /> : null}
-      {/* broadcast finish: contact shadows (N8AO), the light banks bloom, a soft vignette, filmic tone */}
-      <EffectComposer multisampling={0}>
-        <N8AO halfRes aoRadius={2.6} distanceFalloff={1.1} intensity={3.4} />
-        <Bloom mipmapBlur intensity={0.85} luminanceThreshold={0.82} luminanceSmoothing={0.2} />
-        <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
-        <Vignette offset={0.22} darkness={0.72} />
-        <SMAA />
-      </EffectComposer>
+      <Animate keys={[props.playId, props.view, props.hand, props.park, props.throws, props.harpPath]} />
+      <PerformanceMonitor flipflops={2} onIncline={() => setRich(true)} onDecline={() => setRich(false)} />
+      {/* broadcast finish only on machines that keep up: contact shading, bloom on the light banks, vignette */}
+      {rich ? (
+        <EffectComposer multisampling={0}>
+          <N8AO halfRes aoRadius={2.6} distanceFalloff={1.1} intensity={3.4} />
+          <Bloom mipmapBlur intensity={0.85} luminanceThreshold={0.82} luminanceSmoothing={0.2} />
+          <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
+          <Vignette offset={0.22} darkness={0.72} />
+          <SMAA />
+        </EffectComposer>
+      ) : null}
     </>
   );
 }
@@ -240,8 +263,8 @@ export default function World(props: WorldProps) {
   return (
     <div className="sim-world">
       <Canvas
-        dpr={[1, 1.5]}
-        frameloop="always"
+        dpr={[1, 1.25]}
+        frameloop="demand"
         gl={{ antialias: true, powerPreference: 'high-performance', stencil: false, alpha: false }}
         camera={{ position: VIEWS.catcher.pos, fov: VIEWS.catcher.fov, near: 0.2, far: 4000 }}
         shadows

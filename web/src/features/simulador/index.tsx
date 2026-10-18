@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import { HARP_RHO, RIDE, type Release } from './flight/presets';
 import { lostLabel, plateGap, scenePath, throwPair } from './flight/throw';
 import { Controls, PARK_HARP, type Draft } from './panel/Controls';
@@ -81,27 +81,29 @@ export function Simulador({ models: given }: { models?: Models } = {}) {
     return () => { live = false; };
   }, []);
 
+  // Sliders fire many changes per second: the flight and the model score follow a deferred copy, so dragging stays smooth.
+  const live = useDeferredValue(draft);
   const thrown = useMemo(() => {
     try {
-      const pair = throwPair(draft.release, draft.rho);
+      const pair = throwPair(live.release, live.rho);
       return { pair, gap: plateGap(pair.sea, pair.park), error: null as string | null };
     } catch (err) {
       return { pair: null, gap: null, error: err instanceof Error ? err.message : 'sin trayectoria' };
     }
-  }, [draft.release, draft.rho]);
+  }, [live.release, live.rho]);
 
   useEffect(() => { setFlightError(thrown.error); }, [thrown.error]);
 
   const score = useMemo(() => {
     if (!thrown.pair || !models) return null;
-    return scoreRelease(draft.release, draft.rho, models, {
-      balls: draft.balls,
-      strikes: draft.strikes,
-      batter: draft.batter,
+    return scoreRelease(live.release, live.rho, models, {
+      balls: live.balls,
+      strikes: live.strikes,
+      batter: live.batter,
       plateSea: { x: thrown.pair.sea.plateX, z: thrown.pair.sea.plateZ },
       platePark: { x: thrown.pair.park.plateX, z: thrown.pair.park.plateZ },
     });
-  }, [draft.balls, draft.batter, draft.release, draft.rho, draft.strikes, models, thrown.pair]);
+  }, [live.balls, live.batter, live.release, live.rho, live.strikes, models, thrown.pair]);
 
   const sky: ParkSide = draft.rho < 0.95 ? 'harp' : 'sea';
   const lost = thrown.gap ? lostLabel(thrown.gap) : 'Ese lanzamiento no llega al plato.';
@@ -111,12 +113,12 @@ export function Simulador({ models: given }: { models?: Models } = {}) {
     <div className="sim-app">
       <SimulatorScene
         flight={thrown.pair ? {
-          harpPath: scenePath(thrown.pair.park, draft.release.throws),
-          seaPath: scenePath(thrown.pair.sea, draft.release.throws),
+          harpPath: scenePath(thrown.pair.park, live.release.throws),
+          seaPath: scenePath(thrown.pair.sea, live.release.throws),
           hand: draft.batter,
-          throws: draft.release.throws,
-          spin: draft.release.spin,
-          axis: draft.release.axis,
+          throws: live.release.throws,
+          spin: live.release.spin,
+          axis: live.release.axis,
           park: sky,
           playId: draft.playId,
           parkName: label,

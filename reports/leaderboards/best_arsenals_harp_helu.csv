@@ -1,26 +1,26 @@
 pitcher_anon_id,year,throws,pitches,arsenal,stuff_plus,stuff_plus_harp_helu,delta_cdmx,location_plus,pitching_plus
-pitcher_01075,2025,Left,564,4S 43% · sweeper 24% · slider 16%,107.414,104.806,-2.608,99.883,101.834
-pitcher_00626,2026,Right,354,4S 45% · riding 4S 19% · slider 17%,109.645,103.842,-5.802,101.602,104.326
-pitcher_00560,2025,Left,819,riding 4S 45% · 4S 30% · gyro slider 22%,109.549,101.887,-7.662,99.037,100.145
-pitcher_00204,2024,Left,344,riding 4S 44% · 4S 35% · sweeper 11%,111.895,101.638,-10.257,99.201,100.911
-pitcher_00952,2024,Right,893,4S 51% · riding 4S 20% · slider 17%,113.572,101.408,-12.164,98.127,99.457
-pitcher_01018,2025,Left,317,4S 46% · sweeper 24% · gyro slider 19%,108.086,101.133,-6.952,99.375,100.53
-pitcher_00802,2025,Left,820,running 2S 36% · sinking 2S 31% · slider 15%,103.7,100.343,-3.357,101.262,101.865
-pitcher_01101,2024,Right,565,sinking 2S 57% · gyro slider 25% · running 2S 15%,102.91,100.285,-2.625,100.065,101.351
-pitcher_00108,2025,Right,343,sinking 2S 28% · running 2S 26% · gyro slider 20%,108.247,100.035,-8.212,100.677,102.471
-pitcher_00875,2026,Right,349,cutter 46% · riding 4S 23% · 4S 18%,111.57,99.905,-11.664,102.86,104.729
-pitcher_00030,2026,Right,308,sinking 2S 39% · gyro slider 31% · running 2S 30%,103.257,99.826,-3.431,99.65,101.177
-pitcher_00114,2025,Right,578,4S 48% · riding 4S 20% · slider 14%,108.464,99.291,-9.173,99.146,100.904
-pitcher_00138,2024,Right,704,running 2S 62% · gyro slider 29% · slider 5%,109.858,98.988,-10.87,99.12,99.887
-pitcher_00728,2025,Left,650,running 2S 41% · sinking 2S 34% · gyro slider 23%,104.472,98.831,-5.641,99.769,100.816
-pitcher_00670,2025,Right,322,4S 51% · gyro slider 28% · slider 10%,107.996,98.716,-9.28,99.944,100.798
-pitcher_00222,2025,Left,528,sweeper 54% · sinking 2S 35% · running 2S 6%,104.158,98.593,-5.565,101.049,103.276
-pitcher_00204,2025,Left,657,riding 4S 55% · 4S 23% · slider 12%,109.01,98.43,-10.58,99.429,102.111
-pitcher_00342,2024,Right,640,riding 4S 41% · 4S 23% · gyro slider 18%,112.564,98.227,-14.337,99.419,101.473
-pitcher_00790,2024,Right,356,riding 4S 41% · 4S 37% · splitter 21%,112.764,98.215,-14.55,98.583,100.115
-pitcher_00172,2026,Right,325,4S 65% · slider 14% · gyro slider 10%,108.347,98.008,-10.339,99.474,100.448
-pitcher_00315,2025,Right,681,sinking 2S 57% · slider 21% · sweeper 10%,107.325,97.986,-9.339,99.257,101.605
-pitcher_00259,2024,Right,304,running 2S 56% · power CH 21% · sinking 2S 16%,111.68,97.98,-13.7,98.372,99.939
-pitcher_00566,2025,Right,785,4S 29% · riding 4S 27% · slider 27%,103.053,97.978,-5.074,99.9,101.146
-pitcher_00728,2024,Left,524,sinking 2S 47% · running 2S 34% · gyro slider 19%,103.944,97.977,-5.967,98.363,99.268
-pitcher_00037,2024,Right,480,sinking 2S 72% · running 2S 28%,103.285,97.961,-5.324,98.515,99.93
+pitcher_01075,2025,Left,564,4S 43% · sweeper 24% · slider 16%,109.655,102.01,-7.645,99.874,101.834
+pitcher_01018,2025,Left,317,4S 46% · sweeper 24% · gyro slider 19%,106.147,100.851,-5.296,99.355,100.53
+pitcher_00626,2026,Right,354,4S 45% · riding 4S 19% · slider 17%,109.757,100.62,-9.136,101.636,104.326
+pitcher_00386,2024,Right,591,gyro slider 37% · sinking 2S 23% · slider 21%,106.295,100.316,-5.979,99.687,101.469
+pitcher_00548,2025,Left,542,sweeper 60% · sinking 2S 35% · running 2S 4%,109.942,100.178,-9.764,101.103,102.945
+pitcher_00952,2024,Right,893,4S 51% · riding 4S 20% · slider 17%,114.466,99.887,-14.579,98.122,99.457
+pitcher_00560,2025,Left,819,riding 4S 45% · 4S 30% · gyro slider 22%,110.64,99.863,-10.777,98.996,100.145
+pitcher_00204,2024,Left,344,riding 4S 44% · 4S 35% · sweeper 11%,113.236,99.02,-14.216,99.166,100.911
+pitcher_00138,2024,Right,704,running 2S 62% · gyro slider 29% · slider 5%,110.617,98.429,-12.188,99.095,99.887
+pitcher_00030,2026,Right,308,sinking 2S 39% · gyro slider 31% · running 2S 30%,105.596,98.251,-7.345,99.658,101.177
+pitcher_01078,2026,Right,327,sinking 2S 61% · sweeper 24% · slider 6%,108.293,97.976,-10.317,100.387,102.617
+pitcher_00108,2025,Right,343,sinking 2S 28% · running 2S 26% · gyro slider 20%,108.193,97.956,-10.237,100.687,102.471
+pitcher_00054,2025,Right,399,sinking 2S 37% · running 2S 21% · sweeper 21%,108.372,97.86,-10.512,100.483,101.795
+pitcher_00728,2025,Left,650,running 2S 41% · sinking 2S 34% · gyro slider 23%,105.169,97.766,-7.403,99.766,100.816
+pitcher_00079,2024,Right,454,4S 30% · sweeper 28% · riding 4S 26%,108.712,97.705,-11.008,100.278,101.815
+pitcher_01101,2024,Right,565,sinking 2S 57% · gyro slider 25% · running 2S 15%,104.807,97.667,-7.139,100.072,101.351
+pitcher_00222,2025,Left,528,sweeper 54% · sinking 2S 35% · running 2S 6%,106.386,97.522,-8.864,101.041,103.276
+pitcher_00571,2026,Left,320,sinking 2S 65% · gyro slider 23% · running 2S 12%,105.061,97.461,-7.6,99.023,99.884
+pitcher_00802,2025,Left,820,running 2S 36% · sinking 2S 31% · slider 15%,103.767,97.369,-6.398,101.29,101.865
+pitcher_00259,2024,Right,304,running 2S 56% · power CH 21% · sinking 2S 16%,110.658,97.336,-13.322,98.372,99.939
+pitcher_00619,2024,Right,1464,riding 4S 34% · sweeper 20% · gyro slider 14%,110.237,97.265,-12.973,100.732,102.535
+pitcher_00054,2024,Right,692,sinking 2S 37% · gyro slider 36% · running 2S 23%,107.129,96.947,-10.183,101.071,102.526
+pitcher_00002,2026,Right,367,sinking 2S 38% · running 2S 25% · sweeper 20%,103.93,96.932,-6.998,99.146,100.224
+pitcher_00728,2024,Left,524,sinking 2S 47% · running 2S 34% · gyro slider 19%,105.165,96.736,-8.43,98.35,99.268
+pitcher_00790,2024,Right,356,riding 4S 41% · 4S 37% · splitter 21%,112.237,96.685,-15.552,98.569,100.115

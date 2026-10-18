@@ -2,15 +2,15 @@
 
 *Memo para el cuerpo técnico y la gerencia de Diablos Rojos. Escala Stuff+: 100 = promedio de la LMB a nivel del mar; ΔStuff+ = Stuff+ en el aire del Harp Helú menos Stuff+ a nivel del mar, con intervalos al 95 % por pitcher. Cada cifra sale de un CSV de `reports/` (entre paréntesis) y este texto se regenera con `reports/recommendations/build_memo.py`.*
 
-**En una frase:** el aire del Harp Helú le quita a la liga unos 10.3 puntos de Stuff+ por lanzamiento (promedio de formas); conviene reclutar formas que pierden poco (sweeper, 12-6 CB, slider) y no pagar por *ride* de recta.
+**En una frase:** el aire del Harp Helú le quita a la liga unos 13.0 puntos de Stuff+ por lanzamiento (promedio de formas); conviene reclutar formas que pierden poco (12-6 CB, sweeper, splitter) y no pagar por *ride* de recta.
 
 ## 1. Perfiles que ganan en la CDMX (pierden menos que la liga)
 
-El promedio de la liga cae -10.3 puntos (`altitude_delta/delta_by_shape.csv`). Las tres formas que mejor aguantan:
+El promedio de la liga cae -13.0 puntos (`altitude_delta/delta_by_shape.csv`). Las tres formas que mejor aguantan:
 
-- **sweeper** (-4.6 [-5.4, -3.9]): +5.6 puntos mejor que la liga. Movimiento en altura: IVB +0.6", HB +2.1", whiff -1.5 pp. 462 pitchers, 25,133 lanzamientos.
-- **12-6 CB** (-6.1 [-6.9, -5.4]): +4.1 puntos mejor que la liga. Movimiento en altura: IVB +1.4", HB +0.9", whiff -0.0 pp. 271 pitchers, 11,741 lanzamientos.
-- **slider** (-7.2 [-7.7, -6.8]): +3.0 puntos mejor que la liga. Movimiento en altura: IVB -0.4", HB +1.1", whiff -1.7 pp. 605 pitchers, 28,184 lanzamientos.
+- **12-6 CB** (-9.5 [-10.1, -8.9]): +3.5 puntos mejor que la liga. Movimiento en altura: IVB +1.4", HB +0.9", whiff +0.0 pp. 271 pitchers, 11,741 lanzamientos.
+- **sweeper** (-9.6 [-10.2, -9.1]): +3.4 puntos mejor que la liga. Movimiento en altura: IVB +0.6", HB +2.1", whiff -1.4 pp. 462 pitchers, 25,133 lanzamientos.
+- **splitter** (-10.3 [-12.8, -8.4]): +2.7 puntos mejor que la liga. Movimiento en altura: IVB +0.7", HB -1.5", whiff -0.7 pp. 17 pitchers, 3,928 lanzamientos.
 
 **Física:** la fuerza de Magnus y el arrastre son proporcionales a la densidad del aire; con ~16 % menos aire (ρ̂ Extreme ≈ 0.84, `physics/rho_by_bucket.csv`; Harp Helú ≈ 0.82, `park_id/harp_helu.md`) el quiebre inducido baja en esa proporción. Por eso el Stuff+ de una recta depende mucho menos de su IVB en altura (punto 1 de la lista de verificación), y las formas que no viven del *ride* aguantan mejor.
 
@@ -18,9 +18,9 @@ El promedio de la liga cae -10.3 puntos (`altitude_delta/delta_by_shape.csv`). L
 
 Las tres formas que más pierden:
 
-- **riding 4S** (-16.0 [-16.3, -15.6]): -5.7 puntos contra la liga. Contacto duro +0.7 pp, HR/FB +3.4 pp, valor del contacto +0.065 carreras por bola en juego.
-- **power CH** (-12.7 [-13.6, -11.7]): -2.4 puntos contra la liga. Contacto duro +1.4 pp, HR/FB +1.8 pp, valor del contacto +0.042 carreras por bola en juego.
-- **changeup** (-11.4 [-12.1, -10.7]): -1.1 puntos contra la liga. Contacto duro +1.5 pp, HR/FB +3.1 pp, valor del contacto +0.045 carreras por bola en juego.
+- **riding 4S** (-17.9 [-18.3, -17.4]): -4.9 puntos contra la liga. Contacto duro +0.7 pp, HR/FB +3.4 pp, valor del contacto +0.074 carreras por bola en juego.
+- **power CH** (-15.6 [-16.6, -14.4]): -2.6 puntos contra la liga. Contacto duro +1.4 pp, HR/FB +1.8 pp, valor del contacto +0.052 carreras por bola en juego.
+- **11-5 CB** (-14.8 [-15.6, -14.0]): -1.8 puntos contra la liga. Contacto duro +1.9 pp, HR/FB +3.6 pp, valor del contacto +0.055 carreras por bola en juego.
 
 **Riesgo cuantificado (hipótesis H3, `hypotheses/results.csv`):** las bolas al aire viajan +36 pies más [31, 41] y el HR/FB sube +2.3 pp [1.2, 3.4]; una bola al aire vale +0.050 carreras más que un rodado [0.033, 0.067] en altura. **No** hay evidencia de que los pitchers de más rodados se protejan más (pendiente contra GB% con IC que incluye 0): no se debe recomendar fichar rodadores solo por eso.
 
@@ -28,11 +28,11 @@ Las tres formas que más pierden:
 
 Umbrales sacados de los quintiles observados (`ideal_profile/delta_by_trait.csv`) y de la sensibilidad al aire (`ideal_profile/rho_sensitivity.csv`):
 
-1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es +20.9 puntos a nivel del mar y solo +7.6 en el Harp Helú; la recta de más *ride* es la que más pierde (riding 4S -16.0).
+1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es +20.9 puntos a nivel del mar y solo +7.6 en el Harp Helú; la recta de más *ride* es la que más pierde (riding 4S -17.9).
 2. **Extensión alta.** Quintil superior (≥ 6.43 ft): ΔStuff+ -9.7; quintil inferior (≤ 5.58 ft): -12.8 (la extensión pesa más en altura: rango +2.2 → +4.9).
 3. **Ángulo de aproximación (VAA) bajo, neto de la altura del lanzamiento.** Quintil inferior: -9.1; superior: -13.1.
 4. **Velocidad: sin umbral.** El efecto no es robusto: el rango de Stuff+ por velocidad pasa de +8.4 (mar) a +9.4 en el Harp Helú con el efecto total, pero a +6.8 con solo la física (`rho_sensitivity.csv`), y los quintiles de ΔStuff+ no son monótonos (-10.2, -10.4, -11.3, -12.3, -11.6; `delta_by_trait.csv`).
-5. **Secundarios:** preferir sweeper, 12-6 CB, slider; desconfiar de power CH, changeup.
+5. **Secundarios:** preferir 12-6 CB, sweeper, splitter; desconfiar de power CH, 11-5 CB.
 6. **Perfil de referencia de recta** en el aire del Harp Helú (`ideal_profile/best_fastballs.csv`): 90.7 mph, IVB 16.3" y HB 6.6" a nivel del mar, extensión 6.25 ft, salida 6.14 ft → Stuff+ 108.2 en el Harp Helú (115.5 a nivel del mar).
 
 *Límite:* la eficiencia de giro no se usa como criterio: la brecha de ~15 % entre altitudes sigue sin explicarse (`physics/README.md`).
@@ -54,7 +54,7 @@ Efecto del aire por zona del plato, en carreras por lanzamiento (+ = peor para e
 - **Un punto de Stuff+ vale 7.24e-04 carreras por lanzamiento** [6.78e-04, 7.69e-04] (estimación directa fuera de muestra, `business_value/runs_per_point_direct.csv`).
 - **Ejemplo:** +10 puntos de Stuff+ en 2,500 lanzamientos son 18.1 carreras ≈ **1.26 victorias** en el Harp Helú (`business_value/gm_example.csv`). Una desviación estándar *observada* entre pitcher-temporadas, que incluye ruido de muestreo (5.4 puntos) equivale a 9.9 carreras ≈ 0.69 victorias (`business_value/pitcher_spread_example.csv`).
 - **Costo medio de la altura:** +0.0116 carreras por lanzamiento (Extreme frente a sin altitud, `business_value/altitude_cost.csv`): ~0.9 carreras por apertura de 77 lanzamientos.
-- **Orden de magnitud de la decisión de reclutamiento:** la diferencia de pérdida entre riding 4S y sweeper es 11.4 puntos; por cada 1,000 lanzamientos son ~8.2 carreras (~0.57 victorias en el Harp Helú). Es una diferencia de pérdida entre formas, no el efecto causal de cambiar un lanzamiento por otro.
+- **Orden de magnitud de la decisión de reclutamiento:** la diferencia de pérdida entre riding 4S y sweeper es 8.3 puntos; por cada 1,000 lanzamientos son ~6.0 carreras (~0.42 victorias en el Harp Helú). Es una diferencia de pérdida entre formas, no el efecto causal de cambiar un lanzamiento por otro.
 
 ## Cómo leer estas cifras
 

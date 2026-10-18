@@ -67,7 +67,7 @@ VAA se usa neto de la altura en el plato (residuo por familia). La eficiencia de
 
 ## Mejor recta observada en el aire del Harp Helú (`best_fastballs.csv`)
 
-Perfiles de recta dentro del casco de datos (kNN): 1007. Correlación de rangos altitud vs mar: 0.569; coinciden 2 de las 10 mejores. Solo con la vía física, la correlación es 0.500.
+Perfiles de recta dentro del casco de datos (kNN): 1007. Correlación de rangos altitud vs mar: 0.568; coinciden 2 de las 10 mejores. Solo con la vía física, la correlación es 0.500.
 
 La mejor: Four-Seam, 90.7 mph, IVB 16.3" y HB 6.6" a nivel del mar, extensión 6.25 ft, salida 6.14 ft → Stuff+ 108.2 en el Harp Helú (115.5 a nivel del mar, Δ -7.3).
 

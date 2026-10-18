@@ -10,7 +10,7 @@ Para cada pitcher-temporada con ≥ 300 lanzamientos (784; 235,200 lanzamientos 
 | eje de giro −5° | 0.347 | 0.319 | 0.373 | 0.29 | 0.0573 | 0.977 | 0.55 |
 | +5 % de eficiencia de giro (más movimiento) | 0.237 | 0.222 | 0.254 | 0.658 | -0.421 | 0.978 | 0.531 |
 | slot de brazo 5° más bajo | 0.153 | 0.121 | 0.188 | 0.0744 | 0.0789 | 0.97 | 0.473 |
-| eje de giro +5° | -0.284 | -0.311 | -0.259 | -0.21 | -0.0732 | 0.974 | 0.229 |
+| eje de giro +5° | -0.284 | -0.311 | -0.259 | -0.211 | -0.0732 | 0.974 | 0.229 |
 
 **Mayor ganancia en el Harp Helú:** +1 mph de velocidad (+0.573 puntos de Stuff+ de arsenal [+0.547, +0.601]). **Vale más en CDMX que a nivel del mar:** slot de brazo 5° más bajo (diferencia +0.079 [+0.050, +0.108]). Piso de ruido: una ganancia < 0.1 puntos no entra al plan (convención; ≈ 7.2e-05 carreras por lanzamiento con `business_value/runs_per_point_direct.csv`).
 
@@ -22,7 +22,7 @@ Se agrega un splitter, un sinker o un sweeper con el perfil mediano de pitchers 
 |---|---|---|---|---|---|---|---|---|
 | splitter | 772 | 0 | – | – | – | – | – | – |
 | sinker | 501 | 0.854 | -0.235 | -0.294 | -0.181 | -0.654 | 0.419 | 0.315 |
-| sweeper | 646 | 0.717 | 0.262 | 0.19 | 0.329 | -0.355 | 0.618 | 0.639 |
+| sweeper | 646 | 0.717 | 0.262 | 0.19 | 0.329 | -0.356 | 0.618 | 0.639 |
 
 ## Cómo se acota a lo observado
 

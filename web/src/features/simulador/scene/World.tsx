@@ -2,6 +2,8 @@
 import { useLayoutEffect, useMemo, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { CameraControls, Line } from '@react-three/drei';
+import { Bloom, EffectComposer, N8AO, SMAA, ToneMapping, Vignette } from '@react-three/postprocessing';
+import { ToneMappingMode } from 'postprocessing';
 import * as THREE from 'three';
 import { Batter, Pitcher, type Look } from './figures';
 import { Backdrop, Field, Sky, Stands } from './stadium';
@@ -222,6 +224,14 @@ function Stage(props: WorldProps) {
       <Paths harp={props.harpPath} sea={props.seaPath} reduced={props.reduced} playId={props.playId} c={c}
         spin={props.spin} axis={props.axis} throws={props.throws} />
       {props.devStats ? <Fps node={props.fpsNode} /> : null}
+      {/* broadcast finish: contact shadows (N8AO), the light banks bloom, a soft vignette, filmic tone */}
+      <EffectComposer multisampling={0}>
+        <N8AO halfRes aoRadius={2.6} distanceFalloff={1.1} intensity={3.4} />
+        <Bloom mipmapBlur intensity={0.85} luminanceThreshold={0.82} luminanceSmoothing={0.2} />
+        <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
+        <Vignette offset={0.22} darkness={0.72} />
+        <SMAA />
+      </EffectComposer>
     </>
   );
 }
@@ -239,7 +249,7 @@ export default function World(props: WorldProps) {
           gl.shadowMap.enabled = true;
           gl.shadowMap.type = THREE.PCFSoftShadowMap;
           gl.toneMapping = THREE.ACESFilmicToneMapping;
-          gl.toneMappingExposure = 1.15;
+          gl.toneMappingExposure = 1.25;
           if (!gl.capabilities.isWebGL2) props.onNoWebGL2();
         }}
       >

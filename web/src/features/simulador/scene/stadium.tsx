@@ -168,7 +168,7 @@ export function Stands({ c }: { c: Palette }) {
   const crowd = useRef<THREE.InstancedMesh>(null);
   const seats = useMemo(() => {
     const out: { p: Vec3; s: number; col: string }[] = [];
-    const cols = ['#d8d6d0', '#9aa0aa', '#2e3440', '#5b6372', '#e8e6e1', '#7a6e62', '#3d4a5a', '#b9b3a8'];
+    const cols = ['#5d636e', '#4a505b', '#3a3f48', '#6b6f78', '#7d7a74', '#555a64', '#45494f', '#8a867e'];
     let k = 0;
     for (const t of tiers) {
       for (let row = 0; row < 4; row++) {

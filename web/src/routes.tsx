@@ -21,6 +21,10 @@ export const PAGES: PageDef[] = [
   { path: '/prospecto', feature: 'prospecto', title: 'Prospecto', nav: true, task: 'HACK-048' },
   { path: '/laboratorio', feature: 'laboratorio', title: 'Laboratorio', nav: true, task: 'HACK-048' },
   { path: '/metodologia', feature: 'metodologia', title: 'Metodología', nav: true, task: 'HACK-049' },
+  { path: '/cuerpo-tecnico', feature: 'cuerpo-tecnico', title: 'Cuerpo técnico', nav: true, task: 'HACK-067' },
+  { path: '/reclutamiento', feature: 'reclutamiento', title: 'Reclutamiento', nav: true, task: 'HACK-068' },
+  { path: '/fisica', feature: 'fisica', title: 'Física', nav: true, task: 'HACK-072' },
+  { path: '/presentacion', feature: 'presentacion', title: 'Presentación', nav: false, task: 'HACK-071' },
 ];
 
 type Loader = () => Promise<{ default: ComponentType }>;

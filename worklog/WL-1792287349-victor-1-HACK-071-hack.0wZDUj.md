@@ -6,10 +6,11 @@
 - Why: acceptance: number read from the contract
 - Failing: none
 - Commands: npm --prefix web test -- --run src/features/presentacion
-- Next: Wait for review of SHA 13fac3dd
+- Next: Integrated in main: d9b31e80e408b5eab084fad244493b834ce6b98b (recorded by victor-1)
 
 ## History
 - 1792287349 | CLAIMED | victor-1 | claim; next: reuse demo/script.md from HACK-025 for the notes.
 - 1792290857 | REVIEW | victor-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/67; evidence: vitest presentacion 5 passed; tsc+build OK; smoke PRODUCT_PASS; design-critic P1s fixed; reviewer: -
 - 1792290872 | REVIEW | victor-1 | checkpoint; next: Wait for review of SHA 13fac3dd
 - 1792291629 | REVIEW | victor-2 | review; approve; SHA 13fac3dd5fec0dfdd8b64fce06c1fb25683a46ad; reviewer victor-2
+- 1792292233 | INTEGRATED | victor-1 | integrate; recorded by victor-1; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/67; merged d9b31e80e408b5eab084fad244493b834ce6b98b; proof ancestry

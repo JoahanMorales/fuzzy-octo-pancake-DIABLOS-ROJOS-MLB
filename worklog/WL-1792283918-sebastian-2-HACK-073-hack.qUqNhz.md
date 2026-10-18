@@ -10,3 +10,4 @@
 
 ## History
 - 1792283918 | CLAIMED | sebastian-2 | claim; next: edit the Kit syntax step in .github/workflows/uak.yml.
+- 1792283984 | CLAIMED | sebastian-2 | pending decision HACK-073-1792283984; option: Use the exact workflow shell step plus a negative invalid-Bash fixture as supplemental evidence; preserve the failing published Verify result until the planner corrects it.; Why: Published for-loop returns status of final false grep on a sourced module; the workflow guarded loop correctly passes and rejects invalid shell.

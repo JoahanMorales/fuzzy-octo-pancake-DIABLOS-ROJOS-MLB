@@ -66,9 +66,16 @@ test('recorrido completo: landing → simulador → altitud → leaderboard → 
   const controls = page.getByRole('form', { name: 'Controles del lanzamiento' });
   const scene = page.getByRole('region', { name: 'Simulador del estadio' });
 
-  // Lanzar un pitcheo
+  // Lanzar un pitcheo con otro preset: la lectura cambia
+  const firstDelta = await page.getByTestId('stuff-delta').textContent();
+  const presets = controls.getByRole('group', { name: 'Preset' });
+  const otherName = (await presets.getByRole('button', { pressed: false }).first().textContent())?.trim() ?? '';
+  const other = presets.getByRole('button', { name: otherName, exact: true });
+  await other.click();
+  await expect(other).toHaveAttribute('aria-pressed', 'true');
   await controls.getByRole('button', { name: 'Lanzar' }).click();
   await expect(page.getByTestId('stuff-delta')).toHaveText(NUMBER);
+  await expect(page.getByTestId('stuff-delta')).not.toHaveText(firstDelta ?? '');
 
   // Cambiar de bateador
   await controls.getByRole('button', { name: 'Bateador zurdo' }).click();
@@ -79,7 +86,8 @@ test('recorrido completo: landing → simulador → altitud → leaderboard → 
   const harpDelta = await page.getByTestId('stuff-delta').textContent();
   await controls.getByLabel('Parque').selectOption('sea');
   await expect(scene).toHaveAttribute('data-park', 'sea');
-  await expect(reading.getByText('Nivel del mar').first()).toBeVisible();
+  // La segunda columna lleva el nombre del parque elegido
+  await expect(reading.locator('.sp-where').nth(1)).toHaveText('Nivel del mar');
   await expect(page.getByTestId('stuff-delta')).not.toHaveText(harpDelta ?? '');
   await controls.getByLabel('Parque').selectOption('harp');
   await expect(scene).toHaveAttribute('data-park', 'harp');
@@ -140,6 +148,24 @@ test('física: explicador del aire', async ({ page }, info) => {
   await page.getByRole('button', { name: 'Harp Helú' }).click();
   await expect(page.getByRole('button', { name: 'Harp Helú' })).toHaveAttribute('aria-pressed', 'true');
   await expectNoHorizontalScroll(page);
-  await shot(page, 'fisica', info.project.name === 'desktop');
+  if (info.project.name === 'desktop') {
+    // El deck la pone en una caja de 308 × 198 pt: recorte desde las vistas con esa proporción (1200 × 773).
+    const views = page.locator('.fis-views');
+    // Coordenadas de página (fullPage): el recorte no depende del viewport ni lo tapa la barra fija.
+    // 22 px de aire alrededor, como la captura original.
+    await page.evaluate(() => window.scrollTo(0, 0));
+    const box = await views.evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      return { x: r.left + window.scrollX, y: r.top + window.scrollY, width: r.width };
+    });
+    const width = box.width + 44;
+    await page.screenshot({
+      path: `${SHOTS}/fisica.jpg`,
+      type: 'jpeg',
+      quality: 85,
+      fullPage: true,
+      clip: { x: box.x - 22, y: box.y - 22, width, height: Math.round((width * 773) / 1200) },
+    });
+  }
   expect(errors, errors.join('\n')).toEqual([]);
 });

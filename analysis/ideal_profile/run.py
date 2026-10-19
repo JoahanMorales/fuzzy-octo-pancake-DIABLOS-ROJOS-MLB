@@ -3,7 +3,7 @@
     python analysis/ideal_profile/run.py          # real data
     python analysis/ideal_profile/run.py --fast   # quick check
 
-Uses HACK-015's Stuff+ (altitude-invariant ``pitch_family`` + fitted physics translation, ``stuffplus.altitude``).
+Uses the production Stuff+ (``fit_production_stuff``, as analysis/altitude_delta) on HACK-015's setup (altitude-invariant ``pitch_family`` + fitted physics translation, ``stuffplus.altitude``).
 Reports in reports/ideal_profile/ (aggregates only, no pitcher ids):
   pdp_2d.csv · rho_sensitivity.csv · h_statistic.csv · shap_rho_interaction.csv   which traits matter more in thin air
   delta_by_trait.csv        counterfactual ΔStuff+ by VAA (net of plate height) and spin-efficiency quintile
@@ -26,7 +26,7 @@ if str(ROOT) not in sys.path:
 
 from stuffplus import config, profile, schema  # noqa: E402
 from stuffplus.config import SEED  # noqa: E402
-from stuffplus.models.stuff import StuffModel  # noqa: E402
+from stuffplus.models.stuff import fit_production_stuff  # noqa: E402
 from stuffplus.physics.aero import decompose  # noqa: E402
 from stuffplus.physics.constants import RHO_HARP_HELU  # noqa: E402
 from stuffplus.scale import PlusScaler  # noqa: E402
@@ -44,10 +44,10 @@ def _altitude_run():
 
 
 def fit(d: pd.DataFrame, shape_model, fast: bool):
-    from stuffplus.altitude import STUFF_FEATURES_INVARIANT, physics_translator
+    from stuffplus.altitude import physics_translator
 
     rounds = dict(class_rounds=60, contact_rounds=40) if fast else {}
-    model = StuffModel(features=list(STUFF_FEATURES_INVARIANT), translate=physics_translator(shape_model), **rounds).fit(d)
+    model = fit_production_stuff(d, translate=physics_translator(shape_model), k_inner=2 if fast else 3, **rounds)
     scaler = PlusScaler().fit(d.assign(x=model.predict_at_rho(d, 1.0)["xrv"].to_numpy()), "x")
     return model, scaler
 

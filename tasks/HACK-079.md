@@ -12,10 +12,10 @@ Verify: `python -m pytest -q tests/test_export_trees.py && npm --prefix web test
 Lease-Until: 1792390768
 Updated: 1792376368
 Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/79; run .uak/bin/smoke
+Next: Apply option: pitching.json con 120/200/60 rondas (prod 300/200/200 pesa 13.7 MB) ~5.2 MB; fidelidad r vs leaderboard en el JSON; contexto que el panel no da = mediana por familia; fixtures pitching_synthetic*.json y tests en test_export_trees.py fuera de Paths
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/79
 Evidence: pytest tests/test_export_trees.py 10 passed; vitest 176 passed (src/model + src/features/simulador 31); build WEB_DIST_OK 22.7 MB; RAW_DATA_CHECK_PASS; pitching.json 3.13 MB r 0.976 vs leaderboard; Playwright /simulador Pitching+ 115.0/108.7 sin errores
-Events: 3
+Events: 4
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

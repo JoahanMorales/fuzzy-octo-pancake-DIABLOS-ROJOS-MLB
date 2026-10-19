@@ -1,6 +1,6 @@
 # HACK-079
 ID: HACK-079
-State: CLAIMED
+State: REVIEW
 Owner: victor-1
 Branch: feat/hack-079
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-079
@@ -9,9 +9,9 @@ Priority: P1
 Paths: stuffplus/export_trees.py, web/public/data/models/pitching.json, web/src/model/predict.ts, web/src/model/predict.test.ts, web/src/features/simulador/panel/
 Depends: HACK-045
 Verify: `python -m pytest -q tests/test_export_trees.py && npm --prefix web test -- --run src/model src/features/simulador`
-Lease-Until: 1792377910
-Updated: 1792375210
+Lease-Until: 1792390768
+Updated: 1792376368
 Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
-Next: mirror `export_composite` for the Pitching+ components + weights.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/79; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/79
 Evidence: -

@@ -1,6 +1,6 @@
 # HACK-051
 ID: HACK-051
-State: CLAIMED
+State: REVIEW
 Owner: luis-1
 Branch: feat/hack-051
 Worktree: /Users/FerV/Documents/HackDiablos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-051
@@ -9,13 +9,14 @@ Priority: P1
 Paths: web/e2e/
 Depends: HACK-045, HACK-043
 Verify: `npm --prefix web run build && npx --prefix web playwright test`
-Lease-Until: 1792376943
-Updated: 1792374243
+Lease-Until: 1792389305
+Updated: 1792374905
 Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
-Next: abrir PR y uak done; avisar a HACK-059 de las capturas
-PR: -
-Evidence: -
-Events: 3
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/78; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/78
+Evidence: beac61a2: npm --prefix web run build && npm --prefix web run e2e exit 0 (4/4 desktop+mobile, sin errores de consola, sin desborde movil, capturas deck en web/e2e/screenshots); smoke exit 0; vitest 170/170. Verify literal no corre desde la raiz (npx --prefix no cambia cwd): ver uak decision HACK-051
+Events: 4
 Checkpoints: 1
 Sessions: 1
 Last-Checkpoint: 1792374243
+Task-Tip: beac61a2cf38f2cd6d22727c10afb116ea9d1fbe

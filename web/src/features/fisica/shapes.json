@@ -1,0 +1,65 @@
+{
+ "demo_data": false,
+ "sources": [
+  "reports/physics_v2/coefficients_by_bucket.csv"
+ ],
+ "bucket": "No Altitude",
+ "shapes": [
+  {
+   "pitch_family": "Changeup",
+   "pitches": 37111,
+   "rho": 1.0035,
+   "velo": 83.18,
+   "ivb": 6.53,
+   "hb": 12.67
+  },
+  {
+   "pitch_family": "Curveball",
+   "pitches": 21101,
+   "rho": 1.0023,
+   "velo": 78.23,
+   "ivb": -7.29,
+   "hb": -8.66
+  },
+  {
+   "pitch_family": "Cutter",
+   "pitches": 5762,
+   "rho": 0.991,
+   "velo": 88.48,
+   "ivb": 10.07,
+   "hb": 0.73
+  },
+  {
+   "pitch_family": "Four-Seam",
+   "pitches": 109553,
+   "rho": 0.9996,
+   "velo": 91.41,
+   "ivb": 16.56,
+   "hb": 9.97
+  },
+  {
+   "pitch_family": "Sinker",
+   "pitches": 49809,
+   "rho": 1.0013,
+   "velo": 91.08,
+   "ivb": 10.79,
+   "hb": 15.34
+  },
+  {
+   "pitch_family": "Slider",
+   "pitches": 65464,
+   "rho": 1.0025,
+   "velo": 83.5,
+   "ivb": 3.18,
+   "hb": -3.36
+  },
+  {
+   "pitch_family": "Splitter",
+   "pitches": 1992,
+   "rho": 0.9804,
+   "velo": 82.59,
+   "ivb": 2.35,
+   "hb": 5.19
+  }
+ ]
+}

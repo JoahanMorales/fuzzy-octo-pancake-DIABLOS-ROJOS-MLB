@@ -15,3 +15,4 @@
 - 1792261911 | AVAILABLE | sebastian-1 | release; claim released by sebastian-1; reason: -; summary kept
 - 1792309784 | CLAIMED | joahan-6 | claim; next: Resume feat/hack-025 PR52; resolve leaderboard smoke timeout with app owner; human records other-laptop rehearsal and planb.mp4 in submission/checklist.md; confirm bundle, public URL, private score transfer and receipt before final review
 - 1792311033 | CLAIMED | joahan-6 | checkpoint; next: Human: publish web/dist (deploy/web), record planb.mp4, rehearse on another laptop, then uak done
+- 1792385761 | AVAILABLE | joahan-6 | release; claim released by joahan-6; reason: -; summary kept

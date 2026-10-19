@@ -12,6 +12,6 @@ Verify: `npm --prefix web run build && npx --prefix web playwright test`
 Lease-Until: 1792392430
 Updated: 1792378030
 Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
-Next: Wait for review of SHA beac61a2; luego uak merge HACK-051
+Next: Humano: Edits a file outside Paths: web/playwright.config.ts (Paths of HACK-037). Revert that file on the branch (git checkout origin/main -- web/playwright.config.ts), or the human merges the PR
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/78
 Evidence: -

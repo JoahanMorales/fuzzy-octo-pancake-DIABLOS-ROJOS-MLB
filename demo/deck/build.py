@@ -272,7 +272,7 @@ def main():
     end()
 
     # 8 · the product
-    p = slide('El producto: dos aires, un lanzamiento', 'Capturas del simulador 3D y del explicador de física (web/, build de HACK-045 y HACK-072).',
+    p = slide('El producto: dos aires, un lanzamiento', 'Capturas del simulador 3D y del explicador de física (Playwright, web/e2e/screenshots, HACK-051).',
               '50 s. Simulador 3D: el mismo release a nivel del mar y en el aire del Harp Helú, con el motor de vuelo que usa la elasticidad medida. El explicador de física deja mover la densidad y ver la subida perdida. Las cifras de la app salen de los mismos agregados.')
     p.image(ASSETS/'simulador_transmision.jpg', 40, 98, 308, 178)
     p.image(ASSETS/'fisica.jpg', 372, 98, 308, 198)
@@ -338,7 +338,7 @@ def main():
     for i, (t, f, sec) in enumerate(zip(titles, footers, timing), 1):
         rows.append(f'| {i} | {t.replace(chr(10), " ")} | {sec} s | {f} |')
     rows += ['', '## Archivos y reconstrucción', '',
-             '`deck.pptx`: editable. `deck.pdf`: versión de presentación. `../one-pager/one-pager.pdf`: una página para el GM. `assets/`: capturas del producto (simulador de HACK-045 y explicador de HACK-072); cuando HACK-051 publique sus capturas de Playwright, reemplazarlas con el mismo nombre.', '',
+             '`deck.pptx`: editable. `deck.pdf`: versión de presentación. `../one-pager/one-pager.pdf`: una página para el GM. `assets/`: capturas del producto tomadas por las pruebas e2e de HACK-051 (`web/e2e/screenshots/`).', '',
              '`sources.json` guarda archivo, fila, columna, formato y SHA-256 de cada cifra, y para las dos cifras derivadas (promedio de la liga y recorte del sesgo) sus entradas y la fórmula. Las notas de cada diapositiva llevan el guion oral.', '',
              'Reconstruir con Python 3.12 y `demo/deck/requirements.txt`: `python demo/deck/build.py`. Validar: `python demo/deck/verify.py`.', '',
              '## Revisión antes de entrevista', '',

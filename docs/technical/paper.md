@@ -205,14 +205,14 @@ La altitud extrema es otra distribución: un clasificador que la distingue por l
 
 **De puntos a victorias (HACK-035).** Regresamos el valor de carreras realizado contra los puntos de Stuff+ predichos fuera de pliegue: un punto vale $8.68\times10^{-4}$ carreras por lanzamiento [$8.18\times10^{-4}$, $9.19\times10^{-4}$]. El exponente pitagórico de la LMB es 1.90 [1.62, 2.15]: 11.8 carreras por victoria en la liga y 14.3 en altitud extrema, donde se anota más. +10 puntos de Stuff+ en 2,500 lanzamientos son 21.7 carreras ≈ 1.51 victorias en el Harp Helú; una desviación estándar observada entre pitcher-temporadas (5.08 puntos) vale 0.77 victorias. Los puntos son los de Stuff+ v2 fuera de pliegue (`reports/business_value/`).
 
-**Perfil a reclutar (HACK-017, HACK-022).** Los umbrales salen de los quintiles de HACK-017, calculados con Stuff+ v1; las formas, de Stuff+ v2.
+**Perfil a reclutar (HACK-017, HACK-022).** Umbrales y formas salen de Stuff+ v2 (HACK-017 regenerado en HACK-083).
 
-1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es 20.9 puntos a nivel del mar y solo 7.6 en el Harp Helú (`reports/recommendations/memo.md`).
-2. **Extensión alta.** El quintil superior (6.43 ft o más) pierde 9.7 puntos y el inferior 12.8 (`reports/recommendations/memo.md`).
-3. **Ángulo de llegada plano, neto de la altura de salida.** El quintil más plano pierde 9.1 puntos y el más inclinado 13.1 (`reports/recommendations/memo.md`).
+1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es 21.1 puntos a nivel del mar y solo 5.8 en el Harp Helú (`reports/recommendations/memo.md`).
+2. **Extensión alta.** El quintil superior (6.43 ft o más) pierde 11.0 puntos y el inferior 15.3 (`reports/recommendations/memo.md`).
+3. **Ángulo de llegada plano, neto de la altura de salida.** El quintil más plano pierde 12.4 puntos y el más inclinado 14.1: la brecha es menor que la de la extensión, pero sus intervalos no se traslapan (`reports/recommendations/memo.md`).
 4. **Secundarios.** Preferir curva 12-6, sweeper y splitter; desconfiar del cambio de poder y de la curva 11-5. Sin umbral de velocidad: su efecto no es robusto.
 
-La diferencia de pérdida entre la recta de *ride* y el sweeper (8.3 puntos) equivale a unas 6.0 carreras por cada 1,000 lanzamientos (`reports/recommendations/memo.md`).
+La diferencia de pérdida entre la recta de *ride* y el sweeper (8.3 puntos) equivale a unas 7.2 carreras por cada 1,000 lanzamientos (`reports/recommendations/memo.md`).
 
 **Staff candidato (HACK-032).** Para las dos franquicias candidatas, siempre por separado porque la identificación es inferida: 22 de 35 y 25 de 45 pitchers tienen un lanzamiento 5 puntos o más peor en aire del Harp Helú que su mejor lanzamiento. Moverle 10 puntos de uso en casa ahorra 2.3 y 5.2 carreras por temporada, y pasar aperturas en casa al abridor más resistente a la altura suma 2.18 y 1.38. **Total: 4.5 y 6.5 carreras por temporada (0.32 y 0.46 victorias)** con los juegos en casa observados (`reports/staff_audit/README.md`).
 

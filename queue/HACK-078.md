@@ -1,5 +1,5 @@
 ID: HACK-078
-State: MERGING
-Owner: joahan-1
-Queued: 1792382808
+State: WAITING
+Owner: victor-2
+Queued: 1792383019
 Reason: Waiting for queue

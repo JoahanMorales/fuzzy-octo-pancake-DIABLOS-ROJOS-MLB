@@ -6,7 +6,7 @@
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
 - Commands: `python -m pytest -q tests/test_value.py`
-- Next: Integrated in main: 4ee5dbf8607f27ba56151fd93869826d2cf8afc5
+- Next: Humano: Task without claim; cannot merge
 
 ## History
 - 1792378780 | CLAIMED | joahan-1 | claim; next: replace `stuff_run.StuffModel().oof` and `bundle.scalers["stuff"]` in run.py:85-92 with the production v2 OOF and scaler.
@@ -14,3 +14,4 @@
 - 1792381639 | REVIEW | victor-2 | review; approve; SHA 08c73b33dfaac8685be874122b39c75a48dfcfe9; reviewer victor-2
 - 1792382746 | REVIEW | joahan-1 | heartbeat; lease until 1792397146
 - 1792385405 | INTEGRATED | victor-2 | merge; smoke and Verify PASS; commit 4ee5dbf8607f27ba56151fd93869826d2cf8afc5; reviewer victor-2
+- 1792385572 | INTEGRATED | joahan-1 | merge rechazado; Task without claim; cannot merge

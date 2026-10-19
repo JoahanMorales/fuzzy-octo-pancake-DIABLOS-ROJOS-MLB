@@ -1,4 +1,7 @@
-"""Generate aggregate sensitivity reports from official data; never export pitches."""
+"""Generate aggregate sensitivity reports from official data; never export pitches.
+
+Scores with the production Stuff+ (v2 count-neutral value + temperature, HACK-057), the same model as
+reports/altitude_delta (HACK-076)."""
 from __future__ import annotations
 import argparse
 import importlib.util
@@ -10,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from stuffplus import config, schema
 from stuffplus.io import load_raw
-from stuffplus.altitude import STUFF_FEATURES_INVARIANT, physics_translator, counterfactual_scores
-from stuffplus.models.stuff import StuffModel
+from stuffplus.altitude import physics_translator, counterfactual_scores
+from stuffplus.models.stuff import PRODUCTION_VERSION, fit_production_stuff
 from stuffplus.scale import PlusScaler
 from stuffplus.physics.constants import RHO_HARP_HELU
 from stuffplus.sensitivity import summarize_sensitivity
@@ -26,10 +29,10 @@ def main():
     spec.loader.exec_module(module)
     shape, d = module.prepare(schema.clean(load_raw()))
     rounds = dict(class_rounds=60, contact_rounds=40) if args.fast else {}
-    model = StuffModel(features=list(STUFF_FEATURES_INVARIANT), translate=physics_translator(shape), **rounds).fit(d)
+    model = fit_production_stuff(d, translate=physics_translator(shape), k_inner=2 if args.fast else 3, **rounds)
     neutral = model.predict_at_rho(d, 1.0)
     scaler = PlusScaler().fit(d.assign(x=neutral["xrv"].to_numpy()), "x")
-    scores = counterfactual_scores(d, model, scaler, RHO_HARP_HELU)
+    scores = counterfactual_scores(d, model, scaler, rho_a=RHO_HARP_HELU, rho_b=1.0)
     frame = d[[c for c in ("PitchUID", "pitcher_anon_id", "year", "pitch_key", "pitch_family", "game_anon_id", "altitude_category") if c in d]].copy()
     for col in ("stuff_a", "stuff_b"):
         frame[col] = scores[col]
@@ -42,10 +45,11 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     for name, table in tables.items():
         table.to_csv(output / f"{name}.csv", index=False)
-    metadata = {"demo_data": False, "exploratory": True, "fast": args.fast,
+    metadata = {"demo_data": False, "exploratory": True, "fast": args.fast, "model_version": PRODUCTION_VERSION,
+                "league_delta": round(float((scores["stuff_a"] - scores["stuff_b"]).mean()), 4),
                 "pitches": len(frame), "pitcher_seasons": len(tables["pitchers"]),
                 "ranked": int(tables["pitchers"].eligible.sum()),
-                "method": "In-sample globally prepared HACK-015 model; conditional game-cluster EB intervals; not holdout validation"}
+                "method": "In-sample production Stuff+ v2 (HACK-057, same as HACK-015); conditional game-cluster EB intervals; not holdout validation"}
     (output / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n")
     print(json.dumps(metadata))
 

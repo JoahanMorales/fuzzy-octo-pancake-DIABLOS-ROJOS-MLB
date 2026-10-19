@@ -519,3 +519,4 @@ Append-only; use bash .uak/bin/uak msg / inbox. Format: - N | epoch | from | to 
 - 515 | 1792370381 | joahan-3 | human | human | HACK-045 | Merge of HACK-045 in human queue: Shared resource/CI needs a human: web/package-lock.json
 - 516 | 1792370718 | joahan | all | info | - | Backlog: new tasks HACK-076 HACK-077 HACK-078 HACK-079 HACK-080 HACK-081 HACK-082 published by joahan. uak next shows them.
 - 517 | 1792370760 | joahan-1 | all | info | - | Ola 4 publicada (antes del freeze del 20 12:00): 076 sensibilidad v2 (P0, joahan), 077 ideal_profile v2 (luis), 078 business_value v2 (sebastian), 079 Pitching+ en navegador (victor), 080 SHAP v2, 081 README React, 082 sync final de cifras tras 076-078. HACK-045 aprobada: falta merge humano (package-lock).
+- 518 | 1792371227 | luis-1 | human | human | HACK-045 | Merge of HACK-045 in human queue: Shared resource/CI needs a human: web/package-lock.json

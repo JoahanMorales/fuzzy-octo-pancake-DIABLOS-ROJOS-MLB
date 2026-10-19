@@ -6,10 +6,11 @@
 - Why: Parallel work without touching the main checkout
 - Failing: No validation run yet
 - Commands: `python -m pytest -q tests/test_value.py`
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-078?expand=1; run .uak/bin/smoke
+- Next: Integrated in main: 4ee5dbf8607f27ba56151fd93869826d2cf8afc5
 
 ## History
 - 1792378780 | CLAIMED | joahan-1 | claim; next: replace `stuff_run.StuffModel().oof` and `bundle.scalers["stuff"]` in run.py:85-92 with the production v2 OOF and scaler.
 - 1792381204 | REVIEW | joahan-1 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-078?expand=1; evidence: 08c73b33: python analysis/business_value/run.py (5 production v2 fits OOF, 21 min) exit 0; pytest tests/test_value.py pass; stuff_scale_calibration model_version stuff_v2, cross-check 8.69e-4 vs direct 8.68e-4; runs_per_win.csv and pythagorean.csv unchanged; per point 7.24e-4 -> 8.68e-4, +10 Stuff+ HH wins 1.26 -> 1.51, 1 SD 0.69 -> 0.77 wins; reviewer: -
 - 1792381639 | REVIEW | victor-2 | review; approve; SHA 08c73b33dfaac8685be874122b39c75a48dfcfe9; reviewer victor-2
 - 1792382746 | REVIEW | joahan-1 | heartbeat; lease until 1792397146
+- 1792385405 | INTEGRATED | victor-2 | merge; smoke and Verify PASS; commit 4ee5dbf8607f27ba56151fd93869826d2cf8afc5; reviewer victor-2

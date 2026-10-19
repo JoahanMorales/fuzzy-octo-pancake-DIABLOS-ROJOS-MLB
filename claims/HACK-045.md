@@ -12,6 +12,6 @@ Verify: `npm --prefix web test -- --run src/features/simulador`
 Lease-Until: 1792384674
 Updated: 1792370274
 Task-Base: f874187dbc6a7ef65dcd59f150bcd7950f26613b
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-045?expand=1; run .uak/bin/smoke
+Next: Humano: Shared resource/CI needs a human: web/package-lock.json
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-045?expand=1
 Evidence: -

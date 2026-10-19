@@ -11,7 +11,7 @@ An owner is not a prerequisite for everyone: consumers work on published contrac
 | stuffplus/config.py | HACK-001 |
 | stuffplus/io.py | HACK-001 |
 | tests/conftest.py | HACK-001 |
-| README.md | HACK-001 |
+| README.md | HACK-081 |
 | .uak/PROJECT.md | HACK-001 |
 | .github/workflows/ | HACK-073 |
 | stuffplus/schema.py | HACK-002 |

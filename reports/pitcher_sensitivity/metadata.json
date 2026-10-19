@@ -2,8 +2,10 @@
   "demo_data": false,
   "exploratory": true,
   "fast": false,
+  "model_version": "stuff_v2",
+  "league_delta": -12.9534,
   "pitches": 623231,
   "pitcher_seasons": 1455,
   "ranked": 1277,
-  "method": "In-sample globally prepared HACK-015 model; conditional game-cluster EB intervals; not holdout validation"
+  "method": "In-sample production Stuff+ v2 (HACK-057, same as HACK-015); conditional game-cluster EB intervals; not holdout validation"
 }

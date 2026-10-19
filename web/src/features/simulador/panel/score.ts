@@ -2,13 +2,25 @@
  * Scores one release in two airs with the published trees (HACK-040) and `physics_translator`.
  * The flight engine draws the ball; it does not move the features the model sees.
  */
-import { locationValue, predict, toPlus, type CompositeModel, type FeatureRow, type Prediction } from '../../../model/predict';
+import {
+  fillPitchingRow,
+  locationValue,
+  pitchingXrv,
+  predict,
+  toPlus,
+  type CompositeModel,
+  type FeatureRow,
+  type PitchingModel,
+  type Prediction,
+} from '../../../model/predict';
 import physics from '../../../physics/physics.json';
 import { RHO_REF, type Release } from '../flight/presets';
 
 export interface Models {
   stuff: CompositeModel;
   location: CompositeModel;
+  /** HACK-079; null or absent when `models/pitching.json` is missing (the panel then says "sin modelo"). */
+  pitching?: PitchingModel | null;
   demo: boolean;
 }
 
@@ -25,9 +37,14 @@ export async function loadModels(fetchImpl: typeof fetch = fetch): Promise<Model
       return res.json() as Promise<CompositeModel & { demo_data?: boolean }>;
     }),
   ]);
+  const pitching = await fetchImpl(`${base}data/models/pitching.json`)
+    .then((res) => (res.ok ? (res.json() as Promise<PitchingModel>) : null))
+    .then((m) => (m?.targets && m.combination ? m : null)) // a bare composite (the HACK-038 mock) is not Pitching+
+    .catch(() => null);
   return {
     stuff,
     location,
+    pitching,
     demo: stuff.demo_data !== false || location.demo_data !== false,
   };
 }
@@ -86,9 +103,9 @@ export function translateRow(row: FeatureRow, rhoTo: number, rhoFrom = 1): Featu
 export interface SideScore {
   stuff: number;
   location: number;
-  /** Pitching+ model is not in the export; serving uses Stuff+ until `models/pitching.json` exists. */
+  /** Pitching+ from `models/pitching.json`; without it the value repeats Stuff+ and the source says so. */
   pitching: number;
-  pitchingSource: 'stuff-fallback';
+  pitchingSource: 'model' | 'stuff-fallback';
   pred: Prediction;
   ivb: number;
   hb: number;
@@ -113,6 +130,20 @@ function plusOf(model: CompositeModel, xrv: number): number {
   return toPlus(model, xrv);
 }
 
+/** Pitching+ row: the release (already in this air) + plate and count; arsenal, game state and batter it cannot know
+ *  come from the export's league-average batter and family medians. A fastball has no gap to its own fastball. */
+export function pitchingRow(model: PitchingModel, row: FeatureRow, locRow: FeatureRow, release: Release, ctx: ScoreContext): FeatureRow {
+  return fillPitchingRow(model, {
+    ...row,
+    ...locRow,
+    velo_diff_vs_fb: row.velo_diff_fb,
+    ivb_diff_vs_fb: row.ivb_diff_fb,
+    hb_diff_vs_fb: row.hb_diff_fb,
+    ...(release.fastball ? { spin_diff_vs_fb: 0, axis_diff_vs_fb: 0 } : {}),
+    pitch_number_in_pa: ctx.balls + ctx.strikes + 1,
+  });
+}
+
 function side(
   models: Models,
   row: FeatureRow,
@@ -132,11 +163,12 @@ function side(
     rho: row.rho,
   };
   const loc = predict(models.location, locRow);
+  const pitching = models.pitching ? toPlus(models.pitching, pitchingXrv(models.pitching, pitchingRow(models.pitching, row, locRow, release, ctx))) : null;
   return {
     stuff: plusOf(models.stuff, pred.xrv),
     location: plusOf(models.location, locationValue(models.location, locRow, loc.xrv)),
-    pitching: plusOf(models.stuff, pred.xrv),
-    pitchingSource: 'stuff-fallback',
+    pitching: pitching ?? plusOf(models.stuff, pred.xrv),
+    pitchingSource: pitching === null ? 'stuff-fallback' : 'model',
     pred,
     ivb: Number(row.InducedVertBreak),
     hb: Number(row.hb_arm),

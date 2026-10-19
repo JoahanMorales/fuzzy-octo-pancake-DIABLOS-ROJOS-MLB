@@ -36,7 +36,7 @@ from stuffplus.scale import PlusScaler
 MODELS_DIR = config.repo_root() / "web" / "public" / "data" / "models"
 FIXTURES_DIR = config.repo_root() / "web" / "src" / "model" / "fixtures"
 MODEL_LABEL = "pitch_family Stuff+ composite"
-SIZE_BUDGET_MB = 15.0
+SIZE_BUDGET_MB = 20.0  # models/ inside the 25 MB web build (scripts/check_web_dist.py)
 _NODE_KEYS = ("split_feature", "threshold", "decision_type")
 
 
@@ -328,6 +328,138 @@ def fit_location(d: pd.DataFrame, k_inner: int = 3, **rounds):
     return m, sc
 
 
+# ---- Pitching+ (HACK-079): HACK-012 components + 8 target boosters + sign-constrained combination ----
+
+# features the simulator panel cannot supply: filled with the training median of the pitch family (league if unseen)
+PANEL_FILL = ["spin_diff_vs_fb", "axis_diff_vs_fb", "pitch_usage_pct", "arsenal_size", "tunnel_ratio",
+              "decision_sep_vs_fb", "release_dist_vs_fb", "Outs", "inning_capped", "times_through_order",
+              "pitch_number_in_pa", "prev_velo_diff", "prev_loc_diff"]
+# production is 300/200/200 (13.7 MB of trees); the browser copy keeps fewer rounds so the build stays under 25 MB
+PITCHING_ROUNDS = dict(class_rounds=70, contact_rounds=100, target_rounds=40)
+
+
+class PitchingExport:
+    """The fitted Pitching+ pieces the browser needs; ``predict_xrv`` is the Python reference for the goldens."""
+
+    def __init__(self, components, targets: dict, combiner, batter: dict, zone: dict, features: Sequence[str]):
+        self.components, self.targets, self.combiner = components, targets, combiner
+        self.batter, self.zone, self.features = batter, zone, list(features)
+
+    def rates(self, rows: pd.DataFrame) -> pd.DataFrame:
+        from stuffplus.models import multitarget as mt
+
+        comps = self.components.predict_components(rows)
+        probs = mt.predict_targets(self.targets, rows, self.features)
+        zoned = rows.assign(outside_strike_zone=outside_zone(rows, self.zone))
+        return mt.event_rates(probs, zoned, comps["p_in_play"].to_numpy(float), comps["xrv"].to_numpy(float))
+
+    def predict_xrv(self, rows: pd.DataFrame) -> np.ndarray:
+        return self.combiner.predict(self.rates(rows))
+
+
+def outside_zone(rows: pd.DataFrame, zone: dict) -> np.ndarray:
+    """Trackman's outside_strike_zone as a box on the plate (feet); the panel only knows the plate location."""
+    x = pd.to_numeric(rows["plate_x_arm"], errors="coerce").abs().to_numpy(float)
+    z = pd.to_numeric(rows["PlateLocHeight"], errors="coerce").to_numpy(float)
+    out = (x > zone["x"]) | (z < zone["z_low"]) | (z > zone["z_high"])
+    return np.where(np.isnan(x) | np.isnan(z), 0.0, out.astype(float))
+
+
+def zone_box(d: pd.DataFrame) -> dict:
+    """The box of pitches Trackman flags inside the zone (matches the flag on ~99 % of LMB pitches)."""
+    ins = d[d["outside_strike_zone"].astype(float).eq(0.0)]
+    return {"x": float(ins["PlateLocSide"].abs().max()), "z_low": float(ins["PlateLocHeight"].min()),
+            "z_high": float(ins["PlateLocHeight"].max())}
+
+
+def fit_pitching(pf: pd.DataFrame, k: int = 5, class_rounds: int = 300, contact_rounds: int = 200,
+                 target_rounds: int = 200) -> tuple[PitchingExport, PlusScaler]:
+    """Production Pitching+: combination weights fitted on out-of-fold rates (``combine()['final']``), boosters
+    refitted on every pitch with the actual batters, Plus scaler on the league-average-batter xRV in the pitch's own
+    air (``score.score_pitches``). ``pf`` = ``models.pitching.build_features`` output."""
+    from stuffplus import splits
+    from stuffplus.models import multitarget as mt
+    from stuffplus.models.pitching import PITCHING_FEATURES, PitchingComponents, batter_table, run_oof, with_batter
+
+    folds = list(splits.pitcher_group_kfold(pf, k=k))
+    oof = run_oof(pf, folds, class_rounds=class_rounds, contact_rounds=contact_rounds, target_rounds=target_rounds)
+    combiner = mt.Combiner().fit(oof["rates"], pf["rv_x"].to_numpy(float))
+    tab, mu = batter_table(pf)
+    train = with_batter(pf, tab, mu)
+    pc = PitchingComponents(class_rounds=class_rounds, contact_rounds=contact_rounds).fit(train)
+    targets = mt.fit_targets(train, PITCHING_FEATURES, rounds=target_rounds)
+    m = PitchingExport(pc, targets, combiner, mu, zone_box(pf), PITCHING_FEATURES)
+    sc = PlusScaler().fit(pf.assign(x=m.predict_xrv(with_batter(pf, tab, mu, neutral=True))), "x")
+    return m, sc
+
+
+def with_batters(pf: pd.DataFrame) -> pd.DataFrame:
+    """``pf`` with each pitch's shrunk batter-season quality (the rows the boosters were trained on)."""
+    from stuffplus.models.pitching import batter_table, with_batter
+
+    return with_batter(pf, *batter_table(pf))
+
+
+def panel_fill(pf: pd.DataFrame) -> dict:
+    """Training medians of PANEL_FILL, league-wide and by pitch family."""
+    med = pf[PANEL_FILL].median()
+    by = pf.groupby(pf["pitch_family"].astype(str), observed=True)[PANEL_FILL].median()
+    return {"league": {f: float(med[f]) for f in PANEL_FILL},
+            "by_family": {fam: {f: float(v) for f, v in row.items() if pd.notna(v)} for fam, row in by.iterrows()}}
+
+
+def export_pitching(m: PitchingExport, scaler: PlusScaler, *, model_version: str, sources: Sequence[str],
+                    demo_data: bool, fill: dict | None = None, packed: bool = True) -> dict:
+    """``export_composite`` of the components + the 8 target boosters (binary: sigmoid of the tree sum), the
+    combination (intercept + rate weights), the zone box, the league-average batter and the panel fill."""
+    from stuffplus.models import multitarget as mt
+
+    payload = export_composite(m.components, scaler, "pitching", model_version=model_version, sources=sources,
+                               demo_data=demo_data, packed=packed)
+    payload["targets"] = {t[2:]: {"trees": dump_trees(m.targets[t], packed)} for t in mt.TARGETS}
+    payload["combination"] = {"intercept": float(m.combiner.intercept),
+                              "weights": {k: float(v) for k, v in m.combiner.weights.items()}}
+    payload["zone"] = dict(m.zone)
+    payload["neutral"] = {"batter": {k: float(v) for k, v in m.batter.items()},
+                          **(fill or {"league": {}, "by_family": {}})}
+    return payload
+
+
+def _sigmoid(z: np.ndarray) -> np.ndarray:
+    return 1.0 / (1.0 + np.exp(-z))
+
+
+def evaluate_pitching(payload: dict, rows: pd.DataFrame) -> np.ndarray:
+    """Combined xRV from the JSON alone (the rows carry every feature; filling is the panel's job)."""
+    p, contact = _components(payload, rows)
+    v = np.array([c["rv"] for c in payload["class_values"]])
+    xrv_c = p[:, :4] @ v[:4] + p[:, 4] * contact
+    X = encode(payload, rows)
+    q = {name: _sigmoid(np.array([sum(_leaf(_root(t), r) for t in block["trees"]) for r in X]))
+         for name, block in payload["targets"].items()}
+    pin = p[:, 4]
+    rates = {"whiff_rate": q["swing"] * q["whiff"], "called_strike_rate": (1 - q["swing"]) * q["called_strike"],
+             "chase_rate": outside_zone(rows, payload["zone"]) * q["chase"], "weak_contact_rate": pin * q["weak_contact"],
+             "groundball_rate": pin * q["groundball"], "hard_contact_rate": pin * q["hard_contact"],
+             "out_in_pa": q["out_in_pa"], "xrv_components": xrv_c}
+    comb = payload["combination"]
+    return comb["intercept"] + sum(w * rates[k] for k, w in comb["weights"].items())
+
+
+def pitching_golden(m: PitchingExport, rows: pd.DataFrame) -> dict:
+    recs = rows.astype(object).where(rows.notna(), None).to_dict(orient="records")
+    return {"rows": recs, "xrv": np.asarray(m.predict_xrv(rows), float).tolist()}
+
+
+def fidelity(m: PitchingExport, sc: PlusScaler, pf: pd.DataFrame, scores: Path) -> dict:
+    """Pearson r of the exported Pitching+ (in sample, league-average batter) with the leaderboard's OOF Pitching+."""
+    s = pd.read_parquet(scores, columns=["PitchUID", "pitching_plus"]).set_index("PitchUID")["pitching_plus"]
+    neutral = pf.drop(columns=[c for c in m.batter if c in pf]).assign(**m.batter)
+    web = pd.Series(sc.transform(pf.assign(x=m.predict_xrv(neutral)), "x").to_numpy(), index=pf["PitchUID"])
+    j = s.to_frame("lb").join(web.rename("web"), how="inner").dropna()
+    return {"pearson_r": round(float(j.lb.corr(j.web)), 4), "n_pitches": int(len(j)), "against": scores.name}
+
+
 def _prepare(clean: pd.DataFrame):
     from stuffplus.altitude import physics_translator
     from stuffplus.score import _load
@@ -400,12 +532,44 @@ def write_goldens(out_dir: Path = FIXTURES_DIR, n: int = 120) -> None:
     write_json(export_composite(m, sc, "stuff", model_version="synthetic", sources=["tests/fixtures/synthetic.py"],
                                 demo_data=True), out_dir / "stuff_synthetic_packed.json")
     write_json(golden(m, payload, rows), out_dir / "stuff_synthetic_golden.json")
+    # Pitching+ (HACK-079): components + target boosters + combination, small rounds
+    from stuffplus.models.pitching import build_features
+
+    pf = build_features(d)
+    pm, psc = fit_pitching(pf, k=2, class_rounds=20, contact_rounds=15, target_rounds=15)
+    pp = export_pitching(pm, psc, model_version="synthetic", sources=["tests/fixtures/synthetic.py"], demo_data=True,
+                         fill=panel_fill(pf))
+    pb = with_batters(pf)
+    prows = pd.concat([pb[pp["features"]].sample(n // 2, random_state=2).reset_index(drop=True),
+                       random_rows(pp, n - n // 2, pb, seed=5)], ignore_index=True)
+    write_json(pp, out_dir / "pitching_synthetic.json")
+    write_json(pitching_golden(pm, prows), out_dir / "pitching_synthetic_golden.json")
+
+
+def export_pitching_real(d: pd.DataFrame, args, version: str) -> float:
+    """Pitching+ on the real data at PITCHING_ROUNDS (fast: smoke rounds), with its fidelity to the leaderboard."""
+    from stuffplus.models.pitching import build_features
+
+    pf = build_features(d)
+    rounds = dict(class_rounds=40, contact_rounds=30, target_rounds=20) if args.fast else PITCHING_ROUNDS
+    m, sc = fit_pitching(pf, k=2 if args.fast else 5, **rounds)
+    p = export_pitching(m, sc, model_version=version.replace("stuff_v2", "pitching"), demo_data=False,
+                        fill=panel_fill(pf), sources=["stuffplus/export_trees.py", "stuffplus/models/pitching.py",
+                                                      "stuffplus/models/multitarget.py"])
+    p["rounds"] = rounds
+    if args.scores.exists():
+        p["fidelity"] = fidelity(m, sc, pf, args.scores)
+        print("pitching fidelity", p["fidelity"])
+    return write_json(p, MODELS_DIR / "pitching.json")
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--fast", action="store_true")
     ap.add_argument("--golden", action="store_true", help="only write the synthetic parity goldens")
+    ap.add_argument("--only", choices=["all", "pitching"], default="all", help="pitching: only models/pitching.json")
+    ap.add_argument("--scores", type=Path, default=config.ARTIFACTS_DIR / "scores" / "pitch_scores.parquet",
+                    help="leaderboard scores for the Pitching+ fidelity check (skipped if missing)")
     args = ap.parse_args()
     if args.golden:
         write_goldens()
@@ -420,6 +584,8 @@ def main() -> None:
     src = ["stuffplus/export_trees.py", "stuffplus/models/stuff.py", "stuffplus/models/stuff_v2.py",
            "stuffplus/calibration.py", "stuffplus/altitude.py"]
     total = 0.0
+    if args.only == "pitching":
+        return print(f"pitching.json {export_pitching_real(d, args, version):.2f} MB")
     m, sc = fit_stuff(d, translate, k_inner=k_inner, **rounds)
     stuff = export_composite(m, sc, "stuff", model_version=version, sources=src, demo_data=False)
     total += write_json(stuff, MODELS_DIR / "stuff.json")
@@ -434,6 +600,7 @@ def main() -> None:
         count=lrows.Balls.round().astype("Int64").astype(str) + "-" + lrows.Strikes.round().astype("Int64").astype(str)),
         np.asarray(lg["xrv"])).tolist()
     write_json(lg, FIXTURES_DIR / "location_real_golden.json")
+    total += export_pitching_real(d, args, version)
     print(f"wrote {MODELS_DIR} ({total:.2f} MB; budget {SIZE_BUDGET_MB} MB)")
 
 

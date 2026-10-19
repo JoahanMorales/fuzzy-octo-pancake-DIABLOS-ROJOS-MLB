@@ -21,7 +21,7 @@ function signed(n: number): string {
   return n >= 0 ? `+${body}` : `−${body}`;
 }
 
-/** `pitching` is null while Pitching+ has no exported model: the cell says so instead of repeating Stuff+. */
+/** `pitching` is null when `models/pitching.json` is missing: the cell says so instead of repeating Stuff+. */
 function Column({ label, stuff, location, pitching }: { label: string; stuff: number; location: number; pitching: number | null }) {
   return (
     <div className="sp-col">
@@ -66,7 +66,10 @@ export function Panel({ score, parkLabel, rho, lost, shapeNote, releaseSource, m
         </ul>
       </section>
       <p className="sp-src">
-        {modelNote} ρ {rho.toFixed(3)}. {releaseSource}. Pitching+ sin modelo publicado: falta models/pitching.json.
+        {modelNote} ρ {rho.toFixed(3)}. {releaseSource}.{' '}
+        {score.sea.pitchingSource === 'model'
+          ? 'Pitching+ (models/pitching.json): bateador promedio de la LMB y contexto de juego típico de la familia.'
+          : 'Pitching+ sin modelo publicado: falta models/pitching.json.'}
       </p>
     </article>
   );

@@ -228,3 +228,32 @@
 @media (prefers-reduced-transparency: reduce) {
   .sim-lower { background: var(--surface); }
 }
+
+/* labels hung in the 3D scene (broadcast tracking look) */
+.sim-tag {
+  transform: translate(8px, -50%);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill, 999px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: nowrap;
+  background: rgb(12 12 14 / 0.82);
+  border: 1px solid var(--line-strong, #3a3a43);
+  color: var(--fg, #f1f1f3);
+  backdrop-filter: blur(4px);
+}
+
+.sim-tag b {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.sim-tag-hh {
+  border-color: var(--red, #c8102e);
+  box-shadow: inset 3px 0 0 var(--red, #c8102e);
+}
+
+.sim-tag-note {
+  color: var(--fg-muted, #a6a6b0);
+}

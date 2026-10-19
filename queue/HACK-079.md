@@ -1,5 +1,5 @@
 ID: HACK-079
-State: WAITING
+State: MERGING
 Owner: victor-1
 Queued: 1792381718
 Reason: Waiting for queue

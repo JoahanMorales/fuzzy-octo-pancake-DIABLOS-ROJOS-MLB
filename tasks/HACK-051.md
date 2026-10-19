@@ -9,13 +9,13 @@ Priority: P1
 Paths: web/e2e/
 Depends: HACK-045, HACK-043
 Verify: `npm --prefix web run build && npx --prefix web playwright test`
-Lease-Until: 1792376349
-Updated: 1792373649
+Lease-Until: 1792376943
+Updated: 1792374243
 Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
-Next: `web/e2e/flow.spec.ts`.
+Next: abrir PR y uak done; avisar a HACK-059 de las capturas
 PR: -
 Evidence: -
-Events: 2
-Checkpoints: 0
+Events: 3
+Checkpoints: 1
 Sessions: 1
-Last-Checkpoint: 0
+Last-Checkpoint: 1792374243

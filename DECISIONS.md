@@ -129,3 +129,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792311033 | HACK-025 | Do not mark done: video, other-laptop rehearsal, public URL and sending are human-owned | Why: Acceptance requires planb.mp4 (human), clean-clone rehearsal and the email
 - 1792369570 | deadline lease/HACK-025/1792313733 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792370718 | plan | joahan/joahan | tasks added: HACK-076 HACK-077 HACK-078 HACK-079 HACK-080 HACK-081 HACK-082 | Why: backlog without PR (Plan-Channel: claims)
+- 1792374243 | HACK-051 | --host 127.0.0.1 en playwright.config; Verify efectivo npm --prefix web run e2e | Why: vite escuchaba en ::1; npx --prefix web no cambia cwd

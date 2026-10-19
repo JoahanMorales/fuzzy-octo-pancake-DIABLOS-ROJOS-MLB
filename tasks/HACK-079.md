@@ -15,7 +15,7 @@ Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
 Next: mirror `export_composite` for the Pitching+ components + weights.
 PR: -
 Evidence: -
-Events: 1
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

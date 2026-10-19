@@ -9,13 +9,13 @@ Priority: P0
 Paths: reports/recommendations/, reports/staff_audit/, web/public/data/real/, docs/technical/, demo/deck/, demo/one-pager/, demo/qa.md, demo/script.md
 Depends: HACK-076, HACK-077, HACK-078
 Verify: `python docs/technical/check_numbers.py && python demo/deck/verify.py && test -s docs/technical/stuffplus2240.pdf`
-Lease-Until: 1792388497
-Updated: 1792385797
+Lease-Until: 1792388852
+Updated: 1792386152
 Task-Base: 4ee5dbf8607f27ba56151fd93869826d2cf8afc5
-Next: wait for 076–078, then run the three generators in that order.
+Next: After 083 merges: merge main, run reports/recommendations/build_memo.py, update paper §7 thresholds (IVB 21.1/5.8, extension -11.0/-15.3, VAA -12.4/-14.1, ride vs sweeper runs), rebuild PDF + deck, done
 PR: -
 Evidence: -
-Events: 1
-Checkpoints: 0
+Events: 2
+Checkpoints: 1
 Sessions: 1
-Last-Checkpoint: 0
+Last-Checkpoint: 1792386152

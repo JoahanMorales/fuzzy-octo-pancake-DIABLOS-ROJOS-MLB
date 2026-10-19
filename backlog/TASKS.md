@@ -699,3 +699,15 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
   - Every number that changed is listed in the PR with old → new.
 - **Verify:** `python docs/technical/check_numbers.py && python demo/deck/verify.py && test -s docs/technical/stuffplus2240.pdf`
 - **Next step:** wait for 076–078, then run the three generators in that order.
+
+## HACK-083 · Regenerate reports/ideal_profile with production Stuff+ v2 (077 merged the code; the CSVs are still v1) (follow-up of HACK-077)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Depends on:** HACK-077
+- **Follow-up of:** HACK-077
+- **Paths:** stuffplus/profile.py, analysis/ideal_profile/, reports/ideal_profile/, tests/test_profile.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - Regenerate reports/ideal_profile with production Stuff+ v2 (077 merged the code; the CSVs are still v1)
+- **Verify:** `python -m pytest -q tests/test_profile.py`

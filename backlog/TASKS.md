@@ -586,3 +586,116 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:**
   - Regenerate web/public/data/real with production Stuff+ v2 (real export still has v1 deltas)
 - **Verify:** `python -m pytest -q tests/test_validation.py tests/test_model_stuff.py`
+## HACK-076 · Pitcher altitude sensitivity on production Stuff+ v2 (HACK-018 still fits the v1 StuffModel)
+
+- **Type:** follow-up
+- **Priority:** P0
+- **Estimate:** 90 min
+- **Rubric / Spec:** C1 C2
+- **Depends on:** None
+- **Uses contract:** HACK-057
+- **Paths:** analysis/pitcher_sensitivity/, reports/pitcher_sensitivity/, stuffplus/sensitivity.py, tests/test_sensitivity.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - `analysis/pitcher_sensitivity/run.py` scores with `fit_production_stuff` (Stuff+ v2 + temperature, `physics_translator`) instead of `StuffModel`; `metadata.json` says `model_version: stuff_v2`.
+  - `reports/pitcher_sensitivity/` regenerated; its `league_delta` agrees with the production league ΔStuff+ (−13.0, `reports/altitude_delta/delta_by_shape.csv`) within ±1.5 or the README explains the weighting difference with numbers.
+  - `top15.csv`/`bottom15.csv` and the altitude-proof index regenerated; no per-pitch rows committed.
+- **Verify:** `python -m pytest -q tests/test_sensitivity.py`
+- **Next step:** swap `StuffModel(...).fit(d)` in run.py:29 for `fit_production_stuff(d, translate=physics_translator(shape))`.
+
+## HACK-077 · Ideal profile (recruiting thresholds) on production Stuff+ v2 (HACK-017 still fits the v1 StuffModel)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Estimate:** 90 min
+- **Rubric / Spec:** C2 C3
+- **Depends on:** None
+- **Uses contract:** HACK-057
+- **Paths:** stuffplus/profile.py, analysis/ideal_profile/, reports/ideal_profile/, tests/test_profile.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - `analysis/ideal_profile/run.py` uses `fit_production_stuff`; `delta_by_trait.csv`, `rho_sensitivity.csv`, `best_fastballs.csv`, `best_secondaries.csv` and `profile.md` regenerated from v2.
+  - The recruiting checklist (IVB range sea vs Harp Helú, extension and VAA quintiles, velocity) is restated from the new CSVs; any rule that flips sign or loses robustness is said so in `profile.md`.
+- **Verify:** `python -m pytest -q tests/test_profile.py`
+- **Next step:** swap `StuffModel(...).fit(d)` in run.py:50 for `fit_production_stuff`.
+
+## HACK-078 · Business value on the Stuff+ v2 scale (HACK-035 converts with the v1 bundle scaler)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Estimate:** 90 min
+- **Rubric / Spec:** C3 C4
+- **Depends on:** None
+- **Uses contract:** HACK-057
+- **Paths:** stuffplus/value.py, analysis/business_value/, reports/business_value/, tests/test_value.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - Runs per Stuff+ point estimated from out-of-fold **Stuff+ v2** predictions (production model and its PlusScaler), not the v1 bundle; `stuff_scale_calibration.csv` records `model_version: stuff_v2`.
+  - `runs_per_point_direct.csv`, `gm_example.csv`, `pitcher_spread_example.csv`, `conversion_table.csv` and `summary.md` regenerated; Pythagorean runs-per-win unchanged.
+- **Verify:** `python -m pytest -q tests/test_value.py`
+- **Next step:** replace `stuff_run.StuffModel().oof` and `bundle.scalers["stuff"]` in run.py:85-92 with the production v2 OOF and scaler.
+
+## HACK-079 · Pitching+ in the browser: export models/pitching.json and score it in the simulator
+
+- **Type:** feature
+- **Priority:** P1
+- **Estimate:** 3 h
+- **Rubric / Spec:** C3 C4
+- **Depends on:** HACK-045
+- **Uses contract:** HACK-066
+- **Paths:** stuffplus/export_trees.py, web/public/data/models/pitching.json, web/src/model/predict.ts, web/src/model/predict.test.ts, web/src/features/simulador/panel/
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - `python -m stuffplus.export_trees` writes `web/public/data/models/pitching.json` (component trees, combination weights, neutral batter, Plus stats), within the 25 MB data budget.
+  - `predict.ts` scores Pitching+ with Python parity on a synthetic golden (same rule as HACK-040/066).
+  - The simulator panel shows real Pitching+ in both airs; the 'sin modelo' fallback stays only when the file is missing.
+- **Verify:** `python -m pytest -q tests/test_export_trees.py && npm --prefix web test -- --run src/model src/features/simulador`
+- **Next step:** mirror `export_composite` for the Pitching+ components + weights.
+
+## HACK-080 · SHAP explanations on production Stuff+ v2 (HACK-019 explains the v1 model)
+
+- **Type:** follow-up
+- **Priority:** P2
+- **Estimate:** 60 min
+- **Rubric / Spec:** C2 C3
+- **Depends on:** None
+- **Uses contract:** HACK-057
+- **Paths:** stuffplus/explain.py, reports/explain/, tests/test_explain.py
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - Global and per-pitch TreeSHAP regenerated on the v2 count-neutral value (or its count-averaged components), with the Spanish coach text; the README states what the SHAP target is.
+- **Verify:** `python -m pytest -q tests/test_explain.py`
+- **Next step:** point `stuffplus/explain.py` at the production classifier and the count-neutral value.
+
+## HACK-081 · README for the React product and Stuff+ v2
+
+- **Type:** docs
+- **Priority:** P1
+- **Estimate:** 45 min
+- **Rubric / Spec:** C4
+- **Depends on:** None
+- **Uses contract:** HACK-050
+- **Paths:** README.md
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - README leads with the React app (`npm --prefix web ci && npm --prefix web run dev`, deploy via `deploy/web/README.md`); Streamlit only as legacy if kept.
+  - Headline numbers are v2 and each cites its `reports/` file (league ΔStuff+ −13.0, skill vs null, altitude bias); links to the paper, deck and one-pager v2 resolve.
+- **Verify:** `test -s README.md && python docs/technical/check_numbers.py README.md`
+- **Next step:** replace the Streamlit run block (README.md:55).
+
+## HACK-082 · Final numbers sync after the v2 migrations (memo, web export, paper, deck, one-pager)
+
+- **Type:** integration
+- **Priority:** P0
+- **Estimate:** 2 h
+- **Rubric / Spec:** C1 C2 C3 C4
+- **Depends on:** HACK-076, HACK-077, HACK-078
+- **Uses contract:** HACK-058, HACK-059
+- **Paths:** reports/recommendations/, reports/staff_audit/, web/public/data/real/, docs/technical/, demo/deck/, demo/one-pager/, demo/qa.md, demo/script.md
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - Re-run `reports/recommendations/build_memo.py`, the staff audit and `analysis.export_web.run` on the migrated reports.
+  - Paper and deck drop the "escala v1" caveats that no longer apply; `python docs/technical/check_numbers.py` passes; `python demo/deck/build.py && python demo/deck/verify.py` pass; PDFs rebuilt.
+  - Every number that changed is listed in the PR with old → new.
+- **Verify:** `python docs/technical/check_numbers.py && python demo/deck/verify.py && test -s docs/technical/stuffplus2240.pdf`
+- **Next step:** wait for 076–078, then run the three generators in that order.

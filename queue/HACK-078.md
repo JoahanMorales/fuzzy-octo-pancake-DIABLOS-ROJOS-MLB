@@ -1,5 +1,5 @@
 ID: HACK-078
-State: WAITING
+State: HUMAN
 Owner: victor-2
 Queued: 1792383019
-Reason: Waiting for queue
+Reason: Lock lease expired; revalidate before merging

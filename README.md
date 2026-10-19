@@ -5,13 +5,35 @@ ISAC Sports Analytics Hackathon 2026 · reto Diablos Rojos: *calidad de pitcheo 
 
 Stuff+ 2240 evalúa cada lanzamiento de la LMB por sus propiedades físicas, su ubicación y su relación con el arsenal del pitcher, y estima cuánto vale **ese mismo pitch** en el aire del Estadio Alfredo Harp Helú (~2,240 m) frente a un estadio a nivel del mar. Escala: 100 = promedio de la liga, 110 = una desviación estándar mejor.
 
+## Producto web (React)
+
+La entrega es una app React estática: simulador 3D de dos aires, altitud, leaderboard, fichas de pitcher, staff, prospecto, laboratorio, física, metodología y presentación. Corre en el navegador con agregados JSON y modelos de árboles exportados desde Python; no lleva datos por lanzamiento.
+
+```bash
+npm --prefix web ci
+npm --prefix web run dev            # http://localhost:5173
+npm --prefix web test -- --run      # vitest
+npm --prefix web run build          # web/dist/
+```
+
+Publicación del sitio estático: [`deploy/web/README.md`](deploy/web/README.md). Detalles del frontend: [`web/README.md`](web/README.md).
+
+## Cifras principales (Stuff+ v2)
+
+- **El mismo lanzamiento pierde 13.0 puntos de Stuff+ en el aire del Harp Helú** (promedio de la liga sobre las formas de lanzamiento) (`reports/recommendations/memo.md`).
+- **Stuff+ v2 le gana al modelo nulo de la rúbrica por lanzamiento** en las tres particiones: +0.18 %, +0.20 % y +0.23 % de RMSE, con IC que excluyen 0 (`reports/stuff_v2/skill.csv`).
+- **La física corrige el sesgo de altitud.** Entrenado sin un solo juego de altitud extrema, el nulo subestima el daño allí en +0.0108 carreras por lanzamiento; Stuff+ v2 deja +0.0018 (`reports/stuff_v2/altitude_bias.csv`).
+
+## Documentos
+
 | Qué | Dónde |
 |---|---|
-| Idea, flujo de demo y hallazgos | [`IDEA.md`](IDEA.md) |
-| Plan del equipo y calendario | [`docs/PLAN-EQUIPO.md`](docs/PLAN-EQUIPO.md) |
-| Backlog (36 tareas) y grafo | [`.uak/TASKS.md`](.uak/TASKS.md) · [`docs/backlog-graph.md`](docs/backlog-graph.md) |
-| Contrato de datos y API | `docs/CONTRACT.md` (HACK-002) |
-| Documento técnico | `docs/technical/` (HACK-008 / HACK-023) |
+| Documento técnico (paper) | [`docs/technical/paper.md`](docs/technical/paper.md) · [PDF](docs/technical/stuffplus2240.pdf) |
+| Presentación ejecutiva v2 | [`demo/deck/deck.pdf`](demo/deck/deck.pdf) · [PPTX](demo/deck/deck.pptx) · [fuentes](demo/deck/README.md) |
+| Resumen ejecutivo v2 (one-pager) | [`demo/one-pager/one-pager.pdf`](demo/one-pager/one-pager.pdf) |
+| Idea y hallazgos | [`IDEA.md`](IDEA.md) |
+| Contratos de datos | [`docs/CONTRACT.md`](docs/CONTRACT.md) · [`docs/CONTRACT-WEB.md`](docs/CONTRACT-WEB.md) |
+| Backlog y grafo | [`.uak/TASKS.md`](.uak/TASKS.md) · [`docs/backlog-graph.md`](docs/backlog-graph.md) |
 
 ## Instalación
 
@@ -49,13 +71,15 @@ python -m pytest -q
 
 Los tests usan el fixture `synthetic_pitches` de `tests/conftest.py` (~5,700 lanzamientos simulados en orden de juego, 6 equipos con estadios a 3 altitudes, alineaciones fijas). Nunca necesitan los datos reales. El único test que lee el archivo real verifica su esquema y se omite si el archivo no está.
 
-## Dashboard
+## Dashboard Streamlit (legado)
+
+La primera versión del producto. Se conserva como respaldo; la entrega es la app React de arriba.
 
 ```bash
 python -m streamlit run app/Home.py
 ```
 
-(HACK-007 / HACK-020; corre solo con `artifacts/`, sin datos crudos.)
+Corre solo con `artifacts/`, sin datos crudos.
 
 ## Cómo trabajamos
 

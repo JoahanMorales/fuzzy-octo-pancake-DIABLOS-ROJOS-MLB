@@ -15,8 +15,8 @@ Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
 Next: Wait for review of SHA beac61a2; luego uak merge HACK-051
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/78
 Evidence: beac61a2: npm --prefix web run build && npm --prefix web run e2e exit 0 (4/4 desktop+mobile, sin errores de consola, sin desborde movil, capturas deck en web/e2e/screenshots); smoke exit 0; vitest 170/170. Verify literal no corre desde la raiz (npx --prefix no cambia cwd): ver uak decision HACK-051
-Events: 5
+Events: 6
 Checkpoints: 2
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 1792374923
 Task-Tip: beac61a2cf38f2cd6d22727c10afb116ea9d1fbe

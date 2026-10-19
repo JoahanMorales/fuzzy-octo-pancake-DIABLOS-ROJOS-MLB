@@ -22,12 +22,12 @@ Exponente pitagórico **x = 1.90** (IC 95 % bootstrap 1.62–2.15, 60 equipo-tem
 
 | escala | objetivo | carreras_por_punto_lanzamiento | lo | hi |
 |---|---|---|---|---|
-| Stuff+ | rv_x | 0.000724 | 0.000677 | 0.000769 |
-| Stuff+ | rv | 0.000726 | 0.00067 | 0.000783 |
+| Stuff+ | rv_x | 0.000868 | 0.000818 | 0.000919 |
+| Stuff+ | rv | 0.0009 | 0.000837 | 0.000962 |
 | Pitching+ | rv_x | 0.00551 | 0.00547 | 0.00556 |
 | Pitching+ | rv | 0.00561 | 0.00555 | 0.00567 |
 
-Control cruzado (Stuff+): σ del scaler del bundle v1 (0.01055) × calibración 0.69 × 0.1 = 7.24e-04, frente a 7.24e-04 directo. El bundle se reconstruyó localmente con `analysis/stuff_model/run.py` (creado 2026-10-13T14:45:18+00:00). Pitching+ usa el xRV combinado con bateador neutral (el que sirve el dashboard) escalado con un `PlusScaler` ajustado con el mismo procedimiento.
+Control cruzado (Stuff+ stuff_v2): σ de la escala del modelo exportado (0.01171, `web/public/data/models/stuff.json`) × calibración 0.74 × 0.1 = 8.69e-04, frente a 8.68e-04 directo. El xRV fuera de pliegue es el valor neutral al conteo de `fit_production_stuff` (HACK-057, HACK-078). Pitching+ usa el xRV combinado con bateador neutral (el que sirve el dashboard) escalado con un `PlusScaler` ajustado con el mismo procedimiento.
 
 ### Ejemplo para el GM
 
@@ -35,8 +35,8 @@ Control cruzado (Stuff+): σ del scaler del bundle v1 (0.01055) × calibración 
 
 | escala | entorno | carreras | carreras_lo | carreras_hi | victorias | victorias_lo | victorias_hi |
 |---|---|---|---|---|---|---|---|
-| Stuff+ | liga | 18.1 | 16.9 | 19.2 | 1.54 | 1.44 | 1.63 |
-| Stuff+ | Harp Helú (bucket Extreme) | 18.1 | 16.9 | 19.2 | 1.26 | 1.18 | 1.34 |
+| Stuff+ | liga | 21.7 | 20.4 | 23 | 1.84 | 1.73 | 1.95 |
+| Stuff+ | Harp Helú (bucket Extreme) | 21.7 | 20.4 | 23 | 1.51 | 1.43 | 1.6 |
 | Pitching+ | liga | 138 | 137 | 139 | 11.7 | 11.6 | 11.8 |
 | Pitching+ | Harp Helú (bucket Extreme) | 138 | 137 | 139 | 9.62 | 9.54 | 9.7 |
 
@@ -44,8 +44,8 @@ Cada carrera ahorrada vale menos victorias en el Harp Helú que en la liga (más
 
 | escala | entorno | sd_puntos_entre_pitcher_temporadas | pitcher_temporadas | carreras_por_1sd | victorias_por_1sd |
 |---|---|---|---|---|---|
-| Stuff+ | liga | 5.45 | 818 | 9.86 | 0.837 |
-| Stuff+ | Harp Helú (bucket Extreme) | 5.45 | 818 | 9.86 | 0.688 |
+| Stuff+ | liga | 5.08 | 818 | 11 | 0.934 |
+| Stuff+ | Harp Helú (bucket Extreme) | 5.08 | 818 | 11 | 0.768 |
 | Pitching+ | liga | 1.55 | 818 | 21.4 | 1.82 |
 | Pitching+ | Harp Helú (bucket Extreme) | 1.55 | 818 | 21.4 | 1.5 |
 
@@ -53,22 +53,22 @@ Tabla completa (lanzamientos × entorno × estimación) en `conversion_table.csv
 
 | escenario | lanzamientos | entorno | carreras | victorias |
 |---|---|---|---|---|
-| Stuff+ · rv_x (central) | 1000 | liga | 0.724 | 0.0614 |
-| Stuff+ · rv_x (central) | 1000 | Harp Helú (bucket Extreme) | 0.724 | 0.0505 |
-| Stuff+ · rv_x (central) | 2500 | liga | 1.81 | 0.154 |
-| Stuff+ · rv_x (central) | 2500 | Harp Helú (bucket Extreme) | 1.81 | 0.126 |
-| Stuff+ · rv_x (IC 2.5 %) | 1000 | liga | 0.677 | 0.0575 |
-| Stuff+ · rv_x (IC 2.5 %) | 1000 | Harp Helú (bucket Extreme) | 0.677 | 0.0473 |
-| Stuff+ · rv_x (IC 2.5 %) | 2500 | liga | 1.69 | 0.144 |
-| Stuff+ · rv_x (IC 2.5 %) | 2500 | Harp Helú (bucket Extreme) | 1.69 | 0.118 |
-| Stuff+ · rv_x (IC 97.5 %) | 1000 | liga | 0.769 | 0.0653 |
-| Stuff+ · rv_x (IC 97.5 %) | 1000 | Harp Helú (bucket Extreme) | 0.769 | 0.0537 |
-| Stuff+ · rv_x (IC 97.5 %) | 2500 | liga | 1.92 | 0.163 |
-| Stuff+ · rv_x (IC 97.5 %) | 2500 | Harp Helú (bucket Extreme) | 1.92 | 0.134 |
-| Stuff+ · rv observado | 1000 | liga | 0.726 | 0.0616 |
-| Stuff+ · rv observado | 1000 | Harp Helú (bucket Extreme) | 0.726 | 0.0507 |
-| Stuff+ · rv observado | 2500 | liga | 1.82 | 0.154 |
-| Stuff+ · rv observado | 2500 | Harp Helú (bucket Extreme) | 1.82 | 0.127 |
+| Stuff+ · rv_x (central) | 1000 | liga | 0.868 | 0.0736 |
+| Stuff+ · rv_x (central) | 1000 | Harp Helú (bucket Extreme) | 0.868 | 0.0605 |
+| Stuff+ · rv_x (central) | 2500 | liga | 2.17 | 0.184 |
+| Stuff+ · rv_x (central) | 2500 | Harp Helú (bucket Extreme) | 2.17 | 0.151 |
+| Stuff+ · rv_x (IC 2.5 %) | 1000 | liga | 0.818 | 0.0694 |
+| Stuff+ · rv_x (IC 2.5 %) | 1000 | Harp Helú (bucket Extreme) | 0.818 | 0.0571 |
+| Stuff+ · rv_x (IC 2.5 %) | 2500 | liga | 2.04 | 0.173 |
+| Stuff+ · rv_x (IC 2.5 %) | 2500 | Harp Helú (bucket Extreme) | 2.04 | 0.143 |
+| Stuff+ · rv_x (IC 97.5 %) | 1000 | liga | 0.919 | 0.078 |
+| Stuff+ · rv_x (IC 97.5 %) | 1000 | Harp Helú (bucket Extreme) | 0.919 | 0.0641 |
+| Stuff+ · rv_x (IC 97.5 %) | 2500 | liga | 2.3 | 0.195 |
+| Stuff+ · rv_x (IC 97.5 %) | 2500 | Harp Helú (bucket Extreme) | 2.3 | 0.16 |
+| Stuff+ · rv observado | 1000 | liga | 0.9 | 0.0764 |
+| Stuff+ · rv observado | 1000 | Harp Helú (bucket Extreme) | 0.9 | 0.0628 |
+| Stuff+ · rv observado | 2500 | liga | 2.25 | 0.191 |
+| Stuff+ · rv observado | 2500 | Harp Helú (bucket Extreme) | 2.25 | 0.157 |
 | Pitching+ · rv_x (central) | 1000 | liga | 5.51 | 0.468 |
 | Pitching+ · rv_x (central) | 1000 | Harp Helú (bucket Extreme) | 5.51 | 0.385 |
 | Pitching+ · rv_x (central) | 2500 | liga | 13.8 | 1.17 |
@@ -105,7 +105,7 @@ Brecha entre el brazo de alta pérdida y el de a prueba de altura: **8.1 carrera
 ## Advertencias
 
 - `rv_x` valora las bolas en juego con la altitud como rasgo (HACK-030): el costo de la altura incluye parte del modelo de contacto, no solo los lanzamientos.
-- Los bundles no se comparten por git: la escala se reconstruyó localmente (`analysis/stuff_model/run.py`); si el modelo se reentrena, hay que volver a correr este análisis (la caché OOF está en `artifacts/`, git-ignored).
+- La escala de Stuff+ es la del modelo exportado (`web/public/data/models/stuff.json`); si el modelo se reentrena, hay que volver a correr este análisis (la caché OOF está en `artifacts/`, git-ignored).
 - Los puntos usan el xRV de los modelos completos fuera de muestra, no el modelo destilado del dashboard (R² 0.92 / 0.94 con ellos): aproximan el mismo número.
 - El efecto de un punto es chico por lanzamiento y crece con el volumen: sumas grandes (miles de lanzamientos) y grupos de lanzamientos, no un lanzamiento suelto. El `rv` observado es más ruidoso que `rv_x`: su IC es más ancho.
 - Marcadores reconstruidos: partidos incompletos en los datos o carreras fuera de los lanzamientos pueden sesgar; los datos solo cubren una muestra de la temporada por equipo.

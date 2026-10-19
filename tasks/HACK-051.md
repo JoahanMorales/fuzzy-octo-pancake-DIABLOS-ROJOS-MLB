@@ -9,14 +9,14 @@ Priority: P1
 Paths: web/e2e/
 Depends: HACK-045, HACK-043
 Verify: `npm --prefix web run build && npx --prefix web playwright test`
-Lease-Until: 1792389305
-Updated: 1792374905
+Lease-Until: 1792389323
+Updated: 1792374923
 Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/78; run .uak/bin/smoke
+Next: Wait for review of SHA beac61a2; luego uak merge HACK-051
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/78
 Evidence: beac61a2: npm --prefix web run build && npm --prefix web run e2e exit 0 (4/4 desktop+mobile, sin errores de consola, sin desborde movil, capturas deck en web/e2e/screenshots); smoke exit 0; vitest 170/170. Verify literal no corre desde la raiz (npx --prefix no cambia cwd): ver uak decision HACK-051
-Events: 4
-Checkpoints: 1
+Events: 5
+Checkpoints: 2
 Sessions: 1
-Last-Checkpoint: 1792374243
+Last-Checkpoint: 1792374923
 Task-Tip: beac61a2cf38f2cd6d22727c10afb116ea9d1fbe

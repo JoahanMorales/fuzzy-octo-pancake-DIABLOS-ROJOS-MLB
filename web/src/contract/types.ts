@@ -234,6 +234,25 @@ export const modelSchema = envelopeSchema.extend({
   count: countBlockSchema.optional(),
 }).strict();
 
+const treesSchema = z.object({ trees: z.array(boosterTreeSchema).min(1) }).strict();
+
+/** Pitching+ (HACK-079): the composite + 8 binary target boosters, the HACK-012 combination, the zone box for the
+ *  chase rate and what a typed pitch cannot say (league-average batter, family medians of the game context).
+ *  The four blocks come together or not at all: the HACK-038 mock is a bare composite, which the panel treats as no model. */
+export const pitchingModelSchema = modelSchema.extend({
+  targets: z.record(treesSchema).optional(),
+  combination: z.object({ intercept: z.number(), weights: z.record(z.number()) }).strict().optional(),
+  zone: z.object({ x: z.number().positive(), z_low: z.number(), z_high: z.number() }).strict().optional(),
+  neutral: z.object({
+    batter: z.record(z.number()),
+    league: z.record(z.number()),
+    by_family: z.record(z.record(z.number())),
+  }).strict().optional(),
+  rounds: z.record(z.number().int().positive()).optional(),
+  fidelity: z.object({ pearson_r: z.number(), n_pitches: z.number().int(), against: z.string() }).strict().optional(),
+}).strict().refine((m) => [m.targets, m.combination, m.zone, m.neutral].every((b) => b === undefined) ||
+  [m.targets, m.combination, m.zone, m.neutral].every((b) => b !== undefined), 'targets, combination, zone y neutral van juntos');
+
 export const arsenalPitchSchema = z.object({
   pitch_id: z.number().int().nonnegative(),
   pitch_family: z.string().min(1),
@@ -279,7 +298,7 @@ const ROOT_SCHEMAS: Record<string, z.ZodTypeAny> = {
   'physics.json': physicsSchema,
   'models/stuff.json': modelSchema,
   'models/location.json': modelSchema,
-  'models/pitching.json': modelSchema,
+  'models/pitching.json': pitchingModelSchema,
 };
 
 export function parseContractFile(relativePath: string, data: unknown) {

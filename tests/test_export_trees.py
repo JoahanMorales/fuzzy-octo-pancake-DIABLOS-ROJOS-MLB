@@ -134,3 +134,34 @@ def test_json_evaluator_matches_count_neutral_production_model(production):
     assert np.allclose(et.evaluate(p, moved)["xrv"], out["xrv"], atol=1e-12)  # the count never moves Stuff+
     no_count = et.evaluate(p, rows.drop(columns=["Balls", "Strikes"]))  # e.g. the prospect profiler
     assert np.allclose(no_count["xrv"], out["xrv"], atol=1e-12) and no_count["xrv_at_count"].isna().all()
+
+
+@pytest.fixture(scope="module")
+def pitching(exported):
+    """Pitching+ (HACK-079): components + 8 target boosters + combination on the synthetic fixture."""
+    from stuffplus.models.pitching import build_features
+
+    _, _, d, _ = exported
+    pf = build_features(d)
+    m, sc = et.fit_pitching(pf, k=2, class_rounds=15, contact_rounds=10, target_rounds=10)
+    return m, sc, pf, et.export_pitching(m, sc, model_version="test", sources=["tests"], demo_data=True,
+                                         fill=et.panel_fill(pf))
+
+
+def test_pitching_payload_carries_targets_combination_zone_and_neutral_batter(pitching):
+    m, _, pf, p = pitching
+    assert set(p["targets"]) == {"swing", "whiff", "chase", "called_strike", "weak_contact", "groundball",
+                                 "hard_contact", "out_in_pa"}
+    assert p["combination"]["weights"]["xrv_components"] >= 0 and p["combination"]["weights"]["whiff_rate"] <= 0
+    assert p["neutral"]["batter"] == pytest.approx(m.batter) and set(p["neutral"]["league"]) == set(et.PANEL_FILL)
+    assert p["zone"]["z_low"] < p["zone"]["z_high"] and p["zone"]["x"] > 0
+    assert "calibration" not in p and "count" not in p and p["plus"]["stats"]["__all__"]["sd"] > 0
+
+
+def test_json_evaluator_matches_pitching_model(pitching):
+    m, _, pf, p = pitching
+    pb = et.with_batters(pf)
+    rows = pd.concat([pb[p["features"]].sample(40, random_state=3).reset_index(drop=True),
+                      et.random_rows(p, 30, pb, seed=8)], ignore_index=True)
+    out = et.evaluate_pitching(json.loads(json.dumps(et._nan_to_none(p))), rows)
+    assert np.abs(out - m.predict_xrv(rows)).max() < 1e-9

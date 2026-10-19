@@ -12,6 +12,6 @@ Verify: `python -m pytest -q tests/test_export_trees.py && npm --prefix web test
 Lease-Until: 1792390768
 Updated: 1792376368
 Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
-Next: Apply option: pitching.json con 120/200/60 rondas (prod 300/200/200 pesa 13.7 MB) ~5.2 MB; fidelidad r vs leaderboard en el JSON; contexto que el panel no da = mediana por familia; fixtures pitching_synthetic*.json y tests en test_export_trees.py fuera de Paths
+Next: Humano: Edits a file outside Paths: tests/test_export_trees.py (Paths of HACK-040). Revert that file on the branch (git checkout origin/main -- tests/test_export_trees.py), or the human merges the PR
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/79
 Evidence: -

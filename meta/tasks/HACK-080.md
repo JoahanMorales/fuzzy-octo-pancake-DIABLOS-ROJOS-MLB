@@ -1,5 +1,5 @@
 Task: HACK-080
-Events: 2
+Events: 3
 Checkpoints: 0
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 0

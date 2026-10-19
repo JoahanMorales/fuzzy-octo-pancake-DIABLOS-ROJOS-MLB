@@ -250,3 +250,59 @@ export function locationValue(model: CompositeModel, row: FeatureRow, xrv?: numb
   const vals = Object.values(ref);
   return value - (ref[key] ?? vals.reduce((a, b) => a + b, 0) / vals.length);
 }
+
+/** Pitching+ export (HACK-079): components + 8 binary target boosters + the HACK-012 sign-constrained combination. */
+export interface PitchingModel extends CompositeModel {
+  targets: Record<string, { trees: BoosterTree[] }>;
+  combination: { intercept: number; weights: Record<string, number> };
+  zone: { x: number; z_low: number; z_high: number };
+  neutral: {
+    batter: Record<string, number>;
+    league: Record<string, number>;
+    by_family: Record<string, Record<string, number>>;
+  };
+}
+
+const missing = (v: FeatureValue) => v === null || v === undefined || v === '';
+
+/** Trackman's outside_strike_zone as the export's plate box; no plate location → 0 (as `event_rates`). */
+export function outsideZone(model: PitchingModel, row: FeatureRow): number {
+  const x = Number(row.plate_x_arm), z = Number(row.PlateLocHeight);
+  if (missing(row.plate_x_arm) || missing(row.PlateLocHeight) || !Number.isFinite(x) || !Number.isFinite(z)) return 0;
+  const { zone } = model;
+  return Math.abs(x) > zone.x || z < zone.z_low || z > zone.z_high ? 1 : 0;
+}
+
+/** What a typed pitch cannot say: league-average batter, then the family's training medians (league if unseen). */
+export function fillPitchingRow(model: PitchingModel, row: FeatureRow): FeatureRow {
+  const fam = model.neutral.by_family[String(row.pitch_family)] ?? {};
+  const out: FeatureRow = { ...row, ...model.neutral.batter };
+  for (const [f, v] of Object.entries(model.neutral.league)) if (missing(out[f])) out[f] = fam[f] ?? v;
+  return out;
+}
+
+/** Combined xRV (`PitchingExport.predict_xrv`): rates from the components and targets, then intercept + Σ w·rate. */
+export function pitchingXrv(model: PitchingModel, row: FeatureRow): number {
+  const x = encode(model, row);
+  const { probs, contact } = components(model, x);
+  const q: Record<string, number> = {};
+  for (const [name, block] of Object.entries(model.targets)) {
+    let s = 0;
+    for (const t of block.trees) s += treeValue(t, x);
+    q[name] = 1 / (1 + Math.exp(-s));
+  }
+  const pin = probs[model.outcome.num_class - 1];
+  const rates: Record<string, number> = {
+    whiff_rate: q.swing * q.whiff,
+    called_strike_rate: (1 - q.swing) * q.called_strike,
+    chase_rate: outsideZone(model, row) * q.chase,
+    weak_contact_rate: pin * q.weak_contact,
+    groundball_rate: pin * q.groundball,
+    hard_contact_rate: pin * q.hard_contact,
+    out_in_pa: q.out_in_pa,
+    xrv_components: xrvAt(model, probs, contact, null),
+  };
+  let total = model.combination.intercept;
+  for (const [k, w] of Object.entries(model.combination.weights)) total += w * rates[k];
+  return total;
+}

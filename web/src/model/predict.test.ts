@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { countKey, encode, locationValue, predict, stuffValue, toPlus, type CompositeModel, type FeatureRow } from './predict';
+import { countKey, encode, fillPitchingRow, locationValue, outsideZone, pitchingXrv, predict, stuffValue, toPlus, type CompositeModel, type FeatureRow, type PitchingModel } from './predict';
 import synthetic from './fixtures/stuff_synthetic.json';
 import syntheticPacked from './fixtures/stuff_synthetic_packed.json';
 import syntheticGolden from './fixtures/stuff_synthetic_golden.json';
@@ -9,6 +9,8 @@ import realGolden from './fixtures/stuff_real_golden.json';
 import stuff from '../../public/data/models/stuff.json';
 import location from '../../public/data/models/location.json';
 import locationGolden from './fixtures/location_real_golden.json';
+import pitchingSynthetic from './fixtures/pitching_synthetic.json';
+import pitchingGolden from './fixtures/pitching_synthetic_golden.json';
 
 interface Golden {
   rows: FeatureRow[];
@@ -80,6 +82,33 @@ describe('production Stuff+ v2 (HACK-066): temperature and count-neutral value',
     expect(countKey(null, 1)).toBeNull();
     const row = { ...(v2Golden as Golden).rows[0], pitch_family: 'Knuckle-Curve' };
     expect(Number.isFinite(stuffValue(model, row))).toBe(true);
+  });
+});
+
+describe('Pitching+ (HACK-079): components, target boosters and combination', () => {
+  const model = pitchingSynthetic as unknown as PitchingModel;
+
+  it('matches PitchingExport.predict_xrv on conftest rows + random vectors', () => {
+    expect(pitchingGolden.rows.length).toBeGreaterThanOrEqual(100);
+    pitchingGolden.rows.forEach((row, i) => {
+      expect(Math.abs(pitchingXrv(model, row as FeatureRow) - pitchingGolden.xrv[i])).toBeLessThan(1e-6);
+    });
+  });
+
+  it('fills the batter with the league average and the context the panel lacks with family medians', () => {
+    const fam = Object.keys(model.neutral.by_family)[0];
+    const row = fillPitchingRow(model, { pitch_family: fam, Balls: 1, batter_rv: 0.5, Outs: 2 });
+    expect(row.batter_rv).toBe(model.neutral.batter.batter_rv);
+    expect(row.Outs).toBe(2);
+    expect(row.arsenal_size).toBe(model.neutral.by_family[fam].arsenal_size ?? model.neutral.league.arsenal_size);
+    expect(fillPitchingRow(model, { pitch_family: 'Knuckle-Curve' }).tunnel_ratio).toBe(model.neutral.league.tunnel_ratio);
+  });
+
+  it('the zone box decides chase: middle in, far outside out, no location = 0', () => {
+    const mid = (model.zone.z_low + model.zone.z_high) / 2;
+    expect(outsideZone(model, { plate_x_arm: 0, PlateLocHeight: mid })).toBe(0);
+    expect(outsideZone(model, { plate_x_arm: -(model.zone.x + 0.1), PlateLocHeight: mid })).toBe(1);
+    expect(outsideZone(model, { plate_x_arm: null, PlateLocHeight: mid })).toBe(0);
   });
 });
 

@@ -9,13 +9,13 @@ Priority: P1
 Paths: web/src/features/, web/src/shell/, web/src/styles/base.css, web/e2e/qa/
 Depends: HACK-045, HACK-046, HACK-049, HACK-067, HACK-068, HACK-069
 Verify: `npm --prefix web run build && npm --prefix web test -- --run`
-Lease-Until: 1792432626
-Updated: 1792429926
+Lease-Until: 1792433986
+Updated: 1792431286
 Task-Base: 364dc50dd4fb3a76fb5eef09d47e6e1319972cf2
 Next: one Playwright script that walks every route.
 PR: -
 Evidence: -
-Events: 1
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0

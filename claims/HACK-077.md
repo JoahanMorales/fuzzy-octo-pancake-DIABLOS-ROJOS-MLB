@@ -9,8 +9,8 @@ Priority: P1
 Paths: stuffplus/profile.py, analysis/ideal_profile/, reports/ideal_profile/, tests/test_profile.py
 Depends: None
 Verify: `python -m pytest -q tests/test_profile.py`
-Lease-Until: 1792376401
-Updated: 1792373701
+Lease-Until: 1792377435
+Updated: 1792374735
 Task-Base: 9ccaf7a4bdeb8f877bf6e90839394b3953512ef4
 Next: swap `StuffModel(...).fit(d)` in run.py:50 for `fit_production_stuff`.
 PR: -

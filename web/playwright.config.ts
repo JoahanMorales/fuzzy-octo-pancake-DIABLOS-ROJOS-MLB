@@ -16,7 +16,8 @@ export default defineConfig({
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: `npm run build && npm run preview -- --port ${port} --strictPort`,
+    // Same host as baseURL: plain `localhost` resolves to ::1 on macOS and the IPv4 baseURL is refused.
+    command: `npm run build && npm run preview -- --host 127.0.0.1 --port ${port} --strictPort`,
     port,
     reuseExistingServer: true,
     timeout: 180_000,

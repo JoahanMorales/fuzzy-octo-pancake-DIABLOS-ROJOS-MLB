@@ -1,6 +1,6 @@
 # HACK-081
 ID: HACK-081
-State: CLAIMED
+State: REVIEW
 Owner: victor-1
 Branch: feat/hack-081
 Worktree: /Users/victor/Documents/Proyectos/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-081
@@ -9,9 +9,9 @@ Priority: P1
 Paths: README.md
 Depends: None
 Verify: `test -s README.md && python docs/technical/check_numbers.py README.md`
-Lease-Until: 1792384500
-Updated: 1792381800
+Lease-Until: 1792396276
+Updated: 1792381876
 Task-Base: 49fb471f4e8b9841aa699a6f34bfa33927bbfed6
-Next: replace the Streamlit run block (README.md:55).
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/80; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/pull/80
 Evidence: -

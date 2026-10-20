@@ -56,15 +56,16 @@ export function Panel({ score, parkLabel, rho, lost, shapeNote, releaseSource, m
         </div>
       </div>
       <p className="sp-lost">{lost}</p>
-      <section className="sp-why" aria-label="Por qué cambia">
-        <h2>¿Por qué?</h2>
+      {/* collapsed by default so the presets stay above the fold on a laptop screen (HACK-086, QA finding 3) */}
+      <details className="sp-why" aria-label="Por qué cambia">
+        <summary><h2>¿Por qué?</h2></summary>
         {shapeNote ? <p className="sp-note">Publicado para la forma: {shapeNote}</p> : null}
         <ul>
           {lines.map((line) => (
             <li key={line.label}><span>{line.label}</span><span>{line.delta}</span></li>
           ))}
         </ul>
-      </section>
+      </details>
       <p className="sp-src">
         {modelNote} ρ {rho.toFixed(3)}. {releaseSource}.{' '}
         {score.sea.pitchingSource === 'model'

@@ -77,7 +77,9 @@ export function Tour({ docs, renderPage, onExit, start = 0 }: {
             aria-label={running ? 'Pausar el tiempo' : 'Iniciar el tiempo'} aria-pressed={running}>
             <span role="timer" aria-live="off" aria-label="Tiempo restante">{formatClock(left)}</span>
           </button>
-          <button type="button" className="h48-button is-ghost" onClick={() => go(-1)} disabled={i === 0}>Anterior</button>
+          <button type="button" className="h48-button is-ghost" onClick={() => go(-1)} disabled={i === 0} aria-label="Anterior">
+            <span className="h71-long" aria-hidden="true">Anterior</span><span className="h71-short" aria-hidden="true">←</span>
+          </button>
           <button type="button" className="h48-button" onClick={() => { setRunning(true); go(1); }} disabled={i === STEPS.length - 1}>Siguiente</button>
           <button type="button" className="h48-button is-ghost" onClick={onExit}>Salir</button>
         </div>

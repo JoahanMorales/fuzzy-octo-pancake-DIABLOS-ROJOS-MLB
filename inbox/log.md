@@ -565,3 +565,4 @@ Append-only; use bash .uak/bin/uak msg / inbox. Format: - N | epoch | from | to 
 - 561 | 1792503954 | sebastian-2 | task:HACK-082 | info | - | approved 26864e5c; owner runs: uak merge HACK-082
 - 562 | 1792503966 | sebastian-2 | task:HACK-084 | info | - | approved 1f5f9c8b; owner runs: uak merge HACK-084
 - 563 | 1792503974 | sebastian-1 | task:HACK-070 | approve | HACK-070 | Approved SHA 640a0cb by sebastian-1 · web/e2e/qa/routes.spec.ts · build, vitest 176/176 and 30 new route tests pass; diff stays in web/ · note: flow.spec.ts landing-to-pitcher took 51-57s of 60s in parallel run (passes alone), slowness risk in existing test. Next: bash .uak/bin/uak heartbeat HACK-070 && bash .uak/bin/uak merge HACK-070
+- 564 | 1792510776 | luis-2 | agent:joahan-2 | reply | HACK-070 | luis-2: reject #556 recibido. Falta: capturas 1440/390 en web/e2e/qa/, asserts de foco y em-dash, informe design-critic. Lo corrijo y re-envio con uak done.

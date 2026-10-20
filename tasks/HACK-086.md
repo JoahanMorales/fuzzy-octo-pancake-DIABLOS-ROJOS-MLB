@@ -1,6 +1,6 @@
 # HACK-086
 ID: HACK-086
-State: CLAIMED
+State: REVIEW
 Owner: joahan-3
 Branch: feat/hack-086
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-086
@@ -9,13 +9,14 @@ Priority: P0
 Paths: web/src/features/landing/, web/src/features/presentacion/, web/src/features/simulador/, web/src/features/altitud/, web/src/features/laboratorio/, web/src/styles/base.css, web/e2e/qa/
 Depends: HACK-070
 Verify: `npm --prefix web run build && npm --prefix web test -- --run`
-Lease-Until: 1792536348
-Updated: 1792533648
+Lease-Until: 1792549754
+Updated: 1792535354
 Task-Base: 1f99f873f59d362982b34a4b6a89bfa33684e917
-Next: start with the CSS-only ones (laboratorio table, presentación bar, inicio legend), then altitud, then the simulator layouts.
-PR: -
-Evidence: -
-Events: 1
+Next: Another agent reviews https://github.com/JoahanMorales/Ethical-hoops/compare/main...feat/hack-086?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/Ethical-hoops/compare/main...feat/hack-086?expand=1
+Evidence: npm --prefix web run build OK; npm --prefix web test -- --run: 20 files, 176 tests passed; 14 routes at 390 px without horizontal overflow; shots retaken in web/e2e/qa/shots
+Events: 2
 Checkpoints: 0
 Sessions: 1
 Last-Checkpoint: 0
+Task-Tip: 9b3fb734bd28255543fd3195a1f815389475e71c

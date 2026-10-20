@@ -28,7 +28,8 @@ def main():
     sources = json.loads((DECK/'sources.json').read_text(encoding='utf-8'))
     assert sources['demo_data'] is False and sources['exploratory'] is True
     for path, expected in sources['source_sha256'].items():
-        assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == expected, f'Stale source: {path}'
+        data = (ROOT/path).read_bytes().replace(b'\r\n', b'\n')  # LF, as git stores it: same hash on Windows and macOS
+        assert hashlib.sha256(data).hexdigest() == expected, f'Stale source: {path}'
     prs = Presentation(DECK/'deck.pptx')
     assert len(prs.slides) == 10
     pdf = pymupdf.open(DECK/'deck.pdf')

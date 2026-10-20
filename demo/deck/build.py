@@ -40,7 +40,8 @@ sources, evidence, derived = {}, [], []
 
 def row(path, **where):
     p = ROOT / path
-    sources[path] = hashlib.sha256(p.read_bytes()).hexdigest()
+    # LF line endings, as git stores the file: a Windows checkout has CRLF, so the hash must not depend on the OS
+    sources[path] = hashlib.sha256(p.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
     rows = list(csv.DictReader(p.open(encoding='utf-8')))
     found = [r for r in rows if all(r[k] == str(v) for k, v in where.items())]
     if len(found) != 1:

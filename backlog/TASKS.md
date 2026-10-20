@@ -742,3 +742,18 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
   - The limitations list the cutter (and splitter) translator miscalibration with its numbers; `python docs/technical/check_numbers.py` passes; PDF rebuilt, still 6–10 pages.
 - **Verify:** `python docs/technical/check_numbers.py && test -s docs/technical/stuffplus2240.pdf`
 - **Next step:** after 082 and 084 merge, add two sentences to §6 and one limitation.
+## HACK-086 · Fix the six High findings of the visual QA (web/e2e/qa/INFORME.md)
+
+- **Type:** follow-up
+- **Priority:** P0
+- **Estimate:** 3 h
+- **Rubric / Spec:** C4
+- **Depends on:** HACK-070
+- **Uses contract:** HACK-039
+- **Paths:** web/src/features/landing/, web/src/features/presentacion/, web/src/features/simulador/, web/src/features/altitud/, web/src/features/laboratorio/, web/src/styles/base.css, web/e2e/qa/
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - The six High findings of `web/e2e/qa/INFORME.md` are fixed: inicio 390 chip over the chart legend; presentación 390 fixed bar covering content; simulador 1440 presets below the fold and black band under the scene; altitud 390 tiny dots without axis or legend; laboratorio 390 table overflow; simulador 390 scene crop and cut labels.
+  - Screenshots of those pages at 1440 and 390 retaken under `web/e2e/qa/shots/` and INFORME.md marks each finding fixed; no horizontal overflow at 390 on any route.
+- **Verify:** `npm --prefix web run build && npm --prefix web test -- --run`
+- **Next step:** start with the CSS-only ones (laboratorio table, presentación bar, inicio legend), then altitud, then the simulator layouts.

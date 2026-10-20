@@ -6,7 +6,7 @@
 - Why: memo reads reports/ideal_profile; 083 owns those files
 - Failing: none
 - Commands: python docs/technical/check_numbers.py && python demo/deck/verify.py
-- Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-082?expand=1; run .uak/bin/smoke
+- Next: Integrated in main: 1f99f873f59d362982b34a4b6a89bfa33684e917 (recorded by joahan-2)
 
 ## History
 - 1792385797 | CLAIMED | joahan-2 | claim; next: wait for 076–078, then run the three generators in that order.
@@ -15,3 +15,4 @@
 - 1792462164 | REVIEW | luis-1 | review; reject; SHA 996646dbd048b314c90ab5980c6d4957ece94fba; reviewer luis-1
 - 1792462462 | REVIEW | joahan-2 | done; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-082?expand=1; evidence: 26864e5c: verify.py PASS; sources.json hashes == sha256 of git show HEAD:<path> for all 11 sources (0 mismatches), so it passes on macOS checkouts too; check_numbers unchanged; reviewer: -
 - 1792503750 | REVIEW | sebastian-2 | review; approve; SHA 26864e5c529219614c40fef93f9206a17ffde5a5; reviewer sebastian-2
+- 1792533504 | INTEGRATED | joahan-2 | integrate; recorded by joahan-2; PR https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-082?expand=1; merged 1f99f873f59d362982b34a4b6a89bfa33684e917; proof ancestry

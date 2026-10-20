@@ -13,13 +13,13 @@
 | 5 | La física corrige el sesgo de altitud | 55 s | reports/stuff_v2/altitude_bias.csv · entrenado sin altitud extrema, evaluado en ella. |
 | 6 | Las pérdidas dependen de la forma del pitch | 65 s | reports/altitude_delta/delta_by_shape.csv · delta_stuff; misma forma, CDMX menos nivel del mar. |
 | 7 | Dos sedes candidatas, dos cuentas de carreras | 55 s | reports/staff_audit/runs_saved.csv · franquicias 5 y 11, por separado. |
-| 8 | El producto: dos aires, un lanzamiento | 50 s | Capturas del simulador 3D y del explicador de física (web/, build de HACK-045 y HACK-072). |
-| 9 | El entorno cambia el valor de una carrera | 65 s | reports/business_value/runs_per_win.csv; reports/business_value/gm_example.csv · escala de Stuff+ medida con v1. |
+| 8 | El producto: dos aires, un lanzamiento | 50 s | Capturas del simulador 3D y del explicador de física (Playwright, web/e2e/screenshots, HACK-051). |
+| 9 | El entorno cambia el valor de una carrera | 65 s | reports/business_value/runs_per_win.csv; reports/business_value/gm_example.csv · puntos de Stuff+ v2 fuera de pliegue. |
 | 10 | La demo compara el mismo arsenal | 70 s | Producto web en el repo. Respaldo: este PDF y los CSV agregados de reports/. |
 
 ## Archivos y reconstrucción
 
-`deck.pptx`: editable. `deck.pdf`: versión de presentación. `../one-pager/one-pager.pdf`: una página para el GM. `assets/`: capturas del producto (simulador de HACK-045 y explicador de HACK-072); cuando HACK-051 publique sus capturas de Playwright, reemplazarlas con el mismo nombre.
+`deck.pptx`: editable. `deck.pdf`: versión de presentación. `../one-pager/one-pager.pdf`: una página para el GM. `assets/`: capturas del producto tomadas por las pruebas e2e de HACK-051 (`web/e2e/screenshots/`).
 
 `sources.json` guarda archivo, fila, columna, formato y SHA-256 de cada cifra, y para las dos cifras derivadas (promedio de la liga y recorte del sesgo) sus entradas y la fórmula. Las notas de cada diapositiva llevan el guion oral.
 
@@ -27,7 +27,7 @@ Reconstruir con Python 3.12 y `demo/deck/requirements.txt`: `python demo/deck/bu
 
 ## Revisión antes de entrevista
 
-Confirmar con el club cuál de las franquicias 5 y 11 es la sede. La conversión a victorias se midió con la escala de Stuff+ v1 (`reports/business_value/stuff_scale_calibration.csv`).
+Confirmar con el club cuál de las franquicias 5 y 11 es la sede. La conversión a victorias usa los puntos de Stuff+ v2 fuera de pliegue (`reports/business_value/stuff_scale_calibration.csv`, HACK-078).
 
 ## Verificación
 

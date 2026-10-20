@@ -1,0 +1,15 @@
+pitch_family,component,pitches,pitch_keys,family_share,mean_extreme,observed_change,predicted_change,ratio,abs_error,calibrated,blocks_model
+Changeup,IVB,21909,546,0.1254,4.4116,1.6005,1.8222,1.1385,0.2217,True,False
+Changeup,HB lado del brazo,21909,546,0.1254,5.3551,4.2613,4.3688,1.0252,0.1075,True,False
+Curveball,IVB,10442,367,0.0684,-4.6239,-2.023,-1.8333,0.9062,0.1897,True,False
+Curveball,HB lado del brazo,10442,367,0.0684,-5.1391,-2.759,-2.9571,1.0718,0.1982,True,False
+Cutter,IVB,2578,65,0.0189,7.7004,2.6675,2.7227,1.0207,0.0552,True,False
+Cutter,HB lado del brazo,2578,65,0.0189,1.1623,1.4406,9.2914,6.4498,7.8508,False,False
+Four-Seam,IVB,64130,1191,0.3813,11.7905,3.7743,3.8811,1.0283,0.1068,True,False
+Four-Seam,HB lado del brazo,64130,1191,0.3813,6.4289,3.1742,3.4206,1.0776,0.2464,True,False
+Sinker,IVB,30630,550,0.1684,8.291,2.1437,2.1108,0.9847,0.0329,True,False
+Sinker,HB lado del brazo,30630,550,0.1684,10.0451,4.7272,4.8428,1.0244,0.1155,True,False
+Slider,IVB,40409,944,0.2312,2.2806,1.0411,1.189,1.1421,0.1479,True,False
+Slider,HB lado del brazo,40409,944,0.2312,-1.8465,-0.439,-0.3032,0.6907,0.1358,True,False
+Splitter,IVB,951,21,0.0063,0.9656,-0.2648,-0.1501,0.5668,0.1147,True,False
+Splitter,HB lado del brazo,951,21,0.0063,2.6557,1.8512,1.3087,0.7069,0.5425,False,False

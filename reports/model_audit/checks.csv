@@ -1,0 +1,6 @@
+check,value,passed
+los rasgos exportados son V2_FEATURES,"RelSpeed, SpinRate, spin_axis_arm, InducedVertBreak, hb_arm, RelHeight, rel_side_arm, Extension, arm_angle, is_rhp, pitch_family, rho, velo_diff_fb, ivb_diff_fb, hb_diff_fb, Balls, Strikes",True
+"sin ubicación, resultados ni ids en los rasgos",ninguno,True
+pitchers repetidos entre pliegues,0,True
+Stuff+ v2 no cambia con el conteo del lanzamiento (máx. |dif|),0,True
+el traductor solo cambia movimiento y rho,"HorzBreak, InducedVertBreak, hb_arm, hb_diff_fb, ivb_diff_fb, rho",True

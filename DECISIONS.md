@@ -137,3 +137,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792384670 | deadline queue-lock/hack.bN2g5e-joahan-1-HACK-078/1792384669 | HUMAN | Lock lease expired; revalidate before merging
 - 1792386152 | HACK-082 | Recruiting thresholds and memo wait for HACK-083 (ideal_profile v2) to merge; demo/qa.md Q11 lives on feat/hack-025 (not on main) | Why: memo reads reports/ideal_profile; 083 owns those files
 - 1792449619 | deadline lease/HACK-070/1792433986 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
+- 1792468911 | plan | joahan/joahan | tasks added: HACK-084 HACK-085 | Why: backlog without PR (Plan-Channel: claims)

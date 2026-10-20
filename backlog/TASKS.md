@@ -711,3 +711,34 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
 - **Acceptance:**
   - Regenerate reports/ideal_profile with production Stuff+ v2 (077 merged the code; the CSVs are still v1)
 - **Verify:** `python -m pytest -q tests/test_profile.py`
+## HACK-084 · Final model audit report (translator calibration, physics vs learned split, leakage, scale)
+
+- **Type:** analysis
+- **Priority:** P1
+- **Estimate:** 60 min
+- **Rubric / Spec:** C1 C2
+- **Depends on:** None
+- **Uses contract:** HACK-057
+- **Paths:** analysis/model_audit/, reports/model_audit/
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - `python -m analysis.model_audit.run` writes `reports/model_audit/` from the real data and the exported production model (no refit, no per-pitch rows): translator calibration per family (predicted vs observed within-pitcher change, Extreme → No), the league ΔStuff+ split into translated movement vs the model's learned `rho`, and pass/fail checks (export features, disjoint pitcher folds, count neutrality, Stuff+ mean/sd per season).
+  - README states the decision rule fixed before running (change the model only for a leak, fold overlap, or a miscalibrated translator in a family with ≥ 5 % of pitches) and the verdict.
+- **Verify:** `test -s reports/model_audit/README.md && test -s reports/model_audit/calibration.csv`
+- **Next step:** move the scratch audit into analysis/model_audit/run.py with CSV outputs.
+
+## HACK-085 · Paper: physics vs learned split of ΔStuff+ and the cutter/splitter translator limitation
+
+- **Type:** docs
+- **Priority:** P1
+- **Estimate:** 30 min
+- **Rubric / Spec:** C1 C2
+- **Depends on:** HACK-082, HACK-084
+- **Uses contract:** HACK-058
+- **Paths:** docs/technical/
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - §6 says how much of the league ΔStuff+ comes from lost movement and how much from the model's learned air effect (contact and carry), citing `reports/model_audit/`.
+  - The limitations list the cutter (and splitter) translator miscalibration with its numbers; `python docs/technical/check_numbers.py` passes; PDF rebuilt, still 6–10 pages.
+- **Verify:** `python docs/technical/check_numbers.py && test -s docs/technical/stuffplus2240.pdf`
+- **Next step:** after 082 and 084 merge, add two sentences to §6 and one limitation.

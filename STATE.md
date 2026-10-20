@@ -1,18 +1,18 @@
 # STATE
 
 Phase: execution
-Updated: 1792469565
+Updated: 1792471917
 AVAILABLE: HACK-062 HACK-063 HACK-085 HACK-025 
-CLAIMED: HACK-084 
+CLAIMED: -
 BLOCKED: -
-REVIEW: HACK-070 HACK-082 
+REVIEW: HACK-070 HACK-082 HACK-084 
 INTEGRATED: (78; last 12) ... HACK-071 HACK-072 HACK-073 HACK-074 HACK-075 HACK-076 HACK-077 HACK-078 HACK-079 HACK-080 HACK-081 HACK-083 
 CANCELLED: -
 
 Claims (first 24; status --task ID shows detail):
 HACK-070 | REVIEW | luis-2 | until 1792480385
 HACK-082 | REVIEW | joahan-2 | until 1792476862
-HACK-084 | CLAIMED | joahan-1 | until 1792471656
+HACK-084 | REVIEW | joahan-1 | until 1792486317
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):

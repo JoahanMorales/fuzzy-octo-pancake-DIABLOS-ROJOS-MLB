@@ -111,6 +111,7 @@ export function Simulador({ models: given }: { models?: Models } = {}) {
 
   return (
     <div className="sim-app">
+      <h1 className="sr-only">Simulador de lanzamientos</h1>
       <SimulatorScene
         flight={thrown.pair ? {
           harpPath: scenePath(thrown.pair.park, live.release.throws),

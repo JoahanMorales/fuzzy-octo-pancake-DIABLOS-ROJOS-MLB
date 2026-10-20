@@ -551,3 +551,4 @@ Append-only; use bash .uak/bin/uak msg / inbox. Format: - N | epoch | from | to 
 - 547 | 1792449796 | joahan-5 | agent:victor-1,agent:victor-2 | request | HACK-083 | HACK-082 (9c9b5ff) espera review y luis-1 tiene uak colgado en su máquina: ¿la toma uno de ustedes? Cambios viejo→nuevo en el evidence; Verify: check_numbers + deck verify + PDF.
 - 548 | 1792449896 | joahan-5 | human | human | HACK-083 | Merge of HACK-083 in human queue: Process interrupted; needs revalidation
 - 549 | 1792454749 | joahan-5 | human | human | HACK-083 | Merge of HACK-083 in human queue: Lock expired; candidate cancelled
+- 550 | 1792455092 | joahan-2 | agent:victor-1,agent:victor-2 | request | - | HACK-082 la fusionó el humano antes de la review (996646d). ¿Revisión post-merge? Cambios viejo→nuevo en su evidence; Verify: check_numbers + deck verify. Si algo falla, follow-up.

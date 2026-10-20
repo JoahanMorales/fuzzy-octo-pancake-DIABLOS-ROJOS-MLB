@@ -47,6 +47,30 @@ async function firstPitcherPath(page: Page): Promise<string> {
   return (href as string).slice(1);
 }
 
+/** Recorre con Tab hasta 40 controles y devuelve los que, enfocados con teclado, no dibujan contorno ni sombra de ≥ 2 px. */
+async function tabStopsWithoutRing(page: Page): Promise<string[]> {
+  await page.locator('body').click({ position: { x: 1, y: 1 } });
+  const missing: string[] = [];
+  const seen = new Set<string>();
+  for (let i = 0; i < 40; i += 1) {
+    await page.keyboard.press('Tab');
+    const info = await page.evaluate(() => {
+      const el = document.activeElement as HTMLElement | null;
+      if (!el || el === document.body) return null;
+      const cs = getComputedStyle(el);
+      const outline = cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) >= 2;
+      const shadow = cs.boxShadow !== 'none' && cs.boxShadow !== '';
+      const name = `${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ''}${el.className && typeof el.className === 'string' ? `.${el.className.split(/\s+/)[0]}` : ''} "${(el.getAttribute('aria-label') ?? el.textContent ?? '').trim().slice(0, 30)}"`;
+      return { name, ring: outline || shadow };
+    });
+    if (!info) break;
+    if (seen.has(info.name)) break; // dio la vuelta
+    seen.add(info.name);
+    if (!info.ring) missing.push(info.name);
+  }
+  return missing;
+}
+
 test('hay rutas que recorrer', () => {
   expect(ROUTES.length, 'no se pudo leer PAGES de src/routes.tsx').toBeGreaterThanOrEqual(10);
   expect(new Set(ROUTES.map((r) => r.path)).size).toBe(ROUTES.length);
@@ -70,9 +94,17 @@ for (const route of ROUTES) {
     const text = (await main.innerText()) ?? '';
     expect(text, 'texto vacío o con valores rotos').not.toMatch(BAD_TEXT);
     expect(text.trim().length).toBeGreaterThan(40);
+    // DESIGN.md §Copy: cero rayas largas (em-dash) en el texto ni en las etiquetas accesibles.
+    const labels = await page.locator('[aria-label],[title],[alt]').evaluateAll((els) =>
+      els.flatMap((el) => ['aria-label', 'title', 'alt'].map((a) => el.getAttribute(a) ?? '')));
+    expect(`${text}\n${labels.join('\n')}`, 'em-dash (—) en el copy').not.toContain('—');
 
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow, 'desborde horizontal en px').toBeLessThanOrEqual(1);
+
+    // DESIGN.md §Accesibilidad: todo control alcanzable con Tab muestra un foco visible (contorno o sombra de ≥ 2 px).
+    const unfocusable = await tabStopsWithoutRing(page);
+    expect(unfocusable, `controles sin anillo de foco en ${path}`).toEqual([]);
 
     // Deja pasar un momento por si algo falla al hidratar (datos, escena 3D) antes de leer los errores.
     await page.waitForTimeout(500);

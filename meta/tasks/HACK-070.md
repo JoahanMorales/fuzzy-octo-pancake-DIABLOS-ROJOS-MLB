@@ -1,5 +1,5 @@
 Task: HACK-070
-Events: 8
+Events: 9
 Checkpoints: 0
 Sessions: 3
 Last-Checkpoint: 0

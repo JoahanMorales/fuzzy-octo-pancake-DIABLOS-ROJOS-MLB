@@ -15,7 +15,7 @@ Task-Base: 364dc50dd4fb3a76fb5eef09d47e6e1319972cf2
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-070?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-070?expand=1
 Evidence: 85cb3886 · build ok · vitest 176 passed · e2e 34 passed (30 rutas con foco y em-dash, desktop+movil)
-Events: 8
+Events: 9
 Checkpoints: 0
 Sessions: 3
 Last-Checkpoint: 0

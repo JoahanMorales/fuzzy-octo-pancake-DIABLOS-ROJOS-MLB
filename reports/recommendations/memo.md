@@ -28,12 +28,12 @@ Las tres formas que más pierden:
 
 Umbrales sacados de los quintiles observados (`ideal_profile/delta_by_trait.csv`) y de la sensibilidad al aire (`ideal_profile/rho_sensitivity.csv`):
 
-1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es +20.9 puntos a nivel del mar y solo +7.6 en el Harp Helú; la recta de más *ride* es la que más pierde (riding 4S -17.9).
-2. **Extensión alta.** Quintil superior (≥ 6.43 ft): ΔStuff+ -9.7; quintil inferior (≤ 5.58 ft): -12.8 (la extensión pesa más en altura: rango +2.2 → +4.9).
-3. **Ángulo de aproximación (VAA) bajo, neto de la altura del lanzamiento.** Quintil inferior: -9.1; superior: -13.1.
-4. **Velocidad: sin umbral.** El efecto no es robusto: el rango de Stuff+ por velocidad pasa de +8.4 (mar) a +9.4 en el Harp Helú con el efecto total, pero a +6.8 con solo la física (`rho_sensitivity.csv`), y los quintiles de ΔStuff+ no son monótonos (-10.2, -10.4, -11.3, -12.3, -11.6; `delta_by_trait.csv`).
+1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es +21.1 puntos a nivel del mar y solo +5.8 en el Harp Helú; la recta de más *ride* es la que más pierde (riding 4S -17.9).
+2. **Extensión alta.** Quintil superior (≥ 6.43 ft): ΔStuff+ -11.0; quintil inferior (≤ 5.58 ft): -15.3 (la extensión pesa más en altura: rango +1.5 → +5.4).
+3. **Ángulo de aproximación (VAA) bajo, neto de la altura del lanzamiento.** Quintil inferior: -12.4; superior: -14.1.
+4. **Velocidad: sin umbral.** El efecto no es robusto: el rango de Stuff+ por velocidad pasa de +8.8 (mar) a +10.9 en el Harp Helú con el efecto total, pero a +7.7 con solo la física (`rho_sensitivity.csv`), y los quintiles de ΔStuff+ no son monótonos (-13.4, -13.2, -13.8, -13.5, -13.3; `delta_by_trait.csv`).
 5. **Secundarios:** preferir 12-6 CB, sweeper, splitter; desconfiar de power CH, 11-5 CB.
-6. **Perfil de referencia de recta** en el aire del Harp Helú (`ideal_profile/best_fastballs.csv`): 90.7 mph, IVB 16.3" y HB 6.6" a nivel del mar, extensión 6.25 ft, salida 6.14 ft → Stuff+ 108.2 en el Harp Helú (115.5 a nivel del mar).
+6. **Perfil de referencia de recta** en el aire del Harp Helú (`ideal_profile/best_fastballs.csv`): 91.4 mph, IVB 14.4" y HB 4.4" a nivel del mar, extensión 6.48 ft, salida 5.84 ft → Stuff+ 106.7 en el Harp Helú (105.3 a nivel del mar).
 
 *Límite:* la eficiencia de giro no se usa como criterio: la brecha de ~15 % entre altitudes sigue sin explicarse (`physics/README.md`).
 
@@ -51,10 +51,10 @@ Efecto del aire por zona del plato, en carreras por lanzamiento (+ = peor para e
 ## 5. Valor en carreras y victorias
 
 - **Carreras por victoria:** liga 11.8; Harp Helú (bucket Extreme) 14.3 (`business_value/runs_per_win.csv`). En altura se anota más, así que cada carrera ahorrada vale menos victorias.
-- **Un punto de Stuff+ vale 7.24e-04 carreras por lanzamiento** [6.78e-04, 7.69e-04] (estimación directa fuera de muestra, `business_value/runs_per_point_direct.csv`).
-- **Ejemplo:** +10 puntos de Stuff+ en 2,500 lanzamientos son 18.1 carreras ≈ **1.26 victorias** en el Harp Helú (`business_value/gm_example.csv`). Una desviación estándar *observada* entre pitcher-temporadas, que incluye ruido de muestreo (5.4 puntos) equivale a 9.9 carreras ≈ 0.69 victorias (`business_value/pitcher_spread_example.csv`).
+- **Un punto de Stuff+ vale 8.67e-04 carreras por lanzamiento** [8.18e-04, 9.19e-04] (estimación directa fuera de muestra, `business_value/runs_per_point_direct.csv`).
+- **Ejemplo:** +10 puntos de Stuff+ en 2,500 lanzamientos son 21.7 carreras ≈ **1.51 victorias** en el Harp Helú (`business_value/gm_example.csv`). Una desviación estándar *observada* entre pitcher-temporadas, que incluye ruido de muestreo (5.1 puntos) equivale a 11.0 carreras ≈ 0.77 victorias (`business_value/pitcher_spread_example.csv`).
 - **Costo medio de la altura:** +0.0116 carreras por lanzamiento (Extreme frente a sin altitud, `business_value/altitude_cost.csv`): ~0.9 carreras por apertura de 77 lanzamientos.
-- **Orden de magnitud de la decisión de reclutamiento:** la diferencia de pérdida entre riding 4S y sweeper es 8.3 puntos; por cada 1,000 lanzamientos son ~6.0 carreras (~0.42 victorias en el Harp Helú). Es una diferencia de pérdida entre formas, no el efecto causal de cambiar un lanzamiento por otro.
+- **Orden de magnitud de la decisión de reclutamiento:** la diferencia de pérdida entre riding 4S y sweeper es 8.3 puntos; por cada 1,000 lanzamientos son ~7.2 carreras (~0.50 victorias en el Harp Helú). Es una diferencia de pérdida entre formas, no el efecto causal de cambiar un lanzamiento por otro.
 
 ## Cómo leer estas cifras
 

@@ -15,8 +15,8 @@ Task-Base: b08de0cda138550fc6c9a697a7ff409024be6349
 Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-084?expand=1; run .uak/bin/smoke
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-084?expand=1
 Evidence: 1f5f9c8b: python -m analysis.model_audit.run --scores <v2 pitch_scores> -> MODEL_AUDIT_OK; Verify test -s README.md && calibration.csv OK; same numbers as the scratch audit; read-only (no refit, no per-pitch rows); verdict: model does not change
-Events: 2
+Events: 3
 Checkpoints: 0
-Sessions: 1
+Sessions: 2
 Last-Checkpoint: 0
 Task-Tip: 1f5f9c8bc60fa264b314ee38f4a5e05263e9dca5

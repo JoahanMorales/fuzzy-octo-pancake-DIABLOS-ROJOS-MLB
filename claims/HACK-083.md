@@ -12,6 +12,6 @@ Verify: `python -m pytest -q tests/test_profile.py`
 Lease-Until: 1792466093
 Updated: 1792451693
 Task-Base: c2ca3385bac249bfdf1e3b72e5901a7c8b0e7fd6
-Next: Humano: Process interrupted; needs revalidation
+Next: Humano: Lock expired; candidate cancelled
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-083?expand=1
 Evidence: -

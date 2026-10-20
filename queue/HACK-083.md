@@ -1,5 +1,5 @@
 ID: HACK-083
-State: MERGING
+State: HUMAN
 Owner: joahan-5
-Queued: 1792451777
-Reason: Waiting for queue
+Updated: 1792454749
+Reason: Lock expired; candidate cancelled

@@ -757,3 +757,19 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
   - Screenshots of those pages at 1440 and 390 retaken under `web/e2e/qa/shots/` and INFORME.md marks each finding fixed; no horizontal overflow at 390 on any route.
 - **Verify:** `npm --prefix web run build && npm --prefix web test -- --run`
 - **Next step:** start with the CSS-only ones (laboratorio table, presentación bar, inicio legend), then altitud, then the simulator layouts.
+## HACK-087 · League ΔStuff+ CDMX highlights from the production model (delta_by_shape), not Stuff+ v2 (familia)
+
+- **Type:** follow-up
+- **Priority:** P0
+- **Estimate:** 1 h
+- **Rubric / Spec:** C1, C4
+- **Depends on:** HACK-050
+- **Uses contract:** HACK-038
+- **Paths:** stuffplus/export_web.py, web/public/data/real/validation.json, tests/test_export_highlights.py, tests/test_export_web.py
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - `validation.json` highlights (`league_delta_cdmx`, best and worst shape and delta, `source_model`) come from the production `reports/altitude_delta/delta_by_shape.csv` (count-neutral Stuff+ v2), not from `reports/stuff_v2/altitude.csv` "Stuff+ v2 (familia)"; the league delta rounds to −13.0.
+  - `web/public/data/real/validation.json` re-exported (only that file changes under real/); landing and presentación show −13.0 and riding 4S as the most punished shape.
+  - New test `tests/test_export_highlights.py` checks the highlights against the CSV and that the committed real/validation.json matches the export. No model is refit.
+- **Verify:** `python -m pytest -q --tb=short -x tests/test_export_highlights.py tests/test_export_web.py && npm --prefix web run build && npm --prefix web test -- --run`
+- **Next step:** change `_validation` in stuffplus/export_web.py (~line 222), re-export real/ to a scratch dir and copy only validation.json.

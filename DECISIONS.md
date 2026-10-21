@@ -142,3 +142,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792503525 | deadline lease/HACK-082/1792476862 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792503525 | deadline lease/HACK-084/1792486317 | REQUIRES_RECOVERY | Claim kept; read the summary and use release --expired --read-summary. No work is deleted.
 - 1792533612 | plan | joahan/joahan | tasks added: HACK-086 | Why: backlog without PR (Plan-Channel: claims)
+- 1792547253 | plan | joahan/joahan | tasks added: HACK-087 | Why: backlog without PR (Plan-Channel: claims)

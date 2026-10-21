@@ -773,3 +773,34 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
   - New test `tests/test_export_highlights.py` checks the highlights against the CSV and that the committed real/validation.json matches the export. No model is refit.
 - **Verify:** `python -m pytest -q --tb=short -x tests/test_export_highlights.py tests/test_export_web.py && npm --prefix web run build && npm --prefix web test -- --run`
 - **Next step:** change `_validation` in stuffplus/export_web.py (~line 222), re-export real/ to a scratch dir and copy only validation.json.
+## HACK-088 · Deck and one-pager typeset in LaTeX (Beamer, Diablos red + black)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Estimate:** 3 h
+- **Rubric / Spec:** C4
+- **Depends on:** None
+- **Uses contract:** HACK-059
+- **Paths:** demo/deck/, demo/one-pager/
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - `python demo/deck/build.py` writes a Beamer `.tex` for the deck and a LaTeX `.tex` for the one-pager from the same computed values (no hand-typed numbers) and compiles both with Tectonic to `demo/deck/deck.pdf` and `demo/one-pager/one-pager.pdf`; `deck.pptx` is still built; previews regenerated.
+  - Diablos red + black identity, Spanish copy, no em-dashes; `python demo/deck/verify.py` passes.
+- **Verify:** `python demo/deck/build.py && python demo/deck/verify.py`
+- **Next step:** add a LaTeX emitter beside the current PDF writer in build.py, reuse its slide data.
+
+## HACK-089 · Pitcher cards typeset in LaTeX
+
+- **Type:** follow-up
+- **Priority:** P2
+- **Estimate:** 3 h
+- **Rubric / Spec:** C4
+- **Depends on:** None
+- **Uses contract:** HACK-034
+- **Paths:** stuffplus/cards.py, stuffplus/cards_tex.py, reports/cards/, tests/test_cards_tex.py
+- **Freeze-Allowed:** yes
+- **Acceptance:**
+  - The card PDFs under `reports/cards/` are typeset with LaTeX (Tectonic): header, numbers and tables in LaTeX, the chart as a vector figure, with the same values as `build_card`; PNG cards and `manifest.csv` keep their current contract.
+  - A new test checks the generated `.tex` on the synthetic fixture (numbers present, no em-dashes); `tests/test_cards.py` still passes unchanged.
+- **Verify:** `python -m pytest -q --tb=short -x tests/test_cards.py tests/test_cards_tex.py`
+- **Next step:** emit one `.tex` per card from the `build_card` dict, compile with Tectonic, keep matplotlib only for the chart.

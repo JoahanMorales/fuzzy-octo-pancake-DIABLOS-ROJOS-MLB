@@ -208,24 +208,39 @@ def _staff(root: Path) -> dict:
     }
 
 
+PRODUCTION_MODEL = "Stuff+ v2 de producción (conteo neutral)"
+
+
+def _highlights(shapes: pd.DataFrame) -> dict:
+    """ΔStuff+ CDMX de la liga y formas extremas del modelo de producción (HACK-087).
+
+    ``relative_to_league`` es ``delta_stuff`` menos el promedio de la liga, así que la resta
+    devuelve ese promedio en cada fila.
+    """
+    league = float((shapes["delta_stuff"] - shapes["relative_to_league"]).mean())
+    best = shapes.loc[shapes["delta_stuff"].idxmax()]
+    worst = shapes.loc[shapes["delta_stuff"].idxmin()]
+    return {
+        "league_delta_cdmx": round(league, 4),
+        "best_shape": str(best["shape"]),
+        "best_delta": float(best["delta_stuff"]),
+        "worst_shape": str(worst["shape"]),
+        "worst_delta": float(worst["delta_stuff"]),
+        "source_model": PRODUCTION_MODEL,
+    }
+
+
 def _validation(root: Path) -> dict:
     table_src = "reports/validation/official_full/validation_table.csv"
+    shape_src = "reports/altitude_delta/delta_by_shape.csv"
     alt_src = "reports/stuff_v2/altitude.csv"
     decision_src = "reports/stuff_v2/decision.csv"
     table = _read(root, table_src)
     altitude = _records(_read(root, alt_src))
-    familia = next(row for row in altitude if "familia" in str(row["model"]))
     decision = _records(_read(root, decision_src))
     return {
-        **envelope([table_src, alt_src, decision_src]),
-        "highlights": {
-            "league_delta_cdmx": familia["league_delta"],
-            "best_shape": familia["best_shape"],
-            "best_delta": familia["best_delta"],
-            "worst_shape": familia["worst_shape"],
-            "worst_delta": familia["worst_delta"],
-            "source_model": familia["model"],
-        },
+        **envelope([table_src, shape_src, alt_src, decision_src]),
+        "highlights": _highlights(_read(root, shape_src)),
         "altitude_models": altitude,
         "adoption": decision,
         "rows": _records(table),

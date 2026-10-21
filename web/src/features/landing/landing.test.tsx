@@ -36,7 +36,7 @@ function renderLanding(loader: () => ReturnType<typeof loadLanding> | Promise<ne
 describe('landing', () => {
   it('shows the three contract numbers, the simulator link and a still diagram', async () => {
     renderLanding(() => loadLanding(fetchMock));
-    expect(await screen.findByTestId('league-delta')).toHaveTextContent('−13.0');
+    expect(await screen.findByTestId('league-delta')).toHaveTextContent('−12.7');
     expect(screen.getByTestId('pitching-skill')).toHaveTextContent('+3.7 %');
     expect(screen.getByTestId('bias-drop')).toHaveTextContent('−81.5 %');
     expect(screen.getByText('ejemplo')).toBeInTheDocument();
@@ -67,7 +67,7 @@ describe('landing', () => {
       return fetchMock(input);
     };
     renderLanding(() => loadLanding(htmlManifest));
-    expect(await screen.findByTestId('league-delta')).toHaveTextContent('−13.0');
+    expect(await screen.findByTestId('league-delta')).toHaveTextContent('−12.7');
     expect(screen.getByText('ejemplo')).toBeInTheDocument();
   });
 

@@ -15,15 +15,14 @@ MOCK = ROOT / "web" / "public" / "data" / "mock"
 
 
 def test_mock_reads_league_delta_from_stuff_v2():
-    # HACK-087: el ΔStuff+ de liga sale del modelo de producción (delta_by_shape.csv), no de "Stuff+ v2 (familia)"
-    shapes = pd.read_csv(ROOT / "reports" / "altitude_delta" / "delta_by_shape.csv")
-    league = float((shapes["delta_stuff"] - shapes["relative_to_league"]).mean())
+    familia = pd.read_csv(ROOT / "reports" / "stuff_v2" / "altitude.csv")
+    familia = familia[familia["model"].str.contains("familia")].iloc[0]
     doc = export_web.build_mock(ROOT)["validation.json"]
     assert doc["model_version"] == "stuff_v2"
     assert doc["model"] == "pitch_family Stuff+ composite"
     assert doc["translation"] == "physics_translator"
-    assert doc["highlights"]["league_delta_cdmx"] == round(league, 4)
-    assert doc["highlights"]["source_model"] == export_web.PRODUCTION_MODEL
+    assert doc["highlights"]["league_delta_cdmx"] == round(float(familia.league_delta), 5)
+    assert doc["highlights"]["source_model"] == familia.model
 
 
 def test_parks_shapes_physics_and_split_staff():

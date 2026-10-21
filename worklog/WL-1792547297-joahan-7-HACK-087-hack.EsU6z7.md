@@ -10,3 +10,4 @@
 
 ## History
 - 1792547297 | CLAIMED | joahan-7 | claim; next: change `_validation` in stuffplus/export_web.py (~line 222), re-export real/ to a scratch dir and copy only validation.json.
+- 1792547561 | CLAIMED | joahan-7 | pending decision HACK-087-1792547561; option: update 5 literal asserts that pin the old familia source/value (tests/test_export_web.py:24-25, story.test.ts:21, landing.test.tsx:39,70) to the production value -13.0; regenerate mock/validation.json (test_write_mock requires it); Why: these asserts encode the bug HACK-087 fixes; superseded by tests/test_export_highlights.py

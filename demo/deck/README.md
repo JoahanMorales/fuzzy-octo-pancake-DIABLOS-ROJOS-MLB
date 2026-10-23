@@ -1,6 +1,6 @@
 # Presentación ejecutiva v2 · HACK-036, HACK-059
 
-10 diapositivas para una entrevista de 10 minutos, con Stuff+ v2 en producción (HACK-057). Rojo #D71920, gris carbón; el PDF usa DejaVu Sans incluida en `fonts/` (licencia en `fonts/LICENSE_DEJAVU`), así que se construye igual en Windows, macOS y Linux. El PPTX editable usa Arial.
+10 diapositivas para una entrevista de 10 minutos, con Stuff+ v2 en producción (HACK-057). Fondo carbón, rojo #D71920. El PDF se compone en LaTeX (`deck.tex`, Beamer + TikZ, Fira Sans) con Tectonic; sin Tectonic se queda la versión de ReportLab con DejaVu Sans de `fonts/` (licencia en `fonts/LICENSE_DEJAVU`). Las dos usan las mismas líneas que el PPTX editable (Arial).
 
 **Estado:** evidencia oficial agregada. Las franquicias 5 y 11 no se suman: identificación inferida y sede sin confirmar.
 
@@ -23,7 +23,7 @@
 
 `sources.json` guarda archivo, fila, columna, formato y SHA-256 de cada cifra, y para las dos cifras derivadas (promedio de la liga y recorte del sesgo) sus entradas y la fórmula. Las notas de cada diapositiva llevan el guion oral.
 
-Reconstruir con Python 3.12 y `demo/deck/requirements.txt`: `python demo/deck/build.py`. Validar: `python demo/deck/verify.py`.
+Reconstruir con Python 3.12, `demo/deck/requirements.txt` y Tectonic (`scoop install tectonic` o `brew install tectonic`): `python demo/deck/build.py`. Validar: `python demo/deck/verify.py`.
 
 ## Revisión antes de entrevista
 

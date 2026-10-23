@@ -9,7 +9,7 @@ lang: es
 <!--
 ESTADO: v2 (HACK-058): física v2, Stuff+ v2 en producción, calibración, incertidumbre y auditoría de fugas.
 Cada cifra junto a un archivo de reports/ está en ese archivo: python docs/technical/check_numbers.py lo comprueba.
-Presupuesto: 6–10 páginas. Compilar: python docs/technical/build_pdf.py (sin LaTeX) o bash docs/technical/build.sh.
+Presupuesto: 6–10 páginas. Compilar: bash docs/technical/build.sh (pandoc + Tectonic); sin LaTeX, python docs/technical/build_pdf.py.
 -->
 
 # Introducción
@@ -199,6 +199,8 @@ La altitud extrema es otra distribución: un clasificador que la distingue por l
 
 **Triangulación con lo observado.** Comparamos el *mismo* lanzamiento (pitcher × temporada × `pitch_id`) en juegos de altitud extrema contra juegos sin altitud. El Stuff+ del modelo se mueve en la misma dirección que el contrafactual en 7 de 7 familias; los resultados reales del pitcher caen entre −7.5 y −15.3 puntos y su IC contiene al contrafactual en 7 de 7 (`reports/altitude_delta/triangulation.csv`).
 
+**¿Física o aprendizaje? (HACK-084).** En una muestra de 20,000 lanzamientos, el ΔStuff+ de la liga en el aire del Harp Helú es −12.94. Si solo se traslada el movimiento y el rasgo `rho` del modelo se deja a nivel del mar, el lanzamiento pierde 5.95 puntos: es lo que quita perder Magnus. Si el movimiento queda fijo y solo cambia el `rho` aprendido, pierde 6.22: es lo que el modelo aprendió de los juegos en altura, donde el contacto hace más daño y la bola vuela más. La interacción suma los 0.77 restantes. Casi la mitad del efecto es física medida y la otra mitad es el resultado aprendido (`reports/model_audit/decomposition.csv`).
+
 **Parque por parque.** El Stuff+ neutral va de 98.1 a 102.0 en todos los parques: los pitchers son comparables y lo que cambia es el aire. El efecto del aire va de +4.7 en el parque más denso ($\rho$ = 1.055) a −13.7 en el más ligero ($\rho$ = 0.812) (`reports/leaderboards/by_park.csv`). En el staff candidato, el ΔCDMX del modelo correlaciona 0.53 y 0.69 (por franquicia) con el delta observado de cada pitcher (`reports/staff_audit/README.md`).
 
 # Recomendaciones y valor de negocio
@@ -224,14 +226,15 @@ Todo esto se consulta en el producto web: simulador 3D CDMX contra nivel del mar
 
 - **Fuera de alcance:** seguimiento de corredores (no está en los datos) y datos externos de MLB para entrenar.
 - **Limitaciones, cada una con su evidencia:**
-  1. **CDMX frente a Puebla** no se distinguen ($P = 0.832 < 0.95$, §3): $\hat\rho_{HH}$ usa las dos franquicias juntas y el staff se reporta por separado.
+  1. **CDMX frente a Puebla** no se distinguen ($P = 0.832 < 0.95$, §3): $\hat\rho_{HH}$ usa las dos franquicias juntas y el staff se reporta por separado (`reports/park_id/harp_helu.md`).
   2. **Residuo de sustentación sin explicar** (§4.1): por eso la traducción usa la elasticidad medida y no la eficiencia de giro.
   3. **Preparación transductiva.** Identidad, densidad por juego, referencias de arsenal y valores de carrera se estiman una vez con todos los datos; ningún paso usa el resultado de un lanzamiento como variable de ese lanzamiento y todos los modelos se ajustan solo con entrenamiento.
   4. **$\rho$ es por juego** y puede absorber rasgos del parque que viajan con la altitud; la triangulación dentro del lanzamiento y el holdout por parque acotan ese riesgo.
   5. **R3 no se cumplió.** Stuff+ v2 cambia la magnitud del efecto de la altitud (§5); se adoptó por la regla del sesgo en aire no visto, y el orden de las formas se conserva.
   6. **La conversión a carreras es lineal** en los puntos de Stuff+ y usa las carreras por victoria de un equipo promedio: es un orden de magnitud, no una promesa (§7).
-  7. **Incertidumbre individual grande.** El intervalo del ΔStuff+ observado de un pitcher mide ±7.6 puntos (§5.1): el modelo da la expectativa, no el caso.
+  7. **Incertidumbre individual grande.** El intervalo del ΔStuff+ observado de un pitcher mide ±7.6 puntos (§5.1): el modelo da la expectativa, no el caso (`reports/uncertainty/README.md`).
   8. **Las recomendaciones tácticas y de mezcla son hipótesis del modelo**, no experimentos.
+  9. **Traductor del cutter y del splitter.** La traducción proporcional se dispara cuando el movimiento medio está cerca de 0. Para el HB del cutter predice +9.29 in contra +1.44 in observados (cociente 6.45, 1.9 % de los lanzamientos), y para el del splitter +1.31 contra +1.85 (cociente 0.71, 0.6 %). Las familias calibradas en sus dos componentes suman 97.5 % de los lanzamientos; el ΔStuff+ de esas dos familias se lee con cautela (`reports/model_audit/calibration.csv`, `reports/model_audit/README.md`).
 - **Ética:** IDs anónimos, sin fines de apuesta, y los datos crudos nunca están en git ni en el despliegue (solo agregados).
 
 # Referencias {-}

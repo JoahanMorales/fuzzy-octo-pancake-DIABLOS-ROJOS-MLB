@@ -38,14 +38,20 @@
   .h71-step { display: none; }
   .h71-wide { display: none; }
 }
+.h71-short { display: none; }
+/* Phones (HACK-086, QA finding 2): one compact row (number, clock, arrows) so the strip covers ~56 px, not ~110 px. */
 @media (max-width: 700px) {
-  .h71-hud { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'say' 'controls'; gap: var(--s-2, 8px); padding: var(--s-2, 8px) 16px; }
+  .h71-hud { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: 'say controls'; gap: var(--s-2, 8px); padding: 6px 12px; }
   .h71-note { display: none; }
   .h71-say { grid-template-columns: minmax(0, 1fr); }
-  .h71-number b { font-size: var(--text-xl); }
-  .h71-controls { justify-content: space-between; }
-  .h71-controls .h48-button { padding: 8px 10px; }
-  .h71-clock { font-size: var(--text-lg); }
+  .h71-number { max-width: none; }
+  .h71-number b { font-size: var(--text-lg); }
+  .h71-number span { display: none; }
+  .h71-controls { gap: 6px; }
+  .h71-controls .h48-button { padding: 6px 10px; font-size: var(--text-sm); }
+  .h71-clock { font-size: var(--text-base); padding: 2px 8px; }
+  .h71-long { display: none; }
+  .h71-short { display: inline; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .h71-stage > * { animation: h71-in 180ms ease-out; }

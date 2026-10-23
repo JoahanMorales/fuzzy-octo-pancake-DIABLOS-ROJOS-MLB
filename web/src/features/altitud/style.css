@@ -50,6 +50,8 @@
   .alt-mobile-forest { display: grid; gap: var(--s-2); }
   .alt-mobile-forest button { text-align: left; padding: var(--s-3); }
   .alt-mobile-forest button > span:first-child { display: flex; justify-content: space-between; }
-  .alt-mobile-forest svg { min-width: 0; height: 24px; }
+  .alt-mobile-forest svg { display: block; width: 100%; height: auto; min-width: 0; margin: var(--s-2) 0; }
+  .alt-mobile-axis { position: sticky; top: 0; z-index: 1; background: var(--bg); margin: 0; padding: 0 calc(var(--s-3) + 1px); box-sizing: border-box; }
+  .alt-mobile-axis text { fill: var(--fg-muted); font: 10px var(--font-mono); }
   .alt-mobile-forest .alt-note { display: block; font-size: var(--text-xs); }
 }

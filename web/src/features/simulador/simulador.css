@@ -149,6 +149,32 @@
     border-top: 0;
     border-left: 1px solid var(--line);
   }
+
+  /* HACK-086, QA finding 3: the scene fills the column (the 68dvh phone rule left a black band under it) */
+  .sim-app { height: calc(100dvh - 49px); min-height: 0; }
+  .sim-app .sim,
+  .sim-app .sim[data-controlled='on'] { height: calc(100dvh - 49px); min-height: 0; }
+  .sim-app .sim-stage { height: 100%; min-height: 0; }
+  .sim-dock { max-height: calc(100dvh - 49px); }
+}
+
+.sp-why summary { cursor: pointer; list-style: none; }
+.sp-why summary::-webkit-details-marker { display: none; }
+.sp-why summary h2 { display: inline; }
+.sp-why summary::after { content: ' +'; color: var(--fg-muted); font-family: var(--font-mono); }
+.sp-why[open] summary::after { content: ' −'; }
+
+/* Phones (HACK-086, QA finding 6): the readout sits under the scene instead of covering a third of it, and the
+   camera chips stay on one scrollable row. */
+@media (max-width: 899px) {
+  .sim-app .sim-stage { min-height: 0; }
+  .sim-app .sim-world { position: relative; height: 58dvh; }
+  .sim-app .sim-lower { position: static; border-left-width: 4px; }
+  .sim-app .sim-cams { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .sim-app .sim-cams::-webkit-scrollbar { display: none; }
+  .sim-app .sim-cams button { flex: none; }
+  .sim-app .sim-tag { white-space: nowrap; font-size: 10px; padding: 2px 6px; }
+  .sim-app .sim-tag-long { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

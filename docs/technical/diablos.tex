@@ -1,17 +1,75 @@
-% Estilo Diablos Rojos: rojo + negro. Se incluye con pandoc -H docs/technical/diablos.tex
+% Estilo Diablos Rojos para el documento técnico: rojo + negro, Libertinus para el texto, Fira Sans para la estructura.
+% Se incluye con pandoc -H diablos.tex (ver build.sh). Solo usa paquetes y fuentes de TeX Live: compila igual en cualquier máquina.
+\usepackage{libertinus}
+\usepackage[scale=0.92,lining,tabular]{FiraSans}
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage{microtype}
 \usepackage{xcolor}
 \definecolor{diablos}{HTML}{C8102E}
 \definecolor{tinta}{HTML}{111111}
-\usepackage{sectsty}
-\sectionfont{\color{diablos}\bfseries}
-\subsectionfont{\color{tinta}\bfseries}
-\usepackage{hyperref}
-\hypersetup{colorlinks=true, linkcolor=diablos, urlcolor=diablos, citecolor=tinta}
+\definecolor{gris}{HTML}{5C5C5C}
+\definecolor{linea}{HTML}{D9D9D9}
+\definecolor{fondo}{HTML}{F6F6F6}
+\color{tinta}
+
+% Títulos de sección: número rojo, texto negro, filete fino debajo.
+\usepackage{titlesec}
+\titleformat{\section}{\sffamily\bfseries\Large\color{tinta}}{\textcolor{diablos}{\thesection}}{0.6em}{}[\vspace{2pt}{\color{linea}\titlerule[0.6pt]}]
+\titleformat{\subsection}{\sffamily\bfseries\large\color{tinta}}{\textcolor{diablos}{\thesubsection}}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt plus 3pt minus 2pt}{7pt}
+\titlespacing*{\subsection}{0pt}{11pt plus 2pt minus 2pt}{4pt}
+
+% Párrafos y listas compactos.
+\setlength{\parskip}{3pt plus 1pt}
+\usepackage{enumitem}
+\setlist{itemsep=2pt, topsep=3pt, parsep=1pt, leftmargin=1.4em}
+\setlist[itemize]{label=\textcolor{diablos}{\rule[0.25ex]{0.45em}{0.45em}}}
+\setlist[enumerate]{label=\textcolor{diablos}{\sffamily\bfseries\arabic*}, leftmargin=1.6em}
+
+% Tablas en Fira Sans pequeña, filetes booktabs en gris y leyenda con etiqueta roja.
+\usepackage{etoolbox}
+\usepackage{needspace}
+\pretocmd{\section}{\needspace{8\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{5\baselineskip}}{}{}
+\AtBeginEnvironment{longtable}{\sffamily\small\renewcommand{\arraystretch}{1.18}}
+\usepackage{colortbl}
+\arrayrulecolor{tinta}
+\usepackage{caption}
+\captionsetup{font={small,sf}, labelfont={bf,color=diablos}, labelsep=period, justification=raggedright,
+  singlelinecheck=false, skip=5pt}
+\captionsetup[figure]{justification=centering, singlelinecheck=true}
+
+% Encabezado y pie.
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textcolor{diablos}{\textbf{Stuff+ 2240}}}
-\fancyhead[R]{\textcolor{tinta}{ISAC Hackathon 2026 · Diablos Rojos}}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{1.2pt}
+\fancyhead[L]{\sffamily\footnotesize\textcolor{diablos}{\textbf{Stuff+ 2240}}\hspace{0.6em}\textcolor{gris}{Documento técnico v2}}
+\fancyhead[R]{\sffamily\footnotesize\textcolor{gris}{ISAC Sports Analytics Hackathon 2026 · Diablos Rojos}}
+\fancyfoot[R]{\sffamily\footnotesize\textcolor{tinta}{\textbf{\thepage}}}
+\renewcommand{\headrulewidth}{0.8pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{diablos}\leaders\hrule height \headrulewidth\hfill}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\renewcommand{\headrule}{}%
+  \fancyfoot[R]{\sffamily\footnotesize\textbf{\thepage}}}
+
+% Rutas de reports/ (código en línea) en gris y más pequeñas: son trazabilidad, no texto.
+\let\diablosTT\texttt
+\renewcommand{\texttt}[1]{{\color{gris}\fontsize{8.2}{10}\selectfont\diablosTT{#1}}}
+% Bibliografía compacta.
+\AtBeginEnvironment{CSLReferences}{\small\setlength{\parskip}{1pt}}
+
+% Portada en la primera página: franja roja, título en Fira Sans y metadatos.
+\makeatletter
+\renewcommand{\maketitle}{%
+  \thispagestyle{plain}%
+  \noindent{\color{diablos}\rule{\linewidth}{5pt}}\par\vspace{10pt}%
+  \noindent{\sffamily\footnotesize\bfseries\color{diablos}\MakeUppercase{Documento técnico v2}}\par
+  \vspace{6pt}%
+  \noindent{\sffamily\bfseries\fontsize{21}{25}\selectfont\color{tinta}\@title}\par
+  \vspace{6pt}%
+  \noindent{\sffamily\large\color{gris}Equipo Diablos Rojos · ISAC Sports Analytics Hackathon 2026}\par
+  \vspace{8pt}%
+  \noindent{\sffamily\small\color{tinta}\@author\hspace{0.8em}\textcolor{linea}{|}\hspace{0.8em}\@date}\par
+  \vspace{4pt}{\color{tinta}\rule{\linewidth}{1.4pt}}\par\vspace{6pt}}
+\makeatother
+
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}\renewcommand{\figurename}{Figura}}

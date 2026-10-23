@@ -438,3 +438,9 @@
     transition: none;
   }
 }
+
+/* Phones (HACK-086, QA finding 1): the top legend collided with the "informe" badge and covered the sea-level line.
+   The scene already draws its own legend at the bottom, so the top one goes on narrow screens. */
+@media (max-width: 600px) {
+  .landing-scene-legend { display: none; }
+}

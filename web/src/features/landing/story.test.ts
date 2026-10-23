@@ -18,7 +18,7 @@ describe('hero numbers come from validation.json', () => {
     const base = validation.rows.find((row) => row.split === 'park_holdout' && row.model === 'baseline' && row.metric === 'bias');
     const model = validation.rows.find((row) => row.split === 'park_holdout' && row.model === 'Pitching+' && row.metric === 'bias');
     expect(hero.biasReduction).toBeCloseTo(biasReduction(base!.value, model!.value));
-    expect(signed(hero.leagueDelta)).toBe('−12.7');
+    expect(signed(hero.leagueDelta)).toBe('−13.0');
     expect(percentFromFraction(hero.pitchingSkill)).toBe('+3.7 %');
     expect(percentFromFraction(-hero.biasReduction)).toBe('−81.5 %');
   });

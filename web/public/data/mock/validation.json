@@ -5,16 +5,17 @@
   "demo_data": true,
   "sources": [
     "reports/validation/official_full/validation_table.csv",
+    "reports/altitude_delta/delta_by_shape.csv",
     "reports/stuff_v2/altitude.csv",
     "reports/stuff_v2/decision.csv"
   ],
   "highlights": {
-    "league_delta_cdmx": -12.654,
+    "league_delta_cdmx": -12.9534,
     "best_shape": "12-6 CB",
-    "best_delta": -9.1603,
+    "best_delta": -9.4932,
     "worst_shape": "riding 4S",
-    "worst_delta": -17.4262,
-    "source_model": "Stuff+ v2 (familia)"
+    "worst_delta": -17.8729,
+    "source_model": "Stuff+ v2 de producción (conteo neutral)"
   },
   "altitude_models": [
     {

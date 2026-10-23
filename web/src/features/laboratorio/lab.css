@@ -1,0 +1,8 @@
+/* /laboratorio on phones (HACK-086, QA finding 5): the tweak table fits 390 px. The row labels wrap, the CI note
+   in the header hides with the CI cells (pages.css hides .ci under 900 px), and the table never exceeds its box. */
+@media (max-width: 900px) {
+  .lab-tweaks { table-layout: fixed; width: 100%; }
+  .lab-tweaks tbody th { white-space: normal; overflow-wrap: anywhere; width: 46%; }
+  .lab-tweaks .lab-ci-h { display: none; }
+  .lab-tweaks td.num { white-space: nowrap; }
+}

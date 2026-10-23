@@ -52,6 +52,7 @@ function Air({ park, bg }: { park: ParkSide; bg: string }) {
 function CameraRig({ view, reduced, free }: { view: ViewId; reduced: boolean; free: boolean }) {
   const ref = useRef<CameraControls>(null);
   const camera = useThree((s) => s.camera);
+  const size = useThree((s) => s.size);
   useLayoutEffect(() => {
     const controls = ref.current;
     if (!controls) return;
@@ -65,7 +66,7 @@ function CameraRig({ view, reduced, free }: { view: ViewId; reduced: boolean; fr
     controls.touches.three = 0;
     const shot = VIEWS[view];
     const persp = camera as THREE.PerspectiveCamera;
-    persp.fov = shot.fov;
+    persp.fov = fovFor(shot.fov, size.width / Math.max(size.height, 1));
     persp.updateProjectionMatrix();
     controls.smoothTime = cameraSmoothTime(reduced);
     void controls.setLookAt(
@@ -73,8 +74,17 @@ function CameraRig({ view, reduced, free }: { view: ViewId; reduced: boolean; fr
       shot.target[0], shot.target[1], shot.target[2],
       cameraMoves(reduced),
     );
-  }, [camera, free, reduced, view]);
+  }, [camera, free, reduced, view, size.width, size.height]);
   return <CameraControls ref={ref} smoothTime={cameraSmoothTime(reduced)} />;
+}
+
+/** The views are framed for a landscape canvas (about 5:4 or wider). On a portrait phone canvas the same vertical
+ *  FOV crops the batter and the zone, so keep the horizontal FOV of that reference aspect instead (HACK-086). */
+const FRAME_ASPECT = 1.25;
+export function fovFor(fov: number, aspect: number): number {
+  if (!(aspect > 0) || aspect >= FRAME_ASPECT) return fov;
+  const half = (fov * Math.PI) / 360;
+  return (Math.atan((Math.tan(half) * FRAME_ASPECT) / aspect) * 360) / Math.PI;
 }
 
 /** Seconds of windup before the ball leaves the hand (the flight animation starts then). */

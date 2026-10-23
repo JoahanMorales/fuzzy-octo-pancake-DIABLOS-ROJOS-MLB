@@ -1,0 +1,72 @@
+\documentclass[border=4pt]{standalone}
+\usepackage{libertinus}
+\usepackage[scale=0.92,lining,tabular]{FiraSans}
+\usepackage{xcolor}
+\definecolor{diablos}{HTML}{C8102E}
+\definecolor{tinta}{HTML}{111111}
+\definecolor{gris}{HTML}{8A8A8A}
+\definecolor{linea}{HTML}{E3E3E3}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\sffamily
+\begin{tikzpicture}
+\begin{axis}[
+  width=13.2cm, height=8.6cm, scale only axis=false,
+  xmin=-20, xmax=-6, ymin=-0.7, ymax=12.7, y dir=reverse,
+  ytick={0,...,12}, yticklabels={{Curva 12-6 \textcolor{gris}{\scriptsize 11,741}},{Sweeper \textcolor{gris}{\scriptsize 25,133}},{Splitter \textcolor{gris}{\scriptsize 3,928}},{Slider \textcolor{gris}{\scriptsize 28,184}},{Slider giroscópico \textcolor{gris}{\scriptsize 90,801}},{Recta (4S) \textcolor{gris}{\scriptsize 135,473}},{Sinker corredora (2S) \textcolor{gris}{\scriptsize 50,939}},{Sinker hundida (2S) \textcolor{gris}{\scriptsize 53,999}},{Cutter \textcolor{gris}{\scriptsize 11,795}},{Cambio \textcolor{gris}{\scriptsize 59,679}},{Curva 11-5 \textcolor{gris}{\scriptsize 30,887}},{Cambio de poder \textcolor{gris}{\scriptsize 18,497}},{Recta de ride \textcolor{gris}{\scriptsize 102,175}}},
+  yticklabel style={font=\small, text=tinta}, xticklabel style={font=\small, text=tinta},
+  xtick={-20,-18,...,-6}, xticklabels={−20,−18,−16,−14,−12,−10,−8,−6},
+  xmajorgrids, grid style={linea}, axis line style={draw=none}, tick style={draw=none},
+  xlabel={ΔStuff+ en el aire del Harp Helú contra nivel del mar (IC 95 \% por pitcher)},
+  xlabel style={font=\small, text=tinta}, clip=false,
+]
+\draw[tinta, dashed, line width=0.7pt] (axis cs:-12.9534,-0.7) -- (axis cs:-12.9534,12.7);
+\node[anchor=south, font=\scriptsize\bfseries, text=tinta] at (axis cs:-12.9534,-0.7) {Promedio de la liga −13.0};
+\draw[tinta, line width=1.1pt] (axis cs:-10.0930,0) -- (axis cs:-8.9105,0);
+\fill[tinta, draw=white, line width=0.8pt] (axis cs:-9.4932,0) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=tinta, fill=white, inner sep=1.5pt] at (axis cs:-8.9105,0) {\,−9.5};
+\draw[tinta, line width=1.1pt] (axis cs:-10.1500,1) -- (axis cs:-9.1034,1);
+\fill[tinta, draw=white, line width=0.8pt] (axis cs:-9.6005,1) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=tinta, fill=white, inner sep=1.5pt] at (axis cs:-9.1034,1) {\,−9.6};
+\draw[tinta, line width=1.1pt] (axis cs:-12.8099,2) -- (axis cs:-8.4345,2);
+\fill[tinta, draw=white, line width=0.8pt] (axis cs:-10.2708,2) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=tinta, fill=white, inner sep=1.5pt] at (axis cs:-8.4345,2) {\,−10.3};
+\draw[tinta, line width=1.1pt] (axis cs:-11.2754,3) -- (axis cs:-10.6313,3);
+\fill[tinta, draw=white, line width=0.8pt] (axis cs:-10.9579,3) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=tinta, fill=white, inner sep=1.5pt] at (axis cs:-10.6313,3) {\,−11.0};
+\draw[tinta, line width=1.1pt] (axis cs:-11.4624,4) -- (axis cs:-10.7485,4);
+\fill[tinta, draw=white, line width=0.8pt] (axis cs:-11.1200,4) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=tinta, fill=white, inner sep=1.5pt] at (axis cs:-10.7485,4) {\,−11.1};
+\draw[tinta, line width=1.1pt] (axis cs:-11.7143,5) -- (axis cs:-11.0282,5);
+\fill[tinta, draw=white, line width=0.8pt] (axis cs:-11.3659,5) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=tinta, fill=white, inner sep=1.5pt] at (axis cs:-11.0282,5) {\,−11.4};
+\draw[tinta, line width=1.1pt] (axis cs:-12.3520,6) -- (axis cs:-11.1072,6);
+\fill[tinta, draw=white, line width=0.8pt] (axis cs:-11.7546,6) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=tinta, fill=white, inner sep=1.5pt] at (axis cs:-11.1072,6) {\,−11.8};
+\draw[tinta, line width=1.1pt] (axis cs:-12.3969,7) -- (axis cs:-11.3398,7);
+\fill[tinta, draw=white, line width=0.8pt] (axis cs:-11.8658,7) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=tinta, fill=white, inner sep=1.5pt] at (axis cs:-11.3398,7) {\,−11.9};
+\draw[gris, line width=1.1pt] (axis cs:-13.5328,8) -- (axis cs:-12.2145,8);
+\fill[gris, draw=white, line width=0.8pt] (axis cs:-12.8251,8) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=gris, fill=white, inner sep=1.5pt] at (axis cs:-12.2145,8) {\,−12.8};
+\draw[diablos, line width=1.1pt] (axis cs:-14.9517,9) -- (axis cs:-13.8030,9);
+\fill[diablos, draw=white, line width=0.8pt] (axis cs:-14.4173,9) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=diablos, fill=white, inner sep=1.5pt] at (axis cs:-13.8030,9) {\,−14.4};
+\draw[diablos, line width=1.1pt] (axis cs:-15.6030,10) -- (axis cs:-14.0458,10);
+\fill[diablos, draw=white, line width=0.8pt] (axis cs:-14.7816,10) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=diablos, fill=white, inner sep=1.5pt] at (axis cs:-14.0458,10) {\,−14.8};
+\draw[diablos, line width=1.1pt] (axis cs:-16.5501,11) -- (axis cs:-14.4067,11);
+\fill[diablos, draw=white, line width=0.8pt] (axis cs:-15.5513,11) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=diablos, fill=white, inner sep=1.5pt] at (axis cs:-14.4067,11) {\,−15.6};
+\draw[diablos, line width=1.1pt] (axis cs:-18.2748,12) -- (axis cs:-17.4456,12);
+\fill[diablos, draw=white, line width=0.8pt] (axis cs:-17.8729,12) circle[radius=3.2pt];
+\node[anchor=west, font=\scriptsize\bfseries, text=diablos, fill=white, inner sep=1.5pt] at (axis cs:-17.4456,12) {\,−17.9};
+\end{axis}
+\node[anchor=north west, font=\scriptsize, text=tinta] at (current bounding box.south west) {%
+\textcolor{tinta}{\large$\bullet$} pierde menos que la liga\quad
+\textcolor{diablos}{\large$\bullet$} pierde más\quad
+\textcolor{gris}{\large$\bullet$} igual que la liga\quad
+\textcolor{gris}{número junto al nombre = lanzamientos}};
+\end{tikzpicture}
+\end{document}

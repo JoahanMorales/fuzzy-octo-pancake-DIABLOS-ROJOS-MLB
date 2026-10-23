@@ -50,6 +50,7 @@ function Charts({ parks, shapes }: Data) {
   const rows = [...shapes.shapes].sort((a, b) => b.delta_stuff - a.delta_stuff);
   const min = Math.min(0, ...rows.map(s => s.delta_lo)), max = Math.max(0, ...rows.map(s => s.delta_hi));
   const x = scaleLinear().domain([min - 1, max + 1]).range([145, 550]);
+  const xm = scaleLinear().domain(x.domain()).range([8, 292]);
   const height = rows.length * 44 + 70;
   return <>
     <section className="alt-shapes" aria-labelledby="shapes-heading">
@@ -78,12 +79,17 @@ function Charts({ parks, shapes }: Data) {
           </g>)}
         </svg>
         <div className="alt-mobile-forest">
+          {/* phones (HACK-086, QA finding 4): own full-width scale, a shared axis, dots large enough to read */}
+          <svg className="alt-mobile-axis" viewBox="0 0 300 22" aria-hidden="true">
+            {xm.ticks(4).map(t => <g key={t}><line className="alt-gridline" x1={xm(t)} x2={xm(t)} y1="16" y2="22" /><text x={xm(t)} y="12" textAnchor="middle">{t.toFixed(0)}</text></g>)}
+          </svg>
           {rows.map(s => <button key={s.shape} onClick={() => setFocusedShape(s)} onFocus={() => setFocusedShape(s)} aria-describedby="alt-shape-detail">
             <span><strong>{s.shape}</strong><span>Δ {signed(s.delta_stuff)}</span></span>
-            <svg viewBox="0 0 600 24" aria-hidden="true">
-              <line className="alt-zero" x1={x(0)} x2={x(0)} y1="0" y2="24" />
-              <line className="alt-ci" x1={x(s.delta_lo)} x2={x(s.delta_hi)} y1="12" y2="12" />
-              <circle className="alt-point" cx={x(s.delta_stuff)} cy="12" r="6" />
+            <svg viewBox="0 0 300 20" aria-hidden="true">
+              {xm.ticks(4).map(t => <line key={t} className="alt-gridline" x1={xm(t)} x2={xm(t)} y1="0" y2="20" />)}
+              <line className="alt-zero" x1={xm(0)} x2={xm(0)} y1="0" y2="20" />
+              <line className="alt-ci" x1={xm(s.delta_lo)} x2={xm(s.delta_hi)} y1="10" y2="10" />
+              <circle className="alt-point" cx={xm(s.delta_stuff)} cy="10" r="5" />
             </svg>
             <span className="alt-note">Stuff+ {cdmx ? 'en CDMX' : 'nivel del mar'}: {(cdmx ? s.stuff_harp_helu : s.stuff_sea_level).toFixed(2)} · intervalo [{signed(s.delta_lo)}, {signed(s.delta_hi)}]</span>
           </button>)}

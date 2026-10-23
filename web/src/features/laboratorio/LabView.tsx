@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { DataBadge, fmt } from '../staff/data';
+import './lab.css';
 
 export interface TweakRow {
   tweak: string;
@@ -60,12 +61,12 @@ function TweakTable({ rows, caption }: { rows: TweakRow[]; caption: string }) {
   const sorted = [...rows].sort((a, b) => b.arsenal_gain_hh - a.arsenal_gain_hh);
   return (
     <div className="h48-scroll" tabIndex={0} role="region" aria-label={caption}>
-      <table className="h48-table">
+      <table className="h48-table lab-tweaks">
         <caption className="h48-muted" style={{ textAlign: 'left', paddingBottom: 8 }}>{caption}</caption>
         <thead>
           <tr>
             <th scope="col">Ajuste</th>
-            <th scope="col" className="num is-hh">Ganancia en CDMX [IC 95 %]</th>
+            <th scope="col" className="num is-hh">Ganancia en CDMX<span className="lab-ci-h"> [IC 95 %]</span></th>
             <th scope="col" className="num is-sea opt">Ganancia a nivel del mar</th>
             <th scope="col" className="num opt">CDMX menos mar [IC 95 %]</th>
             <th scope="col" className="num">Aplica a</th>

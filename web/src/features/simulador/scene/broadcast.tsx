@@ -348,7 +348,7 @@ export function TrackedFlights({ harp, sea, c, reduced, playId, timing, ball }: 
         <meshBasicMaterial color={c.fg} transparent opacity={0.8} side={THREE.DoubleSide} />
       </mesh>
       <Tag at={[dH[0] + 0.35, dH[1] + 0.35, dH[2]]} tone="note">
-        <b>punto de decisión</b> · 150 ms antes del plato · separación {decisionGap.toFixed(1)} in
+        <b>punto de decisión</b><span className="sim-tag-long"> · 150 ms antes del plato · separación</span> · {decisionGap.toFixed(1)} in
       </Tag>
       {/* plate crossings */}
       <mesh position={[eS[0], eS[1], ZONE.z + 0.02]}>

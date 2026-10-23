@@ -31,14 +31,17 @@ freeze es hoy; mezclar CSS ajeno en esta PR arriesga conflictos. Severidad segú
 
 ### Alta
 
-| # | Ruta · ancho | Hallazgo | Arreglo sugerido |
-|---|---|---|---|
-| 1 | inicio · 390 | El chip "informe" se encima con la leyenda del gráfico y tapa "nivel del mar" | flex-wrap, leyenda en fila aparte, o quitar la leyenda superior (ya hay otra abajo) |
-| 2 | presentación · 390 | La barra fija inferior tapa el hero, el gráfico y los datos | Una sola fila (contador, Siguiente, Salir) y `padding-bottom` igual a su alto |
-| 3 | simulador · 1440 | El panel derecho se corta abajo; los presets (el CTA) quedan bajo el pliegue y hay una franja negra bajo la escena | Altura `calc(100dvh - header)`, `overflow-y: auto` en el panel, compactar "¿Por qué?" |
-| 4 | altitud · 390 | Puntos de ~8 px en tarjetas casi vacías, sin eje ni leyenda | Pista de ancho 100 %, escala común con línea cero, puntos r ≥ 4, leyenda y eje mínimo |
-| 5 | laboratorio · 390 | La tabla desborda: "Ganancia en CDMX [IC 95 %]" en 4 líneas y "Aplica a" cortado | Contenedor con `overflow-x: auto`, `th { white-space: nowrap }` |
-| 15 | simulador · 390 | La escena se recorta a la izquierda y las etiquetas se cortan a la derecha; controles de cámara en dos filas | Encuadre propio en móvil (cámara/fov), etiquetas con wrap, lectura bajo la escena. Es rediseño |
+Las seis se corrigieron en HACK-086; capturas nuevas en `shots/` (inicio-390, inicio-1440, presentacion-390,
+simulador-1440, simulador-390, altitud-390, laboratorio-390). Sin desborde horizontal a 390 px en ninguna ruta.
+
+| # | Ruta · ancho | Hallazgo | Arreglo sugerido | Estado |
+|---|---|---|---|---|
+| 1 | inicio · 390 | El chip "informe" se encima con la leyenda del gráfico y tapa "nivel del mar" | flex-wrap, leyenda en fila aparte, o quitar la leyenda superior (ya hay otra abajo) | Corregido (HACK-086): la leyenda superior se oculta bajo 600 px; queda la de abajo |
+| 2 | presentación · 390 | La barra fija inferior tapa el hero, el gráfico y los datos | Una sola fila (contador, Siguiente, Salir) y `padding-bottom` igual a su alto | Corregido (HACK-086): HUD de una fila (frase y controles), Anterior como flecha |
+| 3 | simulador · 1440 | El panel derecho se corta abajo; los presets (el CTA) quedan bajo el pliegue y hay una franja negra bajo la escena | Altura `calc(100dvh - header)`, `overflow-y: auto` en el panel, compactar "¿Por qué?" | Corregido (HACK-086): escena y panel a `100dvh - 49px`, panel con scroll propio, "¿Por qué?" plegable |
+| 4 | altitud · 390 | Puntos de ~8 px en tarjetas casi vacías, sin eje ni leyenda | Pista de ancho 100 %, escala común con línea cero, puntos r ≥ 4, leyenda y eje mínimo | Corregido (HACK-086): pistas de ancho completo con rejilla, línea cero, IC y punto r = 5, eje fijo arriba |
+| 5 | laboratorio · 390 | La tabla desborda: "Ganancia en CDMX [IC 95 %]" en 4 líneas y "Aplica a" cortado | Contenedor con `overflow-x: auto`, `th { white-space: nowrap }` | Corregido (HACK-086): tabla de ancho fijo bajo 900 px, "[IC 95 %]" fuera del encabezado, cifras sin wrap |
+| 15 | simulador · 390 | La escena se recorta a la izquierda y las etiquetas se cortan a la derecha; controles de cámara en dos filas | Encuadre propio en móvil (cámara/fov), etiquetas con wrap, lectura bajo la escena. Es rediseño | Corregido (HACK-086): fov que conserva el encuadre en pantallas angostas, escena a 58dvh con lectura debajo, cámaras en una fila con scroll, etiqueta corta |
 
 ### Media
 

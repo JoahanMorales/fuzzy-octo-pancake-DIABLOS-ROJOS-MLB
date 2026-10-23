@@ -804,3 +804,15 @@ Append-only; added to .uak/TASKS.md from main. Why: adding tasks never waits for
   - A new test checks the generated `.tex` on the synthetic fixture (numbers present, no em-dashes); `tests/test_cards.py` still passes unchanged.
 - **Verify:** `python -m pytest -q --tb=short -x tests/test_cards.py tests/test_cards_tex.py`
 - **Next step:** emit one `.tex` per card from the `build_card` dict, compile with Tectonic, keep matplotlib only for the chart.
+
+## HACK-090 · README: uso de IA generativa y trabajo de terceros (requisito de la entrega) (follow-up of HACK-081)
+
+- **Type:** follow-up
+- **Priority:** P1
+- **Depends on:** HACK-081
+- **Follow-up of:** HACK-081
+- **Paths:** README.md
+- **Freeze-Allowed:** no
+- **Acceptance:**
+  - README: uso de IA generativa y trabajo de terceros (requisito de la entrega)
+- **Verify:** `test -s README.md && python docs/technical/check_numbers.py README.md`

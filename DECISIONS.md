@@ -146,3 +146,4 @@ Why: a reversible option after 15 min keeps work moving.
 - 1792548019 | plan | joahan/joahan | tasks added: HACK-088 HACK-089 | Why: backlog without PR (Plan-Channel: claims)
 - 1792720903 | deadline freeze/event/1792691940 | FREEZE_DEMO_FIXES_ONLY | New claims only with Freeze-Allowed: yes; respect authorization.
 - 1792720903 | deadline decision/HACK-087-1792547561/1792548461 | REVERSIBLE_AND_LOG | Option: update 5 literal asserts that pin the old familia source/value (tests/test_export_web.py:24-25, story.test.ts:21, landing.test.tsx:39,70) to the production value -13.0; regenerate mock/validation.json (test_write_mock requires it); Why: these asserts encode the bug HACK-087 fixes; superseded by tests/test_export_highlights.py; no money, accounts, publishing or scope expansion.
+- 1792723887 | HACK-090 | follow-up of HACK-081 by joahan: README: uso de IA generativa y trabajo de terceros (requisito de la entrega) | Why: same Paths, no scope change

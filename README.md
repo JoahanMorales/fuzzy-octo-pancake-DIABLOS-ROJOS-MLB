@@ -7,6 +7,8 @@ Stuff+ 2240 evalúa cada lanzamiento de la LMB por sus propiedades físicas, su 
 
 ## Producto web (React)
 
+**Sitio publicado: [stuffplus2240.vercel.app](https://stuffplus2240.vercel.app)** (empieza por el [simulador 3D](https://stuffplus2240.vercel.app/#/simulador)).
+
 La entrega es una app React estática: simulador 3D de dos aires, altitud, leaderboard, fichas de pitcher, staff, prospecto, laboratorio, física, metodología y presentación. Corre en el navegador con agregados JSON y modelos de árboles exportados desde Python; no lleva datos por lanzamiento.
 
 ```bash
@@ -80,6 +82,22 @@ python -m streamlit run app/Home.py
 ```
 
 Corre solo con `artifacts/`, sin datos crudos.
+
+## Uso de IA generativa y trabajo de terceros
+
+**IA generativa.** Usamos asistentes de programación con IA generativa, principalmente Claude Code (Anthropic), como agentes que escribieron buena parte del código, los análisis, la app web y los borradores de los documentos. El equipo humano fijó la pregunta, las hipótesis y las reglas de decisión antes de cada corrida, revisó cada cambio y decidió qué modelo pasaba a producción. Ningún dato se generó con IA: todas las cifras salen de los datos oficiales del reto con los scripts del repo y se comprueban de forma automática:
+
+- `python docs/technical/check_numbers.py` comprueba que cada número del paper esté en el archivo de `reports/` que cita.
+- `python demo/deck/verify.py` recalcula cada cifra del deck desde su CSV (archivo, fila, columna y SHA-256 en `demo/deck/sources.json`).
+- `python -m pytest` y `npm --prefix web test -- --run` cubren el código y la app; los modelos se validan contra el modelo nulo de la rúbrica con pliegues por pitcher.
+
+La coordinación entre agentes usó el [UPIIXIA Agentic Kit](https://github.com/JoahanMorales/upiixia-agentic-kit) (tareas, revisiones y trazabilidad en la rama `claims`).
+
+**Datos.** Trackman de la LMB entregado por el ISAC para el reto; no se publica ni se sube a git ni al sitio (solo agregados).
+
+**Métodos y literatura.** Física del vuelo (Nathan; Kagan), Stuff+ y modelos públicos (FanGraphs, Driveline, Baseball Prospectus, PitchingBot), calibración, cambio de distribución e intervalos conformales: citas completas en la bibliografía del [paper](docs/technical/stuffplus2240.pdf) (`docs/technical/references.bib`).
+
+**Software de terceros.** Python: pandas, NumPy, SciPy, scikit-learn, LightGBM, SHAP, pyGAM, NetworkX, pyarrow, matplotlib, Plotly, Streamlit, python-pptx, ReportLab, PyMuPDF, pytest. Web: React, React Router, three.js, react-three-fiber, drei, postprocessing, D3, Framer Motion, Zod, Phosphor Icons, Vite, Vitest, Testing Library y Playwright. Documentos: pandoc, Tectonic (XeTeX), Beamer, TikZ/pgfplots. Tipografías: Fira Sans, Libertinus, DejaVu Sans, Geist y Barlow Condensed. Cada una con su licencia; las versiones están en `requirements.txt`, `demo/deck/requirements.txt` y `web/package.json`.
 
 ## Cómo trabajamos
 

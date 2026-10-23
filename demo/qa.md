@@ -1,4 +1,4 @@
-# Jurado · 30 preguntas y respuestas
+# Jurado · 32 preguntas y respuestas
 
 Cifras de reportes versionados con Stuff+ v2 en producción (HACK-057); preparación exploratoria/transductiva. Cada respuesta ocupa dos líneas: explicación y fuente. No convertir una estimación en promesa de campo.
 
@@ -38,7 +38,7 @@ Cifras de reportes versionados con Stuff+ v2 en producción (HACK-057); preparac
     No está confirmado: las franquicias anónimas 5 y 11 son candidatas de aire ligero; deben validarse con el club.
     Fuente: [identificación y separación](../reports/staff_audit/README.md).
 11. **¿Cuánto se ganaría?**
-    Los escenarios estiman 3.8 carreras/0.26 victorias para franquicia 11 y 5.5/0.38 para franquicia 5; son alternativas y no se suman.
+    Los escenarios estiman 4.5 carreras/0.32 victorias para franquicia 11 y 6.5/0.46 para franquicia 5; son alternativas y no se suman.
     Fuente: [totales y supuestos](../reports/staff_audit/README.md).
 12. **¿Una carrera vale lo mismo en todos los parques?**
     No; el escenario del staff usa 14.3 carreras por victoria para altitud extrema, una conversión estimada en LMB.
@@ -103,3 +103,10 @@ Cifras de reportes versionados con Stuff+ v2 en producción (HACK-057); preparac
 30. **¿Qué cubren sus intervalos?**
     Los IC son por pitcher. Para un pitcher nuevo, el ΔStuff+ observado cae en ±7.6 puntos del modelo con 93.2 % de cobertura: el modelo da la expectativa, no el caso.
     Fuente: [intervalos conformales](../reports/uncertainty/README.md).
+
+31. **¿Cuánto del efecto es física y cuánto es el modelo?**
+    De los −12.94 puntos de la liga, −5.95 salen de trasladar el movimiento (perder Magnus) y −6.22 del efecto del aire que el modelo aprendió de los juegos en altura (más daño en contacto, más vuelo); la interacción suma −0.77.
+    Fuente: [descomposición](../reports/model_audit/decomposition.csv).
+32. **¿El traductor de movimiento funciona para todos los lanzamientos?**
+    Para 97.5 % de los lanzamientos sí. En el HB del cutter (1.9 %) y del splitter (0.6 %) el traductor proporcional se sale de tolerancia porque su movimiento medio está cerca de 0; su ΔStuff+ se lee con cautela.
+    Fuente: [auditoría del modelo](../reports/model_audit/README.md).

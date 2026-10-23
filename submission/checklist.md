@@ -1,19 +1,20 @@
 # Entrega · checklist y acta de ensayo
 
 Estado: paquete documental preparado; entrega NO enviada y aceptación humana pendiente.
-Responsable del envío: Joahan. Fuente de requisitos: [PROJECT](../.uak/PROJECT.md); guion: [demo](../demo/script.md); entrevista: [30 preguntas](../demo/qa.md).
+Responsable del envío: Joahan. Fuente de requisitos: [PROJECT](../.uak/PROJECT.md); guion: [demo](../demo/script.md); entrevista: [32 preguntas](../demo/qa.md).
 Fecha límite oficial: 2026-10-22 23:59 America/Mexico_City; objetivo interno: 2026-10-22 por la mañana. Revalidar con las bases antes de enviar.
 
 ## Antes de enviar
 
+- [ ] Fusionar en `main` los PR de HACK-085 (paper en LaTeX), HACK-086 (QA visual), HACK-087 (landing con −13.0) y HACK-088 (deck y one-pager en LaTeX): los PDF finales están en esas ramas. Después, adjuntar los PDF desde `main`.
 - [ ] Joahan confirma instrucciones vigentes y correo destino `itamsportsanalytics@gmail.com`.
 - [ ] Incluir los cuatro correos del equipo desde `submission/EQUIPO.local.md`, sólo por la persona responsable. Mantener ese archivo ignorado; no copiar correos ni matrícula a git.
-- [ ] Revisar PDF técnico de 6–10 páginas: [stuffplus2240.pdf](../docs/technical/stuffplus2240.pdf); abrirlo y confirmar legibilidad y versión.
+- [ ] Revisar PDF técnico de 6–10 páginas: [stuffplus2240.pdf](../docs/technical/stuffplus2240.pdf) (LaTeX, 9 páginas; se reconstruye con `bash docs/technical/build.sh`); abrirlo y confirmar legibilidad y versión.
 - [ ] Revisar [leaderboard por pitcher/temporada](../reports/leaderboards/pitcher_season.csv) y [por parque](../reports/leaderboards/by_park.csv), con sus columnas Stuff+/Location+/Pitching+ y referencia.
 - [ ] Preparar archivo de scores por pitch: ruta privada, versión, esquema, cobertura y tamaño pendientes. No adjuntar parquet original ni publicar filas privadas.
 - [ ] Joahan resuelve por escrito el permiso/canal privado de transferencia de scores por pitch: las bases permiten mostrar resultados, pero no divulgar datos. Si no está claro, consultar al organizador antes de transferir.
 - [ ] Publicar `web/dist/` siguiendo [deploy/web](../deploy/web/README.md) (publica Joahan; `python scripts/check_web_dist.py` en verde) y confirmar la URL en una ventana privada con la insignia "datos reales": URL pendiente. No usar localhost como enlace de entrega.
-- [ ] Confirmar acceso del jurado al [repositorio](https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB) y revisar contenido público.
+- [ ] Confirmar acceso del jurado al [repositorio](https://github.com/JoahanMorales/Ethical-hoops) y revisar contenido público.
 - [ ] Adjuntar o enlazar [deck v2](../demo/deck/deck.pdf), [resumen de una página](../demo/one-pager/one-pager.pdf) y [recomendaciones](../reports/recommendations/memo.md); comprobar que dicen Stuff+ v2 (liga −13.0).
 - [ ] Tener listas constancias de inscripción/matrícula de cuatro miembros por canal privado; no versionarlas.
 - [ ] Una persona graba `demo/planb.mp4`, lo reproduce completo y comprueba audio, duración y acceso. Estado actual: pendiente.

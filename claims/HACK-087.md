@@ -12,6 +12,6 @@ Verify: `python -m pytest -q --tb=short -x tests/test_export_highlights.py tests
 Lease-Until: 1792562389
 Updated: 1792547989
 Task-Base: 1f99f873f59d362982b34a4b6a89bfa33684e917
-Next: Another agent reviews https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-087?expand=1; run .uak/bin/smoke
+Next: Recover lease with token; then apply option: update 5 literal asserts that pin the old familia source/value (tests/test_export_web.py:24-25, story.test.ts:21, landing.test.tsx:39,70) to the production value -13.0; regenerate mock/validation.json (test_write_mock requires it)
 PR: https://github.com/JoahanMorales/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB/compare/main...feat/hack-087?expand=1
 Evidence: -

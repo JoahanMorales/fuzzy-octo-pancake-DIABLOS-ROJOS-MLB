@@ -27,7 +27,7 @@ El Harp Helú (Ciudad de México, 2,240 m) tiene un aire más ligero que el de c
 - **El mismo lanzamiento pierde 13.0 puntos de Stuff+ en el aire del Harp Helú** (promedio de las formas). La curva 12-6 y el sweeper aguantan mejor (−9.5 [−10.1, −8.9] y −9.6 [−10.2, −9.1]) y la recta de mucho *ride* es la que más pierde (−17.9 [−18.3, −17.4]) (`reports/recommendations/memo.md`).
 - **Stuff+ v2 le gana al nulo por lanzamiento** en las tres particiones (+0.18 %, +0.20 % y +0.23 % de RMSE, con IC que excluyen 0); Pitching+ reduce el RMSE 3.88 % por pitcher, 3.74 % al predecir la temporada siguiente y 3.28 % al predecir la altitud extrema sin haberla visto (`reports/validation/summary.md`).
 - **La física corrige el sesgo de altitud.** Entrenado sin un solo juego de altitud extrema, el nulo subestima el daño allí en +0.0109 carreras por lanzamiento; Stuff+ v2 deja +0.0018 y Pitching+ +0.0020 (`reports/validation/summary.md`).
-- **Valor de negocio.** Un punto de Stuff+ vale $7.24\times10^{-4}$ carreras por lanzamiento, cada victoria cuesta 14.3 carreras en altitud extrema, y la auditoría del staff candidato proyecta 3.8 y 5.5 carreras salvadas por temporada según la franquicia (`reports/business_value/runs_per_point_direct.csv`, `reports/business_value/runs_per_win.csv`, `reports/staff_audit/runs_saved.csv`).
+- **Valor de negocio.** Un punto de Stuff+ vale $8.68\times10^{-4}$ carreras por lanzamiento, cada victoria cuesta 14.3 carreras en altitud extrema, y la auditoría del staff candidato proyecta 4.5 y 6.5 carreras salvadas por temporada según la franquicia (`reports/business_value/runs_per_point_direct.csv`, `reports/business_value/runs_per_win.csv`, `reports/staff_audit/runs_saved.csv`).
 
 # Marco teórico
 
@@ -199,22 +199,22 @@ La altitud extrema es otra distribución: un clasificador que la distingue por l
 
 **Triangulación con lo observado.** Comparamos el *mismo* lanzamiento (pitcher × temporada × `pitch_id`) en juegos de altitud extrema contra juegos sin altitud. El Stuff+ del modelo se mueve en la misma dirección que el contrafactual en 7 de 7 familias; los resultados reales del pitcher caen entre −7.5 y −15.3 puntos y su IC contiene al contrafactual en 7 de 7 (`reports/altitude_delta/triangulation.csv`).
 
-**Parque por parque.** El Stuff+ neutral va de 98.1 a 102.0 en todos los parques: los pitchers son comparables y lo que cambia es el aire. El efecto del aire va de +4.7 en el parque más denso ($\rho$ = 1.055) a −13.7 en el más ligero ($\rho$ = 0.812) (`reports/leaderboards/by_park.csv`). En el staff candidato, el ΔCDMX del modelo correlaciona 0.57 y 0.68 (por franquicia) con el delta observado de cada pitcher (`reports/staff_audit/README.md`).
+**Parque por parque.** El Stuff+ neutral va de 98.1 a 102.0 en todos los parques: los pitchers son comparables y lo que cambia es el aire. El efecto del aire va de +4.7 en el parque más denso ($\rho$ = 1.055) a −13.7 en el más ligero ($\rho$ = 0.812) (`reports/leaderboards/by_park.csv`). En el staff candidato, el ΔCDMX del modelo correlaciona 0.53 y 0.69 (por franquicia) con el delta observado de cada pitcher (`reports/staff_audit/README.md`).
 
 # Recomendaciones y valor de negocio
 
-**De puntos a victorias (HACK-035).** Regresamos el valor de carreras realizado contra los puntos de Stuff+ predichos fuera de pliegue: un punto vale $7.24\times10^{-4}$ carreras por lanzamiento [$6.78\times10^{-4}$, $7.69\times10^{-4}$]. El exponente pitagórico de la LMB es 1.90 [1.62, 2.15]: 11.8 carreras por victoria en la liga y 14.3 en altitud extrema, donde se anota más. +10 puntos de Stuff+ en 2,500 lanzamientos son 18.1 carreras ≈ 1.26 victorias en el Harp Helú; una desviación estándar observada entre pitcher-temporadas (5.45 puntos) vale 0.69 victorias. Esta conversión se midió con la escala de Stuff+ v1 (`reports/business_value/`).
+**De puntos a victorias (HACK-035).** Regresamos el valor de carreras realizado contra los puntos de Stuff+ predichos fuera de pliegue: un punto vale $8.68\times10^{-4}$ carreras por lanzamiento [$8.18\times10^{-4}$, $9.19\times10^{-4}$]. El exponente pitagórico de la LMB es 1.90 [1.62, 2.15]: 11.8 carreras por victoria en la liga y 14.3 en altitud extrema, donde se anota más. +10 puntos de Stuff+ en 2,500 lanzamientos son 21.7 carreras ≈ 1.51 victorias en el Harp Helú; una desviación estándar observada entre pitcher-temporadas (5.08 puntos) vale 0.77 victorias. Los puntos son los de Stuff+ v2 fuera de pliegue (`reports/business_value/`).
 
-**Perfil a reclutar (HACK-017, HACK-022).** Los umbrales salen de los quintiles de HACK-017, calculados con Stuff+ v1; las formas, de Stuff+ v2.
+**Perfil a reclutar (HACK-017, HACK-022).** Umbrales y formas salen de Stuff+ v2 (HACK-017 regenerado en HACK-083).
 
-1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es 20.9 puntos a nivel del mar y solo 7.6 en el Harp Helú (`reports/recommendations/memo.md`).
-2. **Extensión alta.** El quintil superior (6.43 ft o más) pierde 9.7 puntos y el inferior 12.8 (`reports/recommendations/memo.md`).
-3. **Ángulo de llegada plano, neto de la altura de salida.** El quintil más plano pierde 9.1 puntos y el más inclinado 13.1 (`reports/recommendations/memo.md`).
+1. **No pagar por *ride* de recta.** El rango de Stuff+ entre IVB bajo y alto es 21.1 puntos a nivel del mar y solo 5.8 en el Harp Helú (`reports/recommendations/memo.md`).
+2. **Extensión alta.** El quintil superior (6.43 ft o más) pierde 11.0 puntos y el inferior 15.3 (`reports/recommendations/memo.md`).
+3. **Ángulo de llegada plano, neto de la altura de salida.** El quintil más plano pierde 12.4 puntos y el más inclinado 14.1: la brecha es menor que la de la extensión, pero sus intervalos no se traslapan (`reports/recommendations/memo.md`).
 4. **Secundarios.** Preferir curva 12-6, sweeper y splitter; desconfiar del cambio de poder y de la curva 11-5. Sin umbral de velocidad: su efecto no es robusto.
 
-La diferencia de pérdida entre la recta de *ride* y el sweeper (8.3 puntos) equivale a unas 6.0 carreras por cada 1,000 lanzamientos (`reports/recommendations/memo.md`).
+La diferencia de pérdida entre la recta de *ride* y el sweeper (8.3 puntos) equivale a unas 7.2 carreras por cada 1,000 lanzamientos (`reports/recommendations/memo.md`).
 
-**Staff candidato (HACK-032).** Para las dos franquicias candidatas, siempre por separado porque la identificación es inferida: 22 de 35 y 25 de 45 pitchers tienen un lanzamiento 5 puntos o más peor en aire del Harp Helú que su mejor lanzamiento. Moverle 10 puntos de uso en casa ahorra 2.0 y 4.3 carreras por temporada, y pasar aperturas en casa al abridor más resistente a la altura suma 1.82 y 1.15. **Total: 3.8 y 5.5 carreras por temporada (0.26 y 0.38 victorias)** con los juegos en casa observados (`reports/staff_audit/README.md`).
+**Staff candidato (HACK-032).** Para las dos franquicias candidatas, siempre por separado porque la identificación es inferida: 22 de 35 y 25 de 45 pitchers tienen un lanzamiento 5 puntos o más peor en aire del Harp Helú que su mejor lanzamiento. Moverle 10 puntos de uso en casa ahorra 2.3 y 5.2 carreras por temporada, y pasar aperturas en casa al abridor más resistente a la altura suma 2.18 y 1.38. **Total: 4.5 y 6.5 carreras por temporada (0.32 y 0.46 victorias)** con los juegos en casa observados (`reports/staff_audit/README.md`).
 
 **Tácticas en casa (hipótesis del modelo de ubicación).** El centro de la zona es lo que más se encarece en el aire del Harp Helú (recta en la zona 4: +0.027 carreras por lanzamiento) y la esquina baja del lado del guante la que mejor aguanta (+0.006) (`reports/location_model/altitude_by_zone.csv`).
 
@@ -229,7 +229,7 @@ Todo esto se consulta en el producto web: simulador 3D CDMX contra nivel del mar
   3. **Preparación transductiva.** Identidad, densidad por juego, referencias de arsenal y valores de carrera se estiman una vez con todos los datos; ningún paso usa el resultado de un lanzamiento como variable de ese lanzamiento y todos los modelos se ajustan solo con entrenamiento.
   4. **$\rho$ es por juego** y puede absorber rasgos del parque que viajan con la altitud; la triangulación dentro del lanzamiento y el holdout por parque acotan ese riesgo.
   5. **R3 no se cumplió.** Stuff+ v2 cambia la magnitud del efecto de la altitud (§5); se adoptó por la regla del sesgo en aire no visto, y el orden de las formas se conserva.
-  6. **Escalas mezcladas en dos cifras de negocio:** la conversión a carreras y los quintiles de perfil se calcularon con Stuff+ v1 (§7).
+  6. **La conversión a carreras es lineal** en los puntos de Stuff+ y usa las carreras por victoria de un equipo promedio: es un orden de magnitud, no una promesa (§7).
   7. **Incertidumbre individual grande.** El intervalo del ΔStuff+ observado de un pitcher mide ±7.6 puntos (§5.1): el modelo da la expectativa, no el caso.
   8. **Las recomendaciones tácticas y de mezcla son hipótesis del modelo**, no experimentos.
 - **Ética:** IDs anónimos, sin fines de apuesta, y los datos crudos nunca están en git ni en el despliegue (solo agregados).

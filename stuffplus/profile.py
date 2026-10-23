@@ -46,7 +46,7 @@ def stuff_plus_at(model, scaler, frame: pd.DataFrame, rho: float, direct: bool =
     t = model.translate(frame, rho, frame["rho"].to_numpy(float))
     if not direct:
         t["rho"] = 1.0
-    x = model.predict_components(t)["xrv"].to_numpy(float)
+    x = np.asarray(model.predict_xrv(t), float)  # count-neutral for the production model (profiles carry no count)
     if scaler.by and all(c in frame for c in scaler.by):
         return scaler.transform(frame[list(scaler.by)].assign(x=x), "x").to_numpy(float)
     return np.array([scaler.scale_value(v) for v in x])

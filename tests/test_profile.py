@@ -101,3 +101,17 @@ def test_candidates_and_arsenals_stay_observed(fitted):
     ars = profile.best_arsenals(profile.score_profiles(model, scaler, cents, 0.82))
     if len(ars):
         assert ars.arsenal.str.count(r"\+").eq(2).all()
+
+
+def test_ideal_profile_run_uses_production_stuff(_synthetic_cache):
+    """HACK-077: analysis/ideal_profile fits the production Stuff+ (nested calibration, count-neutral value)."""
+    from stuffplus.models.stuff import CountNeutral
+
+    spec = importlib.util.spec_from_file_location("ideal_run", ROOT / "analysis" / "ideal_profile" / "run.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    shape_model, d = mod._altitude_run().prepare(schema.clean(_synthetic_cache.copy()))
+    model, scaler = mod.fit(d, shape_model, fast=True)
+    assert isinstance(model, CountNeutral)
+    res = mod.run(d, model, scaler, fast=True)
+    assert {"pdp", "sens", "hstat", "shap"} <= set(res) and len(res["sens"]) > 0

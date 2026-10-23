@@ -11,9 +11,9 @@
     "reports/stuff_v2/skill.csv": "6dcf2f4f6878316ae16e5ccc6901882b5877bb099d627f1eb05c143d37c7e7b8",
     "reports/stuff_v2/pitcher_level.csv": "d40f2adf48c188c7395b4a7ffe10e5924f58de1c703f115351386ccbae019e2b",
     "reports/stuff_v2/altitude_bias.csv": "fead96a4e8a8c8238fd914e24e1794eb1c913074dcf633e762297b5533ceac06",
-    "reports/staff_audit/runs_saved.csv": "3dbce13e2758ae935c7d2804c38e2cde92c2e87c20b166d5d44b61c5ddb63193",
+    "reports/staff_audit/runs_saved.csv": "86849ae7ca021339363460cfc45e3cf825f8725681d400a1b334f541b2ad1f7b",
     "reports/business_value/runs_per_win.csv": "5f7f52a5b250fd82df6af3bb91a711f2882655a0749625fbf2899369b04e1772",
-    "reports/business_value/gm_example.csv": "378af2376eef5aaf6396b1a456bad4bac65098fd43618a495bce501125c80139"
+    "reports/business_value/gm_example.csv": "70d344be2f4f3229e54c4906b5dd6bae66420146b4e5062d156144e4a3806582"
   },
   "evidence": [
     {
@@ -231,10 +231,10 @@
         "component": "total"
       },
       "column": "runs_per_season",
-      "value": 5.45198,
+      "value": 6.53529,
       "factor": 1,
       "digits": 1,
-      "display": "5.5"
+      "display": "6.5"
     },
     {
       "slide": 7,
@@ -244,10 +244,10 @@
         "component": "total"
       },
       "column": "wins_per_season",
-      "value": 0.38049,
+      "value": 0.45609,
       "factor": 1,
       "digits": 2,
-      "display": "0.38"
+      "display": "0.46"
     },
     {
       "slide": 7,
@@ -257,10 +257,10 @@
         "component": "total"
       },
       "column": "runs_per_season",
-      "value": 3.77057,
+      "value": 4.51979,
       "factor": 1,
       "digits": 1,
-      "display": "3.8"
+      "display": "4.5"
     },
     {
       "slide": 7,
@@ -270,10 +270,10 @@
         "component": "total"
       },
       "column": "wins_per_season",
-      "value": 0.26314,
+      "value": 0.31543,
       "factor": 1,
       "digits": 2,
-      "display": "0.26"
+      "display": "0.32"
     },
     {
       "slide": 7,
@@ -283,10 +283,10 @@
         "component": "mezcla de lanzamientos en casa"
       },
       "column": "runs_per_season",
-      "value": 4.3004,
+      "value": 5.15489,
       "factor": 1,
       "digits": 1,
-      "display": "4.3"
+      "display": "5.2"
     },
     {
       "slide": 7,
@@ -296,10 +296,10 @@
         "component": "asignación de aperturas en casa"
       },
       "column": "runs_per_season",
-      "value": 1.15158,
+      "value": 1.3804,
       "factor": 1,
       "digits": 1,
-      "display": "1.2"
+      "display": "1.4"
     },
     {
       "slide": 7,
@@ -309,10 +309,10 @@
         "component": "mezcla de lanzamientos en casa"
       },
       "column": "runs_per_season",
-      "value": 1.95136,
+      "value": 2.33909,
       "factor": 1,
       "digits": 1,
-      "display": "2.0"
+      "display": "2.3"
     },
     {
       "slide": 7,
@@ -322,10 +322,10 @@
         "component": "asignación de aperturas en casa"
       },
       "column": "runs_per_season",
-      "value": 1.81922,
+      "value": 2.1807,
       "factor": 1,
       "digits": 1,
-      "display": "1.8"
+      "display": "2.2"
     },
     {
       "slide": 9,
@@ -359,10 +359,10 @@
         "entorno": "Harp Helú (bucket Extreme)"
       },
       "column": "victorias",
-      "value": 1.2627,
+      "value": 1.5136,
       "factor": 1,
       "digits": 2,
-      "display": "1.26"
+      "display": "1.51"
     },
     {
       "slide": 9,
@@ -372,10 +372,10 @@
         "entorno": "Harp Helú (bucket Extreme)"
       },
       "column": "carreras",
-      "value": 18.0928,
+      "value": 21.6882,
       "factor": 1,
       "digits": 1,
-      "display": "18.1"
+      "display": "21.7"
     }
   ],
   "derived": [

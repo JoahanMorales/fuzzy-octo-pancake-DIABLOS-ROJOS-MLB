@@ -40,7 +40,8 @@ sources, evidence, derived = {}, [], []
 
 def row(path, **where):
     p = ROOT / path
-    sources[path] = hashlib.sha256(p.read_bytes()).hexdigest()
+    # LF line endings, as git stores the file: a Windows checkout has CRLF, so the hash must not depend on the OS
+    sources[path] = hashlib.sha256(p.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
     rows = list(csv.DictReader(p.open(encoding='utf-8')))
     found = [r for r in rows if all(r[k] == str(v) for k, v in where.items())]
     if len(found) != 1:
@@ -272,7 +273,7 @@ def main():
     end()
 
     # 8 · the product
-    p = slide('El producto: dos aires, un lanzamiento', 'Capturas del simulador 3D y del explicador de física (web/, build de HACK-045 y HACK-072).',
+    p = slide('El producto: dos aires, un lanzamiento', 'Capturas del simulador 3D y del explicador de física (Playwright, web/e2e/screenshots, HACK-051).',
               '50 s. Simulador 3D: el mismo release a nivel del mar y en el aire del Harp Helú, con el motor de vuelo que usa la elasticidad medida. El explicador de física deja mover la densidad y ver la subida perdida. Las cifras de la app salen de los mismos agregados.')
     p.image(ASSETS/'simulador_transmision.jpg', 40, 98, 308, 178)
     p.image(ASSETS/'fisica.jpg', 372, 98, 308, 198)
@@ -287,7 +288,7 @@ def main():
     rpw_x = number(9, value, {'entorno': 'Extreme Altitude'}, 'carreras_por_victoria', 1)
     wins = number(9, gm, {'escala': 'Stuff+', 'entorno': 'Harp Helú (bucket Extreme)'}, 'victorias', 2)
     runs = number(9, gm, {'escala': 'Stuff+', 'entorno': 'Harp Helú (bucket Extreme)'}, 'carreras', 1)
-    p = slide('El entorno cambia el valor de una carrera', value + '; ' + gm + ' · escala de Stuff+ medida con v1.',
+    p = slide('El entorno cambia el valor de una carrera', value + '; ' + gm + ' · puntos de Stuff+ v2 fuera de pliegue.',
               '65 s. En altura se anota más, así que cada carrera ahorrada vale menos victorias. +10 puntos de Stuff+ sostenidos en 2,500 lanzamientos es un escenario de orden de magnitud, no el ahorro del staff de la lámina 7.')
     p.text(rpw_l, 40, 138, 200, 42, RED, True)
     p.text('Carreras por victoria\nliga', 40, 190, 200, 15)
@@ -323,7 +324,7 @@ def main():
     p.text('Decisión propuesta', 38, y+22, 519, 17, RED, True)
     y = p.text('No pagar por ride de recta; preferir secundarios que aguantan el aire (curva 12-6, sweeper). En casa, mover uso hacia el lanzamiento que mejor resiste y dar las aperturas de casa al abridor más resistente. Confirmar antes con el club cuál franquicia es la sede.', 38, y+52, 519, 13, leading=18)
     p.text('Valor', 38, y+14, 519, 17, RED, True)
-    y = p.text(f'Franquicia 5: {r5} carreras ({w5} victorias) por temporada. Franquicia 11: {r11} carreras ({w11} victorias). Identificación inferida: no se suman. Una carrera vale {rpw_l} por victoria en la liga y {rpw_x} en altitud extrema; +10 de Stuff+ en 2,500 lanzamientos son {wins} victorias en el Harp Helú (escala medida con v1).', 38, y+44, 519, 13, leading=18)
+    y = p.text(f'Franquicia 5: {r5} carreras ({w5} victorias) por temporada. Franquicia 11: {r11} carreras ({w11} victorias). Identificación inferida: no se suman. Una carrera vale {rpw_l} por victoria en la liga y {rpw_x} en altitud extrema; +10 de Stuff+ en 2,500 lanzamientos son {wins} victorias en el Harp Helú.', 38, y+44, 519, 13, leading=18)
     p.text('Fuentes y trazabilidad', 38, 728, 519, 12, bold=True)
     p.text('altitude_delta/delta_by_shape.csv; physics_v2/magnus_elasticity.csv; stuff_v2/skill.csv,\npitcher_level.csv y altitude_bias.csv; validation/headline.csv; staff_audit/runs_saved.csv;\nbusiness_value/runs_per_win.csv y gm_example.csv. Todos bajo reports/. Filas, columnas\ny hashes: demo/deck/sources.json.', 38, 750, 519, 9.5, GRAY, leading=13)
     c.showPage(); c.save()
@@ -338,11 +339,11 @@ def main():
     for i, (t, f, sec) in enumerate(zip(titles, footers, timing), 1):
         rows.append(f'| {i} | {t.replace(chr(10), " ")} | {sec} s | {f} |')
     rows += ['', '## Archivos y reconstrucción', '',
-             '`deck.pptx`: editable. `deck.pdf`: versión de presentación. `../one-pager/one-pager.pdf`: una página para el GM. `assets/`: capturas del producto (simulador de HACK-045 y explicador de HACK-072); cuando HACK-051 publique sus capturas de Playwright, reemplazarlas con el mismo nombre.', '',
+             '`deck.pptx`: editable. `deck.pdf`: versión de presentación. `../one-pager/one-pager.pdf`: una página para el GM. `assets/`: capturas del producto tomadas por las pruebas e2e de HACK-051 (`web/e2e/screenshots/`).', '',
              '`sources.json` guarda archivo, fila, columna, formato y SHA-256 de cada cifra, y para las dos cifras derivadas (promedio de la liga y recorte del sesgo) sus entradas y la fórmula. Las notas de cada diapositiva llevan el guion oral.', '',
              'Reconstruir con Python 3.12 y `demo/deck/requirements.txt`: `python demo/deck/build.py`. Validar: `python demo/deck/verify.py`.', '',
              '## Revisión antes de entrevista', '',
-             'Confirmar con el club cuál de las franquicias 5 y 11 es la sede. La conversión a victorias se midió con la escala de Stuff+ v1 (`reports/business_value/stuff_scale_calibration.csv`).', '',
+             'Confirmar con el club cuál de las franquicias 5 y 11 es la sede. La conversión a victorias usa los puntos de Stuff+ v2 fuera de pliegue (`reports/business_value/stuff_scale_calibration.csv`, HACK-078).', '',
              '## Verificación', '',
              'Verify del backlog: `test -s demo/deck/deck.pdf && test -s demo/one-pager/one-pager.pdf`. Trazabilidad: `python demo/deck/verify.py`.']
     (OUT/'README.md').write_text('\n'.join(rows)+'\n', encoding='utf-8')

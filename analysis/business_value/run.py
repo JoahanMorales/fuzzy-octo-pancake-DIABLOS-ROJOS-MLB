@@ -1,6 +1,10 @@
 """HACK-035: carreras por victoria de la LMB, conversión Stuff+ → carreras → victorias y ejemplo del brazo a prueba de altura.
 
-Uso: python analysis/business_value/run.py  (≈ 3 min: el build de rv_x). Escribe agregados en reports/business_value/.
+Uso: python analysis/business_value/run.py  (≈ 1 h sin caché: 5 ajustes del Stuff+ de producción). Escribe agregados en
+reports/business_value/.
+
+Desde HACK-078 los puntos de Stuff+ son los de producción (v2: valor neutral al conteo + temperatura, HACK-057): xRV fuera
+de pliegue por pitcher con ``fit_production_stuff`` y la escala Plus del modelo exportado (web/public/data/models/stuff.json).
 """
 from __future__ import annotations
 
@@ -18,9 +22,11 @@ from analysis.pitching_model import run as pitching_run
 from analysis.stuff_model import run as stuff_run
 from stuffplus import splits
 from stuffplus import value as V
-from stuffplus.bundle import load_bundle
+import json
 from stuffplus.io import load_raw
 from stuffplus.models import pitching as pitching_models
+from stuffplus.models.location import add_pitch_family
+from stuffplus.models.stuff import PRODUCTION_VERSION, fit_production_stuff
 from stuffplus.physics import parks
 from stuffplus.scale import PlusScaler
 from stuffplus.schema import clean
@@ -73,23 +79,38 @@ games_per_team_season = float(ts["games"].median())
 home_starts = max(int(round(games_per_team_season / 2 / 5)), 1)  # juegos de local por temporada en los datos / rotación de 5
 
 # --- 4. carreras por punto: estimación DIRECTA fuera de muestra (puntos con el scaler del modelo, regresión del run value realizado)
-bundle = load_bundle()
-st = bundle.manifest["scalers"]["stuff"]["stats"]
+STUFF_JSON = Path("web/public/data/models/stuff.json")
+stuff_export = json.loads(STUFF_JSON.read_text(encoding="utf-8"))
+assert stuff_export["model_version"] == PRODUCTION_VERSION, "stuff.json no es el Stuff+ de producción"
+st = stuff_export["plus"]["stats"]
 sigma = float(st["__all__"]["sd"])
 sigma_years = {k: float(v["sd"]) for k, v in st.items() if k != "__all__"}
-cache = Path("artifacts/business_value_oof.parquet")
+def plus_from_export(x: np.ndarray, year: np.ndarray) -> np.ndarray:
+    """100 + 10·sign·(x − media)/de con la escala del Stuff+ exportado, por temporada (global si falta)."""
+    sign = stuff_export["plus"].get("sign", -1)
+    out = np.empty(len(x))
+    for i, (v, y) in enumerate(zip(x, year)):
+        g = st.get(str(int(y)), st["__all__"])
+        out[i] = 100 + 10 * sign * (v - g["mean"]) / g["sd"]
+    return out
+
+
+cache = Path(f"artifacts/business_value_oof_{PRODUCTION_VERSION}.parquet")
 if cache.exists():
     oofdf = pd.read_parquet(cache)
 else:
     folds = list(splits.pitcher_group_kfold(df))
-    stuff_oof = stuff_run.StuffModel().oof(df, folds)["xrv"].to_numpy(float)  # xRV predicho fuera de muestra, por pitcher
+    dfam = add_pitch_family(df)
+    stuff_oof = np.full(len(df), np.nan)  # valor de Stuff+ v2 fuera de muestra, por pitcher
+    for tr, te in folds:
+        stuff_oof[te] = fit_production_stuff(dfam.iloc[tr]).predict_xrv(dfam.iloc[te])
     po = pitching_models.run_oof(df, folds)
     pitch_neutral = pitching_models.combine(po, df["rv_x"].to_numpy(), folds)["combined_neutral"]  # Pitching+ del dashboard: bateador neutral
     oofdf = pd.DataFrame({"stuff_xrv": stuff_oof, "pitching_xrv": pitch_neutral})
     cache.parent.mkdir(parents=True, exist_ok=True)
     oofdf.to_parquet(cache, index=False)
 pts = {
-    "Stuff+": bundle.scalers["stuff"].transform(df.assign(x=oofdf["stuff_xrv"].to_numpy()), "x"),
+    "Stuff+": plus_from_export(oofdf["stuff_xrv"].to_numpy(float), df["year"].to_numpy()),
     # el scaler de Pitching+ del bundle local no es el de joahan-1: se reajusta con el mismo procedimiento (PlusScaler por temporada)
     "Pitching+": PlusScaler().fit(df.assign(x=oofdf["pitching_xrv"].to_numpy()), "x").transform(
         df.assign(x=oofdf["pitching_xrv"].to_numpy()), "x"),
@@ -109,8 +130,8 @@ direct.round(7).to_csv(OUT / "runs_per_point_direct.csv", index=False)
 cal = V.calibration_slope(oofdf["stuff_xrv"].to_numpy(float), df["rv_x"].to_numpy(float), groups)
 check = 0.1 * sigma * cal["slope"]
 pd.DataFrame([dict(sigma_scaler_all=sigma, **{f"sigma_{k}": v for k, v in sigma_years.items()}, **cal, sigma_x_slope_x_0p1=check,
-                   direct_stuff_rv_x=est[("Stuff+", "rv_x")]["per_point"], bundle_version=bundle.manifest["version"],
-                   bundle_created=bundle.manifest["created_at"])]).round(7).to_csv(OUT / "stuff_scale_calibration.csv", index=False)
+                   direct_stuff_rv_x=est[("Stuff+", "rv_x")]["per_point"], model_version=PRODUCTION_VERSION,
+                   scale_source=str(STUFF_JSON).replace("\\", "/"))]).round(7).to_csv(OUT / "stuff_scale_calibration.csv", index=False)
 per_point = {}
 for name in pts:
     e = est[(name, "rv_x")]
@@ -183,8 +204,8 @@ lines = [
     "**Estimación directa, fuera de muestra:** los puntos de Stuff+ y Pitching+ (xRV predicho con validación cruzada por pitcher, escalado con el scaler del modelo: 100 + 10·z) "
     "se regresan contra el run value realizado; las carreras ahorradas por punto y por lanzamiento son menos la pendiente. IC 95 % por pitcher (bootstrap).", "",
     tbl(direct, ["escala", "objetivo", "carreras_por_punto_lanzamiento", "lo", "hi"], "{:.3g}"), "",
-    f"Control cruzado (Stuff+): σ del scaler del bundle {bundle.manifest['version']} ({sigma:.5f}) × calibración {cal['slope']:.2f} × 0.1 = {check:.2e}, "
-    f"frente a {est[('Stuff+', 'rv_x')]['per_point']:.2e} directo. El bundle se reconstruyó localmente con `analysis/stuff_model/run.py` (creado {bundle.manifest['created_at']}). "
+    f"Control cruzado (Stuff+ {PRODUCTION_VERSION}): σ de la escala del modelo exportado ({sigma:.5f}, `{STUFF_JSON.as_posix()}`) × calibración {cal['slope']:.2f} × 0.1 = {check:.2e}, "
+    f"frente a {est[('Stuff+', 'rv_x')]['per_point']:.2e} directo. El xRV fuera de pliegue es el valor neutral al conteo de `fit_production_stuff` (HACK-057, HACK-078). "
     "Pitching+ usa el xRV combinado con bateador neutral (el que sirve el dashboard) escalado con un `PlusScaler` ajustado con el mismo procedimiento.", "",
     "### Ejemplo para el GM", "",
     f"**+{GM_POINTS} puntos de Stuff+ sostenidos en {GM_PITCHES:,} lanzamientos** (orden de magnitud de una temporada de abridor: ~30 aperturas × ~80 lanzamientos; supuesto, no de los datos):", "",
@@ -208,13 +229,13 @@ lines = [
     f"Brecha entre el brazo de alta pérdida y el de a prueba de altura: **{ex.attrs['gap_runs']:.1f} carreras ≈ {ex.attrs['gap_wins']:.2f} victorias** en esa temporada de aperturas en casa.", "",
     "## Advertencias", "",
     "- `rv_x` valora las bolas en juego con la altitud como rasgo (HACK-030): el costo de la altura incluye parte del modelo de contacto, no solo los lanzamientos.",
-    "- Los bundles no se comparten por git: la escala se reconstruyó localmente (`analysis/stuff_model/run.py`); si el modelo se reentrena, hay que volver a correr este análisis (la caché OOF está en `artifacts/`, git-ignored).",
+    "- La escala de Stuff+ es la del modelo exportado (`web/public/data/models/stuff.json`); si el modelo se reentrena, hay que volver a correr este análisis (la caché OOF está en `artifacts/`, git-ignored).",
     "- Los puntos usan el xRV de los modelos completos fuera de muestra, no el modelo destilado del dashboard (R² 0.92 / 0.94 con ellos): aproximan el mismo número.",
     "- El efecto de un punto es chico por lanzamiento y crece con el volumen: sumas grandes (miles de lanzamientos) y grupos de lanzamientos, no un lanzamiento suelto. El `rv` observado es más ruidoso que `rv_x`: su IC es más ancho.",
     "- Marcadores reconstruidos: partidos incompletos en los datos o carreras fuera de los lanzamientos pueden sesgar; los datos solo cubren una muestra de la temporada por equipo.",
     "- Linealización pitagórica válida cerca de un equipo promedio; ±1σ en sensibilidad supone dispersión aproximadamente normal.",
     "- La identidad CDMX vs Puebla sigue sin verificar (HACK-003): «entorno Extreme» agrupa los parques de altura.",
 ]
-(OUT / "summary.md").write_text("\n".join(lines))
+(OUT / "summary.md").write_text("\n".join(lines), encoding="utf-8")
 print("\n".join(lines[:14]))
 print(ex.round(4).to_string()); print(sens, sens_med)

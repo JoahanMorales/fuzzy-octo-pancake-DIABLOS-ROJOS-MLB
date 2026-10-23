@@ -3,7 +3,7 @@
     python analysis/ideal_profile/run.py          # real data
     python analysis/ideal_profile/run.py --fast   # quick check
 
-Uses HACK-015's Stuff+ (altitude-invariant ``pitch_family`` + fitted physics translation, ``stuffplus.altitude``).
+Uses the production Stuff+ (``fit_production_stuff``, as analysis/altitude_delta) on HACK-015's setup (altitude-invariant ``pitch_family`` + fitted physics translation, ``stuffplus.altitude``).
 Reports in reports/ideal_profile/ (aggregates only, no pitcher ids):
   pdp_2d.csv · rho_sensitivity.csv · h_statistic.csv · shap_rho_interaction.csv   which traits matter more in thin air
   delta_by_trait.csv        counterfactual ΔStuff+ by VAA (net of plate height) and spin-efficiency quintile
@@ -26,7 +26,7 @@ if str(ROOT) not in sys.path:
 
 from stuffplus import config, profile, schema  # noqa: E402
 from stuffplus.config import SEED  # noqa: E402
-from stuffplus.models.stuff import StuffModel  # noqa: E402
+from stuffplus.models.stuff import fit_production_stuff  # noqa: E402
 from stuffplus.physics.aero import decompose  # noqa: E402
 from stuffplus.physics.constants import RHO_HARP_HELU  # noqa: E402
 from stuffplus.scale import PlusScaler  # noqa: E402
@@ -44,10 +44,10 @@ def _altitude_run():
 
 
 def fit(d: pd.DataFrame, shape_model, fast: bool):
-    from stuffplus.altitude import STUFF_FEATURES_INVARIANT, physics_translator
+    from stuffplus.altitude import physics_translator
 
     rounds = dict(class_rounds=60, contact_rounds=40) if fast else {}
-    model = StuffModel(features=list(STUFF_FEATURES_INVARIANT), translate=physics_translator(shape_model), **rounds).fit(d)
+    model = fit_production_stuff(d, translate=physics_translator(shape_model), k_inner=2 if fast else 3, **rounds)
     scaler = PlusScaler().fit(d.assign(x=model.predict_at_rho(d, 1.0)["xrv"].to_numpy()), "x")
     return model, scaler
 
@@ -160,6 +160,33 @@ def _plots(res: dict, out: Path) -> None:
     plt.close(fig)
 
 
+def _extremes(tr: pd.DataFrame, trait: str):
+    """First and last quintile of a trait in delta_by_trait, and whether their 95 % intervals overlap."""
+    t = tr[tr.trait == trait].sort_values("bin_lo")
+    lo, hi = t.iloc[0], t.iloc[-1]
+    overlap = not (lo.delta_hi < hi.delta_lo or hi.delta_hi < lo.delta_lo)
+    return lo, hi, overlap
+
+
+def _checklist(fbs: pd.DataFrame, tr: pd.DataFrame) -> list[str]:
+    """The recruiting checklist restated from this folder's CSVs, with a robustness read for every rule (HACK-083)."""
+    out = ["## Lista de verificación para reclutar (de estos CSV)", ""]
+    ivb = fbs.loc["InducedVertBreak"]
+    out.append(f"1. **No pagar por *ride* de recta.** El swing de Stuff+ entre IVB bajo y alto es {ivb.swing_sea:+.1f} a nivel del mar "
+               f"y {ivb.swing_alt:+.1f} en el Harp Helú ({ivb.swing_alt_physics_only:+.1f} solo con la física): la regla se sostiene.")
+    lo, hi, ov = _extremes(tr, "extension")
+    out.append(f"2. **Extensión alta.** Quintil superior ΔStuff+ {hi.delta_stuff:+.1f} contra {lo.delta_stuff:+.1f} del inferior "
+               f"(brecha {hi.delta_stuff - lo.delta_stuff:+.1f}; {'los IC se traslapan: no es robusta' if ov else 'IC sin traslape: robusta'}).")
+    lo, hi, ov = _extremes(tr, "vaa_neto_altura")
+    out.append(f"3. **VAA plano, neto de la altura de salida.** Quintil más plano {lo.delta_stuff:+.1f} contra {hi.delta_stuff:+.1f} del más "
+               f"inclinado (brecha {lo.delta_stuff - hi.delta_stuff:+.1f}; {'los IC se traslapan: no es robusta' if ov else 'IC sin traslape: robusta'}).")
+    v = tr[tr.trait == "velocidad"].sort_values("bin_lo").delta_stuff
+    mono = v.is_monotonic_increasing or v.is_monotonic_decreasing
+    out.append(f"4. **Velocidad.** ΔStuff+ por quintil: {', '.join(f'{x:+.1f}' for x in v)}; "
+               f"{'monótona' if mono else 'no monótona: sin umbral de velocidad'}.")
+    return out + [""]
+
+
 def _md(res: dict) -> str:
     s = res["sens"]
     fbs = s[s.group == "rectas"].set_index("feature")
@@ -171,7 +198,7 @@ def _md(res: dict) -> str:
     h = res["hstat"][res["hstat"].group == "rectas"].sort_values("h2_rho", ascending=False)
     lines = [
         "# Perfil físico ideal para Diablos Rojos (HACK-017)", "",
-        f"Stuff+ de HACK-015 (identidad `pitch_family`, traslado físico ajustado). Aire del Harp Helú: ρ = {RHO_HARP_HELU:.3f} "
+        f"Stuff+ de producción v2 (HACK-057, el mismo de HACK-015; identidad `pitch_family`, traslado físico ajustado). Aire del Harp Helú: ρ = {RHO_HARP_HELU:.3f} "
         "(`RHO_HARP_HELU`). Escala neutral: 100 = promedio LMB a nivel del mar. Cifras copiadas de los CSV de esta carpeta.", "",
         "## Qué rasgos importan más en altitud (`rho_sensitivity.csv`, rectas)", "",
         "Dependencia parcial: el rasgo se fija en una rejilla (cuantiles 5–95 %) con el movimiento definido a nivel del mar, "
@@ -215,6 +242,7 @@ def _md(res: dict) -> str:
               f"{summ['spearman_arsenal_altitud_vs_mar']:.3f}.", "",
               "## Receta (`receta.png`)", "",
               "Hexágonos con el Stuff+ medio de perfiles de recta observados (≥ 3 por hexágono) en el aire del Harp Helú y su Δ contra el nivel del mar.", "",
+              *_checklist(fbs, tr),
               "## Limitaciones", "",
               "- Perfiles = centroides pitcher-temporada-familia; el Stuff+ de un perfil promedio no es el promedio de sus Stuff+.",
               "- `add_stuff_features` (HACK-010) elige la recta principal por `AutoPitchType`, no por `pitch_family`.",

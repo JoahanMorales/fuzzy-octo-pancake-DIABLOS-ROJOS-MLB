@@ -1,11 +1,11 @@
 # STATE
 
 Phase: feature freeze; authorized fixes, rehearsal and submission only
-Updated: 1792721003
+Updated: 1792721522
 AVAILABLE: HACK-062 HACK-063 HACK-089 HACK-025 
-CLAIMED: HACK-088 
+CLAIMED: -
 BLOCKED: -
-REVIEW: HACK-085 HACK-086 HACK-087 
+REVIEW: HACK-085 HACK-086 HACK-087 HACK-088 
 INTEGRATED: (81; last 12) ... HACK-073 HACK-074 HACK-075 HACK-076 HACK-077 HACK-078 HACK-079 HACK-080 HACK-081 HACK-082 HACK-083 HACK-084 
 CANCELLED: -
 
@@ -13,7 +13,7 @@ Claims (first 24; status --task ID shows detail):
 HACK-085 | REVIEW | joahan-6 | until 1792563551
 HACK-086 | REVIEW | joahan-3 | until 1792549754
 HACK-087 | REVIEW | joahan-7 | until 1792562389
-HACK-088 | CLAIMED | joahan-8 | until 1792723703
+HACK-088 | REVIEW | joahan-8 | until 1792735922
 
 Blockers: BLOCKED tasks; use status --task ID --summary.
 Current decisions (last 5):

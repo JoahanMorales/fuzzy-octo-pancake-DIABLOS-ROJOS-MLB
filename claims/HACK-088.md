@@ -1,6 +1,6 @@
 # HACK-088
 ID: HACK-088
-State: CLAIMED
+State: REVIEW
 Owner: joahan-8
 Branch: feat/hack-088
 Worktree: /c/Users/chump/OneDrive/Escritorio/Progra/proyectos/diablo/fuzzy-octo-pancake-DIABLOS-ROJOS-MLB-wt/hack-088
@@ -9,9 +9,9 @@ Priority: P1
 Paths: demo/deck/, demo/one-pager/
 Depends: None
 Verify: `python demo/deck/build.py && python demo/deck/verify.py`
-Lease-Until: 1792723703
-Updated: 1792721003
+Lease-Until: 1792735922
+Updated: 1792721522
 Task-Base: 1f99f873f59d362982b34a4b6a89bfa33684e917
-Next: add a LaTeX emitter beside the current PDF writer in build.py, reuse its slide data.
-PR: -
+Next: Another agent reviews https://github.com/JoahanMorales/Ethical-hoops/compare/main...feat/hack-088?expand=1; run .uak/bin/smoke
+PR: https://github.com/JoahanMorales/Ethical-hoops/compare/main...feat/hack-088?expand=1
 Evidence: -
